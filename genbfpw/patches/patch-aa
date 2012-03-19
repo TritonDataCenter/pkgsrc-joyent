@@ -1,0 +1,23 @@
+$NetBSD$
+
+--- Makefile.orig	2009-06-01 06:07:08.000000000 +0000
++++ Makefile
+@@ -1,13 +1,15 @@
+ 
+ DEFINES	=	# -DHAVE_CRYPT_RN_HEADERS 
+-LIBES	= /usr/lib64/libcrypt.a 
++LIBES	= -lcrypt
+ LDFLAGS	= $(LIBES)
+-LD	= cc
++LD	= gcc
++CC      = gcc
+ CFLAGS	= -g $(DEFINES)
+ OBJ	= genbfpw.o entropy.o
++CRYPT_OBJ = $(CRYPT_BF)/wrapper.o $(CRYPT_BF)/x86.o $(CRYPT_BF)/crypt_gensalt.o $(CRYPT_BF)/crypt_blowfish.o
+ 
+ genbfpw:	$(OBJ)
+-	$(LD) -o $@ $(OBJ) $(LIBES)
++	$(LD) -o $@ $(OBJ) $(CRYPT_OBJ) $(LIBES)
+ 
+ genbfpw.o:	genbfpw.c entropy.h missing.h
+ entropy.o:	entropy.h 

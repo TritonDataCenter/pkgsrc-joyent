@@ -1,0 +1,10 @@
+$NetBSD$
+
+--- tools/waf-light.orig	2011-03-01 14:13:21.940079000 +0000
++++ tools/waf-light
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!@PYTHONBIN@
+ # encoding: ISO8859-1
+ # Thomas Nagy, 2005-2010
+ 

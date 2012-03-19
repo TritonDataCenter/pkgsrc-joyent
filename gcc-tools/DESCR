@@ -1,0 +1,6 @@
+This package contains a subset of binutils needed for GCC
+to work properly. The rest of the toolset is provided by
+the operating system (e.g. 'nm' or 'strip'). The GNU ld
+linker here is provided just in case - normally the Sun
+linker (/usr/bin/ld) should be used, and GCC is configured
+to do so, too.

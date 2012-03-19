@@ -1,0 +1,6 @@
+$NetBSD: distinfo,v 1.5 2008/09/18 12:42:47 taca Exp $
+
+SHA1 (ruby-openid-2.1.6.gem) = 5f9abffb89a5ed6e3ca870e16e5bbb288df66460
+RMD160 (ruby-openid-2.1.6.gem) = 454f920b3f8e8879243e5e184dc1f33f89f0e1a7
+Size (ruby-openid-2.1.6.gem) = 268288 bytes
+SHA1 (patch-aa) = 5c25f2ccc33d7e25f1659ea0550b2efb0b5f079f

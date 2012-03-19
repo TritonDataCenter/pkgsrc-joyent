@@ -1,0 +1,5 @@
+$NetBSD: distinfo,v 1.3 2005/02/24 09:59:26 agc Exp $
+
+SHA1 (Crypt-UnixCrypt-1.0.tar.gz) = 1b553b0f15b2f1c131e4227781f5ce6070716273
+RMD160 (Crypt-UnixCrypt-1.0.tar.gz) = 34d97eb7765a5054ebd54726be1ad52a8c84a22c
+Size (Crypt-UnixCrypt-1.0.tar.gz) = 7972 bytes

@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- gdb/ax-gdb.c.orig	2011-02-24 07:39:47.000000000 +0000
++++ gdb/ax-gdb.c
+@@ -843,6 +843,8 @@ gen_usual_unary (struct expression *exp,
+     case TYPE_CODE_BOOL:
+       value->type = builtin_type (exp->gdbarch)->builtin_int;
+       break;
++    default:
++      ;
+     }
+ 
+   /* If the value is an lvalue, dereference it.  */

@@ -1,0 +1,18 @@
+@comment $NetBSD$
+${GEM_HOME}/cache/httpclient-${PKGVERSION}.gem
+${GEM_LIBDIR}/lib/http-access2.rb
+${GEM_LIBDIR}/lib/http-access2/cookie.rb
+${GEM_LIBDIR}/lib/http-access2/http.rb
+${GEM_LIBDIR}/lib/httpclient.rb
+${GEM_LIBDIR}/lib/httpclient/auth.rb
+${GEM_LIBDIR}/lib/httpclient/cacert.p7s
+${GEM_LIBDIR}/lib/httpclient/cacert_sha1.p7s
+${GEM_LIBDIR}/lib/httpclient/connection.rb
+${GEM_LIBDIR}/lib/httpclient/cookie.rb
+${GEM_LIBDIR}/lib/httpclient/http.rb
+${GEM_LIBDIR}/lib/httpclient/session.rb
+${GEM_LIBDIR}/lib/httpclient/ssl_config.rb
+${GEM_LIBDIR}/lib/httpclient/timeout.rb
+${GEM_LIBDIR}/lib/httpclient/util.rb
+${GEM_LIBDIR}/lib/tags
+${GEM_HOME}/specifications/httpclient-${PKGVERSION}.gemspec

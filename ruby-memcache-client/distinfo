@@ -1,0 +1,6 @@
+$NetBSD: distinfo,v 1.5 2008/09/18 12:42:47 taca Exp $
+
+SHA1 (memcache-client-1.7.4.gem) = ca7436030963140dfd759f65234209436ce573f3
+RMD160 (memcache-client-1.7.4.gem) = 56e9d79f4439c87bf18ae73ec456b6176161fe3e
+Size (memcache-client-1.7.4.gem) = 23040 bytes
+SHA1 (patch-aa) = 5c25f2ccc33d7e25f1659ea0550b2efb0b5f079f

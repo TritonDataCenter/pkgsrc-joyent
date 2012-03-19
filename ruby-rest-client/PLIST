@@ -1,0 +1,19 @@
+@comment $NetBSD$
+bin/restclient
+${GEM_HOME}/cache/rest-client-${PKGVERSION}.gem
+${GEM_LIBDIR}/README.rdoc
+${GEM_LIBDIR}/Rakefile
+${GEM_LIBDIR}/bin/restclient
+${GEM_LIBDIR}/lib/rest_client.rb
+${GEM_LIBDIR}/lib/restclient.rb
+${GEM_LIBDIR}/lib/restclient/exceptions.rb
+${GEM_LIBDIR}/lib/restclient/request.rb
+${GEM_LIBDIR}/lib/restclient/resource.rb
+${GEM_LIBDIR}/lib/restclient/response.rb
+${GEM_LIBDIR}/spec/base.rb
+${GEM_LIBDIR}/spec/exceptions_spec.rb
+${GEM_LIBDIR}/spec/request_spec.rb
+${GEM_LIBDIR}/spec/resource_spec.rb
+${GEM_LIBDIR}/spec/response_spec.rb
+${GEM_LIBDIR}/spec/restclient_spec.rb
+${GEM_HOME}/specifications/rest-client-${PKGVERSION}.gemspec

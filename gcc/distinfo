@@ -1,0 +1,27 @@
+$NetBSD: distinfo,v 1.4 2010/05/06 10:21:17 adam Exp $
+
+SHA1 (gcc-joyent/allpatches) = cc04d978d296f8633b0d19bc17ab92174be6c044
+RMD160 (gcc-joyent/allpatches) = 0df30675b832666abbc188da5b070a08dabc38ed
+Size (gcc-joyent/allpatches) = 12250 bytes
+SHA1 (gcc-joyent/gcc-4.6.2.tar.bz2) = 691974613b1c1f15ed0182ec539fa54a12dd6f93
+RMD160 (gcc-joyent/gcc-4.6.2.tar.bz2) = e7041933b39629f9524848dcf81a1a4c02a225c6
+Size (gcc-joyent/gcc-4.6.2.tar.bz2) = 71995338 bytes
+SHA1 (gcc-joyent/gmp-5.0.2.tar.bz2) = 2968220e1988eabb61f921d11e5d2db5431e0a35
+RMD160 (gcc-joyent/gmp-5.0.2.tar.bz2) = fce06e3246f067301a54f3457960f1d6d71adfc2
+Size (gcc-joyent/gmp-5.0.2.tar.bz2) = 2024576 bytes
+SHA1 (gcc-joyent/mpc-0.9.tar.gz) = 229722d553030734d49731844abfef7617b64f1a
+RMD160 (gcc-joyent/mpc-0.9.tar.gz) = 63d5fb8ab2725839e7565716c4d20187b606e2c8
+Size (gcc-joyent/mpc-0.9.tar.gz) = 565953 bytes
+SHA1 (gcc-joyent/mpfr-3.0.1.tar.gz) = caa0609934c0d2ffa29bd11bfa9c05fbade130eb
+RMD160 (gcc-joyent/mpfr-3.0.1.tar.gz) = cff7306c13e5a858d9188450ecf0e4efcfbfcce8
+Size (gcc-joyent/mpfr-3.0.1.tar.gz) = 1478243 bytes
+SHA1 (gcc-joyent/values.c) = ef5c8ff3c2370db4deb9d2fc6539f6545d57a9f5
+RMD160 (gcc-joyent/values.c) = 2c86b75a4fbdc2ca5d7afa07ab5e9cfeb20050f3
+Size (gcc-joyent/values.c) = 1718 bytes
+SHA1 (patch-af) = 54fb9fb3438eb7c646b9d51b6b0cf3ded27d4989
+SHA1 (patch-ag) = b58f8b82fcf17c60eb2700bc54d6625ca45e542b
+SHA1 (patch-configure) = d1bcc5d15d3241c725218c294ee02ba30f69c05c
+SHA1 (patch-fixincludes_fixincl.x) = 66e1d44cb2a57ad962bba5f3a0a38326cf34f51e
+SHA1 (patch-fixincludes_inclhack.def) = b83d5f5c55c9f9bc784d2cdf558406c9a9417229
+SHA1 (patch-fixincludes_tests_base_spawn.h) = 0320995ccc752b2a7425b0fbbe5080c9277fb47d
+SHA1 (patch-mpc__src__get.c) = ae7a39115d23b404e823dcf306b25f616d53277e

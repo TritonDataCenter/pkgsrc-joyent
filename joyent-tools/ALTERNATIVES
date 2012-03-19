@@ -1,0 +1,6 @@
+bin/apt-get @PREFIX@/bin/pkghelp
+bin/apt-cache @PREFIX@/bin/pkghelp
+bin/pkg @PREFIX@/bin/pkghelp
+bin/port @PREFIX@/bin/pkghelp
+bin/rpm @PREFIX@/bin/pkghelp
+bin/yum @PREFIX@/bin/pkghelp

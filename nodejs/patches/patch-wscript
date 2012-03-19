@@ -1,0 +1,56 @@
+$NetBSD$
+
+--- wscript.orig	2012-01-28 00:32:19.000000000 +0000
++++ wscript
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!@PYTHONBIN@
+ 
+ # Copyright Joyent, Inc. and other Node contributors.
+ #
+@@ -220,6 +220,13 @@ def set_options(opt):
+                 , dest='dtrace'
+                 )
+  
++  opt.add_option( '--without-dtrace-helper'
++                , action='store_true'
++                , default=False
++                , help='Build without DTrace ustack helper'
++                , dest='without_dtrace_helper'
++                )
++
+ 
+   opt.add_option( '--product-type'
+                 , action='store'
+@@ -306,6 +313,8 @@ def configure(conf):
+     conf.env["USE_DTRACE"] = True
+     conf.env.append_value("CXXFLAGS", "-DHAVE_DTRACE=1")
+ 
++    conf.env["USE_DTRACE_HELPER"] = not o.without_dtrace_helper
++
+   if Options.options.efence:
+     conf.check(lib='efence', libpath=['/usr/lib', '/usr/local/lib'], uselib_store='EFENCE')
+ 
+@@ -862,8 +871,9 @@ def build(bld):
+       t = join(bld.srcnode.abspath(bld.env_of_name("Release")), dtracepost.target)
+       bld.env_of_name('Release').append_value('LINKFLAGS', t)
+ 
+-      t = join(bld.srcnode.abspath(bld.env_of_name("Release")), dtrace_ustack.target)
+-      bld.env_of_name('Release').append_value('LINKFLAGS', t)
++      if bld.env["USE_DTRACE_HELPER"]:
++        t = join(bld.srcnode.abspath(bld.env_of_name("Release")), dtrace_ustack.target)
++        bld.env_of_name('Release').append_value('LINKFLAGS', t)
+ 
+       #
+       # Note that for the same (mysterious) issue outlined above with respect
+@@ -990,8 +1000,8 @@ def build(bld):
+   # Only install the man page if it exists.
+   # Do 'make doc install' to build and install it.
+   if os.path.exists('doc/node.1'):
+-    prefix = 'bsd' in sys.platform and '${PREFIX}' or '${PREFIX}/share'
+-    bld.install_files(prefix + '/man/man1/', 'doc/node.1')
++    prefix = '${PREFIX}'
++    bld.install_files(prefix + '/' + os.environ['PKGMANDIR'] + '/man1/', 'doc/node.1')
+ 
+   bld.install_files('${PREFIX}/bin/', 'tools/node-waf', chmod=0755)
+   bld.install_files('${LIBDIR}/node/wafadmin', 'tools/wafadmin/*.py')

@@ -1,0 +1,20 @@
+Ruby Enterprise Edition (REE) is a server-oriented distribution of
+the official Ruby interpreter, and includes various additional
+enhancements, such as:
+
+* A "copy-on-write friendly" garbage collector, capable of reducing
+  Ruby on Rails applications' memory usage by 33% on average.
+
+* The tcmalloc memory allocator, which lowers overall memory usage and
+  boosts memory allocation speed.
+
+* Performance enhancements for single-threaded applications (SIGVTALRM patch)
+  and for Sparc machines (Sparc patch).
+
+* The ability to performance tune the garbage collector.
+
+* The MBARI patch set, for improved garbage collection efficiency.
+
+* The zero-copy context switching patch, included as an experimental feature.
+
+* Various analysis and debugging features.

@@ -1,0 +1,6 @@
+lib/php/MDB2/Driver/pdoSqlite.php
+lib/php/MDB2/Driver/Datatype/pdoSqlite.php
+lib/php/MDB2/Driver/Function/pdoSqlite.php
+lib/php/MDB2/Driver/Manager/pdoSqlite.php
+lib/php/MDB2/Driver/Native/pdoSqlite.php
+lib/php/MDB2/Driver/Reverse/pdoSqlite.php

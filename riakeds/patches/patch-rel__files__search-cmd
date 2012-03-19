@@ -1,0 +1,22 @@
+$NetBSD$
+
+Avoiding sudo -i makes the scripts much more usable.
+--- rel/files/search-cmd.orig	2011-11-17 22:34:53.000000000 +0000
++++ rel/files/search-cmd
+@@ -16,8 +16,7 @@ if [ "$RUNNER_USER" -a "x$LOGNAME" != "x
+         echo "sudo doesn't appear to be installed and your EUID isn't $RUNNER_USER" 1>&2
+         exit 1
+     fi
+-    echo "Attempting to restart script through sudo -u $RUNNER_USER"
+-    exec sudo -u $RUNNER_USER -i $RUNNER_SCRIPT_DIR/$RUNNER_SCRIPT $@
++    exec sudo -u $RUNNER_USER $RUNNER_SCRIPT_DIR/$RUNNER_SCRIPT $@
+ fi
+ 
+ # Make sure CWD is set to runner base dir
+@@ -73,4 +72,4 @@ if [ "$RES" != "pong" ]; then
+     exit 1
+ fi
+ 
+-$NODETOOL rpc_infinity riak_search_cmd command $ORIGINAL_DIR "$@"
+\ No newline at end of file
++$NODETOOL rpc_infinity riak_search_cmd command $ORIGINAL_DIR "$@"

@@ -1,0 +1,3 @@
+The pysvn project's goal is to enable Tools to be written in Python
+that use Subversion. Windows, Mac OS X, Linux and other unix platforms
+are supported.

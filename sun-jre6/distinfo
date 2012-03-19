@@ -1,0 +1,8 @@
+$NetBSD: distinfo,v 1.14 2010/10/16 04:41:19 obache Exp $
+
+SHA1 (jdk-6u26-dlj-solaris-amd64.sh) = 1344ae6f65071a448b38e322f31e42c51842ee39
+RMD160 (jdk-6u26-dlj-solaris-amd64.sh) = f1cb4517cbb294133f7500a9a858e2196b938a6f
+Size (jdk-6u26-dlj-solaris-amd64.sh) = 8943920 bytes
+SHA1 (jdk-6u26-dlj-solaris-i586.sh) = f5912eeb222090eefe816019b5383bafd6c271be
+RMD160 (jdk-6u26-dlj-solaris-i586.sh) = 6a5612fbcebd0aa2be18be118cf57d1ab97d6cf7
+Size (jdk-6u26-dlj-solaris-i586.sh) = 85096818 bytes

@@ -1,0 +1,2 @@
+This is the gcc 4.5.0 compiler suite, stripped from the runtime
+libs which are available under the gcc-runtime package.

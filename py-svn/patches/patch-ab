@@ -1,0 +1,14 @@
+$NetBSD$
+
+Fix proper rpath argument for Sun linker.
+--- setup_configure.py.orig	2010-08-17 12:14:58.490959000 +0000
++++ setup_configure.py
+@@ -451,7 +451,7 @@ CCFLAGS=-Wall -fPIC %(includes)s %(debug
+ PYCXX=%(pycxx_dir)s
+ PYCXXSRC=%(pycxx_src_dir)s
+ LDSHARED=g++ -shared %(debug_cflags)s
+-LDLIBS=-L%(svn_lib_dir)s -Wl,--rpath -Wl,%(svn_lib_dir)s \
++LDLIBS=-L%(svn_lib_dir)s -Wl,-R -Wl,%(svn_lib_dir)s \
+ -lsvn_client-1 \
+ -lsvn_diff-1 \
+ -lsvn_repos-1 \

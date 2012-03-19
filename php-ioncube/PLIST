@@ -1,0 +1,2 @@
+@comment $NetBSD$
+${PHP_EXTENSION_DIR}/${MODNAME}.so

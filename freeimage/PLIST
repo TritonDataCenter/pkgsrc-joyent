@@ -1,0 +1,5 @@
+include/FreeImage.h
+lib/libfreeimage.a
+lib/libfreeimage.so
+lib/libfreeimage.so.3
+lib/libfreeimage.so.3.13.1

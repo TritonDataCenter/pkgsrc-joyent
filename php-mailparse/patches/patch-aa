@@ -1,0 +1,11 @@
+--- mailparse.c.orig	2008-04-08 18:43:39.000000000 +0000
++++ mailparse.c	2008-08-05 17:30:14.358146861 +0000
+@@ -30,7 +30,7 @@
+ #include "php_open_temporary_file.h"
+ 
+ /* just in case the config check doesn't enable mbstring automatically */
+-#if !HAVE_MBSTRING
++#if !HAVE_MBSTRING && false
+ #error The mailparse extension requires the mbstring extension!
+ #endif
+ 

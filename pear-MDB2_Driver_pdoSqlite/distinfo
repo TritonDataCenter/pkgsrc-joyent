@@ -1,0 +1,6 @@
+$NetBSD: distinfo,v 1.2 2009/01/19 20:14:16 abs Exp $
+
+SHA1 (MDB2_Driver_pdoSqlite.tar.bz2) = 5c7371bc4ea88426b1317eaf5124d1882ba3b026
+RMD160 (MDB2_Driver_pdoSqlite.tar.bz2) = 853c0c25009b372891da14974de64b7eb91c8a65
+Size (MDB2_Driver_pdoSqlite.tar.bz2) = 21218 bytes
+SHA1 (patch-aa) = 2ed7c34703c95d0cd83bc077803620e6857ca4ab

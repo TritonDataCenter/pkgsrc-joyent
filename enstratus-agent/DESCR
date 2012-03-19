@@ -1,0 +1,10 @@
+The enStratus agent is composed of a lightweight tomcat application used for
+communicating with the enStratus provisioning server and a set of associated
+shell scripts. The shell scripts are responsible for executing some actions
+on the server and are extensible by end users.
+
+The agent listens on port 2003 and takes action based on user input as in
+the case of adding a user to a system ( the addUser script) and also automates
+actions such as attaching, formatting, encrypting, and mounting volumes as
+part of a fully automated enStratus deployment. Communication to and from
+the enStratus provisioning server is encrypted.

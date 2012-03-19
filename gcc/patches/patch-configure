@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- configure.orig	2011-03-16 18:27:36.000000000 +0000
++++ configure
+@@ -5200,7 +5200,7 @@ _ACEOF
+ 
+ 
+ # Check for GMP, MPFR and MPC
+-gmplibs="-lmpc -lmpfr -lgmp"
++gmplibs="-lmpc -lm -lmpfr -lgmp"
+ gmpinc=
+ have_gmp=no
+ 

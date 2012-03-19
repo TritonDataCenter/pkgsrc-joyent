@@ -1,0 +1,4 @@
+GeoLite City is similar to the GeoIP City database, but is less accurate.
+Should you require greater accuracy, GeoIP City is a drop-in replacement
+for GeoLite City. GeoLite City is an ideal cost-effective solution, since
+it is as accurate as many other commercial geolocation solutions.

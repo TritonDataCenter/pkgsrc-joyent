@@ -1,0 +1,4 @@
+@comment $NetBSD$
+share/GeoIP/GeoIPCity.dat
+share/GeoIP/GeoLiteCity.dat
+share/GeoIP/GeoLiteCity.license

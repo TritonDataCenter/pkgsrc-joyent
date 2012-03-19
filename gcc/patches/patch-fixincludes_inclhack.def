@@ -1,0 +1,40 @@
+$NetBSD$
+
+--- fixincludes/inclhack.def.orig	2010-11-09 10:26:09.000000000 +0000
++++ fixincludes/inclhack.def
+@@ -3315,9 +3315,9 @@ fix = {
+     hackname  = solaris_complex_cxx;
+     mach      = "*-*-solaris2.*";
+     files     = complex.h;
+-    sed	      = "/#if[ \t]*!defined(__cplusplus)/c"
++    sed	      = "/#if[ \t]*!defined(__cplusplus)/c\\\n"
+     		"#ifdef\t__cplusplus\\\nextern \"C\" {\\\n#endif";
+-    sed	      = "/#endif[ \t]*\\/\\* !defined(__cplusplus) \\*\\//c"
++    sed	      = "/#endif[ \t]*\\/\\* !defined(__cplusplus) \\*\\//c\\\n"
+ 		"#ifdef\t__cplusplus\\\n}\\\n#endif";
+     test_text = "#if !defined(__cplusplus)\n"
+ 		"#endif	/* !defined(__cplusplus) */";
+@@ -3693,6 +3693,23 @@ fix = {
+ 
+ 
+ /*
++ * Solaris 10+ <spawn.h> uses char *const argv[_RESTRICT_KYWD] in the
++ * posix_spawn declarations, which doesn't work with C++.
++ */
++fix = {
++    hackname  = solaris_posix_spawn_restrict;
++    files     = spawn.h;
++    mach      = '*-*-solaris2*';
++    c_fix     = format;
++    c_fix_arg = "%1*_RESTRICT_KYWD %2%3";
++    select    = "(.*[ \t]+)([a-z]+)\\[_RESTRICT_KYWD\\](.*)";
++    test_text =
++    "char *const argv[_RESTRICT_KYWD],\n"
++    "char *const envp[_RESTRICT_KYWD]);";
++};
++
++
++/*
+  * Sun Solaris 8 has what appears to be some gross workaround for
+  * some old version of their c++ compiler.  G++ doesn't want it
+  * either, but doesn't want to be tied to SunPRO version numbers.

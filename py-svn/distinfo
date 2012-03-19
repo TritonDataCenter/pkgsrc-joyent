@@ -1,0 +1,7 @@
+$NetBSD$
+
+SHA1 (pysvn-1.7.2.tar.gz) = e8afa0c1f56c82f13f5e17c7dd120cfa82c8a24f
+RMD160 (pysvn-1.7.2.tar.gz) = 85026cff619aeefde622b677f7b6697269beab4f
+Size (pysvn-1.7.2.tar.gz) = 333643 bytes
+SHA1 (patch-aa) = 4bfe5440f780970038dcc386e106d15d44d662e8
+SHA1 (patch-ab) = 65946afca2176db311ed20a4c7c729e2cfa85beb

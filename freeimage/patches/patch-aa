@@ -1,0 +1,45 @@
+$NetBSD$
+
+--- Makefile.solaris.orig	2009-07-28 06:35:48.000000000 +0000
++++ Makefile.solaris
+@@ -9,7 +9,8 @@ CC = gcc
+ CPP = g++
+ AR = ar
+ 
+-INSTALLDIR = /usr/local
++DESTDIR ?= /
++INSTALLDIR = $(DESTDIR)$(PREFIX)
+ 
+ # Converts cr/lf to just lf
+ DOS2UNIX = dos2unix
+@@ -24,8 +25,9 @@ CPPFLAGS = $(COMPILERFLAGS)  -Wno-ctor-d
+ 
+ TARGET  = freeimage
+ STATICLIB = lib$(TARGET).a
+-SHAREDLIB = lib$(TARGET)-$(VER_MAJOR).$(VER_MINOR).so
+-LIBNAME = lib$(TARGET).so.$(VER_MAJOR)
++SHAREDLIB = lib$(TARGET).so.$(VER_MAJOR).$(VER_MINOR)
++MAJORLIB = lib$(TARGET).so.$(VER_MAJOR)
++LIBNAME = lib$(TARGET).so
+ 
+ 
+ 
+@@ -35,7 +37,7 @@ all: dist
+ 
+ dist: FreeImage
+ 	cp *.a Dist
+-	cp *.so Dist
++	cp *.so.* Dist
+ 	cp Source/FreeImage.h Dist
+ 
+ dos2unix:
+@@ -59,7 +61,8 @@ install:
+ 	install -m 644 -o root -g root Source/FreeImage.h $(INSTALLDIR)/include
+ 	install -m 644 -o root -g root $(STATICLIB) $(INSTALLDIR)/lib
+ 	install -m 755 -o root -g root $(SHAREDLIB) $(INSTALLDIR)/lib
+-	ln -sf $(SHAREDLIB) $(INSTALLDIR)/lib/$(LIBNAME)
++	ln -sf $(SHAREDLIB) $(INSTALLDIR)/lib/$(MAJORLIB)
++	ln -sf $(MAJORLIB) $(INSTALLDIR)/lib/$(LIBNAME)
+ 
+ clean:
+ 	rm -rf core Dist/*.* u2dtmp* $(MODULES) $(STATICLIB) $(SHAREDLIB) $(LIBNAME)

@@ -1,0 +1,54 @@
+$NetBSD$
+
+--- ../ruby-openid-2.1.6.gemspec.orig	2009-04-27 21:03:58.381414325 +0000
++++ ../ruby-openid-2.1.6.gemspec
+@@ -39,22 +39,10 @@ files: 
+ - examples/active_record_openid_store/lib/open_id_setting.rb
+ - examples/active_record_openid_store/lib/openid_ar_store.rb
+ - examples/active_record_openid_store/test/store_test.rb
+-- examples/rails_openid/app
+-- examples/rails_openid/components
+-- examples/rails_openid/config
+-- examples/rails_openid/db
+-- examples/rails_openid/doc
+-- examples/rails_openid/lib
+-- examples/rails_openid/log
+-- examples/rails_openid/public
+-- examples/rails_openid/script
+-- examples/rails_openid/test
+-- examples/rails_openid/vendor
+ - examples/rails_openid/Rakefile
+ - examples/rails_openid/README
+ - examples/rails_openid/app/controllers
+ - examples/rails_openid/app/helpers
+-- examples/rails_openid/app/models
+ - examples/rails_openid/app/views
+ - examples/rails_openid/app/controllers/application.rb
+ - examples/rails_openid/app/controllers/login_controller.rb
+@@ -80,10 +68,8 @@ files: 
+ - examples/rails_openid/config/environments/production.rb
+ - examples/rails_openid/config/environments/test.rb
+ - examples/rails_openid/doc/README_FOR_APP
+-- examples/rails_openid/lib/tasks
+ - examples/rails_openid/public/images
+ - examples/rails_openid/public/javascripts
+-- examples/rails_openid/public/stylesheets
+ - examples/rails_openid/public/dispatch.cgi
+ - examples/rails_openid/public/404.html
+ - examples/rails_openid/public/500.html
+@@ -111,15 +97,10 @@ files: 
+ - examples/rails_openid/script/process/spawner
+ - examples/rails_openid/script/process/reaper
+ - examples/rails_openid/script/process/spinner
+-- examples/rails_openid/test/fixtures
+ - examples/rails_openid/test/functional
+-- examples/rails_openid/test/mocks
+-- examples/rails_openid/test/unit
+ - examples/rails_openid/test/test_helper.rb
+ - examples/rails_openid/test/functional/login_controller_test.rb
+ - examples/rails_openid/test/functional/server_controller_test.rb
+-- examples/rails_openid/test/mocks/development
+-- examples/rails_openid/test/mocks/test
+ - lib/openid
+ - lib/hmac
+ - lib/openid.rb

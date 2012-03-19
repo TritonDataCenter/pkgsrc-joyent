@@ -1,0 +1,5 @@
+$NetBSD: distinfo,v 1.5 2008/07/18 09:43:35 rhaen Exp $
+
+SHA1 (CGI-Session-ExpireSessions-1.09.tgz) = 297a25dc450b1c88d449d48cf5f69cee9f877f8a
+RMD160 (CGI-Session-ExpireSessions-1.09.tgz) = 72ce5db3e393ccafe4917a1d35344338ac3fc376
+Size (CGI-Session-ExpireSessions-1.09.tgz) = 12356 bytes

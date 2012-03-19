@@ -1,0 +1,176 @@
+#!/usr/bin/bash
+# jinf v@PKGVERSION@
+# Provides basic resource utilization information about a SmartMachine
+# Joyent Inc.
+
+PATH=/usr/bin:/usr/sbin
+zone=`zonename`
+zoneid=$( zoneadm list -p | awk -F: '{print $1}' )
+
+while [ "$#" -gt 0 ]
+do
+  case "$1" in
+    -p)  machine=yes;;
+    -c)  mode=cpu;;
+    -m)  mode=mem;;
+    -s)  mode=swap;;
+    -w)  mode=webmin;;
+    esac
+  shift
+done
+
+case $(uname -v) in
+joyent*) platform=sdc6;;
+snv*)    platform=sdc5;;
+esac
+
+function get_cpu_used {
+  kstat_cpu_cap=$( kstat -p -c zone_caps -n cpucaps_zone_$zoneid -s value | awk '{print $2}' )
+  kstat_cpu_used=$( kstat -p -c zone_caps -n cpucaps_zone_$zoneid -s usage | awk '{print $2}' )
+  cpu_used=$( echo -e "scale=2 ; ($kstat_cpu_used/$kstat_cpu_cap)*100" | bc | sed 's/\.[0-9]*//' )
+}
+function get_cpu_util {
+  cpu_util=$( /usr/bin/prstat -Z 1 1 | \
+       /usr/xpg4/bin/awk -v zone=$zone '$8 ~ zone { print $5+0 }' )
+}
+function get_swap_cap {
+  case ${platform} in
+  sdc5) 
+    swap_cap=$( kstat -p -c zone_caps -n swapresv_zone_$zoneid -s value | awk '{print $2}' )
+    ;;
+  sdc6)
+    swap_cap=$( kstat -p -c zone_memory_cap -s swapcap | awk '{print $2}' )
+    ;;
+  esac
+}
+function get_virt_used {
+  case ${platform} in
+  sdc5)
+    virt_used=$( kstat -p -c zone_caps -n swapresv_zone_$zoneid -s usage | awk '{print $2}' )
+    ;;
+  sdc6)
+    virt_used=$( kstat -p -c zone_memory_cap -s swap | awk '{print $2}' )
+    ;;
+  esac
+}
+function get_tmp_used {
+  case ${platform} in  
+  sdc5)
+    tmp_used=$( df -k /tmp | /usr/xpg4/bin/awk '{ if ($1 ~ /swap/) print $3}' )
+    ;;
+  sdc6)
+    # On SDC6, the swap and tmp usage are already reported as joint vessels
+    tmp_used=0
+    ;;
+  esac
+}
+function get_mem_cap {
+  case ${platform} in
+  sdc5)
+    mem_cap=$( kstat -p -c zone_caps -n lockedmem_zone_$zoneid -s value | awk '{print $2}' )
+    if [ $(echo "v=$mem_cap;t=137438953472;r=0;if(v>t)r=1;r"|bc) -gt 0 ]
+    then
+      get_swap_cap
+      case $swap_cap in
+        536870912) mem_cap=268435456;;
+        1073741824) mem_cap=536870912;;
+        2147483648) mem_cap=1073741824;;
+        4294967296) mem_cap=2147483648;;
+        6442450944) mem_cap=4294967296;;
+        12884901888) mem_cap=8589934592;;
+        25769803776) mem_cap=17179869184;;
+        51539607552) mem_cap=34359738368;;
+        *) mem_cap=$((swap_cap/2));
+      esac
+    fi
+    ;;
+  sdc6)
+    mem_cap=$( kstat -p -c zone_memory_cap -s physcap | awk '{print $2}' )
+    ;;
+  esac
+}
+function get_mem_used {
+  case ${platform} in
+  sdc5)
+    mem_used=$( /usr/bin/prstat -Z -s rss 1 1 | \
+      /usr/xpg4/bin/awk -v zone=$zone '$8 ~ zone { rss = $4+0 } END {print (rss*1024*1024)}' )
+    ;;
+  sdc6)
+    mem_used=$( kstat -p -c zone_memory_cap -s rss | awk '{print $2}' )
+    ;;
+  esac
+}
+function convert {
+  value=$1
+  if [ "$machine" ]; then converted=$value
+  else
+    units=(B KiB MiB GiB TiB)
+    index=0
+    converted="$1 ${units[$index]}"
+    while [ $value -ge 1024 ]
+    do
+      index=$(($index+1))
+      value=$(echo -e "scale=1; $value/1024" | bc)
+      converted="$value ${units[$index]}"
+      value=${value%\.*}
+    done
+  fi
+}
+
+case "$mode" in
+cpu)
+  get_cpu_used
+  get_cpu_util
+  [ "$machine" ] && echo -n "cpu_used:" || echo -n "CPU Cap Used: "
+  [ "$machine" ] && echo "$cpu_used" || echo "$cpu_used %"
+  [ "$machine" ] && echo -n "cpu_util:" || echo -n "System CPU Utilized: "
+  [ "$machine" ] && echo "$cpu_util" || echo "$cpu_util %"
+  ;;
+mem)
+  get_mem_cap
+  get_mem_used
+  [ "$machine" ] && echo -n "mem_cap:" || echo -n "Memory cap: "
+  convert $mem_cap && echo $converted
+  [ "$machine" ] && echo -n "mem_used:" || echo -n "Memory used: "
+  convert $mem_used && echo $converted
+  [ "$machine" ] && echo -n "mem_free:" || echo -n "Memory free: "
+  convert $(($mem_cap-$mem_used)) && echo $converted
+  ;;
+swap)
+  get_swap_cap
+  get_virt_used
+  get_tmp_used
+  swap_used=$(( $virt_used + $tmp_used ))
+  [ "$machine" ] && echo -n "swap_cap:" || echo -n "Swap cap: "
+  convert $swap_cap && echo $converted
+  if [ ${platform} == "sdc5" ]; then
+    [ "$machine" ] && echo -n "virt_used:" || echo -n "Virtual memory used: "
+    convert $virt_used && echo $converted
+    [ "$machine" ] && echo -n "tmp_used:" || echo -n "/tmp used: "
+    convert $tmp_used && echo $converted
+  fi
+  [ "$machine" ] && echo -n "swap_used:" || echo -n "Total swap used: "
+  convert $swap_used && echo $converted
+  [ "$machine" ] && echo -n "swap_free:" || echo -n "Total swap free: "
+  convert $(($swap_cap-$swap_used)) && echo $converted
+  ;;
+webmin)
+  get_swap_cap
+  get_virt_used
+  get_tmp_used
+  get_mem_cap
+  get_mem_used
+  echo $mem_cap
+  echo $(($mem_cap-$mem_used))
+  echo $swap_cap
+  echo $(($swap_cap-$virt_used-$tmp_used))
+  ;;
+*)
+  echo "Usage: $0 [-p] [-c | -m | -s | -w]"
+  echo "       -p Machine parseable output"
+  echo "       -c CPU usage information"
+  echo "       -m Memory usage information"
+  echo "       -s Swap usage information"
+  echo "       -w Webmin widget output"
+  ;;
+esac

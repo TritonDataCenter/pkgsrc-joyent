@@ -1,0 +1,8 @@
+@comment $NetBSD$
+bin/pgagent
+share/pgagent/pgagent.sql
+share/pgagent/pgagent_upgrade.sql
+share/doc/pgagent/LICENSE
+share/doc/pgagent/README
+@dirrm share/doc/pgagent
+@dirrm share/pgagent

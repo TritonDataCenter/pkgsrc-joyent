@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- gdb/Makefile.in.orig	2011-03-30 06:55:39.000000000 +0000
++++ gdb/Makefile.in
+@@ -161,7 +161,7 @@ GDB_WARN_CFLAGS_NO_FORMAT = `echo " $(GD
+ RDYNAMIC = @RDYNAMIC@
+ 
+ # Where is the INTL library?  Typically in ../intl.
+-INTL = @LIBINTL@
++INTL = -L${PREFIX}/lib -R${PREFIX}/lib -lintl
+ INTL_DEPS = @LIBINTL_DEP@
+ INTL_CFLAGS = @INCINTL@
+ 

@@ -1,0 +1,4 @@
+RFuzz is the start of a Ruby based HTTP thrasher, destroyer, fuzzer, and client based on the Mongrel 
+project's HTTP parser and the statistical analysis of being very mean to a web server.
+At the moment is has a working and fairly extensive HTTP 1.1 client and some basic statistics math borrowed from 
+the Mongrel project.

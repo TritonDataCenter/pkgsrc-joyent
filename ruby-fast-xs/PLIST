@@ -1,0 +1,24 @@
+@comment $NetBSD$
+${GEM_HOME}/cache/fast_xs-${PKGVERSION}.gem
+${GEM_LIBDIR}/.gitignore
+${GEM_LIBDIR}/.require_paths
+${GEM_LIBDIR}/GNUmakefile
+${GEM_LIBDIR}/History.txt
+${GEM_LIBDIR}/Manifest.txt
+${GEM_LIBDIR}/README.txt
+${GEM_LIBDIR}/Rakefile
+${GEM_LIBDIR}/ext/fast_xs/extconf.rb
+${GEM_LIBDIR}/ext/fast_xs/fast_xs.c
+${GEM_LIBDIR}/ext/fast_xs/fast_xs_type.h
+${GEM_LIBDIR}/ext/fast_xs/gcc.h
+${GEM_LIBDIR}/ext/fast_xs/ruby_1_9_compat.h
+${GEM_LIBDIR}/ext/fast_xs_extra/extconf.rb
+${GEM_LIBDIR}/ext/fast_xs_extra/fast_xs_extra.c
+${GEM_LIBDIR}/lib/fast_xs.${RUBY_DLEXT}
+${GEM_LIBDIR}/lib/fast_xs_extra.${RUBY_DLEXT}
+${GEM_LIBDIR}/lib/fast_xs_monkey_patcher.rb
+${GEM_LIBDIR}/setup.rb
+${GEM_LIBDIR}/test/test_cgi_class_overrides.rb
+${GEM_LIBDIR}/test/test_erb_util_module_overrides.rb
+${GEM_LIBDIR}/test/test_xml_escaping.rb
+${GEM_HOME}/specifications/fast_xs-${PKGVERSION}.gemspec

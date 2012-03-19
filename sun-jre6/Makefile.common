@@ -1,0 +1,58 @@
+# $NetBSD: Makefile.common,v 1.13 2010/03/31 02:35:05 joerg Exp $
+# used by lang/sun-jre6/Makefile
+# used by lang/sun-jdk6/Makefile
+
+DISTNAME=	jdk-6u26-dlj-solaris-${DIST_ARCH}
+MASTER_SITES=	http://download.java.net/dlj/binaries/
+
+CATEGORIES=	lang java
+COMMENT=	Sun's Java(tm) 2 Standard Edition, ${DOWNLOAD_NAME}
+LICENSE=	sun-distributor-java-license
+EXTRACT_SUFX=	.sh
+
+MAINTAINER=	pkgsrc-users@NetBSD.org
+HOMEPAGE=	http://www.oracle.com/technetwork/java/index.html
+DOWNLOAD=	http://www.oracle.com/technetwork/java/javase/downloads/index.html
+
+DISTFILES=      ${DISTNAME}.sh
+DISTFILES+=     jdk-6u26-dlj-solaris-amd64.sh
+DISTINFO_FILE=	${.CURDIR}/../../joyent/sun-jre6/distinfo
+
+PKG_DESTDIR_SUPPORT=	user-destdir
+
+USE_TOOLS+=	pax
+
+.include "../../mk/bsd.prefs.mk"
+
+DIST_ARCH=		i586
+
+INTERACTIVE_STAGE=	fetch
+BUILD_DIRS=		# empty
+
+.include "../../mk/bsd.prefs.mk"
+
+JAVA_HOME=		${PREFIX}/java/sun6
+JAVA_NAME=		sun6
+JAVA_UNLIMIT=		datasize
+
+MESSAGE_SUBST+=	JAVA_HOME=${JAVA_HOME:Q}
+
+EXTRACT_ENV+=	HOME=${WRKDIR}/fake_home
+
+# the following forces compression of jarfiles, which is a huge disk
+# space win and trivial to no speed reduction in the face of the
+# new class sharing in Java 5+... -tvierling
+EXTRACT_ENV+=	UNPACK200_FLAGS=-Htrue
+
+do-extract:
+.	for f in ${DISTFILES}
+	cd ${DISTDIR} && ${CHMOD} +x ${f}
+	cd ${WRKDIR} && (echo "yes" | ${DISTDIR}/${f} --unpack >/dev/null)
+.	endfor
+
+off-do-install:
+	${INSTALL_PROGRAM_DIR} ${DESTDIR}${JAVA_HOME}
+	cd ${WRKSRC} && pax -rwp ma . ${DESTDIR}${JAVA_HOME}
+	${CHMOD} -R g-w ${DESTDIR}${PREFIX}
+
+.include "../../joyent/sun-jre6/wrappers.mk"

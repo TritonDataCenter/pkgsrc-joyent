@@ -1,0 +1,3 @@
+This package contains GCC 4.5 runtime libraries and is required
+for most Joyent pkgsrc packages to work. It is thus marked as
+non-removable once installed.

@@ -1,0 +1,2 @@
+This is a Python based API (implemented in 100% python) for communicating
+with the memcached distributed memory object cache daemon.

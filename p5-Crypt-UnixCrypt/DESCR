@@ -1,0 +1,3 @@
+This module is for all those poor souls whose perl port answers
+to the use of crypt() with the message `The crypt() function is
+unimplemented due to excessive paranoia.'.

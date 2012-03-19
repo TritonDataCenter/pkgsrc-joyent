@@ -1,0 +1,14 @@
+#!/bin/bash
+# pkghelp v@PKGVERSION@
+# A dummy wrapper to educate about the pkgin tool
+# Joyent Inc.
+
+command=$(basename $0)
+
+cat <<EOF
+
+The '${command}' command is not available on this system.
+If you are trying to install a package, please refer to 'pkgin'
+that can work with the Joyent binary package repository.
+
+EOF

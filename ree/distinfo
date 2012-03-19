@@ -1,0 +1,6 @@
+$NetBSD$
+
+SHA1 (ruby-enterprise-1.8.7-2012.02.tar.gz) = 78fcc19debf43b109600d14414e64863ad78010b
+RMD160 (ruby-enterprise-1.8.7-2012.02.tar.gz) = e02215668aa3920c9d44e28304cdb3a115f22d00
+Size (ruby-enterprise-1.8.7-2012.02.tar.gz) = 7918435 bytes
+#SHA1 (patch-aa) = ad0c45f1dbee357298c85fee863b289a3629a0e2

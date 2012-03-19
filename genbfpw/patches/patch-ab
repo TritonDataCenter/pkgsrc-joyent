@@ -1,0 +1,30 @@
+$NetBSD$
+
+--- genbfpw.c.orig	2009-06-01 06:20:51.000000000 +0000
++++ genbfpw.c
+@@ -40,7 +40,7 @@ enum	{
+ 
+ static	char*	progname;
+ void	Usage(void) {
+-	fprintf (stderr, "Usage: %s [-s setting_string] [-p password_clear]\n");
++	fprintf (stderr, "Usage: %s [-p password_clear]\n", progname);
+ 	exit (EXIT_FAILURE);
+ }
+ void	fatal(const char* msg) {
+@@ -60,16 +60,6 @@ main (int argc, char* argv[]) {
+ 	
+ 	while ((opt = getopt (argc, argv, "s:p:")) != EOF) {
+ 		switch (opt) {
+-		case	's': {
+-			size_t	len	= strlen (optarg);
+-			++s_flag;
+-			if(len >= BF_SETTING_LEN) {
+-				memcpy (settings, optarg, BF_SETTING_LEN);
+-				settings [BF_SETTING_LEN+1]	= '\0';
+-			}
+-			else	fatal ("settings too short\n");
+-		}
+-		break;
+ 		case	'p': {
+ 			size_t	len	= strlen (optarg);	
+ 			++p_flag;

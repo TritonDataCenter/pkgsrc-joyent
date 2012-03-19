@@ -1,0 +1,58 @@
+# $NetBSD$
+
+case ${STAGE} in
+POST-INSTALL)
+  chown -R @ENSTRATUS_USER@:@ENSTRATUS_USER@ @PREFIX@/enstratus
+  chmod 750 @PREFIX@/enstratus/bin
+  chmod 550 @PREFIX@/enstratus/bin/*
+  chmod 755 @PREFIX@/enstratus/custom/bin
+  chmod 750 @PREFIX@/enstratus/home
+  chmod 750 @PREFIX@/enstratus/cfg
+  chmod 640 @PREFIX@/enstratus/cfg/*
+  chmod 754 @PREFIX@/enstratus/ws/tomcat/bin/*.sh
+  chmod 750 @PREFIX@/enstratus/bin
+
+  chmod u+w @PREFIX@/etc/sudoers
+  echo "%enstratus ALL=(ALL) NOPASSWD: ALL" >> @PREFIX@/etc/sudoers
+  chmod u-w @PREFIX@/etc/sudoers
+
+  passwd -N @ENSTRATUS_USER@
+
+  cat >/tmp/.enstratus.xml <<EOF
+<?xml version="1.0"?>
+<!DOCTYPE service_bundle SYSTEM "/usr/share/lib/xml/dtd/service_bundle.dtd.1">
+<service_bundle type="manifest" name="enstratus">
+  <service name="site/enstratus" type="service" version="1">
+    <create_default_instance enabled="false" />
+    <single_instance />
+    <dependency name="network" grouping="require_all" restart_on="error" type="service">
+      <service_fmri value="svc:/milestone/network:default" />
+    </dependency>
+    <dependency name="filesystem" grouping="require_all" restart_on="error" type="service">
+      <service_fmri value="svc:/system/filesystem/local" />
+    </dependency>
+    <method_context>
+      <method_credential user="@ENSTRATUS_USER@" group="@ENSTRATUS_USER@" />
+    </method_context>
+    <exec_method type="method" name="start" exec="@PREFIX@/enstratus/bin/enstratus-service start" timeout_seconds="600" />
+    <exec_method type="method" name="stop" exec="@PREFIX@/enstratus/bin/enstratus-service stop" timeout_seconds="6000" />
+    <property_group name="startd" type="framework">
+      <propval name="duration" type="astring" value="contract" />
+      <propval name="ignore_error" type="astring" value="core,signal" />
+    </property_group>
+    <stability value="Evolving" />
+    <template>
+      <common_name>
+        <loctext xml:lang="C">enStratus Tomcat server</loctext>
+      </common_name>
+    </template>
+  </service>
+</service_bundle>
+EOF
+
+  svccfg import /tmp/.enstratus.xml
+  rm /tmp/.enstratus.xml
+
+  svcadm enable enstratus
+  ;;
+esac

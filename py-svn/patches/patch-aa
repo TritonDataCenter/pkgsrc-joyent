@@ -1,0 +1,19 @@
+$NetBSD$
+
+Work around Solaris _XOPEN_SOURCE problems.
+--- pysvn.hpp.orig	2009-04-30 20:57:54.000000000 +0000
++++ pysvn.hpp
+@@ -7,6 +7,13 @@
+ //
+ // ====================================================================
+ //
++#ifdef _XOPEN_SOURCE
++#undef _XOPEN_SOURCE
++#include <wchar.h>
++#include <stdio.h>
++#define _XOPEN_SOURCE 600
++#endif
++
+ #include "Python.h"
+ #include "CXX/Objects.hxx"
+ #include "CXX/Extensions.hxx"

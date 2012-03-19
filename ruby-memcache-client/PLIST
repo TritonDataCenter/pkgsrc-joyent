@@ -1,0 +1,14 @@
+@comment $NetBSD$
+${GEM_HOME}/cache/memcache-client-${PKGVERSION}.gem
+${GEM_LIBDIR}/FAQ.rdoc
+${GEM_LIBDIR}/History.rdoc
+${GEM_LIBDIR}/LICENSE.txt
+${GEM_LIBDIR}/README.rdoc
+${GEM_LIBDIR}/Rakefile
+${GEM_LIBDIR}/lib/continuum_native.rb
+${GEM_LIBDIR}/lib/memcache.rb
+${GEM_LIBDIR}/test/test_mem_cache.rb
+${GEM_HOME}/specifications/memcache-client-${PKGVERSION}.gemspec
+@dirrm ${GEM_LIBDIR}/test
+@dirrm ${GEM_LIBDIR}/lib
+@dirrm ${GEM_LIBDIR}

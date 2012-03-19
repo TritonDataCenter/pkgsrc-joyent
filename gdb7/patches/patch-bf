@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- bfd/config.bfd.orig	2011-03-31 08:58:20.000000000 +0000
++++ bfd/config.bfd
+@@ -561,7 +561,7 @@ case "${targ}" in
+     targ_selvecs=i386bsd_vec
+     targ_underscore=yes
+     ;;
+-  i[3-7]86-*-freebsd* | i[3-7]86-*-kfreebsd*-gnu)
++  i[3-7]86-*-freebsd* | i[3-7]86-*-kfreebsd*-gnu | i[3-7]86-*-dragonfly*)
+     targ_defvec=bfd_elf32_i386_freebsd_vec
+     targ_selvecs="bfd_elf32_i386_vec i386pei_vec i386coff_vec"
+     targ64_selvecs="bfd_elf64_x86_64_freebsd_vec bfd_elf64_x86_64_vec x86_64pei_vec bfd_elf64_l1om_vec bfd_elf64_l1om_freebsd_vec"

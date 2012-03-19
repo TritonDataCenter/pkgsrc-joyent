@@ -1,0 +1,5 @@
+$NetBSD: distinfo,v 1.3 2005/02/24 09:59:26 agc Exp $
+
+SHA1 (User-Utmp-1.8.tar.gz) = 3f3ddc224ffe2ae21d1072284f784d05c50a19c6
+RMD160 (User-Utmp-1.8.tar.gz) = a88d56c66667c499ddb6fe12657dd3cc54fe8f22
+Size (User-Utmp-1.8.tar.gz) = 11815 bytes
