@@ -1,6 +1,6 @@
 # $NetBSD$
 
-DISTNAME=		gcc-tools-0
+DISTNAME=		gcc-tools-2.22
 CATEGORIES=		devel
 
 MAINTAINER=		filip@joyent.com
@@ -10,10 +10,10 @@ COMMENT=		Subset of binutils needed for GCC
 
 PKG_DESTDIR_SUPPORT=	user-destdir
 
-USE_TOOLS+=	find
+USE_TOOLS+=		find
 
-BUILD_DEPENDS+=		binutils-[0-9]*:../../devel/binutils
-CONFLICTS+=	binutils-[0-9]*
+BUILD_DEPENDS+=		binutils-2.22*:../../wip/binutils
+CONFLICTS+=		binutils-[0-9]*
 
 FILES_SUBST+=		PKGNAME=${PKGNAME}
 
