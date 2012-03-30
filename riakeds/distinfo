@@ -1,20 +1,19 @@
 $NetBSD$
 
-SHA1 (innostore-1.0.3.tar.gz) = 4b2c883ae454aae7bee9b79d4b479f0040c4e104
-RMD160 (innostore-1.0.3.tar.gz) = be4134c2176dbc8078f120767c8bb14b4a346928
-Size (innostore-1.0.3.tar.gz) = 1646491 bytes
-SHA1 (riak_ee-1.0.3.tar.gz) = f4f018421f4a98a9128018a44e7d5fd5a7ef3963
-RMD160 (riak_ee-1.0.3.tar.gz) = dd7eaa6987f424c3b66e45a799d7358517043ae1
-Size (riak_ee-1.0.3.tar.gz) = 9605183 bytes
-SHA1 (patch-__innostore-1.0.3__rebar.config) = 809025397932bd53b7fd433187721e53e7c7b7e5
-SHA1 (patch-deps__ebloom__rebar.config) = 02dcb813fc5853ad7d321231ddcec58c349ab6ca
-SHA1 (patch-deps__erlang_js__c_src__Makefile) = 0bbf2572e377218394a3ee2c06a05ce64ff3128e
-SHA1 (patch-package__Makefile) = c29dccb6b7adc8390b4af8cf24e553384b1e8a0f
-SHA1 (patch-rebar.config) = 861d3159da5489fd30995ea0ca6aa1dd3b845547
-SHA1 (patch-rel__files__app.config) = dd17ffab7865f92a3ef8108d5ac7611d8ba4c997
-SHA1 (patch-rel__files__riak) = 6244d2d038476a8c13a55f3d93ca37a7befd6024
+SHA1 (innostore-1.0.4.tar.gz) = dfbc3b90bac8b3dc930dc05ebd7418fc8a244e5d
+RMD160 (innostore-1.0.4.tar.gz) = b4ab7ae7538f95366a9115b74689975bd08b3c9e
+Size (innostore-1.0.4.tar.gz) = 1647782 bytes
+SHA1 (riak_ee-1.1.1.tar.gz) = 3966e3c1958276eccb206331d25ff5715657623e
+RMD160 (riak_ee-1.1.1.tar.gz) = 33b08d53ac281bb6d99d4656cf81d128270247ab
+Size (riak_ee-1.1.1.tar.gz) = 12240092 bytes
+SHA1 (patch-__innostore-1.0.4__rebar.config) = 1768205357d460fa853123b6354f5430fe001e11
+SHA1 (patch-deps__ebloom__rebar.config) = f54dd62351e041a2be8d37fd62a169ebd1ecc18f
+SHA1 (patch-deps__erlang_js__c_src__Makefile) = 8f31bdfae317f62dc620a8dd34ba5dcd4fb2cafd
+SHA1 (patch-package__Makefile) = 2c692fe029f55e618ddb9b176cc8dcd3ba8f3743
+SHA1 (patch-rel__files__app.config) = 33c87fdff4bd23305183bdd647fcd47448e53c24
+SHA1 (patch-rel__files__riak) = 973049a8c8039735db8f85039bd916c2c5073ad0
 SHA1 (patch-rel__files__riak-admin) = ae90938e0e67f9241eb5285ef14393c28a1bf50b
 SHA1 (patch-rel__files__riak-repl) = 6d1af2126ee1e82ce3862316c53f30cff68f49a7
-SHA1 (patch-rel__files__search-cmd) = 2bd2c378fa9f887987b32f64949bffaf60f5cdc8
+SHA1 (patch-rel__files__search-cmd) = 1160959014d48236a20bfe24f4646e176426ca05
 SHA1 (patch-rel__files__vm.args) = c8397feee259e07c14d6025593e3071773306f82
-SHA1 (patch-rel__vars.config) = 8350a62c86d18147f3d1a335d45f43f53526a8c9
+SHA1 (patch-rel__vars.config) = 4774b20861fa01d5d551278d12e4b90e74b65d81

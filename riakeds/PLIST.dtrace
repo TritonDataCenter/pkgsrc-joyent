@@ -1,7 +1,0 @@
-@comment $NetBSD$
-riak/lib/dtrace-0.8/ebin/dtrace.app
-riak/lib/dtrace-0.8/ebin/dtrace.appup
-riak/lib/dtrace-0.8/ebin/dtrace.beam
-riak/lib/dtrace-0.8/priv/lib/dtrace.so
-riak/lib/dtrace-0.8/priv/obj/dtrace.o
-riak/lib/dtrace-0.8/priv/obj/dtrace_user.o

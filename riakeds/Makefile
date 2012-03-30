@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-DISTNAME=		riak_ee-1.0.3
+DISTNAME=		riak_ee-1.1.1
 PKGNAME=		${DISTNAME:S/_ee/eds/}
 CATEGORIES=		none
 MASTER_SITES=		#
@@ -10,6 +10,8 @@ MAINTAINER=		filip@joyent.com
 HOMEPAGE=		http://www.basho.com/products_riak_overview.php
 COMMENT=		Distributed, highly available data store
 LICENSE=		apache-2.0
+
+CONFLICTS=		riak-*
 
 PKG_DESTDIR_SUPPORT=	user-destdir
 
@@ -20,7 +22,7 @@ DEPENDS+=		sudo-[0-9]*:../../security/sudo
 
 DISTFILES=		${DEFAULT_DISTFILES}
 EXTRACT_ONLY=		${DISTNAME}${EXTRACT_SUFX}
-INNOVER=		1.0.3
+INNOVER=		1.0.4
 INNOSTORE=		innostore-${INNOVER}.tar.gz
 SITES.${INNOSTORE}=	http://downloads.basho.com/innostore/innostore-${INNOVER}/
 DISTFILES+=		${INNOSTORE}
@@ -28,6 +30,8 @@ EXTRACT_ONLY+=		${INNOSTORE}
 
 .include "../../mk/bsd.prefs.mk"
 .include "options.mk"
+.include "../../lang/erlang/Makefile.versions"
+.include "Makefile.versions"
 
 RIAK_USER?=		riak
 RIAK_GROUP?=		${RIAK_USER}
@@ -61,20 +65,17 @@ CONF_FILES+=		share/examples/riak/snmp/agent/conf/${file} \
 .endfor
 
 BUILD_TARGET=		rel
-PLIST_VARS+=		innostore
-PLIST_SUBST+=		INNOVER=${INNOVER}
+PLIST_VARS+=		innostore dtrace
 
 .if !empty(PKG_BUILD_OPTIONS.erlang:Mdtrace)
-PLIST_SRC=		${PLIST_SRC_DFLT}
-PLIST_SRC+=		PLIST.dtrace
+PLIST.dtrace=          yes
 .endif
 
 SUBST_CLASSES+=		pkgsrc
 SUBST_STAGE.pkgsrc=	post-patch
 SUBST_MESSAGE.pkgsrc=	Fixing pkgsrc locations and tools
-SUBST_FILES.pkgsrc=	deps/erlang_js/c_src/Makefile
-SUBST_FILES.pkgsrc+=	rel/vars.config
-SUBST_VARS.pkgsrc=	PATCH PREFIX PKG_SYSCONFDIR
+SUBST_FILES.pkgsrc=	rel/vars.config
+SUBST_VARS.pkgsrc=	PREFIX PKG_SYSCONFDIR
 SUBST_VARS.pkgsrc+=	RIAK_USER RIAK_DATA RIAK_LOG
 
 REPLACE_INTERPRETER+=	escript
@@ -85,6 +86,8 @@ REPLACE_FILES.escript+=	${WRKDIR}/innostore-${INNOVER}/priv/innodump
 REPLACE_FILES.escript+=	${WRKDIR}/innostore-${INNOVER}/priv/innoload
 
 CHECK_PORTABILITY_SKIP+=	tests/riak_search/run_all.sh
+
+MAKE_ENV+=		PATCH=${PATCH:Q}
 
 INSTALL_ENV+=		REPO=riak_ee
 INSTALL_ENV+=		REVISION=${PKGVERSION_NOREV}
