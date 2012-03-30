@@ -105,8 +105,5 @@ do-install:
 	cd ${WRKSRC}/package && ${SETENV} ${INSTALL_ENV} ${MAKE_ENV}    \
            ${MAKE_PROGRAM} ${MAKE_FLAGS} ${INSTALL_MAKE_FLAGS} package
 
-post-install:
-	${INSTALL_LIB} ${FILESDIR}/libumem.so.1_${ABI} ${DESTDIR}${PREFIX}/riak/lib/libumem.so.1
-
 .include "../../lang/erlang/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"
