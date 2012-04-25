@@ -152,12 +152,6 @@ riak/lib/crypto-${VERSION.crypto}/ebin/crypto_sup.beam
 riak/lib/crypto-${VERSION.crypto}/priv/lib/crypto.so
 riak/lib/crypto-${VERSION.crypto}/priv/obj/Makefile
 riak/lib/crypto-${VERSION.crypto}/priv/obj/crypto.o
-${PLIST.dtrace}riak/lib/dtrace-${VERSION.dtrace}/ebin/dtrace.app
-${PLIST.dtrace}riak/lib/dtrace-${VERSION.dtrace}/ebin/dtrace.appup
-${PLIST.dtrace}riak/lib/dtrace-${VERSION.dtrace}/ebin/dtrace.beam
-${PLIST.dtrace}riak/lib/dtrace-${VERSION.dtrace}/priv/lib/dtrace.so
-${PLIST.dtrace}riak/lib/dtrace-${VERSION.dtrace}/priv/obj/dtrace.o
-${PLIST.dtrace}riak/lib/dtrace-${VERSION.dtrace}/priv/obj/dtrace_user.o
 riak/lib/ebloom-${VERSION.ebloom}/ebin/ebloom.app
 riak/lib/ebloom-${VERSION.ebloom}/ebin/ebloom.beam
 riak/lib/ebloom-${VERSION.ebloom}/priv/ebloom_nifs.so
