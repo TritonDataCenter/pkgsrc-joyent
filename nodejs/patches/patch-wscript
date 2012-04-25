@@ -31,6 +31,17 @@ $NetBSD$
    if Options.options.efence:
      conf.check(lib='efence', libpath=['/usr/lib', '/usr/local/lib'], uselib_store='EFENCE')
  
+@@ -432,8 +441,8 @@ def configure(conf):
+   conf.define("HAVE_CONFIG_H", 1)
+ 
+   if sys.platform.startswith("sunos"):
+-    conf.env.append_value ('CCFLAGS', '-threads')
+-    conf.env.append_value ('CXXFLAGS', '-threads')
++    conf.env.append_value ('CCFLAGS', '-pthreads')
++    conf.env.append_value ('CXXFLAGS', '-pthreads')
+     #conf.env.append_value ('LINKFLAGS', ' -threads')
+   elif not sys.platform.startswith("win32"):
+     threadflags='-pthread'
 @@ -862,8 +871,9 @@ def build(bld):
        t = join(bld.srcnode.abspath(bld.env_of_name("Release")), dtracepost.target)
        bld.env_of_name('Release').append_value('LINKFLAGS', t)
