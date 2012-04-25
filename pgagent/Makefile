@@ -1,10 +1,10 @@
 # $NetBSD$
 #
 
-PKGNAME=	pgagent-3.0.1
+PKGNAME=	pgagent-3.2.0
 DISTNAME=	${PKGNAME:S/a/A/}-Source
 CATEGORIES=	databases
-MASTER_SITES=	${PGSQL_MIRRORS:=pgadmin3/release/pgagent/}
+MASTER_SITES=	${MASTER_SITE_PGSQL:=pgadmin3/release/pgagent/}
 
 MAINTAINER=	filip@joyent.com
 HOMEPAGE=	http://wwwmaster.postgresql.org/download/mirrors-ftp/pgadmin3/release/pgagent/
@@ -31,5 +31,4 @@ SUBST_FILTER_CMD.d2u=	${TR} -d '\015'
 #.endif
 
 .include "../../mk/pgsql.buildlink3.mk"
-.include "../../databases/postgresql84/Makefile.mirrors"
 .include "../../mk/bsd.pkg.mk"
