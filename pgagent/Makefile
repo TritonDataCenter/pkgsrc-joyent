@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-PKGNAME=	pgagent-3.2.0
+PKGNAME=	pgagent-3.2.1
 DISTNAME=	${PKGNAME:S/a/A/}-Source
 CATEGORIES=	databases
 MASTER_SITES=	${MASTER_SITE_PGSQL:=pgadmin3/release/pgagent/}
