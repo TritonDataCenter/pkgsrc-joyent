@@ -1,0 +1,4 @@
+This module is fully functional on 32-bit Apache. 64-bit support is
+forthcoming. It has only been tested on SmartOS, an Illumos-based
+(Solaris-based) system. It should be possible to modify this for
+MacOS and BSD; pull requests welcome.
