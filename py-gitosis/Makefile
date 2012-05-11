@@ -3,7 +3,7 @@
 PKGNAME=	${PYPKGPREFIX}-${EGG_NAME}
 DISTNAME=	gitosis
 CATEGORIES=	devel python
-MASTER_SITES=	git://eagain.net/
+MASTER_SITES=	git://github.com/tv42/
 
 MAINTAINER=	filip@joyent.com
 HOMEPAGE=	http://eagain.net
