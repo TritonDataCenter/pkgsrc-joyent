@@ -301,15 +301,6 @@ lib/node_modules/npm/html/docfoot.html
 lib/node_modules/npm/html/dochead.html
 lib/node_modules/npm/html/favicon.ico
 lib/node_modules/npm/html/index.html
-lib/node_modules/npm/html/n-64.png
-lib/node_modules/npm/html/n-large.png
-lib/node_modules/npm/html/npm-16.png
-lib/node_modules/npm/html/npm-256-square.png
-lib/node_modules/npm/html/npm-256w.png
-lib/node_modules/npm/html/npm-64-square.png
-lib/node_modules/npm/html/npm-fin.png
-lib/node_modules/npm/html/npm-large.png
-lib/node_modules/npm/html/npm.png
 lib/node_modules/npm/lib/adduser.js
 lib/node_modules/npm/lib/bin.js
 lib/node_modules/npm/lib/bugs.js
@@ -573,6 +564,7 @@ lib/node_modules/npm/node_modules/mkdirp/README.markdown
 lib/node_modules/npm/node_modules/mkdirp/index.js
 lib/node_modules/npm/node_modules/mkdirp/package.json
 lib/node_modules/npm/node_modules/node-gyp/.npmignore
+lib/node_modules/npm/node_modules/node-gyp/LICENSE
 lib/node_modules/npm/node_modules/node-gyp/README.md
 lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js
 lib/node_modules/npm/node_modules/node-gyp/legacy/common.gypi
@@ -642,8 +634,6 @@ lib/node_modules/npm/node_modules/node-gyp/lib/list.js
 lib/node_modules/npm/node_modules/node-gyp/lib/node-gyp.js
 lib/node_modules/npm/node_modules/node-gyp/lib/rebuild.js
 lib/node_modules/npm/node_modules/node-gyp/lib/remove.js
-lib/node_modules/npm/node_modules/node-gyp/lib/util/asyncEmit.js
-lib/node_modules/npm/node_modules/node-gyp/lib/util/hook.js
 lib/node_modules/npm/node_modules/node-gyp/lib/util/mkdirp.js
 lib/node_modules/npm/node_modules/node-gyp/node_modules/ansi/.npmignore
 lib/node_modules/npm/node_modules/node-gyp/node_modules/ansi/README.md
