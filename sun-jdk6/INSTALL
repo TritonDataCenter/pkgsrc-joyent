@@ -3,6 +3,7 @@
 case ${STAGE} in
 PRE-INSTALL)
 	if [ ! -f ${PREFIX}/.dlj_license_accepted ]; then
+	  trap 'cd && rm -rf ${PKG_METADATA_DIR} && exit 1' INT TERM
 	  more << end_of_license_here_doc_in_generated_script
 
 
@@ -688,6 +689,7 @@ end_of_license_here_doc_in_generated_script
 	    esac
 	  done
 	  touch ${PREFIX}/.dlj_license_accepted
+	  trap - INT TERM
 	fi
 	;;
 esac
