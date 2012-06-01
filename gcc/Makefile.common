@@ -102,6 +102,7 @@ CONFIGURE_ARGS+=	--enable-libssp
 CONFIGURE_ARGS+=	--enable-threads=posix
 CONFIGURE_ARGS+=	--without-libiconv-prefix
 CONFIGURE_ARGS+=	--with-gxx-include-dir=${PREFIX}/include/c++/
+CONFIGURE_ARGS+=	--infodir=${PREFIX:Q}/${PKGINFODIR} --mandir=${PREFIX:Q}/${PKGMANDIR}
 
 CONFIGURE_ENV+=		CONFIG_SHELL=${CONFIG_SHELL}
 
