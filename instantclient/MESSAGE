@@ -5,11 +5,11 @@ Due to the nature of how the binaries were built by Oracle, you may have
 to set LD_LIBRARY_PATH in your environment in order to use the binaries
 and/or libs:
 
-  LD_LIBRARY_PATH=${PREFIX}/oracle/${PKGVERSION}/instantclient:$LD_LIBRARY_PATH
+  LD_LIBRARY_PATH=${PREFIX}/oracle/${PKGVERSION_NOREV}/instantclient:$LD_LIBRARY_PATH
 
 Also, you need to set SQLPATH in order for SQL*Plus to find the glogin.sql
 file:
 
-  export SQLPATH=${PREFIX}/oracle/${PKGVERSION}/instantclient
+  export SQLPATH=${PREFIX}/oracle/${PKGVERSION_NOREV}/instantclient
 
 ===========================================================================

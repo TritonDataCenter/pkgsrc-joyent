@@ -2,6 +2,7 @@
 #
 
 DISTNAME=	instantclient-${ORACLE_VERSION}
+PKGREVISION=	1
 CATEGORIES=	devel
 #MASTER_SITES=	#
 
@@ -16,9 +17,9 @@ USE_TOOLS+=	pax unzip
 NO_BUILD=	yes
 
 DIST_SUBDIR=	instantclient
-DISTFILES=	basic-${PKGVERSION}-${OS_PLATFORM}.zip
-DISTFILES+=	sdk-${PKGVERSION}-${OS_PLATFORM}.zip
-DISTFILES+=	sqlplus-${PKGVERSION}-${OS_PLATFORM}.zip
+DISTFILES=	basic-${PKGVERSION_NOREV}-${OS_PLATFORM}.zip
+DISTFILES+=	sdk-${PKGVERSION_NOREV}-${OS_PLATFORM}.zip
+DISTFILES+=	sqlplus-${PKGVERSION_NOREV}-${OS_PLATFORM}.zip
 DISTINFO_FILE=	${.CURDIR}/distinfo.${OS_PLATFORM}
 
 WRKSRC=		${WRKDIR}/instantclient_11_2
@@ -61,9 +62,9 @@ SDK_LIST+=	SDK_README demo/demo.mk demo/cdemo81.c demo/occidemo.sql      \
 		include/nzerror.h include/ldap.h ottclasses.zip
 
 FETCH_MESSAGE =		" These files must be fetched manually:"
-FETCH_MESSAGE+=		"  - basic-${PKGVERSION}-${OS_PLATFORM}.zip"
-FETCH_MESSAGE+=		"  - sdk-${PKGVERSION}-${OS_PLATFORM}.zip"
-FETCH_MESSAGE+=		"  - sqlplus-${PKGVERSION}-${OS_PLATFORM}.zip"
+FETCH_MESSAGE+=		"  - basic-${PKGVERSION_NOREV}-${OS_PLATFORM}.zip"
+FETCH_MESSAGE+=		"  - sdk-${PKGVERSION_NOREV}-${OS_PLATFORM}.zip"
+FETCH_MESSAGE+=		"  - sqlplus-${PKGVERSION_NOREV}-${OS_PLATFORM}.zip"
 FETCH_MESSAGE+=         " from the Oracle download site:"
 FETCH_MESSAGE+=		"    http://www.oracle.com/technetwork/database/features/instant-client/index-097480.html"
 FETCH_MESSAGE+=		" Save them in this directory:"
@@ -71,7 +72,8 @@ FETCH_MESSAGE+=         "    ${DISTDIR}/${DIST_SUBDIR}/"
 
 INSTALLATION_DIRS+=	bin lib oracle/${ORACLE_VERSION}/instantclient
 
-MESSAGE_SUBST+=		PKGVERSION=${PKGVERSION}
+MESSAGE_SUBST+=		PKGVERSION_NOREV=${PKGVERSION_NOREV}
+PLIST_SUBST+=		PKGVERSION_NOREV=${PKGVERSION_NOREV}
 
 post-extract:
 	cd ${WRKSRC} && ${LN} -s libclntsh.so.11.1 libclntsh.so \
