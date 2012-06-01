@@ -18,9 +18,12 @@ NO_BUILD=	yes
 DIST_SUBDIR=	instantclient
 DISTFILES=	basic-${PKGVERSION}-${OS_PLATFORM}.zip
 DISTFILES+=	sdk-${PKGVERSION}-${OS_PLATFORM}.zip
+DISTFILES+=	sqlplus-${PKGVERSION}-${OS_PLATFORM}.zip
 DISTINFO_FILE=	${.CURDIR}/distinfo.${OS_PLATFORM}
 
 WRKSRC=		${WRKDIR}/instantclient_11_2
+
+CHECK_SHLIBS_SUPPORTED=	no
 
 .include "../../mk/bsd.prefs.mk"
 
@@ -39,10 +42,11 @@ NO_BIN_ON_FTP=		${RESTRICTED}
 NO_SRC_ON_CDROM=	${RESTRICTED}
 NO_SRC_ON_FTP=		${RESTRICTED}
 
-BINS_LIST=	adrci genezi uidrvci
+BINS_LIST=	adrci genezi sqlplus uidrvci
 LIBS_LIST=	libclntsh.so.11.1 libclntsh.so libnnz11.so libocci.so.11.1    \
-		libocci.so libociei.so libocijdbc11.so
-JAR_LIST=	ojdbc5.jar ojdbc6.jar xstreams.jar
+		libocci.so libociei.so libocijdbc11.so libsqlplus.so          \
+		libsqlplusic.so
+MISC_LIST=	glogin.sql ojdbc5.jar ojdbc6.jar xstreams.jar
 SDK_LIST+=	SDK_README demo/demo.mk demo/cdemo81.c demo/occidemo.sql      \
 		demo/occidemod.sql demo/occidml.cpp demo/occiobj.cpp          \
 		demo/occiobj.typ include/occi.h include/occiCommon.h          \
@@ -59,12 +63,15 @@ SDK_LIST+=	SDK_README demo/demo.mk demo/cdemo81.c demo/occidemo.sql      \
 FETCH_MESSAGE =		" These files must be fetched manually:"
 FETCH_MESSAGE+=		"  - basic-${PKGVERSION}-${OS_PLATFORM}.zip"
 FETCH_MESSAGE+=		"  - sdk-${PKGVERSION}-${OS_PLATFORM}.zip"
+FETCH_MESSAGE+=		"  - sqlplus-${PKGVERSION}-${OS_PLATFORM}.zip"
 FETCH_MESSAGE+=         " from the Oracle download site:"
 FETCH_MESSAGE+=		"    http://www.oracle.com/technetwork/database/features/instant-client/index-097480.html"
 FETCH_MESSAGE+=		" Save them in this directory:"
 FETCH_MESSAGE+=         "    ${DISTDIR}/${DIST_SUBDIR}/"
 
-INSTALLATION_DIRS+=	lib oracle/${ORACLE_VERSION}/instantclient
+INSTALLATION_DIRS+=	bin lib oracle/${ORACLE_VERSION}/instantclient
+
+MESSAGE_SUBST+=		PKGVERSION=${PKGVERSION}
 
 post-extract:
 	cd ${WRKSRC} && ${LN} -s libclntsh.so.11.1 libclntsh.so \
@@ -75,6 +82,8 @@ do-install:
 .	for file in ${BINS_LIST}
 	${INSTALL_PROGRAM} ${WRKSRC}/${file} \
 	  ${DESTDIR}${PREFIX}/oracle/${ORACLE_VERSION}/instantclient/${file}
+	${LN} -s ../oracle/${ORACLE_VERSION}/instantclient/${file} \
+	  ${DESTDIR}${PREFIX}/bin/${file}
 .	endfor
 .	for file in ${LIBS_LIST}
 	${INSTALL_LIB} ${WRKSRC}/${file} \
@@ -82,7 +91,7 @@ do-install:
 	${LN} -s ../oracle/${ORACLE_VERSION}/instantclient/${file} \
 	  ${DESTDIR}${PREFIX}/lib/${file}
 .	endfor
-.	for file in ${JAR_LIST}
+.	for file in ${MISC_LIST}
 	${INSTALL_LIB} ${WRKSRC}/${file} \
 	  ${DESTDIR}${PREFIX}/oracle/${ORACLE_VERSION}/instantclient/${file}
 .	endfor

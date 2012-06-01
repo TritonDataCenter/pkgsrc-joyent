@@ -6,3 +6,6 @@ Size (instantclient/basic-11.2.0.2.0-solaris-x32.zip) = 57361813 bytes
 SHA1 (instantclient/sdk-11.2.0.2.0-solaris-x32.zip) = 7a7b7bd8ac9e27bb4f9523901ec33e9fb9f728f9
 RMD160 (instantclient/sdk-11.2.0.2.0-solaris-x32.zip) = ed319912150fd3dca7b03f56d4b87bf7d17abbbb
 Size (instantclient/sdk-11.2.0.2.0-solaris-x32.zip) = 636928 bytes
+SHA1 (instantclient/sqlplus-11.2.0.2.0-solaris-x32.zip) = 568623a103404524399f4bae583d54f70106059c
+RMD160 (instantclient/sqlplus-11.2.0.2.0-solaris-x32.zip) = 390534c817cc656eda46b9b33c060abb789ab2db
+Size (instantclient/sqlplus-11.2.0.2.0-solaris-x32.zip) = 778038 bytes
