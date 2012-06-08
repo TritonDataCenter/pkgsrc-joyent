@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-# jinf v@PKGVERSION@
+# machine-info 1.0
 # Provides basic resource utilization information about a SmartMachine
 # Joyent Inc.
 

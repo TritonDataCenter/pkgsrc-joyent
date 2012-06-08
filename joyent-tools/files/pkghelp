@@ -1,5 +1,5 @@
-#!/bin/bash
-# pkghelp v@PKGVERSION@
+#!/usr/bin/bash
+# pkghelp 1.0
 # A dummy wrapper to educate about the pkgin tool
 # Joyent Inc.
 

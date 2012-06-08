@@ -1,0 +1,553 @@
+#!/usr/bin/bash
+# machine-upgrade 1.0
+# Upgrades the userland pkgsrc software by using a new bootstrap image
+# and re-installing all packages from a new package set.
+# Joyent Inc.
+
+# Debugging config
+
+error_log="/var/tmp/machine-upgrade-$$.log"
+exec 5>${error_log}
+BASH_XTRACEFD=5
+export PS4='+(${BASH_SOURCE}:${LINENO}): ${SECONDS} ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
+
+set -o errexit
+set -o xtrace
+
+# Defined when this script is packaged
+
+platform=@PLATFORM@
+release=@PKGRELEASE@
+arch=@MACHINE_ARCH@
+mysql_version_default=@MYSQL_VERSION_DEFAULT@
+pgsql_version_default=@PGSQL_VERSION_DEFAULT@
+python_version_default=@PYTHON_VERSION_DEFAULT@
+php_version_default=@PHP_VERSION_DEFAULT@
+ruby_version_default=@RUBY_VERSION_DEFAULT@
+ruby_rails_default=@RUBY_RAILS_DEFAULT@
+
+# End of definitions
+
+pkg_base=http://pkgsrc.joyent.com/${platform}/${release}/${arch}
+backup_dir=/var/tmp/machine-upgrade-$$
+backup_tarball=${backup_dir}/opt_local.tgz
+backup_mydump=${backup_dir}/mysql.dump.gz
+backup_pgdump=${backup_dir}/postgresql.dump
+backup_packages=${backup_dir}/installed_packages
+
+### Functions used in this script
+
+missing_packages() {
+  pkgin -y ls | sort |\
+   awk '{print $1}' |\
+   sed 's/-[^-]*$//' |\
+   diff ${backup_packages} - |\
+   awk '{ if ($1~/</) print $2 }'
+}
+get_mysql_version() {
+  local _mysql_version
+  if which mysql >/dev/null; then
+    _mysql_version=$(mysql -V|awk '{if($2~/Ver/)print $5}'|sed 's/\.//; s/\..*//')
+  else
+    _mysql_version=0
+  fi
+  echo ${_mysql_version}
+}
+count_mysql_dbs() {
+  mysql_dbs=$(mysql -u root ${mysql_pass} -e "show databases" -N 2>/dev/null|wc -l) || true
+}
+get_pgsql_version() {
+  local _pgsql_version
+  if which psql >/dev/null; then
+    _pgsql_version=$(psql -V|awk '{if($2~/PostgreSQL/)print $3}'|sed 's/\.//; s/\..*//')
+  else
+    _pgsql_version=0
+  fi
+  echo ${_pgsql_version}
+}
+count_pgsql_dbs() {
+  pgsql_dbs=$(psql -w -U postgres -ltA 2>/dev/null|grep -c '|') || true
+}
+set_pgsql_pass() {
+  pass=${1-postgres}
+  echo "localhost:*:*:postgres:${pass}" > ~/.pgpass
+  chmod 600 ~/.pgpass
+}
+
+### Welcome
+{
+clear
+cat <<EOF
+
+- This script upgrades all userland software on a machine using packages from 
+  the following package set:
+  
+    ${pkg_base}
+  
+  In the process, your /opt/local path will be backed up, new bootstrap image
+  will be downloaded and packages that you had installed, will be re-installed
+  from the new package set.
+  
+  Consequently, if you had any software or files installed under /opt/local
+  that did not come from pkgsrc packages (when this machine was provisioned,
+  or installed later on), it will be removed and only preserved in the backup
+  compressed tarball.
+
+EOF
+read -p "  ? You do want to proceed with initial checks? y/N " -n 1 yn
+echo
+echo
+if [[ ! "${yn}" =~ [yY] ]]; then exit 1; fi
+}
+
+### Sanity checks
+
+## Make sure we run as root
+if [ ${EUID} -gt 0 ]; then
+  cat <<EOF
+! This script requires to be run with root privileges, so that it can upgrade
+  your installed software. Please change to root, or run it with 'sudo'.
+
+EOF
+  exit 1
+fi
+
+## Make sure we have enough space on disk
+if [ $(($(/bin/df -b /|tail -1|awk '{print $2}')/1024/1024)) -lt 1 ]; then
+  cat <<EOF
+! You seem to have less than 1 GiB of disk space available on this machine.
+  Re-bootstrapping a machine involves making a backup of your software and
+  downloading of possibly many new packages. Runnning out of disk space in
+  the course of the operation may leave the machine in a degraded state.
+  
+EOF
+  read -p "  ? Are you sure you want to continue? y/N " -n 1 yn
+  echo
+  echo
+  if [[ ! "${yn}" =~ [yY] ]]; then exit 1; fi
+fi
+  
+## Check MySQL version & access
+{
+mysql_instance=$(svcs -Ho state,inst mysql 2>/dev/null|awk '/online/ {print $2}')
+mysql_version=$(get_mysql_version)
+if [ ${mysql_instance} ] && \
+   [ ${mysql_version} -gt 0 ] && [ ${mysql_version} -lt ${mysql_version_default} ]; then
+  mysql_update_needed=yes
+  cat <<EOF
+- You seem to be running MySQL, and a new version will be installed that is
+  not compatible with the storage format of the one you have. This script can
+  make a backup of all databases for safety, and update the databases to work
+  with the new version, as per the standard MySQL upgrade instructions:
+  
+    http://dev.mysql.com/doc/refman/${mysql_version_default/5/5.}/en/upgrading.html
+
+EOF
+  read -p "  ? Do you want to continue? y/N " -n 1 yn
+  echo
+  echo
+  if [[ ! "${yn}" =~ [yY] ]]; then exit 1; fi
+fi
+
+## Check if we can access MySQL without a password
+if [ ${mysql_update_needed} ]; then
+  count_mysql_dbs
+  if [ ${mysql_dbs} -gt 0 ]; then
+    mysql_access=yes
+  else
+    cat <<EOF
+! Initial checks report that your MySQL is protected by a password. You can
+  enter your master password (for the 'root' user) now. If you DO NOT WANT to 
+  have a backup made and your databases updated automatically, do not enter
+  any password and just hit Enter. If you do so, the script can still and your
+  database storage will not be touched, but you will need to run the standard
+  MySQL upgrade script yourself later on.
+
+EOF
+    read -p "  ? MySQL password: " -s mysql_pass
+    echo
+    echo
+    if [ ! ${mysql_pass} ]; then
+      cat - <<EOF
+! You chose to not take a backup and skip an automatic update of databases.
+  Please remember to do so yourself before you try to access your databases,
+  by following the standard instructions:
+
+    http://dev.mysql.com/doc/refman/${mysql_version_default/5/5.}/en/upgrading.html
+
+EOF
+    fi
+  fi
+fi
+}
+
+## Makes sure we have access to PostgreSQL (if needed); make a backup
+{
+pgsql_instance=$(svcs -Ho state,inst postgresql 2>/dev/null|awk '/online/ {print $2}')
+pgsql_version=$(get_pgsql_version)
+
+if [ ${pgsql_instance} ] && \
+   [ ${pgsql_version} -gt 0 ] && [ ${pgsql_version} -lt ${pgsql_version_default} ]; then
+  pgsql_update_needed=yes
+  cat <<EOF
+- You seem to be running PostgreSQL, and a new version will be installed that
+  is not compatible with the storage format of the one you have. This script
+  can make a backup of your databases, and re-import them when the new version
+  is installed. Without the backup/reimport process, you WILL NOT BE ABLE to
+  access your database after this script finishes.
+
+  The office documentation on upgrading PostgreSQL can be found here:
+
+  http://www.postgresql.org/docs/${pgsql_version_default/9/9.}/interactive/install-upgrading.html
+
+EOF
+  read -p "  ? Do you want to continue? y/N " -n 1 yn
+  echo
+  echo
+  if [[ ! "${yn}" =~ [yY] ]]; then exit 1; fi
+fi
+
+## Check if we can access PostgreSQL
+
+if [ ${pgsql_update_needed} ]; then
+  # Try no password (trust scheme) first
+  count_pgsql_dbs
+  if [ ${pgsql_dbs} -eq 0 ]; then
+    # Try the default pkgsrc password now
+    set_pgsql_pass 'postgres'
+    count_pgsql_dbs
+  fi
+  if [ ${pgsql_dbs} -eq 0 ]; then
+    cat - <<EOF
+! Initial checks report that PostgreSQL is protected by a password. You can
+  enter your master password (for the 'postgresql' user) now. If you do not
+  provide a password now, no backup can be taken, the upgraded software WILL
+  NOT BE ABLE to access or update your databases.
+
+  To skip the backup and update, do not enter any password and just hit Enter.
+  Only do so if you do not care about PostgreSQL on this machine!
+
+EOF
+    read -p "  ? PostgreSQL password: " -s pass
+    echo
+    echo
+  fi
+  set_pgsql_pass ${pass-postgres}
+  count_pgsql_dbs
+
+  if [ ${pgsql_dbs} -eq 0 ]; then
+    cat - <<EOF
+! You didn't enter any password, or the one you entered is not valid. If you
+  let the script upgrade your packages now - without taking a backup of all
+  databases, you will NOT BE ABLE to use them anymore (or convert later on).
+
+EOF
+    read -p "  ? Are you SURE you want to go on with the script? y/N ? " -n 1 yn
+    echo
+    echo
+    if [[ ! "${yn}" =~ [yY] ]]; then exit 1; fi
+  else
+    pgsql_access=yes
+  fi
+fi
+}
+
+## Check if we have a usable curl/wget
+{
+for fetch in /usr/bin/wget /usr/sfw/bin/wget "$(which wget)" /usr/bin/curl "$(which curl)"; do
+  if [[ ! ${fetch} =~ ^no ]] && [ -x "${fetch}" ]; then
+    break
+  else
+    fetch=''
+  fi
+done
+if [ ! ${fetch} ]; then
+  cat <<EOF
+! Couldn't find working wget or curl to fetch files. Terminating...
+
+EOF
+else
+  fetch=${fetch/wget/wget -O -}
+fi
+
+}
+
+### Action starts here
+
+## Create a backup directory
+if [ ! -d ${backup_dir} ]; then
+  /usr/bin/mkdir -p ${backup_dir}
+fi
+
+## Make a backup of the MySQL databases
+{
+if [ ${mysql_update_needed} ] && [ ${mysql_access} ]; then
+  if [ ${mysql_dbs} -gt 0 ]; then
+    mysqldump -A -u root ${mysql_pass} | gzip > ${backup_mydump}
+    mysql_dumped=yes
+    svcadm disable mysql:${mysql_instance}
+    mysql_halted=yes
+    cat <<EOF
+- Databases were backed up and MySQL was halted for the upgrade.
+
+EOF
+  else
+    cat <<EOF
+- No databases to convert, skipping this part.
+
+EOF
+  fi
+
+fi
+}
+
+## Make a backup of the PostgreSQL databases
+{
+if [ ${pgsql_update_needed} ] && [ ${pgsql_access} ]; then
+  if [ ${pgsql_dbs} -gt 0 ]; then
+    pg_dumpall -U postgres -h localhost -f ${backup_pgdump}
+    pgsql_dumped=yes
+    svcadm disable postgresql:${pgsql_instance}
+    pgsql_halted=yes
+    cat <<EOF
+- Databases were backed up and PostgreSQL was halted for the upgrade.
+
+EOF
+  else
+    cat <<EOF
+- No databases to convert, skipping this part.
+
+EOF
+  fi
+fi
+}
+
+## Make a backup of /opt/local
+{
+echo "* Recording packages installed before the upgrade..."
+pkg_info | awk '{print $1}' | sort | sed 's/-[^-]*$//' \
+ > ${backup_packages}
+
+echo "* Backing up existing software base..."
+(cd /opt/local; gtar -czf ${backup_tarball} .)
+
+echo "* Moving existing software base away..."
+mv /opt/local{,.old}
+/usr/bin/mkdir /opt/local
+cp -Rp /opt/local{.old,}/etc
+}
+
+## Download and install a new bootstrap kit
+{
+echo "* Downloading new software bootstrap kit..."
+
+(cd / && ${fetch} ${pkg_base}/bootstrap.tar.gz 2>/dev/null |\
+ /usr/bin/gzcat | /usr/bin/tar -xf -)
+}
+
+## Misc tool & config updates
+{
+echo "* Configuring package tools..."
+echo ${pkg_base}/All > /opt/local/etc/pkgin/repositories.conf
+echo PKG_PATH=${pkg_base}/All > /opt/local/etc/pkg_install.conf
+
+echo "* Re-installing base packages..."
+rm -f /var/db/pkgin/pkgin.db
+pkgin -y up >/dev/null
+pkg_add coreutils diffutils findutils gawk grep groff gsed gtar-base \
+  less patch pkg_alternatives sudo openssl mozilla-rootcerts >/dev/null 2>&1
+
+echo "* Updating OpenSSL certificate database..."
+(cd /opt/local/etc/openssl/certs && \
+ mozilla-rootcerts extract && mozilla-rootcerts rehash) >/dev/null 2>&1
+
+echo "* Removing deprecated system files..."
+if crle | grep 'opt/gcc' >/dev/null; then
+  crle -l /lib:/usr/lib:/opt/local/lib
+fi
+if [ -d /opt/gcc ]; then
+  rm -rf /opt/gcc
+fi
+[ -e /opt/local.old/.dlj_license_accepted ] && \
+  touch /opt/local/.dlj_license_accepted
+rm -rf /opt/local.old
+
+echo "* Updating tool configuration..."
+for user in /root /home/admin /home/node; do
+  /opt/local/bin/sed -r -i '/^(MANPATH|alias man)/d' ${user}/.{profile,bashrc} 2>/dev/null || true
+  [ -e ${user}/.profile ] && cat >> ${user}/.profile <<EOF
+
+# man configuration
+MANPATH=/opt/local/gcc47/man:/opt/local/java/sun6/man:/opt/local/lib/perl5/man:/opt/local/lib/perl5/vendor_perl/man:/opt/local/man:/usr/share/man
+export MANPATH
+alias man='TROFF="groff -T ascii" TCAT="cat" PAGER="less -is" /bin/man -T -mandoc'
+EOF
+done
+
+[ -e ${HOME}/.profile ] && source ${HOME}/.profile
+
+if [ -d /home/node/local/bin ]; then
+ (cd /home/node/local/bin; \
+ for tool in *; do [[ ${tool} =~ ^npm ]] || rm ${tool}; done)
+fi
+}
+
+## Check for missing packages
+{
+sed -ri'' '
+  s/php5(-|$)/php53\1/g;
+  s/py(thon)?2[456]/py\127/g;
+  s/^(capistrano|mongrel|rails|rake|rubyforge|rubygems|thin)/ruby18-\1/g;
+  s/p5-IO-stty/p5-IO-Stty/;
+  s/postgresql[0-9][0-9]/postgresql'${pgsql_version_default/\./}'/g;
+  s/gcc-runtime/gcc'${gcc_default}'-runtime/g; s/gcc-compiler/gcc'${gcc_default}'/g;
+  /^(man|ruby|postgresql'${pgsql_version_default/\./}'|gcc[34]4|gcc-runtime)$/d
+  ' ${backup_packages}
+sort -o ${backup_packages}{,}
+missing=($(missing_packages))
+if [ ${#missing[@]} -gt 0 ]; then
+  if missing_packages|grep ^sun-j >/dev/null; then
+    touch /opt/local/.dlj_license_accepted
+  fi
+  echo "* Re-installing ${#missing[@]} additional packages..."
+  pkg_add ${missing[@]} >/dev/null 2>&1 || true
+fi
+
+missing=($(missing_packages))
+if [ ${#missing[@]} -gt 0 ]; then
+  cat <<EOF
+
+! There packages were previously installed, and couldn't be re-installed. They
+  are likely no longer needed/desired and missing in the newer package set).
+
+EOF
+  echo "    ${missing[@]/%/,}" | sed 's/,$//'
+  echo
+fi
+}
+
+## Update MySQL storage
+{
+if [ ${mysql_dumped} ] && [ -s ${backup_mydump} ]; then
+  echo "* Upgrading MySQL databases..."
+  if [ -e /opt/local/etc/my.cnf ]; then
+    sed -i'' \
+        -e '/skip-bdb/d' \
+        -e 's/skip-locking/skip-external-locking/' \
+        -e 's/log_slow_queries/slow_query_log_file/' \
+        -e '/slow_query_log =/d' \
+        -e '/slow_query_log_file/i\
+slow_query_log = 1
+'  /opt/local/etc/my.cnf
+  fi
+  svcadm enable -s pkgsrc/mysql:default
+  sleep 4
+  mysql_upgrade -u root ${mysql_pass} >/dev/null
+  svcadm restart pkgsrc/mysql:default
+fi
+}
+
+## Re-import PostgreSQL databases
+{
+if [ ${pgsql_dumped} ] && [ -s ${backup_pgdump} ]; then
+  echo "* Restoring PostgreSQL from backup..."
+  mv /var/pgsql/data${pgsql_version_default/\./}/pg_hba.conf{,.off}
+  echo "local all all trust" > /var/pgsql/data${pgsql_version_default/\./}/pg_hba.conf
+  svcadm enable -s pkgsrc/postgresql:pg${pgsql_version_default/\./}
+  sleep 4
+  psql -U postgres -f ${backup_pgdump} >/dev/null 2>&1
+  mv /var/pgsql/data${pgsql_version_default/\./}/pg_hba.conf{.off,}
+  svcadm restart pkgsrc/postgresql:pg${pgsql_version_default/\./}
+  rm -f ~/.pgpass || true
+fi
+}
+
+cat <<EOF
+
+- Your SmartMachine was upgraded using packages from:
+
+  ${pkg_base}
+
+  The following directory holds backups taken before the upgrade - a tarball
+  of /opt/local, list of packages installed and (where applicable) backups
+  of MySQL and PostgreSQL databases:
+
+  ${backup_dir}
+
+  Feel free to inspect the directory and/or remove it, if you find everything
+  working properly.
+
+EOF
+
+# Check for duplicate SMF service names
+{
+dup_svc=($(svcs -Ho svc -a|sed 's/.*\///'|sort|uniq -c|awk '{if ( $1!="1" ) print $2}'))
+i=${#dup_svc[@]}
+while [ $((i--)) -gt 0 ]; do
+  if ! svcs -Ho svc ${dup_svc[$i]} | grep pkgsrc >/dev/null; then
+    unset dup_svc[$i]
+  fi
+done
+
+cat <<EOF
+
+- Duplicate SMF service names found. Starting with the 2012Q1 package set, all
+  pkgsrc packages were changed to use the 'pkgsrc/*' SMF namespace, to stand
+  out against stock SmartOS services.
+  
+  This script didn't delete any existing service, just in case you made any
+  modifications to the SMF manifests, but the old service definitions may
+  be out of sync with the latest package contents (e.g. start/stop commands
+  changed). You should stop the old services, remove the old definitions,
+  and re-start the services under the new names. The following table lists
+  the name changes on this machine:
+
+EOF
+printf "    %-20s %-20s %-20s\n" "SERVICE" "NEW NAME" "OLD NAME(S)"; for svc in ${dup_svc[@]}; do
+  unset new_name old_name
+  for svcname in $(svcs -Ho svc ${svc}|sort -u); do
+    case ${svcname} in
+      pkgsrc/*) new_name=${svcname} ;;
+      *) old_name=(${old_name[@]} ${svcname}) ;;
+    esac
+  done
+  printf "    %-20s %-20s %-20s\n" "${svc}" "${new_name}" "${old_name[@]}"
+done
+cat <<EOF
+
+  For instance, with '${svc}', you would do this:
+
+    svcadm disable ${old_name}
+    svccfg delete ${old_name}
+    svcadm enable ${new_name}
+
+  To see differences made to the definition, you can use 'diff' to compare
+  the old and new services:
+
+    svccfg export old_name | diff - <(svccfg export new_name)
+
+EOF
+}
+
+# Check for processes needing restart
+{
+if pgrep -f /opt/local >/dev/null; then
+  cat <<EOF
+- This machine seems to have processes running that reference files under the 
+  /opt/local path. Since the entire /opt/local path has been re-built, the
+  in-memory processes are likely out of sync with their on-disk origins, and
+  may misbehave. It is strongly suggested to restart the relevant services
+  (e.g. using 'svcadm restart <service>), though the ultimate way of proving
+  the machine is healthy is to reboot it now ('reboot'), then check that all
+  services are running properly, using 'svcs -vx'.
+
+EOF
+fi
+}
+
+# Finish
+cat <<EOF
+
+- The script finished with no errors.
+
+EOF

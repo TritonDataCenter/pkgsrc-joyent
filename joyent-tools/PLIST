@@ -1,3 +1,10 @@
 @comment $NetBSD$
-bin/jinf
+bin/apt-cache
+bin/apt-get
+bin/machine-info
+bin/machine-upgrade
+bin/pkg
 bin/pkghelp
+bin/port
+bin/rpm
+bin/yum
