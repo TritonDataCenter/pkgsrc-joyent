@@ -33,6 +33,9 @@ POST-INSTALL)
     </dependency>
     <method_context>
       <method_credential user="@ENSTRATUS_USER@" group="@ENSTRATUS_USER@" />
+      <method_environment>
+        <envvar name="PATH" value="@PREFIX@/bin:@PREFIX@/sbin:/usr/bin:/usr/sbin:/bin" />
+      </method_environment>
     </method_context>
     <exec_method type="method" name="start" exec="@PREFIX@/enstratus/bin/enstratus-service start" timeout_seconds="600" />
     <exec_method type="method" name="stop" exec="@PREFIX@/enstratus/bin/enstratus-service stop" timeout_seconds="6000" />
