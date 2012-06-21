@@ -1,0 +1,11 @@
+$NetBSD$
+
+SHA1 (instantclient/instantclient-basiclite-solaris.x64-11.2.0.3.0.zip) = ad3518804d21cca7a68c457ca7f2c2efdf0bb907
+RMD160 (instantclient/instantclient-basiclite-solaris.x64-11.2.0.3.0.zip) = c0416a7d3e108ef78a8069b7e6544bc1224cc0f1
+Size (instantclient/instantclient-basiclite-solaris.x64-11.2.0.3.0.zip) = 23845340 bytes
+SHA1 (instantclient/instantclient-sdk-solaris.x64-11.2.0.3.0.zip) = 410791a2046296568b266b9e360bfc63bceae97b
+RMD160 (instantclient/instantclient-sdk-solaris.x64-11.2.0.3.0.zip) = 8eb693b865ae428bef3ea04a1fe8fda5d9c7ca55
+Size (instantclient/instantclient-sdk-solaris.x64-11.2.0.3.0.zip) = 640414 bytes
+SHA1 (instantclient/instantclient-sqlplus-solaris.x64-11.2.0.3.0.zip) = 9e5db6e67d3c53a854aceee274a256d66b7f9280
+RMD160 (instantclient/instantclient-sqlplus-solaris.x64-11.2.0.3.0.zip) = 208cc5540783262ff566fc304188e3f02166b38f
+Size (instantclient/instantclient-sqlplus-solaris.x64-11.2.0.3.0.zip) = 809010 bytes

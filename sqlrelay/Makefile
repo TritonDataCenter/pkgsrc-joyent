@@ -45,15 +45,38 @@ CONF_FILES+=		${EGDIR}/sqlrelay \
 
 INSTALLATION_DIRS=	${PREFIX}/share/examples/rc.d
 
+SQLR_USER?=		sqlrelay
+SQLR_GROUP?=		${SQLR_USER}
 SQLR_DATA?=		${VARBASE}/sqlrelay
+
+PKG_GROUPS+=		${SQLR_USER}
+PKG_USERS+=		${SQLR_USER}:${SQLR_GROUP}
+PKG_GECOS.${SQLR_USER}=	SQL Relay daemon user
+
 OWN_DIRS+=		${SQLR_DATA}
 OWN_DIRS+=		${SQLR_DATA}/tmp
 OWN_DIRS+=		${SQLR_DATA}/tmp/ipc
 OWN_DIRS+=		${SQLR_DATA}/tmp/pids
 OWN_DIRS+=		${SQLR_DATA}/tmp/sockets
 
+OWN_DIRS_PERMS+=	${SQLR_DATA} ${SQLR_USER} ${SQLR_GROUP} 0775
+OWN_DIRS_PERMS+=	${SQLR_DATA}/tmp ${SQLR_USER} ${SQLR_GROUP} 0775
+OWN_DIRS_PERMS+=	${SQLR_DATA}/tmp/ipc ${SQLR_USER} ${SQLR_GROUP} 0775
+OWN_DIRS_PERMS+=	${SQLR_DATA}/tmp/pids ${SQLR_USER} ${SQLR_GROUP} 0775
+OWN_DIRS_PERMS+=	${SQLR_DATA}/tmp/sockets ${SQLR_USER} ${SQLR_GROUP} 0775
+
 RCD_SCRIPTS+=		sqlrelay
 RCD_SCRIPT_SRC.sqlrelay=	${WRKSRC}/init/netbsd/rc.d/sqlrelay
+
+.include "../../mk/bsd.prefs.mk"
+
+.if ${OPSYS} == "SunOS"
+SUBST_CLASSES+=		ps
+SUBST_STAGE.ps=		post-patch
+SUBST_MESSAGE.ps=	Fixing ps command
+SUBST_FILES.ps=		config.mk.in
+SUBST_SED.ps=		-e 's,@PS@,ps\\ \\-afel,g'
+.endif
 
 .include "options.mk"
 

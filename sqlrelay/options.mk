@@ -70,9 +70,13 @@ CONFIGURE_ARGS+=	--disable-freetds
 .endif
 
 .if !empty(PKG_OPTIONS:Moracle)
+# Joyent hack (user needs to fetch Instant Client from Oracle themselves)
+BUILDLINK_DEPMETHOD.instantclient=	build
 .include "../../joyent/instantclient/buildlink3.mk"
-CONFIGURE_ARGS+=	--with-oracle-instantclient-prefix=${BUILDLINK_PREFIX.instantclient}/oracle/${ORACLE_VERSION}/instantclient
+CONFIGURE_ARGS+=	--with-oracle-instantclient-prefix=${BUILDLINK_PREFIX.instantclient}/${ORACLE_IC_HOME}
 PLIST.oracle=		yes
+CHECK_SHLIBS_SUPPORTED=	no
+MESSAGE_SRC+=		MESSAGE.oracle
 .else
 CONFIGURE_ARGS+=	--disable-oracle
 .endif

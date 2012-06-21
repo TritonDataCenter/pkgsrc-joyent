@@ -1,0 +1,20 @@
+===========================================================================
+$NetBSD$
+
+This package was built with Oracle Database support. In order for this
+support to work, you need to either have Oracle Database installed on this
+machine, or download the Oracle Instant Client libraries from:
+
+  ${ORACLE_IC_DOWNLOAD}
+
+The binaries in this package will look for the needed libs at:
+
+  ${PREFIX}/${ORACLE_IC_HOME}
+
+If your Oracle Database or Oracle Instant Client are installed elsewhere,
+make sure to set LD_LIBRARY_PATH in your environment (everywhere the Oracle
+Database functionality is needed), this way:
+
+  LD_LIBRARY_PATH=${PREFIX}/${ORACLE_IC_HOME}:$LD_LIBRARY_PATH
+
+===========================================================================

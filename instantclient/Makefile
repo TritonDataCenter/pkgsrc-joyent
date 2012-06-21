@@ -1,8 +1,7 @@
 # $NetBSD$
 #
 
-DISTNAME=	instantclient-${ORACLE_VERSION}
-PKGREVISION=	1
+DISTNAME=	instantclient-${ORACLE_VERSION:S/_/./}.0.3.0
 CATEGORIES=	devel
 #MASTER_SITES=	#
 
@@ -13,29 +12,20 @@ COMMENT=	Oracle Database Instant Client
 
 PKG_DESTDIR_SUPPORT=	user-destdir
 
+.include "version.mk"
+
 USE_TOOLS+=	pax unzip
 NO_BUILD=	yes
 
 DIST_SUBDIR=	instantclient
-DISTFILES=	basic-${PKGVERSION_NOREV}-${OS_PLATFORM}.zip
-DISTFILES+=	sdk-${PKGVERSION_NOREV}-${OS_PLATFORM}.zip
-DISTFILES+=	sqlplus-${PKGVERSION_NOREV}-${OS_PLATFORM}.zip
+DISTFILES=	instantclient-basiclite-${OS_PLATFORM}-${PKGVERSION_NOREV}.zip
+DISTFILES+=	instantclient-sdk-${OS_PLATFORM}-${PKGVERSION_NOREV}.zip
+DISTFILES+=	instantclient-sqlplus-${OS_PLATFORM}-${PKGVERSION_NOREV}.zip
 DISTINFO_FILE=	${.CURDIR}/distinfo.${OS_PLATFORM}
 
-WRKSRC=		${WRKDIR}/instantclient_11_2
+WRKSRC=		${WRKDIR}/instantclient_${ORACLE_VERSION}
 
 CHECK_SHLIBS_SUPPORTED=	no
-
-.include "../../mk/bsd.prefs.mk"
-
-ORACLE_VERSION=	11.2.0.2.0
-.if ${OPSYS} == "SunOS"
-. if ${MACHINE_ARCH} == "x86_64" || defined(ABI:M64)
-OS_PLATFORM=	solaris-x64
-. else
-OS_PLATFORM=	solaris-x32
-. endif
-.endif
 
 RESTRICTED=	Packaging prohibited by Oracle license
 NO_BIN_ON_CDROM=	${RESTRICTED}
@@ -45,7 +35,7 @@ NO_SRC_ON_FTP=		${RESTRICTED}
 
 BINS_LIST=	adrci genezi sqlplus uidrvci
 LIBS_LIST=	libclntsh.so.11.1 libclntsh.so libnnz11.so libocci.so.11.1    \
-		libocci.so libociei.so libocijdbc11.so libsqlplus.so          \
+		libocci.so libocijdbc11.so libsqlplus.so          \
 		libsqlplusic.so
 MISC_LIST=	glogin.sql ojdbc5.jar ojdbc6.jar xstreams.jar
 SDK_LIST+=	SDK_README demo/demo.mk demo/cdemo81.c demo/occidemo.sql      \
@@ -70,10 +60,7 @@ FETCH_MESSAGE+=		"    http://www.oracle.com/technetwork/database/features/instan
 FETCH_MESSAGE+=		" Save them in this directory:"
 FETCH_MESSAGE+=         "    ${DISTDIR}/${DIST_SUBDIR}/"
 
-INSTALLATION_DIRS+=	bin lib oracle/${ORACLE_VERSION}/instantclient
-
-MESSAGE_SUBST+=		PKGVERSION_NOREV=${PKGVERSION_NOREV}
-PLIST_SUBST+=		PKGVERSION_NOREV=${PKGVERSION_NOREV}
+INSTALLATION_DIRS+=	bin lib ${ORACLE_IC_HOME}
 
 post-extract:
 	cd ${WRKSRC} && ${LN} -s libclntsh.so.11.1 libclntsh.so \
@@ -83,23 +70,23 @@ post-extract:
 do-install:
 .	for file in ${BINS_LIST}
 	${INSTALL_PROGRAM} ${WRKSRC}/${file} \
-	  ${DESTDIR}${PREFIX}/oracle/${ORACLE_VERSION}/instantclient/${file}
-	${LN} -s ../oracle/${ORACLE_VERSION}/instantclient/${file} \
+	  ${DESTDIR}${PREFIX}/${ORACLE_IC_HOME}/${file}
+	${LN} -s ../${ORACLE_IC_HOME}/${file} \
 	  ${DESTDIR}${PREFIX}/bin/${file}
 .	endfor
 .	for file in ${LIBS_LIST}
 	${INSTALL_LIB} ${WRKSRC}/${file} \
-	  ${DESTDIR}${PREFIX}/oracle/${ORACLE_VERSION}/instantclient/${file}
-	${LN} -s ../oracle/${ORACLE_VERSION}/instantclient/${file} \
+	  ${DESTDIR}${PREFIX}/${ORACLE_IC_HOME}/${file}
+	${LN} -s ../${ORACLE_IC_HOME}/${file} \
 	  ${DESTDIR}${PREFIX}/lib/${file}
 .	endfor
 .	for file in ${MISC_LIST}
 	${INSTALL_LIB} ${WRKSRC}/${file} \
-	  ${DESTDIR}${PREFIX}/oracle/${ORACLE_VERSION}/instantclient/${file}
+	  ${DESTDIR}${PREFIX}/${ORACLE_IC_HOME}/${file}
 .	endfor
 .	for file in ${SDK_LIST}
 	${INSTALL_DATA} ${WRKSRC}/sdk/${file} \
-	  ${DESTDIR}${PREFIX}/oracle/${ORACLE_VERSION}/instantclient/sdk/${file}
+	  ${DESTDIR}${PREFIX}/${ORACLE_IC_HOME}/sdk/${file}
 .	endfor
 
 .include "../../mk/bsd.pkg.mk"
