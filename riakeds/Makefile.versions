@@ -20,7 +20,7 @@ _RIAK_VERSIONS+=			\
 	protobuffs	0.6.0		\
 	riak_control	0.1.0		\
 	riak_core	1.1.2		\
-	riak_kv		1.1.2		\
+	riak_kv		1.1.4		\
 	riak_pipe	1.1.2		\
 	riak_search	1.1.2		\
 	riak_sysmon	1.1.2		\
@@ -30,7 +30,7 @@ _RIAK_VERSIONS+=			\
 
 _RIAK_VERSIONS+=			\
 	riak_jmx	1.1.1		\
-	riak_repl	1.1.2		\
+	riak_repl	1.1.3		\
 	riak_snmp	1.0.0
 
 .for name version in ${_RIAK_VERSIONS}
