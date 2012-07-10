@@ -2,6 +2,7 @@
 #
 
 DISTNAME=		node-v0.6.19
+PKGREVISION=		1
 PKGNAME=		${DISTNAME:S/-v/js-/}
 CATEGORIES=		devel
 MASTER_SITES=		http://nodejs.org/dist/${DISTNAME:S/node-//}/
@@ -41,19 +42,6 @@ CHECK_INTERPRETER_SKIP+=	lib/node/wafadmin/*
 CHECK_INTERPRETER_SKIP+=	lib/node_modules/npm/*
 
 PLIST_VARS+=	dtrace
-
-NODEJS_USER?=		node
-NODEJS_GROUP?=		node
-NODEJS_HOME?=		${HOMEBASE}/${NODEJS_USER}
-
-PKG_GROUPS+=		${NODEJS_GROUP}
-PKG_USERS+=		${NODEJS_USER}:${NODEJS_GROUP}
-PKG_GECOS.${NODEJS_USER}=	Node.JS daemon user
-PKG_HOME.${NODEJS_USER}=	${NODEJS_HOME}
-PKG_SHELL.${NODEJS_USER}=	${COMMAND_SHELL}
-
-OWN_DIRS+=		${NODEJS_HOME}
-OWN_DIRS_PERMS+=	${NODEJS_HOME} ${NODEJS_USER} ${NODEJS_GROUP} 0750
 
 .include "../../lang/python/application.mk"
 .include "../../mk/bsd.pkg.mk"
