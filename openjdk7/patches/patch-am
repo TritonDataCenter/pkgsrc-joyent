@@ -1,0 +1,13 @@
+$NetBSD: patch-am,v 1.2 2011/08/21 22:57:55 tnn Exp $
+
+--- jdk/make/common/shared/Defs.gmk.orig	2011-06-27 17:18:31.000000000 +0000
++++ jdk/make/common/shared/Defs.gmk
+@@ -290,7 +290,7 @@ else
+   BUILD_NUMBER = b00
+   ifndef USER_RELEASE_SUFFIX
+     BUILD_DATE := $(shell $(DATE) '+%Y_%m_%d_%H_%M')
+-    CLEAN_USERNAME := $(shell $(ECHO) "$(USER)" | $(TR) -d -c '[:alnum:]')
++    CLEAN_USERNAME := pkgsrc
+     USER_RELEASE_SUFFIX := $(shell $(ECHO) "$(CLEAN_USERNAME)_$(BUILD_DATE)" | $(TR) '[:upper:]' '[:lower:]' )
+   endif
+   export USER_RELEASE_SUFFIX

@@ -1,0 +1,39 @@
+$NetBSD$
+
+--- corba/make/common/shared/Platform.gmk.orig	2012-04-11 10:44:03.874909362 +0000
++++ corba/make/common/shared/Platform.gmk
+@@ -143,7 +143,7 @@ ifeq ($(SYSTEM_UNAME), SunOS)
+     REQUIRED_FREE_SPACE=1040000
+   endif
+   # How much RAM does this machine have:
+-  MB_OF_MEMORY=$(shell /etc/prtconf | fgrep 'Memory size:' | expand | cut -d' ' -f3)
++  MB_OF_MEMORY=$(shell /usr/sbin/prtconf 2>/dev/null| fgrep 'Memory size:' | expand | cut -d' ' -f3)
+ endif
+ 
+ # Platform settings specific to Linux
+@@ -238,6 +238,13 @@ ifeq ($(SYSTEM_UNAME), FreeBSD)
+   REQUIRED_OS_VERSION = 6.0
+ endif
+ 
++ifeq ($(SYSTEM_UNAME), DragonFly)
++  PLATFORM = bsd
++  OS_NAME = dragonfly
++  OS_VENDOR = DragonFlyBSD
++  REQUIRED_OS_VERSION = 2.4
++endif
++
+ ifeq ($(SYSTEM_UNAME), Darwin)
+   PLATFORM = bsd
+   OS_NAME = darwin
+@@ -320,9 +327,9 @@ ifeq ($(PLATFORM), bsd)
+   REQUIRED_FREE_SPACE=1500000
+   # How much RAM does this machine have:
+   ifeq ($(OS_VENDOR), OpenBSD)
+-    MB_OF_MEMORY=$(shell sysctl -n hw.physmem | awk '{print int($$NF / 1048576); }' )
++    MB_OF_MEMORY=$(shell /sbin/sysctl -n hw.physmem | awk '{print int($$NF / 1048576); }' )
+   else
+-    MB_OF_MEMORY=$(shell (sysctl -n hw.physmem64 2> /dev/null || sysctl -n hw.physmem) | awk '{print int($$NF / 1048576); }' )
++    MB_OF_MEMORY=$(shell (/sbin/sysctl -n hw.physmem64 2> /dev/null || sysctl -n hw.physmem) | awk '{print int($$NF / 1048576); }' )
+   endif
+ endif
+ 

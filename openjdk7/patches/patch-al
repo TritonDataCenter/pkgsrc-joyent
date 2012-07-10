@@ -1,0 +1,13 @@
+$NetBSD: patch-al,v 1.2 2011/08/21 22:57:55 tnn Exp $
+
+--- jdk/src/solaris/classes/sun/nio/fs/DefaultFileSystemProvider.java.orig	2011-08-20 11:24:21.000000000 +0000
++++ jdk/src/solaris/classes/sun/nio/fs/DefaultFileSystemProvider.java
+@@ -68,7 +68,7 @@ public class DefaultFileSystemProvider {
+             return createProvider("sun.nio.fs.SolarisFileSystemProvider");
+         if (osname.equals("Linux"))
+             return createProvider("sun.nio.fs.LinuxFileSystemProvider");
+-        if (osname.endsWith("BSD") || osname.equals("Darwin"))
++        if (osname.endsWith("BSD") || osname.equals("Darwin") || osname.equals("DragonFly"))
+             return createProvider("sun.nio.fs.BsdFileSystemProvider");
+         throw new AssertionError("Platform not recognized");
+     }

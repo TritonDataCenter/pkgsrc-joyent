@@ -1,0 +1,15 @@
+$NetBSD$
+
+--- jdk/make/sun/awt/Makefile.orig	2012-05-22 07:32:41.772795132 +0000
++++ jdk/make/sun/awt/Makefile
+@@ -527,10 +527,8 @@ CPPFLAGS += -I$(SHARE_SRC)/native/$(PKGD
+ 	    $(EVENT_MODEL)
+ 
+ # include these last so we don't pick up unintentional includes
+-ifeq ($(PLATFORM), bsd)
+ CPPFLAGS += -I$(OPENWIN_HOME)/include \
+             -I$(OPENWIN_HOME)/include/X11/extensions
+-endif
+ 
+ ifneq (,$(findstring $(PLATFORM), linux bsd))
+ LDFLAGS += -L$(OPENWIN_LIB)
