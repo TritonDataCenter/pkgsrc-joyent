@@ -11,3 +11,12 @@ $NetBSD: patch-bm,v 1.1 2009/10/18 10:21:01 tnn Exp $
          CPPFLAGS += -I$(PACKAGE_PATH)/include
          OTHER_LDLIBS += -L$(PACKAGE_PATH)/lib -liconv
        else
+@@ -79,7 +79,7 @@ ifneq ($(PLATFORM), windows)
+     OTHER_LDLIBS += -L$(OPENWIN_LIB) -lX11 -lXext $(LIBM) -pthread
+   else
+   CPPFLAGS += -I$(OPENWIN_HOME)/include -I$(OPENWIN_HOME)/include/X11/extensions
+-  OTHER_LDLIBS += -L$(OPENWIN_LIB) -lX11 -lXext $(LIBM) -lpthread
++  OTHER_LDLIBS += -L$(OPENWIN_LIB) -lX11 -lXext -liconv $(LIBM) -lpthread
+   endif
+ else # PLATFORM
+   CFLAGS += -DWITH_WIN32

@@ -69,7 +69,8 @@ MAKE_ENV+=	SKIP_COMPARE_IMAGES=true
 MAKE_ENV+=	SKIP_FASTDEBUG_BUILD=yes
 MAKE_ENV+=	SKIP_DEBUG_BUILD=yes
 
-MAKE_ENV+=	EXTRA_CFLAGS="-DDEFAULT_LIBPATH=\\\"${PREFIX}/lib/jni:${PREFIX}/lib:/lib:/usr/lib\\\" -fpermissive"
+#MAKE_ENV+=	EXTRA_CFLAGS="-DDEFAULT_LIBPATH=\\\"${PREFIX}/lib/jni:${PREFIX}/lib:/lib:/usr/lib\\\" -fpermissive"
+MAKE_ENV+=	EXTRA_CFLAGS="-DDEFAULT_LIBPATH=\\\"${PREFIX}/lib/jni:${PREFIX}/lib:/lib:/usr/lib\\\""
 
 BUILDDIR=	${WRKSRC}/build/${OPSYS:C/.*BSD/bsd/:S/DragonFly/bsd/:S/SunOS/solaris/}-${MACHINE_ARCH:S/i386/i586/:S/x86_64/amd64/}
 PLIST_SUBST+=	ARCH=${MACHINE_ARCH:S/x86_64/amd64/}
