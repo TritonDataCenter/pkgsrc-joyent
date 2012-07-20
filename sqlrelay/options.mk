@@ -76,7 +76,6 @@ BUILDLINK_DEPMETHOD.instantclient=	build
 CONFIGURE_ARGS+=	--with-oracle-instantclient-prefix=${BUILDLINK_PREFIX.instantclient}/${ORACLE_IC_HOME}
 PLIST.oracle=		yes
 CHECK_SHLIBS_SUPPORTED=	no
-MESSAGE_SRC+=		MESSAGE.oracle
 .else
 CONFIGURE_ARGS+=	--disable-oracle
 .endif

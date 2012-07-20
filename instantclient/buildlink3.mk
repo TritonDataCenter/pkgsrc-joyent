@@ -11,6 +11,8 @@ BUILDLINK_API_DEPENDS.instantclient+=	instantclient>=${ORACLE_VERSION:S/_/./}.0.
 BUILDLINK_PKGSRCDIR.instantclient?=	../../joyent/instantclient
 BUILDLINK_LDFLAGS.instantclient+=	${COMPILER_RPATH_FLAG}${PREFIX}/${ORACLE_IC_HOME}
 BUILDLINK_LIBDIRS.instantclient+=	${ORACLE_IC_HOME}
+
+MESSAGE_SRC+=../../joyent/instantclient/MESSAGE.instantclient
 .endif	# INSTANTCLIENT_BUILDLINK3_MK
 
 BUILDLINK_TREE+=	-instantclient
