@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-DISTNAME=		riak_ee-1.1.4
+DISTNAME=		riak_ee-1.2.0
 PKGNAME=		${DISTNAME:S/_ee/eds/}
 CATEGORIES=		none
 MASTER_SITES=		#
@@ -30,18 +30,22 @@ EXTRACT_ONLY+=		${INNOSTORE}
 
 .include "../../mk/bsd.prefs.mk"
 .include "options.mk"
+
 .include "../../lang/erlang/Makefile.versions"
 .include "Makefile.versions"
+
+BUILD_DEFS+=		VARBASE RIAK_USER RIAK_GROUP
+BUILD_DEFS+=		RIAK_DATA RIAK_LOG
 
 RIAK_USER?=		riak
 RIAK_GROUP?=		${RIAK_USER}
 RIAK_DATA?=		${VARBASE}/db/riak
 RIAK_LOG?=		${VARBASE}/log/riak
-RIAK_HOME?=		${RIAK_DATA}
 
 PKG_GROUPS+=		${RIAK_GROUP}
 PKG_USERS+=		${RIAK_USER}:${RIAK_GROUP}
 PKG_HOME.${RIAK_USER}=	${RIAK_DATA}
+PKG_GECOS.${RIAK_USER}=	Riak daemon user
 
 OWN_DIRS+=		${RIAK_DATA} ${RIAK_LOG} ${RIAK_DATA}/snmp
 OWN_DIRS+=		${RIAK_DATA}/snmp/agent ${RIAK_DATA}/snmp/agent/db
@@ -85,14 +89,15 @@ REPLACE_FILES.escript=	rel/files/nodetool
 REPLACE_FILES.escript+=	${WRKDIR}/innostore-${INNOVER}/priv/innodump
 REPLACE_FILES.escript+=	${WRKDIR}/innostore-${INNOVER}/priv/innoload
 
-CHECK_PORTABILITY_SKIP+=	tests/riak_search/run_all.sh
+CHECK_PORTABILITY_SKIP+=	tests/riak_search/run_all.sh	\
+				deps/riak_search/tests/riak_search/run_all.sh
 
 MAKE_ENV+=		PATCH=${PATCH:Q}
 
 INSTALL_ENV+=		REPO=riak_ee
 INSTALL_ENV+=		PKG_VERSION=${PKGVERSION_NOREV}
-INSTALL_ENV+=		OPSYS=${OPSYS}
-INSTALL_ENV+=		MACHINE_ARCH=${MACHINE_ARCH}
+INSTALL_ENV+=		OSNAME=${OPSYS}
+INSTALL_ENV+=		ARCH=${MACHINE_ARCH}
 
 FETCH_MESSAGE =		" The file ${DISTNAME}${EXTRACT_SUFX} must be fetched"
 FETCH_MESSAGE+=		" from the Basho site, and saved to"
@@ -101,6 +106,12 @@ PKGREPOSITORYSUBDIR=	restricted
 
 post-extract:
 	${CHMOD} -R u=rwX,g=rX,o=rX ${WRKDIR}/innostore-${INNOVER}
+	${CHOWN} -R ${ROOT_USER}:${ROOT_GROUP} \
+	  ${WRKDIR}/innostore-${INNOVER} ${WRKSRC}
+	cp ${FILESDIR}/disable_visibility_on_sun.patch \
+	  ${WRKDIR}/innostore-${INNOVER}/c_src/patches
+	cp ${FILESDIR}/js-src-jslock.c.patch \
+	  ${WRKSRC}/deps/erlang_js/c_src/patches
 
 do-install:
 	${MKDIR} ${WRKSRC}/package/pkgsrc

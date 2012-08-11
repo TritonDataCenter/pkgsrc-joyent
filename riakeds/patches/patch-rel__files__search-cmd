@@ -1,15 +1,14 @@
 $NetBSD$
 
-Avoiding sudo -i makes the scripts much more usable.
---- rel/files/search-cmd.orig	2012-03-07 21:21:46.000000000 +0000
+Silence sudo (unneeded screen waste).
+--- rel/files/search-cmd.orig	2012-08-06 21:57:12.000000000 +0000
 +++ rel/files/search-cmd
-@@ -16,8 +16,7 @@ if [ "$RUNNER_USER" -a "x$LOGNAME" != "x
-         echo "sudo doesn't appear to be installed and your EUID isn't $RUNNER_USER" 1>&2
+@@ -25,7 +25,7 @@ if [ "$RUNNER_USER" -a "x$LOGNAME" != "x
          exit 1
      fi
--    echo "Attempting to restart script through sudo -u $RUNNER_USER"
--    exec sudo -u $RUNNER_USER -i $RUNNER_SCRIPT_DIR/$RUNNER_SCRIPT $@
-+    exec sudo -u $RUNNER_USER $RUNNER_SCRIPT_DIR/$RUNNER_SCRIPT $@
+     echo "Attempting to restart script through sudo -H -u $RUNNER_USER"
+-    exec sudo -H -u $RUNNER_USER -i $RUNNER_SCRIPT_DIR/$RUNNER_SCRIPT $@
++    exec sudo -H -u $RUNNER_USER $RUNNER_SCRIPT_DIR/$RUNNER_SCRIPT $@
  fi
  
  # Make sure CWD is set to runner base dir
