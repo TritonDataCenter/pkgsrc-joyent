@@ -1,8 +1,8 @@
 $NetBSD$
 
-SHA1 (node-v0.6.20.tar.gz) = 91da1dde9badd5250f3d4829c47757de0caab84b
-RMD160 (node-v0.6.20.tar.gz) = abc2fd3a0a88c337a75e77ffaeb210738679aeab
-Size (node-v0.6.20.tar.gz) = 10236335 bytes
+SHA1 (node-v0.6.21.tar.gz) = 31f564bf34c64b07cae3b9a88a87b4a08bab4dc5
+RMD160 (node-v0.6.21.tar.gz) = ad50579ea9d07843da91e3e5288f4e6f22a4fdc6
+Size (node-v0.6.21.tar.gz) = 10235165 bytes
 SHA1 (patch-sunar.py) = 8d58eb44ac2e6a071b285e642bb47e555239d472
 SHA1 (patch-suncc.py) = 775fd184e1280fdfdce869a6d83dc91b1c45c1ce
 SHA1 (patch-waf-light) = b5d7e422201c11612d6c6ec8056ccc0bde11672a
