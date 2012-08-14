@@ -1,7 +1,7 @@
-# $NetBSD: Makefile,v 1.7 2006/06/04 16:26:52 joerg Exp $
+# $NetBSD$
 
 MODNAME=		sphinx
-PECL_VERSION=		1.1.0
+PECL_VERSION=		1.2.0
 CATEGORIES+=		databases joyent
 COMMENT=		Client extension for Sphinx
 
