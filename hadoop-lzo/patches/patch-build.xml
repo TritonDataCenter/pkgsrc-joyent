@@ -1,0 +1,36 @@
+$NetBSD$
+
+--- build.xml.orig	2012-09-17 12:34:37.000000000 +0000
++++ build.xml
+@@ -120,10 +120,7 @@
+   <property name="ant_task_repo_url"
+     value="${mvnrepo}${tsk.org}${ant-task.version}/maven-ant-tasks-${ant-task.version}.jar"/>
+ 
+-   <!-- set -no-as-needed for gnu ld -->
+-   <condition property="native.ldflags" value="" else="-Wl,--no-as-needed">
+-     <os family="mac"/>
+-   </condition>
++  <property name="native.ldflags" value="@LDFLAGS@"/>
+ 
+   <!-- the normal classpath -->
+   <path id="classpath">
+@@ -211,7 +208,9 @@
+       <format property="build_time" pattern="MM/dd/yyyy hh:mm aa" timezone="GMT"/>
+     </tstamp>
+     <exec executable="${src.dir}/get_build_revision.sh" outputproperty="build_revision" />
+-    <exec executable="whoami" outputproperty="build_author"/>
++    <exec executable="id" outputproperty="build_author">
++      <arg value="-un"/>
++    </exec>
+     <exec executable="uname" outputproperty="build_os">
+       <arg value="-a"/>
+     </exec>
+@@ -273,7 +272,7 @@
+ 
+     <exec dir="${build.native}" executable="sh" failonerror="true">
+        <env key="OS_NAME" value="${os.name}"/>
+-       <env key="OS_ARCH" value="${os.arch}"/>
++       <env key="OS_ARCH" value="@JAVA_ARCH@"/>
+        <env key="LDFLAGS" value="${native.ldflags}"/>
+        <env key="JVM_DATA_MODEL" value="${sun.arch.data.model}"/>
+        <env key="NATIVE_SRCDIR" value="${native.src.dir}"/>
