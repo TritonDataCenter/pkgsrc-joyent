@@ -1,5 +1,6 @@
 $NetBSD$
 
+No error.h here.
 --- src/c++/libhdfs/hdfsJniHelper.c.orig	2012-05-08 20:34:53.000000000 +0000
 +++ src/c++/libhdfs/hdfsJniHelper.c
 @@ -15,7 +15,9 @@

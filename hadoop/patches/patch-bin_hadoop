@@ -1,0 +1,14 @@
+$NetBSD$
+
+Set the architecture properly.
+--- bin/hadoop.orig	2012-05-08 20:34:50.000000000 +0000
++++ bin/hadoop
+@@ -319,7 +320,7 @@ fi
+ #Determine the JAVA_PLATFORM
+ JAVA_PLATFORM=`CLASSPATH=${CLASSPATH} ${JAVA} -Xmx32m ${HADOOP_JAVA_PLATFORM_OPTS} org.apache.hadoop.util.PlatformName | sed -e "s/ /_/g"`
+   
+-if [ "$JAVA_PLATFORM" = "Linux-amd64-64" ]; then
++if [[ "$JAVA_PLATFORM" =~ 64$ ]]; then
+   JSVC_ARCH="amd64"
+ else
+   JSVC_ARCH="i386"

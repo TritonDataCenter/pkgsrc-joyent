@@ -18,17 +18,13 @@ PKG_DESTDIR_SUPPORT=	user-destdir
 USE_LANGUAGES=		c c++
 USE_LIBTOOL=		yes
 
-BUILD_DEPENDS+=	apache-ant-[0-9]*:../../devel/apache-ant
+.include "../../joyent/hadoop/Makefile.common"
+
+DEPENDS+=		hadoop-[0-9]*:../../joyent/hadoop
 
 MAKE_ENV+=		JAVA_HOME=${PKG_JAVA_HOME}			\
 			C_INCLUDE_PATH=${BUILDLINK_PREFIX.lzo}/include	\
 			LIBRARY_PATH=${BUILDLINK_PREFIX.lzo}/lib
-
-.if defined(MACHINE_ARCH) && ${MACHINE_ARCH} == "x86_64"
-JAVA_ARCH=		amd64
-.else
-JAVA_ARCH=		i386
-.endif
 
 SUBST_CLASSES+=		ldflags
 SUBST_STAGE.ldflags=	pre-build
@@ -37,18 +33,18 @@ SUBST_FILES.ldflags=	build.xml
 SUBST_VARS.ldflags=	LDFLAGS JAVA_ARCH
 
 HADOOP_HOME?=		hadoop
-INSTALLATION_DIRS+=	${HADOOP_HOME}/${DISTNAME}
+INSTALLATION_DIRS+=	${HADOOP_HOME}/lib/native/${HADOOP_ARCH}
 
-do-build:
-	cd ${WRKSRC} && ${PKGSRC_SETENV} ${MAKE_ENV} ant package
+BUILD_TARGETS+=	compile jar
 
 do-test:
-	cd ${WRKSRC} && ${PKGSRC_SETENV} ${MAKE_ENV} ant test
+	cd ${WRKSRC} && ${PKGSRC_SETENV} ${MAKE_ENV} ant test ${MAKE_ARGS}
 
 do-install:
-	cd ${WRKSRC} && ${CP} -Rp build/${PKGNAME_NOREV}-SNAPSHOT/* ${DESTDIR}${PREFIX}/${HADOOP_HOME}/${DISTNAME}/
+	cd ${WRKSRC}/build/native/${HADOOP_ARCH}/lib && \
+	  ${PAX} -rw -p e * ${DESTDIR}${HADOOP_HOME}/lib/native/${HADOOP_ARCH}
+	${INSTALL_DATA} ${WRKSRC}/build/hadoop-lzo-0.4.17-SNAPSHOT.jar ${DESTDIR}${HADOOP_HOME}
 
-.include "../../wip/mk/git-package.mk"
 .include "../../archivers/lzo/buildlink3.mk"
-.include "../../mk/java-vm.mk"
+.include "../../wip/mk/git-package.mk"
 .include "../../mk/bsd.pkg.mk"

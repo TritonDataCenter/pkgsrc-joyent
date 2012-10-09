@@ -1,4 +1,4 @@
 $NetBSD$
 
-SHA1 (patch-build.xml) = 8480c623380e005077aa66f32de691712bf855b1
-SHA1 (patch-src_native_configure) = 1cebf2f3f87167d6644741f87c4e5f773b8f1303
+SHA1 (patch-build.xml) = 6fb87c3e68d31fad4f4048722182a217a0bff16c
+SHA1 (patch-src_native_configure) = d5b614fe63b0cbff00ad0b36c3af12a3586b988b

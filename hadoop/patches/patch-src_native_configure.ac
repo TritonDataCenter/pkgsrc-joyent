@@ -1,5 +1,6 @@
 $NetBSD$
 
+Needs EXTENSIONS.
 --- src/native/configure.ac.orig	2012-05-08 20:34:53.000000000 +0000
 +++ src/native/configure.ac
 @@ -39,6 +39,7 @@ AC_CONFIG_SRCDIR([src/org_apache_hadoop.

@@ -1,0 +1,27 @@
+# $NetBSD$
+#
+# used by joyent/hadoop/Makefile
+# used by joyent/hadoop-lzo/Makefile
+
+BUILD_DEPENDS+= apache-ant-[0-9]*:../../devel/apache-ant
+
+.include "../../mk/bsd.prefs.mk"
+
+PKG_SYSCONFSUBDIR=	hadoop
+
+.if ${MACHINE_ARCH} == "x86_64"
+JAVA_ARCH_FLAG=	-d64
+HADOOP_ARCH=	${OPSYS}-amd64-64
+.else
+HADOOP_ARCH=	${OPSYS}-x86-32
+.endif
+PLIST_SUBST+=	HADOOP_ARCH=${HADOOP_ARCH}
+
+HADOOP_HOME?=	${PREFIX}/hadoop
+
+MAKE_ENV+=	ANT_OPTS=-d${ABI}
+
+do-build:
+	cd ${WRKSRC} && ${PKGSRC_SETENV} ${MAKE_ENV} ant ${BUILD_TARGETS} ${MAKE_ARGS}
+
+.include "../../mk/java-vm.mk"

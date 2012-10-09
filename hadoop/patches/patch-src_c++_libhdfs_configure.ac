@@ -1,5 +1,6 @@
 $NetBSD$
 
+Remove gnuism.
 --- src/c++/libhdfs/configure.ac.orig	2012-05-08 20:34:52.000000000 +0000
 +++ src/c++/libhdfs/configure.ac
 @@ -80,7 +80,7 @@ AP_JVM_LIBDIR()

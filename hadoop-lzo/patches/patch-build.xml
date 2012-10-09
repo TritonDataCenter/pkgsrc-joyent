@@ -1,5 +1,6 @@
 $NetBSD$
 
+Don't override LDFLAGS. Use portable id instead of whoami.
 --- build.xml.orig	2012-09-17 12:34:37.000000000 +0000
 +++ build.xml
 @@ -120,10 +120,7 @@
@@ -25,12 +26,3 @@ $NetBSD$
      <exec executable="uname" outputproperty="build_os">
        <arg value="-a"/>
      </exec>
-@@ -273,7 +272,7 @@
- 
-     <exec dir="${build.native}" executable="sh" failonerror="true">
-        <env key="OS_NAME" value="${os.name}"/>
--       <env key="OS_ARCH" value="${os.arch}"/>
-+       <env key="OS_ARCH" value="@JAVA_ARCH@"/>
-        <env key="LDFLAGS" value="${native.ldflags}"/>
-        <env key="JVM_DATA_MODEL" value="${sun.arch.data.model}"/>
-        <env key="NATIVE_SRCDIR" value="${native.src.dir}"/>

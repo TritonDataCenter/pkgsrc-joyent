@@ -1,17 +1,18 @@
 $NetBSD$
 
---- src/native/configure.orig	2012-09-17 12:34:37.000000000 +0000
+Use ldd, not objdump (avoid sed pattern).
+--- src/native/configure.orig	2012-10-08 09:51:47.563627773 +0000
 +++ src/native/configure
-@@ -11380,7 +11380,7 @@ else
+@@ -11379,8 +11379,6 @@ else
+   if test -z "`${CC} ${CFLAGS} ${LDFLAGS} -o conftest conftest.c -llzo2 2>&1`"; then
          if test ! -z "`which otool | grep -v 'no otool'`"; then
        ac_cv_libname_lzo2=\"`otool -L conftest | grep lzo2 | sed -e 's/^	 *//' -e 's/ .*//'`\";
-     elif test ! -z "`which objdump | grep -v 'no objdump'`"; then
+-    elif test ! -z "`which objdump | grep -v 'no objdump'`"; then
 -      ac_cv_libname_lzo2="`objdump -p conftest | grep NEEDED | grep lzo2 | sed 's/\W*NEEDED\W*\(.*\)\W*$/\"\1\"/'`"
-+      ac_cv_libname_lzo2="`objdump -p conftest | grep NEEDED | grep lzo2 | awk '{print $2}' | sed 's/\(.*\)\W*$/\"\1\"/'`"
      elif test ! -z "`which ldd | grep -v 'no ldd'`"; then
        ac_cv_libname_lzo2="`ldd conftest | grep lzo2 | sed 's/^[^A-Za-z0-9]*\([A-Za-z0-9\.]*\)[^A-Za-z0-9]*=>.*$/\"\1\"/'`"
      else
-@@ -11931,7 +11931,7 @@ done
+@@ -11931,7 +11929,7 @@ done
  JNI_LDFLAGS=""
  if test "x$JAVA_HOME" != "x"
  then

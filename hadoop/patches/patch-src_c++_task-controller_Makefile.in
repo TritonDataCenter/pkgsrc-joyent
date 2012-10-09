@@ -1,5 +1,6 @@
 $NetBSD$
 
+Remove -Werror.
 --- src/c++/task-controller/Makefile.in.orig	2012-05-08 20:34:52.000000000 +0000
 +++ src/c++/task-controller/Makefile.in
 @@ -197,7 +197,7 @@ sbindir = @sbindir@

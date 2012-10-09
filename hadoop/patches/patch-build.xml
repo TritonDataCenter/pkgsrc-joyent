@@ -1,5 +1,6 @@
 $NetBSD$
 
+Fix the build (most of the patches as per the FreeBSD port).
 --- build.xml.orig	2012-05-08 20:35:00.000000000 +0000
 +++ build.xml
 @@ -443,7 +443,7 @@

@@ -5,27 +5,18 @@ DISTNAME=	hadoop-1.0.3
 CATEGORIES=	devel
 MASTER_SITES=	${MASTER_SITE_APACHE:=hadoop/common/${DISTNAME}/}
 
-MAINTAINER=	INSERT_YOUR_MAIL_ADDRESS_HERE
-HOMEPAGE=	http://www.us.apache.org/dist/hadoop/common/hadoop-1.0.3/
-COMMENT=	TODO: Short description of the package
-#LICENSE=	# TODO: (see mk/license.mk)
+MAINTAINER=	filip@joyent.com
+HOMEPAGE=	http://hadoop.apache.org/
+COMMENT=	Framework for distributed processing of large data sets
+LICENSE=	apache-2.0
 
 PKG_DESTDIR_SUPPORT=	user-destdir
 
 USE_LANGUAGES=          c c++
 USE_LIBTOOL=            yes
-USE_TOOLS+=		gmake autoconf automake pax
+USE_TOOLS+=		gmake autoconf automake pax tar
 
-BUILD_DEPENDS+= apache-ant-[0-9]*:../../devel/apache-ant
-
-.if ${MACHINE_ARCH} == "x86_64"
-HADOOP_ARCH=	${OPSYS}-amd64-64
-.else
-HADOOP_ARCH=	${OPSYS}-x86-32
-.endif
-PLIST_SUBST+=	HADOOP_ARCH=${HADOOP_ARCH}
-
-HADOOP_HOME?=	${PREFIX}/hadoop
+.include "../../joyent/hadoop/Makefile.common"
 
 CHECK_PORTABILITY_SKIP+=	src/contrib/streaming/src/test/system/scripts/StreamMapper.sh
 REPLACE_BASH+=	bin/hadoop bin/rcc bin/*.sh contrib/hdfsproxy/bin/*	\
@@ -52,13 +43,17 @@ CONF_FILES+=	share/examples/hadoop/${f} ${PKG_SYSCONFDIR}/${f}
 
 CPPFLAGS=	-D_POSIX_C_SOURCE=199506L -D__EXTENSIONS__
 
+SUBST_CLASSES+=	java
+SUBST_STAGE.java=	pre-build
+SUBST_FILES.java=	bin/hadoop bin/hadoop-config.sh conf/hadoop-env.sh
+SUBST_MESSAGE.java=	Fixing Java args
+SUBST_VARS.java=	JAVA_ARCH_FLAG PKG_SYSCONFDIR
+
 post-extract:
 	${RM} -rf ${WRKSRC}/lib/native/Linux-*
 
-do-build:
-	cd ${WRKSRC} && ${PKGSRC_SETENV} ${MAKE_ENV} ant ${BUILD_TARGETS} ${MAKE_ARGS}
-
 post-build:
+	cd ${WRKSRC} && ${RM} bin/hadoop.orig bin/hadoop-config.sh.orig conf/hadoop-env.sh.orig
 	cd ${WRKSRC} && ant FreeBSD-dist
 	(cd ${WRKSRC}/build/c++ && ${TAR} -cf - ${HADOOP_ARCH}/lib ${HADOOP_ARCH}/include) | \
 		(cd ${WRKSRC}/c++ && ${TAR} -xf -)
@@ -66,7 +61,7 @@ post-build:
 do-install:
 	${MKDIR} ${DESTDIR}${HADOOP_HOME}
 	cd ${WRKSRC} && ${PAX} -rw -p e ${DIST} ${DESTDIR}${HADOOP_HOME}/
-	cd ${WRKSRC}/c++/${HADOOP_ARCH} && ${PAX} -rw -p e  include lib ${DESTDIR}${PREFIX}/
+	cd ${WRKSRC}/c++/${HADOOP_ARCH} && ${PAX} -rw -p e  include lib ${DESTDIR}${PREFIX}
 	${MKDIR} ${DESTDIR}${PREFIX}/share/examples/hadoop
 .for f in ${DEFAULTS}
 	${INSTALL_DATA} ${WRKSRC}/${f} ${DESTDIR}${PREFIX}/share/examples/hadoop
@@ -78,6 +73,7 @@ do-install:
 	${INSTALL_DATA} ${WRKSRC}/${f} ${DESTDIR}${PREFIX}/share/doc/hadoop
 .endfor
 
-.include "../../mk/java-vm.mk"
+#.include "../../devel/snappy/buildlink3.mk"
+.include "../../devel/zlib/buildlink3.mk"
 .include "../../security/openssl/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"
