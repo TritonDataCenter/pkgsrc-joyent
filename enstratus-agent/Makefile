@@ -1,10 +1,10 @@
 # $NetBSD$
 #
 
-DISTNAME=	enstratus-agent-smartos-v16
-PKGNAME=	enstratus-agent-16
+DISTNAME=	enstratus-agent-smartos-latest
+PKGNAME=	enstratus-agent-17
 CATEGORIES=	sysutils
-MASTER_SITES=	http://library.enstratus.com/
+MASTER_SITES=	http://es-download.s3.amazonaws.com/
 
 MAINTAINER=	filip@joyent.com
 HOMEPAGE=	http://www.enstratus.com/
@@ -15,7 +15,7 @@ PKG_DESTDIR_SUPPORT=	user-destdir
 
 WRKSRC=		${WRKDIR}/enstratus
 USE_LANGUAGES=	# none
-USE_TOOLS+=	bash:run
+USE_TOOLS+=	bash:run pax
 NO_BUILD=	yes
 
 .include "../../mk/java-vm.mk"
@@ -62,7 +62,7 @@ post-extract:
 	  ${WRKSRC}/ws/content/WEB-INF/classes/
 
 do-install:
-	cd ${WRKSRC} && ${CP} -R * ${DESTDIR}${PREFIX}/enstratus/
+	cd ${WRKSRC} && ${PAX} -rw -p e * ${DESTDIR}${PREFIX}/enstratus/
 	${RM} ${DESTDIR}${PREFIX}/enstratus/install.sh
 
 .include "../../lang/python/application.mk"
