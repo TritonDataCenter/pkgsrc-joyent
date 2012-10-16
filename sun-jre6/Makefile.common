@@ -46,8 +46,7 @@ EXTRACT_ENV+=	UNPACK200_FLAGS=-Htrue
 
 do-extract:
 .	for f in ${DISTFILES}
-	cd ${DISTDIR} && ${CHMOD} +x ${f}
-	cd ${WRKDIR} && (echo "yes" | ${DISTDIR}/${f} --unpack >/dev/null)
+	cd ${WRKDIR} && (echo "yes" | ${SH} ${DISTDIR}/${f} --unpack >/dev/null)
 .	endfor
 
 off-do-install:
