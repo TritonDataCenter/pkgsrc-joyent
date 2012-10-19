@@ -2,6 +2,7 @@
 #
 
 DISTNAME=	hadoop-1.0.3
+PKGREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	${MASTER_SITE_APACHE:=hadoop/common/${DISTNAME}/}
 
@@ -26,16 +27,22 @@ MAKE_ARGS=	-Dbuild.classes=${WRKSRC}/hadoop-core-${PKGVERSION_NOREV}.jar \
 		-Dversion=${PKGVERSION_NOREV} -Dcompile.native=true \
 		-Dcompile.c++=true -Dmake.cmd=${GMAKE} -Dlibhdfs=1 \
 		-Dlibrecordio=true  -Dskip.record-parser=true
+# This should be used, but doesn't work yet due to some OpenSSL error in c++ examples
+# BUILD_TARGETS=	bin-package
 
-BUILD_TARGETS=	compile-core-native compile-c++ compile-c++-libhdfs \
+BUILD_TARGETS=	compile-core-classes jar compile-core-native compile-c++ compile-c++-libhdfs \
 		compile-c++-pipes compile-c++-utils
-
 DEFAULTS=	src/core/core-default.xml src/hdfs/hdfs-default.xml \
 		src/mapred/mapred-default.xml hadoop-examples-1.0.3.jar
-DIST=		bin contrib hadoop-ant-${PKGVERSION_NOREV}.jar hadoop-core-${PKGVERSION_NOREV}.jar \
-		hadoop-test-${PKGVERSION_NOREV}.jar hadoop-tools-${PKGVERSION_NOREV}.jar lib webapps
-CONF=		capacity-scheduler.xml configuration.xsl core-site.xml hadoop-env.sh hadoop-metrics2.properties \
-		hadoop-policy.xml hdfs-site.xml log4j.properties mapred-queue-acls.xml mapred-site.xml taskcontroller.cfg
+DIST=		bin contrib \
+		hadoop-ant-${PKGVERSION_NOREV}.jar hadoop-examples-${PKGVERSION_NOREV}.jar \
+		hadoop-test-${PKGVERSION_NOREV}.jar \
+		hadoop-tools-${PKGVERSION_NOREV}.jar lib webapps
+BUILT=		hadoop-client-${PKGVERSION_NOREV}.jar hadoop-core-${PKGVERSION_NOREV}.jar \
+		hadoop-minicluster-${PKGVERSION_NOREV}.jar 
+CONF=		capacity-scheduler.xml configuration.xsl core-site.xml hadoop-env.sh \
+		hadoop-metrics2.properties hadoop-policy.xml hdfs-site.xml log4j.properties \
+		mapred-queue-acls.xml mapred-site.xml taskcontroller.cfg
 
 .for f in ${CONF}
 CONF_FILES+=	share/examples/hadoop/${f} ${PKG_SYSCONFDIR}/${f}
@@ -50,7 +57,9 @@ SUBST_MESSAGE.java=	Fixing Java args
 SUBST_VARS.java=	JAVA_ARCH_FLAG PKG_SYSCONFDIR
 
 post-extract:
-	${RM} -rf ${WRKSRC}/lib/native/Linux-*
+	${RM} -rf ${WRKSRC}/lib/native/Linux* ${WRKSRC}/bin/task-controller
+	${RM} ${WRKSRC}/hadoop-core-${PKGVERSION_NOREV}.jar
+	cd ${WRKSRC} && ${CHMOD} -R g-w *
 
 post-build:
 	cd ${WRKSRC} && ${RM} bin/hadoop.orig bin/hadoop-config.sh.orig conf/hadoop-env.sh.orig
@@ -61,17 +70,13 @@ post-build:
 do-install:
 	${MKDIR} ${DESTDIR}${HADOOP_HOME}
 	cd ${WRKSRC} && ${PAX} -rw -p e ${DIST} ${DESTDIR}${HADOOP_HOME}/
+	cd ${WRKSRC}/build && ${PAX} -rw -p e ${BUILT} ${DESTDIR}${HADOOP_HOME}/
 	cd ${WRKSRC}/c++/${HADOOP_ARCH} && ${PAX} -rw -p e  include lib ${DESTDIR}${PREFIX}
 	${MKDIR} ${DESTDIR}${PREFIX}/share/examples/hadoop
 .for f in ${DEFAULTS}
 	${INSTALL_DATA} ${WRKSRC}/${f} ${DESTDIR}${PREFIX}/share/examples/hadoop
 .endfor
 	cd ${WRKSRC}/conf && ${PAX} -rw -p e * ${DESTDIR}${PREFIX}/share/examples/hadoop
-	${MKDIR} ${DESTDIR}${PREFIX}/share/doc/hadoop
-	cd ${WRKSRC} && ${PAX} -rw -p e docs ${DESTDIR}${PREFIX}/share/doc/hadoop
-.for f in ${DOC}
-	${INSTALL_DATA} ${WRKSRC}/${f} ${DESTDIR}${PREFIX}/share/doc/hadoop
-.endfor
 
 #.include "../../devel/snappy/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
