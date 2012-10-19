@@ -1,8 +1,8 @@
 # $NetBSD$
 #
 
-DISTNAME=	hadoop-1.0.3
-PKGREVISION=	1
+DISTNAME=	hadoop-1.0.4
+#PKGREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	${MASTER_SITE_APACHE:=hadoop/common/${DISTNAME}/}
 
@@ -33,7 +33,7 @@ MAKE_ARGS=	-Dbuild.classes=${WRKSRC}/hadoop-core-${PKGVERSION_NOREV}.jar \
 BUILD_TARGETS=	compile-core-classes jar compile-core-native compile-c++ compile-c++-libhdfs \
 		compile-c++-pipes compile-c++-utils
 DEFAULTS=	src/core/core-default.xml src/hdfs/hdfs-default.xml \
-		src/mapred/mapred-default.xml hadoop-examples-1.0.3.jar
+		src/mapred/mapred-default.xml hadoop-examples-1.0.4.jar
 DIST=		bin contrib \
 		hadoop-ant-${PKGVERSION_NOREV}.jar hadoop-examples-${PKGVERSION_NOREV}.jar \
 		hadoop-test-${PKGVERSION_NOREV}.jar \

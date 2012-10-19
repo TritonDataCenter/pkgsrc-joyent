@@ -163,6 +163,7 @@ hadoop/lib/jdiff/hadoop_0.20.205.0.xml
 hadoop/lib/jdiff/hadoop_1.0.0.xml
 hadoop/lib/jdiff/hadoop_1.0.1.xml
 hadoop/lib/jdiff/hadoop_1.0.2.xml
+hadoop/lib/jdiff/hadoop_1.0.3.xml
 hadoop/lib/jdiff/hadoop_${PKGVERSION}.xml
 hadoop/lib/jersey-core-1.8.jar
 hadoop/lib/jersey-json-1.8.jar

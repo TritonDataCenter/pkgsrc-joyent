@@ -1,8 +1,8 @@
 $NetBSD$
 
-SHA1 (hadoop-1.0.3.tar.gz) = 5ca6b77e0a600475fae6770c52b47a751f646f9c
-RMD160 (hadoop-1.0.3.tar.gz) = e41421483156fd0fa65d608b206a17cd2a73a989
-Size (hadoop-1.0.3.tar.gz) = 62428860 bytes
+SHA1 (hadoop-1.0.4.tar.gz) = 1ab6f3271289ff83ba7b44a090ec1a3e6b77d1dd
+RMD160 (hadoop-1.0.4.tar.gz) = 54331429cbf18d67395ec7e0aadef9bdd77f1ffa
+Size (hadoop-1.0.4.tar.gz) = 62793050 bytes
 SHA1 (patch-bin_hadoop) = 312c6067c363d9d81fe616bc8c285a821206829f
 SHA1 (patch-bin_hadoop-config.sh) = f2257fd33a1ebfb1142830dfd8d37d54bc2f72cb
 SHA1 (patch-build.xml) = 6efa65ffcaadd0c56c0549c50a9cfe7085bbeb26
