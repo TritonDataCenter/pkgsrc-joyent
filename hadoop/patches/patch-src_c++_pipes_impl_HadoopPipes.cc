@@ -1,6 +1,6 @@
 $NetBSD$
 
-Needs unistd for GCC 4.7.
+Needs unistd.h for GCC 4.7.
 --- src/c++/pipes/impl/HadoopPipes.cc.orig	2012-05-08 20:34:52.000000000 +0000
 +++ src/c++/pipes/impl/HadoopPipes.cc
 @@ -34,6 +34,7 @@

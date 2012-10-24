@@ -1,5 +1,7 @@
 $NetBSD$
 
+Set file system flags as per sys/fcntl.h on SunOS.
+(This may need to be conditioned to to cater to Linux and BSD.)
 --- src/core/org/apache/hadoop/io/nativeio/NativeIO.java.orig	2012-05-08 20:34:52.000000000 +0000
 +++ src/core/org/apache/hadoop/io/nativeio/NativeIO.java
 @@ -37,13 +37,13 @@ public class NativeIO {
