@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-DISTNAME=	hadoop-1.0.3
+DISTNAME=	hadoop-1.0.4
 PKGREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	${MASTER_SITE_APACHE:=hadoop/common/${DISTNAME}/}
@@ -13,72 +13,72 @@ LICENSE=	apache-2.0
 
 PKG_DESTDIR_SUPPORT=	user-destdir
 
-USE_LANGUAGES=          c c++
-USE_LIBTOOL=            yes
-USE_TOOLS+=		gmake autoconf automake pax tar
+USE_LANGUAGES=	c c++
+USE_LIBTOOL=	yes
+USE_TOOLS+=	gmake autoconf automake pax tar
 
 .include "../../joyent/hadoop/Makefile.common"
 
+BUILD_DEFS+=	VARBASE HADOOP_USER HADOOP_GROUP HADOOP_DIR HADOOP_LOGDIR
+
+HADOOP_USER?=			hadoop
+HADOOP_GROUP?=			hadoop
+HADOOP_DIR?=			${VARBASE}/hadoop
+HADOOP_LOGDIR?=			${VARBASE}/log/hadoop
+
+PKG_GROUPS+=			${HADOOP_USER}
+PKG_USERS+=			${HADOOP_USER}:${HADOOP_GROUP}
+PKG_GECOS.${HADOOP_USER}=	Hadoop user
+
+OWN_DIRS_PERMS+=		${HADOOP_DIR} ${HADOOP_USER} ${HADOOP_GROUP} 750
+OWN_DIRS_PERMS+=		${HADOOP_LOGDIR} ${HADOOP_USER} ${HADOOP_GROUP} 750
+
 CHECK_PORTABILITY_SKIP+=	src/contrib/streaming/src/test/system/scripts/StreamMapper.sh
-REPLACE_BASH+=	bin/hadoop bin/rcc bin/*.sh contrib/hdfsproxy/bin/*	\
-		contrib/hod/bin/checknodes
+REPLACE_BASH+=			bin/hadoop bin/rcc bin/*.sh src/contrib/hdfsproxy/bin/*	\
+				src/contrib/hod/bin/checknodes sbin/* src/packages/*.sh
 
-MAKE_ARGS=	-Dbuild.classes=${WRKSRC}/hadoop-core-${PKGVERSION_NOREV}.jar \
-		-Dversion=${PKGVERSION_NOREV} -Dcompile.native=true \
-		-Dcompile.c++=true -Dmake.cmd=${GMAKE} -Dlibhdfs=1 \
-		-Dlibrecordio=true  -Dskip.record-parser=true
-# This should be used, but doesn't work yet due to some OpenSSL error in c++ examples
-# BUILD_TARGETS=	bin-package
+MAKE_ARGS=	-Dversion=${PKGVERSION_NOREV} -Dmake.cmd=${GMAKE:Q}			\
+		-Dcompile.native=true -Dcompile.c++=true -Dlibhdfs=1 -Dlibrecordio=true	\
+		-Dskip.record-parser=true
 
-BUILD_TARGETS=	compile-core-classes jar compile-core-native compile-c++ compile-c++-libhdfs \
-		compile-c++-pipes compile-c++-utils
-DEFAULTS=	src/core/core-default.xml src/hdfs/hdfs-default.xml \
-		src/mapred/mapred-default.xml hadoop-examples-1.0.3.jar
-DIST=		bin contrib \
-		hadoop-ant-${PKGVERSION_NOREV}.jar hadoop-examples-${PKGVERSION_NOREV}.jar \
-		hadoop-test-${PKGVERSION_NOREV}.jar \
-		hadoop-tools-${PKGVERSION_NOREV}.jar lib webapps
-BUILT=		hadoop-client-${PKGVERSION_NOREV}.jar hadoop-core-${PKGVERSION_NOREV}.jar \
-		hadoop-minicluster-${PKGVERSION_NOREV}.jar 
-CONF=		capacity-scheduler.xml configuration.xsl core-site.xml hadoop-env.sh \
-		hadoop-metrics2.properties hadoop-policy.xml hdfs-site.xml log4j.properties \
-		mapred-queue-acls.xml mapred-site.xml taskcontroller.cfg
-
-.for f in ${CONF}
-CONF_FILES+=	share/examples/hadoop/${f} ${PKG_SYSCONFDIR}/${f}
-.endfor
+BUILD_TARGETS=	bin-package
 
 CPPFLAGS=	-D_POSIX_C_SOURCE=199506L -D__EXTENSIONS__
 
-SUBST_CLASSES+=	java
+SUBST_CLASSES+=		java
 SUBST_STAGE.java=	pre-build
-SUBST_FILES.java=	bin/hadoop bin/hadoop-config.sh conf/hadoop-env.sh
+SUBST_FILES.java=	bin/hadoop bin/hadoop-config.sh conf/hadoop-env.sh		\
+			src/core/core-default.xml src/mapred/mapred-default.xml		\
+			src/mapred/org/apache/hadoop/mapred/TaskRunner.java
 SUBST_MESSAGE.java=	Fixing Java args
-SUBST_VARS.java=	JAVA_ARCH_FLAG PKG_SYSCONFDIR
+SUBST_VARS.java=	HADOOP_DIR HADOOP_LOGDIR JAVA_ARCH_FLAG PKG_JAVA_HOME		\
+			PKG_SYSCONFDIR
+
+CONFIG_FILES=	capacity-scheduler.xml configuration.xsl core-site.xml			\
+		fair-scheduler.xml hadoop-env.sh hadoop-metrics2.properties		\
+		hadoop-policy.xml hdfs-site.xml log4j.properties mapred-queue-acls.xml	\
+		mapred-site.xml masters slaves taskcontroller.cfg
+
+.for f in ${CONFIG_FILES}
+CONF_FILES+=	share/examples/hadoop/${f} ${PKG_SYSCONFDIR}/${f}
+.endfor
 
 post-extract:
-	${RM} -rf ${WRKSRC}/lib/native/Linux* ${WRKSRC}/bin/task-controller
-	${RM} ${WRKSRC}/hadoop-core-${PKGVERSION_NOREV}.jar
-	cd ${WRKSRC} && ${CHMOD} -R g-w *
+	set -e; cd ${WRKSRC} && (							\
+		${CHMOD} -R g-w *; ${MKDIR} build/classes;				\
+		${RM} -rf bin/task-controller hadoop-core-*.jar lib/native		\
+	)
 
-post-build:
-	cd ${WRKSRC} && ${RM} bin/hadoop.orig bin/hadoop-config.sh.orig conf/hadoop-env.sh.orig
-	cd ${WRKSRC} && ant FreeBSD-dist
-	(cd ${WRKSRC}/build/c++ && ${TAR} -cf - ${HADOOP_ARCH}/lib ${HADOOP_ARCH}/include) | \
-		(cd ${WRKSRC}/c++ && ${TAR} -xf -)
+pre-build:
+	cd ${WRKSRC} && ${RM} bin/*.orig conf/hadoop-env.sh.orig
 
 do-install:
-	${MKDIR} ${DESTDIR}${HADOOP_HOME}
-	cd ${WRKSRC} && ${PAX} -rw -p e ${DIST} ${DESTDIR}${HADOOP_HOME}/
-	cd ${WRKSRC}/build && ${PAX} -rw -p e ${BUILT} ${DESTDIR}${HADOOP_HOME}/
-	cd ${WRKSRC}/c++/${HADOOP_ARCH} && ${PAX} -rw -p e  include lib ${DESTDIR}${PREFIX}
-	${MKDIR} ${DESTDIR}${PREFIX}/share/examples/hadoop
-.for f in ${DEFAULTS}
-	${INSTALL_DATA} ${WRKSRC}/${f} ${DESTDIR}${PREFIX}/share/examples/hadoop
-.endfor
-	cd ${WRKSRC}/conf && ${PAX} -rw -p e * ${DESTDIR}${PREFIX}/share/examples/hadoop
+	cd ${WRKSRC}/build/${PKGNAME_NOREV} && ${PAX} -rw -p e * ${DESTDIR}${PREFIX}/
 
+# Not used yet
 #.include "../../devel/snappy/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../security/openssl/buildlink3.mk"
+# Used by librecordio, doesn't seem to build
+#.include "../../textproc/xerces-c/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"

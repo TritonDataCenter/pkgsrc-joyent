@@ -1,0 +1,14 @@
+$NetBSD$
+
+Fix default dir for temporary storage.
+--- src/core/core-default.xml.orig	2012-05-08 20:34:52.000000000 +0000
++++ src/core/core-default.xml
+@@ -11,7 +11,7 @@
+ 
+ <property>
+   <name>hadoop.tmp.dir</name>
+-  <value>/tmp/hadoop-${user.name}</value>
++  <value>@HADOOP_DIR@/tmp</value>
+   <description>A base for other temporary directories.</description>
+ </property>
+ 
