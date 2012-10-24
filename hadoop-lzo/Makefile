@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	hadoop-lzo
-PKGNAME=	${DISTNAME}-0.4.17${GIT_TAG}
+PKGNAME=	${DISTNAME}-0.4.17rc1
 CATEGORIES=	archivers
 
 MAINTAINER=	filip@joyent.com
@@ -32,8 +32,7 @@ SUBST_MESSAGE.ldflags=	Fixing LDFLAGS
 SUBST_FILES.ldflags=	build.xml
 SUBST_VARS.ldflags=	LDFLAGS JAVA_ARCH
 
-HADOOP_HOME?=		hadoop
-INSTALLATION_DIRS+=	${HADOOP_HOME}/lib/native/${HADOOP_ARCH}
+INSTALLATION_DIRS+=	lib share/hadoop
 
 BUILD_TARGETS+=	compile jar
 
@@ -42,8 +41,9 @@ do-test:
 
 do-install:
 	cd ${WRKSRC}/build/native/${HADOOP_ARCH}/lib && \
-	  ${PAX} -rw -p e * ${DESTDIR}${HADOOP_HOME}/lib/native/${HADOOP_ARCH}
-	${INSTALL_DATA} ${WRKSRC}/build/hadoop-lzo-0.4.17-SNAPSHOT.jar ${DESTDIR}${HADOOP_HOME}
+	  ${PAX} -rw -p e * ${DESTDIR}${PREFIX}/lib/
+	${INSTALL_DATA} ${WRKSRC}/build/hadoop-lzo-0.4.17-SNAPSHOT.jar \
+	  ${DESTDIR}${PREFIX}/share/hadoop
 
 .include "../../archivers/lzo/buildlink3.mk"
 .include "../../wip/mk/git-package.mk"
