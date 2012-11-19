@@ -18,18 +18,18 @@ NO_CHECKSUM=	yes
 NO_BUILD=	yes
 WRKSRC=		${WRKDIR}/smtools
 
-VERSION=	20121030
+VERSION=	20121115
 
 .include "../../mk/bsd.prefs.mk"
 
 SM_SCRIPTS=	cpuinfo create-db create-dbuser create-vhost	\
 		install-drupal install-wordpress list-dbs	\
-		list-dbusers list-timezones meminfo pcp pkghelp	\
+		list-dbusers list-timezones meminfo pkghelp	\
 		prepare-image reboot rebuild-pkgsrc remove-db	\
 		remove-dbuser set-hostname set-timezone 	\
-		shutdown summary
-ZONEINIT_INCS=	00-init.sh 00-mdata.sh 01-reboot-file.sh	\
-		03-dupipcheck.sh 03-ips.sh 04-mdata.sh		\
+		shutdown summary lsof
+ZONEINIT_INCS=	00-mdata.sh 01-reboot-file.sh 02-config.sh	\
+		04-mdata.sh		\
 		11-files.sh 12-network.sh 91-passwords.sh	\
 		92-sshd.sh 93-pkgsrc.sh 999-cleanup.sh
 PKGIN_HELPERS=	apt-get apt-cache pkg port rpm yum
@@ -44,7 +44,7 @@ PLATFORM=	sdc5
 INSTALLATION_DIRS+=	bin lib/zoneinit lib/zoneinit/includes
 
 SUBST_CLASSES+=	vars
-SUBST_STAGE.vars=	post-extract
+SUBST_STAGE.vars=	post-patch
 SUBST_MESSAGE.vars=	Configuring scripts
 SUBST_FILES.vars=	sm-prepare-image sm-rebuild-pkgsrc zoneinit/zoneinit.xml
 SUBST_VARS.vars=	PREFIX VARBASE PLATFORM PKGRELEASE MACHINE_ARCH
@@ -63,9 +63,14 @@ do-install:
 .	for helper in ${PKGIN_HELPERS}
 	${LN} -s sm-pkghelp ${DESTDIR}${PREFIX}/bin/${helper}
 .	endfor
+	${LN} -s sm-lsof ${DESTDIR}${PREFIX}/bin/lsof
 	${INSTALL_SCRIPT} ${WRKSRC}/zoneinit/zoneinit \
 	  ${DESTDIR}${PREFIX}/lib/zoneinit
 	${INSTALL_DATA} ${WRKSRC}/zoneinit/zoneinit.xml \
+	  ${DESTDIR}${PREFIX}/lib/zoneinit
+	${INSTALL_SCRIPT} ${WRKSRC}/zoneinit/mdata \
+	  ${DESTDIR}${PREFIX}/lib/zoneinit
+	${INSTALL_DATA} ${WRKSRC}/zoneinit/mdata.xml \
 	  ${DESTDIR}${PREFIX}/lib/zoneinit
 .	for include in ${ZONEINIT_INCS}
 	${INSTALL_DATA} ${WRKSRC}/zoneinit/includes/${include} \

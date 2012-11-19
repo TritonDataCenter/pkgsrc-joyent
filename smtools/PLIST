@@ -1,6 +1,7 @@
 @comment $NetBSD$
 bin/apt-cache
 bin/apt-get
+bin/lsof
 bin/pkg
 bin/port
 bin/rpm
@@ -13,8 +14,8 @@ bin/sm-install-wordpress
 bin/sm-list-dbs
 bin/sm-list-dbusers
 bin/sm-list-timezones
+bin/sm-lsof
 bin/sm-meminfo
-bin/sm-pcp
 bin/sm-pkghelp
 bin/sm-prepare-image
 bin/sm-reboot
@@ -26,11 +27,9 @@ bin/sm-set-timezone
 bin/sm-shutdown
 bin/sm-summary
 bin/yum
-lib/zoneinit/includes/00-init.sh
 lib/zoneinit/includes/00-mdata.sh
 lib/zoneinit/includes/01-reboot-file.sh
-lib/zoneinit/includes/03-dupipcheck.sh
-lib/zoneinit/includes/03-ips.sh
+lib/zoneinit/includes/02-config.sh
 lib/zoneinit/includes/04-mdata.sh
 lib/zoneinit/includes/11-files.sh
 lib/zoneinit/includes/12-network.sh
@@ -38,5 +37,7 @@ lib/zoneinit/includes/91-passwords.sh
 lib/zoneinit/includes/92-sshd.sh
 lib/zoneinit/includes/93-pkgsrc.sh
 lib/zoneinit/includes/999-cleanup.sh
+lib/zoneinit/mdata
+lib/zoneinit/mdata.xml
 lib/zoneinit/zoneinit
 lib/zoneinit/zoneinit.xml
