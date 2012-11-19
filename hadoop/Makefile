@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	hadoop-1.0.4
-PKGREVISION=	1
+PKGREVISION=	2
 CATEGORIES=	devel
 MASTER_SITES=	${MASTER_SITE_APACHE:=hadoop/common/${DISTNAME}/}
 
@@ -29,6 +29,8 @@ HADOOP_LOGDIR?=			${VARBASE}/log/hadoop
 PKG_GROUPS+=			${HADOOP_USER}
 PKG_USERS+=			${HADOOP_USER}:${HADOOP_GROUP}
 PKG_GECOS.${HADOOP_USER}=	Hadoop user
+PKG_HOME.${HADOOP_USER}=	${HADOOP_DIR}
+PKG_SHELL.${HADOOP_USER}=	${BASH}
 
 OWN_DIRS_PERMS+=		${HADOOP_DIR} ${HADOOP_USER} ${HADOOP_GROUP} 750
 OWN_DIRS_PERMS+=		${HADOOP_LOGDIR} ${HADOOP_USER} ${HADOOP_GROUP} 750
@@ -49,10 +51,10 @@ SUBST_CLASSES+=		java
 SUBST_STAGE.java=	pre-build
 SUBST_FILES.java=	bin/hadoop bin/hadoop-config.sh conf/hadoop-env.sh		\
 			src/core/core-default.xml src/mapred/mapred-default.xml		\
-			src/mapred/org/apache/hadoop/mapred/TaskRunner.java
+			src/mapred/org/apache/hadoop/mapred/TaskRunner.java build.xml
 SUBST_MESSAGE.java=	Fixing Java args
 SUBST_VARS.java=	HADOOP_DIR HADOOP_LOGDIR JAVA_ARCH_FLAG PKG_JAVA_HOME		\
-			PKG_SYSCONFDIR
+			PKG_SYSCONFDIR BUILDLINK_PREFIX.snappy
 
 CONFIG_FILES=	capacity-scheduler.xml configuration.xsl core-site.xml			\
 		fair-scheduler.xml hadoop-env.sh hadoop-metrics2.properties		\
@@ -75,8 +77,7 @@ pre-build:
 do-install:
 	cd ${WRKSRC}/build/${PKGNAME_NOREV} && ${PAX} -rw -p e * ${DESTDIR}${PREFIX}/
 
-# Not used yet
-#.include "../../devel/snappy/buildlink3.mk"
+.include "../../devel/snappy/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../security/openssl/buildlink3.mk"
 # Used by librecordio, doesn't seem to build

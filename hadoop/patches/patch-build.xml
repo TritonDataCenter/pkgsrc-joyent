@@ -2,9 +2,19 @@ $NetBSD$
 
 The task-controller and jsvc components only build on Linux. The librecordio
 component doesn't like to build against xerces-c (recent GCC too aggressive?).
-Simplify installation phase for pkgsrc purposes.
+Simplify installation phase for pkgsrc purposes. Use proper prefix for Snappy.
+
 --- build.xml.orig	2012-10-03 05:17:24.000000000 +0000
 +++ build.xml
+@@ -215,7 +215,7 @@
+   <property name="bundle.snappy" value="false"/>
+ 
+   <!-- Snappy native library location -->
+-  <property name="snappy.prefix" value="/usr/local"/>
++  <property name="snappy.prefix" value="@BUILDLINK_PREFIX.snappy@"/>
+   <property name="snappy.lib" value="${snappy.prefix}/lib"/>
+   <property name="snappy.include" value="${snappy.prefix}/include"/>
+ 
 @@ -1595,14 +1595,6 @@
  
      <copy todir="${dist.dir}/" file="build.xml"/>
