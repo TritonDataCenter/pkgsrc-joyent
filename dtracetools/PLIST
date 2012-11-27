@@ -1,13 +1,9 @@
 @comment $NetBSD$
-bin/dtrace-cputypes.d
 bin/dtrace-cpuwalk.d
 bin/dtrace-dispqlen.d
 bin/dtrace-filebyproc.d
 bin/dtrace-guess.d
 bin/dtrace-httpdstat.d
-bin/dtrace-innodb_pid_iolatency.d
-bin/dtrace-innodb_pid_ioslow.d
-bin/dtrace-innodb_thread_concurrency.d
 bin/dtrace-j_calldist.d
 bin/dtrace-j_calls.d
 bin/dtrace-j_calltime.d
@@ -39,8 +35,6 @@ bin/dtrace-js_objnew.d
 bin/dtrace-js_stat.d
 bin/dtrace-js_who.d
 bin/dtrace-kill.d
-bin/dtrace-loads.d
-bin/dtrace-mmapfiles.d
 bin/dtrace-mongocmd.d
 bin/dtrace-mongocmdlatency.d
 bin/dtrace-mongocmdslow.d
@@ -48,7 +42,6 @@ bin/dtrace-mongocmdslow2.d
 bin/dtrace-mysql_pid_avg.d
 bin/dtrace-mysql_pid_latency.d
 bin/dtrace-mysql_pid_slow.d
-bin/dtrace-pathopens.d
 bin/dtrace-php_calldist.d
 bin/dtrace-php_calltime.d
 bin/dtrace-php_cpudist.d
@@ -101,7 +94,6 @@ bin/dtrace-rb_objcpu.d
 bin/dtrace-rb_objnew.d
 bin/dtrace-rb_syscalls.d
 bin/dtrace-rb_who.d
-bin/dtrace-runocc.d
 bin/dtrace-rwbypid.d
 bin/dtrace-setuids.d
 bin/dtrace-sh_calldist.d
@@ -113,7 +105,7 @@ bin/dtrace-sh_flowtime.d
 bin/dtrace-sh_lines.d
 bin/dtrace-sh_syscalls.d
 bin/dtrace-sh_who.d
-bin/dtrace-swapinfo.d
+bin/dtrace-slowhttpdconnect-stacks.d
 bin/dtrace-syscallbypid.d
 bin/dtrace-syscallbyproc.d
 bin/dtrace-syscallbysysc.d
@@ -131,6 +123,4 @@ bin/dtrace-tcl_procflow.d
 bin/dtrace-tcl_syscalls.d
 bin/dtrace-tcl_who.d
 bin/dtrace-threaded.d
-bin/dtrace-uname-a.d
-bin/dtrace-weblatency.d
-bin/dtrace-wpm.d
+bin/dtrace-topcallsbyprocess.d
