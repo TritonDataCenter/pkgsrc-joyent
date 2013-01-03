@@ -1,0 +1,6 @@
+The Linux /proc file system utilities are tools for reporting about
+and modifying the state of the system, including memory, processes,
+sending signals to processes, etc. The commands include free, oldps,
+pgrep, pkill, ps, skill, snice, sysctl, tload, top, vmstat, w and watch.
+
+This package only holds the 'watch' utility.
