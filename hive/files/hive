@@ -1,0 +1,5 @@
+#!/bin/sh
+
+export JAVA_HOME=@PKG_JAVA_HOME@
+export HIVE_HOME=@PREFIX@/lib/hive
+exec @PREFIX@/lib/hive/bin/hive "$@"

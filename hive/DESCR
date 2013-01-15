@@ -1,0 +1,8 @@
+Hive is a data warehouse system for Hadoop that facilitates easy data
+summarization, ad-hoc queries, and the analysis of large datasets
+stored in Hadoop compatible file systems. Hive provides a mechanism
+to project structure onto this data and query the data using a SQL-like
+language called HiveQL. At the same time this language also allows
+traditional map/reduce programmers to plug in their custom mappers
+and reducers when it is inconvenient or inefficient to express this
+logic in HiveQL.
