@@ -1,0 +1,28 @@
+@comment $NetBSD$
+bin/hcat
+libexec/hcat-config.sh
+sbin/hcat_server.sh
+sbin/update-hcatalog-env.sh
+share/doc/hcatalog/CHANGES.txt
+share/doc/hcatalog/DISCLAIMER.txt
+share/doc/hcatalog/LICENSE.txt
+share/doc/hcatalog/NOTICE.txt
+share/doc/hcatalog/README.txt
+share/doc/hcatalog/RELEASE_NOTES.txt
+share/doc/hcatalog/license/hadoop-LICENSE.txt
+share/doc/hcatalog/license/hive-LICENSE.txt
+share/doc/hcatalog/license/pig-LICENSE.txt
+share/doc/hcatalog/license/thrift-LICENSE.txt
+share/examples/hcatalog/jndi.properties
+share/examples/hcatalog/proto-hive-site.xml
+share/hcatalog/${PKGNAME}-dev.jar
+share/hcatalog/hcatalog-server-extensions-${PKGVERSION}-dev.jar
+share/hcatalog/lib/hbase-storage-handler-0.1.0.jar
+share/hcatalog/scripts/hcat_server_install.sh
+share/hcatalog/scripts/hcat_server_start.sh
+share/hcatalog/scripts/hcat_server_stop.sh
+share/hcatalog/storage-handlers/hbase/lib/hbase-storage-handler-0.1.0.jar
+share/hcatalog/templates/conf/hcat-env.sh.template
+share/hcatalog/templates/conf/hive-site.xml.template
+@pkgdir share/doc/hcatalog/jdiff
+@pkgdir share/doc/hcatalog/api
