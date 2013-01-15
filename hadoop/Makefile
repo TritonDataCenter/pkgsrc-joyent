@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	hadoop-1.0.4
-PKGREVISION=	2
+PKGREVISION=	3
 CATEGORIES=	devel
 MASTER_SITES=	${MASTER_SITE_APACHE:=hadoop/common/${DISTNAME}/}
 
@@ -19,21 +19,20 @@ USE_TOOLS+=	gmake autoconf automake pax tar
 
 .include "../../joyent/hadoop/Makefile.common"
 
-BUILD_DEFS+=	VARBASE HADOOP_USER HADOOP_GROUP HADOOP_DIR HADOOP_LOGDIR
+PKG_SYSCONFSUBDIR=		hadoop
 
-HADOOP_USER?=			hadoop
-HADOOP_GROUP?=			hadoop
+BUILD_DEFS+=			HADOOP_USER
+
 HADOOP_DIR?=			${VARBASE}/hadoop
 HADOOP_LOGDIR?=			${VARBASE}/log/hadoop
 
-PKG_GROUPS+=			${HADOOP_USER}
-PKG_USERS+=			${HADOOP_USER}:${HADOOP_GROUP}
-PKG_GECOS.${HADOOP_USER}=	Hadoop user
-PKG_HOME.${HADOOP_USER}=	${HADOOP_DIR}
-PKG_SHELL.${HADOOP_USER}=	${BASH}
+PKG_USERS+=			${HDFS_USER}:${HADOOP_GROUP}
+PKG_GECOS.${HDFS_USER}=		Hadoop user
+PKG_HOME.${HDFS_USER}=		${HADOOP_DIR}
+PKG_SHELL.${HDFS_USER}=		${BASH}
 
-OWN_DIRS_PERMS+=		${HADOOP_DIR} ${HADOOP_USER} ${HADOOP_GROUP} 750
-OWN_DIRS_PERMS+=		${HADOOP_LOGDIR} ${HADOOP_USER} ${HADOOP_GROUP} 750
+OWN_DIRS_PERMS+=		${HADOOP_DIR} ${HDFS_USER} ${HADOOP_GROUP} 750
+OWN_DIRS_PERMS+=		${HADOOP_LOGDIR} ${HDFS_USER} ${HADOOP_GROUP} 750
 
 CHECK_PORTABILITY_SKIP+=	src/contrib/streaming/src/test/system/scripts/StreamMapper.sh
 REPLACE_BASH+=			bin/hadoop bin/rcc bin/*.sh src/contrib/hdfsproxy/bin/*	\
@@ -43,7 +42,7 @@ MAKE_ARGS=	-Dversion=${PKGVERSION_NOREV} -Dmake.cmd=${GMAKE:Q}			\
 		-Dcompile.native=true -Dcompile.c++=true -Dlibhdfs=1 -Dlibrecordio=true	\
 		-Dskip.record-parser=true
 
-BUILD_TARGETS=	bin-package
+BUILD_TARGET=	bin-package
 
 CPPFLAGS=	-D_POSIX_C_SOURCE=199506L -D__EXTENSIONS__
 
