@@ -1,0 +1,10 @@
+$NetBSD$
+
+SHA1 (hbase-0.94.3.tar.gz) = 03600ea359807c189c772b09439032fd1ed5d675
+RMD160 (hbase-0.94.3.tar.gz) = be264a14505af370ef1c6d6ae98cbe7868378276
+Size (hbase-0.94.3.tar.gz) = 48611465 bytes
+SHA1 (patch-bin_get-active-master.rb) = 211d07e8c629e7951e5842f2a3e7d05a095514b5
+SHA1 (patch-bin_hbase) = 54dc2479b21c569556854aeaa48c32bfdca2b62e
+SHA1 (patch-bin_hbase-config.sh) = 271a15d35ecb578f4918337561cf96020fa1afad
+SHA1 (patch-bin_hirb.rb) = 65f01a81846c8f6d80d92698829225df5e87d6c5
+SHA1 (patch-conf_hbase-env.sh) = 27bf7e78aa1beab9e8f0b9cb05e32b942147d3b4

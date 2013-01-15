@@ -1,0 +1,9 @@
+#!/bin/sh
+
+export JAVA_HOME=@PKG_JAVA_HOME@
+export HADOOP_CONF=${HADOOP_CONF:-@PKG_SYSCONFBASE@/hadoop}
+export ZOOKEEPER_HOME=${ZOOKEEPER_HOME:-@PREFIX@/lib/zookeeper}
+export HBASE_CLASSPATH=$HADOOP_CONF:$HADOOP_HOME/*:$HADOOP_HOME/lib/*:$ZOOKEEPER_HOME/*:$ZOOKEEPER_HOME/lib/*:$HBASE_CLASSPATH
+
+exec @PREFIX@/lib/hbase/bin/hbase "$@"
+
