@@ -1,0 +1,6 @@
+$NetBSD$
+
+SHA1 (pig-0.10.1.tar.gz) = fc10bfd9103d488ff4346037436241fbf194d920
+RMD160 (pig-0.10.1.tar.gz) = 243fd73f89c192f1d5899d471c1b7b370884ba8b
+Size (pig-0.10.1.tar.gz) = 130633102 bytes
+SHA1 (patch-bin_pig) = a19b46b9b2d05b6d88b8dbd839993d1fb1dcc7ac
