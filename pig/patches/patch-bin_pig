@@ -1,0 +1,71 @@
+$NetBSD$
+
+--- bin/pig.orig	2012-12-29 00:47:48.000000000 +0000
++++ bin/pig
+@@ -85,12 +85,16 @@ if [ -z "$PIG_CONF_DIR" ]; then
+ fi
+ 
+ if [ -z "$PIG_CONF_DIR" ]; then
+-    if [ -d /etc/pig ]; then
++    if [ -d @PKG_SYSCONFDIR@ ]; then
+         # if installed with rpm/deb package
+-        PIG_CONF_DIR="/etc/pig"
++        PIG_CONF_DIR="@PKG_SYSCONFDIR@"
+     fi
+ fi
+ 
++if [ "$JAVA_HOME" == "" ]; then
++    JAVA_HOME=@PKG_JAVA_HOME@
++fi
++
+ if [ -f "${PIG_CONF_DIR}/pig-env.sh" ]; then
+     . "${PIG_CONF_DIR}/pig-env.sh"
+ fi
+@@ -128,8 +132,8 @@ if [ "$includeHCatalog" == "true" ]; the
+   slfJar=slf4j-api-*.jar
+   hbaseHiveJar=hive-hbase-handler-*.jar
+   if [ "$HIVE_HOME" == "" ]; then
+-    if [ -d "/usr/lib/hive" ]; then
+-      HIVE_HOME=/usr/lib/hive
++    if [ -d "@PREFIX@" ]; then
++      HIVE_HOME=@PREFIX@/share/hive
+     else
+       echo "Please initialize HIVE_HOME"
+       exit -1
+@@ -147,8 +151,8 @@ if [ "$includeHCatalog" == "true" ]; the
+   hcatJar=hcatalog-*.jar
+   hbaseHCatJar=hbase-storage-handler-*.jar
+   if [ "$HCAT_HOME" == "" ]; then
+-    if [ -d "/usr/lib/hcatalog" ]; then
+-      HCAT_HOME=/usr/lib/hcatalog
++    if [ -d "@PREFIX@" ]; then
++      HCAT_HOME=@PREFIX@/share/hcatalog
+     else
+       echo "Please initialize HCAT_HOME"
+       exit -1
+@@ -244,13 +248,13 @@ fi
+ 
+ if [ -z "$HADOOP_BIN" ]; then
+     # if installed with rpm/deb package
+-    if [ -f /usr/bin/hadoop ]; then
+-        HADOOP_BIN=/usr/bin/hadoop
++    if [ -f @PREFIX@/bin/hadoop ]; then
++        HADOOP_BIN=@PREFIX@/bin/hadoop
+     fi
+ fi
+ 
+ # if using HBase, likely want to include HBase config
+-HBASE_CONF_DIR=${HBASE_CONF_DIR:-/etc/hbase}
++HBASE_CONF_DIR=${HBASE_CONF_DIR:-@PREFIX@/etc/hbase}
+ if [ -n "$HBASE_CONF_DIR" ] && [ -d "$HBASE_CONF_DIR" ]; then
+     CLASSPATH=$HBASE_CONF_DIR:$CLASSPATH
+ fi
+@@ -275,7 +279,7 @@ fi
+ 
+ # default log directory & file
+ if [ "$PIG_LOG_DIR" = "" ]; then
+-    PIG_LOG_DIR="$PIG_HOME/logs"
++    PIG_LOG_DIR="@PIG_LOG_DIR@"
+ fi
+ if [ "$PIG_LOGFILE" = "" ]; then
+     PIG_LOGFILE='pig.log'

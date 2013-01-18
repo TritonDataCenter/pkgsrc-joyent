@@ -38,6 +38,7 @@ DISTINFO_FILE?=		${.CURDIR}/../../joyent/postgresql92/distinfo
 COMMON_FILESDIR?=	${.CURDIR}/../../joyent/postgresql92/files
 PATCHDIR?=		${.CURDIR}/../../joyent/postgresql92/patches
 
+USE_GCC_RUNTIME=	yes
 USE_MULTIARCH=		bin lib
 USE_PKGLOCALEDIR=	yes
 USE_TOOLS+=		bison gmake lex msgfmt perl:build

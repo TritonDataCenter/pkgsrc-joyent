@@ -40,4 +40,5 @@ lib/zoneinit/includes/999-cleanup.sh
 lib/zoneinit/mdata
 lib/zoneinit/mdata.xml
 lib/zoneinit/zoneinit
+lib/zoneinit/zoneinit.json
 lib/zoneinit/zoneinit.xml

@@ -1,0 +1,7 @@
+$NetBSD$
+
+SHA1 (procps-3.2.8.tar.gz) = a0c86790569dec26b5d9037e8868ca907acc9829
+RMD160 (procps-3.2.8.tar.gz) = ad63601fb6bf4692108484d9ed362f510cbcf505
+Size (procps-3.2.8.tar.gz) = 285758 bytes
+SHA1 (patch-aa) = 2e0a3c682a36f0f838bcf0a258a384ff3d5c2f2f
+SHA1 (patch-ab) = 40bb3ff8977c2156c755f125166890cbd84e5e11

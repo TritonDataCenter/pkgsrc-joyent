@@ -663,6 +663,7 @@ share/locale/ru/LC_MESSAGES/ecpg-9.2.mo
 share/locale/ru/LC_MESSAGES/ecpglib6-9.2.mo
 share/locale/ru/LC_MESSAGES/initdb-9.2.mo
 share/locale/ru/LC_MESSAGES/libpq5-9.2.mo
+share/locale/ru/LC_MESSAGES/pg_basebackup-9.2.mo
 share/locale/ru/LC_MESSAGES/pg_config-9.2.mo
 share/locale/ru/LC_MESSAGES/pg_controldata-9.2.mo
 share/locale/ru/LC_MESSAGES/pg_ctl-9.2.mo

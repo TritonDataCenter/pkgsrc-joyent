@@ -18,7 +18,7 @@ NO_CHECKSUM=	yes
 NO_BUILD=	yes
 WRKSRC=		${WRKDIR}/smtools
 
-VERSION=	20121115
+VERSION=	20130103
 
 .include "../../mk/bsd.prefs.mk"
 
@@ -66,6 +66,8 @@ do-install:
 	${LN} -s sm-lsof ${DESTDIR}${PREFIX}/bin/lsof
 	${INSTALL_SCRIPT} ${WRKSRC}/zoneinit/zoneinit \
 	  ${DESTDIR}${PREFIX}/lib/zoneinit
+	${INSTALL_SCRIPT} ${WRKSRC}/zoneinit/zoneinit.json \
+	  ${DESTDIR}${PREFIX}/lib/zoneinit/zoneinit.json
 	${INSTALL_DATA} ${WRKSRC}/zoneinit/zoneinit.xml \
 	  ${DESTDIR}${PREFIX}/lib/zoneinit
 	${INSTALL_SCRIPT} ${WRKSRC}/zoneinit/mdata \

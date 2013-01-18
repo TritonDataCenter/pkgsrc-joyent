@@ -1,0 +1,8 @@
+Templeton provides a REST-like web API for HCatalog and related Hadoop
+components. Developers make HTTP requests to access Hadoop MapReduce,
+Pig, Hive, and HCatalog DDL from within applications. Data and code
+used by Templeton is maintained in HDFS. HCatalog DDL commands are
+executed directly when requested. MapReduce, Pig, and Hive jobs are
+placed in queue by Templeton and can be monitored for progress or
+stopped as required. Developers specify a location in HDFS into which
+Templeton should place Pig, Hive, and MapReduce results.

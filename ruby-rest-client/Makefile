@@ -1,18 +1,14 @@
 # $NetBSD$
 
-DISTNAME=	rest-client-0.9.2
-PKGNAME=	${RUBY_PKGPREFIX}-${DISTNAME}
+DISTNAME=	rest-client-1.6.7
 CATEGORIES=	devel
 
 MAINTAINER=	pedro@joyent.com
-HOMEPAGE=	http://dev.ctor.org/httpclient
+HOMEPAGE=	http://github.com/archiloque/rest-client
 COMMENT=	Simple HTTP and REST client for Ruby inspired by Sinatra
 LICENSE=        mit
 
-# Intentionally releasing old version right now, do not submit.
-#DEPENDS+=	${RUBY_PKGPREFIX}-mime-types>=1.16:../../mail/ruby-mime-types
-
-GEM_BUILD=	gemspec
+DEPENDS+=	${RUBY_PKGPREFIX}-mime-types>=1.16:../../mail/ruby-mime-types
 
 .include "../../lang/ruby/gem.mk"
 .include "../../mk/bsd.pkg.mk"

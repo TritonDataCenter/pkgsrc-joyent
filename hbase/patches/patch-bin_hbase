@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- bin/hbase.orig	2013-01-14 20:34:52.439566183 +0000
++++ bin/hbase
+@@ -255,7 +255,7 @@ if [ "$COMMAND" = "shell" ] ; then
+     CLASSPATH="$JRUBY_HOME/lib/jruby.jar:$CLASSPATH"
+     HBASE_OPTS="$HBASE_OPTS -Djruby.home=$JRUBY_HOME -Djruby.lib=$JRUBY_HOME/lib"
+   fi
+-  CLASS="org.jruby.Main -X+O ${JRUBY_OPTS} ${HBASE_HOME}/bin/hirb.rb"
++  CLASS="org.jruby.Main -X+O ${JRUBY_OPTS} ${HBASE_HOME}/../../bin/hirb.rb"
+ elif [ "$COMMAND" = "hbck" ] ; then
+   CLASS='org.apache.hadoop.hbase.util.HBaseFsck'
+ elif [ "$COMMAND" = "hlog" ] ; then

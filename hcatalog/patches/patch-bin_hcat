@@ -1,0 +1,22 @@
+$NetBSD$
+
+--- bin/hcat.orig	2013-01-14 22:27:41.093775681 +0000
++++ bin/hcat
+@@ -82,7 +82,7 @@ if [ "$HIVE_HOME" == '/usr' ] || [ "$HIV
+   fi
+ fi
+ 
+-
++HIVE_HOME=@PREFIX@/share/hive
+ 
+ HIVE_LIB_DIR=${HIVE_HOME}/lib
+ if [ ! -d "$HIVE_LIB_DIR" ]; then
+@@ -90,7 +90,7 @@ if [ ! -d "$HIVE_LIB_DIR" ]; then
+   exit 4;
+ fi
+ 
+-HIVE_CONF_DIR=${HIVE_HOME}/conf
++HIVE_CONF_DIR=@PKG_SYSCONFBASE@/hive
+ if [ ! -d "$HIVE_CONF_DIR" ]; then
+   echo "Cannot find conf dir within HIVE_HOME : $HIVE_CONF_DIR";
+   exit 4;

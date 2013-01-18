@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- conf/templeton-site.xml.orig	2012-03-02 17:56:19.000000000 +0000
++++ conf/templeton-site.xml
+@@ -37,7 +37,7 @@ limitations under the License.
+ 
+   <property>
+     <name>templeton.jar</name>
+-    <value>${env.TEMPLETON_HOME}/templeton-0.1.0-dev.jar</value>
++    <value>${env.TEMPLETON_HOME}/@PKGNAME@.jar</value>
+     <description>The path to the Templeton jar file.</description>
+   </property>
+ 

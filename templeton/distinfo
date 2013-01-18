@@ -1,0 +1,7 @@
+$NetBSD$
+
+SHA1 (templeton-0.1.0.tar.gz) = 86dcb4444ad157c8efd71bf3ea77543069665613
+RMD160 (templeton-0.1.0.tar.gz) = 527374d1afe9a39a091cb9495405e4a955f21978
+Size (templeton-0.1.0.tar.gz) = 15432389 bytes
+SHA1 (patch-conf_templeton-site.xml) = 23d98db7a2a3fc0c2834152a86a73a13ad58bef8
+SHA1 (patch-libexec__templeton_config.sh) = 92cec2b7dd2598eec460c2d16d0ffe833649faef
