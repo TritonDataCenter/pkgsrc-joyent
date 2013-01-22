@@ -1,0 +1,14 @@
+The Spice project aims to provide a complete open source solution for
+interaction with virtualized desktop devices.The Spice project deals
+with both the virtualized devices and the front-end. Interaction between
+front-end and back-end is done using VD-Interfaces. The VD-Interfaces
+(VDI) enable both ends of the solution to be easily utilized by a
+third-party component.
+
+Currently, the project main focus is to provide high-quality remote
+access to QEMU virtual machine. Seeking to help break down the barriers
+to virtualization adoption by overcoming traditional desktop
+virtualization challenges, emphasizing user experience. For this
+purpose, Red Hat introduced the SPICE remote computing protocol that is
+used for Spice client-server communication. Other components developed
+include QXL display device and driver, etc.

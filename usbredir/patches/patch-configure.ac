@@ -1,0 +1,12 @@
+$NetBSD$
+
+--- configure.ac.orig	2013-01-22 18:11:37.935317918 +0000
++++ configure.ac
+@@ -42,7 +42,6 @@ if test "$ac_test_CFLAGS" != set; then
+ fi
+ 
+ PKG_PROG_PKG_CONFIG
+-PKG_CHECK_MODULES(LIBUSB, [libusb-1.0 >= 1.0.9])
+ 
+ AC_CONFIG_FILES([
+ Makefile

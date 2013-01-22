@@ -1,0 +1,9 @@
+@comment $NetBSD$
+lib/libspice-server.so.1.6.0
+lib/libspice-server.a
+lib/libspice-server.so
+lib/libspice-server.so.1
+lib/pkgconfig/spice-server.pc
+lib/libspice-server.la
+include/spice-server/spice-experimental.h
+include/spice-server/spice.h

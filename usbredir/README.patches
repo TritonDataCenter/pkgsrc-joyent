@@ -1,0 +1,12 @@
+These patches were creating with a sledgehammer...
+
+Clone from git:
+git clone git://anongit.freedesktop.org/spice/usbredir.git -b usbredir-0.4.x
+
+Apply sledgehammer to remove libusb dependency:
+cd usbredir
+gsed '/libusb-/d' -i configure.ac && \
+echo "SUBDIRS = usbredirparser" > Makefile.am && \
+./autogen.sh && \
+
+Then diff against the tarball contents to produce patches.

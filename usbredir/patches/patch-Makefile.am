@@ -1,0 +1,9 @@
+$NetBSD$
+
+--- Makefile.am.orig	2013-01-22 18:11:37.917863392 +0000
++++ Makefile.am
+@@ -1,2 +1 @@
+-SUBDIRS = usbredirparser usbredirhost usbredirserver usbredirtestclient
+-EXTRA_DIST = README.multi-thread usb-redirection-protocol.txt
+\ No newline at end of file
++SUBDIRS = usbredirparser
