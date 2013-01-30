@@ -1,0 +1,15 @@
+@comment $NetBSD: PLIST,v 1.1.1.1 2003/06/24 01:48:59 jschauma Exp $
+bin/cscope-fast
+bin/ctfconvert
+bin/ctfdump
+bin/ctfmerge
+bin/ctfstabs
+bin/ctfstrip
+bin/i386/cscope-fast
+bin/i386/ctfconvert
+bin/i386/ctfdump
+bin/i386/ctfmerge
+bin/i386/ctfstabs
+bin/i386/ctfstrip
+lib/i386/libdwarf.so
+lib/i386/libdwarf.so.1

@@ -1,0 +1,10 @@
+@comment $NetBSD$
+lib/libusbredirparser.so
+lib/pkgconfig/libusbredirparser.pc
+lib/libusbredirparser.la
+lib/libusbredirparser.so.0.0.0
+lib/libusbredirparser.so.0
+lib/libusbredirparser.a
+include/usbredirparser.h
+include/usbredirproto.h
+include/usbredirfilter.h

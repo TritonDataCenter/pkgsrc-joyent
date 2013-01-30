@@ -1,0 +1,18 @@
+$NetBSD$
+
+SHA1 (usbredir-0.4.4.tar.bz2) = 692209bce64d276accd8f7c4a646f8c21c6ef6fa
+RMD160 (usbredir-0.4.4.tar.bz2) = ae0f15d426519f36b1d195eed52a5a1eb1c89f17
+Size (usbredir-0.4.4.tar.bz2) = 301660 bytes
+SHA1 (patch-Makefile.am) = 6b75caf16926414cd88bab4d4c2eceed19af566f
+SHA1 (patch-Makefile.in) = ff4f8f1fa7b98b21f1c24adc55d2429916542d16
+SHA1 (patch-aclocal.m4) = df61b2aff860ff72ed9989f14d27a5dd6e653e83
+SHA1 (patch-config.guess) = 3f1047e02c1f192f5aca0690b1d1f5599913dc31
+SHA1 (patch-config.sub) = d83d87590e24829fd03bc519cb5db1f05c151636
+SHA1 (patch-configure) = 98efd29d960ff64ad38b799b44ff661451a822f2
+SHA1 (patch-configure.ac) = 4584f6f422ce4a3bfae31d6b708b1b68c702812e
+SHA1 (patch-depcomp) = 49838075afff8a3e34f779c4b6afc1f8d767ef35
+SHA1 (patch-ltmain.sh) = fd448113cb92ac77655510a87cfe54c58356b3b8
+SHA1 (patch-usbredirhost_Makefile.in) = 3ba4d109a505f84a5f12e66e66ec19936b0591c6
+SHA1 (patch-usbredirparser_Makefile.in) = c4542427080cfbfc1b50b2a356aa7098acccf7fd
+SHA1 (patch-usbredirserver_Makefile.in) = 92cbbcca1eebc04055b78e6a21dadecc3658ef68
+SHA1 (patch-usbredirtestclient_Makefile.in) = 5cdfba39890e26bdee547fc61f3956d3f9ba06d6
