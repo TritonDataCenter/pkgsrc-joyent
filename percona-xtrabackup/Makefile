@@ -9,6 +9,7 @@ MAINTAINER=	pkgsrc-users@netbsd.org
 HOMEPAGE=	http://www.percona.com/software/percona-xtrabackup
 COMMENT=	Percona XtraBackup
 
+USE_CMAKE=	yes
 USE_LANGUAGES=	c c++
 USE_TOOLS+=	perl:run
 
@@ -17,6 +18,7 @@ BUILD_DEPENDS+=	patch-[0-9]*:../../devel/patch
 
 REPLACE_PERL=	innobackupex
 
+# nbpatch is unable to parse the patch files.
 TOOLS_PLATFORM.patch=	${LOCALBASE}/bin/gpatch
 
 CFLAGS+=	-D_POSIX_PTHREAD_SEMANTICS
