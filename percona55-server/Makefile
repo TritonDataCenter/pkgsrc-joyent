@@ -65,7 +65,5 @@ CXXFLAGS+=		-D_POSIX_C_SOURCE=199506L -D__EXTENSIONS__
 post-extract:
 	${MV} ${WRKDIR}/${SPHINX}/mysqlse ${WRKSRC}/storage/sphinx
 
-.include "../../devel/readline/buildlink3.mk"
 .include "../../joyent/percona55-client/buildlink3.mk"
-.include "../../security/tcp_wrappers/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"

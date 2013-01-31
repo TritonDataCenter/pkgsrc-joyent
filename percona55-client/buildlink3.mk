@@ -11,8 +11,6 @@ BUILDLINK_PKGSRCDIR.percona-client?=	../../joyent/percona55-client
 BUILDLINK_INCDIRS.percona-client?=	include/mysql
 BUILDLINK_LIBDIRS.percona-client?=	lib
 
-.include "../../devel/zlib/buildlink3.mk"
-.include "../../security/openssl/buildlink3.mk"
 .endif # PERCONA_CLIENT_BUILDLINK3_MK
 
 BUILDLINK_TREE+=	-percona-client

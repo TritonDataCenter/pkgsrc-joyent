@@ -33,5 +33,4 @@ post-install:
 .  endfor
 .endif
 
-.include "../../devel/readline/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"
