@@ -1,0 +1,5 @@
+HandlerSocket is a NoSQL plugin for MySQL. It works as a daemon inside the
+mysqld process, accept tcp connections, and execute requests from clients.
+
+HandlerSocket does not support SQL queries. Instead, it supports simple CRUD
+operations on tables.
