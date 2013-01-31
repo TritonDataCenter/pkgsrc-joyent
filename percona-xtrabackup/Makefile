@@ -10,7 +10,7 @@ HOMEPAGE=	http://www.percona.com/software/percona-xtrabackup
 COMMENT=	Percona XtraBackup
 
 USE_LANGUAGES=	c c++
-USE_TOOLS+=	bison cmake perl:run
+USE_TOOLS+=	bison cmake gmake perl:run
 
 BUILD_DEPENDS+=	bzr-[0-9]*:../../devel/bzr
 BUILD_DEPENDS+=	patch-[0-9]*:../../devel/patch
