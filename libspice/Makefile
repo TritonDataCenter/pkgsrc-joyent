@@ -31,6 +31,6 @@ PKGCONFIG_OVERRIDE+=	spice-server.pc.in
 
 .include "../../lang/python/extension.mk"
 PYTHON_FOR_BUILD_ONLY=yes
-BUILD_DEPENDS+= py${PYTHON_VERSION_DEFAULT}-parsing:../../wip/py-parsing
+BUILD_DEPENDS+= ${PYPKGPREFIX}-parsing-[0-9]*:../../wip/py-parsing
 
 .include "../../mk/bsd.pkg.mk"
