@@ -1,8 +1,8 @@
-# $NetBSD: Makefile,v 1.3 2012/09/11 23:59:28 asau Exp $
+# $NetBSD$
 #
 
 DISTNAME=	celt-0.5.1.3
-PKGNAME= celt051-${DISTNAME:S/celt-//}
+PKGNAME= 	celt051-${DISTNAME:S/celt-//}
 CATEGORIES=	joyent
 MASTER_SITES=	http://downloads.us.xiph.org/releases/celt/
 
@@ -13,11 +13,10 @@ LICENSE=	modified-bsd
 
 GNU_CONFIGURE=	yes
 USE_LIBTOOL=	yes
+USE_MULTIARCH=	lib
 USE_TOOLS+=	pkg-config
 
 PKGCONFIG_OVERRIDE+=	celt.pc.in
-
-USE_MULTIARCH=lib
 
 .include "../../mk/bsd.prefs.mk"
 .include "../../mk/oss.buildlink3.mk"

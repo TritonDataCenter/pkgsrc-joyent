@@ -8,12 +8,12 @@ EXTRACT_SUFX=	.tar.bz2
 
 MAINTAINER=	nshalman-pkgsrc@elys.com
 HOMEPAGE=	http://spice-space.org/
-COMMENT= Spice Protocol headers
-LICENSE= modified-bsd
+COMMENT= 	Spice Protocol headers
+LICENSE= 	modified-bsd
 
 GNU_CONFIGURE=	yes
-USE_TOOLS+=	pkg-config
 USE_LANGUAGES=	# none
+USE_TOOLS+=	pkg-config
 
 PKGCONFIG_OVERRIDE+=	spice-protocol.pc.in
 

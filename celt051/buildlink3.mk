@@ -1,4 +1,4 @@
-# $NetBSD: buildlink3.mk,v 1.3 2012/08/14 07:02:09 wiz Exp $
+# $NetBSD$
 
 BUILDLINK_TREE+=	celt051
 
