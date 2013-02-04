@@ -81,6 +81,7 @@ share/mysql/korean/errmsg.sys
 share/mysql/magic
 share/mysql/my-huge.cnf
 share/mysql/my-innodb-heavy-4G.cnf
+share/mysql/my-joyent.cnf
 share/mysql/my-large.cnf
 share/mysql/my-medium.cnf
 share/mysql/my-small.cnf

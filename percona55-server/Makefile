@@ -43,6 +43,13 @@ MESSAGE_SUBST+=		MYSQL_DATADIR=${MYSQL_DATADIR}
 MESSAGE_SUBST+=		MYSQL_USER=${MYSQL_USER} MYSQL_GROUP=${MYSQL_GROUP}
 BUILD_DEFS+=		MYSQL_DATADIR
 
+CNFSUBST=		-e 's,@MYSQL_DATADIR@,${MYSQL_DATADIR},g'
+CNFSUBST+=		-e 's,@PREFIX@,${PREFIX},g'
+CNFSUBST+=		-e 's,@VARBASE@,${VARBASE},g'
+
+CONF_FILES=		${PREFIX}/share/mysql/my-joyent.cnf \
+			${PKG_SYSCONFDIR}/my.cnf
+
 REPLACE_PERL+=		mysql-test/lib/My/SafeProcess/safe_process.pl
 REPLACE_PERL+=		mysql-test/lib/v1/mysql-test-run.pl
 REPLACE_PERL+=		mysql-test/mysql-stress-test.pl
@@ -64,6 +71,10 @@ CXXFLAGS+=		-D_POSIX_C_SOURCE=199506L -D__EXTENSIONS__
 
 post-extract:
 	${MV} ${WRKDIR}/${SPHINX}/mysqlse ${WRKSRC}/storage/sphinx
+
+post-install:
+	${SED} ${CNFSUBST} < ${FILESDIR}/my-joyent.cnf.sh \
+		> ${DESTDIR}${PREFIX}/share/mysql/my-joyent.cnf
 
 .include "../../joyent/percona55-client/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"
