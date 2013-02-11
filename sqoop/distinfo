@@ -1,0 +1,8 @@
+$NetBSD$
+
+SHA1 (sqoop-1.4.2.tar.gz) = 7fd16e134952fab77de8eb98dacd6e4170c9274d
+RMD160 (sqoop-1.4.2.tar.gz) = 70ff04dd8bf15d1295a9f48fb39d8942ca4efbe9
+Size (sqoop-1.4.2.tar.gz) = 746101 bytes
+SHA1 (patch-bin_configure-sqoop) = cc168fefc67521401681e0cc1bee3357f1242879
+SHA1 (patch-build.xml) = 8572d27d50bf507e66f6e2f292c04eebdd244867
+SHA1 (patch-src_scripts_create-tool-scripts.sh) = a70cb4fc4cf97b0939ed03e20235b1fbf44adbc3

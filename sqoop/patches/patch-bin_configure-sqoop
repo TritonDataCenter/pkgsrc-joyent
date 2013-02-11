@@ -1,0 +1,39 @@
+$NetBSD$
+
+--- bin/configure-sqoop.orig	2012-08-14 11:21:52.000000000 +0000
++++ bin/configure-sqoop
+@@ -29,10 +29,10 @@ if [ -z "${bin}" ]; then
+ fi
+ 
+ if [ -z "$SQOOP_HOME" ]; then
+-  export SQOOP_HOME=${bin}/..
++  export SQOOP_HOME=@PREFIX@/share/sqoop
+ fi
+ 
+-SQOOP_CONF_DIR=${SQOOP_CONF_DIR:-${SQOOP_HOME}/conf}
++SQOOP_CONF_DIR=${SQOOP_CONF_DIR:-@PKG_SYSCONFDIR@}
+ 
+ if [ -f "${SQOOP_CONF_DIR}/sqoop-env.sh" ]; then
+   . "${SQOOP_CONF_DIR}/sqoop-env.sh"
+@@ -41,10 +41,10 @@ fi
+ # Find paths to our dependency systems. If they are unset, use CDH defaults.
+ 
+ if [ -z "${HADOOP_HOME}" ]; then
+-  HADOOP_HOME=/usr/lib/hadoop
++  HADOOP_HOME=@PREFIX@
+ fi
+ if [ -z "${HBASE_HOME}" ]; then
+-  HBASE_HOME=/usr/lib/hbase
++  HBASE_HOME=@PREFIX@
+ fi
+ 
+ # Check: If we can't find our dependencies, give up here.
+@@ -90,7 +90,7 @@ if [ -e "$HBASE_HOME/bin/hbase" ]; then
+   SQOOP_CLASSPATH=${TMP_SQOOP_CLASSPATH}
+ fi
+ 
+-ZOOCFGDIR=${ZOOCFGDIR:-/etc/zookeeper}
++ZOOCFGDIR=${ZOOCFGDIR:-@PKG_SYSCONFBASE@/zookeeper}
+ if [ -d "${ZOOCFGDIR}" ]; then
+   SQOOP_CLASSPATH=$ZOOCFGDIR:$SQOOP_CLASSPATH
+ fi
