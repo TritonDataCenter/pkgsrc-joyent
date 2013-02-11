@@ -1,10 +1,10 @@
 # $NetBSD$
 #
 
-DISTNAME=	davepacheco-mod_usdt-82d6828
+DISTNAME=	mod_usdt-82d6828
 PKGNAME=	${APACHE_PKG_PREFIX}-usdt-20120402
 CATEGORIES=	sysutils
-MASTER_SITES=	https://nodeload.github.com/davepacheco/mod_usdt/tarball/master?
+MASTER_SITES=	-https://nodeload.github.com/davepacheco/${DISTNAME:S|-|/tar.gz/|}
 
 MAINTAINER=	filip@joyent.com
 HOMEPAGE=	https://github.com/davepacheco/mod_usdt

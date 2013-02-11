@@ -4,13 +4,13 @@ _RIAK_VERSIONS+=			\
 	basho_metrics	1.0.0		\
 	basho_stats	1.0.2		\
 	bear		0.1-0-g7ef9a7b	\
-	bitcask		1.5.1		\
+	bitcask		1.5.2		\
 	cluster_info	1.2.2		\
 	dtrace		0.8		\
 	ebloom		1.1.1		\
-	eleveldb	1.2.2		\
+	eleveldb	1.2.2p5		\
 	eper		0.61		\
-	erlang_js	1.2.0		\
+	erlang_js	1.2.1		\
 	erlydtl		0.7.0		\
 	folsom		0.7-0-g64b24d3	\
 	getopt		0.4.3		\
@@ -18,17 +18,17 @@ _RIAK_VERSIONS+=			\
 	lager		1.2.0		\
 	lucene_parser	1		\
 	luke		0.2.5		\
-	merge_index	1.2.0		\
+	merge_index	1.2.1		\
 	mochiweb	1.5.1		\
-	poolboy		0.6.1		\
+	poolboy		0.8.1		\
 	protobuffs	0.7.0		\
 	riak_api	1.2.0		\
 	riak_control	1.2.0		\
-	riak_core	1.2.0		\
-	riak_kv		1.2.0		\
+	riak_core	1.2.1		\
+	riak_kv		1.2.1		\
 	riak_pb		1.2.0		\
-	riak_pipe	1.2.0		\
-	riak_search	1.2.0		\
+	riak_pipe	1.2.1		\
+	riak_search	1.2.1		\
 	riak_sysmon	1.1.2		\
 	riakc		1.2.1		\
 	sext		0.4.1-0-g362bdd1 \
@@ -37,7 +37,8 @@ _RIAK_VERSIONS+=			\
 _RIAK_VERSIONS+=			\
 	ranch		0.2.1		\
 	riak_jmx	1.2.0		\
-	riak_repl	1.2.0		\
+	riak_repl	1.2.1		\
+  riak_repl_pb_api	0.1.0	\
 	riak_snmp	1.2.0
 
 .for name version in ${_RIAK_VERSIONS}

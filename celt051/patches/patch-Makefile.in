@@ -1,0 +1,15 @@
+$NetBSD$
+
+--- Makefile.in.orig	2009-05-06 20:44:56.000000000 +0000
++++ Makefile.in
+@@ -206,8 +206,8 @@ top_srcdir = @top_srcdir@
+ AUTOMAKE_OPTIONS = 1.6
+ 
+ #Fools KDevelop into including all files
+-SUBDIRS = libcelt tests @tools@
+-DIST_SUBDIRS = libcelt tests tools
++SUBDIRS = libcelt @tools@
++DIST_SUBDIRS = libcelt tools
+ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = celt@PACKAGE_APPEND@.pc 
+ EXTRA_DIST = celt@PACKAGE_APPEND@.pc.in Doxyfile Doxyfile.devel

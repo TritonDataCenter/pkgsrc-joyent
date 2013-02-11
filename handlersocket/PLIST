@@ -1,0 +1,19 @@
+@comment $NetBSD$
+bin/hsclient
+include/handlersocket/allocator.hpp
+include/handlersocket/auto_addrinfo.hpp
+include/handlersocket/auto_file.hpp
+include/handlersocket/auto_ptrcontainer.hpp
+include/handlersocket/config.hpp
+include/handlersocket/escape.hpp
+include/handlersocket/fatal.hpp
+include/handlersocket/hstcpcli.hpp
+include/handlersocket/mutex.hpp
+include/handlersocket/socket.hpp
+include/handlersocket/string_buffer.hpp
+include/handlersocket/string_ref.hpp
+include/handlersocket/string_util.hpp
+include/handlersocket/thread.hpp
+include/handlersocket/util.hpp
+lib/libhsclient.la
+lib/mysql/plugin/handlersocket.la

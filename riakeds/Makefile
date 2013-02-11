@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-DISTNAME=		riak_ee-1.2.0
+DISTNAME=		riak_ee-1.2.1
 PKGNAME=		${DISTNAME:S/_ee/eds/}
 CATEGORIES=		none
 MASTER_SITES=		#

@@ -1,0 +1,11 @@
+$NetBSD$
+
+SHA1 (Percona-Server-5.5.29-rel29.4.tar.gz) = 0c02296414739a29e8a3c81ff7fab68a45d5b8a2
+RMD160 (Percona-Server-5.5.29-rel29.4.tar.gz) = 00acc15dde50735ee8e92e8b69d08fe77159acd8
+Size (Percona-Server-5.5.29-rel29.4.tar.gz) = 22472140 bytes
+SHA1 (handlersocket_1.1.0-7-g1044a28.orig.tar.gz) = 9c4d4619445fffc08cc61205082f8a3a799748aa
+RMD160 (handlersocket_1.1.0-7-g1044a28.orig.tar.gz) = eb3af68a40bef7a823559e2e1fd77f55bcc96ff5
+Size (handlersocket_1.1.0-7-g1044a28.orig.tar.gz) = 163737 bytes
+SHA1 (patch-configure.ac) = 190c1bc337ef07b115a1827c5dc11fba6df249bc
+SHA1 (patch-libhsclient_allocator.hpp) = e2569d58f5159949bd55342716beb186439cfe94
+SHA1 (patch-libhsclient_fatal.cpp) = 01a29cd82ede826bd56b13ed955f94bc6f3f8272

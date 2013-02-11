@@ -1,0 +1,6 @@
+$NetBSD$
+
+SHA1 (percona-xtrabackup-2.0.5.tar.gz) = d3b420fe768f2713a158560536cb5e719f39be3a
+RMD160 (percona-xtrabackup-2.0.5.tar.gz) = 5fcf389eb912e280e8e3f768f6bf5f670dea41ef
+Size (percona-xtrabackup-2.0.5.tar.gz) = 11195309 bytes
+SHA1 (patch-utils_build.sh) = 0bbd81692e1038130d0e4600c4556812ab56a55e

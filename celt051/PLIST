@@ -1,0 +1,6 @@
+@comment $NetBSD$
+include/celt051/celt.h
+include/celt051/celt_types.h
+include/celt051/celt_header.h
+lib/libcelt051.la
+lib/pkgconfig/celt051.pc

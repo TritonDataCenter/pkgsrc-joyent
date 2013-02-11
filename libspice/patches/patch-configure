@@ -1,0 +1,42 @@
+$NetBSD$
+
+* Portability fixes.
+
+--- configure.orig	2012-12-20 19:40:40.000000000 +0000
++++ configure
+@@ -20335,7 +20335,7 @@ fi
+ 
+ 
+ # use ximage.h for win32 build if it is found (no package for mingw32 atm)
+-if test $os_win32 == "yes" ; then
++if test $os_win32 = "yes" ; then
+     { $as_echo "$as_me:${as_lineno-$LINENO}: checking for cximage" >&5
+ $as_echo_n "checking for cximage... " >&6; }
+     cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+@@ -20367,7 +20367,7 @@ fi
+ 
+ 
+ # check for windres for mingw32 builds
+-if test $os_win32 == "yes" ; then
++if test $os_win32 = "yes" ; then
+     for ac_prog in i686-pc-mingw32-windres mingw-windres mingw32-windres
+ do
+   # Extract the first word of "$ac_prog", so it can be a program name with args.
+@@ -23382,7 +23382,7 @@ echo "
+         python:                   ${PYTHON}
+ 
+         Build Spice client:       ${enable_client}
+-" ; if test "x$enable_client" == "xyes"; then echo "\
++" ; if test "x$enable_client" = "xyes"; then echo "\
+         Have XRANDR 1.2:          ${have_xrandr12}
+ 
+         Have Xinerama:            ${have_xinerama}
+@@ -23402,7 +23402,7 @@ echo "
+         Automated tests:          ${enable_automated_tests}
+ "
+ 
+-if test $os_win32 == "yes" ; then
++if test $os_win32 = "yes" ; then
+ echo \
+ "        Copy & Paste Images:     ${have_cximage}
+ "

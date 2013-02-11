@@ -1,0 +1,10 @@
+usbredir is the name of a network protocol for sending usb device
+traffic over a network connection. It is also the name of the software
+package offering a parsing library, a usbredirhost library and several
+utilities implementing this protocol.
+
+usbredir was created for use with Spice, which is why it is hosted on
+spice-space.org, but the protocol and the usbredirhost are completely
+independent of spice, they could for example also be used to create a
+vnc extension for redirecting usb devices over a vnc connection to a
+qemu virtual machine.
