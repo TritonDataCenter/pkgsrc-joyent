@@ -36,6 +36,8 @@ INSTALLATION_DIRS+=	lib share/hadoop
 
 BUILD_TARGETS+=	compile jar
 
+do-build: ant-build
+
 do-test:
 	cd ${WRKSRC} && ${PKGSRC_SETENV} ${MAKE_ENV} ant test ${MAKE_ARGS}
 
