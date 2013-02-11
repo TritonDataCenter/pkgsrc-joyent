@@ -1,0 +1,8 @@
+# $NetBSD$
+
+case ${STAGE} in
+POST-INSTALL)
+	[ -d @PKG_SYSCONFDIR@/action-conf ] || mkdir @PKG_SYSCONFDIR@/action-conf
+;;
+esac
+

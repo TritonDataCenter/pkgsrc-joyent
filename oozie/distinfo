@@ -1,0 +1,12 @@
+$NetBSD$
+
+SHA1 (ext-2.2.zip) = a949ddf3528bc7013b21b13922cc516955a70c1b
+RMD160 (ext-2.2.zip) = bf303d5ad9d849765064e7decce2339b7a6c97d4
+Size (ext-2.2.zip) = 6800612 bytes
+SHA1 (oozie-3.3.1.tar.gz) = 634d18715d1056836e43594b35fcf2066ad0848a
+RMD160 (oozie-3.3.1.tar.gz) = 8e817a543e811e5d63cde6477bbdff23bb2052fa
+Size (oozie-3.3.1.tar.gz) = 994095 bytes
+SHA1 (patch-core_src_main_conf_oozie-site.xml) = 4e140b8b9da61bb31e9357232216b2a8be344d69
+SHA1 (patch-distro_src_main_bin_addtowar.sh) = 4829673e326e24564610252fb1989918dbd930ed
+SHA1 (patch-distro_src_main_bin_oozie-sys.sh) = b20ff61c87cd95ed5c77d3f1e44ca45d881e06fd
+SHA1 (patch-tools_src_main_bin_ooziedb.sh) = 9611e5c6b9705a79cdac273372fa7c3ca379d22b
