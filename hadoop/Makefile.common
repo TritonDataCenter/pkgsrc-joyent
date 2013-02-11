@@ -35,6 +35,9 @@ HBASE_LOG_DIR?=		${VARBASE}/log/hbase
 HBASE_PID_DIR?=		${VARBASE}/run/hbase
 HCAT_LOG_DIR?=		${HIVE_LOG_DIR}
 HIVE_LOG_DIR?=		${VARBASE}/log/hive
+OOZIE_DATA_DIR?=	${VARBASE}/db/oozie
+OOZIE_LOG_DIR?=		${VARBASE}/log/oozie
+OOZIE_PID_DIR?=		${VARBASE}/run/oozie
 PIG_LOG_DIR?=		${VARBASE}/log/pig
 PIG_PID_DIR?=		${VARBASE}/run/pig
 TEMPLETON_LOG_DIR?=	${VARBASE}/log/templeton
@@ -51,7 +54,7 @@ PLIST_SUBST+=	PKGVERSION_NOREV=${PKGVERSION_NOREV}
 
 MAKE_ENV+=	ANT_OPTS=-d${ABI}
 
-do-build:
+ant-build:
 	cd ${WRKSRC} && \
 	  ${PKGSRC_SETENV} ${MAKE_ENV} ant ${BUILD_TARGET} ${MAKE_ARGS}
 

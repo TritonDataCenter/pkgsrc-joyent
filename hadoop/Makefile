@@ -73,6 +73,8 @@ post-extract:
 pre-build:
 	cd ${WRKSRC} && ${RM} bin/*.orig conf/hadoop-env.sh.orig
 
+do-build: ant-build
+
 do-install:
 	cd ${WRKSRC}/build/${PKGNAME_NOREV} && ${PAX} -rw -p e * ${DESTDIR}${PREFIX}/
 
