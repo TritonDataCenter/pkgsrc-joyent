@@ -36,6 +36,8 @@ REPLACE_BASH+=	bin/hcat bin/hcat_server.sh src/packages/update-hcatalog-env.sh
 
 INSTALLATION_DIRS+=	share/examples/hcatalog
 
+do-build: ant-build
+
 do-install:
 	cd ${WRKSRC}/build/${PKGNAME}-dev && \
 	  ${PAX} -rw bin libexec sbin share ${DESTDIR}${PREFIX}/

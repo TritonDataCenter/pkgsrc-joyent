@@ -54,6 +54,8 @@ INSTALLATION_DIRS+=	bin share/doc/hive share/hive share/examples/hive
 post-extract:
 	${CP} ${FILESDIR}/hive ${WRKDIR}/hive
 
+do-build: ant-build
+
 do-install:
 	cd ${WRKSRC}/build/dist && (\
 	  ${PAX} -rw bin ${DESTDIR}${PREFIX}/;\
