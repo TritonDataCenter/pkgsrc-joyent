@@ -34,7 +34,7 @@ SUBST_VARS.ldflags=	LDFLAGS JAVA_ARCH
 
 INSTALLATION_DIRS+=	lib share/hadoop
 
-BUILD_TARGETS+=	compile jar
+BUILD_TARGET=	compile jar
 
 do-build: ant-build
 
