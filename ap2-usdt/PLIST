@@ -1,5 +1,5 @@
 @comment $NetBSD$
 lib/dtrace/httpd.d
 lib/httpd/mod_usdt.so
-share/examples/ap22-usdt/http-requests-bylatency.d
-share/examples/ap22-usdt/http-requests.d
+share/examples/${PKGBASE}/http-requests-bylatency.d
+share/examples/${PKGBASE}/http-requests.d
