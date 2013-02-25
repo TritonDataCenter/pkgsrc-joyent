@@ -64,6 +64,7 @@ bin/dtrace-pl_malloc.d
 bin/dtrace-pl_subcalls.d
 bin/dtrace-pl_syscalls.d
 bin/dtrace-pl_who.d
+bin/dtrace-postgresql91_transaction_counts.d
 bin/dtrace-priclass.d
 bin/dtrace-pridist.d
 bin/dtrace-py_calldist.d
