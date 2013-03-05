@@ -18,7 +18,7 @@ NO_CHECKSUM=	yes
 NO_BUILD=	yes
 WRKSRC=		${WRKDIR}/smtools
 
-VERSION=	20130103
+VERSION=	20130305
 
 .include "../../mk/bsd.prefs.mk"
 
