@@ -18,7 +18,7 @@ NO_CHECKSUM=	yes
 NO_BUILD=	yes
 WRKSRC=		${WRKDIR}/smtools
 
-VERSION=	20130305
+VERSION=	20130308
 
 .include "../../mk/bsd.prefs.mk"
 
@@ -36,7 +36,12 @@ PKGIN_HELPERS=	apt-get apt-cache pkg port rpm yum
 
 SUNOS_FLAVOR?=	joyent
 .if ${SUNOS_FLAVOR} == "joyent"
+. if defined(CURRENT_PBULK_CONF)
+PLATFORM=	packages/SmartOS
+PKGRELEASE=	${CURRENT_PBULK_CONF:C/-.*//}
+. else
 PLATFORM=	sdc6
+. endif
 .else
 PLATFORM=	sdc5
 .endif
