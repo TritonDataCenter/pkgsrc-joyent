@@ -1,0 +1,30 @@
+$NetBSD: patch-src_Makefile.in,v 1.1 2013/02/10 18:16:53 adam Exp $
+
+--- src/Makefile.in.orig	2013-02-09 07:30:35.000000000 +0000
++++ src/Makefile.in
+@@ -7163,14 +7163,14 @@ info: info-recursive
+ 
+ info-am:
+ 
+-install-data-am: install-data-local install-dataDATA install-man
++install-data-am: install-dataDATA install-man
+ 
+ install-dvi: install-dvi-recursive
+ 
+ install-dvi-am:
+ 
+ install-exec-am: install-binPROGRAMS install-libexecPROGRAMS \
+-	install-sbinPROGRAMS install-sysconfDATA
++	install-sbinPROGRAMS
+ 
+ install-html: install-html-recursive
+ 
+@@ -7283,7 +7283,7 @@ cache_cf.o: cf_parser.cci
+ 
+ # cf_gen builds the configuration files.
+ cf_gen$(EXEEXT): $(cf_gen_SOURCES) $(cf_gen_DEPENDENCIES)
+-	$(HOSTCXX) -o $@ $(srcdir)/cf_gen.cc -I$(srcdir) -I$(top_builddir)/include/ -I$(top_builddir)/src
++	$(HOSTCXX) $(CXXFLAGS) -o $@ $(srcdir)/cf_gen.cc -I$(srcdir) -I$(top_builddir)/include/ -I$(top_builddir)/src
+ 
+ # squid.conf.default is built by cf_gen when making cf_parser.cci
+ squid.conf.default squid.conf.documented: cf_parser.cci
