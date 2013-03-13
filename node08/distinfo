@@ -1,0 +1,14 @@
+$NetBSD$
+
+SHA1 (node-v0.8.22.tar.gz) = 1b7e65da70e2b3c2feacb1b13f673dfe43beb381
+RMD160 (node-v0.8.22.tar.gz) = 80568e0c17541a386700c52645f2af7486721787
+Size (node-v0.8.22.tar.gz) = 12200811 bytes
+SHA1 (patch-common.gypi) = 427e299ec84722321240878e2e6df5860909ee16
+SHA1 (patch-deps_uv_common.gypi) = 556d40673e4e2deff8ade09c03dec3c301ab3464
+SHA1 (patch-deps_uv_src_unix_netbsd.c) = e812ed14e06350adde7aa6fd438c1aa6c9af1e73
+SHA1 (patch-deps_uv_uv.gyp) = 8614c63b2436a9062b3fe67ee80656d1cde920d7
+SHA1 (patch-deps_v8_tools_gyp_v8.gyp) = 0f2804eaa72eef282c19c3cd045082864d78b6fd
+SHA1 (patch-node.gyp) = 570a5fe1bc86e86a3271f5faf1cd1b6a59faa765
+SHA1 (patch-tools_gyp_pylib_gyp_common.py) = 7788ad75cab83e54cb92cdc0e9f874527a8a3318
+SHA1 (patch-tools_gyp_pylib_gyp_generator_make.py) = cf016f30b4c4de6263b34cefbc304837071e63a7
+SHA1 (patch-tools_install.py) = 50e676dfe88ba838936e5c8c7fb83bfeec5a6a3c
