@@ -21,7 +21,7 @@
 #	<lang>-postgresql	client-side interface to PostgreSQL
 #	postgresql-<lang>	server-side module for PostgreSQL backend
 
-DISTNAME=	postgresql-9.2.0
+DISTNAME=	postgresql-9.2.3
 CATEGORIES=	databases
 MASTER_SITES=	${MASTER_SITE_PGSQL:=source/v${PKGVERSION_NOREV}/}
 EXTRACT_SUFX=	.tar.bz2
@@ -60,8 +60,8 @@ PG_ETC_DIR=		${PKG_SYSCONFDIR}
 GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--sysconfdir=${PG_ETC_DIR}
 CONFIGURE_ARGS+=	--datadir=${PG_DATA_DIR}
+CONFIGURE_ARGS+=	--docdir=${PG_DOC_DIR}
 CONFIGURE_ARGS+=	--localedir=${PG_LOCALE_DIR}
-CONFIGURE_ARGS+=	--with-docdir=${PG_DOC_DIR}
 CONFIGURE_ARGS+=	--with-template=${PG_TEMPLATE.${OPSYS}}
 
 CONFIGURE_ARGS+=	--enable-nls

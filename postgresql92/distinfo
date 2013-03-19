@@ -1,8 +1,8 @@
 $NetBSD$
 
-SHA1 (postgresql-9.2.0.tar.bz2) = 6ab154052dd62bb9b0cf2cd666384f7b25eefaf5
-RMD160 (postgresql-9.2.0.tar.bz2) = a51aa3067b0c3fef27a2faaee5ad97fcfc1ffb9d
-Size (postgresql-9.2.0.tar.bz2) = 16106558 bytes
+SHA1 (postgresql-9.2.3.tar.bz2) = fe46685c36f6a7a04edd67be5695b4f5acebedff
+RMD160 (postgresql-9.2.3.tar.bz2) = bcbb159c411d068bc038f37bb40c030f70c3ac2a
+Size (postgresql-9.2.3.tar.bz2) = 16371616 bytes
 SHA1 (patch-config_perl.m4) = c7e5aaff1c47d2e33df7692a412ef984c77ffcc0
 SHA1 (patch-configure) = 13a129770700a3dbb7641c7375d6b8ff77a46796
 SHA1 (patch-contrib_dblink_Makefile) = 4960ad57d42465fae203870548e4c53f8a32ce04
