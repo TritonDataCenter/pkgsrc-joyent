@@ -1,5 +1,6 @@
 @comment $NetBSD$
 bin/innobackupex
+bin/tar4ibd
 bin/xbstream
 bin/xtrabackup
 man/man1/xtrabackup.1
