@@ -1,0 +1,2 @@
+This package contains a script used to backup MongoDB databases
+on a Joyent MongoDB SmartMachine.

@@ -1,0 +1,36 @@
+$NetBSD$
+
+Placeholder-ize some prefixes.
+
+--- manifest.xml.orig	2013-03-28 13:33:19.000000000 +0000
++++ manifest.xml
+@@ -13,15 +13,15 @@
+     <dependency name='mongodb' grouping='require_all' restart_on='none' type='service'>
+       <service_fmri value='svc:/pkgsrc/mongodb:default'/>
+     </dependency>
+-    <method_context project=':default' resource_pool=':default' working_directory='/var/mongodb'>
++    <method_context project=':default' resource_pool=':default' working_directory='@VARBASE@/mongodb'>
+       <method_credential group='mongodb' limit_privileges=':default' privileges=':default' supp_groups=':default' user='mongodb'/>
+       <method_environment>
+-        <envvar name='PATH' value='/usr/xpg4/bin:/usr/bin:/usr/sbin:/opt/local/bin:/opt/local/sbin'/>
++        <envvar name='PATH' value='/usr/xpg4/bin:/usr/bin:/usr/sbin:@PREFIX@/bin:@PREFIX@/sbin'/>
+       </method_environment>
+     </method_context>
+-    <exec_method name='start' type='method' exec='/opt/local/bin/quickbackup-mongodb start' timeout_seconds='18446744073709551615'/>
+-    <exec_method name='stop' type='method' exec='/opt/local/bin/quickbackup-mongodb stop' timeout_seconds='18446744073709551615'/>
+-    <exec_method name='restart' type='method' exec='/opt/local/bin/quickbackup-mongodb restart' timeout_seconds='18446744073709551615'/>
++    <exec_method name='start' type='method' exec='@PREFIX@/bin/quickbackup-mongodb start' timeout_seconds='18446744073709551615'/>
++    <exec_method name='stop' type='method' exec='@PREFIX@/bin/quickbackup-mongodb stop' timeout_seconds='18446744073709551615'/>
++    <exec_method name='restart' type='method' exec='@PREFIX@/bin/quickbackup-mongodb restart' timeout_seconds='18446744073709551615'/>
+     <property_group name='startd' type='framework'>
+       <propval name='duration' type='astring' value='transient'/>
+     </property_group>
+@@ -33,7 +33,7 @@
+        <propval name='day' type='astring' value='all'/>
+        <propval name='username' type='astring' value='username'/>
+        <propval name='password' type='astring' value='password'/>
+-       <propval name='backupdir' type='astring' value='/var/backups/mongodb'/>
++       <propval name='backupdir' type='astring' value='@VARBASE@/backups/mongodb'/>
+     </property_group>
+       <template>
+         <common_name>
