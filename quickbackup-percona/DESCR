@@ -1,0 +1,2 @@
+This package contains a script used to backup Percona databases
+on a Joyent Percona SmartMachine.
