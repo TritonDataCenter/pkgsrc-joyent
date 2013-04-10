@@ -49,17 +49,19 @@ Warn against using riak to start/stop rather than SMF.
  fi
  
  # Warn the user if ulimit -n is less than 4096
-@@ -123,6 +139,14 @@ rm -f $SSL_DIST_CONFIG
+@@ -123,6 +139,16 @@ rm -f $SSL_DIST_CONFIG
  sed -n '/Begin SSL distribution items/,/End SSL distribution items/p' \
      $RUNNER_ETC_DIR/vm.args > $SSL_DIST_CONFIG
- 
-+case "$1" in
-+    start|stop|restart|reboot)
-+        echo "***"
-+        echo "Warning: please use 'svcadm disable riak' instead"
-+        echo "***"
-+    ;;
-+esac
+
++if [ -z "$SMF_METHOD" ]; then 
++    case "$1" in
++        start|stop|restart|reboot)
++            echo "***"
++            echo "Warning: please use 'svcadm disable riak' instead"
++            echo "***"
++        ;;
++    esac
++fi
 +
  # Check the first argument for instructions
  case "$1" in

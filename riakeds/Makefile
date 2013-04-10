@@ -15,12 +15,14 @@ CONFLICTS=		riak-*
 
 PKG_DESTDIR_SUPPORT=	user-destdir
 
+USE_JAVA=		build
 USE_LANGUAGES=		c c++
 USE_LIBTOOL=		yes
 USE_TOOLS=		gmake
 
 MAKE_JOBS_SAFE=		no
 
+BUILD_DEPENDS+=		${PKG_JVM}-[0-9]*:../../joyent/${PKG_JVM}
 DEPENDS+=		sudo-[0-9]*:../../security/sudo
 
 DISTFILES=		${DEFAULT_DISTFILES}
@@ -128,4 +130,5 @@ do-install:
            ${MAKE_PROGRAM} ${MAKE_FLAGS} ${INSTALL_MAKE_FLAGS} package
 
 .include "../../lang/erlang/buildlink3.mk"
+.include "../../mk/java-vm.mk"
 .include "../../mk/bsd.pkg.mk"

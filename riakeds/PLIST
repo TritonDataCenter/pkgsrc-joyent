@@ -421,7 +421,6 @@ riak/lib/gs-${VERSION.gs}/priv/gstk.tcl
 riak/lib/hipe-${VERSION.hipe}/ebin/cerl_cconv.beam
 riak/lib/hipe-${VERSION.hipe}/ebin/cerl_closurean.beam
 riak/lib/hipe-${VERSION.hipe}/ebin/cerl_hipeify.beam
-riak/lib/hipe-${VERSION.hipe}/ebin/cerl_hybrid_transform.beam
 riak/lib/hipe-${VERSION.hipe}/ebin/cerl_lib.beam
 riak/lib/hipe-${VERSION.hipe}/ebin/cerl_messagean.beam
 riak/lib/hipe-${VERSION.hipe}/ebin/cerl_pmatch.beam
@@ -1125,11 +1124,13 @@ riak/lib/riak_kv-${VERSION.riak_kv}/ebin/riak_kv_wm_utils.beam
 riak/lib/riak_kv-${VERSION.riak_kv}/ebin/riak_kv_worker.beam
 riak/lib/riak_kv-${VERSION.riak_kv}/ebin/riak_kv_yessir_backend.beam
 riak/lib/riak_kv-${VERSION.riak_kv}/ebin/riak_object.beam
+riak/lib/riak_kv-${VERSION.riak_kv}/include/.empty_for_hg
 riak/lib/riak_kv-${VERSION.riak_kv}/include/riak_kv_dtrace.hrl
 riak/lib/riak_kv-${VERSION.riak_kv}/include/riak_kv_js_pools.hrl
 riak/lib/riak_kv-${VERSION.riak_kv}/include/riak_kv_map_phase.hrl
 riak/lib/riak_kv-${VERSION.riak_kv}/include/riak_kv_mrc_sink.hrl
 riak/lib/riak_kv-${VERSION.riak_kv}/include/riak_kv_vnode.hrl
+riak/lib/riak_kv-${VERSION.riak_kv}/priv/.empty_for_hg
 riak/lib/riak_kv-${VERSION.riak_kv}/priv/mapred_builtins.js
 riak/lib/riak_kv-${VERSION.riak_kv}/priv/vsn.git
 riak/lib/riak_pb-${VERSION.riak_pb}/ebin/riak_kv_pb.beam
@@ -1330,9 +1331,7 @@ riak/lib/riak_snmp-${VERSION.riak_snmp}/ebin/riak_snmp.app
 riak/lib/riak_snmp-${VERSION.riak_snmp}/ebin/riak_snmp_app.beam
 riak/lib/riak_snmp-${VERSION.riak_snmp}/ebin/riak_snmp_stat_poller.beam
 riak/lib/riak_snmp-${VERSION.riak_snmp}/ebin/riak_snmp_sup.beam
-riak/lib/riak_snmp-${VERSION.riak_snmp}/include/.empty_for_hg
 riak/lib/riak_snmp-${VERSION.riak_snmp}/include/RIAK.hrl
-riak/lib/riak_snmp-${VERSION.riak_snmp}/priv/.empty_for_hg
 riak/lib/riak_snmp-${VERSION.riak_snmp}/priv/mibs/RIAK.bin
 riak/lib/riak_snmp-${VERSION.riak_snmp}/priv/vsn.git
 riak/lib/riak_sysmon-${VERSION.riak_sysmon}/ebin/riak_sysmon.app
