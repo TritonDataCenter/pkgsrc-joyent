@@ -1,9 +1,10 @@
 $NetBSD$
 
 Provide our own installation target.
---- package/Makefile.orig	2012-08-06 21:57:12.000000000 +0000
+
+--- package/Makefile.orig	2013-04-03 18:19:03.000000000 +0000
 +++ package/Makefile
-@@ -2,49 +2,8 @@ OS		= $(shell uname -s)
+@@ -2,51 +2,8 @@ OS		= $(shell uname -s)
  KERNEL		= $(shell uname -r)
  ERLANG_BIN	= $(shell dirname $(shell which erl))
  
@@ -14,13 +15,14 @@ Provide our own installation target.
 -OSNAME		= Debian
 -PKGERDIR	= deb
 -BUILDDIR        = debuild
+-DISTRO          = $(shell lsb_release -cs)
+-DEBARCH         = $(shell dpkg-architecture -qDEB_BUILD_ARCH)
 -else                         # Redhat / Centos
 -OSNAME		= RedHat
 -PKGERDIR	= rpm
 -BUILDDIR        = rpmbuild
 -endif
 -endif # linux
--
 -
 -ifeq ($(OS),SunOS)           # Solaris flavors
 -KERNELVER       = $(shell uname -v | grep -c joyent 2> /dev/null)
@@ -40,7 +42,8 @@ Provide our own installation target.
 -
 -ifeq ($(OS),Darwin)          # OSX
 -OSNAME		= OSX
--ARCH		= $(shell uname -m)
+-ARCH            = $(shell file `which erlc` | grep -c x86_64 2> /dev/null | awk \
+-                   '{if ($$1 == "0") {print "i386"} else {print "x86_64"}}')
 -PKGERDIR	= osx
 -BUILDDIR	= osxbuild
 -endif
@@ -55,7 +58,7 @@ Provide our own installation target.
  
  DATE		= $(shell date +%Y-%m-%d)
  VERSIONSTRING	= $(APP) ($(PKG_VERSION) $(DATE)) $(OSNAME) $(ARCH)
-@@ -66,6 +25,6 @@ pkgcheck:
+@@ -68,6 +25,6 @@ pkgcheck:
  	@echo "Packaging \"$(DISTNAME)\""
  
  # The heavy lifting is done by the individual packager Makefiles

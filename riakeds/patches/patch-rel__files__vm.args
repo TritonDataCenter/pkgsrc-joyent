@@ -1,6 +1,7 @@
 $NetBSD$
 
---- rel/files/vm.args.orig	2012-01-13 17:55:51.000000000 +0000
+Increase max ports by default.
+--- rel/files/vm.args.orig	2013-04-03 18:19:03.000000000 +0000
 +++ rel/files/vm.args
 @@ -17,7 +17,7 @@
  +W w

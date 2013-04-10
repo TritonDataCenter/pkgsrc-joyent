@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-DISTNAME=		riak_ee-1.2.1
+DISTNAME=		riak_ee-1.3.1
 PKGNAME=		${DISTNAME:S/_ee/eds/}
 CATEGORIES=		none
 MASTER_SITES=		#
@@ -16,7 +16,10 @@ CONFLICTS=		riak-*
 PKG_DESTDIR_SUPPORT=	user-destdir
 
 USE_LANGUAGES=		c c++
+USE_LIBTOOL=		yes
 USE_TOOLS=		gmake
+
+MAKE_JOBS_SAFE=		no
 
 DEPENDS+=		sudo-[0-9]*:../../security/sudo
 
@@ -89,6 +92,9 @@ REPLACE_FILES.escript=	rel/files/nodetool
 REPLACE_FILES.escript+=	${WRKDIR}/innostore-${INNOVER}/priv/innodump
 REPLACE_FILES.escript+=	${WRKDIR}/innostore-${INNOVER}/priv/innoload
 
+CHECK_INTERPRETER_SKIP=	riak/lib/bitcask-${VERSION.bitcask}/priv/Run-eunit-loop.expect
+CHECK_INTERPRETER_SKIP+=riak/lib/riaknostic/riaknostic
+
 CHECK_PORTABILITY_SKIP+=	tests/riak_search/run_all.sh	\
 				deps/riak_search/tests/riak_search/run_all.sh
 
@@ -112,6 +118,8 @@ post-extract:
 	  ${WRKDIR}/innostore-${INNOVER}/c_src/patches
 	cp ${FILESDIR}/js-src-jslock.c.patch \
 	  ${WRKSRC}/deps/erlang_js/c_src/patches
+	cp ${FILESDIR}/snappy-libtool.patch \
+	  ${WRKSRC}/deps/eleveldb/c_src/
 
 do-install:
 	${MKDIR} ${WRKSRC}/package/pkgsrc

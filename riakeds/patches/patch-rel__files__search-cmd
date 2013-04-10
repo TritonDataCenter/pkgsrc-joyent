@@ -1,12 +1,13 @@
 $NetBSD$
 
 Silence sudo (unneeded screen waste).
---- rel/files/search-cmd.orig	2012-08-06 21:57:12.000000000 +0000
+--- rel/files/search-cmd.orig	2013-04-03 18:19:03.000000000 +0000
 +++ rel/files/search-cmd
-@@ -25,7 +25,7 @@ if [ "$RUNNER_USER" -a "x$LOGNAME" != "x
+@@ -24,8 +24,7 @@ if [ "$RUNNER_USER" -a "x$LOGNAME" != "x
+         echo "sudo doesn't appear to be installed and your EUID isn't $RUNNER_USER" 1>&2
          exit 1
      fi
-     echo "Attempting to restart script through sudo -H -u $RUNNER_USER"
+-    echo "Attempting to restart script through sudo -H -u $RUNNER_USER" >&2
 -    exec sudo -H -u $RUNNER_USER -i $RUNNER_SCRIPT_DIR/$RUNNER_SCRIPT $@
 +    exec sudo -H -u $RUNNER_USER $RUNNER_SCRIPT_DIR/$RUNNER_SCRIPT $@
  fi
