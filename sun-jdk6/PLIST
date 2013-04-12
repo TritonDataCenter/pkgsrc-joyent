@@ -12,6 +12,7 @@ bin/javap
 bin/jdb
 bin/rmic
 bin/serialver
+java/lib
 java/sun6/README.html
 java/sun6/bin/HtmlConverter
 java/sun6/bin/amd64/appletviewer

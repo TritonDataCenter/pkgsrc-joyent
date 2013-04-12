@@ -1,6 +1,7 @@
 # $NetBSD: Makefile,v 1.20 2010/10/16 04:41:19 obache Exp $
 
 PKGNAME=	sun-jdk6-6.0.26
+PKGREVISION=	1
 
 DEPENDS+=	${PKGNAME_NOREV:S/jdk/jre/}*:../../joyent/sun-jre6
 
@@ -46,6 +47,7 @@ pre-install:
 do-install:
 	${INSTALL_PROGRAM_DIR} ${DESTDIR}${JAVA_HOME}
 	cd ${WRKSRC} && pax -rwp ma . ${DESTDIR}${JAVA_HOME}
-	${CHMOD} -R g-w ${DESTDIR}${PREFIX}
+	${CHMOD} -f -R g-w ${DESTDIR}${PREFIX}
+	${LN} -sf sun6/lib ${DESTDIR}${PREFIX}/java/lib
 
 .include "../../mk/bsd.pkg.mk"
