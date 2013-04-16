@@ -18,7 +18,7 @@ NO_CHECKSUM=	yes
 NO_BUILD=	yes
 WRKSRC=		${WRKDIR}/smtools
 
-VERSION=	20130308
+VERSION=	20130416
 
 .include "../../mk/bsd.prefs.mk"
 
@@ -75,7 +75,9 @@ do-install:
 	  ${DESTDIR}${PREFIX}/lib/zoneinit/zoneinit.json
 	${INSTALL_DATA} ${WRKSRC}/zoneinit/zoneinit.xml \
 	  ${DESTDIR}${PREFIX}/lib/zoneinit
-	${INSTALL_SCRIPT} ${WRKSRC}/zoneinit/mdata \
+	${INSTALL_SCRIPT} ${WRKSRC}/zoneinit/mdata-execute \
+	  ${DESTDIR}${PREFIX}/lib/zoneinit
+	${INSTALL_SCRIPT} ${WRKSRC}/zoneinit/mdata-fetch \
 	  ${DESTDIR}${PREFIX}/lib/zoneinit
 	${INSTALL_DATA} ${WRKSRC}/zoneinit/mdata.xml \
 	  ${DESTDIR}${PREFIX}/lib/zoneinit

@@ -37,7 +37,8 @@ lib/zoneinit/includes/91-passwords.sh
 lib/zoneinit/includes/92-sshd.sh
 lib/zoneinit/includes/93-pkgsrc.sh
 lib/zoneinit/includes/999-cleanup.sh
-lib/zoneinit/mdata
+lib/zoneinit/mdata-execute
+lib/zoneinit/mdata-fetch
 lib/zoneinit/mdata.xml
 lib/zoneinit/zoneinit
 lib/zoneinit/zoneinit.json
