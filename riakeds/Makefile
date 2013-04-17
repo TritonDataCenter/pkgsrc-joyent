@@ -3,7 +3,7 @@
 
 DISTNAME=		riak_ee-1.3.1
 PKGNAME=		${DISTNAME:S/_ee/eds/}
-CATEGORIES=		none
+CATEGORIES=		databases
 MASTER_SITES=		#
 
 MAINTAINER=		filip@joyent.com
@@ -110,7 +110,12 @@ INSTALL_ENV+=		ARCH=${MACHINE_ARCH}
 FETCH_MESSAGE =		" The file ${DISTNAME}${EXTRACT_SUFX} must be fetched"
 FETCH_MESSAGE+=		" from the Basho site, and saved to"
 FETCH_MESSAGE+=		" ${DISTDIR}/${DISTNAME}${EXTRACT_SUFX}"
-PKGREPOSITORYSUBDIR=	restricted
+
+RESTRICTED=		Commercial software prohibits redistribution
+NO_SRC_ON_CDROM=	${RESTRICTED}
+NO_SRC_ON_FTP=		${RESTRICTED}
+NO_BIN_ON_CDROM=	${RESTRICTED}
+NO_BIN_ON_FTP=		${RESTRICTED}
 
 post-extract:
 	${CHMOD} -R u=rwX,g=rX,o=rX ${WRKDIR}/innostore-${INNOVER}
