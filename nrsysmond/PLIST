@@ -1,0 +1,4 @@
+@comment $NetBSD$
+sbin/nrsysmond
+sbin/nrsysmond-config
+share/examples/nrsysmond/nrsysmond.cfg
