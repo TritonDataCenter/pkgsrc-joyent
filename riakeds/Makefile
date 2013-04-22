@@ -3,7 +3,7 @@
 
 DISTNAME=		riak_ee-1.3.1
 PKGNAME=		${DISTNAME:S/_ee/eds/}
-CATEGORIES=		databases
+CATEGORIES=		databases restricted
 MASTER_SITES=		#
 
 MAINTAINER=		filip@joyent.com
