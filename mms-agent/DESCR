@@ -1,0 +1,8 @@
+MongoDB Monitoring Service (MMS) is a free cloud-based
+service provided by 10gen for monitoring MongoDB
+deployments in real time. MMS features charts, custom
+dashboards and automated alerting to track performance,
+utilization and other KPIs. Designed specifically for
+MongoDB, MMS ensures that users have visibility into
+the right metrics to manage and optimize applications
+during development and in production.

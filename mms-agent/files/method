@@ -1,0 +1,31 @@
+#!/bin/bash
+#
+# SMF method for svc:/pkgsrc/mms-agent service
+# Joyent 2013.
+
+PARENT_PID=$(pgrep -f "mms-agent/agent.py");
+PID=$(pgrep -P ${PARENT_PID});
+
+case "$1" in
+  start)
+        nohup @PYTHONBIN@ @PREFIX@/share/mms-agent/agent.py >> @MONGODB_LOGPATH@/mms-agent.log 2>&1 &
+        ;;
+
+  stop)
+        kill ${PARENT_PID} ${PID}
+        ;;
+
+  restart)
+        kill ${PARENT_PID} ${PID}
+        sleep 3;
+        nohup @PYTHONBIN@ @PREFIX@/share/mongodb-mms-agent/agent.py >> @MONGODB_LOGPATH@/mms-agent.log 2>&1 &
+        ;;
+
+  *)
+        echo "";
+        echo "\tUsage: $0 { start | stop | restart }";
+        echo "";
+        exit 1;
+esac
+
+exit 0

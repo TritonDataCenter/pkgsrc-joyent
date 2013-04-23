@@ -1,0 +1,7 @@
+# $NetBSD$
+
+case ${STAGE} in
+DEINSTALL)
+	logadm -r @VARBASE@/log/mongodb/mms-agent.log
+	;;
+esac

@@ -1,0 +1,8 @@
+# $NetBSD$
+
+case ${STAGE} in
+POST-INSTALL)
+	chown -R @MONGODB_USER@:@MONGODB_GROUP@ @PREFIX@/share/mms-agent/*
+	logadm -C 5 -c -s 10k -z 1 -w @VARBASE@/log/mongodb/mms-agent.log
+	;;
+esac

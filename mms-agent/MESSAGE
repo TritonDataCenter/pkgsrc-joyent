@@ -1,0 +1,9 @@
+===========================================================================
+$NetBSD$
+
+Before you start the MMS agent service, you need to get your API_KEY from
+10gen (hint: sign into https://mms.10gen.com) and fill it in
+
+  ${PREFIX}/share/mms-agent/settings.py
+
+===========================================================================
