@@ -4,7 +4,7 @@
 DISTNAME=	10gen-mms-agent
 PKGNAME=	mms-agent-0
 CATEGORIES=	databases
-MASTER_SITES=	https://mms.10gen.com/settings/
+MASTER_SITES=	http://mms.10gen.com/settings/
 
 MAINTAINER=	filip@joyent.com
 HOMEPAGE=	http://www.10gen.com/products/mongodb-monitoring-service
@@ -19,6 +19,7 @@ DEPENDS+=	mongodb>=1.6:../../wip/mongodb
 WRKSRC=		${WRKDIR}/mms-agent
 USE_LANGUAGES=	# none
 NO_BUILD=	yes
+NO_CHECKSUM=	yes
 
 PY_SCRIPTS=	agent agentProcess blockingStats confPull getLogs logConfig \
 		mmsAgent munin nonBlockingStats settings
