@@ -17,6 +17,7 @@ HAS_CONFIGURE=	yes
 USE_TOOLS+=	pkg-config
 USE_TOOLS+=	gmake
 USE_LANGUAGES=	c c++
+CHECK_FAKEHOME=	no
 
 .include "../../mk/bsd.prefs.mk"
 .include "options.mk"
@@ -51,7 +52,7 @@ REPLACE_PYTHON+=	tools/wafadmin/*.py
 REPLACE_PYTHON+=	tools/wafadmin/Tools/*.py
 
 post-install:
-	${SETENV} PYTHON=${PYTHONBIN:Q} \
+	${SETENV} npm_config_bin-links=true HOME=${WRKDIR}/.home PYTHON=${PYTHONBIN:Q} \
 	  ${DESTDIR}${PREFIX}/smartdc/bin/node \
 	  ${DESTDIR}${PREFIX}/smartdc/bin/npm install -g smartdc
 
