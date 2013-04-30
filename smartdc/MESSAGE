@@ -1,0 +1,10 @@
+===========================================================================
+$NetBSD$
+
+SmartDC tools installed under
+
+  ${PREFIX}/smartdc/bin
+
+Feel free to add to your PATH for easy access.
+
+===========================================================================
