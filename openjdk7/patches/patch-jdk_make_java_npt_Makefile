@@ -1,0 +1,19 @@
+$NetBSD$
+
+GCC needs libiconv.
+
+--- jdk/make/java/npt/Makefile.orig	2013-02-20 17:07:30.000000000 +0000
++++ jdk/make/java/npt/Makefile
+@@ -38,6 +38,12 @@ FILES_m = mapfile-vers
+ 
+ include $(BUILDDIR)/common/Defs.gmk
+ 
++ifeq ($(PLATFORM), solaris)
++  ifeq ($(CC_VERSION), gcc)
++    OTHER_LDLIBS += -liconv
++  endif # CC_VERSION
++endif # PLATFORM
++
+ SRCDIR=$(SHARE_SRC)/npt
+ PSRCDIR=$(PLATFORM_SRC)/npt
+ 

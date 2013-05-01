@@ -1,15 +1,61 @@
 $NetBSD$
 
---- jdk/make/sun/awt/Makefile.orig	2012-05-22 07:32:41.772795132 +0000
+GCC and pkgsrc support.
+
+--- jdk/make/sun/awt/Makefile.orig	2013-02-20 17:07:30.000000000 +0000
 +++ jdk/make/sun/awt/Makefile
-@@ -527,10 +527,8 @@ CPPFLAGS += -I$(SHARE_SRC)/native/$(PKGD
+@@ -94,6 +94,7 @@ ifeq  ($(PLATFORM), solaris)
+ FILES_c = $(FILES_2D_c)
+ FILES_c += awt_LoadLibrary.c
+ OTHER_LDLIBS = $(JVMLIB) $(LIBM) $(LIBDL)
++ifneq ($(CC_VERSION), gcc)
+ ifeq ($(CC_VER), 5.8)
+   ifndef REMOVE_ALL_WORKAROUNDS
+     ifeq ($(ARCH_FAMILY), i586)
+@@ -114,6 +115,7 @@ ifeq ($(CC_VER), 5.8)
+     endif
+   endif
+ endif
++endif # ! CC_VERSION
+ endif
+ 
+ ifeq  ($(PLATFORM), linux)
+@@ -420,7 +422,15 @@ FONTCONFIGS_SRC	= $(PLATFORM_SRC)/classe
+ _FONTCONFIGS	= \
+ 	fontconfig.properties
+ 
+-FONTCONFIGS_SRC_PREFIX = $(PLATFORM).
++ifndef DISTRO
++  DISTRO=$(PLATFORM)
++endif # DISTRO
++
++ifeq ($(DISTRO), pkgsrc)
++  FONTCONFIGS_SRC_PREFIX = pkgsrc.
++else
++  FONTCONFIGS_SRC_PREFIX = $(PLATFORM).
++endif # DISTRO
+ 
+ # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ SOLARIS
+ endif # PLATFORM
+@@ -530,6 +540,12 @@ CPPFLAGS += -I$(OPENWIN_HOME)/include \
+             -I$(OPENWIN_HOME)/include/X11/extensions \
+             -I$(PLATFORM_SRC)/native/$(PKGDIR)/font 
+ endif
++ifeq ($(PLATFORM), solaris)
++ifeq ($(CC_VERSION), gcc)
++CPPFLAGS += -I$(OPENWIN_HOME)/include \
++            -I$(OPENWIN_HOME)/include/X11/extensions
++endif
++endif
+ CPPFLAGS += -I$(SHARE_SRC)/native/$(PKGDIR)/debug \
+             -I$(SHARE_SRC)/native/$(PKGDIR)/../font \
+             -I$(PLATFORM_SRC)/native/$(PKGDIR)/../font \
+@@ -552,7 +568,7 @@ CPPFLAGS += -I$(SHARE_SRC)/native/$(PKGD
  	    $(EVENT_MODEL)
  
- # include these last so we don't pick up unintentional includes
--ifeq ($(PLATFORM), bsd)
- CPPFLAGS += -I$(OPENWIN_HOME)/include \
-             -I$(OPENWIN_HOME)/include/X11/extensions
--endif
+ ifeq ($(PLATFORM), linux)
+-LDFLAGS += -L$(OPENWIN_LIB)
++LDFLAGS += -L$(OPENWIN_LIB) -Wl,-R$(OPENWIN_LIB)
+ endif
  
- ifneq (,$(findstring $(PLATFORM), linux bsd))
- LDFLAGS += -L$(OPENWIN_LIB)
+ LDFLAGS += -L$(LIBDIR)/$(LIBARCH)/$(TSOBJDIR) \

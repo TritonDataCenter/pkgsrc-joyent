@@ -1,0 +1,19 @@
+$NetBSD$
+
+Add GCC support.
+
+--- jdk/make/common/shared/Defs-versions.gmk.orig	2013-02-20 17:07:30.000000000 +0000
++++ jdk/make/common/shared/Defs-versions.gmk
+@@ -36,7 +36,11 @@ endif
+ 
+ # Solaris uses Sun Studio compilers by default
+ ifeq ($(PLATFORM), solaris)
+-  override CC_VERSION = sun
++  ifdef USE_GCC
++    override CC_VERSION = gcc
++  else
++    override CC_VERSION = sun
++  endif
+ endif
+ 
+ # Linux uses GNU compilers by default

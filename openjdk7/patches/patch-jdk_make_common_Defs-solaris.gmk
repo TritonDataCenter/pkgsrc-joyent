@@ -1,29 +1,21 @@
---- jdk/make/common/Defs-solaris.gmk.orig_dist	2011-06-27 17:18:26.000000000 +0000
-+++ jdk/make/common/Defs-solaris.gmk	2012-05-22 11:02:22.061993258 +0000
-@@ -465,7 +465,6 @@
-         #    Make sure it is off.
-         # WARNING: These may cause compiler warnings about duplicate -O options
-         CC_XKEEPFRAME_OPTIONS  += -Wu,-O$(OPT_LEVEL/$(OPTIMIZATION_LEVEL))~yz
--        CXX_XKEEPFRAME_OPTIONS += -Qoption ube -O$(OPT_LEVEL/$(OPTIMIZATION_LEVEL))~yz
-       endif
-     endif
-   
-@@ -479,7 +478,6 @@
-         #   the -features=no%except option and -xO4 and greater.
-         #   Bottom line is, we ALWAYS want a frame pointer!
-         CC_XKEEPFRAME_OPTIONS  += -Wu,-Z~B
--        CXX_XKEEPFRAME_OPTIONS += -Qoption ube -Z~B
-       endif
+$NetBSD$
+
+--- jdk/make/common/Defs-solaris.gmk.orig	2013-02-20 17:07:30.000000000 +0000
++++ jdk/make/common/Defs-solaris.gmk
+@@ -44,6 +44,10 @@
+ # Note: CPPFLAGS are used in C and C++ compiles.
+ #
  
-       CC_NEWER_THAN_56 := \
-@@ -625,8 +623,8 @@
- CC_DEPEND_FILTER = $(SED) -e '/:[ 	]*[/]/d' -e 's!$*\.$(OBJECT_SUFFIX)!$(dir $@)& $(dir $@)$*.$(DEPEND_SUFFIX)!g' | $(SORT) -u
++ifdef USE_GCC
++  include $(JDK_TOPDIR)/make/common/Defs-$(PLATFORM)-gcc.gmk
++else
++
+ # Get shared JDK settings
+ include $(JDK_MAKE_SHARED_DIR)/Defs.gmk
  
- # Location of openwin libraries (do we really need this anymore?)
--OPENWIN_HOME    = /usr/openwin
--OPENWIN_LIB     = $(OPENWIN_HOME)/lib$(ISA_DIR)
-+OPENWIN_HOME    = $(PACKAGE_PATH)
-+OPENWIN_LIB     = $(OPENWIN_HOME)/lib
+@@ -799,3 +803,5 @@ SA_DEBUGINFO_NAME = $(LIB_PREFIX)saproc.
+ SA_DIZ_NAME = $(LIB_PREFIX)saproc.diz
+ INCLUDE_SA=true
  
- # Runtime graphics library search paths...
- OPENWIN_RUNTIME_LIB = /usr/openwin/lib$(ISA_DIR)
++endif # USE_GCC
++

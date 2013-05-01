@@ -1,0 +1,32 @@
+$NetBSD$
+
+Add rpaths and GCC compatability.
+
+--- jdk/make/sun/xawt/Makefile.orig	2013-02-20 17:07:30.000000000 +0000
++++ jdk/make/sun/xawt/Makefile
+@@ -51,11 +51,14 @@ include FILES_export_unix.gmk
+ AUTO_FILES_JAVA_DIRS = sun/awt/X11
+ AUTO_JAVA_PRUNE = WrapperGenerator.java
+ 
+-LDFLAGS += -L$(OPENWIN_LIB)
++LDFLAGS += -L$(OPENWIN_LIB) -Wl,-R$(OPENWIN_LIB)
+ 
+ # For Xrender extension.
++# pkgsrc has Xrender in $(OPENWIN_LIB)
+ ifeq ($(PLATFORM), solaris)
++ifneq ($(DISTRO), pkgsrc)
+ LDFLAGS += -L/usr/openwin/sfw/lib$(ISA_DIR) -R/usr/openwin/sfw/lib$(ISA_DIR)
++endif # ! DISTRO
+ endif
+ 
+ ifeq ($(PLATFORM), linux)
+@@ -162,6 +165,9 @@ endif
+ # we will set a flag indicating this mismatch and the JDK source file
+ # will interpret it to resolve the problem.
+ ifeq ($(PLATFORM), solaris)
++  ifeq ($(CC_VERSION), gcc)
++    CPPFLAGS += -I$(OPENWIN_HOME)/include
++  endif # CC_VERSION
+   CPPFLAGS += -I$(OPENWIN_HOME)/include/X11/extensions
+   OS_VERSION := $(shell uname -r)
+   XRENDER_H := $(OPENWIN_HOME)/share/include/X11/extensions/Xrender.h

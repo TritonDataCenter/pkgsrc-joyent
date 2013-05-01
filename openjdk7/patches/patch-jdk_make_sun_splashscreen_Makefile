@@ -1,0 +1,16 @@
+$NetBSD$
+
+--- jdk/make/sun/splashscreen/Makefile.orig	2013-02-20 17:07:30.000000000 +0000
++++ jdk/make/sun/splashscreen/Makefile
+@@ -89,6 +89,11 @@ else ifneq ($(PLATFORM), windows)
+                 -I$(OPENWIN_HOME)/include/X11/extensions
+     OTHER_LDLIBS += -L$(OPENWIN_LIB) -lX11 -lXext $(LIBM) -pthread
+   else
++    ifeq ($(PLATFORM), solaris)
++      ifeq ($(CC_VERSION), gcc)
++        OTHER_LDLIBS += -liconv
++      endif # CC_VERSION
++    endif # solaris
+     CPPFLAGS += -I$(OPENWIN_HOME)/include -I$(OPENWIN_HOME)/include/X11/extensions
+     OTHER_LDLIBS += -L$(OPENWIN_LIB) -lX11 -lXext $(LIBM) -lpthread
+   endif

@@ -1,6 +1,0 @@
-The package now builds and installs 32bit. The conditions are:
-
-* Only builds with Studio (used 12.3)
-* Needs hotspot/make/solaris/makefiles/sparcWorks.make patched
-  to remove the line that specifies the "-Qoption ..." arg passed
-  (no idea why that doesn't work any more, yet).
