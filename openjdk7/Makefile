@@ -48,8 +48,16 @@ DISTFILES+=			${LANGTOOLS}.tar.bz2
 SITES.${LANGTOOLS}.tar.bz2=	${MASTER_SITES}/langtools/archive/
 #
 
-#DISTFILES=	${DEFAULT_DISTFILES}
-#EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
+#
+# Ant is required for building, we cannot depend on the pkgsrc devel/apache-ant
+# as that would cause circular depedencies.
+#
+ANT=				apache-ant-1.8.1
+ANT_TGZ=			${ANT}-bin.tar.bz2
+DISTFILES+=			${ANT_TGZ}
+SITES.${ANT_TGZ}=		http://archive.apache.org/dist/ant/binaries/
+ANT_BIN=			${WRKDIR}/${ANT}/bin
+PREPEND_PATH+=			${ANT_BIN}
 
 # diff between distfile and bsd-port branch. To check out, use:
 # "hg fclone http://hg.openjdk.java.net/bsd-port/bsd-port/"
@@ -69,7 +77,6 @@ MAKE_ENV+=		PKGSRC_ZIPEXE=${TOOLS_PATH.zip}
 MAKE_ENV+=		PKGSRC_UNZIP=${TOOLS_PATH.unzip}
 MAKE_ENV+=		PKGSRC_UNZIPSFX=${TOOLS_PATH.unzip}sfx
 
-BUILD_DEPENDS+=		apache-ant-[0-9]*:../../devel/apache-ant
 BUILD_DEPENDS+=		sun-jdk6-[0-9]*:../../lang/sun-jdk6
 DEPENDS+=		dejavu-ttf-[0-9]*:../../fonts/dejavu-ttf
 #DEPENDS+=		ja-sazanami-ttf-[0-9]*:../../fonts/ja-sazanami-ttf
