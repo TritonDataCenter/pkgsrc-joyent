@@ -66,8 +66,9 @@ MAKE_ENV+=		PKGSRC_ZIPEXE=${TOOLS_PATH.zip}
 MAKE_ENV+=		PKGSRC_UNZIP=${TOOLS_PATH.unzip}
 MAKE_ENV+=		PKGSRC_UNZIPSFX=${TOOLS_PATH.unzip}sfx
 
+BUILD_DEPENDS+=		apache-ant-[0-9]*:../../devel/apache-ant
+BUILD_DEPENDS+=		sun-jdk6-[0-9]*:../../lang/sun-jdk6
 DEPENDS+=		dejavu-ttf-[0-9]*:../../fonts/dejavu-ttf
-DEPENDS+=		apache-ant-[0-9]*:../../devel/apache-ant
 #DEPENDS+=		ja-sazanami-ttf-[0-9]*:../../fonts/ja-sazanami-ttf
 #DEPENDS+=		baekmuk-ttf-[0-9]*:../../fonts/baekmuk-ttf
 
