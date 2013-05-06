@@ -2,6 +2,6 @@
 
 case ${STAGE} in
 DEINSTALL)
-	logadm -r @VARBASE@/log/mongodb/quickbackup-percona.log
+	logadm -r @VARBASE@/log/mongodb/quickbackup-mongodb.log
 	;;
 esac

@@ -2,6 +2,6 @@
 
 case ${STAGE} in
 POST-INSTALL)
-	logadm -C 5 -c -s 10k -z 1 -w @VARBASE@/log/mongodb/quickbackup-percona.log
+	logadm -C 5 -c -s 10k -z 1 -w @VARBASE@/log/mongodb/quickbackup-mongodb.log
 	;;
 esac
