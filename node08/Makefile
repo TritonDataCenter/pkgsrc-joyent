@@ -2,6 +2,7 @@
 #
 
 DISTNAME=	node-v0.8.23
+PKGREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	http://nodejs.org/dist/${DISTNAME:S/node-//}/
 PKGNAME=	${DISTNAME:S/-v/js-/}
