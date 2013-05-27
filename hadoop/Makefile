@@ -1,8 +1,7 @@
 # $NetBSD$
 #
 
-DISTNAME=	hadoop-1.0.4
-PKGREVISION=	3
+DISTNAME=	hadoop-1.1.2
 CATEGORIES=	devel
 MASTER_SITES=	${MASTER_SITE_APACHE:=hadoop/common/${DISTNAME}/}
 

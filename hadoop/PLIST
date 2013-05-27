@@ -156,8 +156,8 @@ share/hadoop/hadoop-minicluster-${PKGVERSION_NOREV}.jar
 share/hadoop/hadoop-test-${PKGVERSION_NOREV}.jar
 share/hadoop/hadoop-tools-${PKGVERSION_NOREV}.jar
 share/hadoop/lib/asm-3.2.jar
-share/hadoop/lib/aspectjrt-1.6.5.jar
-share/hadoop/lib/aspectjtools-1.6.5.jar
+share/hadoop/lib/aspectjrt-1.6.11.jar
+share/hadoop/lib/aspectjtools-1.6.11.jar
 share/hadoop/lib/commons-beanutils-1.7.0.jar
 share/hadoop/lib/commons-beanutils-core-1.8.0.jar
 share/hadoop/lib/commons-cli-1.2.jar
@@ -171,9 +171,9 @@ share/hadoop/lib/commons-httpclient-3.0.1.jar
 share/hadoop/lib/commons-io-2.1.jar
 share/hadoop/lib/commons-lang-2.4.jar
 share/hadoop/lib/commons-logging-1.1.1.jar
-share/hadoop/lib/commons-logging-api-${PKGVERSION_NOREV}.jar
+share/hadoop/lib/commons-logging-api-1.0.4.jar
 share/hadoop/lib/commons-math-2.1.jar
-share/hadoop/lib/commons-net-1.4.1.jar
+share/hadoop/lib/commons-net-3.1.jar
 share/hadoop/lib/core-3.1.1.jar
 share/hadoop/lib/hadoop-capacity-scheduler-${PKGVERSION_NOREV}.jar
 share/hadoop/lib/hadoop-fairscheduler-${PKGVERSION_NOREV}.jar
@@ -198,6 +198,9 @@ share/hadoop/lib/jdiff/hadoop_1.0.0.xml
 share/hadoop/lib/jdiff/hadoop_1.0.1.xml
 share/hadoop/lib/jdiff/hadoop_1.0.2.xml
 share/hadoop/lib/jdiff/hadoop_1.0.3.xml
+share/hadoop/lib/jdiff/hadoop_1.0.4.xml
+share/hadoop/lib/jdiff/hadoop_1.1.0.xml
+share/hadoop/lib/jdiff/hadoop_1.1.1.xml
 share/hadoop/lib/jdiff/hadoop_${PKGVERSION_NOREV}.xml
 share/hadoop/lib/jersey-core-1.8.jar
 share/hadoop/lib/jersey-json-1.8.jar
@@ -264,6 +267,3 @@ share/hadoop/webapps/static/jobtracker.js
 share/hadoop/webapps/static/sorttable.js
 share/hadoop/webapps/task/WEB-INF/web.xml
 share/hadoop/webapps/task/index.html
-@pkgdir share/hadoop/webapps/secondary/WEB-INF
-@pkgdir share/hadoop/examples
-@pkgdir share/hadoop/contrib/hdfsproxy/logs

@@ -4,7 +4,7 @@ The task-controller and jsvc components only build on Linux. The librecordio
 component doesn't like to build against xerces-c (recent GCC too aggressive?).
 Simplify installation phase for pkgsrc purposes. Use proper prefix for Snappy.
 
---- build.xml.orig	2012-10-03 05:17:24.000000000 +0000
+--- build.xml.orig	2013-01-31 02:06:05.000000000 +0000
 +++ build.xml
 @@ -215,7 +215,7 @@
    <property name="bundle.snappy" value="false"/>
@@ -15,9 +15,9 @@ Simplify installation phase for pkgsrc purposes. Use proper prefix for Snappy.
    <property name="snappy.lib" value="${snappy.prefix}/lib"/>
    <property name="snappy.include" value="${snappy.prefix}/include"/>
  
-@@ -1595,14 +1595,6 @@
- 
-     <copy todir="${dist.dir}/" file="build.xml"/>
+@@ -1598,14 +1598,6 @@
+       <fileset dir="${basedir}/.eclipse.templates"/>
+     </copy>
  
 -    <subant target="task-controller">
 -      <fileset dir="." includes="build.xml"/>
@@ -30,12 +30,12 @@ Simplify installation phase for pkgsrc purposes. Use proper prefix for Snappy.
      <chmod perm="ugo+x" type="file" parallel="false">
          <fileset dir="${dist.dir}/bin"/>
          <fileset dir="${dist.dir}/sbin"/>
-@@ -1667,17 +1659,16 @@
+@@ -1671,17 +1663,16 @@
      </macro_tar>
    </target>
  
 -  <target name="bin-package" depends="compile, jar, examples, tools-jar, jar-test, ant-tasks, package-librecordio" 
-+  <target name="bin-package" depends="compile, jar, examples, tools-jar, jar-test, ant-tasks"
++  <target name="bin-package" depends="compile, jar, examples, tools-jar, jar-test, ant-tasks" 
  		description="assembles platform-specific artifacts for binary targets">
      <delete dir="${dist.dir}"/>
      <mkdir dir="${dist.dir}"/>
@@ -49,8 +49,8 @@ Simplify installation phase for pkgsrc purposes. Use proper prefix for Snappy.
 +    <mkdir dir="${dist.dir}/share/${name}/examples"/>
      <mkdir dir="${dist.dir}/share/${name}/webapps"/>
      <mkdir dir="${dist.dir}/share/${name}/templates/conf"/>
- 
-@@ -1706,7 +1697,7 @@
+     <mkdir dir="${dist.dir}/native"/>
+@@ -1711,7 +1702,7 @@
      <exec dir="${dist.dir}" executable="sh" failonerror="true">
        <env key="BASE_NATIVE_LIB_DIR" value="${lib.dir}/native"/>
        <env key="BUILD_NATIVE_DIR" value="${build.dir}/native"/>
@@ -59,7 +59,7 @@ Simplify installation phase for pkgsrc purposes. Use proper prefix for Snappy.
        <env key="NATIVE_PLATFORM" value="${build.platform}" />
        <arg line="${native.src.dir}/packageBinNativeHadoop.sh"/>
      </exec>
-@@ -1743,7 +1734,7 @@
+@@ -1748,7 +1739,7 @@
        </fileset>
      </copy>
  
@@ -68,7 +68,7 @@ Simplify installation phase for pkgsrc purposes. Use proper prefix for Snappy.
        <fileset dir="${conf.dir}" excludes="**/*.template"/>
      </copy>
  
-@@ -1765,19 +1756,16 @@
+@@ -1770,19 +1761,16 @@
        </fileset>
      </copy>
  

@@ -1,11 +1,11 @@
 $NetBSD$
 
-SHA1 (hadoop-1.0.4.tar.gz) = 1ab6f3271289ff83ba7b44a090ec1a3e6b77d1dd
-RMD160 (hadoop-1.0.4.tar.gz) = 54331429cbf18d67395ec7e0aadef9bdd77f1ffa
-Size (hadoop-1.0.4.tar.gz) = 62793050 bytes
+SHA1 (hadoop-1.1.2.tar.gz) = 0142847f35485894bd833d87945d4bc59483ce5a
+RMD160 (hadoop-1.1.2.tar.gz) = d5ecbccb503533192e50e86534af2c9a13edfa1a
+Size (hadoop-1.1.2.tar.gz) = 61927560 bytes
 SHA1 (patch-bin_hadoop) = 312c6067c363d9d81fe616bc8c285a821206829f
 SHA1 (patch-bin_hadoop-config.sh) = f2257fd33a1ebfb1142830dfd8d37d54bc2f72cb
-SHA1 (patch-build.xml) = d038d1073de0f545b96f9afaaca5a5083a24ad5d
+SHA1 (patch-build.xml) = 5e5db0e6d1d9606257acae1f29852db5721c4ba6
 SHA1 (patch-conf_hadoop-env.sh) = fd0273208f6f2b4b9f04fdff376a51417a8b1e58
 SHA1 (patch-src_c++_libhdfs_configure.ac) = 56c243c83a423626d38de03fe3f2ca8cc613305b
 SHA1 (patch-src_c++_libhdfs_hdfsJniHelper.c) = 7655176e404cdf890eddb69761da1f94c749c92a
@@ -15,5 +15,5 @@ SHA1 (patch-src_core_core-default.xml) = 86e18ba30e84827c83612fb4a3d9f6b8327bcdd
 SHA1 (patch-src_core_org_apache_hadoop_io_nativeio_NativeIO.java) = e05d3566522a9aa334077ec9dbd89659c7d42087
 SHA1 (patch-src_mapred_org_apache_hadoop_mapred_TaskRunner.java) = ec13a84f8a879e4face71a3cba60ac4dad3dd25c
 SHA1 (patch-src_native_acinclude.m4) = 451c852d8aca3d23f7424afa0d6b17a6f61c7168
-SHA1 (patch-src_native_configure.ac) = cc35857e70eed83274763074648ada0e0497013c
+SHA1 (patch-src_native_configure.ac) = 20f446055dbdf5241fe9e8b3f476b3063948cad2
 SHA1 (patch-src_saveVersion.sh) = 71a2688a011dfc91c2ed48b50c469941f80e1573
