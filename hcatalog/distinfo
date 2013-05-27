@@ -1,8 +1,8 @@
 $NetBSD$
 
-SHA1 (hcatalog-src-0.4.0-incubating.tar.gz) = c251ad32dbe45deebfc3a278fd31f4d1efbc50d7
-RMD160 (hcatalog-src-0.4.0-incubating.tar.gz) = f885d369d460f62dc3e824628c6a362183c11b31
-Size (hcatalog-src-0.4.0-incubating.tar.gz) = 502972 bytes
-SHA1 (patch-bin__hcat_server.sh) = edcda22f4854786f344cfb65649e5ee7ff37242d
+SHA1 (hcatalog-src-0.5.0-incubating.tar.gz) = 4b3f844f1cd57026911c280b67dc2fa3e5555d52
+RMD160 (hcatalog-src-0.5.0-incubating.tar.gz) = 5a5b901d8c3009bc514216cb4e16c5e2d33c3aa8
+Size (hcatalog-src-0.5.0-incubating.tar.gz) = 794854 bytes
+SHA1 (patch-bin__hcat_server.sh) = c0774821fd46a428684039f13bc0abb1337c8fc4
 SHA1 (patch-bin_hcat) = 00f3ad1c5fed0c070a22c3a11d4fb21dc22636aa
 SHA1 (patch-bin_hcat-config.sh) = 3f595cdef609b406d33db58d580ff8b8b112f3fb
