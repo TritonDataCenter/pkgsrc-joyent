@@ -1,9 +1,9 @@
 # $NetBSD$
 #
 
-DISTNAME=	hive-0.9.0
+DISTNAME=	hive-0.10.0
 CATEGORIES=	databases
-MASTER_SITES=	http://www.us.apache.org/dist/hive/hive-0.9.0/
+MASTER_SITES=	http://www.us.apache.org/dist/hive/${DISTNAME}/
 
 MAINTAINER=	filip@joyent.com
 HOMEPAGE=	http://hive.apache.org/
@@ -38,8 +38,8 @@ PKG_SHELL.${HIVE_USER}=	${BASH}
 
 OWN_DIRS_PERMS+=	${HIVE_LOG_DIR} ${HIVE_USER} ${HADOOP_GROUP} 755
 
-REPLACE_BASH+=		bin/hive bin/hive-config.sh bin/ext/*.sh
-
+REPLACE_BASH+=		bin/hive bin/hive-config.sh bin/metatool bin/ext/*.sh
+CHECK_INTERPRETER_SKIP=	share/hive/lib/py/*
 CONFIG_FILES=		hive-default.xml.template hive-env.sh.template \
 			hive-exec-log4j.properties.template \
 			hive-log4j.properties.template hive-site.xml

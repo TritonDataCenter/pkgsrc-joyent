@@ -1,9 +1,9 @@
 $NetBSD$
 
-SHA1 (hive-0.9.0.tar.gz) = 8e957af1a69a8f50fc27c4cb2ba5065994e651bf
-RMD160 (hive-0.9.0.tar.gz) = b8243e88bcb02acf7920092d4ff1655070db5adf
-Size (hive-0.9.0.tar.gz) = 30195232 bytes
+SHA1 (hive-0.10.0.tar.gz) = 9d6ca70630051c55ad3eadbbabd72385bf0f502d
+RMD160 (hive-0.10.0.tar.gz) = 3ea3e442134792612fbf6967e6c681e4a49c119b
+Size (hive-0.10.0.tar.gz) = 36524032 bytes
 SHA1 (patch-bin_hive) = 8e0a89ad82614d52b58b6cd1449bf07d0d9ef275
-SHA1 (patch-common_src_java_conf_hive-log4j.properties) = 996f6388090ea516c06634b82adaf5c07e663ebb
+SHA1 (patch-common_src_java_conf_hive-log4j.properties) = 873151686ba0a81f90dbe7158a10ebd33476e011
 SHA1 (patch-hive-config.sh) = 53df2ec804d3f9fde7e7833fd68f7aa082af189c
-SHA1 (patch-ql_src_java_conf_hive-exec-log4j.properties) = 1a50e3829866c2e8d2bfe0479235ec3e11cef9f8
+SHA1 (patch-ql_src_java_conf_hive-exec-log4j.properties) = 11913148c2f96ab4a53e985de472a7d3cf4365db
