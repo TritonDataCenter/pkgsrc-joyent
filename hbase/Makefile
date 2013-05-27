@@ -1,9 +1,9 @@
 # $NetBSD$
 #
 
-DISTNAME=	hbase-0.94.3
+DISTNAME=	hbase-0.94.7
 CATEGORIES=	databases
-MASTER_SITES=	http://www.us.apache.org/dist/hbase/hbase-0.94.3/
+MASTER_SITES=	http://www.us.apache.org/dist/hbase/${DISTNAME}/
 
 MAINTAINER=	filip@joyent.com
 HOMEPAGE=	http://hbase.apache.org/
