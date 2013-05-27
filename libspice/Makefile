@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-DISTNAME=	spice-0.12.2
+DISTNAME=	spice-0.12.3
 PKGNAME= 	lib${DISTNAME}
 CATEGORIES=	joyent
 MASTER_SITES=	http://spice-space.org/download/releases/
@@ -23,6 +23,7 @@ USE_TOOLS+=	pkg-config
 PYTHON_FOR_BUILD_ONLY=	yes
 
 CONFIGURE_ARGS+= --disable-client --enable-smartcard=no
+CFLAGS+=	-DBSD_COMP
 
 PKGCONFIG_OVERRIDE+=	spice-common/spice-protocol/spice-protocol.pc.in
 PKGCONFIG_OVERRIDE+=	spice-server.pc.in
