@@ -1,0 +1,27 @@
+$NetBSD$
+
+Fix default paths.
+
+--- bin/mahout.orig	2012-06-12 08:30:45.000000000 +0000
++++ bin/mahout
+@@ -52,6 +52,11 @@
+ # * limitations under the License.
+ # */
+ 
++# pkgsrc overrides
++HADOOP_PREFIX="@PREFIX@"
++HADOOP_CONF_DIR="@PKG_SYSCONFDIR@/../hadoop"
++MAHOUT_LOG_DIR="@MAHOUT_LOG_DIR@"
++
+ cygwin=false
+ case "`uname`" in
+ CYGWIN*) cygwin=true;;
+@@ -81,7 +86,7 @@ fi
+ 
+ # some directories
+ THIS_DIR=`dirname "$THIS"`
+-MAHOUT_HOME=`cd "$THIS_DIR/.." ; pwd`
++MAHOUT_HOME=`cd "$THIS_DIR/../share/mahout" ; pwd`
+ 
+ # some Java parameters
+ if [ "$MAHOUT_JAVA_HOME" != "" ]; then
