@@ -14,6 +14,7 @@ LICENSE=	apache-2.0
 PKG_DESTDIR_SUPPORT=	user-destdir
 
 BUILD_DEPENDS+=	apache-maven>=3:../../devel/apache-maven
+DEPENDS+=	hadoop-[0-9]*:../../joyent/hadoop
 
 WRKSRC=		${WRKDIR}/mahout-distribution-0.7
 USE_LANGUAGES=	# none
