@@ -1,10 +1,12 @@
 # $NetBSD$
 #
+# used by joyent/flume/Makefile
 # used by joyent/hadoop/Makefile
 # used by joyent/hadoop-lzo/Makefile
 # used by joyent/hbase/Makefile
 # used by joyent/hcatalog/Makefile
 # used by joyent/hive/Makefile
+# used by joyent/mahout/Makefile
 # used by joyent/pig/Makefile
 # used by joyent/templeton/Makefile
 
