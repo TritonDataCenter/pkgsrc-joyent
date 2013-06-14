@@ -1,8 +1,7 @@
 # $NetBSD$
 #
 
-DISTNAME=	node-v0.8.23
-PKGREVISION=	1
+DISTNAME=	node-v0.8.25
 CATEGORIES=	devel
 MASTER_SITES=	http://nodejs.org/dist/${DISTNAME:S/node-//}/
 PKGNAME=	${DISTNAME:S/-v/js-/}
@@ -50,6 +49,8 @@ REPLACE_PYTHON+=	tools/node-waf
 REPLACE_PYTHON+=	tools/waf-light
 REPLACE_PYTHON+=	tools/wafadmin/*.py
 REPLACE_PYTHON+=	tools/wafadmin/Tools/*.py
+
+CHECK_INTERPRETER_SKIP+=	lib/node_modules/npm/*
 
 .if ${OPSYS} == "NetBSD" || ${OPSYS} == "FreeBSD" || ${OPSYS} == "OpenBSD"
 . include "../../wip/libexecinfo/buildlink3.mk"
