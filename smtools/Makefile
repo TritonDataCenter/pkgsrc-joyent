@@ -27,7 +27,7 @@ SM_SCRIPTS=	cpuinfo create-db create-dbuser create-vhost	\
 		list-dbusers list-timezones meminfo pkghelp	\
 		prepare-image reboot rebuild-pkgsrc remove-db	\
 		remove-dbuser set-hostname set-timezone 	\
-		shutdown summary lsof
+		shutdown summary lsof tune-mysql
 ZONEINIT_INCS=	00-mdata.sh 01-reboot-file.sh 02-config.sh	\
 		04-mdata.sh		\
 		11-files.sh 12-network.sh 91-passwords.sh	\
