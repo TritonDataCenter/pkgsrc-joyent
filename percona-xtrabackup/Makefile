@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-DISTNAME=	percona-xtrabackup-2.0.5
+DISTNAME=	percona-xtrabackup-2.1.3
 CATEGORIES=	databases
 MASTER_SITES=	http://www.percona.com/redir/downloads/XtraBackup/LATEST/source/
 
@@ -49,4 +49,5 @@ do-install:
 	${INSTALL_MAN} ${WRKSRC}/doc/xtrabackup.1 ${DESTDIR}${PREFIX}/${PKGMANDIR}/man1
 	
 .include "../../archivers/xz/buildlink3.mk"
+.include "../../security/libgcrypt/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"
