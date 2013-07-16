@@ -1,0 +1,15 @@
+$NetBSD: patch-sql_CMakeLists.txt,v 1.2 2012/10/01 15:54:40 adam Exp $
+
+Do not install files in MYSQL_DATADIR.
+
+--- sql/CMakeLists.txt.orig	2013-05-24 01:51:34.000000000 +0000
++++ sql/CMakeLists.txt
+@@ -266,7 +266,7 @@ ADD_CUSTOM_TARGET(distclean
+   VERBATIM
+   )
+ 
+-IF(INSTALL_LAYOUT STREQUAL "STANDALONE")
++IF(FALSE)
+ 
+ # Copy db.opt into data/test/
+ SET(DBOPT_FILE ${CMAKE_CURRENT_SOURCE_DIR}/db.opt ) 
