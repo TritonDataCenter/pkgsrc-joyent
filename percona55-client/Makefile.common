@@ -3,9 +3,9 @@
 # used by joyent/percona55-client/Makefile
 # used by joyent/percona55-server/Makefile
 
-DISTNAME=	Percona-Server-5.5.29-rel29.4
+DISTNAME=	Percona-Server-5.5.31-rel30.3
 CATEGORIES=	databases
-MASTER_SITES=	http://www.percona.com/redir/downloads/Percona-Server-5.5/Percona-Server-5.5.29-29.4/source/
+MASTER_SITES=	http://www.percona.com/redir/downloads/Percona-Server-5.5/Percona-Server-5.5.31-30.3/source/
 
 MAINTAINER?=	pkgsrc-users@NetBSD.org
 HOMEPAGE=	http://www.percona.com/

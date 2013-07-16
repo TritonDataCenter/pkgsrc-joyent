@@ -1,8 +1,8 @@
 $NetBSD$
 
-SHA1 (Percona-Server-5.5.29-rel29.4.tar.gz) = 0c02296414739a29e8a3c81ff7fab68a45d5b8a2
-RMD160 (Percona-Server-5.5.29-rel29.4.tar.gz) = 00acc15dde50735ee8e92e8b69d08fe77159acd8
-Size (Percona-Server-5.5.29-rel29.4.tar.gz) = 22472140 bytes
+SHA1 (Percona-Server-5.5.31-rel30.3.tar.gz) = 7da7146997e2a537b06ed613633dda1847626e3c
+RMD160 (Percona-Server-5.5.31-rel30.3.tar.gz) = 9a7190c4690450dfbd2ceeac6589b1b9fa1d036c
+Size (Percona-Server-5.5.31-rel30.3.tar.gz) = 22589930 bytes
 SHA1 (sphinx-2.0.6-release.tar.gz) = fe1b990052f961a100adba197abe806a3c1b70dc
 RMD160 (sphinx-2.0.6-release.tar.gz) = 6fd53230457e62a6aabcb5321265abd8ea324cf6
 Size (sphinx-2.0.6-release.tar.gz) = 1972728 bytes
@@ -22,7 +22,7 @@ SHA1 (patch-mysql-test_CMakeLists.txt) = d089a79df443ab2d8f97e7a1334aee2098dbb89
 SHA1 (patch-mysys_stacktrace.c) = 294b043984f740b99ba25abc8256ce8ad54d84c3
 SHA1 (patch-scripts_CMakeLists.txt) = 17ec1d8d5f0c9e453c64f2b59e757e645a3a1a59
 SHA1 (patch-scripts_mysqld_safe.sh) = cc34d8b4a8d4b34a6766a1123782ce3d0ad64478
-SHA1 (patch-sql_CMakeLists.txt) = 6cf54ba886f220c8fe7675a0a3acc83257b9f596
+SHA1 (patch-sql_CMakeLists.txt) = 187652fcea09396fa7f44f7c4ca20088a689bc82
 SHA1 (patch-sql_log_event.cc) = 2632e33caa5122645550f706c8f8824f24a14a48
 SHA1 (patch-sql_log_event.h) = eb9e38bbf50914ee504501b0723b57f80849ef48
 SHA1 (patch-sql_mysqld.cc) = 7e2cfb58f6af8531920dd9128f7b3a35735d7d2c
