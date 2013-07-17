@@ -1,10 +1,10 @@
 # $NetBSD$
 #
 
-DISTNAME=	node-v0.10.5
+DISTNAME=	node-v0.10.13
 CATEGORIES=	devel
 MASTER_SITES=	http://nodejs.org/dist/${DISTNAME:S/node-//}/
-PKGNAME=	smartdc-6.5.6
+PKGNAME=	smartdc-7.0.0
 
 MAINTAINER=	msporleder@gmail.com
 HOMEPAGE=	http://nodejs.org/
@@ -34,6 +34,12 @@ SUBST_MESSAGE.man=	Fixing man path
 SUBST_FILES.man=	tools/install.py
 SUBST_VARS.man=		PKGMANDIR
 
+SUBST_CLASSES+=		node
+SUBST_STAGE.node=	post-install
+SUBST_MESSAGE.node=	Fixing node interpretter
+SUBST_FILES.node=	${DESTDIR}${PREFIX}/smartdc/lib/node_modules/smartdc/bin/sdc-*
+SUBST_SED.node=		-e '1s|^\#![[:space:]]*${REPLACE.optional-env-space}[^[:space:]]*node|\#!${PREFIX}/smartdc/bin/node|'
+
 CONFIG_SHELL=		${PYTHONBIN}
 CONFIGURE_ARGS+=	--prefix=${PREFIX}/smartdc
 
@@ -51,10 +57,12 @@ REPLACE_PYTHON+=	tools/waf-light
 REPLACE_PYTHON+=	tools/wafadmin/*.py
 REPLACE_PYTHON+=	tools/wafadmin/Tools/*.py
 
-post-install:
+do-install:
+	cd ${WRKSRC} && ${PKGSRC_SETENV} ${INSTALL_ENV} ${MAKE_ENV} \
+	  ${MAKE_PROGRAM} ${INSTALL_MAKE_FLAGS} -f ${MAKE_FILE} ${INSTALL_TARGET}
 	${SETENV} npm_config_bin-links=true HOME=${WRKDIR}/.home PYTHON=${PYTHONBIN:Q} \
 	  ${DESTDIR}${PREFIX}/smartdc/bin/node \
-	  ${DESTDIR}${PREFIX}/smartdc/bin/npm install -g smartdc
+	  ${DESTDIR}${PREFIX}/smartdc/bin/npm install -g ${PKGNAME_NOREV:S/-/@/}
 
 .if ${OPSYS} == "NetBSD" || ${OPSYS} == "FreeBSD" || ${OPSYS} == "OpenBSD"
 . include "../../devel/libexecinfo/buildlink3.mk"
