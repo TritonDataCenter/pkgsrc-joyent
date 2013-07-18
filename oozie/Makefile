@@ -89,5 +89,8 @@ do-install:
 	${LN} -s ../share/oozie/bin/oozie-start.sh ${DESTDIR}${PREFIX}/bin/oozie-start.sh
 	${LN} -s ../share/oozie/bin/oozie-stop.sh ${DESTDIR}${PREFIX}/bin/oozie-stop.sh
 
+post-install:
+	${CHMOD} -R g-w,o-w ${DESTDIR}${PREFIX}
+
 .include "../../joyent/hadoop/Makefile.common"
 .include "../../mk/bsd.pkg.mk"
