@@ -6,3 +6,4 @@ Size (sqoop-1.4.2.tar.gz) = 746101 bytes
 SHA1 (patch-bin_configure-sqoop) = cc168fefc67521401681e0cc1bee3357f1242879
 SHA1 (patch-build.xml) = 8572d27d50bf507e66f6e2f292c04eebdd244867
 SHA1 (patch-src_scripts_create-tool-scripts.sh) = a70cb4fc4cf97b0939ed03e20235b1fbf44adbc3
+SHA1 (patch-src_test_com_cloudera_sqoop_testutil_MockResultSet.java) = 2a4319c1565f9ae069f2b96462e7bf025a04736e
