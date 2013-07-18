@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-DISTNAME=	spice-0.12.3
+DISTNAME=	spice-0.12.4
 PKGNAME= 	lib${DISTNAME}
 CATEGORIES=	joyent
 MASTER_SITES=	http://spice-space.org/download/releases/

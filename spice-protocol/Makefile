@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-DISTNAME=	spice-protocol-0.12.5
+DISTNAME=	spice-protocol-0.12.6
 CATEGORIES=	joyent
 MASTER_SITES=	http://spice-space.org/download/releases/
 EXTRACT_SUFX=	.tar.bz2

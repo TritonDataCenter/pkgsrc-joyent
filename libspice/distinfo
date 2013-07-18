@@ -1,6 +1,6 @@
 $NetBSD$
 
-SHA1 (spice-0.12.3.tar.bz2) = 440e3b371f983fbf28b84b87f6730e44f4dfef3d
-RMD160 (spice-0.12.3.tar.bz2) = 1b100f356043237f8b415b6ec6623fb636b3fb74
-Size (spice-0.12.3.tar.bz2) = 1606683 bytes
+SHA1 (spice-0.12.4.tar.bz2) = 5825cfcf8a786697e45a43aaf372f23b5c441336
+RMD160 (spice-0.12.4.tar.bz2) = 9aad00c319637706ccfd4865477778956cd6b605
+Size (spice-0.12.4.tar.bz2) = 1718655 bytes
 SHA1 (patch-configure) = 98f40c1a9f6ebe3d761e28342415ef2f658b7a3c
