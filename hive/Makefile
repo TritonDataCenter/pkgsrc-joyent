@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-DISTNAME=	hive-0.10.0
+DISTNAME=	hive-0.11.0
 CATEGORIES=	databases
 MASTER_SITES=	http://www.us.apache.org/dist/hive/${DISTNAME}/
 
@@ -17,6 +17,7 @@ DEPENDS+=		hbase-[0-9]*:../../joyent/hbase
 DEPENDS+=		zookeeper-server-[0-9]*:../../wip/zookeeper-server
 
 USE_LANGUAGES=		c c++
+USE_TOOLS+=		bash:run pax
 
 WRKSRC=			${WRKDIR}/${DISTNAME}/src
 BUILD_TARGET=		package
@@ -38,7 +39,7 @@ PKG_SHELL.${HIVE_USER}=	${BASH}
 
 OWN_DIRS_PERMS+=	${HIVE_LOG_DIR} ${HIVE_USER} ${HADOOP_GROUP} 755
 
-REPLACE_BASH+=		bin/hive bin/hive-config.sh bin/metatool bin/ext/*.sh
+REPLACE_BASH+=		bin/beeline bin/hive bin/hiveserver2 bin/hive-config.sh bin/metatool bin/ext/*.sh
 CHECK_INTERPRETER_SKIP=	share/hive/lib/py/*
 CONFIG_FILES=		hive-default.xml.template hive-env.sh.template \
 			hive-exec-log4j.properties.template \

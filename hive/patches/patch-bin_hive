@@ -1,5 +1,6 @@
 $NetBSD$
 
+Proper path.
 --- bin/hive.orig	2013-01-14 19:56:50.990353675 +0000
 +++ bin/hive
 @@ -66,7 +66,7 @@ fi

@@ -1,9 +1,18 @@
 $NetBSD$
 
-SHA1 (hive-0.10.0.tar.gz) = 9d6ca70630051c55ad3eadbbabd72385bf0f502d
-RMD160 (hive-0.10.0.tar.gz) = 3ea3e442134792612fbf6967e6c681e4a49c119b
-Size (hive-0.10.0.tar.gz) = 36524032 bytes
-SHA1 (patch-bin_hive) = 8e0a89ad82614d52b58b6cd1449bf07d0d9ef275
-SHA1 (patch-common_src_java_conf_hive-log4j.properties) = 873151686ba0a81f90dbe7158a10ebd33476e011
-SHA1 (patch-hive-config.sh) = 53df2ec804d3f9fde7e7833fd68f7aa082af189c
-SHA1 (patch-ql_src_java_conf_hive-exec-log4j.properties) = 11913148c2f96ab4a53e985de472a7d3cf4365db
+SHA1 (hive-0.11.0.tar.gz) = 972c7a80f8db66a78996c7a8d12225a7acd697eb
+RMD160 (hive-0.11.0.tar.gz) = a0f5d92bb891008238191197f8ef72e0ac1d3673
+Size (hive-0.11.0.tar.gz) = 74945460 bytes
+SHA1 (patch-bin_hive) = 3e4cb472795e111630545e2524766bec7abcd90c
+SHA1 (patch-common_src_java_conf_hive-log4j.properties) = a45f8a6c2c9d2c546735b0286e371a97686a9828
+SHA1 (patch-hcatalog_build.xml) = d583481643009d8a3b21165b0f5b0b97ab9b6746
+SHA1 (patch-hive-config.sh) = a83d7d51c807253429d92ba31ed187be900696a4
+SHA1 (patch-jdbc_src_java_org_apache_hive_jdbc_HiveCallableStatement.java) = 6ed39c3df18c0ea5a09699348b71fdf1dc9b9b64
+SHA1 (patch-jdbc_src_java_org_apache_hive_jdbc_HiveConnection.java) = e0171e91285612e151036b0851250c62d2e05148
+SHA1 (patch-jdbc_src_java_org_apache_hive_jdbc_HiveDataSource.java) = ea5e141ef1f8692d183039e92a202ea2657d5364
+SHA1 (patch-jdbc_src_java_org_apache_hive_jdbc_HiveDatabaseMetaData.java) = 00744c665af4459bc38121e8e3b402813cc4bee9
+SHA1 (patch-jdbc_src_java_org_apache_hive_jdbc_HiveDriver.java) = e19bfe9451bea1a3f7e69c124ced9cae18b74353
+SHA1 (patch-jdbc_src_java_org_apache_hive_jdbc_HivePreparedStatement.java) = 05462f8f560d4d7a39fd7d1d09333116d1d9fd45
+SHA1 (patch-jdbc_src_java_org_apache_hive_jdbc_HiveQueryResultSet.java) = a989960ef6f25c01967141983c4199b4b16489ad
+SHA1 (patch-jdbc_src_java_org_apache_hive_jdbc_HiveStatement.java) = 3ca42e834b0dd3f44a2b3fd2a3a08226721cb491
+SHA1 (patch-ql_src_java_conf_hive-exec-log4j.properties) = f33b80e74fa10a8ede41b9840a90eb928bf6179f

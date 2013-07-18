@@ -1,5 +1,6 @@
 $NetBSD$
 
+Proper paths.
 --- bin/hive-config.sh.orig	2012-04-24 18:49:08.000000000 +0000
 +++ bin/hive-config.sh
 @@ -61,7 +61,7 @@ done

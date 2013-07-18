@@ -1,0 +1,13 @@
+$NetBSD$
+
+Ignore javadoc warnings.
+--- hcatalog/build.xml.orig	Tue May  7 18:59:21 2013
++++ hcatalog/build.xml	Thu Jul 18 10:41:29 2013
+@@ -242,7 +242,6 @@
+                 <contains text="warnings"/>
+             </isfileselected>
+         </condition>
+-        <fail if="javadoc.warnings">Javadoc comments contain warnings.</fail>
+     </target>
+ 
+     <!--
