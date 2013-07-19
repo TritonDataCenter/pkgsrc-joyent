@@ -6,3 +6,4 @@ Size (hcatalog-src-0.5.0-incubating.tar.gz) = 794854 bytes
 SHA1 (patch-bin__hcat_server.sh) = c0774821fd46a428684039f13bc0abb1337c8fc4
 SHA1 (patch-bin_hcat) = 00f3ad1c5fed0c070a22c3a11d4fb21dc22636aa
 SHA1 (patch-bin_hcat-config.sh) = 3f595cdef609b406d33db58d580ff8b8b112f3fb
+SHA1 (patch-hcatalog_build.xml) = 4de23745859e4507004e6a68ebe64915cd7436a9
