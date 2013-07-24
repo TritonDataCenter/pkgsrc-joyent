@@ -1,0 +1,6 @@
+The Node.js SDK was used to develop and to test the Joyent Manta Storage
+Service. It is the most robust SDK available for Joyent Manta.
+
+The Node.js SDK includes a Command Line Interface that provides several
+tools that let you work with Joyent Manta much as you would work with
+a Unix system. We use this CLI for our Getting Started tutorial.

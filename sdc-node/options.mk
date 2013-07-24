@@ -18,6 +18,7 @@ CONFIGURE_ARGS+=	--without-dtrace
 
 .if !empty(PKG_OPTIONS:Mopenssl)
 .include "../../security/openssl/buildlink3.mk"
+CONFIGURE_ARGS+=	--shared-openssl
 .else
 CONFIGURE_ARGS+=	--without-openssl
 .endif

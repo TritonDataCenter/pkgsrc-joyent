@@ -1,0 +1,41 @@
+# $NetBSD$
+# used by joyent/sdc-manta/Makefile
+# used by joyent/sdc-smartdc/Makefile
+
+PKGNAME=		sdc-${DISTNAME}
+MODNAME=		${DISTNAME:C/-[^-]*$//}
+
+DEPENDS+=		sdc-node-[0-9]*:../../joyent/sdc-node
+
+SDC_PREFIX=		${PREFIX}/sdc
+
+USE_LANGUAGES+=		c c++
+USE_TOOLS+=		gmake
+
+NO_BUILD=		yes
+NO_CHECKSUM=		yes
+CHECK_FAKEHOME=		no
+
+CHECK_INTERPRETER_SKIP+=	sdc/lib/node_modules/${MODNAME}/node_modules/*
+CHECK_INTERPRETER_SKIP+=	sdc/lib/node_modules/${MODNAME}/tools/*
+
+SUBST_CLASSES+=		shebang
+SUBST_STAGE.shebang=	post-install
+SUBST_MESSAGE.shebang=	Fixing node interpretter
+SUBST_FILES.shebang=	${DESTDIR}${SDC_PREFIX}/lib/node_modules/${MODNAME}/bin/*
+SUBST_SED.shebang=	-e '1s|^\#![[:space:]]*${REPLACE.optional-env-space}[^[:space:]]*node|\#!${SDC_PREFIX}/bin/node|'
+
+MESSAGE_SRC=		../../joyent/sdc-node/MESSAGE.sdc
+MESSAGE_SUBST+=		MODNAME=${MODNAME}
+MESSAGE_SUBST+=		SDC_PREFIX=${SDC_PREFIX}
+
+do-fetch:
+do-extract:
+pre-install:
+	${MKDIR} -p ${WRKSRC}
+
+do-install:
+	${SETENV} ${INSTALL_ENV} HOME=${WRKDIR}/.home PYTHON=${PYTHONBIN:Q} \
+	${SDC_PREFIX}/bin/node ${SDC_PREFIX}/bin/npm install -g ${DISTNAME:S/-/@/}
+
+.include "../../lang/python/application.mk"

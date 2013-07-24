@@ -1,23 +1,20 @@
-# $NetBSD$
+# $NetBSD: Makefile,v 1.3 2013/05/27 11:32:34 fhajny Exp $
 #
 
 DISTNAME=	node-v0.10.13
 CATEGORIES=	devel
 MASTER_SITES=	http://nodejs.org/dist/${DISTNAME:S/node-//}/
-PKGNAME=	smartdc-7.0.0
+PKGNAME=	sdc-${DISTNAME:S/-v/-/}
 
-MAINTAINER=	msporleder@gmail.com
+MAINTAINER=	pkgsrc-users@NetBSD.org
 HOMEPAGE=	http://nodejs.org/
 COMMENT=	V8 JavaScript for clients and servers
 LICENSE=	mit
-
-CHECK_INTERPRETER=	no
 
 HAS_CONFIGURE=	yes
 USE_TOOLS+=	pkg-config
 USE_TOOLS+=	gmake
 USE_LANGUAGES=	c c++
-CHECK_FAKEHOME=	no
 
 .include "../../mk/bsd.prefs.mk"
 .include "options.mk"
@@ -34,14 +31,8 @@ SUBST_MESSAGE.man=	Fixing man path
 SUBST_FILES.man=	tools/install.py
 SUBST_VARS.man=		PKGMANDIR
 
-SUBST_CLASSES+=		node
-SUBST_STAGE.node=	post-install
-SUBST_MESSAGE.node=	Fixing node interpretter
-SUBST_FILES.node=	${DESTDIR}${PREFIX}/smartdc/lib/node_modules/smartdc/bin/sdc-*
-SUBST_SED.node=		-e '1s|^\#![[:space:]]*${REPLACE.optional-env-space}[^[:space:]]*node|\#!${PREFIX}/smartdc/bin/node|'
-
 CONFIG_SHELL=		${PYTHONBIN}
-CONFIGURE_ARGS+=	--prefix=${PREFIX}/smartdc
+CONFIGURE_ARGS+=	--prefix=${PREFIX}/sdc
 
 .if ${OPSYS} == "NetBSD"
 CONFIGURE_ENV+=		GYP_DEFINES="OS=netbsd"
@@ -57,18 +48,13 @@ REPLACE_PYTHON+=	tools/waf-light
 REPLACE_PYTHON+=	tools/wafadmin/*.py
 REPLACE_PYTHON+=	tools/wafadmin/Tools/*.py
 
-do-install:
-	cd ${WRKSRC} && ${PKGSRC_SETENV} ${INSTALL_ENV} ${MAKE_ENV} \
-	  ${MAKE_PROGRAM} ${INSTALL_MAKE_FLAGS} -f ${MAKE_FILE} ${INSTALL_TARGET}
-	${SETENV} npm_config_bin-links=true HOME=${WRKDIR}/.home PYTHON=${PYTHONBIN:Q} \
-	  ${DESTDIR}${PREFIX}/smartdc/bin/node \
-	  ${DESTDIR}${PREFIX}/smartdc/bin/npm install -g ${PKGNAME_NOREV:S/-/@/}
+CHECK_INTERPRETER_SKIP+=	lib/node_modules/npm/*
 
 .if ${OPSYS} == "NetBSD" || ${OPSYS} == "FreeBSD" || ${OPSYS} == "OpenBSD"
 . include "../../devel/libexecinfo/buildlink3.mk"
 .endif
 .if ${OPSYS} == "NetBSD"
-BUILD_DEPENDS+=	lockf-[0-9]*:../../wip/lockf
+BUILD_DEPENDS+=	lockf-[0-9]*:../../sysutils/lockf
 .endif
 .include "../../lang/python/application.mk"
 .include "../../mk/bsd.pkg.mk"
