@@ -12,7 +12,7 @@ HOMEPAGE=	http://spice-space.org/
 COMMENT= 	Spice server code library for QEMU
 LICENSE= 	gnu-lgpl-v2.1
 
-BUILD_DEPENDS+= ${PYPKGPREFIX}-parsing-[0-9]*:../../wip/py-parsing
+BUILD_DEPENDS+= ${PYPKGPREFIX}-parsing-[0-9]*:../../joyent/py-parsing
 
 GNU_CONFIGURE=	yes
 USE_LANGUAGES=	c c++
