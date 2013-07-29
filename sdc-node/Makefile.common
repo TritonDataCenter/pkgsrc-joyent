@@ -19,6 +19,8 @@ CHECK_FAKEHOME=		no
 CHECK_INTERPRETER_SKIP+=	sdc/lib/node_modules/${MODNAME}/node_modules/*
 CHECK_INTERPRETER_SKIP+=	sdc/lib/node_modules/${MODNAME}/tools/*
 
+REPLACE.optional-env-space?=	\(/usr/bin/env[[:space:]][[:space:]]*\)\{0,1\}
+
 SUBST_CLASSES+=		shebang
 SUBST_STAGE.shebang=	post-install
 SUBST_MESSAGE.shebang=	Fixing node interpretter
