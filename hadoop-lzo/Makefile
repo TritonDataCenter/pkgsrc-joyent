@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	hadoop-lzo
-PKGNAME=	${DISTNAME}-0.4.17rc1
+PKGNAME=	${DISTNAME}-0.4.18rc1
 CATEGORIES=	archivers
 
 MAINTAINER=	filip@joyent.com
@@ -12,6 +12,7 @@ LICENSE=	mit
 
 GIT_REPOSITORIES=	hadoop-lzo
 GIT_REPO.hadoop-lzo=	git://github.com/twitter/hadoop-lzo.git
+GIT_TAG=		master
 
 PKG_DESTDIR_SUPPORT=	user-destdir
 
@@ -20,6 +21,7 @@ USE_LIBTOOL=		yes
 
 .include "../../joyent/hadoop/Makefile.common"
 
+BUILD_DEPENDS+=		apache-maven>=3:../../devel/apache-maven
 DEPENDS+=		hadoop-[0-9]*:../../joyent/hadoop
 
 MAKE_ENV+=		JAVA_HOME=${PKG_JAVA_HOME}			\
@@ -29,22 +31,23 @@ MAKE_ENV+=		JAVA_HOME=${PKG_JAVA_HOME}			\
 SUBST_CLASSES+=		ldflags
 SUBST_STAGE.ldflags=	pre-build
 SUBST_MESSAGE.ldflags=	Fixing LDFLAGS
-SUBST_FILES.ldflags=	build.xml
+SUBST_FILES.ldflags=	pom.xml
 SUBST_VARS.ldflags=	LDFLAGS JAVA_ARCH
 
 INSTALLATION_DIRS+=	lib share/hadoop
 
 BUILD_TARGET=	compile jar
 
-do-build: ant-build
+do-build:
+	cd ${WRKSRC} && ${PKGSRC_SETENV} ${MAKE_ENV} mvn clean package ${MAKE_ARGS}
 
 do-test:
-	cd ${WRKSRC} && ${PKGSRC_SETENV} ${MAKE_ENV} ant test ${MAKE_ARGS}
+	cd ${WRKSRC} && ${PKGSRC_SETENV} ${MAKE_ENV} mvn test ${MAKE_ARGS}
 
 do-install:
-	cd ${WRKSRC}/build/native/${HADOOP_ARCH}/lib && \
+	cd ${WRKSRC}/target/native/${HADOOP_ARCH}/lib && \
 	  ${PAX} -rw -p e * ${DESTDIR}${PREFIX}/lib/
-	${INSTALL_DATA} ${WRKSRC}/build/hadoop-lzo-0.4.17-SNAPSHOT.jar \
+	${INSTALL_DATA} ${WRKSRC}/target/hadoop-lzo-0.4.18-SNAPSHOT.jar \
 	  ${DESTDIR}${PREFIX}/share/hadoop
 
 .include "../../archivers/lzo/buildlink3.mk"

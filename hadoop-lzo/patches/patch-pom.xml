@@ -1,0 +1,27 @@
+$NetBSD$
+
+Don't override LDFLAGS. Use portable id instead of whoami.
+--- pom.xml.orig	Tue Jul 30 15:22:26 2013
++++ pom.xml	Tue Jul 30 15:33:09 2013
+@@ -174,7 +174,9 @@
+                   <format property="build_time" pattern="MM/dd/yyyy hh:mm aa" timezone="GMT"/>
+                 </tstamp>
+                 <exec executable="${basedir}/scripts/get_build_revision.sh" outputproperty="build_revision"/>
+-                <exec executable="whoami" outputproperty="build_author"/>
++                <exec executable="id" outputproperty="build_author">
++                  <arg value="-un"/>
++                </exec>
+                 <exec executable="uname" outputproperty="build_os">
+                   <arg value="-a"/>
+                 </exec>
+@@ -214,9 +216,7 @@
+               <target name="build-native" unless="native.uptodate" description="compiles native code">
+                 <property name="make.cmd" value="make"/>
+                 <property name="build.classes" refid="maven.compile.classpath"/>
+-                <condition property="native.ldflags" value="" else="-Wl,--no-as-needed">
+-                  <os family="mac"/>
+-                </condition>
++                <property name="native.ldflags" value="@LDFLAGS@"/>
+ 
+                 <mkdir dir="${build.native}/lib"/>
+                 <mkdir dir="${build.native}/src/com/hadoop/compression/lzo"/>
