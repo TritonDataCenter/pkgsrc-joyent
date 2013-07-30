@@ -28,6 +28,8 @@ MAKE_ENV+=		JAVA_HOME=${PKG_JAVA_HOME}			\
 			C_INCLUDE_PATH=${BUILDLINK_PREFIX.lzo}/include	\
 			LIBRARY_PATH=${BUILDLINK_PREFIX.lzo}/lib
 
+MAKE_ARGS+=		-DskipTests=true
+
 SUBST_CLASSES+=		ldflags
 SUBST_STAGE.ldflags=	pre-build
 SUBST_MESSAGE.ldflags=	Fixing LDFLAGS
