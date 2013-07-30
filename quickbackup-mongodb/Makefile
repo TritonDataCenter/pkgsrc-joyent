@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-DISTNAME=	quickbackup-mongodb-2.7
+DISTNAME=	quickbackup-mongodb-3.5
 CATEGORIES=	sysutils
 
 MAINTAINER=	filip@joyent.com
@@ -10,6 +10,7 @@ COMMENT=	MongoDB quickbackup SMF service
 
 GIT_REPOSITORIES=	qb-mongodb
 GIT_REPO.qb-mongodb=	git@git.joyent.com:qb-mongodb.git
+GIT_TAG=		3.5
 
 DEPENDS+=	findutils-[0-9]*:../../sysutils/findutils
 DEPENDS+=	mongodb-[0-9]*:../../wip/mongodb

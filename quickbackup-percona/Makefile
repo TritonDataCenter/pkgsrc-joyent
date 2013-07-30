@@ -3,6 +3,8 @@
 
 DISTNAME=	quickbackup-percona-3.5
 CATEGORIES=	sysutils
+# Remove PKGREVISION with next version/tag release
+PKGREVISION=	20130730
 
 MAINTAINER=	jperkin@joyent.com
 HOMEPAGE=	http://wiki.joyent.com/jpc2/Joyent+Percona+SmartMachine
@@ -10,6 +12,7 @@ COMMENT=	Percona quickbackup SMF service
 
 GIT_REPOSITORIES=	qb-percona
 GIT_REPO.qb-percona=	git@git.joyent.com:qb-percona.git
+GIT_TAG=		3.5
 
 DEPENDS+=	percona-xtrabackup-[0-9]*:../../joyent/percona-xtrabackup
 

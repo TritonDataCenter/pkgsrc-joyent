@@ -2,10 +2,9 @@
 #
 
 DISTNAME=	smtools
-PKGNAME=	${DISTNAME}-${VERSION}
+PKGNAME=	${DISTNAME}-${PKGVERSION}
 CATEGORIES=	sysutils
-MASTER_SITES=	git@git.joyent.com
-DISTFILES=	# empty
+PKGVERSION=	20130621
 
 MAINTAINER=	filip@joyent.com
 HOMEPAGE=	http://www.joyent.com/
@@ -14,11 +13,12 @@ COMMENT=	Joyent tools relevant to SmartOS and SmartMachines
 
 PKG_DESTDIR_SUPPORT=	user-destdir
 
+GIT_REPOSITORIES=	smtools
+GIT_REPO.smtools=	git@git.joyent.com:smtools.git
+GIT_TAG=		${PKGVERSION}
+
 NO_CHECKSUM=	yes
 NO_BUILD=	yes
-WRKSRC=		${WRKDIR}/smtools
-
-VERSION=	20130621
 
 .include "../../mk/bsd.prefs.mk"
 
@@ -57,10 +57,6 @@ SUBST_VARS.vars+=	MYSQL_VERSION_DEFAULT PGSQL_VERSION_DEFAULT
 SUBST_VARS.vars+=	PHP_VERSION_DEFAULT PYTHON_VERSION_DEFAULT
 SUBST_VARS.vars+=	RUBY_VERSION_DEFAULT RUBY_RAILS_DEFAULT
 
-do-fetch:
-do-extract:
-	cd ${WRKDIR} && git clone ${MASTER_SITES}:${DISTNAME}.git
-
 do-install:
 .	for file in ${SM_SCRIPTS}
 	${INSTALL_SCRIPT} ${WRKSRC}/sm-${file} ${DESTDIR}${PREFIX}/bin
@@ -86,4 +82,5 @@ do-install:
 	  ${DESTDIR}${PREFIX}/lib/zoneinit/includes
 .	endfor
 
+.include "../../wip/mk/git-package.mk"
 .include "../../mk/bsd.pkg.mk"
