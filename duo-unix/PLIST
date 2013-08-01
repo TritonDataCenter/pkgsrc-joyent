@@ -1,0 +1,12 @@
+@comment $NetBSD$
+include/duo.h
+lib/libduo.la
+lib/pkgconfig/libduo.pc
+man/man3/duo.3
+man/man8/login_duo.8
+sbin/login_duo
+share/doc/duo_unix/AUTHORS
+share/doc/duo_unix/CHANGES
+share/doc/duo_unix/LICENSE
+share/doc/duo_unix/README
+share/examples/duo_unix/login_duo.conf
