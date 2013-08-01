@@ -1,0 +1,3 @@
+Galera implements wsrep pluggable interface, and can provide several
+replication modes and topologies, including the ultimate Synchronous
+Multi-Master replication.

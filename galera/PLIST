@@ -1,0 +1,2 @@
+@comment $NetBSD$
+lib/mysql/plugin/libgalera_smm.so

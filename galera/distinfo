@@ -1,0 +1,6 @@
+$NetBSD$
+
+SHA1 (galera-23.2.6-src.tar.gz) = e04b5fc85494976a128e163f51180904e4ef39d2
+RMD160 (galera-23.2.6-src.tar.gz) = 7557f021e7190a79b6548d43f1873536e541ef2a
+Size (galera-23.2.6-src.tar.gz) = 3065835 bytes
+SHA1 (patch-SConstruct) = eb51d184e84af9676280e6fa16939766dc57d6e0

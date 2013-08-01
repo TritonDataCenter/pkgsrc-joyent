@@ -1,0 +1,26 @@
+$NetBSD$
+
+Fix problem with 'ar' and pass RPATH properly.
+--- SConstruct.orig	Fri Jun 28 22:05:37 2013
++++ SConstruct	Wed Jul 31 18:20:23 2013
+@@ -137,6 +137,7 @@
+ # Initialize CPPFLAGS and LIBPATH from environment to get user preferences
+ env.Replace(CPPFLAGS = os.getenv('CPPFLAGS', ''))
+ env.Replace(LIBPATH = [os.getenv('LIBPATH', '')])
++env.Replace(RPATH = [os.getenv('RPATH', '')])
+ 
+ # Freebsd ports are installed under /usr/local 
+ if sysname == 'freebsd' or sysname == 'sunos':
+@@ -144,7 +145,12 @@
+     env.Append(CPPFLAGS = ' -I/usr/local/include ')
+ if sysname == 'sunos':
+    env.Replace(SHLINKFLAGS = '-shared ')
++   env.Replace(AR = 'ar')
++   env.Replace(ARFLAGS= 'r')
++   env.Replace(ARCOM = '$AR $ARFLAGS $TARGET $SOURCES')
+ 
++env.Replace(SHLINKFLAGS = '$LINKFLAGS -shared $__RPATH ')
++
+ # print env.Dump()
+ #
+ # Set up build and link paths
