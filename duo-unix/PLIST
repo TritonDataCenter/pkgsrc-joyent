@@ -9,4 +9,4 @@ share/doc/duo_unix/AUTHORS
 share/doc/duo_unix/CHANGES
 share/doc/duo_unix/LICENSE
 share/doc/duo_unix/README
-share/examples/duo_unix/login_duo.conf
+share/examples/duo-unix/login_duo.conf
