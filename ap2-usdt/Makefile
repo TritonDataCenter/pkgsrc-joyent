@@ -1,10 +1,10 @@
 # $NetBSD$
 #
 
-DISTNAME=	mod_usdt-82d6828
-PKGNAME=	${APACHE_PKG_PREFIX}-usdt-20120402
+DISTNAME=	mod_usdt-880e6e3
+PKGNAME=	${APACHE_PKG_PREFIX}-usdt-20130730
 CATEGORIES=	sysutils
-MASTER_SITES=	-https://nodeload.github.com/davepacheco/${DISTNAME:S|-|/tar.gz/|}
+MASTER_SITES=	-https://codeload.github.com/davepacheco/${DISTNAME:S|-|/tar.gz/|}
 
 MAINTAINER=	filip@joyent.com
 HOMEPAGE=	https://github.com/davepacheco/mod_usdt
@@ -13,7 +13,7 @@ LICENSE=	mit
 
 PKG_DESTDIR_SUPPORT=	user-destdir
 
-PKG_APACHE_ACCEPTED=	apache2 apache22
+PKG_APACHE_ACCEPTED=	apache2 apache22 apache24
 APACHE_MODULE=		YES
 USE_TOOLS+=	gmake
 
