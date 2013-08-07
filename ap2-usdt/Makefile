@@ -13,7 +13,7 @@ LICENSE=	mit
 
 PKG_DESTDIR_SUPPORT=	user-destdir
 
-PKG_APACHE_ACCEPTED=	apache2 apache22 apache24
+PKG_APACHE_ACCEPTED=	apache22 apache24
 APACHE_MODULE=		YES
 USE_TOOLS+=	gmake
 
