@@ -36,7 +36,6 @@ lib/zoneinit/includes/11-files.sh
 lib/zoneinit/includes/12-network.sh
 lib/zoneinit/includes/91-passwords.sh
 lib/zoneinit/includes/92-sshd.sh
-lib/zoneinit/includes/93-pkgsrc.sh
 lib/zoneinit/includes/999-cleanup.sh
 lib/zoneinit/mdata-execute
 lib/zoneinit/mdata-fetch

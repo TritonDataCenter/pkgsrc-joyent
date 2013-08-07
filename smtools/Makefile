@@ -4,7 +4,7 @@
 DISTNAME=	smtools
 PKGNAME=	${DISTNAME}-${PKGVERSION}
 CATEGORIES=	sysutils
-PKGVERSION=	20130621
+PKGVERSION=	20130807
 
 MAINTAINER=	filip@joyent.com
 HOMEPAGE=	http://www.joyent.com/
@@ -31,7 +31,7 @@ SM_SCRIPTS=	cpuinfo create-db create-dbuser create-vhost	\
 ZONEINIT_INCS=	00-mdata.sh 01-reboot-file.sh 02-config.sh	\
 		04-mdata.sh		\
 		11-files.sh 12-network.sh 91-passwords.sh	\
-		92-sshd.sh 93-pkgsrc.sh 999-cleanup.sh
+		92-sshd.sh 999-cleanup.sh
 PKGIN_HELPERS=	apt-get apt-cache pkg port rpm yum
 
 SUNOS_FLAVOR?=	joyent
