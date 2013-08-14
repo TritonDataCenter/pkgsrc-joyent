@@ -1071,4 +1071,4 @@ sdc/lib/node_modules/npm/scripts/index-build.js
 sdc/lib/node_modules/npm/scripts/install.sh
 sdc/lib/node_modules/npm/scripts/release.sh
 sdc/lib/node_modules/npm/scripts/relocate.sh
-sdc/man/man1/node.1
+sdc/${PKGMANDIR}/man1/node.1
