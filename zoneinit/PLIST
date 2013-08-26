@@ -1,0 +1,16 @@
+@comment $NetBSD$
+libexec/mdata-execute
+libexec/mdata-fetch
+libexec/zoneinit
+share/examples/zoneinit/00-mdata.sh
+share/examples/zoneinit/01-reboot-file.sh
+share/examples/zoneinit/02-config.sh
+share/examples/zoneinit/04-mdata.sh
+share/examples/zoneinit/11-files.sh
+share/examples/zoneinit/12-network.sh
+share/examples/zoneinit/91-passwords.sh
+share/examples/zoneinit/92-sshd.sh
+share/examples/zoneinit/999-cleanup.sh
+share/examples/zoneinit/zoneinit.json
+share/smf/zoneinit/mdata.xml
+share/smf/zoneinit/zoneinit.xml

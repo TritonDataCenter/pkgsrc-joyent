@@ -1,0 +1,2 @@
+zoneinit toolchain contains script(s) needed for a Joyent Instance (zone)
+to provision successfully on SmartOS (in case of the 'joyent' brand).

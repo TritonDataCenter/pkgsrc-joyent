@@ -1,0 +1,37 @@
+# $NetBSD$
+
+case ${STAGE} in
+POST-INSTALL)
+	ln -sf @PKG_SYSCONFDIR@ @VARBASE@/zoneinit/includes
+	ln -sf @PREFIX@/share/examples/zoneinit/zoneinit.json @VARBASE@/zoneinit/zoneinit.json
+	svccfg import @PREFIX@/share/smf/zoneinit/zoneinit.xml
+        cat <<EOF
+//////////////////////////////////////////////////////////////////////////////
+
+The zoneinit service SMF was installed as
+
+  svc:/smartdc/zoneinit:default
+
+EOF
+	if [ ! -f /lib/svc/method/mdata-fetch ] || \
+	   [ ! -f /lib/svc/method/mdata-execute ] || \
+	   [[ ! $(svcprop -p start/exec smartdc/mdata:fetch) =~ ^/lib/svc ]]; then
+	  svccfg import @PREFIX@/share/smf/zoneinit/mdata.xml
+	else
+          cat <<EOF
+You're running on a recent enough OS version that provides the 'mdata'
+service. If you intend to move (or re-use as an image) this instance (zone)
+to a system running an older SmartOS version that doesn't provide
+/lib/svc/method/mdata-fetch and /libc/svc/method/mdata-execute, it's advised
+to import a replacement service that comes with this package manually:
+
+  svccfg import @PREFIX@/share/smf/zoneinit/mdata.xml
+
+EOF
+	fi
+
+	cat <<EOF
+//////////////////////////////////////////////////////////////////////////////
+EOF
+	;;
+esac
