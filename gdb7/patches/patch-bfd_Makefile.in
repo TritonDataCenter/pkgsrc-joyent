@@ -1,0 +1,15 @@
+$NetBSD$
+
+Don't install bfd docs to avoid conflict with binutils.
+
+--- bfd/Makefile.in.orig	2013-09-06 09:45:49.771405787 +0000
++++ bfd/Makefile.in
+@@ -323,7 +323,7 @@ ACLOCAL_AMFLAGS = -I . -I .. -I ../confi
+ # RELEASE=y
+ INCDIR = $(srcdir)/../include
+ CSEARCH = -I. -I$(srcdir) -I$(INCDIR)
+-SUBDIRS = doc po
++SUBDIRS = 
+ bfddocdir = doc
+ libbfd_la_LDFLAGS = $(am__append_1) -release `cat libtool-soversion` \
+ 	@SHARED_LDFLAGS@ $(am__empty)

@@ -1,0 +1,15 @@
+$NetBSD$
+
+Don't install opcodes translations to avoid conflict with binutils.
+
+--- opcodes/Makefile.in.orig	2013-09-06 10:41:26.618826939 +0000
++++ opcodes/Makefile.in
+@@ -288,7 +288,7 @@ AUTOMAKE_OPTIONS = 1.11 foreign no-dist
+ ACLOCAL_AMFLAGS = -I .. -I ../config -I ../bfd
+ 
+ # Build '.' first so all generated files exist.
+-SUBDIRS = . po
++SUBDIRS = .
+ INCDIR = $(srcdir)/../include
+ BFDDIR = $(srcdir)/../bfd
+ AM_CFLAGS = $(WARN_CFLAGS)

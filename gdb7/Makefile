@@ -2,6 +2,7 @@
 #
 
 DISTNAME=		gdb-7.3.1
+PKGREVISION=		1
 CATEGORIES=		devel
 MASTER_SITES=		ftp://sources.redhat.com/pub/gdb/releases/
 EXTRACT_SUFX=		.tar.bz2
