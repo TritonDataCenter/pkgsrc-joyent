@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-DISTNAME=	build-essential-1.0
+DISTNAME=	build-essential-1.1
 CATEGORIES=	devel meta-pkgs
 MASTER_SITES=	# empty
 
@@ -18,7 +18,13 @@ DEPENDS+=	gmake-[0-9]*:../../devel/gmake
 DEPENDS+=	libtool-[0-9]*:../../devel/libtool
 DEPENDS+=	m4-[0-9]*:../../devel/m4
 DEPENDS+=	patch-[0-9]*:../../devel/patch
-DEPENDS+=	scmgit-[0-9]*:../../devel/scmgit
+.if exists(../../devel/git/Makefile)
+DEPENDS+=	git-base-[0-9]*:../../devel/git-base
+DEPENDS+=	git-docs-[0-9]*:../../devel/git-docs
+.else
+DEPENDS+=	scmgit-base-[0-9]*:../../devel/scmgit-base
+DEPENDS+=	scmgit-docs-[0-9]*:../../devel/scmgit-docs
+.endif
 
 META_PACKAGE=	yes
 
