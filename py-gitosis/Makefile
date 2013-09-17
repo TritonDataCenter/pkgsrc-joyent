@@ -22,7 +22,11 @@ PYDISTUTILSPKG= # yes
 PLIST_SUBST+=	PYVERSSUFFIX=${PYVERSSUFFIX:Q}
 
 USE_TOOLS+=	git
+.if exists(../../devel/git/Makefile
+DEPENDS+=	git-base-[0-9]*:../../devel/git-base
+.else
 DEPENDS+=	scmgit-base-[0-9]*:../../devel/scmgit-base
+.endif
 
 do-fetch:
 do-extract:
