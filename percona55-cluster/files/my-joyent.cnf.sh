@@ -16,7 +16,7 @@ port = 3306
 basedir = @PREFIX@
 datadir = @MYSQL_DATADIR@
 socket = /tmp/mysql.sock
-bind-address = 127.0.0.1
+bind-address = @INTERNAL_IP@
 default-storage-engine = innodb
 character-set-server = utf8
 skip-external-locking
@@ -80,7 +80,7 @@ max_heap_table_size = 64M
 # to this besides uncommenting the lines below.
 # See: http://wiki.joyent.com/wiki/display/jpc2/Replication
 #
-binlog_format=mixed
+binlog_format=row
 log-bin = @VARBASE@/log/mysql/bin.log
 #log-bin-index = @VARBASE@/log/mysql/log-bin.index
 log-error = @VARBASE@/log/mysql/error.log
@@ -90,21 +90,15 @@ expire_logs_days = 7
 #slave-skip-errors = 1062
 #binlog-ignore-db = mysql
 
-# Handlersocket settings
-# See: https://github.com/ahiguti/HandlerSocket-Plugin-for-MySQL
-#
-# The port number to bind to (for read requests)
-#loose_handlersocket_port = 9998
-# The port number to bind to (for write requests)
-#loose_handlersocket_port_wr = 9999
-# The number of worker threads (for read requests)
-#loose_handlersocket_threads = 16
-# The number of worker threads (for write requests)
-#loose_handlersocket_threads_wr = 1
-# To allow handlersocket accept many concurrent
-# connections, make open_files_limit as large as
-# possible.
-#open_files_limit = 65535
+# Cluster settings
+#wsrep_provider=/opt/local/lib/mysql/plugin/libgalera_smm.so
+#wsrep_node_name=node1
+#wsrep_cluster_address=gcomm://
+#innodb_autoinc_lock_mode=2
+#wsrep_cluster_name=clustername1
+#wsrep_node_address=@INTERNAL_IP@
+#wsrep_sst_method=xtrabackup
+#wsrep_sst_auth="username:password"
 
 [mysqldump]
 quick
