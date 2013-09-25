@@ -1,0 +1,6 @@
+$NetBSD$
+
+SHA1 (restdown-1.3.2.tar.gz) = cd15862288988a9c5bac92240e892d0c62ab2378
+RMD160 (restdown-1.3.2.tar.gz) = 03a6804e934582ffcb0b917ea5880cd2db371679
+Size (restdown-1.3.2.tar.gz) = 112368 bytes
+SHA1 (patch-bin_restdown) = d34d671bad9199e1249be6055d8da13abbc3e368

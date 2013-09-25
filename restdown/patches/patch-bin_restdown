@@ -1,0 +1,26 @@
+$NetBSD$
+
+Use a pkgsrc-friendly layout.
+
+--- bin/restdown.orig	2013-07-02 18:41:01.000000000 +0000
++++ bin/restdown
+@@ -35,8 +35,8 @@ import csv
+ from urllib import quote_plus as urlquote
+ 
+ _saved_path = sys.path[:]
+-sys.path.insert(0, join(dirname(dirname(abspath(realpath(__file__)))), "externals", "lib")) # dev layout
+-sys.path.insert(0, join(dirname(realpath(__file__)))) # allow markdown2.py in same dir
++sys.path.insert(0, join("@PREFIX@/share/restdown", "externals", "lib"))
++sys.path.insert(0, join("@PREFIX@/share/restdown"))
+ # Little bit of a hack for the internal import.
+ from markdown2 import Markdown, UnicodeWithAttrs, _regex_from_encoded_pattern
+ sys.path = _saved_path
+@@ -412,7 +412,7 @@ def _md5path(path):
+ def _get_brand_dir(brand=None):
+     if brand is None:
+         brand = DEFAULT_BRAND
+-    return join(dirname(dirname(abspath(realpath(__file__)))), "brand", brand)
++    return join("@PREFIX@/share/restdown", "brand", brand)
+ 
+ class _LowerLevelNameFormatter(logging.Formatter):
+     def format(self, record):

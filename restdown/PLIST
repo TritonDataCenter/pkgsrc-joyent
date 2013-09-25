@@ -1,0 +1,6 @@
+@comment $NetBSD$
+bin/restdown
+share/restdown/brand/ohthejoy/footer.html.in
+share/restdown/brand/ohthejoy/header.html.in
+share/restdown/brand/ohthejoy/media/css/restdown.css
+share/restdown/externals/lib/markdown2.py
