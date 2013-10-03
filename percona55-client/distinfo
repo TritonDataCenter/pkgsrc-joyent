@@ -26,6 +26,7 @@ SHA1 (patch-sql_CMakeLists.txt) = 187652fcea09396fa7f44f7c4ca20088a689bc82
 SHA1 (patch-sql_log_event.cc) = 2632e33caa5122645550f706c8f8824f24a14a48
 SHA1 (patch-sql_log_event.h) = eb9e38bbf50914ee504501b0723b57f80849ef48
 SHA1 (patch-sql_mysqld.cc) = 7e2cfb58f6af8531920dd9128f7b3a35735d7d2c
+SHA1 (patch-sql_sql__yacc.yy) = 1c0b57d4d9971041431f7c5dbdb78857ac6f0e81
 SHA1 (patch-sql_sql_string.cc) = 00368733072803d59473410badb82e92673de0a7
 SHA1 (patch-storage_innobase_include_os0sync.h) = d3f66b063af3328f3ee518dd00dfc9d1d25943dc
 SHA1 (patch-storage_ndb_include_util_Parser.hpp) = ca9406a8b01dffb3f515f132fa7aaef66c78f2be
