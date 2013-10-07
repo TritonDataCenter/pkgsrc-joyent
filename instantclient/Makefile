@@ -59,7 +59,7 @@ FETCH_MESSAGE+=	"    http://www.oracle.com/technetwork/database/features/instant
 FETCH_MESSAGE+=	" Save them in this directory:"
 FETCH_MESSAGE+=	"    ${DISTDIR}/${DIST_SUBDIR}/"
 
-INSTALLATION_DIRS+=	bin lib ${ORACLE_IC_HOME}
+INSTALLATION_DIRS+=	bin lib ${ORACLE_IC_HOME}/sdk
 
 post-extract:
 	cd ${WRKSRC} && ${LN} -s libclntsh.so.11.1 libclntsh.so \
