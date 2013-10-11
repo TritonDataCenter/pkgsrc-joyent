@@ -21,7 +21,10 @@ NO_BUILD=	yes
 WRKSRC=			${WRKDIR}/${GIT_REPOSITORIES}
 INSTALLATION_DIRS=	bin
 OWN_DIRS_PERMS+=	${VARBASE}/backups/mongodb mongodb mongodb 0755
-SMF_MANIFEST_SRC=	${WRKSRC}/manifest.xml
+
+SMF_SRCDIR=		${WRKSRC}
+SMF_MANIFEST=		manifest.xml
+SMF_MANIFEST_SRC=	${SMF_SRCDIR}/${SMF_MANIFEST}
 
 do-install:
 	${INSTALL_SCRIPT} ${WRKSRC}/quickbackup-mongodb ${DESTDIR}${PREFIX}/bin
