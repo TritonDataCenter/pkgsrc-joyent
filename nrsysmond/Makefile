@@ -21,7 +21,9 @@ BUILD_DEFS+=		VARBASE
 
 .include "../../mk/bsd.fast.prefs.mk"
 
-SMF_MANIFEST_SRC=	${WRKSRC}/scripts/nrsysmond.xml
+SMF_SRCDIR=		${WRKSRC}/scripts
+SMF_MANIFEST=		nrsysmond.xml
+SMF_MANIFEST_SRC=	${SMF_SRCDIR}/${SMF_MANIFEST}
 OWN_DIRS+=		${VARBASE}/log/newrelic
 
 CONF_FILES+=		share/examples/nrsysmond/nrsysmond.cfg \
