@@ -2,6 +2,7 @@
 #
 
 DISTNAME=	percona-xtrabackup-2.1.3
+PKGREVISION=	1
 CATEGORIES=	databases
 MASTER_SITES=	http://www.percona.com/redir/downloads/XtraBackup/LATEST/source/
 
@@ -19,6 +20,9 @@ USE_TOOLS+=	bison cmake gmake perl:run
 
 BUILD_DEPENDS+=	bzr-[0-9]*:../../devel/bzr
 BUILD_DEPENDS+=	patch-[0-9]*:../../devel/patch
+
+DEPENDS+=	p5-DBD-percona*-[0-9]*:../../databases/p5-DBD-mysql
+DEPENDS+=	qpress-[0-9]*:../../joyent/qpress
 
 CONFIGURE_DIRS=	${WRKDIR}/${LIBTAR}
 GNU_CONFIGURE=	YES
@@ -44,7 +48,8 @@ post-build:
 do-install:
 	${INSTALL_SCRIPT} ${WRKSRC}/innobackupex ${DESTDIR}${PREFIX}/bin
 	${INSTALL_PROGRAM} ${WRKSRC}/src/xbstream ${DESTDIR}${PREFIX}/bin
-	${INSTALL_PROGRAM} ${WRKSRC}/src/xtrabackup_55 ${DESTDIR}${PREFIX}/bin/xtrabackup
+	${INSTALL_PROGRAM} ${WRKSRC}/src/xtrabackup_55 ${DESTDIR}${PREFIX}/bin
+	${LN} -fs xtrabackup_55 ${DESTDIR}${PREFIX}/bin/xtrabackup
 	${INSTALL_PROGRAM} ${WRKDIR}/${LIBTAR}/libtar/tar4ibd ${DESTDIR}${PREFIX}/bin
 	${INSTALL_MAN} ${WRKSRC}/doc/xtrabackup.1 ${DESTDIR}${PREFIX}/${PKGMANDIR}/man1
 	
