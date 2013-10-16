@@ -1,17 +1,17 @@
 $NetBSD$
 
---- gdb/configure.tgt.orig	2011-03-06 00:22:38.000000000 +0000
+--- gdb/configure.tgt.orig	2013-03-05 13:37:10.000000000 +0000
 +++ gdb/configure.tgt
-@@ -181,7 +181,7 @@ i[34567]86-*-dicos*)
- 			dicos-tdep.o i386-dicos-tdep.o \
- 			corelow.o solib.o solib-target.o"
+@@ -185,7 +185,7 @@ i[34567]86-*-dicos*)
+ 	# Target: DICOS/i386
+ 	gdb_target_obs="i386-tdep.o i387-tdep.o dicos-tdep.o i386-dicos-tdep.o"
  	;;
 -i[34567]86-*-freebsd* | i[34567]86-*-kfreebsd*-gnu)
 +i[34567]86-*-freebsd* | i[34567]86-*-kfreebsd*-gnu | i[34567]86-*-dragonfly*)
  	# Target: FreeBSD/i386
  	gdb_target_obs="i386-tdep.o i387-tdep.o i386bsd-tdep.o i386fbsd-tdep.o \
- 			bsd-uthread.o corelow.o solib.o solib-svr4.o"
-@@ -202,7 +202,7 @@ i[34567]86-*-nto*)
+ 			bsd-uthread.o solib-svr4.o"
+@@ -206,7 +206,7 @@ i[34567]86-*-nto*)
  			i386-nto-tdep.o nto-tdep.o"
  	build_gdbserver=yes
  	;;
@@ -19,9 +19,9 @@ $NetBSD$
 +i[34567]86-*-solaris2.1[0-9]* | i[34567]86-*-solaris2 | x86_64-*-solaris2.1[0-9]* | x86_64-*-solaris2)
  	# Target: Solaris x86_64
  	gdb_target_obs="i386-tdep.o i387-tdep.o amd64-tdep.o amd64-sol2-tdep.o \
- 			i386-sol2-tdep.o sol2-tdep.o \
-@@ -599,7 +599,7 @@ x86_64-*-linux*)
- 			linux-record.o"
+ 			i386-sol2-tdep.o sol2-tdep.o solib-svr4.o"
+@@ -646,7 +646,7 @@ x86_64-*-linux*)
+ 			solib-svr4.o symfile-mem.o linux-tdep.o linux-record.o"
  	build_gdbserver=yes
  	;;
 -x86_64-*-freebsd* | x86_64-*-kfreebsd*-gnu)

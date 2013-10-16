@@ -1,16 +1,15 @@
-$NetBSD: distinfo,v 1.12 2008/01/06 19:54:46 rillig Exp $
+$NetBSD$
 
-SHA1 (gdb-7.3.1.tar.bz2) = e57f2c7f93536ef54fab728eb733bf2c36550718
-RMD160 (gdb-7.3.1.tar.bz2) = 6350a786b2f60dd46386454ebab0effc67ed169f
-Size (gdb-7.3.1.tar.bz2) = 19500995 bytes
+SHA1 (gdb-7.6.1.tar.bz2) = 0e38633b3902070d9c6755e4c54602148a094361
+RMD160 (gdb-7.6.1.tar.bz2) = d65ee2ab9f18601ceaeac4d379bb7f344f237bdd
+Size (gdb-7.6.1.tar.bz2) = 24338919 bytes
 SHA1 (patch-aa) = 504e50faa51dd04fcc150c01ba2df57c3ab60957
-SHA1 (patch-ac) = 2ab25784a96a9a6225d92f65316f51b005a986b3
 SHA1 (patch-ad) = 0305564e885af5b67ba8705f337ee6da0727e0b6
 SHA1 (patch-bb) = 63dde49eaf61bf85ce6dae12ec9af33ae4addfb5
-SHA1 (patch-bf) = cfb3a11f7ba54d8fb663980fa5ad92c14ccb3472
+SHA1 (patch-bf) = c62a58d6ffb9fff047431cea88bfd33684473732
 SHA1 (patch-bfd_Makefile.in) = cbe883975e4a5c5916825f176cd0e00c2dc9c831
-SHA1 (patch-bg) = 029e8a2b46c87f99bbe636d9164e44a054633093
-SHA1 (patch-bh) = c54ffdd4f7ad7cdee396a31208a3cd34474ecab5
+SHA1 (patch-bg) = 9ed28ab757cdfd4415f11810abb1457f6cd178ff
+SHA1 (patch-bh) = 3929ea830dc32a9563b7a8008167f87f47ad9eb2
 SHA1 (patch-bi) = 5d7cd5f2adf76b3f40541c1b658c3d528371537e
 SHA1 (patch-bl) = 83383666d8ff9ffcae7953817409d3434a1d9d2c
 SHA1 (patch-bn) = cfeee69148028782b9ab6580f0f619d5f3327325

@@ -1,8 +1,7 @@
 # $NetBSD$
 #
 
-DISTNAME=		gdb-7.3.1
-PKGREVISION=		1
+DISTNAME=		gdb-7.6.1
 CATEGORIES=		devel
 MASTER_SITES=		ftp://sources.redhat.com/pub/gdb/releases/
 EXTRACT_SUFX=		.tar.bz2
@@ -10,7 +9,7 @@ EXTRACT_SUFX=		.tar.bz2
 MAINTAINER=		shannonjr@NetBSD.org
 HOMEPAGE=		http://www.gnu.org/software/gdb/gdb.html
 COMMENT=		The GNU Project Debugger
-LICENSE=		gnu-gpl-v2
+LICENSE=		gnu-gpl-v3
 
 PKG_DESTDIR_SUPPORT=	user-destdir
 

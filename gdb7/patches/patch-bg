@@ -1,16 +1,16 @@
 $NetBSD$
 
---- bfd/configure.orig	2011-03-28 11:18:25.000000000 +0000
+--- bfd/configure.orig	2013-02-18 23:50:27.000000000 +0000
 +++ bfd/configure
-@@ -15062,6 +15062,7 @@ do
+@@ -15247,6 +15247,7 @@ do
      bfd_elf32_i370_vec)		tb="$tb elf32-i370.lo elf32.lo $elf" ;;
-     bfd_elf32_i386_sol2_vec)	tb="$tb elf32-i386.lo elf-ifunc.lo elf-vxworks.lo elf32.lo $elf" ;;
-     bfd_elf32_i386_freebsd_vec)	tb="$tb elf32-i386.lo elf-ifunc.lo elf-vxworks.lo elf32.lo $elf" ;;
+     bfd_elf32_i386_sol2_vec)	tb="$tb elf32-i386.lo elf-ifunc.lo elf-nacl.lo elf-vxworks.lo elf32.lo $elf" ;;
+     bfd_elf32_i386_freebsd_vec)	tb="$tb elf32-i386.lo elf-ifunc.lo elf-nacl.lo elf-vxworks.lo elf32.lo $elf" ;;
 +    bfd_elf32_i386_dragonfly_vec)	tb="$tb elf32-i386.lo elf-ifunc.lo elf-vxworks.lo elf32.lo $elf" ;;
-     bfd_elf32_i386_vxworks_vec)	tb="$tb elf32-i386.lo elf-ifunc.lo elf-vxworks.lo elf32.lo $elf" ;;
-     bfd_elf32_i386_vec)		tb="$tb elf32-i386.lo elf-ifunc.lo elf-vxworks.lo elf32.lo $elf" ;;
-     bfd_elf32_i860_little_vec)	tb="$tb elf32-i860.lo elf32.lo $elf" ;;
-@@ -15215,6 +15216,7 @@ do
+     bfd_elf32_i386_nacl_vec)	tb="$tb elf32-i386.lo elf-ifunc.lo elf-nacl.lo elf-vxworks.lo elf32.lo $elf" ;;
+     bfd_elf32_i386_vxworks_vec)	tb="$tb elf32-i386.lo elf-ifunc.lo elf-nacl.lo elf-vxworks.lo elf32.lo $elf" ;;
+     bfd_elf32_i386_vec)		tb="$tb elf32-i386.lo elf-ifunc.lo elf-nacl.lo elf-vxworks.lo elf32.lo $elf" ;;
+@@ -15427,6 +15428,7 @@ do
      x86_64coff_vec)		tb="$tb coff-x86_64.lo cofflink.lo"; target_size=64 ;;
      i386dynix_vec)		tb="$tb i386dynix.lo aout32.lo" ;;
      i386freebsd_vec)		tb="$tb i386freebsd.lo aout32.lo" ;;
