@@ -24,8 +24,14 @@ NO_CHECKSUM=	yes
 PY_SCRIPTS=	agent agentProcess blockingStats confPull getLogs logConfig \
 		mmsAgent munin nonBlockingStats settings
 
-SMF_MANIFEST_SRC=	${FILESDIR}/manifest.xml
+SMF_SRCDIR=		${FILESDIR}
+SMF_MANIFEST=		manifest.xml
+SMF_MANIFEST_SRC=	${SMF_SRCDIR}/${SMF_MANIFEST}
+
+SMF_METHODS=		mms-agent
 SMF_METHOD_SRC=		${FILESDIR}/method
+SMF_METHOD_FILE=	${SMF_METHOD_FILE.${SMF_METHODS}}
+FILES_SUBST+=		SMF_METHOD_FILE=${SMF_METHOD_FILE}
 
 MONGODB_DBPATH?=	${VARBASE}/mongodb
 MONGODB_USER?=		mongodb

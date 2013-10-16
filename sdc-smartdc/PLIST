@@ -1,11 +1,13 @@
 @comment $NetBSD$
 sdc/bin/sdc-addmachinetags
 sdc/bin/sdc-createfirewallrule
+sdc/bin/sdc-createimagefrommachine
 sdc/bin/sdc-createinstrumentation
 sdc/bin/sdc-createkey
 sdc/bin/sdc-createmachine
 sdc/bin/sdc-createmachinesnapshot
 sdc/bin/sdc-deletefirewallrule
+sdc/bin/sdc-deleteimage
 sdc/bin/sdc-deleteinstrumentation
 sdc/bin/sdc-deletekey
 sdc/bin/sdc-deletemachine
@@ -14,7 +16,10 @@ sdc/bin/sdc-deletemachinesnapshot
 sdc/bin/sdc-deletemachinetag
 sdc/bin/sdc-describeanalytics
 sdc/bin/sdc-disablefirewallrule
+sdc/bin/sdc-disablemachinefirewall
 sdc/bin/sdc-enablefirewallrule
+sdc/bin/sdc-enablemachinefirewall
+sdc/bin/sdc-exportimage
 sdc/bin/sdc-getaccount
 sdc/bin/sdc-getdataset
 sdc/bin/sdc-getfirewallrule
@@ -57,11 +62,13 @@ sdc/lib/node_modules/smartdc/LICENSE
 sdc/lib/node_modules/smartdc/README.md
 sdc/lib/node_modules/smartdc/bin/sdc-addmachinetags
 sdc/lib/node_modules/smartdc/bin/sdc-createfirewallrule
+sdc/lib/node_modules/smartdc/bin/sdc-createimagefrommachine
 sdc/lib/node_modules/smartdc/bin/sdc-createinstrumentation
 sdc/lib/node_modules/smartdc/bin/sdc-createkey
 sdc/lib/node_modules/smartdc/bin/sdc-createmachine
 sdc/lib/node_modules/smartdc/bin/sdc-createmachinesnapshot
 sdc/lib/node_modules/smartdc/bin/sdc-deletefirewallrule
+sdc/lib/node_modules/smartdc/bin/sdc-deleteimage
 sdc/lib/node_modules/smartdc/bin/sdc-deleteinstrumentation
 sdc/lib/node_modules/smartdc/bin/sdc-deletekey
 sdc/lib/node_modules/smartdc/bin/sdc-deletemachine
@@ -70,7 +77,10 @@ sdc/lib/node_modules/smartdc/bin/sdc-deletemachinesnapshot
 sdc/lib/node_modules/smartdc/bin/sdc-deletemachinetag
 sdc/lib/node_modules/smartdc/bin/sdc-describeanalytics
 sdc/lib/node_modules/smartdc/bin/sdc-disablefirewallrule
+sdc/lib/node_modules/smartdc/bin/sdc-disablemachinefirewall
 sdc/lib/node_modules/smartdc/bin/sdc-enablefirewallrule
+sdc/lib/node_modules/smartdc/bin/sdc-enablemachinefirewall
+sdc/lib/node_modules/smartdc/bin/sdc-exportimage
 sdc/lib/node_modules/smartdc/bin/sdc-getaccount
 sdc/lib/node_modules/smartdc/bin/sdc-getdataset
 sdc/lib/node_modules/smartdc/bin/sdc-getfirewallrule
