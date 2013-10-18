@@ -4,7 +4,7 @@ share/examples/flume/flume-conf.properties.template
 share/examples/flume/flume-env.sh.template
 share/examples/flume/log4j.properties
 share/flume/conf
-share/flume/lib/async-1.3.3.jar
+share/flume/lib/async-1.4.0.jar
 share/flume/lib/asynchbase-1.2.0.jar
 share/flume/lib/avro-1.7.2.jar
 share/flume/lib/avro-ipc-1.7.2.jar
