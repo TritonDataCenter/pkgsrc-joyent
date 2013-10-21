@@ -36,12 +36,13 @@ SUBST_MESSAGE.paths=	Fixing default paths
 SUBST_FILES.paths=	bin/flume-ng conf/log4j.properties
 SUBST_VARS.paths=	FLUME_LOG_DIR PKG_SYSCONFDIR
 
-CONF_FILES+=	share/examples/flume/flume-conf.properties.template	\
-		${PKG_SYSCONFDIR}/flume-conf.properties
-CONF_FILES+=	share/examples/flume/flume-env.sh.template		\
-		${PKG_SYSCONFDIR}/flume-env.sh
-CONF_FILES+=	share/examples/flume/log4j.properties			\
-		${PKG_SYSCONFDIR}/log4j.properties
+CONF_FILES+=		share/examples/flume/flume-conf.properties.template	\
+			${PKG_SYSCONFDIR}/flume-conf.properties
+CONF_FILES_PERMS+=	share/examples/flume/flume-env.sh.template		\
+			${PKG_SYSCONFDIR}/flume-env.sh				\
+			${REAL_ROOT_USER} ${REAL_ROOT_GROUP} 0755
+CONF_FILES+=		share/examples/flume/log4j.properties			\
+			${PKG_SYSCONFDIR}/log4j.properties
 
 post-extract:
 	${CHOWN} -R ${ROOT_USER}:${ROOT_GROUP} ${WRKSRC}
