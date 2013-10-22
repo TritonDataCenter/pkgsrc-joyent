@@ -1,6 +1,6 @@
 $NetBSD$
 
-SHA1 (duo_unix-1.9.2.tar.gz) = 5b9d52df6959a16f8bd09cdf89c11e19a0c45acf
-RMD160 (duo_unix-1.9.2.tar.gz) = de71c3e2c8cde281306edf69f5e6c90fdb6f0186
-Size (duo_unix-1.9.2.tar.gz) = 434788 bytes
+SHA1 (duo_unix-1.9.5.tar.gz) = e57793f5c301feb6e7960fdf70af7411e9503276
+RMD160 (duo_unix-1.9.5.tar.gz) = b31afb21474d9f833ee76ac5c804df8be2e3833e
+Size (duo_unix-1.9.5.tar.gz) = 458391 bytes
 SHA1 (patch-login__duo_Makefile.in) = 555d5a6972bffec801d6d42a9907cb226a42cd72

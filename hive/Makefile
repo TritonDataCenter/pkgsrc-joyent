@@ -41,7 +41,7 @@ OWN_DIRS_PERMS+=	${HIVE_LOG_DIR} ${HIVE_USER} ${HADOOP_GROUP} 755
 
 REPLACE_BASH+=		bin/beeline bin/hive bin/hiveserver2 bin/hive-config.sh bin/metatool bin/ext/*.sh
 CHECK_INTERPRETER_SKIP=	share/hive/lib/py/*
-CONFIG_FILES=		hive-default.xml.template hive-env.sh.template \
+CONFIG_FILES=		hive-default.xml.template \
 			hive-exec-log4j.properties.template \
 			hive-log4j.properties.template hive-site.xml
 
@@ -49,6 +49,10 @@ CONFIG_FILES=		hive-default.xml.template hive-env.sh.template \
 CONF_FILES+=		share/examples/hive/${file} \
 			${PKG_SYSCONFDIR}/${file:S/.template$//}
 .endfor
+
+CONF_FILES_PERMS+=	share/examples/hive/hive-env.sh.template	\
+			${PKG_SYSCONFDIR}/hive-env.sh			\
+			${REAL_ROOT_USER} ${REAL_ROOT_GROUP} 0755
 
 INSTALLATION_DIRS+=	bin share/doc/hive share/hive share/examples/hive
 

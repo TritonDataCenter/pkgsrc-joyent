@@ -55,13 +55,17 @@ SUBST_VARS.java=	HADOOP_DIR HADOOP_LOGDIR JAVA_ARCH_FLAG PKG_JAVA_HOME		\
 			PKG_SYSCONFDIR BUILDLINK_PREFIX.snappy
 
 CONFIG_FILES=	capacity-scheduler.xml configuration.xsl core-site.xml			\
-		fair-scheduler.xml hadoop-env.sh hadoop-metrics2.properties		\
+		fair-scheduler.xml hadoop-metrics2.properties		\
 		hadoop-policy.xml hdfs-site.xml log4j.properties mapred-queue-acls.xml	\
 		mapred-site.xml masters slaves taskcontroller.cfg
 
 .for f in ${CONFIG_FILES}
 CONF_FILES+=	share/examples/hadoop/${f} ${PKG_SYSCONFDIR}/${f}
 .endfor
+
+CONF_FILES_PERMS+=	share/examples/hadoop/hadoop-env.sh				\
+			${PKG_SYSCONFDIR}/hadoop-env.sh					\
+			${REAL_ROOT_USER} ${REAL_ROOT_GROUP} 0755
 
 post-extract:
 	set -e; cd ${WRKSRC} && (							\

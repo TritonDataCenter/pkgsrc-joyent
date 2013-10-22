@@ -1,5 +1,6 @@
 @comment $NetBSD$
 include/duo.h
+include/util.h
 lib/libduo.la
 lib/pkgconfig/libduo.pc
 man/man3/duo.3

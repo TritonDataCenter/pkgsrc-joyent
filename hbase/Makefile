@@ -40,12 +40,16 @@ REPLACE_BASH+=		bin/*
 
 INSTALLATION_DIRS+=	bin share/doc/hbase share/examples/hbase share/hbase
 
-CONFIG_FILES=		hadoop-metrics.properties hbase-env.sh hbase-policy.xml \
+CONFIG_FILES=		hadoop-metrics.properties hbase-policy.xml		\
 			hbase-site.xml log4j.properties regionservers
 
 .for file in ${CONFIG_FILES}
 CONF_FILES+=	share/examples/hbase/${file} ${PKG_SYSCONFDIR}/${file}
 .endfor
+
+CONF_FILES_PERMS+=	share/examples/hbase/hbase-env.sh			\
+			${PKG_SYSCONFDIR}/hbase-env.sh				\
+			${REAL_ROOT_USER} ${REAL_ROOT_GROUP} 0755
 
 post-extract:
 	${CP} ${FILESDIR}/hbase ${WRKDIR}/hbase

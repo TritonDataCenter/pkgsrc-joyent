@@ -46,8 +46,9 @@ OWN_DIRS_PERMS+=	${OOZIE_PID_DIR} ${OOZIE_USER} ${HADOOP_GROUP} 755
 
 CONF_FILES+=		share/examples/oozie/adminusers.txt		\
 			${PKG_SYSCONFDIR}/adminusers.txt
-CONF_FILES+=		share/examples/oozie/oozie-env.sh		\
-			${PKG_SYSCONFDIR}/oozie-env.sh
+CONF_FILES_PERMS+=	share/examples/oozie/oozie-env.sh		\
+			${PKG_SYSCONFDIR}/oozie-env.sh			\
+			${REAL_ROOT_USER} ${REAL_ROOT_GROUP} 0755
 CONF_FILES+=		share/examples/oozie/oozie-log4j.properties	\
 			${PKG_SYSCONFDIR}/oozie-log4j.properties
 CONF_FILES+=		share/examples/oozie/oozie-site.xml		\
