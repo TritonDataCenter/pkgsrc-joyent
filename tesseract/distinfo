@@ -1,0 +1,25 @@
+$NetBSD$
+
+SHA1 (tesseract-ocr-3.02.02.tar.gz) = a950acf7b75cf851de2de787e9abb62c58ca1827
+RMD160 (tesseract-ocr-3.02.02.tar.gz) = 6489b3756aab1ccadba1dd5d19e64d2cb6e90789
+Size (tesseract-ocr-3.02.02.tar.gz) = 3890393 bytes
+SHA1 (tesseract-ocr-3.02.deu.tar.gz) = 6d21596225f9a4c36fa81b19518f2aead8c8ac79
+RMD160 (tesseract-ocr-3.02.deu.tar.gz) = 7dbb3078b859bff828fbcebc2f57b232ae8fa700
+Size (tesseract-ocr-3.02.deu.tar.gz) = 1825064 bytes
+SHA1 (tesseract-ocr-3.02.eng.tar.gz) = 989ed4c3a5b246d7353893e466c353099d8b73a1
+RMD160 (tesseract-ocr-3.02.eng.tar.gz) = 795d2050133b5398a9f13eb291f9b36da124ec5a
+Size (tesseract-ocr-3.02.eng.tar.gz) = 12641221 bytes
+SHA1 (tesseract-ocr-3.02.fra.tar.gz) = 627893d878b33138608df372d191bd799b0edd4f
+RMD160 (tesseract-ocr-3.02.fra.tar.gz) = 40b2b7bc846e36f46c12114c05e8b066a1bd3ff7
+Size (tesseract-ocr-3.02.fra.tar.gz) = 6474735 bytes
+SHA1 (tesseract-ocr-3.02.ita.tar.gz) = b4d75234cab050db69874190d1bab5b2b1c59961
+RMD160 (tesseract-ocr-3.02.ita.tar.gz) = 1967275b5fc1a76a4fbbf97458f7aa61cb77c15e
+Size (tesseract-ocr-3.02.ita.tar.gz) = 7173232 bytes
+SHA1 (tesseract-ocr-3.02.nld.tar.gz) = e68e491d68fa367e2d173b12f19330e3ed72e750
+RMD160 (tesseract-ocr-3.02.nld.tar.gz) = 41e41ab4c34e04a92148287811e92dd688e1e182
+Size (tesseract-ocr-3.02.nld.tar.gz) = 1139701 bytes
+SHA1 (tesseract-ocr-3.02.spa.tar.gz) = 51e1289f0320bd750be4b04065dcae6862562b01
+RMD160 (tesseract-ocr-3.02.spa.tar.gz) = f5270f3b78e96d412e67d600491f4a880b9c4d22
+Size (tesseract-ocr-3.02.spa.tar.gz) = 9843970 bytes
+#SHA1 (patch-viewer_scrollview.cpp) = 05a9ff5d2a9e302b3a682144db54c612fd4eccc2
+#SHA1 (patch-viewer_svutil_cpp) = ec6f8b79c66993e5272a4f2a13aa92f2432cbea0
