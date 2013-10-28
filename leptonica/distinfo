@@ -3,4 +3,5 @@ $NetBSD$
 SHA1 (leptonica-1.69.tar.gz) = b6cae3966fbf875a26715cf83402e290c9500292
 RMD160 (leptonica-1.69.tar.gz) = 1115048d67f6537bd41e1f7dabe81dd6d62bd44c
 Size (leptonica-1.69.tar.gz) = 7618131 bytes
+SHA1 (patch-src_gifio.c) = 79f10bcf244d09b29a3ebda7f57f18445867cec3
 SHA1 (patch-src_sarray.c) = 8a7982f2405ade5f1a0d1c4ea15a1b15f10b97d6
