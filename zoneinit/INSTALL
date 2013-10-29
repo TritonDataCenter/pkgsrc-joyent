@@ -3,7 +3,6 @@
 case ${STAGE} in
 POST-INSTALL)
 	ln -sf @PKG_SYSCONFDIR@ @VARBASE@/zoneinit/includes
-	ln -sf @PREFIX@/share/examples/zoneinit/zoneinit.json @VARBASE@/zoneinit/zoneinit.json
 	if [ ! -f /lib/svc/method/mdata-fetch ] || \
 	   [ ! -f /lib/svc/method/mdata-execute ] || \
 	   [[ ! $(svcprop -p start/exec smartdc/mdata:fetch) =~ ^/lib/svc ]]; then

@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-DISTNAME=	zoneinit-1.6.2
+DISTNAME=	zoneinit-1.6.3
 CATEGORIES=	sysutils
 MASTER_SITES=	-https://github.com/joyent/${DISTNAME:S|-|/archive/|}${EXTRACT_SUFX}
 
@@ -33,6 +33,8 @@ ZONEINIT_INCLUDES=	00-mdata.sh 01-reboot-file.sh 02-config.sh	\
 .for f in ${ZONEINIT_INCLUDES}
 CONF_FILES+=		share/examples/zoneinit/${f} ${PKG_SYSCONFDIR}/${f}
 .endfor
+REQD_FILES+=		share/examples/zoneinit/zoneinit.json \
+			${VARBASE}/zoneinit/zoneinit.json
 
 INSTALLATION_DIRS+=	share/examples/zoneinit
 OWN_DIRS+=		${VARBASE}/zoneinit
