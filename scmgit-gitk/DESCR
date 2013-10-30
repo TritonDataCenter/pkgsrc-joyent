@@ -1,0 +1,6 @@
+This meta-package provides backwards-compatability for users who still
+run 'pkgin install scmgit-gitk' on 2013Q3 or newer branches, where the
+'scmgit-gitk' package was renamed to 'git-gitk'.
+
+Users are strongly advised to update their scripts to install the main
+package instead of this one.

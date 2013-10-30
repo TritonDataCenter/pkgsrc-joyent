@@ -1,0 +1,6 @@
+This meta-package provides backwards-compatability for users who still
+run 'pkgin install scmgit' on 2013Q3 or newer branches, where the
+'scmgit' package was renamed to 'git'.
+
+Users are strongly advised to update their scripts to install the main
+package instead of this one.
