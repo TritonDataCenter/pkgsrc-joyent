@@ -1,0 +1,13 @@
+$NetBSD$
+ 
+# Add an "all" target
+--- Makefile.orig 2013-05-04 20:56:20.000000000 +0000
++++ Makefile
+@@ -1,5 +1,7 @@
+ # Simple wrapper makefile for the platform build and install scripts
+ 
++all: default
++
+ default: build.stamp
+ 
+ config.status:

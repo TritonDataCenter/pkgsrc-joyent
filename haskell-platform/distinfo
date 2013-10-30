@@ -1,0 +1,7 @@
+$NetBSD$
+
+SHA1 (haskell-platform-2013.2.0.0.tar.gz) = 8669bb5add1826c0523fb130c095fb8bf23a30ce
+RMD160 (haskell-platform-2013.2.0.0.tar.gz) = 10fbc932dcde5439f1e21eab9ee3d9faea783ef5
+Size (haskell-platform-2013.2.0.0.tar.gz) = 2490645 bytes
+SHA1 (patch-Makefile) = 9a884e7d74a43fac3896cf2dd876afac59ad068c
+SHA1 (patch-scripts_install.sh) = f122456133d17d9330bcaa6f15c9e670a7b57eaf
