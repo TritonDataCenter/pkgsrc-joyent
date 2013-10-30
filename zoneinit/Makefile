@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-DISTNAME=	zoneinit-1.6.3
+DISTNAME=	zoneinit-1.6.4
 CATEGORIES=	sysutils
 MASTER_SITES=	-https://github.com/joyent/${DISTNAME:S|-|/archive/|}${EXTRACT_SUFX}
 
@@ -45,7 +45,7 @@ SUBST_CLASSES+=		path
 SUBST_STAGE.path=	post-patch
 SUBST_MESSAGE.path=	Fixing paths
 SUBST_FILES.path=	zoneinit zoneinit.json mdata.xml zoneinit.xml
-SUBST_VARS.path=	PREFIX PKG_SYSCONFDIR PKGVERSION_NOREV
+SUBST_VARS.path=	PREFIX PKG_SYSCONFDIR PKGVERSION_NOREV ZONEINIT_DIR
 SUBST_VARS.path+=	SMF_METHOD_FILE.mdata-fetch SMF_METHOD_FILE.mdata-execute
 
 do-install:
