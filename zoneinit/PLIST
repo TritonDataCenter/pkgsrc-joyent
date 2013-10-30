@@ -1,12 +1,12 @@
 @comment $NetBSD$
 lib/svc/manifest/mdata.xml
-share/examples/zoneinit/00-mdata.sh
-share/examples/zoneinit/01-reboot-file.sh
-share/examples/zoneinit/02-config.sh
-share/examples/zoneinit/04-mdata.sh
-share/examples/zoneinit/11-files.sh
-share/examples/zoneinit/12-network.sh
-share/examples/zoneinit/91-passwords.sh
-share/examples/zoneinit/92-sshd.sh
-share/examples/zoneinit/999-cleanup.sh
+share/examples/zoneinit/includes/00-mdata.sh
+share/examples/zoneinit/includes/01-reboot-file.sh
+share/examples/zoneinit/includes/02-config.sh
+share/examples/zoneinit/includes/04-mdata.sh
+share/examples/zoneinit/includes/11-files.sh
+share/examples/zoneinit/includes/12-network.sh
+share/examples/zoneinit/includes/91-passwords.sh
+share/examples/zoneinit/includes/92-sshd.sh
+share/examples/zoneinit/includes/999-cleanup.sh
 share/examples/zoneinit/zoneinit.json
