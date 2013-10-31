@@ -1,6 +1,7 @@
 # $NetBSD$
 
 DISTNAME=	haskell-platform-2013.2.0.0
+PKGREVISION=	1
 CATEGORIES=	lang
 MASTER_SITES=	http://lambda.haskell.org/platform/download/2013.2.0.0/
 
