@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-DISTNAME=	zoneinit-1.6.4
+DISTNAME=	zoneinit-1.6.5
 CATEGORIES=	sysutils
 MASTER_SITES=	-https://github.com/joyent/${DISTNAME:S|-|/archive/|}${EXTRACT_SUFX}
 
