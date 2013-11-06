@@ -16,7 +16,7 @@ BUILD_DEPENDS+= apache-ant-[0-9]*:../../devel/apache-ant
 
 BUILD_DEFS+=		VARBASE HADOOP_GROUP HADOOP_DIR HADOOP_LOGDIR
 
-USE_TOOLS+=		pax
+USE_TOOLS+=		bash:run pax
 
 HDFS_USER?=		hdfs
 MAPRED_USER?=		mapred
