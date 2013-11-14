@@ -1,10 +1,10 @@
 # $NetBSD$
 #
 
-DISTNAME=	apache-flume-1.3.1-src
-PKGNAME=	flume-1.3.1
+DISTNAME=	apache-flume-1.4.0-src
+PKGNAME=	flume-1.4.0
 CATEGORIES=	sysutils
-MASTER_SITES=	http://www.us.apache.org/dist/flume/1.3.1/
+MASTER_SITES=	http://www.us.apache.org/dist/flume/1.4.0/
 
 MAINTAINER=	filip@joyent.com
 HOMEPAGE=	http://flume.apache.org/

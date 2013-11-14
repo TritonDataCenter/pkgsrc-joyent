@@ -1,7 +1,7 @@
 $NetBSD$
 
-SHA1 (apache-flume-1.3.1-src.tar.gz) = fec3fc9ce1f323001d1aede2807cd9613aec17c4
-RMD160 (apache-flume-1.3.1-src.tar.gz) = a3105bd61ff9c6594ed4b10a393486ff9ffbb602
-Size (apache-flume-1.3.1-src.tar.gz) = 689090 bytes
-SHA1 (patch-bin_flume-ng) = 483ce612f61c4df278b887f9ec007d664b816e96
-SHA1 (patch-conf_log4j.properties) = df63eda95c7cc21399be4d22027ac6edb58e4168
+SHA1 (apache-flume-1.4.0-src.tar.gz) = 1bb7c272632c0bd8b2ec3ead6636f3f88fa5ac80
+RMD160 (apache-flume-1.4.0-src.tar.gz) = 42ef738ae589a6fa3a6d59e960b8b07bc0796288
+Size (apache-flume-1.4.0-src.tar.gz) = 2494099 bytes
+SHA1 (patch-bin_flume-ng) = 274484fc731136e5f076ba3ebc8ae12f7bb00481
+SHA1 (patch-conf_log4j.properties) = c6e5e15ea6e3e3daf0d7b6cd0a122adeb4f45e45

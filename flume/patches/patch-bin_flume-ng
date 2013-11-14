@@ -1,18 +1,18 @@
 $NetBSD$
 
 Fix default paths.
---- bin/flume-ng.orig	2012-12-22 00:49:28.000000000 +0000
+--- bin/flume-ng.orig	2013-06-23 21:09:25.000000000 +0000
 +++ bin/flume-ng
-@@ -230,7 +230,7 @@ FLUME_JAVA_LIBRARY_PATH=""
+@@ -238,7 +238,7 @@ FLUME_JAVA_LIBRARY_PATH=""
  JAVA_OPTS="-Xmx20m"
  LD_LIBRARY_PATH=""
  
 -opt_conf=""
 +opt_conf="@PKG_SYSCONFDIR@"
  opt_classpath=""
+ opt_plugins_dirs=""
  opt_java_props=""
- opt_dryrun=""
-@@ -323,7 +323,7 @@ if [ -n "${opt_classpath}" ]; then
+@@ -340,7 +340,7 @@ if [ -n "${opt_classpath}" ]; then
  fi
  
  if [ -z "${FLUME_HOME}" ]; then
