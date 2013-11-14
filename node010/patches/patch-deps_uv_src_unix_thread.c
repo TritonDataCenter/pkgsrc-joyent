@@ -1,9 +1,9 @@
 $NetBSD$
 
 Older NetBSD does not have pthread_condattr_setclock.
---- deps/uv/src/unix/thread.c.orig	2013-03-14 11:27:01.000000000 +0900
-+++ deps/uv/src/unix/thread.c	2013-03-14 11:45:57.000000000 +0900
-@@ -283,8 +283,10 @@
+--- deps/uv/src/unix/thread.c.orig	2013-11-12 20:22:12.000000000 +0000
++++ deps/uv/src/unix/thread.c
+@@ -283,8 +283,10 @@ int uv_cond_init(uv_cond_t* cond) {
    if (pthread_condattr_init(&attr))
      return -1;
  

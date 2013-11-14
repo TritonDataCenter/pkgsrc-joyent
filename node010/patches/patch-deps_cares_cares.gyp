@@ -1,8 +1,8 @@
 $NetBSD$
 
 Add support for NetBSD.
---- deps/cares/cares.gyp.orig	2013-03-14 10:55:24.000000000 +0900
-+++ deps/cares/cares.gyp	2013-03-14 10:55:47.000000000 +0900
+--- deps/cares/cares.gyp.orig	2013-11-12 20:22:12.000000000 +0000
++++ deps/cares/cares.gyp
 @@ -140,6 +140,10 @@
            'include_dirs': [ 'config/freebsd' ],
            'sources': [ 'config/freebsd/ares_config.h' ]

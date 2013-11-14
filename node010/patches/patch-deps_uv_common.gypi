@@ -2,9 +2,9 @@ $NetBSD$
 
 Add support for NetBSD.
 
---- deps/uv/common.gypi.orig	2013-04-11 16:39:16.000000000 +0000
+--- deps/uv/common.gypi.orig	2013-11-12 20:22:12.000000000 +0000
 +++ deps/uv/common.gypi
-@@ -129,7 +129,7 @@
+@@ -130,7 +130,7 @@
            }]
          ]
        }],

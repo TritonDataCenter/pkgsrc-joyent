@@ -2,9 +2,9 @@ $NetBSD$
 
 Fix path to Python.
 
---- deps/v8/tools/gyp/v8.gyp.orig	2012-06-11 16:30:44.000000000 +0000
+--- deps/v8/tools/gyp/v8.gyp.orig	2013-11-12 20:22:12.000000000 +0000
 +++ deps/v8/tools/gyp/v8.gyp
-@@ -796,7 +796,7 @@
+@@ -792,7 +792,7 @@
                  '<(SHARED_INTERMEDIATE_DIR)/libraries.cc',
                ],
                'action': [
@@ -13,7 +13,7 @@ Fix path to Python.
                  '../../tools/js2c.py',
                  '<@(_outputs)',
                  'CORE',
-@@ -814,7 +814,7 @@
+@@ -810,7 +810,7 @@
                  '<(SHARED_INTERMEDIATE_DIR)/experimental-libraries.cc',
                ],
                'action': [
@@ -22,7 +22,7 @@ Fix path to Python.
                  '../../tools/js2c.py',
                  '<@(_outputs)',
                  'EXPERIMENTAL',
-@@ -844,7 +844,7 @@
+@@ -840,7 +840,7 @@
                    '<(SHARED_INTERMEDIATE_DIR)/debug-support.cc',
                  ],
                  'action': [

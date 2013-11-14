@@ -1,11 +1,11 @@
 $NetBSD$
 
 Add support for NetBSD and DragonFly.
---- tools/gyp/pylib/gyp/generator/make.py.orig	2013-03-28 19:07:52.000000000 +0000
+--- tools/gyp/pylib/gyp/generator/make.py.orig	2013-11-12 20:22:12.000000000 +0000
 +++ tools/gyp/pylib/gyp/generator/make.py
-@@ -1984,7 +1984,7 @@ def GenerateOutput(target_list, target_d
+@@ -1999,7 +1999,7 @@ def GenerateOutput(target_list, target_d
+         'flock': './gyp-flock-tool flock',
          'flock_index': 2,
-         'extra_commands': SHARED_HEADER_SUN_COMMANDS,
      })
 -  elif flavor == 'freebsd':
 +  elif flavor == 'freebsd' or flavor == 'dragonflybsd' or flavor == 'netbsd':
