@@ -1,0 +1,35 @@
+$NetBSD$
+
+Install config file to the right location.
+--- pam_duo/Makefile.in.orig	2013-10-10 18:27:41.000000000 +0000
++++ pam_duo/Makefile.in
+@@ -324,6 +324,7 @@ sbindir = @sbindir@
+ sharedstatedir = @sharedstatedir@
+ srcdir = @srcdir@
+ sysconfdir = @sysconfdir@
++egdir = @prefix@/share/examples/duo-unix
+ target_alias = @target_alias@
+ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+@@ -701,15 +702,15 @@ uninstall-man: uninstall-man8
+ 
+ 
+ install-data-local:
+-	$(MKDIR_P) $(DESTDIR)$(sysconfdir)
+-	-@if [ ! -f $(DESTDIR)$(sysconfdir)/pam_duo.conf ]; then \
+-		cp pam_duo.conf $(DESTDIR)$(sysconfdir)/pam_duo.conf; \
+-		echo "Created ${DESTDIR}$(sysconfdir)/pam_duo.conf"; \
++	$(MKDIR_P) $(DESTDIR)$(egdir)
++	-@if [ ! -f $(DESTDIR)$(egdir)/pam_duo.conf ]; then \
++		cp pam_duo.conf $(DESTDIR)$(egdir)/pam_duo.conf; \
++		echo "Created ${DESTDIR}$(egdir)/pam_duo.conf"; \
+ 		echo "Please edit it to add your Duo integration and secret keys"; \
+ 	else \
+-		echo "Found existing ${DESTDIR}$(sysconfdir)/pam_duo.conf - updating permissions"; \
++		echo "Found existing ${DESTDIR}$(egdir)/pam_duo.conf - updating permissions"; \
+ 	fi
+-	-chmod 600 $(DESTDIR)$(sysconfdir)/pam_duo.conf
++	-chmod 600 $(DESTDIR)$(egdir)/pam_duo.conf
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.

@@ -18,6 +18,8 @@ FETCH_USING=	curl
 
 PKGCONFIG_OVERRIDE+=	lib/libduo.pc.in
 
+.include "options.mk"
+
 CONFIGURE_ARGS+=	--sysconfdir=${PKG_SYSCONFDIR}
 
 INSTALLATION_DIRS=	share/examples/duo-unix
