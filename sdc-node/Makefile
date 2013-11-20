@@ -1,7 +1,7 @@
 # $NetBSD: Makefile,v 1.3 2013/05/27 11:32:34 fhajny Exp $
 #
 
-DISTNAME=	node-v0.10.21
+DISTNAME=	node-v0.10.22
 CATEGORIES=	devel
 MASTER_SITES=	http://nodejs.org/dist/${DISTNAME:S/node-//}/
 PKGNAME=	sdc-${DISTNAME:S/-v/-/}
@@ -42,6 +42,7 @@ MAKE_ENV+=		GYP_DEFINES="OS=netbsd"
 REPLACE_PYTHON+=	configure
 REPLACE_PYTHON+=	tools/genv8constants.py
 REPLACE_PYTHON+=	tools/gyp_node
+REPLACE_PYTHON+=	tools/gyp/pylib/gyp/flock_tool.py
 REPLACE_PYTHON+=	tools/gyp/pylib/gyp/sun_tool.py
 REPLACE_PYTHON+=	tools/node-waf
 REPLACE_PYTHON+=	tools/waf-light

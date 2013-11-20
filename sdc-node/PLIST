@@ -291,6 +291,7 @@ sdc/lib/node_modules/npm/lib/view.js
 sdc/lib/node_modules/npm/lib/visnup.js
 sdc/lib/node_modules/npm/lib/whoami.js
 sdc/lib/node_modules/npm/lib/xmas.js
+sdc/lib/node_modules/npm/make.bat
 sdc/lib/node_modules/npm/man/man1/npm-README.1
 sdc/lib/node_modules/npm/man/man1/npm-adduser.1
 sdc/lib/node_modules/npm/man/man1/npm-bin.1
@@ -399,11 +400,10 @@ sdc/lib/node_modules/npm/node_modules/abbrev/lib/abbrev.js
 sdc/lib/node_modules/npm/node_modules/abbrev/package.json
 sdc/lib/node_modules/npm/node_modules/ansi/.npmignore
 sdc/lib/node_modules/npm/node_modules/ansi/README.md
+sdc/lib/node_modules/npm/node_modules/ansi/color-spaces.pl
 sdc/lib/node_modules/npm/node_modules/ansi/examples/beep/index.js
 sdc/lib/node_modules/npm/node_modules/ansi/examples/clear/index.js
 sdc/lib/node_modules/npm/node_modules/ansi/examples/cursorPosition.js
-sdc/lib/node_modules/npm/node_modules/ansi/examples/imgcat/index.js
-sdc/lib/node_modules/npm/node_modules/ansi/examples/imgcat/yoshi.png
 sdc/lib/node_modules/npm/node_modules/ansi/examples/progress/index.js
 sdc/lib/node_modules/npm/node_modules/ansi/examples/starwars.js
 sdc/lib/node_modules/npm/node_modules/ansi/lib/ansi.js
@@ -432,10 +432,12 @@ sdc/lib/node_modules/npm/node_modules/chownr/README.md
 sdc/lib/node_modules/npm/node_modules/chownr/chownr.js
 sdc/lib/node_modules/npm/node_modules/chownr/package.json
 sdc/lib/node_modules/npm/node_modules/cmd-shim/.npmignore
+sdc/lib/node_modules/npm/node_modules/cmd-shim/.travis.yml
 sdc/lib/node_modules/npm/node_modules/cmd-shim/LICENSE
 sdc/lib/node_modules/npm/node_modules/cmd-shim/README.md
 sdc/lib/node_modules/npm/node_modules/cmd-shim/index.js
 sdc/lib/node_modules/npm/node_modules/cmd-shim/package.json
+sdc/lib/node_modules/npm/node_modules/editor/LICENSE
 sdc/lib/node_modules/npm/node_modules/editor/README.markdown
 sdc/lib/node_modules/npm/node_modules/editor/example/beep.json
 sdc/lib/node_modules/npm/node_modules/editor/example/edit.js
@@ -489,6 +491,12 @@ sdc/lib/node_modules/npm/node_modules/github-url-from-git/Readme.md
 sdc/lib/node_modules/npm/node_modules/github-url-from-git/index.js
 sdc/lib/node_modules/npm/node_modules/github-url-from-git/package.json
 sdc/lib/node_modules/npm/node_modules/github-url-from-git/test.js
+sdc/lib/node_modules/npm/node_modules/github-url-from-username-repo/.npmignore
+sdc/lib/node_modules/npm/node_modules/github-url-from-username-repo/.travis.yml
+sdc/lib/node_modules/npm/node_modules/github-url-from-username-repo/LICENSE
+sdc/lib/node_modules/npm/node_modules/github-url-from-username-repo/README.md
+sdc/lib/node_modules/npm/node_modules/github-url-from-username-repo/index.js
+sdc/lib/node_modules/npm/node_modules/github-url-from-username-repo/package.json
 sdc/lib/node_modules/npm/node_modules/glob/.npmignore
 sdc/lib/node_modules/npm/node_modules/glob/.travis.yml
 sdc/lib/node_modules/npm/node_modules/glob/LICENSE
@@ -712,6 +720,7 @@ sdc/lib/node_modules/npm/node_modules/read-package-json/node_modules/normalize-p
 sdc/lib/node_modules/npm/node_modules/read-package-json/node_modules/normalize-package-data/AUTHORS
 sdc/lib/node_modules/npm/node_modules/read-package-json/node_modules/normalize-package-data/LICENSE
 sdc/lib/node_modules/npm/node_modules/read-package-json/node_modules/normalize-package-data/README.md
+sdc/lib/node_modules/npm/node_modules/read-package-json/node_modules/normalize-package-data/lib/core_module_names.json
 sdc/lib/node_modules/npm/node_modules/read-package-json/node_modules/normalize-package-data/lib/extract_description.js
 sdc/lib/node_modules/npm/node_modules/read-package-json/node_modules/normalize-package-data/lib/fixer.js
 sdc/lib/node_modules/npm/node_modules/read-package-json/node_modules/normalize-package-data/lib/normalize.js

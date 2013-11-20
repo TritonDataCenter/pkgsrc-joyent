@@ -1,11 +1,11 @@
 # $NetBSD$
 #
 
-DISTNAME=	joyent-server-monitor-1.3.0
-PKGNAME=	${DISTNAME:S/joyent-server-monitor/nrsysmond/}
+DISTNAME=	newrelic-sysmond-${PKGVERSION}-joyent
+PKGVERSION=	1.3.1.437
+PKGNAME=	nrsysmond-${PKGVERSION}
 CATEGORIES=	sysutils
 MASTER_SITES=	# none
-EXTRACT_SUFX=	.tar.bz2
 
 MAINTAINER=	filip@joyent.com
 HOMEPAGE=	http://newrelic.com/

@@ -1,9 +1,9 @@
 $NetBSD$
 
 Add support for NetBSD and DragonFly.
---- tools/gyp/pylib/gyp/common.py.orig	2013-03-28 19:07:52.000000000 +0000
+--- tools/gyp/pylib/gyp/common.py.orig	2013-11-12 20:22:12.000000000 +0000
 +++ tools/gyp/pylib/gyp/common.py
-@@ -394,6 +394,10 @@ def GetFlavor(params):
+@@ -409,6 +409,10 @@ def GetFlavor(params):
      return 'freebsd'
    if sys.platform.startswith('openbsd'):
      return 'openbsd'
