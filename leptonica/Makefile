@@ -2,6 +2,7 @@
 #
 
 DISTNAME=	leptonica-1.69
+PKGREVISION=	1
 CATEGORIES=	graphics
 MASTER_SITES=	http://leptonica.googlecode.com/files/
 
@@ -12,6 +13,7 @@ LICENSE=	apache-2.0
 
 GNU_CONFIGURE=	yes
 USE_LIBTOOL=	yes
+USE_MULTIARCH=	lib
 
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../graphics/libwebp/buildlink3.mk"

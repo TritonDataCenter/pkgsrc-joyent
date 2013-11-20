@@ -24,6 +24,7 @@ INSTALLATION_DIRS=	libexec share/doc/tesseract share/tesseract
 GNU_CONFIGURE=	yes
 USE_LANGUAGES=	c c++
 USE_LIBTOOL=	yes
+USE_MULTIARCH=	lib
 USE_TOOLS+=	gmake pax
 
 CONFIGURE_ENV+=	LIBLEPT_HEADERSDIR=${PREFIX:Q}/include
