@@ -21,7 +21,7 @@ default-storage-engine = innodb
 character-set-server = utf8
 skip-external-locking
 log_warnings
-skip_name_resolv
+skip_name_resolve
 
 server-id = 1
 
@@ -117,3 +117,9 @@ write_buffer = 2M
 
 [mysqlhotcopy]
 interactive-timeout
+
+[xtrabackup]
+tmpdir = /var/tmp
+
+[sst]
+streamfmt = xbstream
