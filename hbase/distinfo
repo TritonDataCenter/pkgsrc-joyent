@@ -6,5 +6,7 @@ Size (hbase-0.94.7.tar.gz) = 57601331 bytes
 SHA1 (patch-bin_get-active-master.rb) = 211d07e8c629e7951e5842f2a3e7d05a095514b5
 SHA1 (patch-bin_hbase) = 54dc2479b21c569556854aeaa48c32bfdca2b62e
 SHA1 (patch-bin_hbase-config.sh) = 271a15d35ecb578f4918337561cf96020fa1afad
+SHA1 (patch-bin_hbase-daemon.sh) = 102786a154e8b858223a07ab7c144653ed6f0470
 SHA1 (patch-bin_hirb.rb) = 65f01a81846c8f6d80d92698829225df5e87d6c5
+SHA1 (patch-bin_stop-hbase.sh) = 46135cd0a2408833d4a4b5681bf51d77486aebf4
 SHA1 (patch-conf_hbase-env.sh) = 27bf7e78aa1beab9e8f0b9cb05e32b942147d3b4
