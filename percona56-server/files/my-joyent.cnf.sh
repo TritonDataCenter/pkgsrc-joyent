@@ -36,7 +36,7 @@ myisam_sort_buffer_size = 64M
 innodb_data_home_dir = @MYSQL_DATADIR@
 innodb_log_group_home_dir = @MYSQL_DATADIR@
 innodb_data_file_path = ibdata1:100M:autoextend
-innodb_buffer_pool_size = 256M
+innodb_buffer_pool_size = 16M
 innodb_additional_mem_pool_size = 20M
 innodb_log_file_size = 400M
 innodb_log_buffer_size = 8M
@@ -58,6 +58,7 @@ log_slow_filter = "full_scan,tmp_table_on_disk,filesort_on_disk"
 log_slow_verbosity = "full"
 
 # Other general MySQL settings
+table_open_cache = 512
 thread_cache_size = 1000
 #query_cache_size = 16M
 #query_cache_strip_comments
