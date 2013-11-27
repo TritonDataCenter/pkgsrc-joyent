@@ -1,8 +1,8 @@
 $NetBSD$
 
-SHA1 (Percona-XtraDB-Cluster-5.5.31.tar.gz) = 9b77521e473e7bd9265ce07641029633394f2b91
-RMD160 (Percona-XtraDB-Cluster-5.5.31.tar.gz) = c0a1f7a21d9c51eb35f715686702fa82f28db32e
-Size (Percona-XtraDB-Cluster-5.5.31.tar.gz) = 22817324 bytes
+SHA1 (Percona-XtraDB-Cluster-5.5.34.tar.gz) = d9af633b36a83dd47ad1ba296f4264e547778398
+RMD160 (Percona-XtraDB-Cluster-5.5.34.tar.gz) = 53d1ee1fe93e2a32fb3378ac482b54f9e553e610
+Size (Percona-XtraDB-Cluster-5.5.34.tar.gz) = 23810675 bytes
 SHA1 (sphinx-2.0.9-release.tar.gz) = 0fa2806fa47a689d9f55d72ce0b6d4abce52e81c
 RMD160 (sphinx-2.0.9-release.tar.gz) = f729df1d9713ec933c906221a643d788809c161f
 Size (sphinx-2.0.9-release.tar.gz) = 1996939 bytes

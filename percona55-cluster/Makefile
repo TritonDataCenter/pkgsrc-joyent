@@ -1,7 +1,6 @@
 # $NetBSD$
 
-DISTNAME=	Percona-XtraDB-Cluster-5.5.31
-PKGREVISION=	3
+DISTNAME=	Percona-XtraDB-Cluster-5.5.34
 CATEGORIES=	databases
 MASTER_SITES=	http://www.percona.com/redir/downloads/Percona-XtraDB-Cluster/LATEST/source/
 
