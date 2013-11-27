@@ -1,0 +1,41 @@
+<?xml version='1.0'?>
+<!DOCTYPE service_bundle SYSTEM '/usr/share/lib/xml/dtd/service_bundle.dtd.1'>
+<service_bundle type='manifest' name='elasticsearch'>
+  <service name='application/elasticsearch' type='service' version='0'>
+    <create_default_instance enabled='false' />
+    <single_instance />
+    <dependency name='fs' grouping='require_all' restart_on='none' type='service'>
+      <service_fmri value='svc:/system/filesystem/local' />
+    </dependency>
+    <dependency name='net' grouping='require_all' restart_on='none' type='service'>
+      <service_fmri value='svc:/network/loopback' />
+    </dependency>
+    <dependent name='elasticsearch' restart_on='none' grouping='optional_all'>
+      <service_fmri value='svc:/milestone/multi-user' />
+    </dependent>
+    <method_context working_directory='@ES_WRKDIR@'>
+      <method_credential user='@ES_USER@' group='@ES_GROUP@' />
+      <method_environment>
+        <envvar name='PATH' value='@PREFIX@/bin:@PREFIX@/sbin:/usr/bin:/usr/sbin' />
+        <envvar name='JAVA_HOME' value='@PKG_JAVA_HOME@' />
+      </method_environment>
+    </method_context>
+    <exec_method name="start" type="method" exec="@PREFIX@/bin/elasticsearch -Xms%{min_heap} -Xmx%{max_heap} -Des.index.store.type=%{store_type}" timeout_seconds="60" />
+    <exec_method type="method" name="stop" exec=":kill" timeout_seconds="60" />
+    <exec_method type="method" name="refresh" exec=":kill -HUP" timeout_seconds="60" />
+    <property_group name="application" type="application">
+      <propval name="min_heap" type="astring" value="1g" />
+      <propval name="max_heap" type="astring" value="1g" />
+      <propval name="store_type" type="astring" value="niofs" />
+    </property_group>
+    <stability value='Evolving' />
+    <template>
+      <common_name>
+        <loctext xml:lang='C'>Elasticsearch</loctext>
+      </common_name>
+      <documentation>
+        <doc_link name='incubator.apache.org' uri='http://www.elasticsearch.org/' />
+      </documentation>
+    </template>
+  </service>
+</service_bundle>

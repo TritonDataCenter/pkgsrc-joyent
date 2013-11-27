@@ -1,0 +1,38 @@
+$NetBSD$
+
+Fix default paths.
+--- config/elasticsearch.yml.orig	2013-11-05 14:42:02.000000000 +0000
++++ config/elasticsearch.yml
+@@ -140,11 +140,11 @@
+ 
+ # Path to directory containing configuration (this file and logging.yml):
+ #
+-# path.conf: /path/to/conf
++path.conf: @PKG_SYSCONFDIR@
+ 
+ # Path to directory where to store index data allocated for this node.
+ #
+-# path.data: /path/to/data
++path.data: @ES_DBDIR@
+ #
+ # Can optionally include more than one location, causing data to be striped across
+ # the locations (a la RAID 0) on a file level, favouring locations with most free
+@@ -154,15 +154,15 @@
+ 
+ # Path to temporary files:
+ #
+-# path.work: /path/to/work
++path.work: @ES_WRKDIR@
+ 
+ # Path to log files:
+ #
+-# path.logs: /path/to/logs
++path.logs: @ES_LOGDIR@
+ 
+ # Path to where plugins are installed:
+ #
+-# path.plugins: /path/to/plugins
++path.plugins: @PREFIX@/lib/elasticsearch/plugins
+ 
+ 
+ #################################### Plugin ###################################
