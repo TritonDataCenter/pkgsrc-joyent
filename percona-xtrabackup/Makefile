@@ -49,7 +49,8 @@ do-install:
 	${INSTALL_SCRIPT} ${WRKSRC}/innobackupex ${DESTDIR}${PREFIX}/bin
 	${INSTALL_PROGRAM} ${WRKSRC}/src/xbstream ${DESTDIR}${PREFIX}/bin
 	${INSTALL_PROGRAM} ${WRKSRC}/src/xtrabackup_55 ${DESTDIR}${PREFIX}/bin
-	${LN} -fs xtrabackup_55 ${DESTDIR}${PREFIX}/bin/xtrabackup
+	${RM} -f ${DESTDIR}${PREFIX}/bin/xtrabackup
+	${LN} -s xtrabackup_55 ${DESTDIR}${PREFIX}/bin/xtrabackup
 	${INSTALL_PROGRAM} ${WRKDIR}/${LIBTAR}/libtar/tar4ibd ${DESTDIR}${PREFIX}/bin
 	${INSTALL_MAN} ${WRKSRC}/doc/xtrabackup.1 ${DESTDIR}${PREFIX}/${PKGMANDIR}/man1
 	
