@@ -23,6 +23,7 @@ BUILD_DEFS+=		VARBASE
 
 SMF_SRCDIR=		${WRKSRC}/scripts
 SMF_MANIFEST=		nrsysmond.xml
+SMF_MANIFEST.nrsysmond=	nrsysmond.xml
 SMF_MANIFEST_SRC=	${SMF_SRCDIR}/${SMF_MANIFEST}
 OWN_DIRS+=		${VARBASE}/log/newrelic
 
