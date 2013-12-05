@@ -1,6 +1,7 @@
 # $NetBSD: Makefile,v 1.6 2013/06/18 19:59:35 joerg Exp $
 
 PKGNAME=	${DISTNAME:tl:C/-rel.*//:S/server/client/}
+PKGREVISION=	1
 SVR4_PKGNAME=	mysqc
 COMMENT=	Percona MySQL 5.5, a free SQL database (client)
 
