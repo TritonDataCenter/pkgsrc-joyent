@@ -1,13 +1,15 @@
-$NetBSD$
+$NetBSD: distinfo,v 1.13 2013/12/12 11:52:37 jperkin Exp $
 
-SHA1 (node-v0.10.22.tar.gz) = d7c6a39dfa714eae1f8da7a00c9a07efd74a03b3
-RMD160 (node-v0.10.22.tar.gz) = 0a0b1a40638cc59317291ec171c63f902c3de507
-Size (node-v0.10.22.tar.gz) = 13686897 bytes
-SHA1 (patch-common.gypi) = f5078e1bd4d0ed6f5253cedad52082d3080c6f0c
-SHA1 (patch-deps_cares_cares.gyp) = 3c5e9fe9431082846c13d9ed1add8640cdb8d4ac
-SHA1 (patch-deps_uv_common.gypi) = 5cfaceaa93104910857e374c1fe71c2268d2557e
-SHA1 (patch-deps_uv_src_unix_thread.c) = 845028ef749494d4d7f8a1ac2b39bb72d64a3e21
-SHA1 (patch-deps_v8_tools_gyp_v8.gyp) = 7d815743cc3668283da2561c8902cf4cbf36669a
-SHA1 (patch-tools_gyp_pylib_gyp_common.py) = ae5de14b146b62249b4c7624f89410909192e426
-SHA1 (patch-tools_gyp_pylib_gyp_generator_make.py) = b5056ff23e710042d3dc0229608f1ab0ff31a893
-SHA1 (patch-tools_install.py) = 442f0b758aec0af9a0cb7616b0b2c9aaff7ce1d0
+SHA1 (node-v0.10.23.tar.gz) = 8717942d1bdfa8902ce65cd33b4293d16b486c64
+RMD160 (node-v0.10.23.tar.gz) = 7e2104e6aef584d53a2e6e2d4fd61cfbe2d34f7a
+Size (node-v0.10.23.tar.gz) = 13742607 bytes
+SHA1 (patch-common.gypi) = 0cffd29138431c982d9030b414cc26acd9407fbc
+SHA1 (patch-deps_cares_cares.gyp) = 2235eb44bc984fa2e745fdf1786f1ae6de6ef80f
+SHA1 (patch-deps_npm_node__modules_node-gyp_gyp_pylib_gyp_generator_make.py) = 78d6ddd37ae30e869e0da666a78baad86a638c50
+SHA1 (patch-deps_uv_common.gypi) = 13bc664b182f00f9674f87f4bd47e7e77f6e9e0d
+SHA1 (patch-deps_uv_src_unix_netbsd.c) = c1d58eabed1c396b8d9455e3d54c88907ffd7bed
+SHA1 (patch-deps_uv_src_unix_thread.c) = 13172adf2407eb40362cb4480a768816a7d98961
+SHA1 (patch-deps_v8_tools_gyp_v8.gyp) = 8602b7858d2d238a165554dfb1feaeec31babfe9
+SHA1 (patch-tools_gyp_pylib_gyp_common.py) = 132008f362ea696e43a4d19bf9d8a0ac754ef55c
+SHA1 (patch-tools_gyp_pylib_gyp_generator_make.py) = be3cc1aaa85c3d59b6f2758df813cb5ad8d8f74e
+SHA1 (patch-tools_install.py) = 8f19cef5b4c90a752dd2c7550e9b70aa78d3c292
