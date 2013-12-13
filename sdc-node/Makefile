@@ -1,7 +1,7 @@
-# $NetBSD: Makefile,v 1.3 2013/05/27 11:32:34 fhajny Exp $
+# $NetBSD: Makefile,v 1.14 2013/12/12 11:53:38 jperkin Exp $
 #
 
-DISTNAME=	node-v0.10.22
+DISTNAME=	node-v0.10.23
 CATEGORIES=	devel
 MASTER_SITES=	http://nodejs.org/dist/${DISTNAME:S/node-//}/
 PKGNAME=	sdc-${DISTNAME:S/-v/-/}
@@ -51,11 +51,12 @@ REPLACE_PYTHON+=	tools/wafadmin/Tools/*.py
 
 CHECK_INTERPRETER_SKIP+=	sdc/lib/node_modules/npm/*
 
-.if ${OPSYS} == "NetBSD" || ${OPSYS} == "FreeBSD" || ${OPSYS} == "OpenBSD"
-. include "../../devel/libexecinfo/buildlink3.mk"
-.endif
 .if ${OPSYS} == "NetBSD"
 BUILD_DEPENDS+=	lockf-[0-9]*:../../sysutils/lockf
 .endif
+
+pre-install:
+	${FIND} ${WRKSRC}/deps/npm -name '*.orig' | ${XARGS} ${RM} -f
+
 .include "../../lang/python/application.mk"
 .include "../../mk/bsd.pkg.mk"
