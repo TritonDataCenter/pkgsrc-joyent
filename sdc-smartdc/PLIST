@@ -57,7 +57,7 @@ sdc/bin/sdc-updateaccount
 sdc/bin/sdc-updatefirewallrule
 sdc/bin/sdc-updatemachinemetadata
 sdc/lib/node_modules/smartdc/.npmignore
-sdc/lib/node_modules/smartdc/CHANGELOG.md
+sdc/lib/node_modules/smartdc/CHANGES.md
 sdc/lib/node_modules/smartdc/LICENSE
 sdc/lib/node_modules/smartdc/README.md
 sdc/lib/node_modules/smartdc/bin/sdc-addmachinetags
