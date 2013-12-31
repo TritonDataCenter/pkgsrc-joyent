@@ -1,0 +1,6 @@
+$NetBSD$
+
+SHA1 (nutcracker-0.3.0.tar.gz) = b17f973ff2de9bd5e21417786a1449bea1557fba
+RMD160 (nutcracker-0.3.0.tar.gz) = 6a9cf3df98357dbeaac5cf8f38b7c371849b1b59
+Size (nutcracker-0.3.0.tar.gz) = 1825106 bytes
+SHA1 (patch-src_nc.c) = a2a29d5938da29723452b8dbb38b48cd51acb3ce

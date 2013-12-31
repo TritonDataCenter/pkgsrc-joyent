@@ -1,0 +1,4 @@
+twemproxy (pronounced "two-em-proxy"), aka nutcracker is a fast
+and lightweight proxy for memcached and redis protocol. It was
+primarily built to reduce the connection count on the backend
+caching servers.
