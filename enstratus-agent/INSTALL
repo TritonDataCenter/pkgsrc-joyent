@@ -5,7 +5,6 @@ POST-INSTALL)
   chown -R @ENSTRATUS_USER@:@ENSTRATUS_USER@ @PREFIX@/enstratus
   chmod 750 @PREFIX@/enstratus/bin
   chmod 550 @PREFIX@/enstratus/bin/*
-  chmod 755 @PREFIX@/enstratus/custom/bin
   chmod 750 @PREFIX@/enstratus/home
   chmod 750 @PREFIX@/enstratus/cfg
   chmod 640 @PREFIX@/enstratus/cfg/*
