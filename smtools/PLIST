@@ -26,6 +26,7 @@ bin/sm-set-hostname
 bin/sm-set-timezone
 bin/sm-shutdown
 bin/sm-summary
+bin/sm-sync-to-master
 bin/sm-tune-mysql
 bin/yum
 lib/zoneinit/includes/00-mdata.sh
