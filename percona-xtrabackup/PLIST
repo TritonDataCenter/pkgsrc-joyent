@@ -3,5 +3,4 @@ bin/innobackupex
 bin/tar4ibd
 bin/xbstream
 bin/xtrabackup
-bin/xtrabackup_55
-man/man1/xtrabackup.1
+bin/xtrabackup_${PERCONA_VERSION}
