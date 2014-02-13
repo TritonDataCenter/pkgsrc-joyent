@@ -1,12 +1,12 @@
 $NetBSD$
 
 Set default paths.
---- bin/elasticsearch.in.sh.orig	2013-12-23 10:36:51.000000000 +0000
+--- bin/elasticsearch.in.sh.orig	2014-02-12 16:20:00.000000000 +0000
 +++ bin/elasticsearch.in.sh
 @@ -1,6 +1,6 @@
  #!/bin/sh
  
--ES_CLASSPATH=$ES_CLASSPATH:$ES_HOME/lib/elasticsearch-0.90.9.jar:$ES_HOME/lib/*:$ES_HOME/lib/sigar/*
+-ES_CLASSPATH=$ES_CLASSPATH:$ES_HOME/lib/elasticsearch-1.0.0.jar:$ES_HOME/lib/*:$ES_HOME/lib/sigar/*
 +ES_CLASSPATH=$ES_CLASSPATH:$ES_HOME/lib/elasticsearch/elasticsearch-0.90.7.jar:$ES_HOME/lib/elasticsearch/*:$ES_HOME/lib/elasticsearch/sigar/*
  
  if [ "x$ES_MIN_MEM" = "x" ]; then
