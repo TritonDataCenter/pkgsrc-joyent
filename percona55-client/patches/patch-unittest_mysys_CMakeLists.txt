@@ -1,0 +1,19 @@
+$NetBSD$
+
+Disable explain_filename-t, dependencies are broken (mysqld_error.h)
+
+--- unittest/mysys/CMakeLists.txt.orig	2013-12-02 06:43:24.000000000 +0000
++++ unittest/mysys/CMakeLists.txt
+@@ -31,6 +30,7 @@ FOREACH(testname bitmap base64 my_vsnpri
+   MY_ADD_TEST(${testname})
+ ENDFOREACH()
+ 
++IF(0)
+ IF(WIN32)
+   ADD_EXECUTABLE(explain_filename-t explain_filename-t.cc
+                                     ../../sql/nt_servc.cc)
+@@ -39,3 +39,4 @@ ELSE()
+ ENDIF()
+ TARGET_LINK_LIBRARIES(explain_filename-t sql mytap)
+ ADD_TEST(explain_filename explain_filename-t)
++ENDIF(0)

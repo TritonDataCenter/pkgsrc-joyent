@@ -1,13 +1,13 @@
 $NetBSD$
 
-SHA1 (Percona-Server-5.5.31-rel30.3.tar.gz) = 7da7146997e2a537b06ed613633dda1847626e3c
-RMD160 (Percona-Server-5.5.31-rel30.3.tar.gz) = 9a7190c4690450dfbd2ceeac6589b1b9fa1d036c
-Size (Percona-Server-5.5.31-rel30.3.tar.gz) = 22589930 bytes
-SHA1 (sphinx-2.0.6-release.tar.gz) = fe1b990052f961a100adba197abe806a3c1b70dc
-RMD160 (sphinx-2.0.6-release.tar.gz) = 6fd53230457e62a6aabcb5321265abd8ea324cf6
-Size (sphinx-2.0.6-release.tar.gz) = 1972728 bytes
+SHA1 (Percona-Server-5.5.35-rel33.0.tar.gz) = b864ed39876a28ed26241aab44473cb099d3e2a3
+RMD160 (Percona-Server-5.5.35-rel33.0.tar.gz) = ea94eabd81566595cfb6f8cdafe0d84eef80cd61
+Size (Percona-Server-5.5.35-rel33.0.tar.gz) = 22465700 bytes
+SHA1 (sphinx-2.0.10-release.tar.gz) = e786f68b86f392872d907fc8b35e2fa2c81948cf
+RMD160 (sphinx-2.0.10-release.tar.gz) = 35960b9aac72eab0337099230a54e04af9d46c2f
+Size (sphinx-2.0.10-release.tar.gz) = 2016687 bytes
 SHA1 (patch-BUILD_compile-pentium-gcov) = a1ac666efa953a98455a726e5db359c903d699b6
-SHA1 (patch-CMakeLists.txt) = fc3d3854090ac19dec28ed03b41d78069304f23d
+SHA1 (patch-CMakeLists.txt) = 5b8574a8836465361f27fc4efd1699f57732d6d2
 SHA1 (patch-client_completion_hash.cc) = b86ec80beac624b2aa21c7587e351ff126400ecb
 SHA1 (patch-client_mysqladmin.cc) = 382486c2f336eed87052e682b52d1acf444452a0
 SHA1 (patch-client_mysqlbinlog.cc) = 53258276d8fd713d2772c9c8c339bfe190b703cc
@@ -31,3 +31,4 @@ SHA1 (patch-sql_sql_string.cc) = 00368733072803d59473410badb82e92673de0a7
 SHA1 (patch-storage_innobase_include_os0sync.h) = d3f66b063af3328f3ee518dd00dfc9d1d25943dc
 SHA1 (patch-storage_ndb_include_util_Parser.hpp) = ca9406a8b01dffb3f515f132fa7aaef66c78f2be
 SHA1 (patch-strings_decimal.c) = 4d2a3d8acb3b0af56180f3a1faa8735d692be5b9
+SHA1 (patch-unittest_mysys_CMakeLists.txt) = 69c7297c7624c0824637634561c779264a3a28e0
