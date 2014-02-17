@@ -1,4 +1,4 @@
-# $NetBSD: Makefile.common,v 1.23 2012/10/02 21:25:22 asau Exp $
+# $NetBSD$
 #
 # used by joyent/percona55-client/Makefile
 # used by joyent/percona55-server/Makefile

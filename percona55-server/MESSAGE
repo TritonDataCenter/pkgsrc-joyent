@@ -1,5 +1,5 @@
 ===========================================================================
-$NetBSD: MESSAGE,v 1.1.1.1 2011/04/25 21:12:13 adam Exp $
+$NetBSD$
 
 After the tables are set up and the MySQL server is running,
 please remember to set a password for the MySQL root user!

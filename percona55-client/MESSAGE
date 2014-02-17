@@ -1,5 +1,5 @@
 ===========================================================================
-$NetBSD: MESSAGE,v 1.1.1.1 2011/04/25 21:12:53 adam Exp $
+$NetBSD$
 
 To use the ``mysqlhotcopy'' script, you'll have to install the following
 packages:

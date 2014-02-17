@@ -1,13 +1,9 @@
-# $NetBSD: Makefile,v 1.6 2011/10/22 10:32:37 adam Exp $
+# $NetBSD$
 
 PKGNAME=	${DISTNAME:tl:C/-rel.*//}
 COMMENT=	Percona MySQL 5.5, a free SQL database (server)
 
 CONFLICTS=	{mysql-server-[0-9]*,mysql3-server-[0-9]*,mysql55-server-[0-9]*}
-
-# might be removed in the future
-# if mysqld_safe script is installed here, or rc.d script invokes mysqld
-DEPENDS+=	percona-client>=${PKGVERSION_NOREV}:../../joyent/percona55-client
 
 .include "../../joyent/percona55-client/Makefile.common"
 

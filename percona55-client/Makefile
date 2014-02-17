@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.3 2012/12/22 10:56:14 tron Exp $
+# $NetBSD$
 
 PKGNAME=	${DISTNAME:tl:C/-rel.*//:S/server/client/}
 COMMENT=	Percona MySQL 5.5, a free SQL database (client)

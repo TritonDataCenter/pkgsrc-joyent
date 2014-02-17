@@ -1,4 +1,4 @@
-# $NetBSD: buildlink3.mk,v 1.3 2012/10/03 12:49:12 fhajny Exp $
+# $NetBSD$
 
 BUILDLINK_TREE+=	percona-server
 

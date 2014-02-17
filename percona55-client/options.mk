@@ -1,4 +1,4 @@
-# $NetBSD: options.mk,v 1.1.1.1 2011/04/25 21:12:53 adam Exp $
+# $NetBSD$
 
 PKG_OPTIONS_VAR=	PKG_OPTIONS.percona55
 
