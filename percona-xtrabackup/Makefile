@@ -29,7 +29,7 @@ USE_TOOLS+=	bison cmake gmake perl:run
 
 BUILD_DEPENDS+=	patch-[0-9]*:../../devel/patch
 
-DEPENDS+=	p5-DBD-{percona,mysql}*-[0-9]*:../../databases/p5-DBD-mysql
+DEPENDS+=	p5-DBD-${MYSQL_PKG_PREFIX}-[0-9]*:../../databases/p5-DBD-mysql
 DEPENDS+=	qpress-[0-9]*:../../joyent/qpress
 
 CONFIGURE_DIRS=	${WRKDIR}/${LIBTAR}
