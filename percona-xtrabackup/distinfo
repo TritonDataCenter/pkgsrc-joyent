@@ -7,4 +7,5 @@ SHA1 (percona-xtrabackup-2.1.7.tar.gz) = edd1e924c7dd42ac6c883604eafa1b12bd163c6
 RMD160 (percona-xtrabackup-2.1.7.tar.gz) = d256646c49ebf95417e7ea7a2334768c33f12623
 Size (percona-xtrabackup-2.1.7.tar.gz) = 131538555 bytes
 SHA1 (patch-src_Makefile) = b4810d20595e72db1c6cce23c9132e16c4310df3
-SHA1 (patch-utils_build.sh) = 15ad8b78129fb6c9dcf32e62ab8179c3e387b155
+SHA1 (patch-src_innodb__int.h) = 5dd7214fe897ea1add4479f766de6dc8ccc9dff5
+SHA1 (patch-utils_build.sh) = 1d550e22b7cbaed269c2b26e6e4b29ffac5ddc0a

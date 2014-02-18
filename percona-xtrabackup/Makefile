@@ -3,6 +3,7 @@
 
 DISTNAME=	percona-xtrabackup-2.1.7
 PKGNAME=	${MYSQL_PKG_PREFIX}-xtrabackup-2.1.7
+PKGREVISION=	1
 CATEGORIES=	databases
 MASTER_SITES=	http://www.percona.com/redir/downloads/XtraBackup/LATEST/source/
 
@@ -13,7 +14,7 @@ COMMENT=	Percona XtraBackup
 .include "../../mk/mysql.buildlink3.mk"
 
 .if empty(MYSQL_PKG_PREFIX:Mpercona*)
-BROKEN=		Only ${MYSQL_PKG_PREFIX} supports Percona
+BROKEN=		This package only supports Percona
 .endif
 
 PERCONA_VERSION=	${MYSQL_PKG_PREFIX:C/percona//:C/-cluster.*//}
@@ -29,7 +30,6 @@ USE_TOOLS+=	bison cmake gmake perl:run
 
 BUILD_DEPENDS+=	patch-[0-9]*:../../devel/patch
 
-DEPENDS+=	p5-DBD-${MYSQL_PKG_PREFIX}-[0-9]*:../../databases/p5-DBD-mysql
 DEPENDS+=	qpress-[0-9]*:../../joyent/qpress
 
 CONFIGURE_DIRS=	${WRKDIR}/${LIBTAR}
@@ -46,9 +46,19 @@ MAKE_ENV+=	AUTO_DOWNLOAD="yes"
 
 INSTALLATION_DIRS+=	bin ${PKGMANDIR}/man1
 
+SUBST_CLASSES+=		ssl
+SUBST_STAGE.ssl=	pre-configure
+SUBST_FILES.ssl=	utils/build.sh
+SUBST_VARS.ssl=		BUILDLINK_PREFIX.openssl
+
 post-patch:
 	cat ${FILESDIR}/tar4ibd_libtar-1.2.11.patch \
 	    | (cd ${WRKDIR}/${LIBTAR}; ${PATCH} -p1)
+
+# For xtradb56 it builds against mysql-5.6 which has incompatibilities
+# with the percona-5.6 includes which are installed.
+pre-build:
+	${RM} -rf ${BUILDLINK_DIR}/include/mysql
 
 post-build:
 	${RUN} cd ${WRKSRC} && \

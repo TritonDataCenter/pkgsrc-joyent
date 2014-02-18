@@ -1,7 +1,7 @@
 $NetBSD$
 
 Enable DTrace.
-Attempt to fix SSL, does not work as yet.
+Use the correct path to OpenSSL.
 
 --- utils/build.sh.orig	2014-01-23 14:59:36.000000000 +0000
 +++ utils/build.sh
@@ -19,7 +19,7 @@ Attempt to fix SSL, does not work as yet.
                  -DWITH_EXTRA_CHARSETS=all \
                  -DWITH_EMBEDDED_SERVER=1 \
 -                -DENABLE_DTRACE=OFF $extra_config_55plus"
-+                -DWITH_SSL=system \
++                -DWITH_SSL=@BUILDLINK_PREFIX.openssl@ \
 +                -DENABLE_DTRACE=ON $extra_config_55plus"
          build_all $type
          ;;
