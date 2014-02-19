@@ -14,7 +14,7 @@ COMMENT=	Percona XtraBackup
 .include "../../mk/mysql.buildlink3.mk"
 
 .if empty(MYSQL_PKG_PREFIX:Mpercona*)
-BROKEN=		This package only supports Percona
+BROKEN=		Only supports Percona packages
 .endif
 
 PERCONA_VERSION=	${MYSQL_PKG_PREFIX:C/percona//:C/-cluster.*//}

@@ -13,15 +13,22 @@ Don't redefine mutex_t.
  #  define INNODB_LOG_DIR srv_log_group_home_dir
  #  define DEFAULT_LOG_FILE_SIZE 48*1024*1024
     /* InnoDB data dictionary API in MySQL 5.5- works on on tables named
-@@ -451,9 +451,9 @@ typedef	struct fil_system_struct	fil_sys
+@@ -451,10 +451,18 @@ typedef	struct fil_system_struct	fil_sys
  
  struct fil_system_struct {
  #ifndef UNIV_HOTBACKUP
--	mutex_t		mutex;		/*!< The mutex protecting the cache */
-+	this_mutex_t		mutex;		/*!< The mutex protecting the cache */
++#  if (MYSQL_VERSION_ID >= 50600)
++	this_mutex_t	mutex;		/*!< The mutex protecting the cache */
++#  else
+ 	mutex_t		mutex;		/*!< The mutex protecting the cache */
++#endif
  #ifdef XTRADB_BASED
--	mutex_t		file_extend_mutex;
-+	this_mutex_t		file_extend_mutex;
++#  if (MYSQL_VERSION_ID >= 50600)
++	this_mutex_t	file_extend_mutex;
++#  else
+ 	mutex_t		file_extend_mutex;
  #endif
++#endif
  #endif /* !UNIV_HOTBACKUP */
  	hash_table_t*	spaces;		/*!< The hash table of spaces in the
+ 					system; they are hashed on the space
