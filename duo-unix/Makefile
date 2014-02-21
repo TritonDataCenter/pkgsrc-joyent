@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-DISTNAME=	duo_unix-1.9.6
+DISTNAME=	duo_unix-1.9.7
 PKGNAME=	${DISTNAME:S/_/-/}
 CATEGORIES=	security
 MASTER_SITES=	https://dl.duosecurity.com/
