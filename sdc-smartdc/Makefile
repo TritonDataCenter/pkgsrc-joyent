@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-DISTNAME=	smartdc-7.1.2
+DISTNAME=	smartdc-7.2.0
 CATEGORIES=	sysutils
 MASTER_SITES=	#
 
