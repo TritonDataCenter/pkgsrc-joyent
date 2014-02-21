@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-DISTNAME=	manta-1.2.5
+DISTNAME=	manta-1.2.6
 CATEGORIES=	sysutils
 MASTER_SITES=	#
 
