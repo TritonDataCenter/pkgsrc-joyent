@@ -4,7 +4,7 @@
 DISTNAME=	smtools
 PKGNAME=	${DISTNAME}-${PKGVERSION}
 CATEGORIES=	sysutils
-PKGVERSION=	20140129
+PKGVERSION=	20140226
 
 MAINTAINER=	filip@joyent.com
 HOMEPAGE=	http://www.joyent.com/
@@ -25,7 +25,7 @@ NO_BUILD=	yes
 SM_SCRIPTS=	cpuinfo create-db create-dbuser create-vhost	\
 		install-drupal install-wordpress list-dbs	\
 		list-dbusers list-timezones meminfo pkghelp	\
-		prepare-image reboot rebuild-pkgsrc remove-db	\
+		prepare-image reboot remove-db	\
 		remove-dbuser set-hostname set-timezone 	\
 		shutdown summary sync-to-master lsof tune-mysql
 ZONEINIT_INCS=	00-mdata.sh 01-reboot-file.sh 02-config.sh	\
@@ -51,7 +51,7 @@ INSTALLATION_DIRS+=	bin lib/zoneinit lib/zoneinit/includes
 SUBST_CLASSES+=	vars
 SUBST_STAGE.vars=	post-patch
 SUBST_MESSAGE.vars=	Configuring scripts
-SUBST_FILES.vars=	sm-prepare-image sm-rebuild-pkgsrc zoneinit/zoneinit.xml
+SUBST_FILES.vars=	sm-prepare-image zoneinit/zoneinit.xml
 SUBST_VARS.vars=	PREFIX PKG_SYSCONFDIR VARBASE PLATFORM PKGRELEASE MACHINE_ARCH
 SUBST_VARS.vars+=	MYSQL_VERSION_DEFAULT PGSQL_VERSION_DEFAULT
 SUBST_VARS.vars+=	PHP_VERSION_DEFAULT PYTHON_VERSION_DEFAULT
