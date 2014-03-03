@@ -3,8 +3,10 @@
 
 DISTNAME=	10gen-mms-agent
 PKGNAME=	mms-agent-0
+PKGREVISION=	20140303
 CATEGORIES=	databases
 MASTER_SITES=	http://mms.10gen.com/settings/
+DIST_SUBDIR=	mms-agent-${PKGREVISION}
 
 MAINTAINER=	filip@joyent.com
 HOMEPAGE=	http://www.10gen.com/products/mongodb-monitoring-service
