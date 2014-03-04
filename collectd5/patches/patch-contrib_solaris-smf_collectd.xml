@@ -1,0 +1,37 @@
+$NetBSD$
+
+Fix provided SMF manifest.
+--- contrib/solaris-smf/collectd.xml.orig	2013-08-18 10:24:25.057973183 +0000
++++ contrib/solaris-smf/collectd.xml
+@@ -3,11 +3,11 @@
+ 
+ <service_bundle type='manifest' name='collectd'>
+ <service
+-        name='application/collectd'
++        name='@SMF_PREFIX@/collectd'
+         type='service'
+         version='1'>
+ 
+-	<create_default_instance enabled='true' />
++	<create_default_instance enabled='false' />
+ 	
+ 	<single_instance/>
+ 
+@@ -30,7 +30,7 @@
+         <exec_method
+                 type='method'
+                 name='start'
+-                exec='/lib/svc/method/collectd start'
++                exec='@PREFIX@/sbin/collectd'
+                 timeout_seconds='60'>
+ 	    <method_context>
+             	<method_credential user='root' group='root' />
+@@ -41,7 +41,7 @@
+         <exec_method
+                 type='method'
+                 name='stop'
+-                exec='/lib/svc/method/collectd stop'
++                exec=':kill'
+                 timeout_seconds='60'>
+ 	    <method_context>
+             	<method_credential user='root' group='root' />
