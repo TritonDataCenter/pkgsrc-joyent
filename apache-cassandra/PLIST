@@ -176,6 +176,7 @@ share/cassandra/javadoc/org/apache/cassandra/config/CFMetaData.SpeculativeRetry.
 share/cassandra/javadoc/org/apache/cassandra/config/CFMetaData.html
 share/cassandra/javadoc/org/apache/cassandra/config/ColumnDefinition.Type.html
 share/cassandra/javadoc/org/apache/cassandra/config/ColumnDefinition.html
+share/cassandra/javadoc/org/apache/cassandra/config/Config.CommitFailurePolicy.html
 share/cassandra/javadoc/org/apache/cassandra/config/Config.CommitLogSync.html
 share/cassandra/javadoc/org/apache/cassandra/config/Config.DiskAccessMode.html
 share/cassandra/javadoc/org/apache/cassandra/config/Config.DiskFailurePolicy.html
@@ -201,6 +202,7 @@ share/cassandra/javadoc/org/apache/cassandra/config/class-use/CFMetaData.Specula
 share/cassandra/javadoc/org/apache/cassandra/config/class-use/CFMetaData.html
 share/cassandra/javadoc/org/apache/cassandra/config/class-use/ColumnDefinition.Type.html
 share/cassandra/javadoc/org/apache/cassandra/config/class-use/ColumnDefinition.html
+share/cassandra/javadoc/org/apache/cassandra/config/class-use/Config.CommitFailurePolicy.html
 share/cassandra/javadoc/org/apache/cassandra/config/class-use/Config.CommitLogSync.html
 share/cassandra/javadoc/org/apache/cassandra/config/class-use/Config.DiskAccessMode.html
 share/cassandra/javadoc/org/apache/cassandra/config/class-use/Config.DiskFailurePolicy.html
@@ -299,6 +301,8 @@ share/cassandra/javadoc/org/apache/cassandra/cql3/CQL3Type.Custom.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/CQL3Type.Native.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/CQL3Type.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/CQLStatement.html
+share/cassandra/javadoc/org/apache/cassandra/cql3/ColumnCondition.Raw.html
+share/cassandra/javadoc/org/apache/cassandra/cql3/ColumnCondition.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/ColumnIdentifier.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/ColumnNameBuilder.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/ColumnSpecification.html
@@ -383,6 +387,8 @@ share/cassandra/javadoc/org/apache/cassandra/cql3/class-use/CQL3Type.Custom.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/class-use/CQL3Type.Native.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/class-use/CQL3Type.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/class-use/CQLStatement.html
+share/cassandra/javadoc/org/apache/cassandra/cql3/class-use/ColumnCondition.Raw.html
+share/cassandra/javadoc/org/apache/cassandra/cql3/class-use/ColumnCondition.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/class-use/ColumnIdentifier.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/class-use/ColumnNameBuilder.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/class-use/ColumnSpecification.html
@@ -500,12 +506,16 @@ share/cassandra/javadoc/org/apache/cassandra/cql3/statements/AlterTableStatement
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/AlterUserStatement.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/AuthenticationStatement.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/AuthorizationStatement.html
+share/cassandra/javadoc/org/apache/cassandra/cql3/statements/BatchStatement.BatchOfPreparedVariables.html
+share/cassandra/javadoc/org/apache/cassandra/cql3/statements/BatchStatement.BatchVariables.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/BatchStatement.Parsed.html
+share/cassandra/javadoc/org/apache/cassandra/cql3/statements/BatchStatement.PreparedBatchVariables.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/BatchStatement.Type.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/BatchStatement.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/Bound.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/CFPropDefs.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/CFStatement.html
+share/cassandra/javadoc/org/apache/cassandra/cql3/statements/CQL3CasConditions.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/ColumnGroupMap.Builder.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/ColumnGroupMap.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/CreateIndexStatement.html
@@ -527,6 +537,7 @@ share/cassandra/javadoc/org/apache/cassandra/cql3/statements/KSPropDefs.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/ListPermissionsStatement.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/ListUsersStatement.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/ModificationStatement.Parsed.html
+share/cassandra/javadoc/org/apache/cassandra/cql3/statements/ModificationStatement.StatementType.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/ModificationStatement.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/ParsedStatement.Prepared.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/ParsedStatement.html
@@ -558,12 +569,16 @@ share/cassandra/javadoc/org/apache/cassandra/cql3/statements/class-use/AlterTabl
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/class-use/AlterUserStatement.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/class-use/AuthenticationStatement.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/class-use/AuthorizationStatement.html
+share/cassandra/javadoc/org/apache/cassandra/cql3/statements/class-use/BatchStatement.BatchOfPreparedVariables.html
+share/cassandra/javadoc/org/apache/cassandra/cql3/statements/class-use/BatchStatement.BatchVariables.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/class-use/BatchStatement.Parsed.html
+share/cassandra/javadoc/org/apache/cassandra/cql3/statements/class-use/BatchStatement.PreparedBatchVariables.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/class-use/BatchStatement.Type.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/class-use/BatchStatement.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/class-use/Bound.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/class-use/CFPropDefs.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/class-use/CFStatement.html
+share/cassandra/javadoc/org/apache/cassandra/cql3/statements/class-use/CQL3CasConditions.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/class-use/ColumnGroupMap.Builder.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/class-use/ColumnGroupMap.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/class-use/CreateIndexStatement.html
@@ -585,6 +600,7 @@ share/cassandra/javadoc/org/apache/cassandra/cql3/statements/class-use/KSPropDef
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/class-use/ListPermissionsStatement.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/class-use/ListUsersStatement.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/class-use/ModificationStatement.Parsed.html
+share/cassandra/javadoc/org/apache/cassandra/cql3/statements/class-use/ModificationStatement.StatementType.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/class-use/ModificationStatement.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/class-use/ParsedStatement.Prepared.html
 share/cassandra/javadoc/org/apache/cassandra/cql3/statements/class-use/ParsedStatement.html
@@ -1277,7 +1293,8 @@ share/cassandra/javadoc/org/apache/cassandra/hadoop/ColumnFamilyOutputFormat.htm
 share/cassandra/javadoc/org/apache/cassandra/hadoop/ColumnFamilyRecordReader.html
 share/cassandra/javadoc/org/apache/cassandra/hadoop/ColumnFamilySplit.html
 share/cassandra/javadoc/org/apache/cassandra/hadoop/ConfigHelper.html
-share/cassandra/javadoc/org/apache/cassandra/hadoop/Progressable.html
+share/cassandra/javadoc/org/apache/cassandra/hadoop/HadoopCompat.html
+share/cassandra/javadoc/org/apache/cassandra/hadoop/ReporterWrapper.html
 share/cassandra/javadoc/org/apache/cassandra/hadoop/class-use/AbstractColumnFamilyInputFormat.html
 share/cassandra/javadoc/org/apache/cassandra/hadoop/class-use/AbstractColumnFamilyOutputFormat.html
 share/cassandra/javadoc/org/apache/cassandra/hadoop/class-use/AbstractColumnFamilyRecordWriter.AbstractRangeClient.html
@@ -1289,7 +1306,8 @@ share/cassandra/javadoc/org/apache/cassandra/hadoop/class-use/ColumnFamilyOutput
 share/cassandra/javadoc/org/apache/cassandra/hadoop/class-use/ColumnFamilyRecordReader.html
 share/cassandra/javadoc/org/apache/cassandra/hadoop/class-use/ColumnFamilySplit.html
 share/cassandra/javadoc/org/apache/cassandra/hadoop/class-use/ConfigHelper.html
-share/cassandra/javadoc/org/apache/cassandra/hadoop/class-use/Progressable.html
+share/cassandra/javadoc/org/apache/cassandra/hadoop/class-use/HadoopCompat.html
+share/cassandra/javadoc/org/apache/cassandra/hadoop/class-use/ReporterWrapper.html
 share/cassandra/javadoc/org/apache/cassandra/hadoop/cql3/CqlConfigHelper.html
 share/cassandra/javadoc/org/apache/cassandra/hadoop/cql3/CqlOutputFormat.html
 share/cassandra/javadoc/org/apache/cassandra/hadoop/cql3/CqlPagingInputFormat.html
@@ -1637,7 +1655,6 @@ share/cassandra/javadoc/org/apache/cassandra/metrics/package-use.html
 share/cassandra/javadoc/org/apache/cassandra/net/AsyncOneResponse.html
 share/cassandra/javadoc/org/apache/cassandra/net/CallbackInfo.html
 share/cassandra/javadoc/org/apache/cassandra/net/CompactEndpointSerializationHelper.html
-share/cassandra/javadoc/org/apache/cassandra/net/HeaderTypes.html
 share/cassandra/javadoc/org/apache/cassandra/net/IAsyncCallback.html
 share/cassandra/javadoc/org/apache/cassandra/net/IVerbHandler.html
 share/cassandra/javadoc/org/apache/cassandra/net/IncomingStreamingConnection.html
@@ -1655,7 +1672,6 @@ share/cassandra/javadoc/org/apache/cassandra/net/WriteCallbackInfo.html
 share/cassandra/javadoc/org/apache/cassandra/net/class-use/AsyncOneResponse.html
 share/cassandra/javadoc/org/apache/cassandra/net/class-use/CallbackInfo.html
 share/cassandra/javadoc/org/apache/cassandra/net/class-use/CompactEndpointSerializationHelper.html
-share/cassandra/javadoc/org/apache/cassandra/net/class-use/HeaderTypes.html
 share/cassandra/javadoc/org/apache/cassandra/net/class-use/IAsyncCallback.html
 share/cassandra/javadoc/org/apache/cassandra/net/class-use/IVerbHandler.html
 share/cassandra/javadoc/org/apache/cassandra/net/class-use/IncomingStreamingConnection.html
@@ -1699,6 +1715,7 @@ share/cassandra/javadoc/org/apache/cassandra/repair/RepairJobDesc.html
 share/cassandra/javadoc/org/apache/cassandra/repair/RepairMessageVerbHandler.html
 share/cassandra/javadoc/org/apache/cassandra/repair/RepairSession.html
 share/cassandra/javadoc/org/apache/cassandra/repair/RequestCoordinator.html
+share/cassandra/javadoc/org/apache/cassandra/repair/SnapshotTask.html
 share/cassandra/javadoc/org/apache/cassandra/repair/StreamingRepairTask.html
 share/cassandra/javadoc/org/apache/cassandra/repair/TreeResponse.html
 share/cassandra/javadoc/org/apache/cassandra/repair/Validator.html
@@ -1711,6 +1728,7 @@ share/cassandra/javadoc/org/apache/cassandra/repair/class-use/RepairJobDesc.html
 share/cassandra/javadoc/org/apache/cassandra/repair/class-use/RepairMessageVerbHandler.html
 share/cassandra/javadoc/org/apache/cassandra/repair/class-use/RepairSession.html
 share/cassandra/javadoc/org/apache/cassandra/repair/class-use/RequestCoordinator.html
+share/cassandra/javadoc/org/apache/cassandra/repair/class-use/SnapshotTask.html
 share/cassandra/javadoc/org/apache/cassandra/repair/class-use/StreamingRepairTask.html
 share/cassandra/javadoc/org/apache/cassandra/repair/class-use/TreeResponse.html
 share/cassandra/javadoc/org/apache/cassandra/repair/class-use/Validator.html
@@ -1816,6 +1834,7 @@ share/cassandra/javadoc/org/apache/cassandra/service/AbstractWriteResponseHandle
 share/cassandra/javadoc/org/apache/cassandra/service/ActiveRepairService.Status.html
 share/cassandra/javadoc/org/apache/cassandra/service/ActiveRepairService.html
 share/cassandra/javadoc/org/apache/cassandra/service/AsyncRepairCallback.html
+share/cassandra/javadoc/org/apache/cassandra/service/CASConditions.html
 share/cassandra/javadoc/org/apache/cassandra/service/CacheService.CacheType.html
 share/cassandra/javadoc/org/apache/cassandra/service/CacheService.KeyCacheSerializer.html
 share/cassandra/javadoc/org/apache/cassandra/service/CacheService.RowCacheSerializer.html
@@ -1862,6 +1881,7 @@ share/cassandra/javadoc/org/apache/cassandra/service/class-use/AbstractWriteResp
 share/cassandra/javadoc/org/apache/cassandra/service/class-use/ActiveRepairService.Status.html
 share/cassandra/javadoc/org/apache/cassandra/service/class-use/ActiveRepairService.html
 share/cassandra/javadoc/org/apache/cassandra/service/class-use/AsyncRepairCallback.html
+share/cassandra/javadoc/org/apache/cassandra/service/class-use/CASConditions.html
 share/cassandra/javadoc/org/apache/cassandra/service/class-use/CacheService.CacheType.html
 share/cassandra/javadoc/org/apache/cassandra/service/class-use/CacheService.KeyCacheSerializer.html
 share/cassandra/javadoc/org/apache/cassandra/service/class-use/CacheService.RowCacheSerializer.html
@@ -3339,6 +3359,7 @@ share/cassandra/lib/licenses/slf4j-log4j12-1.7.2.txt
 share/cassandra/lib/licenses/snakeyaml-1.11.txt
 share/cassandra/lib/licenses/snappy-java-1.0.5.txt
 share/cassandra/lib/licenses/snaptree-0.1.txt
+share/cassandra/lib/licenses/super-csv-2.1.0.txt
 share/cassandra/lib/licenses/thrift-python-0.9.1.txt
 share/cassandra/lib/licenses/thrift-server-0.3.0.txt
 share/cassandra/lib/log4j-1.2.16.jar
@@ -3352,6 +3373,7 @@ share/cassandra/lib/slf4j-log4j12-1.7.2.jar
 share/cassandra/lib/snakeyaml-1.11.jar
 share/cassandra/lib/snappy-java-1.0.5.jar
 share/cassandra/lib/snaptree-0.1.jar
+share/cassandra/lib/super-csv-2.1.0.jar
 share/cassandra/lib/thrift-python-internal-only-0.9.1.zip
 share/cassandra/lib/thrift-server-0.3.3.jar
 share/cassandra/pylib/cqlshlib/__init__.py

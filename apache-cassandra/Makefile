@@ -23,7 +23,7 @@ PKG_DESTDIR_SUPPORT=	destdir
 
 .include "../../mk/bsd.prefs.mk"
 
-CASSANDRA_VER=	2.0.5
+CASSANDRA_VER=	2.0.6
 CASSANDRA_HOME=	${PREFIX}/share/cassandra
 EGDIR=		${PREFIX}/share/examples/cassandra
 DOCDIR=		${PREFIX}/share/doc/cassandra
