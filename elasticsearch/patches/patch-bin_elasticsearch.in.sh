@@ -11,7 +11,20 @@ Set default paths.
  
  if [ "x$ES_MIN_MEM" = "x" ]; then
      ES_MIN_MEM=256m
-@@ -61,4 +61,7 @@ fi
+@@ -17,8 +17,10 @@ fi
+ # stop-the-world GC pauses during resize, and so that we can lock the
+ # heap in memory on startup to prevent any of it from being swapped
+ # out.
+-JAVA_OPTS="$JAVA_OPTS -Xms${ES_MIN_MEM}"
+-JAVA_OPTS="$JAVA_OPTS -Xmx${ES_MAX_MEM}"
++#
++# Use the min_heap/max_heap SMF properties instead to the heap size
++# JAVA_OPTS="$JAVA_OPTS -Xms${ES_MIN_MEM}"
++# JAVA_OPTS="$JAVA_OPTS -Xmx${ES_MAX_MEM}"
+ 
+ # new generation
+ if [ "x$ES_HEAP_NEWSIZE" != "x" ]; then
+@@ -61,4 +63,7 @@ fi
  JAVA_OPTS="$JAVA_OPTS -XX:+HeapDumpOnOutOfMemoryError"
  # The path to the heap dump location, note directory must exists and have enough
  # space for a full heap dump.
