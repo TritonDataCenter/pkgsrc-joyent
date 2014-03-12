@@ -18,7 +18,7 @@ Set default paths.
 -JAVA_OPTS="$JAVA_OPTS -Xms${ES_MIN_MEM}"
 -JAVA_OPTS="$JAVA_OPTS -Xmx${ES_MAX_MEM}"
 +#
-+# Use the min_heap/max_heap SMF properties instead to the heap size
++# Use the min_heap/max_heap SMF properties to change the heap size
 +# JAVA_OPTS="$JAVA_OPTS -Xms${ES_MIN_MEM}"
 +# JAVA_OPTS="$JAVA_OPTS -Xmx${ES_MAX_MEM}"
  
