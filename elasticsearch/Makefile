@@ -1,6 +1,6 @@
 # $NetBSD$
 
-DISTNAME=	elasticsearch-1.0.0
+DISTNAME=	elasticsearch-1.0.1
 CATEGORIES=	textproc
 MASTER_SITES=	http://download.elasticsearch.org/elasticsearch/elasticsearch/
 

@@ -1,9 +1,9 @@
 $NetBSD$
 
 Fix default paths.
---- config/elasticsearch.yml.orig	2013-11-05 14:42:02.000000000 +0000
+--- config/elasticsearch.yml.orig	2014-02-25 15:51:28.000000000 +0000
 +++ config/elasticsearch.yml
-@@ -140,11 +140,11 @@
+@@ -142,11 +142,11 @@
  
  # Path to directory containing configuration (this file and logging.yml):
  #
@@ -17,7 +17,7 @@ Fix default paths.
  #
  # Can optionally include more than one location, causing data to be striped across
  # the locations (a la RAID 0) on a file level, favouring locations with most free
-@@ -154,15 +154,15 @@
+@@ -156,15 +156,15 @@
  
  # Path to temporary files:
  #
