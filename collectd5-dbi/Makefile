@@ -4,7 +4,7 @@ COLLECTD_PACKAGE=	dbi
 
 COMMENT=		Statistics collection daemon - dbi plugin
 
-.include "../../wip/collectd5/Makefile.common"
+.include "../../joyent/collectd5/Makefile.common"
 
 CONFIGURE_ARGS+=	--with-libdbi=${BUILDLINK_PREFIX.libdbi}
 

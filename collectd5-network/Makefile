@@ -4,7 +4,7 @@ COLLECTD_PACKAGE=	network
 
 COMMENT=		Statistics collection daemon - network plugin
 
-.include "../../wip/collectd5/Makefile.common"
+.include "../../joyent/collectd5/Makefile.common"
 
 CONFIGURE_ARGS+=	--with-libgcrypt=${BUILDLINK_PREFIX.libgcrypt}
 

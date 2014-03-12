@@ -5,7 +5,7 @@ COLLECTD_PACKAGE=	mysql
 PKGNAME=		${DISTNAME:S/collectd/collectd-${COLLECTD_PACKAGE}${MYSQL_VERSION}/}
 COMMENT=		Statistics collection daemon - mysql plugin
 
-.include "../../wip/collectd5/Makefile.common"
+.include "../../joyent/collectd5/Makefile.common"
 
 
 CONFIGURE_ARGS+=	--with-libmysql=${BUILDLINK_PREFIX.mysql-client}

@@ -5,7 +5,7 @@ COLLECTD_PLUGINS=	curl curl_json curl_xml apache bind nginx write_http
 
 COMMENT=		Statistics collection daemon - curl-based plugins
 
-.include "../../wip/collectd5/Makefile.common"
+.include "../../joyent/collectd5/Makefile.common"
 
 CONFIGURE_ARGS+=	--with-libcurl=${BUILDLINK_PREFIX.curl}
 CONFIGURE_ARGS+=	--with-libyajl=${BUILDLINK_PREFIX.yajl}

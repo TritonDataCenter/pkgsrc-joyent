@@ -5,7 +5,7 @@ COLLECTD_PLUGINS=	memcachec memcached
 
 COMMENT=		Statistics collection daemon - memcached plugins
 
-.include "../../wip/collectd5/Makefile.common"
+.include "../../joyent/collectd5/Makefile.common"
 
 CONFIGURE_ARGS+=	--with-libmemcached=${BUILDLINK_PREFIX.libmemcached}
 

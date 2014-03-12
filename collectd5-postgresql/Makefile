@@ -5,7 +5,7 @@ COLLECTD_PACKAGE=	postgresql
 PKGNAME=		${DISTNAME:S/collectd/collectd-${COLLECTD_PACKAGE}${PGSQL_VERSION}/}
 COMMENT=		Statistics collection daemon - postgresql plugin
 
-.include "../../wip/collectd5/Makefile.common"
+.include "../../joyent/collectd5/Makefile.common"
 
 CONFIGURE_ARGS+=	--with-libpq=${PGSQL_PREFIX}
 
