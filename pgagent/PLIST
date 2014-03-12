@@ -1,8 +1,9 @@
 @comment $NetBSD$
 bin/pgagent
-share/pgagent/pgagent.sql
-share/pgagent/pgagent_upgrade.sql
 share/doc/pgagent/LICENSE
 share/doc/pgagent/README
-@dirrm share/doc/pgagent
-@dirrm share/pgagent
+share/pgagent/pgagent.sql
+share/pgagent/pgagent_upgrade.sql
+share/postgresql/extension/pgagent--3.4.sql
+share/postgresql/extension/pgagent--unpackaged--3.4.sql
+share/postgresql/extension/pgagent.control

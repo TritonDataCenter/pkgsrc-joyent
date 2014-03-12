@@ -1,6 +1,6 @@
 $NetBSD$
 
-SHA1 (pgAgent-3.2.1-Source.tar.gz) = e89a6eda1462fa496876b004de50dc2cffc457c2
-RMD160 (pgAgent-3.2.1-Source.tar.gz) = aa51d78698f7ad0369960051ca8fddef630f95cc
-Size (pgAgent-3.2.1-Source.tar.gz) = 42722 bytes
-SHA1 (patch-aa) = 8fd2d71e68c221ed5d1ab6cd9d7ad557991a7534
+SHA1 (pgAgent-3.4.0-Source.tar.gz) = 10860f2d75a3d07dfc7ed9256ca1b98f71f2f5d2
+RMD160 (pgAgent-3.4.0-Source.tar.gz) = 79c926ee103daf47a37d18cc51d3b257f27fc4d7
+Size (pgAgent-3.4.0-Source.tar.gz) = 45081 bytes
+SHA1 (patch-aa) = d2a2164075fe44ac6df9b51fabd4998f6b825a68

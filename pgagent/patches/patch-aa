@@ -1,24 +1,16 @@
 $NetBSD$
 
---- CMakeLists.txt.orig	2009-06-26 13:44:28.049172183 +0000
+Fix installation paths.
+--- CMakeLists.txt.orig	2014-03-12 19:06:20.853156755 +0000
 +++ CMakeLists.txt
-@@ -22,7 +22,7 @@ SET(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR
- SET(CMAKE_FIND_LIBRARY_PREFIXES "")
- SET(CMAKE_FIND_LIBRARY_SUFFIXES ".lib")
- 
--SET(STATIC_BUILD YES CACHE BOOL "Statically link the executable?")
-+SET(STATIC_BUILD NO CACHE BOOL "Statically link the executable?")
- 
- ################################################################################
- # Apple stuff
-@@ -130,12 +130,12 @@ IF (WIN32)
-     INSTALL(FILES ${pgagent_SOURCE_DIR}/pgagent_upgrade.sql DESTINATION .)
+@@ -134,12 +134,12 @@ IF (WIN32)
+     INSTALL(FILES ${pgagent_SOURCE_DIR}/sql/pgagent_upgrade.sql DESTINATION .)
  ELSE(WIN32)
      INSTALL(TARGETS pgagent DESTINATION bin)
--    INSTALL(FILES ${pgagent_SOURCE_DIR}/pgagent.sql DESTINATION share)
--    INSTALL(FILES ${pgagent_SOURCE_DIR}/pgagent_upgrade.sql DESTINATION share)
-+    INSTALL(FILES ${pgagent_SOURCE_DIR}/pgagent.sql DESTINATION share/pgagent)
-+    INSTALL(FILES ${pgagent_SOURCE_DIR}/pgagent_upgrade.sql DESTINATION share/pgagent)
+-    INSTALL(FILES ${pgagent_SOURCE_DIR}/sql/pgagent.sql DESTINATION share)
+-    INSTALL(FILES ${pgagent_SOURCE_DIR}/sql/pgagent_upgrade.sql DESTINATION share)
++    INSTALL(FILES ${pgagent_SOURCE_DIR}/sql/pgagent.sql DESTINATION share/pgagent)
++    INSTALL(FILES ${pgagent_SOURCE_DIR}/sql/pgagent_upgrade.sql DESTINATION share/pgagent)
  ENDIF(WIN32)
  
 -INSTALL(FILES ${pgagent_SOURCE_DIR}/README DESTINATION .)
@@ -26,5 +18,5 @@ $NetBSD$
 +INSTALL(FILES ${pgagent_SOURCE_DIR}/README DESTINATION share/doc/pgagent)
 +INSTALL(FILES ${pgagent_SOURCE_DIR}/LICENSE DESTINATION share/doc/pgagent)
  
- ################################################################################
- # pgaevent
+ # Extension
+ IF(PG_EXTENSION)
