@@ -12,11 +12,11 @@
 # used by joyent/collectd5-rrdtool/Makefile
 # used by joyent/collectd5-snmp/Makefile
 
-DISTNAME=	collectd-5.4.0
+DISTNAME=	collectd-5.4.1
 MASTER_SITES=	http://collectd.org/files/
 CATEGORIES=	sysutils
 
-MAINTAINER=	msporleder@gmail.com
+MAINTAINER=	filip@joyent.com
 HOMEPAGE=	http://collectd.org/
 LICENSE=	gnu-gpl-v2
 

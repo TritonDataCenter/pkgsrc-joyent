@@ -1,7 +1,7 @@
-$NetBSD$
+$NetBSD: patch-src_libcollectclient_network__buffer.c,v 1.1 2014/02/17 11:21:55 fhajny Exp $
 
 Need the workaround on at least SunOS too.
---- src/libcollectdclient/network_buffer.c.orig	2013-08-18 10:24:25.073973439 +0000
+--- src/libcollectdclient/network_buffer.c.orig	2014-01-26 08:09:14.868392118 +0000
 +++ src/libcollectdclient/network_buffer.c
 @@ -37,7 +37,7 @@
  

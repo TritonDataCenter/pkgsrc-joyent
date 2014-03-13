@@ -1,29 +1,10 @@
-$NetBSD$
+$NetBSD: patch-src_Makefile.in,v 1.1 2014/02/17 11:21:55 fhajny Exp $
 
-Fix IOKit linking on modern OS X.
 Use a reasonable db dir.
 Install config file into examples.
---- src/Makefile.in.orig	2013-08-18 10:25:00.134534849 +0000
+--- src/Makefile.in.orig	2014-01-26 08:09:56.685201776 +0000
 +++ src/Makefile.in
-@@ -90,7 +90,7 @@ bin_PROGRAMS = collectd-nagios$(EXEEXT)
- @BUILD_PLUGIN_ASCENT_TRUE@am__append_45 = "-dlopen" ascent.la
- @BUILD_PLUGIN_ASCENT_TRUE@am__append_46 = ascent.la
- @BUILD_PLUGIN_BATTERY_TRUE@am__append_47 = battery.la
--@BUILD_PLUGIN_BATTERY_TRUE@@BUILD_WITH_LIBIOKIT_TRUE@am__append_48 = -lIOKit
-+@BUILD_PLUGIN_BATTERY_TRUE@@BUILD_WITH_LIBIOKIT_TRUE@am__append_48 = -framework IOKit
- @BUILD_PLUGIN_BATTERY_TRUE@am__append_49 = "-dlopen" battery.la
- @BUILD_PLUGIN_BATTERY_TRUE@am__append_50 = battery.la
- @BUILD_PLUGIN_BIND_TRUE@am__append_51 = bind.la
-@@ -142,7 +142,7 @@ bin_PROGRAMS = collectd-nagios$(EXEEXT)
- @BUILD_PLUGIN_DISK_TRUE@am__append_97 = disk.la
- @BUILD_PLUGIN_DISK_TRUE@@BUILD_WITH_LIBKSTAT_TRUE@am__append_98 = -lkstat
- @BUILD_PLUGIN_DISK_TRUE@@BUILD_WITH_LIBDEVINFO_TRUE@am__append_99 = -ldevinfo
--@BUILD_PLUGIN_DISK_TRUE@@BUILD_WITH_LIBIOKIT_TRUE@am__append_100 = -lIOKit
-+@BUILD_PLUGIN_DISK_TRUE@@BUILD_WITH_LIBIOKIT_TRUE@am__append_100 = -framework IOKit
- @BUILD_PLUGIN_DISK_TRUE@@BUILD_WITH_LIBSTATGRAB_TRUE@am__append_101 = $(BUILD_WITH_LIBSTATGRAB_CFLAGS)  
- @BUILD_PLUGIN_DISK_TRUE@@BUILD_WITH_LIBSTATGRAB_TRUE@am__append_102 = $(BUILD_WITH_LIBSTATGRAB_LDFLAGS)
- @BUILD_PLUGIN_DISK_TRUE@@BUILD_WITH_PERFSTAT_TRUE@am__append_103 = -lperfstat
-@@ -2197,6 +2197,7 @@ srcdir = @srcdir@
+@@ -2230,6 +2230,7 @@ srcdir = @srcdir@
  subdirs = @subdirs@
  sys_symbol_underscore = @sys_symbol_underscore@
  sysconfdir = @sysconfdir@
@@ -31,7 +12,7 @@ Install config file into examples.
  target_alias = @target_alias@
  top_build_prefix = @top_build_prefix@
  top_builddir = @top_builddir@
-@@ -2206,7 +2207,7 @@ SUBDIRS = libcollectdclient $(am__append
+@@ -2239,7 +2240,7 @@ SUBDIRS = libcollectdclient $(am__append
  AM_CPPFLAGS = -DPREFIX='"${prefix}"' \
  	-DCONFIGFILE='"${sysconfdir}/${PACKAGE_NAME}.conf"' \
  	-DLOCALSTATEDIR='"${localstatedir}"' \
@@ -40,16 +21,7 @@ Install config file into examples.
  	$(am__append_2) -DPLUGINDIR='"${pkglibdir}"' \
  	-DPKGDATADIR='"${pkgdatadir}"'
  collectd_SOURCES = collectd.c collectd.h \
-@@ -2403,7 +2404,7 @@ CLEANFILES = $(am__append_449)
- @BUILD_PLUGIN_APCUPS_TRUE@apcups_la_LIBADD = $(am__append_35)
- @BUILD_PLUGIN_APPLE_SENSORS_TRUE@apple_sensors_la_SOURCES = apple_sensors.c
- @BUILD_PLUGIN_APPLE_SENSORS_TRUE@apple_sensors_la_LDFLAGS = -module -avoid-version
--@BUILD_PLUGIN_APPLE_SENSORS_TRUE@apple_sensors_la_LIBADD = -lIOKit
-+@BUILD_PLUGIN_APPLE_SENSORS_TRUE@apple_sensors_la_LIBADD = -framework IOKit
- @BUILD_PLUGIN_AQUAERO_TRUE@aquaero_la_SOURCES = aquaero.c
- @BUILD_PLUGIN_AQUAERO_TRUE@aquaero_la_LDFLAGS = -module -avoid-version
- @BUILD_PLUGIN_AQUAERO_TRUE@aquaero_la_CFLAGS = $(AM_CFLAGS) $(BUILD_WITH_LIBAQUAERO5_CFLAGS)
-@@ -4820,13 +4821,8 @@ uninstall-man: uninstall-man1 uninstall-
+@@ -4856,13 +4857,8 @@ uninstall-man: uninstall-man1 uninstall-
  @HAVE_PROTOC_C_TRUE@	protoc-c -I$(srcdir) --c_out . $(srcdir)/riemann.proto
  
  install-exec-hook:
@@ -65,7 +37,7 @@ Install config file into examples.
  	$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)
  	$(INSTALL) -m 0644 $(srcdir)/types.db $(DESTDIR)$(pkgdatadir)/types.db;
  	$(INSTALL) -m 0644 $(srcdir)/postgresql_default.conf \
-@@ -4834,7 +4830,7 @@ install-exec-hook:
+@@ -4870,7 +4866,7 @@ install-exec-hook:
  
  uninstall-hook:
  	rm -f $(DESTDIR)$(pkgdatadir)/types.db;

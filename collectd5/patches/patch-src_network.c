@@ -1,7 +1,7 @@
-$NetBSD$
+$NetBSD: patch-src_network.c,v 1.1 2014/02/17 11:21:55 fhajny Exp $
 
 Need the workaround on at least SunOS too.
---- src/network.c.orig	2013-08-18 10:24:25.077973503 +0000
+--- src/network.c.orig	2014-01-26 08:09:23.532559941 +0000
 +++ src/network.c
 @@ -59,7 +59,7 @@
  

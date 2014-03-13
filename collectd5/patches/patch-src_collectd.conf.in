@@ -1,7 +1,7 @@
-$NetBSD$
+$NetBSD: patch-src_collectd.conf.in,v 1.1 2014/02/17 11:21:55 fhajny Exp $
 
 Fix default dirs.
---- src/collectd.conf.in.orig	2013-08-18 10:24:25.065973312 +0000
+--- src/collectd.conf.in.orig	2014-01-26 08:09:23.516559631 +0000
 +++ src/collectd.conf.in
 @@ -12,7 +12,7 @@
  
@@ -12,7 +12,7 @@ Fix default dirs.
  #PIDFile     "@localstatedir@/run/@PACKAGE_NAME@.pid"
  #PluginDir   "@libdir@/@PACKAGE_NAME@"
  #TypesDB     "@prefix@/share/@PACKAGE_NAME@/types.db"
-@@ -273,7 +273,7 @@
+@@ -278,7 +278,7 @@
  #</Plugin>
  
  #<Plugin csv>
@@ -21,7 +21,7 @@ Fix default dirs.
  #	StoreRates false
  #</Plugin>
  
-@@ -559,7 +559,7 @@
+@@ -566,7 +566,7 @@
  #
  #	<Database db_name2>
  #		Host "localhost"
@@ -30,7 +30,7 @@ Fix default dirs.
  #		SlaveStats true
  #		SlaveNotifications true
  #	</Database>
-@@ -820,14 +820,14 @@
+@@ -827,14 +827,14 @@
  #  <Server "server_name">
  #    Collect "latency"
  #    Collect "udp-answers" "udp-queries"
@@ -48,7 +48,7 @@ Fix default dirs.
  #</Plugin>
  
  #<Plugin processes>
-@@ -875,14 +875,14 @@
+@@ -882,14 +882,14 @@
  
  #<Plugin rrdcached>
  #	DaemonAddress "unix:/tmp/rrdcached.sock"
@@ -65,7 +65,7 @@ Fix default dirs.
  #	CreateFilesAsync false
  #	CacheTimeout 120
  #	CacheFlush   900
-@@ -987,7 +987,7 @@
+@@ -994,7 +994,7 @@
  #</Plugin>
  
  #<Plugin "tail">
@@ -74,7 +74,7 @@ Fix default dirs.
  #    Instance "exim"
  #    <Match>
  #      Regex "S=([1-9][0-9]*)"
-@@ -1024,7 +1024,7 @@
+@@ -1031,7 +1031,7 @@
  #       Type "kpackets_wire_per_sec.realtime"
  #       ValueFrom 4
  #   </Metric>
@@ -83,7 +83,7 @@ Fix default dirs.
  #       Instance "snort-eth0"
  #       Interval 600
  #       Collect "dropped" "mbps" "alerts" "kpps"
-@@ -1061,7 +1061,7 @@
+@@ -1068,7 +1068,7 @@
  #</Plugin>
  
  #<Plugin unixsock>

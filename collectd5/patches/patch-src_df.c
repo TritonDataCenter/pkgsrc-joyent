@@ -1,7 +1,7 @@
-$NetBSD$
+$NetBSD: patch-src_df.c,v 1.1 2014/02/17 11:21:55 fhajny Exp $
 
 NetBSD doesn't have float_t.
---- src/df.c.orig	2013-08-18 10:24:25.069973376 +0000
+--- src/df.c.orig	2014-01-26 08:09:14.856391886 +0000
 +++ src/df.c
 @@ -28,6 +28,10 @@
  #include "utils_mount.h"
