@@ -1,0 +1,15 @@
+$NetBSD$
+
+SHA1 (cgatools-1.8.0.1-source.tar.gz) = 1c75655ba88fc474e4308f17b0f3198f123d35b5
+RMD160 (cgatools-1.8.0.1-source.tar.gz) = 43df4a90f113191a0f965ac65a4837ca3bb02055
+Size (cgatools-1.8.0.1-source.tar.gz) = 737208 bytes
+SHA1 (patch-CMakeLists.txt) = 69107c2f36bdc7223caf60142970997830d92663
+SHA1 (patch-cgatools_cgdata_GenomeMetadata.cpp) = 33958d908153044119905fdd658f63dbfee9be2b
+SHA1 (patch-cgatools_command_Evidence2Sam.cpp) = e85da5b9791bd2081293f2732d297bb68c8e5865
+SHA1 (patch-cgatools_command_JunctionCmp.cpp) = 0ec9fa9c6e97c2a1e79d804dea3031edebc7f65e
+SHA1 (patch-cgatools_command_JunctionDiff.cpp) = 6884f608a52356179ef35d1f14075f20339ae9e5
+SHA1 (patch-cgatools_core.hpp) = 2238e856ecf6534118c2a4ce2f1c77c35c9ce759
+SHA1 (patch-cgatools_mapping_LaneBatchCache.cpp) = b346ef6131d68a4c8207de7b0f41cadeca614468
+SHA1 (patch-cgatools_util_Files.cpp) = a1c22010694fe15b786e4917609b45b4fd2f4610
+SHA1 (patch-cgatools_variants_calib_CalibratedScorer.cpp) = abe2ae31acb574df36db3ea4944ea8cd05babdfe
+SHA1 (patch-cgatools_variants_calib_CalibratedScorer.hpp) = e2dcb114258a815f6ee87037a91717a0596fce2b

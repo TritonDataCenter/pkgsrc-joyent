@@ -1,0 +1,26 @@
+$NetBSD$
+
+Disable HTML generation, it doesn't work due to LD_LIBRARY_PATH and
+people can read docs online anyway.
+
+--- CMakeLists.txt.orig	2013-08-28 22:35:15.000000000 +0000
++++ CMakeLists.txt
+@@ -127,12 +127,12 @@ set_target_properties (cgatools cgatools
+   VS_SCC_PROVIDER    "MSSCCI:Perforce SCM"
+ )
+ 
+-add_custom_command (
+-  TARGET cgatoolsexe
+-  POST_BUILD
+-  COMMAND cgatoolsexe
+-  ARGS man --format=html
+-  --output=${CMAKE_CURRENT_BINARY_DIR}/doc/cgatools-command-line-reference.html)
++#add_custom_command (
++#  TARGET cgatoolsexe
++#  POST_BUILD
++#  COMMAND cgatoolsexe
++#  ARGS man --format=html
++#  --output=${CMAKE_CURRENT_BINARY_DIR}/doc/cgatools-command-line-reference.html)
+ 
+ set (doc_root "share/cgatools-${CGATOOLS_VERSION}/doc")
+ install (TARGETS cgatoolsexe DESTINATION bin)

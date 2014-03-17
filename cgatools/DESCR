@@ -1,0 +1,5 @@
+The Complete Genomics Analysis Tools (cgatools) is an open source
+project to provide tools for downstream analysis of Complete Genomics
+data.  The focus is to provide command line utilities, but a C++ API
+is available as well.  The general areas of functionality include
+genome comparison, format conversion, and reference tools.
