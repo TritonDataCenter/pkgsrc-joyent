@@ -11,5 +11,6 @@ SHA1 (patch-cgatools_command_JunctionDiff.cpp) = 6884f608a52356179ef35d1f14075f2
 SHA1 (patch-cgatools_core.hpp) = 2238e856ecf6534118c2a4ce2f1c77c35c9ce759
 SHA1 (patch-cgatools_mapping_LaneBatchCache.cpp) = b346ef6131d68a4c8207de7b0f41cadeca614468
 SHA1 (patch-cgatools_util_Files.cpp) = a1c22010694fe15b786e4917609b45b4fd2f4610
+SHA1 (patch-cgatools_variants_AlleleDiffSegment.hpp) = 9f777250e6bbd4351777d003fe1f883f65c3ce1a
 SHA1 (patch-cgatools_variants_calib_CalibratedScorer.cpp) = abe2ae31acb574df36db3ea4944ea8cd05babdfe
 SHA1 (patch-cgatools_variants_calib_CalibratedScorer.hpp) = e2dcb114258a815f6ee87037a91717a0596fce2b
