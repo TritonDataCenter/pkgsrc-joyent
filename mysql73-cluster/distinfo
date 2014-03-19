@@ -1,0 +1,6 @@
+$NetBSD$
+
+SHA1 (mysql-cluster-gpl-7.3.4.tar.gz) = 01003903da6802885bc98565ebe07f76714488fe
+RMD160 (mysql-cluster-gpl-7.3.4.tar.gz) = c6966306952681ecc0657bdbd9e8e8b7e246bfad
+Size (mysql-cluster-gpl-7.3.4.tar.gz) = 41906668 bytes
+SHA1 (patch-storage_ndb_mcc_frontend_dojo_dojox_mobile_build_build.sh) = a604b9f689552c80dfc3240f7183ea0fd6a898e6

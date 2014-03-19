@@ -1,0 +1,26 @@
+# $NetBSD$
+
+case ${STAGE} in
+POST-INSTALL)
+	grep '^mysql' /etc/project >/dev/null 2>&1
+	if [ $? != 0 ]; then
+		projid=`id -u @MYSQL_USER@`
+		LANG=C projadd -p ${projid} -U @MYSQL_USER@ -G @MYSQL_GROUP@ -K "process.max-file-descriptor=(basic,15000,deny)" mysql
+	fi
+	if [ ! -f @VARBASE@/log/mysql/error.log ]; then
+		mkdir -p @VARBASE@/log/mysql
+		touch @VARBASE@/log/mysql/error.log
+		chown -R @MYSQL_USER@:@MYSQL_GROUP@ @VARBASE@/log/mysql
+	fi
+	logadm -C 5 -c -s 100m -z 1 -w '@VARBASE@/log/mysql/*.log'
+	if [ -d @MYSQL_DATADIR@/mysql ]; then
+		echo "Skipping MySQL database initialization, as databases already exist."
+	else
+		# Initialize MySQL
+		${PKG_PREFIX}/bin/mysql_install_db --basedir=${PKG_PREFIX} --datadir=@MYSQL_DATADIR@ --user=@MYSQL_USER@
+	fi
+	;;
+DEINSTALL)
+	logadm -r '@VARBASE@/log/mysql/*.log'
+	;;
+esac
