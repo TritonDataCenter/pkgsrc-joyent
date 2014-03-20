@@ -5678,7 +5678,7 @@ share/mysql/mcc/frontend/js/mcc/util/tests/runTests.html
 share/mysql/mcc/frontend/js/mcc/util/tests/util.js
 share/mysql/mcc/frontend/testProtocol.html
 share/mysql/mcc/frontend/welcome.html
-share/mysql/mcc/host_info/SunOS/${MACHINE_ARCH}/host_info
+share/mysql/mcc/host_info/SunOS/i386/host_info
 share/mysql/mcc/post-install.py
 share/mysql/mcc/remote_clusterhost.py
 share/mysql/mcc/request_handler.py
