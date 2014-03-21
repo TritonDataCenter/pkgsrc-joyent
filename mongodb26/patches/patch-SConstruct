@@ -1,0 +1,75 @@
+$NetBSD$
+
+Add support for NetBSD/Dragonfly, fix locations.
+--- SConstruct.orig	2014-03-05 22:34:28.000000000 +0000
++++ SConstruct
+@@ -59,7 +59,9 @@ nix = False
+ linux = False
+ darwin = False
+ windows = False
++dragonfly = False
+ freebsd = False
++netbsd = False
+ openbsd = False
+ solaris = False
+ 
+@@ -71,8 +73,12 @@ elif platform.startswith("linux"):
+     platform = "linux"
+ elif "sunos5" == platform:
+     solaris = True
++elif platform.startswith( "dragonfly" ):
++    dragonfly = True
+ elif platform.startswith( "freebsd" ):
+     freebsd = True
++elif platform.startswith( "netbsd" ):
++    netbsd = True
+ elif platform.startswith( "openbsd" ):
+     openbsd = True
+ elif "win32" == platform:
+@@ -677,6 +683,12 @@ elif solaris:
+      env.Append( CPPDEFINES=[ "__sunos__" ] )
+      env.Append( LIBS=["socket","resolv"] )
+ 
++elif os.sys.platform.startswith( "dragonfly" ):
++    env.Append( CPPPATH=[ "@PREFIX@/include" ] )
++    env.Append( LIBPATH=[ "@PREFIX@/lib" ] )
++    env.Append( LIBS=[ "m" ] )
++    env.Append( CPPDEFINES=[ "__dragonfly__" ] )
++
+ elif freebsd:
+     env.Append( LIBS=[ "kvm" ] )
+     env.Append( EXTRACPPPATH=[ "/usr/local/include" ] )
+@@ -684,6 +696,12 @@ elif freebsd:
+     env.Append( CPPDEFINES=[ "__freebsd__" ] )
+     env.Append( CCFLAGS=[ "-fno-omit-frame-pointer" ] )
+ 
++elif os.sys.platform.startswith( "netbsd" ):
++    env.Append( CPPPATH=[ "@PREFIX@/include" ] )
++    env.Append( LIBPATH=[ "@PREFIX@/lib" ] )
++    env.Append( LIBS=[ "m" ] )
++    env.Append( CPPDEFINES=[ "__netbsd__" ] )
++
+ elif openbsd:
+     env.Append( EXTRACPPPATH=[ "/usr/local/include" ] )
+     env.Append( EXTRALIBPATH=[ "/usr/local/lib" ] )
+@@ -822,8 +840,11 @@ if nix:
+         env.Append( CCFLAGS=["-Werror", "-pipe"] )
+ 
+     env.Append( CPPDEFINES=["_FILE_OFFSET_BITS=64"] )
++    env.Append( CPPDEFINES=["XP_UNIX=1"] )
+     env.Append( CXXFLAGS=["-Wnon-virtual-dtor", "-Woverloaded-virtual"] )
++    env.Append( CXXFLAGS=os.environ['CXXFLAGS'] )
+     env.Append( LINKFLAGS=["-fPIC", "-pthread"] )
++    env.Append( LINKFLAGS=os.environ['LDFLAGS'] )
+ 
+     # SERVER-9761: Ensure early detection of missing symbols in dependent libraries at program
+     # startup.
+@@ -1395,7 +1416,7 @@ def doConfigure(myenv):
+         Exit(1)
+ 
+     # requires ports devel/libexecinfo to be installed
+-    if freebsd or openbsd:
++    if freebsd or openbsd or netbsd or dragonfly:
+         if not conf.CheckLib("execinfo"):
+             Exit(1)
+ 
