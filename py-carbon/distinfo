@@ -1,0 +1,6 @@
+$NetBSD$
+
+SHA1 (carbon-0.9.12.tar.gz) = 7dad24c3a441a39af0f8d48315ca13649a2fda19
+RMD160 (carbon-0.9.12.tar.gz) = 9df1939eea1a0895da91619ba369edc2caf7d533
+Size (carbon-0.9.12.tar.gz) = 52107 bytes
+SHA1 (patch-setup.py) = 9dc431096fdfc5c10ee045f447371b2ab0dd12e9

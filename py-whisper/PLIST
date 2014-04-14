@@ -1,0 +1,14 @@
+@comment $NetBSD$
+bin/rrd2whisper.py
+bin/whisper-create.py
+bin/whisper-dump.py
+bin/whisper-fetch.py
+bin/whisper-info.py
+bin/whisper-merge.py
+bin/whisper-resize.py
+bin/whisper-set-aggregation-method.py
+bin/whisper-update.py
+${PYSITELIB}/${EGG_FILE}
+${PYSITELIB}/whisper.py
+${PYSITELIB}/whisper.pyc
+${PYSITELIB}/whisper.pyo
