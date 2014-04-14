@@ -1,7 +1,7 @@
 # $NetBSD$
 
 PKG_OPTIONS_VAR=	PKG_OPTIONS.py-carbon
-PKG_SUPPORTED_OPTIONS=	amqp ldap memcached
+PKG_SUPPORTED_OPTIONS=	amqp ldap # memcached
 PKG_SUGGESTED_OPTIONS=	#
 
 .include "../../mk/bsd.options.mk"
