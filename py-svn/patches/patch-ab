@@ -1,14 +1,40 @@
 $NetBSD$
 
 Fix proper rpath argument for Sun linker.
---- setup_configure.py.orig	2010-08-17 12:14:58.490959000 +0000
+--- setup_configure.py.orig	2013-08-18 12:11:41.000000000 +0000
 +++ setup_configure.py
-@@ -451,7 +451,7 @@ CCFLAGS=-Wall -fPIC %(includes)s %(debug
- PYCXX=%(pycxx_dir)s
- PYCXXSRC=%(pycxx_src_dir)s
- LDSHARED=g++ -shared %(debug_cflags)s
--LDLIBS=-L%(svn_lib_dir)s -Wl,--rpath -Wl,%(svn_lib_dir)s \
-+LDLIBS=-L%(svn_lib_dir)s -Wl,-R -Wl,%(svn_lib_dir)s \
- -lsvn_client-1 \
- -lsvn_diff-1 \
- -lsvn_repos-1 \
+@@ -1222,7 +1222,7 @@ class CygwinCompilerGCC(UnixCompilerGCC)
+ 
+     def _getLdLibs( self ):
+         py_ld_libs = [
+-                '-L%(svn_lib_dir)s',
++                '-L%(SVN_LIB)s',
+                 '-L/usr/lib/python%d.%d/config -lpython%d.%d.dll' %
+                     (sys.version_info[0], sys.version_info[1], sys.version_info[0], sys.version_info[1]),
+                 '-lsvn_client-1',
+@@ -1262,7 +1262,7 @@ class AixCompilerGCC(UnixCompilerGCC):
+                 python_exp = 'python.exp'
+ 
+         py_ld_libs = [
+-                '-L%(svn_lib_dir)s',
++                '-L%(SVN_LIB)s',
+                 '-lsvn_client-1',
+                 '-lsvn_repos-1',
+                 '-lsvn_subr-1',
+@@ -1295,14 +1295,13 @@ class SunOsCompilerGCC(UnixCompilerGCC):
+ 
+     def _getLdLibs( self ):
+         py_ld_libs = [
+-                '-L%(svn_lib_dir)s',
+-                '-Wl,--rpath -Wl,%(svn_lib_dir)s',
++                '-L%(SVN_LIB)s',
++                '-Wl,-R -Wl,%(SVN_LIB)s',
+                 '-lsvn_client-1',
+                 '-lsvn_diff-1',
+                 '-lsvn_repos-1',
+                 '-lresolv',
+                 '-lexpat',
+-                '-lneon',
+                 ]
+         return py_ld_libs
+ 

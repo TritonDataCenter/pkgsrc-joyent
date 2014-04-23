@@ -1,7 +1,7 @@
 $NetBSD$
 
 Work around Solaris _XOPEN_SOURCE problems.
---- pysvn.hpp.orig	2009-04-30 20:57:54.000000000 +0000
+--- pysvn.hpp.orig	2011-11-04 18:37:55.000000000 +0000
 +++ pysvn.hpp
 @@ -7,6 +7,13 @@
  //
