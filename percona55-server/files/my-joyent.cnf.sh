@@ -71,7 +71,7 @@ max_connections = 1000
 max_allowed_packet = 24M
 max_join_size = 4294967295
 net_buffer_length = 2K
-thread_stack = 128K
+thread_stack = 256K
 tmp_table_size = 64M
 max_heap_table_size = 64M
 
