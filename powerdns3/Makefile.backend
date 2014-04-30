@@ -1,0 +1,13 @@
+# $NetBSD: Makefile.backend,v 1.1.1.1 2006/08/13 09:34:21 ghen Exp $
+
+.include "../../joyent/powerdns3/Makefile.common"
+
+DEPENDS+=		powerdns>=${PDNS_VERSION}:../../joyent/powerdns3
+
+DISTINFO_FILE=		${.CURDIR}/../../joyent/powerdns3/distinfo
+PATCHDIR=		${.CURDIR}/../../joyent/powerdns3/patches
+
+CONFIGURE_ARGS+=	--disable-pdns_server
+CONFIGURE_ARGS+=	--with-modules=""
+
+BUILD_DIRS=		modules

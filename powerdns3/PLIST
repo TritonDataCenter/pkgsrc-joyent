@@ -1,0 +1,15 @@
+@comment $NetBSD$
+bin/pdns_control
+bin/pdnssec
+bin/zone2json
+bin/zone2ldap
+bin/zone2sql
+lib/pdns/libgeobackend.la
+lib/pdns/libpipebackend.la
+man/man8/pdns_control.8
+man/man8/pdns_server.8
+man/man8/pdnssec.8
+man/man8/zone2ldap.8
+man/man8/zone2sql.8
+sbin/pdns_server
+share/examples/pdns/pdns.conf-dist

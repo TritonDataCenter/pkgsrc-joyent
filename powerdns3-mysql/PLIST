@@ -1,0 +1,2 @@
+@comment $NetBSD: PLIST,v 1.4 2012/01/25 10:21:12 ghen Exp $
+lib/pdns/libgmysqlbackend.la

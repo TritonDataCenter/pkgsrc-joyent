@@ -1,0 +1,23 @@
+$NetBSD: patch-configure,v 1.1 2012/01/23 15:11:54 ghen Exp $
+
+Portability.
+--- configure.orig	2013-12-17 13:47:41.000000000 +0000
++++ configure
+@@ -20304,7 +20304,7 @@ fi
+         if test "x$MYSQL_config_check" != "xskip"; then
+            { $as_echo "$as_me:${as_lineno-$LINENO}: checking for mysql_config" >&5
+ $as_echo_n "checking for mysql_config... " >&6; }
+-           if test "x$MYSQL_config_check" == "x"; then
++           if test "x$MYSQL_config_check" = "x"; then
+              # check if it's in path
+              for m in /bin /usr/bin /usr/local/bin /opt/csw/bin; do
+                if test -x $m/mysql_config; then
+@@ -20313,7 +20313,7 @@ $as_echo_n "checking for mysql_config...
+                fi
+              done
+ 
+-             if test "x$MYSQL_config" == "x"; then
++             if test "x$MYSQL_config" = "x"; then
+                 { $as_echo "$as_me:${as_lineno-$LINENO}: result: not found" >&5
+ $as_echo "not found" >&6; }
+              else

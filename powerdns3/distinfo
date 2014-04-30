@@ -1,0 +1,27 @@
+$NetBSD: distinfo,v 1.13 2013/05/09 20:06:53 joerg Exp $
+
+SHA1 (pdns-3.3.1.tar.gz) = 555862bf9635d1dcab2c4f3b7569bdd8212ef67f
+RMD160 (pdns-3.3.1.tar.gz) = 2f5e40fd24eff9eb261b63970d8d539020a9702d
+Size (pdns-3.3.1.tar.gz) = 1403435 bytes
+SHA1 (patch-aa) = 11cd283ec8eda499d730ed18f41967c5dabf3b73
+SHA1 (patch-ab) = ff11de4a5f71b2f17659bff206277bf19c55486a
+SHA1 (patch-configure) = 66004c69e5446540b0c96f4b30d8012331d00ae8
+SHA1 (patch-modules_pipebackend_pipebackend.cc) = 9d679e184b851b35047f85504db87444c7726317
+SHA1 (patch-modules_pipebackend_pipebackend.hh) = 79f6abf094ffd07b1e36ee0d6ffe5392e3268e37
+SHA1 (patch-pdns_aes_brg_endian.h) = 4a649d9c7ca9c381ae7c890f5632aecf55c9d622
+SHA1 (patch-pdns_backends_bind_bindbackend2.cc) = da6f74314738058f7edd2e95b031fc8d4a4189b8
+SHA1 (patch-pdns_backends_bind_bindbackend2.hh) = de01c6aab99e6543204b9d433c1f76dfc42e24f2
+SHA1 (patch-pdns_botan18signers.cc) = 6827a3e2eade467c53d710b57352bd9ed978b47c
+SHA1 (patch-pdns_dns.hh) = 6fba77cb02444cd60a517a93b249be480cdceb61
+SHA1 (patch-pdns_dnspacket.cc) = 287b27366e04d4e4b7309e000accde5dd45d8184
+SHA1 (patch-pdns_dnsparser.cc) = a7c721434f47af77b43a99effb747288b8bdb3b0
+SHA1 (patch-pdns_dnsparser.hh) = 818cc37dd955407f26d60d4049cdd1c5ab6ed3c2
+SHA1 (patch-pdns_dynloader.cc) = 6f918c73c5a8e69416b0677ae04fc2254f18b395
+SHA1 (patch-pdns_dynmessenger.cc) = 7846a61e8c38c788929a4b83d72b069a757d3cfa
+SHA1 (patch-pdns_htimer.cc) = b17acf78cbb2245fa7ae894b8df5648db0c20e81
+SHA1 (patch-pdns_packethandler.cc) = 9d92537a29348517bef6ac812d4dc9575748573f
+SHA1 (patch-pdns_pdns_recursor.cc) = 3a224c213e737563946fe7d40145c91c9cab48b6
+SHA1 (patch-pdns_receiver.cc) = d69b051cd9907f984b1ba6bab36a2d5cb3017e30
+SHA1 (patch-pdns_recursor__cache.cc) = 96222e4c4d4bd50d099e316d13ed95f74877fb27
+SHA1 (patch-pdns_resolver.cc) = 9619584e57e6399d4dd8fb9b365f1a0bc802fe25
+SHA1 (patch-pdns_tcpreceiver.cc) = 896178c29571a0b23266653a560f47ee6d489ffa
