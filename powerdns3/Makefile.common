@@ -23,6 +23,7 @@ CONFIGURE_ARGS+=	--with-system-polarssl
 CONFIGURE_ARGS+=	--without-lua
 
 .include "../../devel/boost-headers/buildlink3.mk"
+.include "../../devel/boost-libs/buildlink3.mk"
 .include "../../devel/gmp/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../security/botan/buildlink3.mk"
