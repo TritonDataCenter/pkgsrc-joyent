@@ -1,11 +1,11 @@
 # $NetBSD$
 
-DISTNAME=	mongodb-src-r2.6.0-rc3
+DISTNAME=	mongodb-src-r2.6.1-rc1
 PKGNAME=	${DISTNAME:S/src-r//:S/-rc/rc/}
 CATEGORIES=	databases
-MASTER_SITES=	http://downloads.mongodb.org/src/
+MASTER_SITES=	http://fastdl.mongodb.org/src/
 
-MAINTAINER=	bartosz.kuzma@gmail.com
+MAINTAINER=	filip@joyent.com
 HOMEPAGE=	http://mongodb.org/
 COMMENT=	NOSQL distributed document-oriented database
 LICENSE=	gnu-agpl-v3 # Client and tools licensed under apache-2.0
@@ -14,12 +14,6 @@ NO_CONFIGURE=	yes
 USE_LANGUAGES=	c c++
 
 BUILD_DEPENDS+=	scons-[0-9]*:../../devel/scons
-
-.include "../../mk/bsd.fast.prefs.mk"
-
-.if defined(MAKE_JOBS)
-MAKE_JOBS=	3
-.endif
 
 SCONS_BIN=	${PREFIX}/bin/scons
 SCONS_ARGS=	${_MAKE_JOBS}
@@ -31,13 +25,15 @@ SCONS_ARGS+=	--use-system-pcre=USE-SYSTEM-PCRE
 SCONS_ARGS+=	--use-system-snappy=USE-SYSTEM-SNAPPY
 SCONS_ARGS+=	--use-system-tcmalloc=USE-SYSTEM-TCMALLOC
 
+.include "../../mk/bsd.fast.prefs.mk"
+
 .if ${MACHINE_ARCH} == "x86_64"
 SCONS_ARGS+=	--64
 .else
 SCONS_ARGS+=	--32
 .endif
 
-CFLAGS+=	-fno-jump-tables
+CPPFLAGS+=	-fno-jump-tables
 
 .include "options.mk"
 
@@ -80,7 +76,9 @@ SUBST_VARS.scons=	PREFIX CXXFLAGS LDFLAGS
 SUBST_CLASSES+=		path
 SUBST_STAGE.path=	pre-build
 SUBST_FILES.path=	src/mongo/db/flushtest.cpp debian/mongod.conf
-SUBST_SED.path=		-e "s|/data/db|${MONGODB_DBPATH}|g"
+SUBST_FILES.path+=	debian/mongod.1 debian/mongo.1 src/mongo/shell/dbshell.cpp
+SUBST_SED.path=		-e 's|/data/db|${MONGODB_DBPATH}|g'
+SUBST_SED.path+=	-e 's|/etc|${PKG_SYSCONFDIR}|'
 SUBST_VARS.path=	MONGODB_DBPATH MONGODB_LOGPATH
 
 MONGODB_MAN_FILES=	bsondump.1 mongo.1 mongod.1 mongodump.1 mongoexport.1	\
@@ -119,9 +117,7 @@ post-install:
 .include "../../devel/boost-headers/buildlink3.mk"
 .include "../../devel/boost-libs/buildlink3.mk"
 .include "../../devel/boost-python/buildlink3.mk"
-.if exists(../../devel/libexecinfo/buildlink3.mk)
 .include "../../devel/libexecinfo/buildlink3.mk"
-.endif
 .include "../../devel/pcre/buildlink3.mk"
 .include "../../devel/snappy/buildlink3.mk"
 .include "../../net/libpcap/buildlink3.mk"

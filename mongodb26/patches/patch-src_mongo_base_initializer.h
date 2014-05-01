@@ -1,7 +1,7 @@
 $NetBSD$
 
 Fixes at least SunOS.
---- src/mongo/base/initializer.h.orig	2014-03-05 22:34:28.000000000 +0000
+--- src/mongo/base/initializer.h.orig	2014-04-07 00:36:57.000000000 +0000
 +++ src/mongo/base/initializer.h
 @@ -17,6 +17,7 @@
  

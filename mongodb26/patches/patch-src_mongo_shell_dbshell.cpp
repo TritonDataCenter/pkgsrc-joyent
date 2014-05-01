@@ -1,7 +1,7 @@
 $NetBSD$
 
 Add support for NetBSD.
---- src/mongo/shell/dbshell.cpp.orig	2014-03-05 22:34:28.000000000 +0000
+--- src/mongo/shell/dbshell.cpp.orig	2014-04-07 00:36:57.000000000 +0000
 +++ src/mongo/shell/dbshell.cpp
 @@ -62,7 +62,7 @@ bool gotInterrupted = false;
  bool inMultiLine = false;
