@@ -9,8 +9,8 @@ export LANG=C
 
 PATH="@PREFIX@/bin:@PREFIX@/gnu/bin:@PREFIX@/sbin:/usr/bin:/usr/sbin";
 MONGO_DBPATH="@MONGODB_DBPATH@";
-MONGO_CONF="@PKG_SYSCONFDIR@/mongodb.conf";
-MONGO_PID="${MONGO_DBPATH}/mongodb.pid";
+MONGO_CONF="@PKG_SYSCONFDIR@/mongod.conf";
+MONGO_PID="${MONGO_DBPATH}/mongod.pid";
 
 case "$1" in
         'start')
