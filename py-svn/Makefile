@@ -13,6 +13,8 @@ LICENSE=	apache-1.1
 
 PKG_DESTDIR_SUPPORT=	user-destdir
 
+BUILD_DEPENDS+=	${PYPKGPREFIX}-expat-[0-9]*:../../textproc/py-expat
+
 USE_LANGUAGES=	c c++
 
 WRKSRC=			${WRKDIR}/${DISTNAME}/Source
