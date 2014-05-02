@@ -1,7 +1,7 @@
 # $NetBSD: Makefile,v 1.14 2013/12/12 11:53:38 jperkin Exp $
 #
 
-DISTNAME=	node-v0.10.26
+DISTNAME=	node-v0.10.27
 CATEGORIES=	devel
 MASTER_SITES=	http://nodejs.org/dist/${DISTNAME:S/node-//}/
 PKGNAME=	${DISTNAME:S/-v/js-/}
@@ -59,4 +59,5 @@ pre-install:
 	${FIND} ${WRKSRC}/deps/npm -name '*.orig' | ${XARGS} ${RM} -f
 
 .include "../../lang/python/application.mk"
+.include "../../lang/python/tool.mk"
 .include "../../mk/bsd.pkg.mk"
