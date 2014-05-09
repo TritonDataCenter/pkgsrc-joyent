@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-DISTNAME=	dtracetools-0.3
+DISTNAME=	dtracetools-0.4
 CATEGORIES=	sysutils
 
 MAINTAINER=	derek@joyent.com
@@ -13,7 +13,7 @@ PKG_DESTDIR_SUPPORT=	user-destdir
 
 GIT_REPOSITORIES=	dtracetools
 GIT_REPO.dtracetools=	git@git.joyent.com:dtracetools.git
-GIT_TAG=		0.3
+GIT_TAG=		0.4
 
 NO_CHECKSUM=	yes
 NO_BUILD=	yes
