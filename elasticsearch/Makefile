@@ -1,6 +1,6 @@
 # $NetBSD$
 
-DISTNAME=	elasticsearch-1.0.1
+DISTNAME=	elasticsearch-1.1.1
 CATEGORIES=	textproc
 MASTER_SITES=	http://download.elasticsearch.org/elasticsearch/elasticsearch/
 
@@ -18,15 +18,15 @@ NO_BUILD=	yes
 
 BUILD_DEFS+=	ES_DBDIR ES_LOGDIR ES_WRKDIR VARBASE
 
-LUCVER=		4.6.1
-ES_JARS=	${DISTNAME} jna-3.3.0 jts-1.12 log4j-1.2.17		\
+LUCVER=		4.7.2
+ES_JARS=	${DISTNAME} jna-3.3.0 jts-1.13 log4j-1.2.17		\
 		lucene-analyzers-common-${LUCVER} lucene-codecs-${LUCVER} \
 		lucene-core-${LUCVER} lucene-grouping-${LUCVER}		\
 		lucene-highlighter-${LUCVER} lucene-join-${LUCVER}	\
 		lucene-memory-${LUCVER} lucene-misc-${LUCVER}		\
 		lucene-queries-${LUCVER} lucene-queryparser-${LUCVER}	\
 		lucene-sandbox-${LUCVER} lucene-spatial-${LUCVER}	\
-		lucene-suggest-${LUCVER} spatial4j-0.3
+		lucene-suggest-${LUCVER} spatial4j-0.4.1
 ES_DOCS=	LICENSE.txt NOTICE.txt README.textile
 
 .if ${OPSYS} == "Darwin"
