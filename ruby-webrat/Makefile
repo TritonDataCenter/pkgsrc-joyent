@@ -9,7 +9,10 @@ HOMEPAGE=	http://github.com/brynary/webrat
 COMMENT=	Ruby Acceptance Testing for Web applications
 LICENSE=	mit
 
-RUBY_VERSION_SUPPORTED=		200 193		# No 1.8 for nokogiri
+RUBY_VERSION_SUPPORTED=		193		# No 1.8 for nokogiri
+.if defined(RUBY200_VERSION)
+RUBY_VERSION_SUPPORTED+=	200
+.endif
 .if defined(RUBY21_VERSION)
 RUBY_VERSION_SUPPORTED+=	21
 .endif
