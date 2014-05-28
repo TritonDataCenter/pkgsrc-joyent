@@ -13,6 +13,9 @@ COMMENT=	Percona XtraBackup
 
 .include "../../mk/mysql.buildlink3.mk"
 
+# Help out <2013Q1 branches
+MYSQL_PKG_PREFIX?=	percona55
+
 .if empty(MYSQL_PKG_PREFIX:Mpercona*)
 BROKEN=		Only supports Percona packages
 .endif
