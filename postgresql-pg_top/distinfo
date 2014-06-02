@@ -1,0 +1,6 @@
+$NetBSD$
+
+SHA1 (pg_top-3.7.0.tar.gz) = 667539a60f59086f0aaa9ed0ac922c542b220799
+RMD160 (pg_top-3.7.0.tar.gz) = ceabc8cf7d07c87d92ad4136a44c84e1d570c280
+Size (pg_top-3.7.0.tar.gz) = 289788 bytes
+SHA1 (patch-machine_m__sunos5.c) = 80c15eb76ede6d0f8c97f6d561ddc11bae1ddac9
