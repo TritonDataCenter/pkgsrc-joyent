@@ -1,0 +1,63 @@
+# $NetBSD$
+# used by joyent/ap2-passenger/Makefile
+# used by joyent/ruby-passenger/Makefile
+#
+DISTNAME=		passenger-4.0.14
+CATEGORIES=		www
+
+MASTER_SITES=		http://s3.amazonaws.com/phusion-passenger/releases/
+MAINTAINER=		filip@joyent.com
+HOMEPAGE=		http://www.phusionpassenger.com/
+LICENSE=		mit
+
+USE_LANGUAGES=		c c++
+USE_RAKE=		yes
+
+PATCHDIR=		${.CURDIR}/../../joyent/ruby-passenger/patches
+DISTINFO_FILE=		${.CURDIR}/../../joyent/ruby-passenger/distinfo
+
+.include "../../mk/bsd.prefs.mk"
+
+PKG_SYSCONFSUBDIR=	${PKGBASE}
+
+REPLACE_RUBY=		bin/passenger
+REPLACE_RUBY+=		bin/passenger-config
+REPLACE_RUBY+=		bin/passenger-install-apache2-module
+REPLACE_RUBY+=		bin/passenger-install-nginx-module
+REPLACE_RUBY+=		bin/passenger-memory-stats
+REPLACE_RUBY+=		bin/passenger-status
+REPLACE_RUBY+=		helper-scripts/backtrace-sanitizer.rb
+REPLACE_RUBY+=		helper-scripts/classic-rails-loader.rb
+REPLACE_RUBY+=		helper-scripts/classic-rails-preloader.rb
+REPLACE_RUBY+=		helper-scripts/download_binaries/extconf.rb
+REPLACE_RUBY+=		helper-scripts/prespawn
+REPLACE_RUBY+=		helper-scripts/rack-loader.rb
+REPLACE_RUBY+=		helper-scripts/rack-preloader.rb
+
+CHECK_INTERPRETER_SKIP+=	${RUBY_VENDORLIB}/phusion_passenger/wsgi/request_handler.py
+CHECK_INTERPRETER_SKIP+=	share/passenger/helper-scripts/system-memory-stats.py
+CHECK_INTERPRETER_SKIP+=	share/passenger/helper-scripts/wsgi-loader.py
+CHECK_INTERPRETER_SKIP+=	share/passenger/helper-scripts/wsgi-preloader.py
+
+SUBST_CLASSES+=		rake
+SUBST_STAGE.rake=	post-patch
+SUBST_MESSAGE.rake=	Fixing installation directories
+SUBST_FILES.rake=	build/common_library.rb
+SUBST_FILES.rake+=	lib/phusion_passenger.rb
+SUBST_FILES.rake+=	lib/phusion_passenger/platform_info/apache.rb
+SUBST_FILES.rake+=	lib/phusion_passenger/platform_info/cxx_portability.rb
+SUBST_VARS.rake=	COMPILER_RPATH_FLAG PKG_SYSCONFDIR PREFIX
+
+MAKE_ENV+=		EXTRA_LDFLAGS=${COMPILER_RPATH_FLAG}${PREFIX}/lib
+MAKE_ENV+=		USE_VENDORED_LIBEIO=no
+MAKE_ENV+=		USE_VENDORED_LIBEV=no
+
+post-patch:
+	${RM} -f ${WRKSRC}/lib/phusion_passenger/platform_info/apache.rb.orig \
+		 ${WRKSRC}/lib/phusion_passenger/platform_info/cxx_portability.rb.orig
+
+.include "../../wip/libeio/buildlink3.mk"
+BUILDLINK_API_DEPENDS.libev+=	libev>=4.11
+.include "../../devel/libev/buildlink3.mk"
+.include "../../www/curl/buildlink3.mk"
+.include "../../lang/ruby/modules.mk"
