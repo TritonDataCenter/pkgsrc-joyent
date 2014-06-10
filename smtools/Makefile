@@ -4,7 +4,7 @@
 DISTNAME=	smtools
 PKGNAME=	${DISTNAME}-${PKGVERSION}
 CATEGORIES=	sysutils
-PKGVERSION=	20140509
+PKGVERSION=	20140610
 
 MAINTAINER=	filip@joyent.com
 HOMEPAGE=	http://www.joyent.com/
