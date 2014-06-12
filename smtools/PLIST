@@ -1,10 +1,5 @@
 @comment $NetBSD$
-bin/apt-cache
-bin/apt-get
 bin/lsof
-bin/pkg
-bin/port
-bin/rpm
 bin/sm-cpuinfo
 bin/sm-create-db
 bin/sm-create-dbuser
@@ -16,7 +11,6 @@ bin/sm-list-dbusers
 bin/sm-list-timezones
 bin/sm-lsof
 bin/sm-meminfo
-bin/sm-pkghelp
 bin/sm-prepare-image
 bin/sm-reboot
 bin/sm-remove-db
@@ -27,7 +21,6 @@ bin/sm-shutdown
 bin/sm-summary
 bin/sm-sync-to-master
 bin/sm-tune-mysql
-bin/yum
 lib/zoneinit/includes/00-mdata.sh
 lib/zoneinit/includes/01-reboot-file.sh
 lib/zoneinit/includes/02-config.sh

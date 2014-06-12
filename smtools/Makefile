@@ -4,7 +4,7 @@
 DISTNAME=	smtools
 PKGNAME=	${DISTNAME}-${PKGVERSION}
 CATEGORIES=	sysutils
-PKGVERSION=	20140610
+PKGVERSION=	20140612
 
 MAINTAINER=	filip@joyent.com
 HOMEPAGE=	http://www.joyent.com/
@@ -24,7 +24,7 @@ NO_BUILD=	yes
 
 SM_SCRIPTS=	cpuinfo create-db create-dbuser create-vhost	\
 		install-drupal install-wordpress list-dbs	\
-		list-dbusers list-timezones meminfo pkghelp	\
+		list-dbusers list-timezones meminfo 		\
 		prepare-image reboot remove-db	\
 		remove-dbuser set-hostname set-timezone 	\
 		shutdown summary sync-to-master lsof tune-mysql
@@ -32,7 +32,6 @@ ZONEINIT_INCS=	00-mdata.sh 01-reboot-file.sh 02-config.sh	\
 		04-mdata.sh		\
 		11-files.sh 12-network.sh 91-passwords.sh	\
 		92-sshd.sh 999-cleanup.sh
-PKGIN_HELPERS=	apt-get apt-cache pkg port rpm yum
 
 SUNOS_FLAVOR?=	joyent
 .if ${SUNOS_FLAVOR} == "joyent"
@@ -60,9 +59,6 @@ SUBST_VARS.vars+=	RUBY_VERSION_DEFAULT RUBY_RAILS_DEFAULT
 do-install:
 .	for file in ${SM_SCRIPTS}
 	${INSTALL_SCRIPT} ${WRKSRC}/sm-${file} ${DESTDIR}${PREFIX}/bin
-.	endfor
-.	for helper in ${PKGIN_HELPERS}
-	${LN} -s sm-pkghelp ${DESTDIR}${PREFIX}/bin/${helper}
 .	endfor
 	${LN} -s sm-lsof ${DESTDIR}${PREFIX}/bin/lsof
 	${INSTALL_SCRIPT} ${WRKSRC}/zoneinit/zoneinit \
