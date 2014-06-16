@@ -14,7 +14,6 @@ LICENSE=	gnu-gpl-v2
 CONFLICTS=	{mysql,percona}*-{client,server}-[0-9]*
 
 USE_CMAKE=		yes
-USE_GNU_READLINE=	yes
 USE_LANGUAGES=		c c++
 USE_TOOLS+=		bash bison gmake perl:run python:run
 
@@ -141,8 +140,9 @@ PKG_HOME.${MYSQL_USER}=		${MYSQL_DATADIR}
 PKG_SHELL.${MYSQL_USER}=	${SH}
 
 RCD_SCRIPTS=		mysqld
-SMF_NAME=		mysql
-SMF_METHODS=		${RCD_SCRIPTS}
+SMF_NAME=		mysql-cluster
+SMF_METHODS=		mysqld ndbd
+SMF_INSTANCES=		mysqld ndbd ndb_mgmd
 
 FILES_SUBST+=		HOSTNAME_CMD=${HOSTNAME_CMD:Q}
 FILES_SUBST+=		MYSQL_DATADIR=${MYSQL_DATADIR}
@@ -185,6 +185,23 @@ SUBST_FILES.scr=	scripts/mysql_install_db.sh scripts/mysqld_safe.sh \
 SUBST_SED.scr=		-e "s,chown,${CHOWN},g"
 SUBST_SED.scr+=		-e "s,/bin/sh,${RCD_SCRIPTS_SHELL},g"
 SUBST_MESSAGE.scr=	Fixing scripts.
+
+SUBST_CLASSES+=		vars
+SUBST_STAGE.vars=	pre-configure
+SUBST_FILES.vars=	scripts/mysql_install_db.pl.in
+SUBST_VARS.vars=	PKG_SYSCONFDIR
+
+CONF_FILES+=		share/mysql/my-cluster.cnf ${PKG_SYSCONFDIR}/my.cnf
+CONF_FILES+=		share/mysql/mysql-cluster.ini ${PKG_SYSCONFDIR}/mysql-cluster.ini
+
+pre-build:
+	${RM} -f ${WRKSRC}/storage/ndb/mcc/frontend/dojo/dojox/mobile/build/build.sh.orig
+
+post-install:
+	${SED} ${CNFSUBST} ${FILESDIR}/my-cluster.cnf \
+		> ${DESTDIR}${PREFIX}/share/mysql/my-cluster.cnf
+	${SED} ${CNFSUBST} ${FILESDIR}/mysql-cluster.ini \
+		> ${DESTDIR}${PREFIX}/share/mysql/mysql-cluster.ini
 
 .include "../../devel/readline/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"

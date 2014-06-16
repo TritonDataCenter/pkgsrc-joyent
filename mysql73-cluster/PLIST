@@ -4467,7 +4467,6 @@ share/mysql/mcc/frontend/dojo/dojox/mobile/app/compat.js
 share/mysql/mcc/frontend/dojo/dojox/mobile/app/compat.js.uncompressed.js
 share/mysql/mcc/frontend/dojo/dojox/mobile/build/build.bat
 share/mysql/mcc/frontend/dojo/dojox/mobile/build/build.sh
-share/mysql/mcc/frontend/dojo/dojox/mobile/build/build.sh.orig
 share/mysql/mcc/frontend/dojo/dojox/mobile/common.js
 share/mysql/mcc/frontend/dojo/dojox/mobile/common.js.uncompressed.js
 share/mysql/mcc/frontend/dojo/dojox/mobile/compat.js
@@ -5703,7 +5702,9 @@ share/mysql/memcache-api/README
 share/mysql/memcache-api/ndb_memcache_metadata.sql
 share/mysql/memcache-api/sandbox.sh
 share/mysql/memcache-api/upgrade/update_to_1.2.sql
+share/mysql/my-cluster.cnf
 share/mysql/my-default.cnf
+share/mysql/mysql-cluster.ini
 share/mysql/mysql-log-rotate
 share/mysql/mysql.server
 share/mysql/mysql_security_commands.sql

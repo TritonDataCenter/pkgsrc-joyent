@@ -2,22 +2,63 @@
 
 case ${STAGE} in
 POST-INSTALL)
+	# Project support
 	grep '^mysql' /etc/project >/dev/null 2>&1
 	if [ $? != 0 ]; then
 		projid=`id -u @MYSQL_USER@`
-		LANG=C projadd -p ${projid} -U @MYSQL_USER@ -G @MYSQL_GROUP@ -K "process.max-file-descriptor=(basic,15000,deny)" mysql
+		LANG=C projadd -p ${projid} -U @MYSQL_USER@ -G @MYSQL_GROUP@ \
+		    -K "process.max-file-descriptor=(basic,15000,deny)" mysql
 	fi
+
+	# Logging and rotation
 	if [ ! -f @VARBASE@/log/mysql/error.log ]; then
 		mkdir -p @VARBASE@/log/mysql
 		touch @VARBASE@/log/mysql/error.log
 		chown -R @MYSQL_USER@:@MYSQL_GROUP@ @VARBASE@/log/mysql
 	fi
 	logadm -C 5 -c -s 100m -z 1 -w '@VARBASE@/log/mysql/*.log'
+
+	# Try to find an internal IP.  Prefer 10.* as that is what JPC uses, otherwise
+	# other RFC1918.
+	found=0
+	internal_ip=
+	for match in "10.*" "192.168.*" "172.1[6-9].*" "172.2[0-9].*" "172.3[01].*" "127.*"
+	do
+		for ip in $(ipadm show-addr -p -o addr 2>/dev/null | cut -d/ -f1)
+		do
+			case "${ip}" in
+			${match})
+				internal_ip="${ip}"
+				found=1
+				break
+				;;
+			esac
+		done
+		if [ $found -eq 1 ]; then
+			break
+		fi
+	done
+	if [ -n "${internal_ip}" ]; then
+		for file in my.cnf mysql-cluster.ini; do
+			ed ${PKG_SYSCONFDIR}/${file} >/dev/null 2>&1 <<-EOF
+				g/@INTERNAL_IP@/s/@INTERNAL_IP@/${internal_ip}/
+				w
+				q
+			EOF
+		done
+	else
+		echo "Unable to determine internal IP address.  You will need to manually" >&2 
+		echo "substitute @INTERNAL_IP@ entries in my.cnf and mysql-cluster.ini" >&2
+	fi
+
+	# Initialize MySQL system tables
 	if [ -d @MYSQL_DATADIR@/mysql ]; then
 		echo "Skipping MySQL database initialization, as databases already exist."
 	else
-		# Initialize MySQL
-		${PKG_PREFIX}/bin/mysql_install_db --basedir=${PKG_PREFIX} --datadir=@MYSQL_DATADIR@ --user=@MYSQL_USER@
+		@LOCALBASE@/bin/mysql_install_db \
+		    --basedir=@LOCALBASE@ \
+		    --datadir=@MYSQL_DATADIR@ \
+		    --user=@MYSQL_USER@
 	fi
 	;;
 DEINSTALL)
