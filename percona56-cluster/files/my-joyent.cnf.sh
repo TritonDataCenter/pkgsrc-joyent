@@ -47,7 +47,6 @@ innodb_doublewrite = 0
 innodb_io_capacity = 1500
 innodb_read_io_threads = 8
 innodb_write_io_threads = 8
-innodb_buffer_pool_restore_at_startup = 500
 
 # Slow query log settings
 # The default logs all full table scans,tmp tables,filesorts on disk queries
@@ -59,7 +58,6 @@ log_slow_filter = "full_scan,tmp_table_on_disk,filesort_on_disk"
 log_slow_verbosity = "full"
 
 # Other general MySQL settings
-table_cache = 512
 thread_cache_size = 1000
 #query_cache_size = 16M
 #query_cache_strip_comments
