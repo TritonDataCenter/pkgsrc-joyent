@@ -26,6 +26,8 @@ USE_TOOLS+=		bash bison gmake perl:run python:run
 INFO_FILES=		yes
 UNWRAP_FILES+=		scripts/mysql_config
 
+INSTALL_TEMPLATES+=	${.CURDIR}/../../joyent/percona/INSTALL
+
 .include "../../mk/bsd.prefs.mk"
 
 .include "options.mk"

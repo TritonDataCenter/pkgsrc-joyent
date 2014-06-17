@@ -17,6 +17,8 @@ USE_CMAKE=		yes
 USE_LANGUAGES=		c c++
 USE_TOOLS+=		bash bison gmake perl:run python:run
 
+INSTALL_TEMPLATES+=	${.CURDIR}/../../joyent/percona/INSTALL
+
 #INFO_FILES=		yes
 #UNWRAP_FILES+=		scripts/mysql_config
 

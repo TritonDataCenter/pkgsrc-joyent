@@ -1,4 +1,13 @@
 # $NetBSD$
+#
+# This script is currently used by:
+#
+#   joyent/mysql73-cluster
+#   joyent/percona55-cluster
+#   joyent/percona56-cluster
+#
+# and should be kept generic.
+#
 
 case ${STAGE} in
 POST-INSTALL)
@@ -18,14 +27,24 @@ POST-INSTALL)
 	fi
 	logadm -C 5 -c -s 100m -z 1 -w '@VARBASE@/log/mysql/*.log'
 
-	# Try to find an internal IP.  Prefer 10.* as that is what JPC uses, otherwise
-	# other RFC1918.
+	# Supported configuration files, used later.
+	cnfs=
+	for file in my.cnf mysql-cluster.ini; do
+		if [ -f ${PKG_SYSCONFDIR}/${file} ]; then
+			cnfs="${cnfs} ${PKG_SYSCONFDIR}/${file}"
+		fi
+	done
+
+	# Try to find an internal IP.  Prefer 10.* as that is what JPC uses,
+	# otherwise other RFC1918.
 	found=0
 	internal_ip=
-	for match in "10.*" "192.168.*" "172.1[6-9].*" "172.2[0-9].*" "172.3[01].*" "127.*"
-	do
-		for ip in $(ipadm show-addr -p -o addr 2>/dev/null | cut -d/ -f1)
-		do
+	for match in "10.*" \
+		     "192.168.*" \
+		     "172.1[6-9].*" "172.2[0-9].*" "172.3[01].*" \
+		     "127.*"; do
+		for ip in $(ipadm show-addr -p -o addr 2>/dev/null \
+			    | cut -d/ -f1); do
 			case "${ip}" in
 			${match})
 				internal_ip="${ip}"
@@ -39,21 +58,28 @@ POST-INSTALL)
 		fi
 	done
 	if [ -n "${internal_ip}" ]; then
-		for file in my.cnf mysql-cluster.ini; do
-			ed ${PKG_SYSCONFDIR}/${file} >/dev/null 2>&1 <<-EOF
+		for file in ${cnfs}; do
+			ed ${file} >/dev/null 2>&1 <<-EOF
 				g/@INTERNAL_IP@/s/@INTERNAL_IP@/${internal_ip}/
 				w
 				q
 			EOF
 		done
 	else
-		echo "Unable to determine internal IP address.  You will need to manually" >&2 
-		echo "substitute @INTERNAL_IP@ entries in my.cnf and mysql-cluster.ini" >&2
+		cat >&2 <<-EOF
+	Unable to determine internal IP address.  You will need to manually
+	substitute @INTERNAL_IP@ entries in the following files:
+
+		EOF
+		for file in ${cnfs}; do
+			echo "	${file}" >&2
+		done
 	fi
 
 	# Initialize MySQL system tables
 	if [ -d @MYSQL_DATADIR@/mysql ]; then
-		echo "Skipping MySQL database initialization, as databases already exist."
+		echo "Skipping MySQL database initialization, as databases" \
+		     "already exist."
 	else
 		@LOCALBASE@/bin/mysql_install_db \
 		    --basedir=@LOCALBASE@ \
