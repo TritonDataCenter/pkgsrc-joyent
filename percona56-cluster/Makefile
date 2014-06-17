@@ -5,6 +5,7 @@ CATEGORIES=	databases
 MASTER_SITES=	http://www.percona.com/redir/downloads/Percona-XtraDB-Cluster-56/LATEST/source/
 
 PKGNAME=	${DISTNAME:tl:S/-xtradb//}
+PKGREVISION=	1
 COMMENT=	Percona Cluster Server 5.6
 
 MAINTAINER=	jperkin@joyent.com
