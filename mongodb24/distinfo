@@ -1,0 +1,16 @@
+$NetBSD$
+
+SHA1 (mongodb-src-r2.4.10.tar.gz) = faf1f41d45934bcb30684cfed95f5d3c698663a0
+RMD160 (mongodb-src-r2.4.10.tar.gz) = 7e689bc04d08254472247e10f21459c7bc822875
+Size (mongodb-src-r2.4.10.tar.gz) = 14166404 bytes
+SHA1 (patch-SConstruct) = 93e94b30c6b68a0603ac99a105541e8738299424
+SHA1 (patch-debian_mongodb.conf) = d52115eadf871ee1d68073f26ceb7ed90aeeb9ef
+SHA1 (patch-shell__dbshell.cpp) = 799b292bb21637c64682a8b4fbd54d78783165c9
+SHA1 (patch-src_mongo_base_initializer.h) = 408aae3c53c5db843218c7938ca83589ee9971fd
+SHA1 (patch-src_mongo_db_db.cpp) = 2164aa92e3c33952a9da9d6018a2a806ff3fc1bf
+SHA1 (patch-src_mongo_platform_random.cpp) = 51aaf952664cb9be63c41198606e0c38cdad5546
+SHA1 (patch-src_mongo_shell_shell__utils__launcher.h) = 9402bce2d5ec0671953c89a76bc21a5fe99152f5
+SHA1 (patch-src_mongo_util_time__support.h) = d42c4f22a980b77166f6a22616b7cbc7ac7d8e0b
+SHA1 (patch-src_third__party_s2_s2.cc) = 59079e2841ff0156ce7283917be3b85f10a9f41f
+SHA1 (patch-src_third__party_s2_s2polygonbuilder.cc) = f88bfabb69685412948ecd5c04dcf0a52520e134
+SHA1 (patch-util__file_allocator.cpp) = 6eee5f3bbe126bbf813eac24658bdd09c2a9447b

@@ -1,0 +1,74 @@
+$NetBSD$
+
+Add support for NetBSD/Dragonfly, fix locations.
+--- SConstruct.orig	2014-01-12 21:19:10.000000000 +0000
++++ SConstruct
+@@ -257,7 +257,9 @@ linux = False
+ linux64  = False
+ darwin = False
+ windows = False
++dragonfly = False
+ freebsd = False
++netbsd = False
+ openbsd = False
+ solaris = False
+ force32 = has_option( "force32" ) 
+@@ -531,6 +533,14 @@ elif "sunos5" == os.sys.platform:
+      env.Append( CPPDEFINES=[ "__sunos__" ] )
+      env.Append( LIBS=["socket","resolv"] )
+ 
++elif os.sys.platform.startswith( "dragonfly" ):
++    nix = True
++    dragonfly = True
++    env.Append( CPPPATH=[ "/opt/local/include" ] )
++    env.Append( LIBPATH=[ "/opt/local/lib" ] )
++    env.Append( LIBS=[ "m" ] )
++    env.Append( CPPDEFINES=[ "__dragonfly__" ] )
++
+ elif os.sys.platform.startswith( "freebsd" ):
+     nix = True
+     freebsd = True
+@@ -540,6 +550,14 @@ elif os.sys.platform.startswith( "freebs
+     env.Append( CPPDEFINES=[ "__freebsd__" ] )
+     env.Append( CCFLAGS=[ "-fno-omit-frame-pointer" ] )
+ 
++elif os.sys.platform.startswith( "netbsd" ):
++    nix = True
++    netbsd = True
++    env.Append( CPPPATH=[ "/opt/local/include" ] )
++    env.Append( LIBPATH=[ "/opt/local/lib" ] )
++    env.Append( LIBS=[ "m" ] )
++    env.Append( CPPDEFINES=[ "__netbsd__" ] )
++
+ elif os.sys.platform.startswith( "openbsd" ):
+     nix = True
+     openbsd = True
+@@ -691,8 +709,11 @@ if nix:
+             env.Append( CCFLAGS=["-fno-builtin-memcmp"] ) # glibc's memcmp is faster than gcc's
+ 
+     env.Append( CPPDEFINES=["_FILE_OFFSET_BITS=64"] )
++    env.Append( CPPDEFINES=["XP_UNIX=1"] )
+     env.Append( CXXFLAGS=["-Wnon-virtual-dtor", "-Woverloaded-virtual"] )
++    env.Append( CXXFLAGS=os.environ['CXXFLAGS'] )
+     env.Append( LINKFLAGS=["-fPIC", "-pthread",  "-rdynamic"] )
++    env.Append( LINKFLAGS=os.environ['LDFLAGS'] )
+     env.Append( LIBS=[] )
+ 
+     #make scons colorgcc friendly
+@@ -791,6 +812,16 @@ def doConfigure(myenv):
+             print( "c++ compiler not installed!" )
+             Exit(1)
+ 
++    if use_system_version_of_library("pcre"):
++        if not conf.CheckLib("pcrecpp"):
++            Exit(1)
++        if not conf.CheckLib("pcre"):
++            Exit(1)
++
++    if use_system_version_of_library("snappy"):
++        if not conf.CheckLib("snappy"):
++            Exit(1)
++
+     if use_system_version_of_library("boost"):
+         if not conf.CheckCXXHeader( "boost/filesystem/operations.hpp" ):
+             print( "can't find boost headers" )
