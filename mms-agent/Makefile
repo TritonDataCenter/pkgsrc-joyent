@@ -3,7 +3,7 @@
 
 DISTNAME=	10gen-mms-agent
 PKGNAME=	mms-agent-0
-PKGREVISION=	20140303
+PKGREVISION=	20140703
 CATEGORIES=	databases
 MASTER_SITES=	http://mms.10gen.com/settings/
 DIST_SUBDIR=	mms-agent-${PKGREVISION}
