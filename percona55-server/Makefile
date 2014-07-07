@@ -63,7 +63,7 @@ REPLACE_PERL+=		mysql-test/suite/funcs_1/lib/DataGen_modify.pl
 REPLACE_PERL+=		mysql-test/suite/funcs_2/lib/gen_charset_utf8.pl
 REPLACE_PERL+=		mysql-test/mtr
 
-INSTALLATION_DIRS=	bin
+INSTALLATION_DIRS+=	bin
 
 .include "../../mk/compiler.mk"
 

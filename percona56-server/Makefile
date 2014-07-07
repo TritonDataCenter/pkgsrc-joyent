@@ -82,7 +82,7 @@ REPLACE_PERL+=		mysql-test/suite/rpl/extension/checksum.pl
 
 CHECK_INTERPRETER_SKIP+=	share/mysql/test/suite/opt_trace/validate_json.py
 
-INSTALLATION_DIRS=	bin
+INSTALLATION_DIRS+=	bin
 
 .include "../../mk/compiler.mk"
 

@@ -87,7 +87,7 @@ MONGODB_MAN_FILES=	bsondump.1 mongo.1 mongod.1 mongodump.1 mongoexport.1	\
 
 RCD_SCRIPTS=		mongodb
 
-INSTALLATION_DIRS=	share/doc/mongodb share/examples/mongodb ${PKGMANDIR}/man1
+INSTALLATION_DIRS+=	share/doc/mongodb share/examples/mongodb ${PKGMANDIR}/man1
 
 CONF_FILES+=		share/examples/mongodb/mongod.conf \
 			${PKG_SYSCONFDIR}/mongod.conf
