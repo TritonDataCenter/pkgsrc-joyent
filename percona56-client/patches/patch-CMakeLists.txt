@@ -1,10 +1,10 @@
-$NetBSD: patch-CMakeLists.txt,v 1.1 2013/02/13 21:00:03 adam Exp $
+$NetBSD: patch-CMakeLists.txt,v 1.3 2014/02/13 14:38:08 jperkin Exp $
 
 Split configuration between mysql-client and mysql-server.
 
---- CMakeLists.txt.orig	2013-01-22 16:54:49.000000000 +0000
+--- CMakeLists.txt.orig	2014-07-01 08:51:11.000000000 +0000
 +++ CMakeLists.txt
-@@ -367,7 +367,6 @@ ADD_SUBDIRECTORY(vio)
+@@ -467,7 +467,6 @@ ADD_SUBDIRECTORY(vio)
  ADD_SUBDIRECTORY(regex)
  ADD_SUBDIRECTORY(mysys)
  ADD_SUBDIRECTORY(mysys_ssl)
@@ -12,7 +12,7 @@ Split configuration between mysql-client and mysql-server.
  
  IF(WITH_UNIT_TESTS)
    ADD_SUBDIRECTORY(unittest)
-@@ -378,9 +377,13 @@ IF(WITH_UNIT_TESTS)
+@@ -486,9 +485,13 @@ IF(WITH_UNIT_TESTS)
  ENDIF()
  
  ADD_SUBDIRECTORY(extra)
@@ -28,7 +28,7 @@ Split configuration between mysql-client and mysql-server.
    ADD_SUBDIRECTORY(sql)
    ADD_SUBDIRECTORY(sql/share)
    ADD_SUBDIRECTORY(libservices)
-@@ -393,11 +396,7 @@ IF(NOT WITHOUT_SERVER)
+@@ -501,11 +504,7 @@ IF(NOT WITHOUT_SERVER)
    ADD_SUBDIRECTORY(mysql-test)
    ADD_SUBDIRECTORY(mysql-test/lib/My/SafeProcess)
    ADD_SUBDIRECTORY(support-files)

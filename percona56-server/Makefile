@@ -9,7 +9,7 @@ CONFLICTS=	{mysql-server-[0-9]*,mysql3-server-[0-9]*}
 .include "../../joyent/percona56-client/Makefile.common"
 
 # Include the Sphinx storage engine
-SPHINX=		sphinx-2.0.9-release
+SPHINX=		sphinx-2.0.10-release
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX} ${SPHINX}.tar.gz
 SITES.${SPHINX}.tar.gz=	http://sphinxsearch.com/files/
 
@@ -80,13 +80,7 @@ REPLACE_PERL+=		mysql-test/suite/funcs_2/lib/gen_charset_utf8.pl
 REPLACE_PERL+=		mysql-test/suite/rpl/extension/bhs.pl
 REPLACE_PERL+=		mysql-test/suite/rpl/extension/checksum.pl
 
-# Replace interpreter without pulling in Python dependecy
-# Update when PYTHON_VERSION_DEFAULT changes!
-SUBST_CLASSES+=		python
-SUBST_MESSAGE.python=	Fixing Python path.
-SUBST_STAGE.python=	pre-configure
-SUBST_FILES.python+=	mysql-test/suite/opt_trace/validate_json.py
-SUBST_SED.python+=	-e 's,/usr/bin/python,${PREFIX}/bin/python2.7,'
+CHECK_INTERPRETER_SKIP+=	share/mysql/test/suite/opt_trace/validate_json.py
 
 INSTALLATION_DIRS=	bin
 
