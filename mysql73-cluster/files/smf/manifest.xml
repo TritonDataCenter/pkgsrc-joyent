@@ -41,10 +41,10 @@
     <stability value='Evolving' />
     <template>
       <common_name>
-        <loctext xml:lang='C'>Percona XtraDB Cluster</loctext>
+        <loctext xml:lang='C'>MySQL Cluster</loctext>
       </common_name>
       <documentation>
-        <doc_link name='percona.com' uri='http://www.percona.com/doc/percona-xtradb-cluster/index.html' />
+        <doc_link name='mysql.com' uri='http://www.mysql.com/products/cluster/' />
       </documentation>
     </template>
   </service>
