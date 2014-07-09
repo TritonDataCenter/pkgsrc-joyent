@@ -1,4 +1,6 @@
 @comment $NetBSD$
+bin/dtrace-apache_requests.d
+bin/dtrace-apache_requests_bylatency.d
 bin/dtrace-cpuwalk.d
 bin/dtrace-dispqlen.d
 bin/dtrace-filebyproc.d
