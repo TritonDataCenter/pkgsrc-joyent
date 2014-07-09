@@ -1,6 +1,6 @@
 # $NetBSD: Makefile,v 1.6 2013/06/04 18:17:25 adam Exp $
 
-PKGNAME=	${DISTNAME:tl:C/-rel.*//}
+PKGNAME=	${DISTNAME:tl:C/-${SILLYREV}//}
 PKGREVISION=	5
 COMMENT=	Percona MySQL 5.5, a free SQL database (server)
 
