@@ -17,7 +17,7 @@ PKG_DESTDIR_SUPPORT=	user-destdir
 FETCH_USING=		curl
 NO_BUILD=		yes
 
-SMF_SRCDIR=		${WRKSRC}
+SMF_SRCDIR=		${WRKDIR}/${DISTNAME}
 SMF_MANIFEST=		zoneinit.xml
 SMF_METHODS=		zoneinit mdata-fetch mdata-execute
 SMF_METHOD_SRC.zoneinit=	${SMF_SRCDIR}/zoneinit
