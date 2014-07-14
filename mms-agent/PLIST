@@ -1,12 +1,15 @@
 @comment $NetBSD$
-share/mms-agent/README
+share/mms-agent/README_AGENT
 share/mms-agent/agent.py
 share/mms-agent/agentProcess.py
+share/mms-agent/agent_test.py
 share/mms-agent/blockingStats.py
 share/mms-agent/confPull.py
 share/mms-agent/getLogs.py
 share/mms-agent/logConfig.py
+share/mms-agent/mongorrd.py
 share/mms-agent/mmsAgent.py
 share/mms-agent/munin.py
 share/mms-agent/nonBlockingStats.py
+share/mms-agent/rrd.py
 share/mms-agent/settings.py

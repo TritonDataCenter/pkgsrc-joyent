@@ -23,8 +23,8 @@ USE_LANGUAGES=	# none
 NO_BUILD=	yes
 NO_CHECKSUM=	yes
 
-PY_SCRIPTS=	agent agentProcess blockingStats confPull getLogs logConfig \
-		mmsAgent munin nonBlockingStats settings
+PY_SCRIPTS=	agent agentProcess agent_test blockingStats confPull getLogs	\
+		logConfig mongorrd mmsAgent munin nonBlockingStats rrd settings
 
 SMF_SRCDIR=		${FILESDIR}
 SMF_MANIFEST=		manifest.xml
@@ -51,7 +51,7 @@ do-install:
 	${INSTALL_SCRIPT} ${WRKSRC}/${script}.py \
 	  ${DESTDIR}${PREFIX}/share/mms-agent/${script}.py
 .endfor
-	${INSTALL_DATA} ${WRKSRC}/README ${DESTDIR}${PREFIX}/share/mms-agent/
+	${INSTALL_DATA} ${WRKSRC}/README_AGENT ${DESTDIR}${PREFIX}/share/mms-agent/
 
 .include "../../lang/python/application.mk"
 .include "../../mk/bsd.pkg.mk"
