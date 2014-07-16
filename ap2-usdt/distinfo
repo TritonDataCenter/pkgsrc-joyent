@@ -1,5 +1,5 @@
 $NetBSD$
 
-SHA1 (mod_usdt-880e6e3.tar.gz) = cc99c7a93b40165b4ac2faa6325e703e16509b02
-RMD160 (mod_usdt-880e6e3.tar.gz) = 57c7fb8ad13cd245ae21949fea07d936222c020f
-Size (mod_usdt-880e6e3.tar.gz) = 15413 bytes
+SHA1 (mod_usdt-v0.1.0.tar.gz) = db19b91445e70e92e18150c94665f55a407461d5
+RMD160 (mod_usdt-v0.1.0.tar.gz) = 9307ad73465ffa92ecb72dc5585cbf8d47ac3303
+Size (mod_usdt-v0.1.0.tar.gz) = 6755 bytes
