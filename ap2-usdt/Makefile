@@ -1,8 +1,8 @@
 # $NetBSD$
 #
 
-DISTNAME=	mod_usdt-v0.1.0
-PKGNAME=	${APACHE_PKG_PREFIX}-${DISTNAME:S/mod_//:S/-v/-/}
+DISTNAME=	mod_usdt-0.1.0
+PKGNAME=	${APACHE_PKG_PREFIX}-${DISTNAME:S/mod_//}
 CATEGORIES=	sysutils
 MASTER_SITES=	-https://github.com/davepacheco/mod_usdt/archive/v${PKGVERSION_NOREV}.tar.gz
 
