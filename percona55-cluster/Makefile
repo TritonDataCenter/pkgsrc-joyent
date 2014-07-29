@@ -107,7 +107,7 @@ PLIST.embedded=         yes
 .else
 # We only need readline to placate the configure script if we don't build
 # the embedded server as it is the only binary linked against "readline".
-BUILDLINK_DEPMETHOD.readline=   build
+# BUILDLINK_DEPMETHOD.readline=   build
 .endif
 
 # Ensure dtrace builds the correct ABI
