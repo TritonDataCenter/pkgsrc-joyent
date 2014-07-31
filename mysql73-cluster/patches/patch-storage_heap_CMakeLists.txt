@@ -1,0 +1,17 @@
+$NetBSD$
+
+Fix for DTrace on newer platforms, taken from
+
+https://bugs.launchpad.net/percona-server/+bug/1196460
+--- storage/heap/CMakeLists.txt.orig	2014-07-02 09:22:14.000000000 +0000
++++ storage/heap/CMakeLists.txt
+@@ -22,7 +22,8 @@ SET(HEAP_SOURCES  _check.c _rectest.c hp
+ 				hp_rename.c hp_rfirst.c hp_rkey.c hp_rlast.c hp_rnext.c hp_rprev.c
+ 				hp_rrnd.c hp_rsame.c hp_scan.c hp_static.c hp_update.c hp_write.c)
+ 
+-MYSQL_ADD_PLUGIN(heap ${HEAP_SOURCES} STORAGE_ENGINE MANDATORY RECOMPILE_FOR_EMBEDDED)
++MYSQL_ADD_PLUGIN(heap ${HEAP_SOURCES} STORAGE_ENGINE MANDATORY
++                 RECOMPILE_FOR_EMBEDDED DTRACE_INSTRUMENTED)
+ 
+ IF(WITH_UNIT_TESTS)
+   ADD_EXECUTABLE(hp_test1 hp_test1.c)

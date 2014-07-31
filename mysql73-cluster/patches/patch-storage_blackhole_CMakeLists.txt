@@ -1,0 +1,14 @@
+$NetBSD$
+
+Fix for DTrace on newer platforms, taken from
+
+https://bugs.launchpad.net/percona-server/+bug/1196460
+--- storage/blackhole/CMakeLists.txt.orig	2014-07-02 09:22:13.000000000 +0000
++++ storage/blackhole/CMakeLists.txt
+@@ -14,4 +14,5 @@
+ # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
+ 
+ SET(BLACKHOLE_SOURCES  ha_blackhole.cc ha_blackhole.h)
+-MYSQL_ADD_PLUGIN(blackhole ${BLACKHOLE_SOURCES} STORAGE_ENGINE)
++MYSQL_ADD_PLUGIN(blackhole ${BLACKHOLE_SOURCES} STORAGE_ENGINE
++                 DTRACE_INSTRUMENTED)

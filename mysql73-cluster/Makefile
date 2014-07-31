@@ -1,11 +1,10 @@
 # $NetBSD$
 
-DISTNAME=	mysql-cluster-gpl-7.3.4
+DISTNAME=	mysql-cluster-gpl-7.3.6
 CATEGORIES=	databases
 MASTER_SITES=	${MASTER_SITE_MYSQL:=MySQL-Cluster-7.3/}
 
 PKGNAME=	${DISTNAME:S/-gpl//}
-PKGREVISION=	1
 COMMENT=	MySQL Cluster Server 7.3
 
 MAINTAINER=	pkgsrc@joyent.com

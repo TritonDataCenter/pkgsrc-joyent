@@ -1,0 +1,15 @@
+$NetBSD$
+
+Fix for DTrace on newer platforms, taken from
+
+https://bugs.launchpad.net/percona-server/+bug/1196460
+--- mysys_ssl/CMakeLists.txt.orig	2014-07-02 09:22:14.000000000 +0000
++++ mysys_ssl/CMakeLists.txt
+@@ -60,7 +60,6 @@ SET(MYSYS_SSL_SOURCES
+ 
+ ADD_CONVENIENCE_LIBRARY(mysys_ssl ${MYSYS_SSL_SOURCES})
+ TARGET_LINK_LIBRARIES(mysys_ssl dbug strings ${SSL_LIBRARIES} ${ZLIB_LIBRARY})
+-DTRACE_INSTRUMENT(mysys_ssl)
+ 
+ INSTALL_DEBUG_SYMBOLS(mysys_ssl)
+ IF(MSVC)

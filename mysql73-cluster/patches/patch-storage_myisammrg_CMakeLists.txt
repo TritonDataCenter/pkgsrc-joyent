@@ -1,0 +1,14 @@
+$NetBSD$
+
+Fix for DTrace on newer platforms, taken from
+
+https://bugs.launchpad.net/percona-server/+bug/1196460
+--- storage/myisammrg/CMakeLists.txt.orig	2014-07-02 09:22:13.000000000 +0000
++++ storage/myisammrg/CMakeLists.txt
+@@ -20,4 +20,5 @@ SET(MYISAMMRG_SOURCES  myrg_close.c myrg
+ 				myrg_rprev.c myrg_rrnd.c myrg_rsame.c myrg_static.c myrg_update.c
+ 				myrg_write.c myrg_records.c)
+ 
+-MYSQL_ADD_PLUGIN(myisammrg ${MYISAMMRG_SOURCES} STORAGE_ENGINE MANDATORY RECOMPILE_FOR_EMBEDDED)
++MYSQL_ADD_PLUGIN(myisammrg ${MYISAMMRG_SOURCES} STORAGE_ENGINE MANDATORY
++                 RECOMPILE_FOR_EMBEDDED DTRACE_INSTRUMENTED)

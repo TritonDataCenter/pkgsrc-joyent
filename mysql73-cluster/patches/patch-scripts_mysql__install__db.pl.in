@@ -2,14 +2,14 @@ $NetBSD$
 
 Correct location to my.cnf
 
---- scripts/mysql_install_db.pl.in.orig	2014-01-23 13:42:51.000000000 +0000
+--- scripts/mysql_install_db.pl.in.orig	2014-07-02 09:22:14.000000000 +0000
 +++ scripts/mysql_install_db.pl.in
-@@ -428,7 +428,7 @@ my $copy_cfg_file;
- # This will be the default config file
- # ----------------------------------------------------------------------
+@@ -460,7 +460,7 @@ my $copy_cfg_file;
  
--$config_file= "$basedir/my.cnf";
-+$config_file= "@PKG_SYSCONFDIR@/my.cnf";
+ my $cnfext = ( $^O =~ m/^(MSWin32|cygwin)$/ ) ? "ini" : "cnf";
  
- my $cfg_template= find_in_basedir($opt,"file","my-default.cnf",
- 				  "share","share/mysql","support-files");
+-$config_file= "$basedir/my.$cnfext";
++$config_file= "@PKG_SYSCONFDIR@/my.$cnfext";
+ 
+ my $cfg_template= find_in_basedir($opt,"file","my-default.$cnfext",
+ 				  ".", "share","share/mysql","support-files");

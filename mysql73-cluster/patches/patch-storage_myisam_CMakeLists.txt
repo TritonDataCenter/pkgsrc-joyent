@@ -1,0 +1,17 @@
+$NetBSD$
+
+Fix for DTrace on newer platforms, taken from
+
+https://bugs.launchpad.net/percona-server/+bug/1196460
+--- storage/myisam/CMakeLists.txt.orig	2014-07-02 09:22:13.000000000 +0000
++++ storage/myisam/CMakeLists.txt
+@@ -30,7 +30,8 @@ SET(MYISAM_SOURCES  ft_boolean_search.c
+ MYSQL_ADD_PLUGIN(myisam ${MYISAM_SOURCES} 
+   STORAGE_ENGINE 
+   MANDATORY 
+-  RECOMPILE_FOR_EMBEDDED)
++  RECOMPILE_FOR_EMBEDDED
++  DTRACE_INSTRUMENTED)
+ 
+ TARGET_LINK_LIBRARIES(myisam mysys)
+ 

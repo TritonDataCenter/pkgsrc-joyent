@@ -1,7 +1,19 @@
 $NetBSD$
 
-SHA1 (mysql-cluster-gpl-7.3.4.tar.gz) = 01003903da6802885bc98565ebe07f76714488fe
-RMD160 (mysql-cluster-gpl-7.3.4.tar.gz) = c6966306952681ecc0657bdbd9e8e8b7e246bfad
-Size (mysql-cluster-gpl-7.3.4.tar.gz) = 41906668 bytes
-SHA1 (patch-scripts_mysql__install__db.pl.in) = fe608b9cefe9c1f19603100b598fa4e71dc1f746
+SHA1 (mysql-cluster-gpl-7.3.6.tar.gz) = a1b97b3da184b416f48ec12c614c592c00070c50
+RMD160 (mysql-cluster-gpl-7.3.6.tar.gz) = eb8639d398b07bff4a2201ed47c25cab34a4897e
+Size (mysql-cluster-gpl-7.3.6.tar.gz) = 42119293 bytes
+SHA1 (patch-CMakeLists.txt) = fabc427d8e7974cb8af1ce057f994b1436628443
+SHA1 (patch-cmake_dtrace.cmake) = 3df1213e41eabf8006390b3e27250063efb2879d
+SHA1 (patch-cmake_plugin.cmake) = 1be952a33471d79660521ecc52477d051fa1a586
+SHA1 (patch-mysys__ssl_CMakeLists.txt) = f88dc14c3f69042c6eeeadc7d6135db98296d768
+SHA1 (patch-scripts_mysql__install__db.pl.in) = 7a45264301177b83cede2457f67e8078dc36a6ce
+SHA1 (patch-storage_archive_CMakeLists.txt) = 7cabac32bd500e23a7c2ecaaff2d9fe86b1e8c80
+SHA1 (patch-storage_blackhole_CMakeLists.txt) = 7c6813962c0f34632b2a2e0848ae9d5acd0bd960
+SHA1 (patch-storage_csv_CMakeLists.txt) = 8ad8aeaa97fb46ffdcbcd527363b58d1e6c40a61
+SHA1 (patch-storage_example_CMakeLists.txt) = 033623da7dbffa593ad936ea19257bdf1230ed3f
+SHA1 (patch-storage_federated_CMakeLists.txt) = ec0f0270f3187aef00bbc4f176b5414fdef7be2d
+SHA1 (patch-storage_heap_CMakeLists.txt) = edf76caae68d4eebe32488d4af63e1b9aa49ccfd
+SHA1 (patch-storage_myisam_CMakeLists.txt) = 134bd24e2294930aae259a57b48087ae3d21e6b2
+SHA1 (patch-storage_myisammrg_CMakeLists.txt) = eef7cfb3d8e27295d6bd1a5c93fb65aa19be8730
 SHA1 (patch-storage_ndb_mcc_frontend_dojo_dojox_mobile_build_build.sh) = a604b9f689552c80dfc3240f7183ea0fd6a898e6

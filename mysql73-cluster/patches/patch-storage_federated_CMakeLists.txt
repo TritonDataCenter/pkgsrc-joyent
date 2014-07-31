@@ -1,0 +1,14 @@
+$NetBSD$
+
+Fix for DTrace on newer platforms, taken from
+
+https://bugs.launchpad.net/percona-server/+bug/1196460
+--- storage/federated/CMakeLists.txt.orig	2014-07-02 09:22:13.000000000 +0000
++++ storage/federated/CMakeLists.txt
+@@ -21,4 +21,5 @@ IF(NOT WITH_FEDERATED AND NOT WITH_FEDER
+  # mysqld and are optimized away by the linker.
+  SET(FEDERATED_SOURCES ${FEDERATED_SOURCES} ${CMAKE_SOURCE_DIR}/mysys/string.c)
+ ENDIF()
+-MYSQL_ADD_PLUGIN(federated ${FEDERATED_SOURCES} STORAGE_ENGINE)
++MYSQL_ADD_PLUGIN(federated ${FEDERATED_SOURCES} STORAGE_ENGINE
++                 DTRACE_INSTRUMENTED)
