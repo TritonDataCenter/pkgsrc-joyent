@@ -36,3 +36,20 @@ Fix default paths.
  
  
  #################################### Plugin ###################################
+@@ -318,7 +318,7 @@
+ #
+ # 1. Disable multicast discovery (enabled by default):
+ #
+-# discovery.zen.ping.multicast.enabled: false
++discovery.zen.ping.multicast.enabled: false
+ #
+ # 2. Configure an initial list of master nodes in the cluster
+ #    to perform discovery when new nodes (master or data) are started:
+@@ -375,3 +375,7 @@
+ #monitor.jvm.gc.old.warn: 10s
+ #monitor.jvm.gc.old.info: 5s
+ #monitor.jvm.gc.old.debug: 2s
++
++# Disable dynamic script
++# http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2014-3120
++script.disable_dynamic: true

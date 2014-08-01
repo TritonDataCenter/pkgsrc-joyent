@@ -1,6 +1,6 @@
 # $NetBSD$
 
-DISTNAME=	elasticsearch-1.1.1
+DISTNAME=	elasticsearch-1.1.2
 CATEGORIES=	textproc
 MASTER_SITES=	http://download.elasticsearch.org/elasticsearch/elasticsearch/
 
@@ -109,7 +109,7 @@ do-install:
 .endfor
 	${INSTALL_DATA} ${WRKSRC}/lib/sigar/sigar-1.6.4.jar	\
 	  ${DESTDIR}${PREFIX}/lib/elasticsearch/sigar/
-	${INSTALL_DATA} ${WRKSRC}/lib/sigar/${SIGAR_LIB}	\
+	${INSTALL_LIB} ${WRKSRC}/lib/sigar/${SIGAR_LIB}	\
 	  ${DESTDIR}${PREFIX}/lib/elasticsearch/sigar/
 	${INSTALL_DATA} ${WRKSRC}/config/elasticsearch.yml 	\
 	  ${DESTDIR}${PREFIX}/share/examples/elasticsearch/
