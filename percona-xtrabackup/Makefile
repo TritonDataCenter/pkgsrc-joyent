@@ -1,15 +1,23 @@
 # $NetBSD$
 #
 
-DISTNAME=	percona-xtrabackup-2.1.7
-PKGNAME=	${MYSQL_PKG_PREFIX}-xtrabackup-2.1.7
-PKGREVISION=	1
+DISTNAME=	percona-xtrabackup-2.2.3
+PKGNAME=	${MYSQL_PKG_PREFIX}-${DISTNAME:S/percona-//}
 CATEGORIES=	databases
-MASTER_SITES=	http://www.percona.com/redir/downloads/XtraBackup/LATEST/source/
+MASTER_SITES=	http://www.percona.com/redir/downloads/XtraBackup/LATEST/source/tarball/
 
-MAINTAINER=	pkgsrc-users@netbsd.org
+MAINTAINER=	pkgsrc-users@NetBSD.org
 HOMEPAGE=	http://www.percona.com/software/percona-xtrabackup
 COMMENT=	Percona XtraBackup
+LICENSE=	gnu-gpl-v2 AND modified-bsd
+
+BUILD_DEPENDS+=	patch-[0-9]*:../../devel/patch
+DEPENDS+=	qpress-[0-9]*:../../joyent/qpress
+DEPENDS+=	p5-DBD-${MYSQL_PKG_PREFIX}-[0-9]*:../../databases/p5-DBD-mysql
+
+LIBTAR=			libtar-1.2.11
+DISTFILES=		${DISTNAME}${EXTRACT_SUFX} ${LIBTAR}.tar.gz
+SITES.${LIBTAR}.tar.gz=	ftp://ftp.feep.net/pub/software/libtar
 
 .include "../../mk/mysql.buildlink3.mk"
 
@@ -17,67 +25,44 @@ COMMENT=	Percona XtraBackup
 MYSQL_PKG_PREFIX?=	percona55
 
 .if empty(MYSQL_PKG_PREFIX:Mpercona*)
-BROKEN=		Only supports Percona packages
+BROKEN=			Only supports Percona packages
 .endif
 
-PERCONA_VERSION=	${MYSQL_PKG_PREFIX:C/percona//:C/-cluster.*//}
-PLIST_SUBST+=		PERCONA_VERSION=${PERCONA_VERSION:Q}
-
-LIBTAR=		libtar-1.2.11
-DISTFILES=	${DISTNAME}${EXTRACT_SUFX} ${LIBTAR}.tar.gz
-SITES.${LIBTAR}.tar.gz=	ftp://ftp.feep.net/pub/software/libtar
-
-USE_GCC_RUNTIME=yes
-USE_LANGUAGES=	c c++
-USE_TOOLS+=	bison cmake gmake perl:run
-
-BUILD_DEPENDS+=	patch-[0-9]*:../../devel/patch
-
-DEPENDS+=	qpress-[0-9]*:../../joyent/qpress
-
-CONFIGURE_DIRS=	${WRKDIR}/${LIBTAR}
-GNU_CONFIGURE=	YES
-
-REPLACE_PERL=	innobackupex.pl
+USE_CMAKE=		yes
+USE_GCC_RUNTIME=	yes
+USE_LANGUAGES=		c c++
+USE_TOOLS+=		bison cmake gmake patch perl:run
 
 # nbpatch is unable to parse the patch files.
 TOOLS_PLATFORM.patch=	${LOCALBASE}/bin/gpatch
 
-CFLAGS+=	-D_POSIX_PTHREAD_SEMANTICS
-LDFLAGS.SunOS+=	-lsocket -lnsl
-MAKE_ENV+=	AUTO_DOWNLOAD="yes"
+CMAKE_ARGS+=		-DENABLE_OPENSSL=ON -DWITH_SSL=system
+CMAKE_ARGS+=		-DBUILD_CONFIG=xtrabackup_release
+CMAKE_ARGS+=		-DINSTALL_MYSQLTESTDIR=percona-xtrabackup-test
 
-INSTALLATION_DIRS+=	bin ${PKGMANDIR}/man1
+CFLAGS+=		-D_POSIX_PTHREAD_SEMANTICS
+LDFLAGS.SunOS+=		-lsocket -lnsl
 
-SUBST_CLASSES+=		ssl
-SUBST_STAGE.ssl=	pre-configure
-SUBST_FILES.ssl=	utils/build.sh
-SUBST_VARS.ssl=		BUILDLINK_PREFIX.openssl
+REPLACE_PERL=			storage/innobase/xtrabackup/innobackupex.pl
+CHECK_INTERPRETER_SKIP+=	percona-xtrabackup-test/*
 
 post-patch:
 	cat ${FILESDIR}/tar4ibd_libtar-1.2.11.patch \
 	    | (cd ${WRKDIR}/${LIBTAR}; ${PATCH} -p1)
 
-# For xtradb56 it builds against mysql-5.6 which has incompatibilities
-# with the percona-5.6 includes which are installed.
+post-configure:
+	cd ${WRKDIR}/${LIBTAR} && \
+	  ${SETENV} ${CONFIGURE_ENV} ${CONFIG_SHELL} ${CONFIGURE_SCRIPT} ${CONFIGURE_ARGS}
+
 pre-build:
 	${RM} -rf ${BUILDLINK_DIR}/include/mysql
+	cd ${WRKDIR}/${LIBTAR} && ${BUILD_MAKE_CMD} ${BUILD_TARGET}
 
-post-build:
-	${RUN} cd ${WRKSRC} && \
-	    ${MAKE_ENV} ./utils/build.sh xtradb${PERCONA_VERSION}
-
-do-install:
-	${INSTALL_SCRIPT} ${WRKSRC}/innobackupex ${DESTDIR}${PREFIX}/bin
-	${INSTALL_PROGRAM} ${WRKSRC}/src/xbstream ${DESTDIR}${PREFIX}/bin
-	${INSTALL_PROGRAM} ${WRKSRC}/src/xtrabackup_${PERCONA_VERSION} ${DESTDIR}${PREFIX}/bin
-	${RM} -f ${DESTDIR}${PREFIX}/bin/xtrabackup
-	${LN} -s xtrabackup_${PERCONA_VERSION} ${DESTDIR}${PREFIX}/bin/xtrabackup
+post-install:
 	${INSTALL_PROGRAM} ${WRKDIR}/${LIBTAR}/libtar/tar4ibd ${DESTDIR}${PREFIX}/bin
-	# Requires sphinx-build and doesn't actually build right now
-	#${INSTALL_MAN} ${WRKSRC}/doc/xtrabackup.1 ${DESTDIR}${PREFIX}/${PKGMANDIR}/man1
-	
+
 .include "../../archivers/xz/buildlink3.mk"
+.include "../../devel/zlib/buildlink3.mk"
 .include "../../security/libgcrypt/buildlink3.mk"
 .include "../../security/openssl/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"
