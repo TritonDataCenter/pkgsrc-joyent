@@ -22,6 +22,16 @@ PLIST_VARS+=		embedded auth_socket
 PLIST.auth_socket=	yes
 .endif
 
+.if !empty(PKG_OPTIONS:Membedded-server)
+CMAKE_ARGS+=            -DWITH_EMBEDDED_SERVER=ON
+PLIST.embedded=         yes
+.else
+CMAKE_ARGS+=            -DWITH_EMBEDDED_SERVER=OFF
+# We only need readline to placate the configure script if we don't build
+# the embedded server as it is the only binary linked against "readline".
+BUILDLINK_DEPMETHOD.readline=   build
+.endif
+
 PTHREAD_OPTS+=		require
 
 PKG_GROUPS=		${MYSQL_GROUP}

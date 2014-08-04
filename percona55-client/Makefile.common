@@ -85,15 +85,6 @@ CMAKE_ARGS+=		-DWITH_INNOBASE_STORAGE_ENGINE=ON
 CMAKE_ARGS+=		-DWITH_PARTITION_STORAGE_ENGINE=ON
 CMAKE_ARGS+=		-DWITH_PERFSCHEMA_STORAGE_ENGINE=ON
 
-.if !empty(PKG_OPTIONS:Membedded-server)
-CMAKE_ARGS+=            -DWITH_EMBEDDED_SERVER=ON
-PLIST.embedded=         yes
-.else
-# We only need readline to placate the configure script if we don't build
-# the embedded server as it is the only binary linked against "readline".
-BUILDLINK_DEPMETHOD.readline=   build
-.endif
-
 # Ensure dtrace builds the correct ABI
 .if !empty(ABI:M32)
 CMAKE_ARGS+=		-DDTRACE_FLAGS="-32"
