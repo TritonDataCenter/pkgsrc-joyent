@@ -1,0 +1,6 @@
+$NetBSD$
+
+SHA1 (therubyracer-0.12.1.gem) = 3287eba58dcd0c6bc8c2b7fa5f8b23f1db95803c
+RMD160 (therubyracer-0.12.1.gem) = 4bf46c051b20bc66c5412a6070f1517b6efdfe4b
+Size (therubyracer-0.12.1.gem) = 58880 bytes
+SHA1 (patch-ext_v8_extconf.rb) = e5f61361f67c63d0f4969a06280f54e6175b6ba4
