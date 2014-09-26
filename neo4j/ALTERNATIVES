@@ -1,0 +1,2 @@
+bin/neo4j @PREFIX@/neo4j/bin/neo4j
+bin/neo4j-shell @PREFIX@/neo4j/bin/neo4j-shell
