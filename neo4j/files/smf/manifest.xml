@@ -10,7 +10,7 @@
     <dependency name="filesystem" grouping="require_all" restart_on="error" type="service">
       <service_fmri value="svc:/system/filesystem/local" />
     </dependency>
-    <method_context working_directory="@NEO4J_DATA@">
+    <method_context working_directory="@NEO4J_DATA@" project="neo4j">
       <method_credential user="@NEO4J_USER@" group="@NEO4J_GROUP@" />
       <method_environment>
         <envvar name='JAVA_HOME' value='@PKG_JAVA_HOME@' />
