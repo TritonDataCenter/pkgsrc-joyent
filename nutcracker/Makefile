@@ -1,6 +1,7 @@
 # $NetBSD$
 
 DISTNAME=	nutcracker-0.3.0
+PKGREVISION=	1
 CATEGORIES=	net
 MASTER_SITES=	http://twemproxy.googlecode.com/files/
 
@@ -37,10 +38,13 @@ SUBST_MESSAGE.path=	Fixing default paths
 SUBST_FILES.path=	src/nc.c
 SUBST_VARS.path=	PKG_SYSCONFDIR NUTC_LOG_DIR
 
+CPPFLAGS.SunOS+=	-D_REENTRANT
+
 INSTALLATION_DIRS+=	sbin share/examples/nutcracker
 
 post-install:
 	${INSTALL_DATA} ${WRKSRC}/conf/nutcracker.yml \
 	  ${DESTDIR}${PREFIX}/share/examples/nutcracker/
 
+.include "../../mk/pthread.buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"
