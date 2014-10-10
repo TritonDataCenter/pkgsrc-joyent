@@ -23,7 +23,7 @@ PKG_DESTDIR_SUPPORT=	destdir
 
 .include "../../mk/bsd.prefs.mk"
 
-CASSANDRA_VER=	2.0.6
+CASSANDRA_VER=	2.0.10
 CASSANDRA_HOME=	${PREFIX}/share/cassandra
 EGDIR=		${PREFIX}/share/examples/cassandra
 DOCDIR=		${PREFIX}/share/doc/cassandra
@@ -60,7 +60,7 @@ EGFILES=		cassandra-env.sh cassandra-rackdc.properties	\
 			cassandra-topology.yaml 			\
 			metrics-reporter-config-sample.yaml
 
-DOCFILES=		CHANGES LICENSE NEWS NOTICE README
+DOCFILES=		CHANGES LICENSE NEWS NOTICE
 
 .for f in ${EGFILES}
 CONF_FILES_PERMS+=	${EGDIR}/${f} ${PKG_SYSCONFDIR}/${f} \
