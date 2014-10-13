@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-DISTNAME=	enstratus-agent-smartos-v17.5
+DISTNAME=	enstratus-agent-smartos-v17.7
 PKGNAME=	${DISTNAME:S/smartos-v//}
 CATEGORIES=	sysutils
 MASTER_SITES=	http://es-download.s3.amazonaws.com/
