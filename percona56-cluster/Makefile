@@ -22,6 +22,7 @@ SITES.${SPHINX}.tar.gz=	http://sphinxsearch.com/files/
 USE_CMAKE=		yes
 USE_GNU_READLINE=	yes
 USE_LANGUAGES=		c c++
+USE_MULTIARCH=		bin lib
 USE_TOOLS+=		bash bison gmake perl:run python:run
 
 INFO_FILES=		yes
@@ -207,7 +208,7 @@ SUBST_SED.scr+=		-e "s,/bin/sh,${RCD_SCRIPTS_SHELL},g"
 SUBST_MESSAGE.scr=	Fixing scripts.
 
 post-extract:
-	${MV} ${WRKDIR}/${SPHINX}/mysqlse ${WRKSRC}/storage/sphinx
+	${CP} -R ${WRKDIR}/${SPHINX}/mysqlse ${WRKSRC}/storage/sphinx
 
 # Replace manual pages which only include other ones with a symbolic link
 # if manual compression is activated. The manual pages won't work otherwise.
