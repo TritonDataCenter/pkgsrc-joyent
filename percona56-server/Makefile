@@ -92,7 +92,7 @@ CXXFLAGS+=		-D_POSIX_C_SOURCE=199506L -D__EXTENSIONS__
 .endif
 
 post-extract:
-	${MV} ${WRKDIR}/${SPHINX}/mysqlse ${WRKSRC}/storage/sphinx
+	${CP} -R ${WRKDIR}/${SPHINX}/mysqlse ${WRKSRC}/storage/sphinx
 
 post-install:
 	${SED} ${CNFSUBST} < ${FILESDIR}/my-joyent.cnf.sh \
