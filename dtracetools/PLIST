@@ -101,6 +101,7 @@ bin/dtrace-rb_objcpu.d
 bin/dtrace-rb_objnew.d
 bin/dtrace-rb_syscalls.d
 bin/dtrace-rb_who.d
+bin/dtrace-redis_latency.d
 bin/dtrace-rwbypid.d
 bin/dtrace-setuids.d
 bin/dtrace-sh_calldist.d
