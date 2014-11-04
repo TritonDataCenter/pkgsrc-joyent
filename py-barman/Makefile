@@ -15,6 +15,7 @@ DEPENDS+=	${PYPKGPREFIX}-argh>=0.21.2:../../joyent/py-argh
 DEPENDS+=	${PYPKGPREFIX}-psycopg2-[0-9]*:../../databases/py-psycopg2
 DEPENDS+=	rsync-[0-9]*:../../net/rsync
 
+PYTHON_VERSIONS_INCOMPATIBLE=	26 # py-argcomplete
 PYTHON_VERSIONED_DEPENDENCIES=	dateutil
 
 USE_LANGUAGES=	# none
