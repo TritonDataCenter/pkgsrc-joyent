@@ -41,9 +41,13 @@ bin/dtrace-mongocmd.d
 bin/dtrace-mongocmdlatency.d
 bin/dtrace-mongocmdslow.d
 bin/dtrace-mongocmdslow2.d
+bin/dtrace-mysql_locks.d
 bin/dtrace-mysql_pid_avg.d
 bin/dtrace-mysql_pid_latency.d
 bin/dtrace-mysql_pid_slow.d
+bin/dtrace-mysql_query_filesorts.d
+bin/dtrace-mysql_query_monitor.d
+bin/dtrace-mysql_querytype_counts.d
 bin/dtrace-nginx_reqsec.d
 bin/dtrace-php_calldist.d
 bin/dtrace-php_calltime.d
