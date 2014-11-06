@@ -1,9 +1,10 @@
 # $NetBSD: Makefile.common,v 1.8 2013/04/13 07:55:06 ghen Exp $
 
-PDNS_VERSION=		3.3.1
+PDNS_VERSION=		3.4.1
 DISTNAME=		pdns-${PDNS_VERSION}
 CATEGORIES=		net
 MASTER_SITES=		http://downloads.powerdns.com/releases/
+EXTRACT_SUFX=		.tar.bz2
 
 MAINTAINER=		pkgsrc-users@NetBSD.org
 HOMEPAGE=		http://www.powerdns.com/
@@ -16,17 +17,15 @@ GNU_CONFIGURE=		yes
 
 GNU_CONFIGURE_LIBSUBDIR=pdns
 
-CONFIGURE_ARGS+=	--enable-botan1.8
-CONFIGURE_ARGS+=	--enable-cryptopp
 CONFIGURE_ARGS+=	--enable-pdns_server
 CONFIGURE_ARGS+=	--with-system-polarssl
 CONFIGURE_ARGS+=	--without-lua
+
+BUILDLINK_TRANSFORM+=	rm:-fstack-protector
 
 .include "../../devel/boost-headers/buildlink3.mk"
 .include "../../devel/boost-libs/buildlink3.mk"
 .include "../../devel/gmp/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
-.include "../../security/botan/buildlink3.mk"
-.include "../../security/crypto++/buildlink3.mk"
 .include "../../security/polarssl/buildlink3.mk"
 .include "../../mk/pthread.buildlink3.mk"

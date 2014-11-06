@@ -1,12 +1,12 @@
 $NetBSD: patch-pdns_pdns_recursor.cc,v 1.2 2013/05/09 20:06:53 joerg Exp $
 
 Resolve boost symbol ambiguity.
---- pdns/pdns_recursor.cc.orig	2013-12-17 13:47:33.000000000 +0000
+--- pdns/pdns_recursor.cc.orig	2014-10-30 10:18:22.000000000 +0000
 +++ pdns/pdns_recursor.cc
-@@ -77,9 +77,9 @@ __thread unsigned int t_id;
- unsigned int g_maxTCPPerClient;
- unsigned int g_networkTimeoutMsec;
+@@ -80,9 +80,9 @@ uint64_t g_latencyStatSize;
  bool g_logCommonErrors;
+ bool g_anyToTcp;
+ uint16_t g_udpTruncationThreshold;
 -__thread shared_ptr<RecursorLua>* t_pdl;
 +__thread boost::shared_ptr<RecursorLua>* t_pdl;
  __thread RemoteKeeper* t_remotes;
@@ -15,7 +15,7 @@ Resolve boost symbol ambiguity.
  
  RecursorControlChannel s_rcc; // only active in thread 0
  
-@@ -149,7 +149,7 @@ struct DNSComboWriter {
+@@ -152,7 +152,7 @@ struct DNSComboWriter {
    ComboAddress d_remote;
    bool d_tcp;
    int d_socket;
@@ -24,7 +24,7 @@ Resolve boost symbol ambiguity.
  };
  
  
-@@ -587,7 +587,7 @@ void startDoResolve(void *p)
+@@ -606,7 +606,7 @@ void startDoResolve(void *p)
              IpToU32(i->content, &ip);
              pw.xfr32BitInt(htonl(ip));
            } else {
@@ -33,7 +33,7 @@ Resolve boost symbol ambiguity.
              drc->toPacket(pw);
            }
            if(pw.size() > maxanswersize) {
-@@ -726,7 +726,7 @@ void makeControlChannelSocket(int proces
+@@ -748,7 +748,7 @@ void makeControlChannelSocket(int proces
  
  void handleRunningTCPQuestion(int fd, FDMultiplexer::funcparam_t& var)
  {
@@ -42,7 +42,7 @@ Resolve boost symbol ambiguity.
  
    if(conn->state==TCPConnection::BYTE0) {
      int bytes=recv(conn->getFD(), conn->data, 2, 0);
-@@ -825,7 +825,7 @@ void handleNewTCPQuestion(int fd, FDMult
+@@ -852,7 +852,7 @@ void handleNewTCPQuestion(int fd, FDMult
      }
      
      Utility::setNonBlocking(newsock);
@@ -51,7 +51,7 @@ Resolve boost symbol ambiguity.
      tc->state=TCPConnection::BYTE0;
      
      t_fdm->addReadFD(tc->getFD(), handleRunningTCPQuestion, tc);
-@@ -1539,7 +1539,7 @@ string* doReloadLuaScript()
+@@ -1582,7 +1582,7 @@ string* doReloadLuaScript()
        return new string("unloaded\n");
      }
      else {
@@ -60,7 +60,7 @@ Resolve boost symbol ambiguity.
      }
    }
    catch(std::exception& e) {
-@@ -1567,7 +1567,7 @@ try
+@@ -1610,7 +1610,7 @@ try
      return new string("unset\n");
    }
    else {
@@ -69,7 +69,7 @@ Resolve boost symbol ambiguity.
      return new string("ok\n");
    }
  }
-@@ -1851,11 +1851,11 @@ try
+@@ -1939,11 +1939,11 @@ try
    
    L<<Logger::Warning<<"Done priming cache with root hints"<<endl;
      
@@ -83,7 +83,7 @@ Resolve boost symbol ambiguity.
        L<<Logger::Warning<<"Loaded 'lua' script from '"<<::arg()["lua-dns-script"]<<"'"<<endl;
      }
      
-@@ -1865,7 +1865,7 @@ try
+@@ -1953,7 +1953,7 @@ try
      exit(99);
    }
    
@@ -92,7 +92,7 @@ Resolve boost symbol ambiguity.
    
    
    t_remotes = new RemoteKeeper();
-@@ -1915,7 +1915,7 @@ try
+@@ -2011,7 +2011,7 @@ try
        expired_t expired=t_fdm->getTimeouts(g_now);
          
        for(expired_t::iterator i=expired.begin() ; i != expired.end(); ++i) {

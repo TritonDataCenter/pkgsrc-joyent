@@ -1,9 +1,9 @@
 $NetBSD: patch-modules_pipebackend_pipebackend.hh,v 1.1 2013/05/09 20:06:53 joerg Exp $
 
 Resolve boost symbol ambiguity.
---- modules/pipebackend/pipebackend.hh.orig	2013-04-26 19:54:34.000000000 +0000
+--- modules/pipebackend/pipebackend.hh.orig	2014-06-03 07:42:02.000000000 +0000
 +++ modules/pipebackend/pipebackend.hh
-@@ -43,7 +43,7 @@ public:
+@@ -44,7 +44,7 @@ public:
    static DNSBackend *maker();
    
  private:

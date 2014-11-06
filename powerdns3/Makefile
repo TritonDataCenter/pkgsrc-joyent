@@ -5,8 +5,10 @@
 PKGNAME=		${DISTNAME:S/pdns/powerdns/}
 COMMENT=		Modern, advanced and high performance nameserver
 
+.include "options.mk"
+
 CONFIGURE_ARGS+=	--with-modules="geo"
-CONFIGURE_ARGS+=	--with-dynmodules="pipe"
+CONFIGURE_ARGS+=	--with-dynmodules="${PDNS_MODULES}"
 
 RCD_SCRIPTS=		pdns
 
@@ -23,4 +25,5 @@ SUBST_SED.conf+=	-e 's,@PKG_SYSCONFDIR@,${PKG_SYSCONFDIR},'
 
 LDFLAGS.SunOS+=		-lsocket -lnsl
 
+.include "../../databases/sqlite3/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"
