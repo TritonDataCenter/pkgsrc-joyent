@@ -1,0 +1,16 @@
+$NetBSD$
+
+SHA1 (phantomjs-1.9.8-source.zip) = 3e120723b9796a1df4628232e6d149053c66d493
+RMD160 (phantomjs-1.9.8-source.zip) = 09ec849b7b9cd77e1717b756cd3b19e04ef01599
+Size (phantomjs-1.9.8-source.zip) = 40965044 bytes
+SHA1 (patch-src_3rdparty_webkit_Source_JavaScriptCore_wtf_MathExtras.h) = 47f145926f683ec8805c6fa584b23d2d44ad214f
+SHA1 (patch-src_3rdparty_webkit_Source_JavaScriptCore_wtf_StringImpl.h) = 8476c2aed4806d89614612670dd20dfbd784979d
+SHA1 (patch-src_3rdparty_webkit_Source_JavaScriptCore_wtf_Threading.h) = d2d9168fe3da74c014d11fea62518ba5b200db6b
+SHA1 (patch-src_mongoose_mongoose.pri) = ca28e9c782ace42f548ddf03a0fd72462c4e8279
+SHA1 (patch-src_phantomjs.pro) = 3c6194a02351228132d733028675a74127d3c3a1
+SHA1 (patch-src_qt_mkspecs_common_g++-unix.conf) = 908515c99f86bc61caede26124402741793ccfe0
+SHA1 (patch-src_qt_preconfig.sh) = 1565b257263f9f211bb58a1be9b1b4f9f974f6df
+SHA1 (patch-src_qt_src_3rdparty_webkit_Source_JavaScriptCore_heap_MachineStackMarker.cpp) = adc786fbb82d6060281d10a78958279292f6274e
+SHA1 (patch-src_qt_src_3rdparty_webkit_Source_JavaScriptCore_wtf_Platform.h) = aa3524563b86cb4ccf74016fc0e6dbd9dfa49ca6
+SHA1 (patch-src_qt_src_3rdparty_webkit_Source_WebKit_qt_WebCoreSupport_InspectorServerQt.cpp) = 1cc3544430d3e393520c4565a7448359fc77874c
+SHA1 (patch-src_qt_src_gui_kernel_kernel.pri) = f1a66e46b95fff9493a37cf8070be1f2b96a3f65
