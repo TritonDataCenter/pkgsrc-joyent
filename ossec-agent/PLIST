@@ -1,0 +1,21 @@
+@comment $NetBSD$
+ossec/active-response/bin/disable-account.sh
+ossec/active-response/bin/firewall-drop.sh
+ossec/active-response/bin/host-deny.sh
+ossec/active-response/bin/ip-customblock.sh
+ossec/active-response/bin/ipfw.sh
+ossec/active-response/bin/ipfw_mac.sh
+ossec/active-response/bin/ossec-tweeter.sh
+ossec/active-response/bin/pf.sh
+ossec/active-response/bin/restart-ossec.sh
+ossec/active-response/bin/route-null.sh
+ossec/bin/agent-auth
+ossec/bin/manage_agents
+ossec/bin/ossec-agentd
+ossec/bin/ossec-control
+ossec/bin/ossec-execd
+ossec/bin/ossec-logcollector
+ossec/bin/ossec-syscheckd
+ossec/bin/util.sh
+ossec/etc/internal_options.conf
+ossec/etc/ossec.conf.sample

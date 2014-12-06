@@ -1,0 +1,17 @@
+$NetBSD$
+
+Use pkgsrc zlib and lua.
+--- src/Makeall.orig	2014-09-09 02:03:23.000000000 +0000
++++ src/Makeall
+@@ -151,9 +151,9 @@ fi
+ # Getting values for each action
+ if [ "X${ARGV}" = "Xall" ]; then
+     DIRECTORIES="${LIBS} ${SOURCES} ${BINARIES}" 
+-    DOZLIB="x"
++#    DOZLIB="x"
+     DOCJSON="x"
+-    DO_LUA="x"
++#    DO_LUA="x"
+ elif [ "X${ARGV}" = "Xtest" ]; then
+     DIRECTORIES="${LIBS} ${SOURCES}"
+     DOZLIB="x"
