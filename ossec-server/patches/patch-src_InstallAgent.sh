@@ -112,15 +112,24 @@ We will handle users and ownership ourselves.
  
  ls /etc/localtime > /dev/null 2>&1
  if [ $? = 0 ]; then
-@@ -141,7 +77,7 @@ fi
+@@ -141,14 +77,14 @@ fi
  if [ "$UNAME" = "SunOS" ]; then
      mkdir -p ${DIR}/usr/share/lib/zoneinfo/
      chmod -R 555 ${DIR}/usr/
 -    cp -pr /usr/share/lib/zoneinfo/* ${DIR}/usr/share/lib/zoneinfo/
+-    chown -R root:${GROUP} ${DIR}/usr/
 +#    cp -pr /usr/share/lib/zoneinfo/* ${DIR}/usr/share/lib/zoneinfo/
-     chown -R root:${GROUP} ${DIR}/usr/
++#    chown -R root:${GROUP} ${DIR}/usr/
  fi    
  
+ ls /etc/TIMEZONE > /dev/null 2>&1
+ if [ $? = 0 ]; then
+     cp -p /etc/TIMEZONE ${DIR}/etc/;
+-    chown root:${GROUP} ${DIR}/etc/TIMEZONE
++#    chown root:${GROUP} ${DIR}/etc/TIMEZONE
+     chmod 555 ${DIR}/etc/TIMEZONE
+ fi
+             
 @@ -168,12 +104,12 @@ cp -pr ../etc/local_internal_options.con
  cp -pr ../etc/client.keys ${DIR}/etc/ > /dev/null 2>&1
  cp -pr agentlessd/scripts/* ${DIR}/agentless/
