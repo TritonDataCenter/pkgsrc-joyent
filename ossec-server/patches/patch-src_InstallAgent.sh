@@ -74,11 +74,13 @@ We will handle users and ownership ourselves.
  # Creating sub dirs
  for i in ${subdirs}; do
      ls ${DIR}/${i} > /dev/null 2>&1
-@@ -107,21 +43,21 @@ done
+@@ -106,22 +42,22 @@ for i in ${subdirs}; do
+ done
  
  # Default for all directories
- chmod -R 550 ${DIR}
+-chmod -R 550 ${DIR}
 -chown -R root:${GROUP} ${DIR}
++chmod -R 750 ${DIR}
 +#chown -R root:${GROUP} ${DIR}
  
  # To the ossec queue (default for agentd to read)
@@ -103,11 +105,13 @@ We will handle users and ownership ourselves.
  chmod -R 750 ${DIR}/queue/diff
  chmod 740 ${DIR}/queue/diff/* > /dev/null 2>&1
  
-@@ -130,7 +66,7 @@ chmod 740 ${DIR}/queue/diff/* > /dev/nul
+@@ -129,8 +65,8 @@ chmod 740 ${DIR}/queue/diff/* > /dev/nul
+ 
  
  # For the etc dir
- chmod 550 ${DIR}/etc
+-chmod 550 ${DIR}/etc
 -chown -R root:${GROUP} ${DIR}/etc
++chmod 750 ${DIR}/etc
 +#chown -R root:${GROUP} ${DIR}/etc
  
  ls /etc/localtime > /dev/null 2>&1
@@ -130,7 +134,7 @@ We will handle users and ownership ourselves.
      chmod 555 ${DIR}/etc/TIMEZONE
  fi
              
-@@ -168,12 +104,12 @@ cp -pr ../etc/local_internal_options.con
+@@ -168,14 +104,14 @@ cp -pr ../etc/local_internal_options.con
  cp -pr ../etc/client.keys ${DIR}/etc/ > /dev/null 2>&1
  cp -pr agentlessd/scripts/* ${DIR}/agentless/
  
@@ -147,8 +151,11 @@ We will handle users and ownership ourselves.
 +#chown ${USER}:${GROUP} ${DIR}/.ssh
 +#chown -R root:${GROUP} ${DIR}/etc/shared
  
- chmod 550 ${DIR}/etc
+-chmod 550 ${DIR}/etc
++chmod 750 ${DIR}/etc
  chmod 440 ${DIR}/etc/internal_options.conf
+ chmod 440 ${DIR}/etc/local_internal_options.conf > /dev/null 2>&1
+ chmod 440 ${DIR}/etc/client.keys > /dev/null 2>&1
 @@ -186,7 +122,7 @@ chmod 700 ${DIR}/.ssh
  
  # For the /var/run

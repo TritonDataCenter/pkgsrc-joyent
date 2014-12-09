@@ -82,12 +82,16 @@ We will handle users and ownership ourselves.
  # Creating sub directories
  for i in ${subdirs}; do
      ls ${DIR}/${i} > /dev/null 2>&1
-@@ -123,62 +51,62 @@ done
+@@ -121,64 +49,64 @@ for i in ${subdirs}; do
+ done
+ 
  # Default for all directories
- chmod 550 ${DIR}
- chmod 550 ${DIR}/*
+-chmod 550 ${DIR}
+-chmod 550 ${DIR}/*
 -chown root:${GROUP} ${DIR}
 -chown root:${GROUP} ${DIR}/*
++chmod 750 ${DIR}
++chmod 750 ${DIR}/*
 +#chown root:${GROUP} ${DIR}
 +#chown root:${GROUP} ${DIR}/*
  
@@ -185,13 +189,15 @@ We will handle users and ownership ourselves.
  fi    
  
 -chown -R root:${GROUP} ${DIR}/rules
+-chmod -R 550 ${DIR}/rules
 +#chown -R root:${GROUP} ${DIR}/rules
- chmod -R 550 ${DIR}/rules
++chmod -R 750 ${DIR}/rules
  
  
  # For the etc dir
- chmod 550 ${DIR}/etc
+-chmod 550 ${DIR}/etc
 -chown -R root:${GROUP} ${DIR}/etc
++chmod 750 ${DIR}/etc
 +#chown -R root:${GROUP} ${DIR}/etc
  ls /etc/localtime > /dev/null 2>&1
  if [ $? = 0 ]; then
@@ -204,8 +210,9 @@ We will handle users and ownership ourselves.
  # Solaris Needs some extra files
  if [ "$UNAME" = "SunOS" ]; then
      mkdir -p ${DIR}/usr/share/lib/zoneinfo/
-     chmod -R 550 ${DIR}/usr/
+-    chmod -R 550 ${DIR}/usr/
 -    cp -pr /usr/share/lib/zoneinfo/* ${DIR}/usr/share/lib/zoneinfo/
++    chmod -R 750 ${DIR}/usr/
 +#    cp -pr /usr/share/lib/zoneinfo/* ${DIR}/usr/share/lib/zoneinfo/
  fi
  
@@ -233,7 +240,7 @@ We will handle users and ownership ourselves.
  chmod +x ${DIR}/bin/util.sh
  
  # Local install chosen
-@@ -287,14 +217,14 @@ fi
+@@ -287,20 +217,20 @@ fi
    
  cp -pr ../etc/internal_options.conf ${DIR}/etc/
  cp -pr rootcheck/db/*.txt ${DIR}/etc/shared/
@@ -256,6 +263,13 @@ We will handle users and ownership ourselves.
  chmod 440 ${DIR}/etc/decoder.xml
  chmod 440 ${DIR}/etc/local_decoder.xml >/dev/null 2>&1
  chmod 440 ${DIR}/etc/internal_options.conf
+ chmod 440 ${DIR}/etc/local_internal_options.conf >/dev/null 2>&1
+ chmod 440 ${DIR}/etc/client.keys >/dev/null 2>&1
+-chmod 550 ${DIR}/etc
++chmod 750 ${DIR}/etc
+ chmod 770 ${DIR}/etc/shared
+ chmod 440 ${DIR}/etc/shared/*
+ chmod 550 ${DIR}/agentless/*
 @@ -314,9 +244,9 @@ cp -p ../active-response/*.sh ${DIR}/act
  cp -p ../active-response/firewalls/*.sh ${DIR}/active-response/bin/
  
