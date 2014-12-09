@@ -30,11 +30,16 @@ NO_BUILD=	yes
 
 .include "../../mk/bsd.prefs.mk"
 
-BUILD_DEFS+=	VARBASE MAGENTO_DIR MAGENTO_OWN MAGENTO_GRP
+BUILD_DEFS+=		VARBASE MAGENTO_DIR MAGENTO_OWN MAGENTO_GRP
 
-MAGENTO_DIR?=	${VARBASE}/magento
-MAGENTO_OWN?=	${APACHE_USER}
-MAGENTO_GRP?=	${APACHE_GROUP}
+MAGENTO_DIR?=		${VARBASE}/magento
+MAGENTO_OWN?=		${APACHE_USER}
+MAGENTO_GRP?=		${APACHE_GROUP}
+
+PKG_USERS_VARS+=	MAGENTO_OWN
+PKG_GROUPS_VARS+=	MAGENTO_GRP
+PKG_GROUPS=		${MAGENTO_GRP}
+PKG_USERS=		${MAGENTO_OWN}:${MAGENTO_GRP}
 
 MODULEFILES=	Cm_RedisSession.xml Mage_All.xml Mage_Api.xml Mage_Api2.xml	\
 		Mage_Authorizenet.xml Mage_Bundle.xml Mage_Captcha.xml		\
@@ -46,27 +51,29 @@ MODULEFILES=	Cm_RedisSession.xml Mage_All.xml Mage_Api.xml Mage_Api2.xml	\
 
 CONF_FILES_PERMS+=	share/examples/magento/local.xml.template		\
 			${PKG_SYSCONFDIR}/local.xml.template			\
-			${MAGENTO_OWN} ${MAGENTO_GRP} 0644
+			${MAGENTO_OWN} ${MAGENTO_GRP} 0640
 CONF_FILES_PERMS+=	share/examples/magento/config.xml 			\
 			${PKG_SYSCONFDIR}/config.xml				\
-			${MAGENTO_OWN} ${MAGENTO_GRP} 0644
+			${MAGENTO_OWN} ${MAGENTO_GRP} 0640
 .for file in ${MODULEFILES}
 CONF_FILES_PERMS+=	share/examples/magento/modules/${file}			\
 			${PKG_SYSCONFDIR}/modules/${file}			\
-			${MAGENTO_OWN} ${MAGENTO_GRP} 0644
+			${MAGENTO_OWN} ${MAGENTO_GRP} 0640
 .endfor
 
 FILES_SUBST+=		MAGENTO_OWN=${MAGENTO_OWN} MAGENTO_GRP=${MAGENTO_GRP}
 INSTALLATION_DIRS+=	share/examples/magento share/magento
 PKG_SYSCONFSUBDIR=	magento
-PKG_SYSCONFDIR_PERMS=	${MAGENTO_OWN} ${MAGENTO_GRP} 0755
-MAKE_DIRS_PERMS+=	${PKG_SYSCONFDIR}/modules ${MAGENTO_OWN} ${MAGENTO_GRP} 0755
-OWN_DIRS_PERMS+=	${MAGENTO_DIR} ${MAGENTO_OWN} ${MAGENTO_GRP} 0755
+PKG_SYSCONFDIR_PERMS=	${MAGENTO_OWN} ${MAGENTO_GRP} 0750
+MAKE_DIRS_PERMS+=	${PKG_SYSCONFDIR}/modules ${MAGENTO_OWN} ${MAGENTO_GRP} 0750
+OWN_DIRS_PERMS+=	${MAGENTO_DIR} ${MAGENTO_OWN} ${MAGENTO_GRP} 0750
 
 do-install:
 	cd ${WRKSRC} && pax -rw -p pp * ${DESTDIR}${PREFIX}/share/magento
 	cd ${DESTDIR}${PREFIX}/share/magento/app/etc && \
 		${MV} * ${DESTDIR}${PREFIX}/share/examples/magento
+	${CHMOD} -R g+w ${DESTDIR}${PREFIX}/share/magento/media
+	${CHMOD} -R g+w ${DESTDIR}${PREFIX}/share/examples/magento
 	${RM} -rf ${DESTDIR}${PREFIX}/share/magento/app/etc
 	${RM} -rf ${DESTDIR}${PREFIX}/share/magento/var
 	${LN} -sf ${PKG_SYSCONFDIR} ${DESTDIR}${PREFIX}/share/magento/app/etc
