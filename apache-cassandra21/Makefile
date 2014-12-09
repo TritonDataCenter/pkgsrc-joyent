@@ -18,7 +18,7 @@ NO_BUILD=	yes
 USE_LANGUAGES=	# none
 USE_JAVA=	run
 USE_JAVA2=	6
-USE_TOOLS+=	pax
+USE_TOOLS+=	bash:run pax
 
 PKG_DESTDIR_SUPPORT=	destdir
 
@@ -83,6 +83,8 @@ INSTALLATION_DIRS+=	${CASSANDRA_HOME} ${CASSANDRA_HOME}/bin ${EGDIR} ${DOCDIR}
 CHECK_INTERPRETER_SKIP+=share/cassandra/interface/cassandra.thrift
 CHECK_INTERPRETER_SKIP+=share/cassandra/pylib/setup.py
 CHECK_INTERPRETER_SKIP+=share/cassandra/tools/bin/token-generator
+
+REPLACE_BASH+=		bin/cassandra
 
 post-extract:
 	${RM} -f ${WRKSRC}/lib/snappy-java-*.jar
