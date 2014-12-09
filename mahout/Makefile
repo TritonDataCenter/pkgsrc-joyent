@@ -1,10 +1,10 @@
 # $NetBSD$
 #
 
-DISTNAME=	mahout-distribution-0.7-src
-PKGNAME=	mahout-0.7
+DISTNAME=	mahout-distribution-0.9-src
+PKGNAME=	mahout-0.9
 CATEGORIES=	devel
-MASTER_SITES=	http://www.us.apache.org/dist/mahout/0.7/
+MASTER_SITES=	${MASTER_SITE_APACHE:=mahout/${PKGVERSION_NOREV}/}
 
 MAINTAINER=	filip@joyent.com
 HOMEPAGE=	http://mahout.apache.org/

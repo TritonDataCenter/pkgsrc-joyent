@@ -4,13 +4,14 @@
 DISTNAME=	apache-cassandra-${CASSANDRA_VER}
 PKGNAME=	apache-cassandra-${CASSANDRA_VER:S/-//}
 CATEGORIES=	databases
-#MASTER_SITES=	${MASTER_SITE_APACHE:=cassandra/${CASSANDRA_VER:C/-.*//}/}
-MASTER_SITES=	http://archive.apache.org/dist/cassandra/${PKGVERSION_NOREV}/
+MASTER_SITES=	${MASTER_SITE_APACHE:=cassandra/${CASSANDRA_VER:C/-.*//}/}
 DISTFILES=	${DISTNAME}-bin${EXTRACT_SUFX}
 
 MAINTAINER=	tonnerre@NetBSD.org
 HOMEPAGE=	http://cassandra.apache.org/
 COMMENT=	Highly scalable, distributed structured key-value store
+
+DEPENDS+=	snappy-java10>=1.0.5:../../devel/snappy-java10
 
 LICENSE=	apache-2.0
 NO_BUILD=	yes
@@ -23,7 +24,7 @@ PKG_DESTDIR_SUPPORT=	destdir
 
 .include "../../mk/bsd.prefs.mk"
 
-CASSANDRA_VER=	2.1.0
+CASSANDRA_VER=	2.1.2
 CASSANDRA_HOME=	${PREFIX}/share/cassandra
 EGDIR=		${PREFIX}/share/examples/cassandra
 DOCDIR=		${PREFIX}/share/doc/cassandra
@@ -66,6 +67,12 @@ EGFILES=		cassandra-env.sh cassandra-rackdc.properties	\
 
 DOCFILES=		CHANGES LICENSE NEWS NOTICE
 
+SUBST_CLASSES+=		path
+SUBST_STAGE.path=	pre-install
+SUBST_MESSAGE.path=	Fixing default paths
+SUBST_FILES.path=	bin/cassandra.in.sh bin/cassandra
+SUBST_VARS.path=	VARBASE
+
 .for f in ${EGFILES}
 CONF_FILES_PERMS+=	${EGDIR}/${f} ${PKG_SYSCONFDIR}/${f} \
 			${CASSANDRA_USER} ${CASSANDRA_GROUP} 0644
@@ -76,6 +83,9 @@ INSTALLATION_DIRS+=	${CASSANDRA_HOME} ${CASSANDRA_HOME}/bin ${EGDIR} ${DOCDIR}
 CHECK_INTERPRETER_SKIP+=share/cassandra/interface/cassandra.thrift
 CHECK_INTERPRETER_SKIP+=share/cassandra/pylib/setup.py
 CHECK_INTERPRETER_SKIP+=share/cassandra/tools/bin/token-generator
+
+post-extract:
+	${RM} -f ${WRKSRC}/lib/snappy-java-*.jar
 
 do-install:
 .for d in ${WORK_DIRS}
@@ -96,6 +106,8 @@ do-install:
 	cd ${WRKSRC} && \
 	  ${PAX} -rw -pm interface javadoc lib pylib tools \
 	  ${DESTDIR}${CASSANDRA_HOME}
+	${LN} -sf ${PREFIX}/lib/java/snappy-java/snappy-java-1.0.5.jar \
+		${DESTDIR}${PREFIX}/share/cassandra/lib/snappy-java.jar
 
 	${FIND} ${DESTDIR}${CASSANDRA_HOME} -type d -print |	\
 		${XARGS} ${CHMOD} ${PKGDIRMODE}

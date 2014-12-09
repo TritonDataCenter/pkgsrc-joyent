@@ -1,9 +1,9 @@
 # $NetBSD$
 #
 
-DISTNAME=	pig-0.10.1
+DISTNAME=	pig-0.13.0
 CATEGORIES=	parallel
-MASTER_SITES=	http://www.us.apache.org/dist/pig/${DISTNAME}/
+MASTER_SITES=	${MASTER_SITE_APACHE:=pig/${DISTNAME}/}
 
 MAINTAINER=	filip@joyent.com
 HOMEPAGE=	http://pig.apache.org/

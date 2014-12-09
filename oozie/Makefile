@@ -1,9 +1,9 @@
 # $NetBSD$
 #
 
-DISTNAME=	oozie-3.3.1
+DISTNAME=	oozie-4.0.1
 CATEGORIES=	sysutils
-MASTER_SITES=	http://www.us.apache.org/dist/oozie/3.3.1/
+MASTER_SITES=	${MASTER_SITE_APACHE:=oozie/${PKGVERSION_NOREV}/}
 
 MAINTAINER=	filip@joyent.com
 HOMEPAGE=	http://oozie.apache.org
