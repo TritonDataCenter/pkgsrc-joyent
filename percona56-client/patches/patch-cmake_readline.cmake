@@ -4,7 +4,7 @@ $NetBSD: patch-cmake_readline.cmake,v 1.1 2013/07/15 02:04:36 ryoon Exp $
   readline.h detection fails. Disable mis-detection of
   /usr/pkg/editline/readline.h.
 
---- cmake/readline.cmake.orig	2013-05-21 15:18:39.000000000 +0000
+--- cmake/readline.cmake.orig	2014-11-21 10:02:01.000000000 +0000
 +++ cmake/readline.cmake
 @@ -130,9 +130,6 @@ MACRO (MYSQL_USE_BUNDLED_EDITLINE)
  ENDMACRO()

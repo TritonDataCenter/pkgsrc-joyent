@@ -2,7 +2,7 @@ $NetBSD: patch-include_my_net.h,v 1.1 2013/02/13 21:00:04 adam Exp $
 
 Define SHUT_RDWR for Irix 5.
 
---- include/my_net.h.orig	2013-01-22 16:54:49.000000000 +0000
+--- include/my_net.h.orig	2014-11-21 10:02:01.000000000 +0000
 +++ include/my_net.h
 @@ -70,6 +70,15 @@ C_MODE_START
  #include <netdb.h>     /* getaddrinfo() & co */

@@ -2,7 +2,7 @@ $NetBSD: patch-mysql-test_CMakeLists.txt,v 1.1 2013/02/13 21:00:05 adam Exp $
 
 Exclude some unwated files.
 
---- mysql-test/CMakeLists.txt.orig	2013-01-22 16:54:50.000000000 +0000
+--- mysql-test/CMakeLists.txt.orig	2014-11-21 10:02:01.000000000 +0000
 +++ mysql-test/CMakeLists.txt
 @@ -24,9 +24,11 @@ INSTALL(
    PATTERN "lib/t*" EXCLUDE

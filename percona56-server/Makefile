@@ -1,7 +1,6 @@
 # $NetBSD: Makefile,v 1.6 2013/06/04 18:17:25 adam Exp $
 
 PKGNAME=	${DISTNAME:tl:C/-${SILLYREV}//}
-PKGREVISION=	5
 COMMENT=	Percona MySQL 5.5, a free SQL database (server)
 
 CONFLICTS=	{mysql-server-[0-9]*,mysql3-server-[0-9]*}
@@ -9,7 +8,7 @@ CONFLICTS=	{mysql-server-[0-9]*,mysql3-server-[0-9]*}
 .include "../../joyent/percona56-client/Makefile.common"
 
 # Include the Sphinx storage engine
-SPHINX=		sphinx-2.0.10-release
+SPHINX=		sphinx-2.2.6-release
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX} ${SPHINX}.tar.gz
 SITES.${SPHINX}.tar.gz=	http://sphinxsearch.com/files/
 

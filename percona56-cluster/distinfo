@@ -1,9 +1,10 @@
 $NetBSD$
 
-SHA1 (Percona-XtraDB-Cluster-5.6.15.tar.gz) = cd883c3aa1483c74c5949f6d40630c315ce1b7d4
-RMD160 (Percona-XtraDB-Cluster-5.6.15.tar.gz) = d50d81d023ebe5655090338e61fdae62401bba7b
-Size (Percona-XtraDB-Cluster-5.6.15.tar.gz) = 34723074 bytes
-SHA1 (sphinx-2.0.9-release.tar.gz) = 0fa2806fa47a689d9f55d72ce0b6d4abce52e81c
-RMD160 (sphinx-2.0.9-release.tar.gz) = f729df1d9713ec933c906221a643d788809c161f
-Size (sphinx-2.0.9-release.tar.gz) = 1996939 bytes
-SHA1 (patch-sql_sql__yacc.yy) = a551442cd68d9d5846c686fdc6c909f249d28294
+SHA1 (Percona-XtraDB-Cluster-5.6.21-70.1.tar.gz) = a8ddab93a3e134465006136a6da0c6b9aa51454e
+RMD160 (Percona-XtraDB-Cluster-5.6.21-70.1.tar.gz) = e2a24c2363c146321411aea366db6180c3fccdcc
+Size (Percona-XtraDB-Cluster-5.6.21-70.1.tar.gz) = 35787173 bytes
+SHA1 (sphinx-2.2.6-release.tar.gz) = 9c458ed999a3e771d417a704e12c469e06423e4a
+RMD160 (sphinx-2.2.6-release.tar.gz) = cd129250ccd00213878dcecb8176a5ba890d32e9
+Size (sphinx-2.2.6-release.tar.gz) = 2959375 bytes
+SHA1 (patch-plugin_HandlerSocket-Plugin-for-MySQL_libhsclient_allocator.hpp) = 1c71757b579efcc2d68c340acd64f4d34994d551
+SHA1 (patch-plugin_audit__log_audit__log.c) = 02c41975ba9c4a521da47e76fe9578e940f01d94

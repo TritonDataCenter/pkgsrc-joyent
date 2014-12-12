@@ -1,11 +1,14 @@
 # $NetBSD$
 
-DISTNAME=	Percona-XtraDB-Cluster-5.6.15
+
+SILLYREV=	70.1    # Seriously, what's the point?
+OTHERSILLYREV=	25.8
+DISTNAME=	Percona-XtraDB-Cluster-5.6.21-${SILLYREV}
 CATEGORIES=	databases
 MASTER_SITES=	http://www.percona.com/redir/downloads/Percona-XtraDB-Cluster-56/LATEST/source/
+MASTER_SITES=	http://www.percona.com/downloads/Percona-XtraDB-Cluster-56/Percona-XtraDB-Cluster-5.6.21-${OTHERSILLYREV}/source/tarball/
 
-PKGNAME=	${DISTNAME:tl:S/-xtradb//}
-PKGREVISION=	1
+PKGNAME=	${DISTNAME:tl:S/-xtradb//:C/-${SILLYREV}//}
 COMMENT=	Percona Cluster Server 5.6
 
 MAINTAINER=	jperkin@joyent.com
@@ -15,7 +18,7 @@ LICENSE=	gnu-gpl-v2
 CONFLICTS=	{mysql,percona}*-{client,server}-[0-9]*
 
 # Include the Sphinx storage engine
-SPHINX=		sphinx-2.0.9-release
+SPHINX=		sphinx-2.2.6-release
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX} ${SPHINX}.tar.gz
 SITES.${SPHINX}.tar.gz=	http://sphinxsearch.com/files/
 
@@ -50,6 +53,8 @@ PKG_USERS_VARS+=	MYSQL_USER
 PKG_GROUPS_VARS+=	MYSQL_GROUP
 
 CONFIG_SHELL=		${TOOLS_PATH.bash}
+
+CHECK_PORTABILITY_SKIP+=build-ps/deprecated/build-rpm.sh
 
 .if ${OPSYS} == "IRIX"
 CFLAGS+=		-DIRIX5 -DNEEDS_BSTRING_H
@@ -218,8 +223,8 @@ post-install:
 	${RM} -rf ${DESTDIR}${PREFIX}/xinetd.d
 .if defined(MANZ)
 .  for FILE in mysql_client_test_embedded.1 mysqltest_embedded.1
-	${RM} -f ${DESTDIR}${PREFIX}/man/man1/${FILE}
-	${LN} -s ${FILE:S/_embedded//} ${DESTDIR}${PREFIX}/man/man1/${FILE}
+	${RM} -f ${DESTDIR}${PREFIX}/${PKGMANDIR}/man1/${FILE}
+	${LN} -s ${FILE:S/_embedded//} ${DESTDIR}${PREFIX}/${PKGMANDIR}/man1/${FILE}
 .  endfor
 .endif
 

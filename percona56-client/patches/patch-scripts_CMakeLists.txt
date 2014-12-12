@@ -2,9 +2,9 @@ $NetBSD: patch-scripts_CMakeLists.txt,v 1.1 2013/02/13 21:00:06 adam Exp $
 
 Fix paths.
 
---- scripts/CMakeLists.txt.orig	2013-01-22 16:54:49.000000000 +0000
+--- scripts/CMakeLists.txt.orig	2014-11-21 10:02:01.000000000 +0000
 +++ scripts/CMakeLists.txt
-@@ -182,22 +182,14 @@ ENDIF(UNIX)
+@@ -195,22 +195,14 @@ ENDIF(UNIX)
  # i.e. makes access relative the current directory. This matches
  # the documentation, so better not change this.
  

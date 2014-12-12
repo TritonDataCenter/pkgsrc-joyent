@@ -1,10 +1,11 @@
-$NetBSD: patch-CMakeLists.txt,v 1.3 2014/02/13 14:38:08 jperkin Exp $
+$NetBSD: patch-CMakeLists.txt,v 1.4 2014/08/10 15:11:57 adam Exp $
 
 Split configuration between mysql-client and mysql-server.
+Build with newer DTrace.
 
---- CMakeLists.txt.orig	2014-07-01 08:51:11.000000000 +0000
+--- CMakeLists.txt.orig	2014-11-21 10:02:01.000000000 +0000
 +++ CMakeLists.txt
-@@ -467,7 +467,6 @@ ADD_SUBDIRECTORY(vio)
+@@ -480,7 +480,6 @@ ADD_SUBDIRECTORY(vio)
  ADD_SUBDIRECTORY(regex)
  ADD_SUBDIRECTORY(mysys)
  ADD_SUBDIRECTORY(mysys_ssl)
@@ -12,31 +13,33 @@ Split configuration between mysql-client and mysql-server.
  
  IF(WITH_UNIT_TESTS)
    ADD_SUBDIRECTORY(unittest)
-@@ -486,9 +485,13 @@ IF(WITH_UNIT_TESTS)
+@@ -499,16 +498,16 @@ IF(WITH_UNIT_TESTS)
  ENDIF()
  
  ADD_SUBDIRECTORY(extra)
--IF(NOT WITHOUT_SERVER)
--  ADD_SUBDIRECTORY(tests)
+-ADD_SUBDIRECTORY(client)
+ ADD_SUBDIRECTORY(sql/share)
+ ADD_SUBDIRECTORY(libservices)
+ 
+-IF(UNIX)
 +IF(WITHOUT_SERVER)
 +  ADD_SUBDIRECTORY(libmysql)
-   ADD_SUBDIRECTORY(client)
++  ADD_SUBDIRECTORY(client)
 +  ADD_SUBDIRECTORY(scripts)
-+  ADD_SUBDIRECTORY(man)
-+  ADD_SUBDIRECTORY(tests)
+   ADD_SUBDIRECTORY(man)
+-ENDIF()
+-
+-IF(NOT WITHOUT_SERVER)
+   ADD_SUBDIRECTORY(tests)
 +ELSE()
    ADD_SUBDIRECTORY(sql)
-   ADD_SUBDIRECTORY(sql/share)
-   ADD_SUBDIRECTORY(libservices)
-@@ -501,11 +504,7 @@ IF(NOT WITHOUT_SERVER)
+   OPTION (WITH_EMBEDDED_SERVER "Compile MySQL with embedded server" OFF)
+   IF(WITH_EMBEDDED_SERVER) 
+@@ -519,7 +518,6 @@ ENDIF()
+ 
+ # scripts/mysql_config depends on client and server targets loaded above.
+ # It is referenced by some of the directories below, so we insert it here.
+-ADD_SUBDIRECTORY(scripts)
+ 
+ IF(NOT WITHOUT_SERVER)
    ADD_SUBDIRECTORY(mysql-test)
-   ADD_SUBDIRECTORY(mysql-test/lib/My/SafeProcess)
-   ADD_SUBDIRECTORY(support-files)
--  ADD_SUBDIRECTORY(scripts)
-   ADD_SUBDIRECTORY(sql-bench)
--  IF(UNIX)
--    ADD_SUBDIRECTORY(man)
--  ENDIF()
-   IF(EXISTS ${CMAKE_SOURCE_DIR}/internal/CMakeLists.txt)
-     ADD_SUBDIRECTORY(internal)
-   ENDIF()

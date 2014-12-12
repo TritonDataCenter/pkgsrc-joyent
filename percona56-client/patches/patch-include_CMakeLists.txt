@@ -2,9 +2,9 @@ $NetBSD: patch-include_CMakeLists.txt,v 1.1 2013/02/13 21:00:04 adam Exp $
 
 Only mysql-client installs includes.
 
---- include/CMakeLists.txt.orig	2013-01-22 16:54:49.000000000 +0000
+--- include/CMakeLists.txt.orig	2014-11-21 10:02:01.000000000 +0000
 +++ include/CMakeLists.txt
-@@ -65,10 +65,12 @@ SET(HEADERS 
+@@ -65,10 +65,12 @@ SET(HEADERS
    ${HEADERS_GEN_CONFIGURE}
  )
  

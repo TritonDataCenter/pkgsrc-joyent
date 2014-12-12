@@ -1,6 +1,6 @@
 $NetBSD: patch-mysys_stacktrace.c,v 1.1 2013/02/13 21:00:05 adam Exp $
 
---- mysys/stacktrace.c.orig	2013-01-22 16:54:49.000000000 +0000
+--- mysys/stacktrace.c.orig	2014-11-21 10:02:01.000000000 +0000
 +++ mysys/stacktrace.c
 @@ -420,7 +420,7 @@ void my_write_core(int sig)
  {

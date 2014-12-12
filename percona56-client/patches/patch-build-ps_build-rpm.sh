@@ -2,7 +2,7 @@ $NetBSD$
 
 Fix portability.
 
---- build-ps/build-rpm.sh.orig	2014-07-01 08:51:11.000000000 +0000
+--- build-ps/build-rpm.sh.orig	2014-11-21 10:02:01.000000000 +0000
 +++ build-ps/build-rpm.sh
 @@ -85,7 +85,7 @@ else
  fi

@@ -2,7 +2,7 @@ $NetBSD: patch-client_completion_hash.cc,v 1.1 2013/02/13 21:00:03 adam Exp $
 
 * Portability: include <bstring.h> if exists.
 
---- client/completion_hash.cc.orig	2010-02-04 11:36:51.000000000 +0000
+--- client/completion_hash.cc.orig	2014-11-21 10:02:01.000000000 +0000
 +++ client/completion_hash.cc
 @@ -22,6 +22,10 @@
  
