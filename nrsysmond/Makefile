@@ -1,11 +1,10 @@
 # $NetBSD$
 #
 
-DISTNAME=	newrelic-sysmond-1.5.1.93
-PKGVERSION=	1.5.1.93
-PKGNAME=	${DISTNAME:S/newrelic-/nr/}
+DISTNAME=	newrelic-sysmond-2.0.0.105-joyent
+PKGNAME=	${DISTNAME:S/newrelic-/nr/:S/-joyent//}
 CATEGORIES=	sysutils
-MASTER_SITES=	# none
+MASTER_SITES=	http://download.newrelic.com/server_monitor/release/
 
 MAINTAINER=	filip@joyent.com
 HOMEPAGE=	http://newrelic.com/
@@ -21,10 +20,16 @@ BUILD_DEFS+=		VARBASE
 
 .include "../../mk/bsd.fast.prefs.mk"
 
+.if ${MACHINE_ARCH} == "x86_64"
+NARCH=			x64
+.else
+NARCH=			x86
+.endif
+
 SUBST_CLASSES+=		etc
 SUBST_STAGE.etc=	pre-install
 SUBST_MESSAGE.etc=	Fixing default paths
-SUBST_FILES.etc=	nrsysmond-config
+SUBST_FILES.etc=	scripts/nrsysmond-config
 SUBST_SED.etc=		-e 's,/etc/newrelic,${PKG_SYSCONFDIR},g'
 
 CONF_FILES+=		share/examples/nrsysmond/nrsysmond.cfg \
@@ -32,10 +37,15 @@ CONF_FILES+=		share/examples/nrsysmond/nrsysmond.cfg \
 INSTALLATION_DIRS=	sbin share/examples/nrsysmond
 OWN_DIRS+=		${VARBASE}/log/newrelic
 
+SMF_SRCDIR=		${WRKSRC}/scripts
+SMF_MANIFEST=		nrsysmond.xml
+SMF_MANIFEST.nrsysmond=	nrsysmond.xml
+SMF_MANIFEST_SRC=	${SMF_SRCDIR}/${SMF_MANIFEST}
+
 do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/nrsysmond.x64	\
+	${INSTALL_PROGRAM} ${WRKSRC}/daemon/nrsysmond.${NARCH}	\
 	  ${DESTDIR}${PREFIX}/sbin/nrsysmond
-	${INSTALL_SCRIPT} ${WRKSRC}/nrsysmond-config	\
+	${INSTALL_SCRIPT} ${WRKSRC}/scripts/nrsysmond-config	\
 	  ${DESTDIR}${PREFIX}/sbin/
 	${INSTALL_DATA} ${FILESDIR}/nrsysmond.cfg	\
 	  ${DESTDIR}${PREFIX}/share/examples/nrsysmond/

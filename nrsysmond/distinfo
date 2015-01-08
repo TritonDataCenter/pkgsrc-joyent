@@ -1,5 +1,5 @@
 $NetBSD$
 
-SHA1 (newrelic-sysmond-1.5.1.93.tar.gz) = 157306f36454c6f64b64191310447b7f67a1fac0
-RMD160 (newrelic-sysmond-1.5.1.93.tar.gz) = debbc4839ceb8b3f550eddacd72c74088b26a791
-Size (newrelic-sysmond-1.5.1.93.tar.gz) = 1864736 bytes
+SHA1 (newrelic-sysmond-2.0.0.105-joyent.tar.gz) = cbf29f1f2d50e13149b4faa5d59484518c06c96b
+RMD160 (newrelic-sysmond-2.0.0.105-joyent.tar.gz) = bfd3e0e8294937100a2040a1141db21eb2364cac
+Size (newrelic-sysmond-2.0.0.105-joyent.tar.gz) = 3297627 bytes
