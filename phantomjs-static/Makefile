@@ -33,7 +33,7 @@ CONFIGURE_ENV+=		MACHINE_ARCH=${MACHINE_ARCH}
 CFLAGS.SunOS+=		-D_XPG6
 
 MAKE_ENV+=		QTDIR=${WRKSRC}/src/qt
-INSTALLATION_DIRS+=	bin
+INSTALLATION_DIRS+=	bin share/doc/phantomjs share/examples/phantomjs
 
 post-extract:
 	${MKDIR} -p ${WRKSRC}/src/qt/mkspecs/solaris-g++
@@ -78,7 +78,14 @@ ${WRKDIR}/.build_qt_done:
 	${TOUCH} ${WRKDIR}/.build_qt_done
 
 do-install:
-	cd ${WRKSRC} && ${INSTALL_PROGRAM} bin/phantomjs ${DESTDIR}${PREFIX}/bin/
+	cd ${WRKSRC} && (\
+		${INSTALL_PROGRAM} bin/phantomjs \
+			${DESTDIR}${PREFIX}/bin/; \
+		${INSTALL_DATA} examples/* \
+			${DESTDIR}${PREFIX}/share/examples/phantomjs; \
+		${INSTALL_DATA} ChangeLog LICENSE.BSD README.md third-party.txt \
+			${DESTDIR}${PREFIX}/share/doc/phantomjs \
+	)
 
 .include "../../mk/dlopen.buildlink3.mk"
 BUILDLINK_TRANSFORM+=	opt:-ldl:${BUILDLINK_LDADD.dl:M*}
