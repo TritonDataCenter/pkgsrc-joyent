@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-DISTNAME=	newrelic-sysmond-2.0.0.105-joyent
+DISTNAME=	newrelic-sysmond-2.0.2.111-joyent
 PKGNAME=	${DISTNAME:S/newrelic-/nr/:S/-joyent//}
 CATEGORIES=	sysutils
 MASTER_SITES=	http://download.newrelic.com/server_monitor/release/
@@ -47,7 +47,7 @@ do-install:
 	  ${DESTDIR}${PREFIX}/sbin/nrsysmond
 	${INSTALL_SCRIPT} ${WRKSRC}/scripts/nrsysmond-config	\
 	  ${DESTDIR}${PREFIX}/sbin/
-	${INSTALL_DATA} ${FILESDIR}/nrsysmond.cfg	\
+	${INSTALL_DATA} ${WRKSRC}/nrsysmond.cfg	\
 	  ${DESTDIR}${PREFIX}/share/examples/nrsysmond/
 
 .include "../../mk/bsd.pkg.mk"
