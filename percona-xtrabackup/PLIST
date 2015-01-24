@@ -126,6 +126,7 @@ percona-xtrabackup-test/t/bug1334062.sh
 percona-xtrabackup-test/t/bug1340717.sh
 percona-xtrabackup-test/t/bug1343722.sh
 percona-xtrabackup-test/t/bug1347698.sh
+percona-xtrabackup-test/t/bug1363234.sh
 percona-xtrabackup-test/t/bug1367377.sh
 percona-xtrabackup-test/t/bug1372679.sh
 percona-xtrabackup-test/t/bug1376874.sh
