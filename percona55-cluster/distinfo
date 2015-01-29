@@ -18,6 +18,7 @@ SHA1 (patch-include_my_pthread.h) = ea222e539c1a2d26a911fdbef722723ff7eb0263
 SHA1 (patch-include_myisam.h) = 9f2839f0d074af889913719d0836385dab215c8f
 SHA1 (patch-mysql-test_CMakeLists.txt) = 8245fca9d6ed127a5775f22c2aa2cb5caf2743f4
 SHA1 (patch-mysys_stacktrace.c) = bd7c5672762ff404f671d1a80ad72bc5fa373f40
+SHA1 (patch-plugin_audit__log_audit__log.c) = 02c41975ba9c4a521da47e76fe9578e940f01d94
 SHA1 (patch-scripts_CMakeLists.txt) = b2fe783918307d635da3cb64c095850288df30ab
 SHA1 (patch-scripts_mysqld_safe.sh) = 5877b91107e63564f60a025c50323c5c7a161839
 SHA1 (patch-scripts_wsrep__sst__xtrabackup-v2.sh) = b75f79ef67f0b39da3db36a612dd59b701288bfb
