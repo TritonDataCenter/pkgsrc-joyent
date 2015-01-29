@@ -6,7 +6,7 @@ DISTNAME=	Percona-XtraDB-Cluster-5.5.39-${SILLYREV}
 CATEGORIES=	databases
 MASTER_SITES=	http://www.percona.com/downloads/Percona-XtraDB-Cluster/${DISTNAME:S/${SILLYREV}/${OTHERSILLYREV}/}/source/tarball/
 
-PKGNAME=	${DISTNAME:tl:S/-xtradb//}
+PKGNAME=	${DISTNAME:tl:S/-xtradb//:C/-${SILLYREV}//}
 COMMENT=	Percona Cluster Server 5.5
 
 MAINTAINER?=	pkgsrc-users@NetBSD.org
