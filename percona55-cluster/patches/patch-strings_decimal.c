@@ -2,7 +2,7 @@ $NetBSD: patch-strings_decimal.c,v 1.1.1.1 2011/04/25 21:12:53 adam Exp $
 
 * Portability: include <bstring.h> if exists.
 
---- strings/decimal.c.orig	2010-02-04 11:40:24.000000000 +0000
+--- strings/decimal.c.orig	2014-09-05 08:16:57.000000000 +0000
 +++ strings/decimal.c
 @@ -103,6 +103,9 @@
  #include <my_sys.h> /* for my_alloca */

@@ -8,3 +8,5 @@ RMD160 (sphinx-2.2.6-release.tar.gz) = cd129250ccd00213878dcecb8176a5ba890d32e9
 Size (sphinx-2.2.6-release.tar.gz) = 2959375 bytes
 SHA1 (patch-plugin_HandlerSocket-Plugin-for-MySQL_libhsclient_allocator.hpp) = 1c71757b579efcc2d68c340acd64f4d34994d551
 SHA1 (patch-plugin_audit__log_audit__log.c) = 02c41975ba9c4a521da47e76fe9578e940f01d94
+SHA1 (patch-scripts_wsrep__sst__xtrabackup-v2.sh) = 944b18e639d1e543d0ddef854fab663c98fa1b23
+SHA1 (patch-scripts_wsrep__sst__xtrabackup.sh) = f5b248f2257e470cc166d7faed58381cd5fc8d29

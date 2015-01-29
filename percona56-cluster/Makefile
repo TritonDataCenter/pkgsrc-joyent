@@ -5,8 +5,7 @@ SILLYREV=	70.1    # Seriously, what's the point?
 OTHERSILLYREV=	25.8
 DISTNAME=	Percona-XtraDB-Cluster-5.6.21-${SILLYREV}
 CATEGORIES=	databases
-MASTER_SITES=	http://www.percona.com/redir/downloads/Percona-XtraDB-Cluster-56/LATEST/source/
-MASTER_SITES=	http://www.percona.com/downloads/Percona-XtraDB-Cluster-56/Percona-XtraDB-Cluster-5.6.21-${OTHERSILLYREV}/source/tarball/
+MASTER_SITES=	http://www.percona.com/downloads/Percona-XtraDB-Cluster-56/${DISTNAME:S/${SILLYREV}/${OTHERSILLYREV}/}/source/tarball/
 
 PKGNAME=	${DISTNAME:tl:S/-xtradb//:C/-${SILLYREV}//}
 COMMENT=	Percona Cluster Server 5.6

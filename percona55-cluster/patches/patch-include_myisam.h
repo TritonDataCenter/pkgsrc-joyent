@@ -2,7 +2,7 @@ $NetBSD: patch-include_myisam.h,v 1.2 2011/07/08 09:32:07 adam Exp $
 
 Adjust MI_MAX_KEY_LENGTH x4.
 
---- include/myisam.h.orig	2010-02-04 11:37:06.000000000 +0000
+--- include/myisam.h.orig	2014-09-05 08:16:57.000000000 +0000
 +++ include/myisam.h
 @@ -49,7 +49,7 @@ extern "C" {
    The following defines can be increased if necessary.

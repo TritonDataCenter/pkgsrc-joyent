@@ -1,8 +1,8 @@
 $NetBSD: patch-scripts_mysqld_safe.sh,v 1.2 2012/10/01 15:54:40 adam Exp $
 
---- scripts/mysqld_safe.sh.orig	2011-03-31 13:36:18.000000000 +0000
+--- scripts/mysqld_safe.sh.orig	2014-09-05 08:16:57.000000000 +0000
 +++ scripts/mysqld_safe.sh
-@@ -718,7 +718,7 @@ fi
+@@ -888,7 +888,7 @@ fi
  # Alternatively, you can start mysqld with the "myisam-recover" option. See
  # the manual for details.
  #

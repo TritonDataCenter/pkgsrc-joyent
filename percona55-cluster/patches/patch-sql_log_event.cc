@@ -2,9 +2,9 @@ $NetBSD: patch-sql_log_event.cc,v 1.2 2012/10/01 15:54:40 adam Exp $
 
 * Portability: include <bstring.h> if exists.
 
---- sql/log_event.cc.orig	2013-06-20 21:05:04.000000000 +0000
+--- sql/log_event.cc.orig	2014-09-05 08:16:57.000000000 +0000
 +++ sql/log_event.cc
-@@ -47,6 +47,10 @@
+@@ -48,6 +48,10 @@
  #include <my_dir.h>
  #include "sql_show.h"
  

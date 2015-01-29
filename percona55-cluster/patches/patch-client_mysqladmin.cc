@@ -2,9 +2,9 @@ $NetBSD: patch-client_mysqladmin.cc,v 1.2 2012/10/01 15:54:40 adam Exp $
 
 Redefine signals for Irix.
 
---- client/mysqladmin.cc.orig	2010-02-04 11:36:52.000000000 +0000
+--- client/mysqladmin.cc.orig	2014-09-05 08:16:57.000000000 +0000
 +++ client/mysqladmin.cc
-@@ -332,8 +332,14 @@ int main(int argc,char *argv[])
+@@ -336,8 +336,14 @@ int main(int argc,char *argv[])
    if (tty_password)
      opt_password = get_tty_password(NullS);
  

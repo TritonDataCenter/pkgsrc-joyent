@@ -1,6 +1,6 @@
 $NetBSD: patch-include_my_pthread.h,v 1.1.1.1 2011/04/25 21:12:53 adam Exp $
 
---- include/my_pthread.h.orig	2011-04-16 09:13:17.000000000 +0000
+--- include/my_pthread.h.orig	2014-09-05 08:16:57.000000000 +0000
 +++ include/my_pthread.h
 @@ -20,6 +20,13 @@
  
