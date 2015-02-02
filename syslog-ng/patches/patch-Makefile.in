@@ -1,0 +1,14 @@
+$NetBSD$
+
+Need to install libivykis.la too.
+
+--- Makefile.in.orig	2014-12-15 14:50:16.000000000 +0000
++++ Makefile.in
+@@ -11143,6 +11143,7 @@ help:
+ @IVYKIS_INTERNAL_TRUE@install-ivykis:
+ @IVYKIS_INTERNAL_TRUE@	${MAKE} -C lib/ivykis/src \
+ @IVYKIS_INTERNAL_TRUE@		install-includeHEADERS \
++@IVYKIS_INTERNAL_TRUE@		install-libLTLIBRARIES \
+ @IVYKIS_INTERNAL_TRUE@		install-nodist_includeHEADERS \
+ @IVYKIS_INTERNAL_TRUE@		includedir="${pkgincludedir}/ivykis"
+ 

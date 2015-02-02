@@ -1,0 +1,22 @@
+# $NetBSD$
+# used by joyent/syslog-ng-geoip/Makefile
+# used by joyent/syslog-ng-json/Makefile
+# used by joyent/syslog-ng-mongodb/Makefile
+# used by joyent/syslog-ng-redis/Makefile
+# used by joyent/syslog-ng-smtp/Makefile
+# used by joyent/syslog-ng-sql/Makefile
+
+.include "../../joyent/syslog-ng/Makefile.common"
+
+PKGNAME=	${DISTNAME:S/_/-${SYSLOG_MOD}-/}
+COMMENT=	Syslog-ng SMTP module
+
+DEPENDS+=	syslog-ng>=${PKGVERSION_NOREV}:../../joyent/syslog-ng
+
+CONFIGURE_ARGS+=        --enable-${SYSLOG_MOD}
+BUILD_TARGET=           modules/${SYSLOG_MODDIR}/lib${SYSLOG_MODDIR}.la
+
+INSTALLATION_DIRS=	lib/syslog-ng
+
+INSTALL_TARGET=		install-moduleLTLIBRARIES
+INSTALL_MAKE_FLAGS+=	module_LTLIBRARIES=${BUILD_TARGET}
