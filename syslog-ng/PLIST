@@ -173,7 +173,6 @@ lib/syslog-ng/libdbparser.la
 lib/syslog-ng/libgraphite.la
 lib/syslog-ng/liblinux-kmsg-format.la
 lib/syslog-ng/libpseudofile.la
-lib/syslog-ng/libredis.la
 lib/syslog-ng/libsyslog-ng-crypto.la
 lib/syslog-ng/libsyslogformat.la
 lib/syslog-ng/libsystem-source.la
