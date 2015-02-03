@@ -1,9 +1,8 @@
 # $NetBSD$
 
-DISTNAME=	nutcracker-0.3.0
-PKGREVISION=	1
+DISTNAME=	nutcracker-0.4.0
 CATEGORIES=	net
-MASTER_SITES=	http://twemproxy.googlecode.com/files/
+MASTER_SITES=	ftp://ftp.NetBSD.org/pub/NetBSD/misc/fhajny/
 
 MAINTAINER=	filip@joyent.com
 HOMEPAGE=	http://github.com/twitter/twemproxy/
