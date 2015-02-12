@@ -175,19 +175,16 @@ CNFSUBST+=		-e 's,@VARBASE@,${VARBASE},g'
 CONF_FILES=		${PREFIX}/share/mysql/my-joyent.cnf \
 			${PKG_SYSCONFDIR}/my.cnf
 
-REPLACE_PERL=		mysql-test/lib/My/SafeProcess/safe_process.pl
-REPLACE_PERL+=		mysql-test/lib/v1/mysql-test-run.pl
+REPLACE_PERL=		mysql-test/lib/v1/mysql-test-run.pl
 REPLACE_PERL+=		mysql-test/mysql-stress-test.pl
 REPLACE_PERL+=		mysql-test/mysql-test-run.pl
 REPLACE_PERL+=		mysql-test/suite/engines/rr_trx/run_stress_tx_rr.pl
 REPLACE_PERL+=		mysql-test/suite/funcs_1/lib/DataGen_local.pl
 REPLACE_PERL+=		mysql-test/suite/funcs_1/lib/DataGen_modify.pl
 REPLACE_PERL+=		mysql-test/suite/funcs_2/lib/gen_charset_utf8.pl
-REPLACE_PERL+=		mysql-test/mtr
 REPLACE_PERL+=		scripts/mysql_convert_table_format.sh
 REPLACE_PERL+=		scripts/mysql_find_rows.sh
 REPLACE_PERL+=		scripts/mysql_fix_extensions.sh
-REPLACE_PERL+=		scripts/mysql_fix_privilege_tables.sh
 REPLACE_PERL+=		scripts/mysql_setpermission.sh
 REPLACE_PERL+=		scripts/mysql_zap.sh
 REPLACE_PERL+=		scripts/mysqlaccess.sh
