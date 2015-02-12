@@ -3,9 +3,11 @@
 # used by joyent/percona55-client/Makefile
 # used by joyent/percona55-server/Makefile
 
-DISTNAME=	Percona-Server-5.5.35-rel33.0
+SILLYREV=	37.0	# Seriously, what's the point?
+DISTNAME=	percona-server-5.5.41-${SILLYREV}
 CATEGORIES=	databases
-MASTER_SITES=	http://www.percona.com/redir/downloads/Percona-Server-5.5/Percona-Server-5.5.35-rel33.0/source/
+MASTER_SITES=	http://www.percona.com/downloads/Percona-Server-5.5/Percona-Server-${PKGVERSION_NOREV}-${SILLYREV}/source/tarball/
+PKGNAME=	${DISTNAME:C/-${SILLYREV}//}
 
 MAINTAINER?=	pkgsrc-users@NetBSD.org
 HOMEPAGE=	http://www.percona.com/

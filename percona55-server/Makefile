@@ -1,7 +1,6 @@
 # $NetBSD$
 
-PKGNAME=	${DISTNAME:tl:C/-rel.*//}
-PKGREVISION=	1
+PKGNAME=	${DISTNAME:tl:C/-${SILLYREV}//}
 COMMENT=	Percona MySQL 5.5, a free SQL database (server)
 
 CONFLICTS=	{mysql-server-[0-9]*,mysql3-server-[0-9]*,mysql55-server-[0-9]*}

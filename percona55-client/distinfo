@@ -1,16 +1,16 @@
 $NetBSD$
 
-SHA1 (Percona-Server-5.5.35-rel33.0.tar.gz) = b864ed39876a28ed26241aab44473cb099d3e2a3
-RMD160 (Percona-Server-5.5.35-rel33.0.tar.gz) = ea94eabd81566595cfb6f8cdafe0d84eef80cd61
-Size (Percona-Server-5.5.35-rel33.0.tar.gz) = 22465700 bytes
-SHA1 (sphinx-2.0.10-release.tar.gz) = e786f68b86f392872d907fc8b35e2fa2c81948cf
-RMD160 (sphinx-2.0.10-release.tar.gz) = 35960b9aac72eab0337099230a54e04af9d46c2f
-Size (sphinx-2.0.10-release.tar.gz) = 2016687 bytes
+SHA1 (percona-server-5.5.41-37.0.tar.gz) = 74610892ba6402e8df04320db444d6dcc7cb2fe8
+RMD160 (percona-server-5.5.41-37.0.tar.gz) = a45a42769cfaa478c2fe4ff6694600bec69578a0
+Size (percona-server-5.5.41-37.0.tar.gz) = 22670445 bytes
+SHA1 (sphinx-2.2.6-release.tar.gz) = 9c458ed999a3e771d417a704e12c469e06423e4a
+RMD160 (sphinx-2.2.6-release.tar.gz) = cd129250ccd00213878dcecb8176a5ba890d32e9
+Size (sphinx-2.2.6-release.tar.gz) = 2959375 bytes
 SHA1 (patch-BUILD_compile-pentium-gcov) = a1ac666efa953a98455a726e5db359c903d699b6
-SHA1 (patch-CMakeLists.txt) = 5b8574a8836465361f27fc4efd1699f57732d6d2
+SHA1 (patch-CMakeLists.txt) = cbbe9b7be0089e815e5710cf9aa9e7b558c26df1
 SHA1 (patch-client_completion_hash.cc) = b86ec80beac624b2aa21c7587e351ff126400ecb
 SHA1 (patch-client_mysqladmin.cc) = 382486c2f336eed87052e682b52d1acf444452a0
-SHA1 (patch-client_mysqlbinlog.cc) = 53258276d8fd713d2772c9c8c339bfe190b703cc
+SHA1 (patch-client_mysqlbinlog.cc) = 138c273562ba0eb6ebb212cd3ddac9c5c3ea3e4d
 SHA1 (patch-client_sql_string.cc) = a798cc083b897c8e76bc590a886c15698a5266fd
 SHA1 (patch-cmake_libutils.cmake) = 5d75a1762e3db6724bec2d75b45d40b17a5e9d09
 SHA1 (patch-include_CMakeLists.txt) = 4781c69315624fb5567ae70cee87f1ddb3f89847
@@ -26,7 +26,6 @@ SHA1 (patch-sql_CMakeLists.txt) = 187652fcea09396fa7f44f7c4ca20088a689bc82
 SHA1 (patch-sql_log_event.cc) = 2632e33caa5122645550f706c8f8824f24a14a48
 SHA1 (patch-sql_log_event.h) = eb9e38bbf50914ee504501b0723b57f80849ef48
 SHA1 (patch-sql_mysqld.cc) = 7e2cfb58f6af8531920dd9128f7b3a35735d7d2c
-SHA1 (patch-sql_sql__yacc.yy) = 1c0b57d4d9971041431f7c5dbdb78857ac6f0e81
 SHA1 (patch-sql_sql_string.cc) = 00368733072803d59473410badb82e92673de0a7
 SHA1 (patch-storage_innobase_include_os0sync.h) = d3f66b063af3328f3ee518dd00dfc9d1d25943dc
 SHA1 (patch-storage_ndb_include_util_Parser.hpp) = ca9406a8b01dffb3f515f132fa7aaef66c78f2be
