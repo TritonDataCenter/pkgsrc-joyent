@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- mysys_ssl/CMakeLists.txt.orig	2014-11-25 06:30:35.000000000 +0000
++++ mysys_ssl/CMakeLists.txt
+@@ -61,8 +61,6 @@ SET(MYSYS_SSL_SOURCES
+ ADD_CONVENIENCE_LIBRARY(mysys_ssl ${MYSYS_SSL_SOURCES})
+ TARGET_LINK_LIBRARIES(mysys_ssl dbug strings ${SSL_LIBRARIES} ${ZLIB_LIBRARY})
+ 
+-DTRACE_INSTRUMENT(mysys_ssl)
+-
+ IF(MSVC)
+    INSTALL_DEBUG_TARGET(mysys_ssl DESTINATION ${INSTALL_LIBDIR}/debug)
+ ENDIF()
