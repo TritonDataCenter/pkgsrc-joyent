@@ -31,3 +31,4 @@ SHA1 (patch-sql_sql_string.cc) = 351b532c1bb1fbd6c935f5308711d4d46543e6b7
 SHA1 (patch-storage_innobase_include_os0sync.h) = 803b6b13ceec732baf0a6dcbc64fa17ca4b469ea
 SHA1 (patch-storage_ndb_include_util_Parser.hpp) = 06e88d00998db74097bf32cd22634f205f55708d
 SHA1 (patch-strings_decimal.c) = f6777fb354f6dd8cc119d150ef5b925f423f1af3
+SHA1 (patch-wsrep_CMakeLists.txt) = bd71df38c7c15f7eae7ecab599948cd23b4fd999
