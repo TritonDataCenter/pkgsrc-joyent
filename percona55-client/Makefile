@@ -1,6 +1,6 @@
 # $NetBSD$
 
-PKGNAME=	${DISTNAME:tl:C/-rel.*//:S/server/client/}
+PKGNAME=	${DISTNAME:S/server/client/:C/-${SILLYREV}//}
 COMMENT=	Percona MySQL 5.5, a free SQL database (client)
 
 CONFLICTS=	{mysql-client-[0-9]*,mysql3-client-[0-9]*}
@@ -15,7 +15,6 @@ INSTALL_DIRS+=		client include libmysql man scripts tests
 REPLACE_PERL=	scripts/mysql_convert_table_format.sh
 REPLACE_PERL+=	scripts/mysql_find_rows.sh
 REPLACE_PERL+=	scripts/mysql_fix_extensions.sh
-REPLACE_PERL+=	scripts/mysql_fix_privilege_tables.sh
 REPLACE_PERL+=	scripts/mysql_setpermission.sh
 REPLACE_PERL+=	scripts/mysql_zap.sh
 REPLACE_PERL+=	scripts/mysqlaccess.sh
@@ -25,12 +24,16 @@ REPLACE_PERL+=	scripts/mysqlhotcopy.sh
 
 # Replace manual pages which only include other ones with a symbolic link
 # if manual compression is activated. The manual pages won't work otherwise.
-.if defined(MANZ)
 post-install:
+.if defined(MANZ)
 .  for FILE in mysql_client_test_embedded.1 mysqltest_embedded.1
 	${RM} -f ${DESTDIR}${PREFIX}/man/man1/${FILE}
 	${LN} -s ${FILE:S/_embedded//} ${DESTDIR}${PREFIX}/man/man1/${FILE}
 .  endfor
 .endif
+.  for FILE in client client_r
+	cd ${DESTDIR}${PREFIX}/lib && ${LN} -s libperconaserver${FILE}.a libmysql${FILE}.a
+	cd ${DESTDIR}${PREFIX}/lib && ${LN} -s libperconaserver${FILE}.so libmysql${FILE}.so
+.  endfor
 
 .include "../../mk/bsd.pkg.mk"

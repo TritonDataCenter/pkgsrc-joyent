@@ -7,7 +7,6 @@ SILLYREV=	37.0	# Seriously, what's the point?
 DISTNAME=	percona-server-5.5.41-${SILLYREV}
 CATEGORIES=	databases
 MASTER_SITES=	http://www.percona.com/downloads/Percona-Server-5.5/Percona-Server-${PKGVERSION_NOREV}-${SILLYREV}/source/tarball/
-PKGNAME=	${DISTNAME:C/-${SILLYREV}//}
 
 MAINTAINER?=	pkgsrc-users@NetBSD.org
 HOMEPAGE=	http://www.percona.com/
@@ -41,6 +40,8 @@ PKG_USERS_VARS+=	MYSQL_USER
 PKG_GROUPS_VARS+=	MYSQL_GROUP
 
 CONFIG_SHELL=		${TOOLS_PATH.bash}
+
+CHECK_PORTABILITY_SKIP= build-ps/build-rpm.sh
 
 .if ${OPSYS} == "IRIX"
 CFLAGS+=		-DIRIX5 -DNEEDS_BSTRING_H
