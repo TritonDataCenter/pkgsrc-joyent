@@ -11,4 +11,4 @@ SHA1 (patch-plugin_HandlerSocket-Plugin-for-MySQL_libhsclient_allocator.hpp) = 1
 SHA1 (patch-plugin_audit__log_audit__log.c) = 02c41975ba9c4a521da47e76fe9578e940f01d94
 SHA1 (patch-scripts_wsrep__sst__xtrabackup-v2.sh) = 944b18e639d1e543d0ddef854fab663c98fa1b23
 SHA1 (patch-scripts_wsrep__sst__xtrabackup.sh) = f5b248f2257e470cc166d7faed58381cd5fc8d29
-SHA1 (patch-wsrep_CMakeLists.txt) = 10ad73eeded9c7c552cdf3cb99c501a41a947cfa
+SHA1 (patch-wsrep_CMakeLists.txt) = 48fb4f2b8f580fc32013ebcd4b610fe47efe8c15
