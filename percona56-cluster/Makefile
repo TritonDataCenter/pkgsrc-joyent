@@ -1,10 +1,9 @@
 # $NetBSD$
 
-
 SILLYREV=	70.1    # Seriously, what's the point?
 OTHERSILLYREV=	25.8
 DISTNAME=	Percona-XtraDB-Cluster-5.6.21-${SILLYREV}
-PKGREVISION=	1
+PKGREVISION=	2
 CATEGORIES=	databases
 MASTER_SITES=	http://www.percona.com/downloads/Percona-XtraDB-Cluster-56/${DISTNAME:S/${SILLYREV}/${OTHERSILLYREV}/}/source/tarball/
 

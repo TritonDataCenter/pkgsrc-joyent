@@ -3,6 +3,7 @@
 SILLYREV=	36.0
 OTHERSILLYREV=	25.11
 DISTNAME=	Percona-XtraDB-Cluster-5.5.39-${SILLYREV}
+PKGREVISION=	1
 CATEGORIES=	databases
 MASTER_SITES=	http://www.percona.com/downloads/Percona-XtraDB-Cluster/${DISTNAME:S/${SILLYREV}/${OTHERSILLYREV}/}/source/tarball/
 
