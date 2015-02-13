@@ -47,7 +47,6 @@ innodb_doublewrite = 0
 innodb_io_capacity = 1500
 innodb_read_io_threads = 8
 innodb_write_io_threads = 8
-innodb_buffer_pool_restore_at_startup = 500
 
 # Slow query log settings
 # The default logs all full table scans,tmp tables,filesorts on disk queries
@@ -59,14 +58,13 @@ log_slow_filter = "full_scan,tmp_table_on_disk,filesort_on_disk"
 log_slow_verbosity = "full"
 
 # Other general MySQL settings
-table_cache = 512
 thread_cache_size = 1000
 #query_cache_size = 16M
 #query_cache_strip_comments
 query_cache_type = 0
 back_log = 64
 thread_concurrency = 32 
-tmpdir = /tmp
+tmpdir = /var/tmp
 max_connections = 1000
 max_allowed_packet = 24M
 max_join_size = 4294967295
@@ -91,14 +89,14 @@ expire_logs_days = 7
 #binlog-ignore-db = mysql
 
 # Cluster settings
-#wsrep_provider=/opt/local/lib/mysql/plugin/libgalera_smm.so
-#wsrep_node_name=node1
-#wsrep_cluster_address=gcomm://
-#innodb_autoinc_lock_mode=2
-#wsrep_cluster_name=clustername1
-#wsrep_node_address=@INTERNAL_IP@
-#wsrep_sst_method=xtrabackup
-#wsrep_sst_auth="username:password"
+# wsrep_provider=/opt/local/lib/mysql/plugin/libgalera_smm.so
+# wsrep_node_name=@INTERNAL_IP@
+# wsrep_cluster_address=gcomm://
+# innodb_autoinc_lock_mode=2
+# wsrep_cluster_name=@UUID_STUB@
+# wsrep_node_address=@INTERNAL_IP@
+# wsrep_sst_method=xtrabackup-v2
+# wsrep_sst_auth="username:password"
 
 [mysqldump]
 quick

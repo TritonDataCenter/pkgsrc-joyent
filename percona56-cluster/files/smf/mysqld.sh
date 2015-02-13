@@ -22,6 +22,15 @@ LOGFILE=@VARBASE@/log/mysql/error.log
 ulimit -n 10240
 
 case "$1" in
+	bootstrap)
+		${DB_EXEC}/mysqld --user=mysql \
+			--basedir=${DB_BASE} \
+			--datadir=${DB_DATA} \
+			--pid-file=${PIDFILE} \
+			--log-error=${LOGFILE} \
+			--wsrep-cluster-address="gcomm://" \
+			> /dev/null &
+		;;
 	start)
 		${DB_EXEC}/mysqld --user=mysql \
 			--basedir=${DB_BASE} \
@@ -45,7 +54,7 @@ case "$1" in
 		;;
 	*)
 		echo ""
-		echo "Usage: `basename $0` { start | stop | restart }"
+		echo "Usage: `basename $0` { bootstrap start | stop | restart }"
 		echo ""
 		exit 64
 		;;

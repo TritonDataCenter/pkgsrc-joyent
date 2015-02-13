@@ -11,21 +11,12 @@
 
 case ${STAGE} in
 POST-INSTALL)
-	# Project support
-	grep '^mysql' /etc/project >/dev/null 2>&1
-	if [ $? != 0 ]; then
-		projid=`id -u @MYSQL_USER@`
-		LANG=C projadd -p ${projid} -U @MYSQL_USER@ -G @MYSQL_GROUP@ \
-		    -K "process.max-file-descriptor=(basic,15000,deny)" mysql
-	fi
-
-	# Logging and rotation
+	# Logging
 	if [ ! -f @VARBASE@/log/mysql/error.log ]; then
 		mkdir -p @VARBASE@/log/mysql
 		touch @VARBASE@/log/mysql/error.log
 		chown -R @MYSQL_USER@:@MYSQL_GROUP@ @VARBASE@/log/mysql
 	fi
-	logadm -C 5 -c -s 100m -z 1 -w '@VARBASE@/log/mysql/*.log'
 
 	# Supported configuration files, used later.
 	cnfs=
@@ -76,6 +67,17 @@ POST-INSTALL)
 		done
 	fi
 
+	# Find trailing stub of zone UUID to use for cluster name
+	zone_name=$(zonename)
+	uuid_stub=${zone_name##*-}
+	for file in ${cnfs}; do
+		ed ${file} >/dev/null 2>&1 <<-EOF
+			g/@UUID_STUB@/s/@UUID_STUB@/${uuid_stub}/
+			w
+			q
+		EOF
+	done
+
 	# Initialize MySQL system tables
 	if [ -d @MYSQL_DATADIR@/mysql ]; then
 		echo "Skipping MySQL database initialization, as databases" \
@@ -86,8 +88,5 @@ POST-INSTALL)
 		    --datadir=@MYSQL_DATADIR@ \
 		    --user=@MYSQL_USER@
 	fi
-	;;
-DEINSTALL)
-	logadm -r '@VARBASE@/log/mysql/*.log'
 	;;
 esac
