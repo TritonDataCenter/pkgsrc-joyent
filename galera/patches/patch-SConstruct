@@ -4,7 +4,18 @@ Fix problem with 'ar' and pass RPATH properly.
 
 --- SConstruct.orig	2014-03-27 15:49:30.000000000 +0000
 +++ SConstruct
-@@ -154,6 +154,7 @@ if link != 'default':
+@@ -140,6 +140,10 @@ if 'CCACHE_DIR' in os.environ:
+ if 'CCACHE_CPP2' in os.environ:
+     env['ENV']['CCACHE_CPP2'] = os.environ['CCACHE_CPP2']
+ 
++# Add support for pkgsrc cwrappers
++if 'CWRAPPERS_CONFIG_DIR' in os.environ:
++    env['ENV']['CWRAPPERS_CONFIG_DIR'] = os.environ['CWRAPPERS_CONFIG_DIR']
++
+ # Set CC and CXX compilers
+ cc = os.getenv('CC', 'default')
+ if cc != 'default':
+@@ -154,6 +158,7 @@ if link != 'default':
  # Initialize CPPFLAGS and LIBPATH from environment to get user preferences
  env.Replace(CPPFLAGS = os.getenv('CPPFLAGS', ''))
  env.Replace(LIBPATH = [os.getenv('LIBPATH', '')])
@@ -12,7 +23,7 @@ Fix problem with 'ar' and pass RPATH properly.
  
  # Set -pthread flag explicitly to make sure that pthreads are
  # enabled on all platforms.
-@@ -165,6 +166,9 @@ if sysname == 'freebsd' or sysname == 's
+@@ -165,6 +170,9 @@ if sysname == 'freebsd' or sysname == 's
      env.Append(CPPFLAGS = ' -I/usr/local/include ')
  if sysname == 'sunos':
     env.Replace(SHLINKFLAGS = '-shared ')
