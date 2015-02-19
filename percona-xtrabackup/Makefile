@@ -36,7 +36,7 @@ USE_TOOLS+=		bison cmake gmake patch perl:run
 # nbpatch is unable to parse the patch files.
 TOOLS_PLATFORM.patch=	${LOCALBASE}/bin/gpatch
 
-CMAKE_ARGS+=		-DENABLE_OPENSSL=ON -DWITH_SSL=system
+CMAKE_ARGS+=		-DENABLE_OPENSSL=ON -DWITH_SSL=system -DENABLE_DTRACE=ON
 CMAKE_ARGS+=		-DBUILD_CONFIG=xtrabackup_release
 CMAKE_ARGS+=		-DINSTALL_MYSQLTESTDIR=percona-xtrabackup-test
 

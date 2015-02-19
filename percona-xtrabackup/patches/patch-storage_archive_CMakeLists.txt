@@ -1,0 +1,11 @@
+$NetBSD$
+
+--- storage/archive/CMakeLists.txt.orig	2015-01-12 10:31:35.000000000 +0000
++++ storage/archive/CMakeLists.txt
+@@ -14,5 +14,5 @@
+ # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
+ 
+ SET(ARCHIVE_SOURCES  azio.c ha_archive.cc ha_archive.h)
+-MYSQL_ADD_PLUGIN(archive ${ARCHIVE_SOURCES} STORAGE_ENGINE LINK_LIBRARIES ${ZLIB_LIBRARY})
++MYSQL_ADD_PLUGIN(archive ${ARCHIVE_SOURCES} STORAGE_ENGINE LINK_LIBRARIES ${ZLIB_LIBRARY} DTRACE_INSTRUMENTED)
+ 
