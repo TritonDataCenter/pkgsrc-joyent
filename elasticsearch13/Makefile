@@ -1,6 +1,6 @@
 # $NetBSD: Makefile,v 1.6 2014/08/14 16:48:15 imil Exp $
 
-DISTNAME=	elasticsearch-1.3.7
+DISTNAME=	elasticsearch-1.3.9
 CATEGORIES=	textproc
 MASTER_SITES=	https://download.elasticsearch.org/elasticsearch/elasticsearch/
 
