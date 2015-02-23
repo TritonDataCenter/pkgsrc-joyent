@@ -1,9 +1,9 @@
 # $NetBSD$
 
-DISTNAME=	galera-25.3.5-src
-PKGNAME=	${MYSQL_PKG_PREFIX}-${DISTNAME:S/-src//}
+DISTNAME=	galera-3-25.3.9
+PKGNAME=	${MYSQL_PKG_PREFIX}-${DISTNAME:S/-3-/-/}
 CATEGORIES=	databases
-MASTER_SITES=	http://launchpad.net/galera/3.x/25.3.5/+download/
+MASTER_SITES=	http://releases.galeracluster.com/source/
 
 MAINTAINER=	filip@joyent.com
 HOMEPAGE=	http://www.codership.com/
@@ -18,6 +18,9 @@ USE_LANGUAGES=	c c++
 MAKE_ENV+=	CPPFLAGS=-I${PREFIX}/include
 MAKE_ENV+=	LIBPATH=${PREFIX}/lib
 MAKE_ENV+=	RPATH=${PREFIX}/lib
+
+CFLAGS+=	-fPIC -DPIC
+CXXFLAGS+=	-fPIC -DPIC
 LDFLAGS+=	${COMPILER_RPATH_FLAG}${PREFIX}/lib
 
 CHECK_PORTABILITY_SKIP+=	scripts/mysql/*
