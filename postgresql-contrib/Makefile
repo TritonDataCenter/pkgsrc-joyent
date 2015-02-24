@@ -45,6 +45,5 @@ BUILDLINK_INCDIRS.${PGSQL_TYPE}+=	include/postgresql/server		\
 PLIST_SRC=	PLIST.pg${PGSQL_VERSION}
 
 .include "../../devel/gettext-lib/buildlink3.mk"
-BUILDLINK_DEPMETHOD.libxml2=		build
 .include "../../textproc/libxml2/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"
