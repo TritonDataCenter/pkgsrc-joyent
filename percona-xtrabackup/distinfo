@@ -8,6 +8,7 @@ RMD160 (percona-xtrabackup-2.2.8.tar.gz) = 8cf56e3f4ccc37892a801f05c59426f381553
 Size (percona-xtrabackup-2.2.8.tar.gz) = 34741610 bytes
 SHA1 (patch-CMakeLists.txt) = ba25ae5d0ca3c4b0ea8f2bdc0c5aba293203c092
 SHA1 (patch-cmake_plugin.cmake) = b28a1bfb46f0e4f8978391432b35314cdff62b1b
+SHA1 (patch-cmake_ssl.cmake) = d21d19db2a8d41c68b82f8278f9514210c97717e
 SHA1 (patch-mysys__ssl_CMakeLists.txt) = b77755baa00523e1893a678743a69bbb88cd5f41
 SHA1 (patch-storage_archive_CMakeLists.txt) = e64ed94356afc78877233da11336e463f0212a13
 SHA1 (patch-storage_blackhole_CMakeLists.txt) = c83d1c0ae171de43967f3a4a5f902defdfa52abf
