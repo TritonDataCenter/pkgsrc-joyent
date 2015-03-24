@@ -21,7 +21,7 @@ USE_LANGUAGES=	c c++
 SUBST_CLASSES+=		python
 SUBST_STAGE.python=	pre-configure
 SUBST_MESSAGE.python=	Fixing Python references
-SUBST_FILES.python=	node.gyp deps/v8/tools/gyp/v8.gyp
+SUBST_FILES.python=	deps/v8/tools/gyp/v8.gyp
 SUBST_VARS.python=	PYTHONBIN
 
 SUBST_CLASSES+=		man
@@ -42,13 +42,7 @@ MAKE_ENV+=		GYP_DEFINES="OS=netbsd"
 
 REPLACE_PYTHON+=	configure
 REPLACE_PYTHON+=	tools/genv8constants.py
-REPLACE_PYTHON+=	tools/gyp_node
 REPLACE_PYTHON+=	tools/gyp/pylib/gyp/flock_tool.py
-REPLACE_PYTHON+=	tools/gyp/pylib/gyp/sun_tool.py
-REPLACE_PYTHON+=	tools/node-waf
-REPLACE_PYTHON+=	tools/waf-light
-REPLACE_PYTHON+=	tools/wafadmin/*.py
-REPLACE_PYTHON+=	tools/wafadmin/Tools/*.py
 
 CHECK_INTERPRETER_SKIP=	lib/node_modules/npm/*
 CHECK_PORTABILITY_SKIP=	deps/v8/tools/run-llprof.sh
@@ -62,8 +56,10 @@ TEST_TARGET=		test
 pre-install:
 	${FIND} ${WRKSRC}/deps/npm -name '*.orig' | ${XARGS} ${RM} -f
 
+.include "../../devel/libexecinfo/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../lang/python/application.mk"
 .include "../../lang/python/tool.mk"
 .include "../../textproc/icu/buildlink3.mk"
+.include "../../mk/pthread.buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"
