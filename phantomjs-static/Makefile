@@ -23,8 +23,6 @@ CHECK_PORTABILITY_SKIP+=src/breakpad/src/third_party/protobuf/protobuf/post_proc
 
 .include "../../mk/bsd.prefs.mk"
 
-USE_PKGSRC_GCC_RUNTIME=	no
-
 NOT_FOR_PLATFORM+=	SunOS-*-x86_64
 
 CONFIGURE_ARGS+=	--qt-config -no-rpath --jobs ${MAKE_JOBS}

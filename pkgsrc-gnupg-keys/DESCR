@@ -1,0 +1,4 @@
+A set of GnuPG public keys used by pkgsrc infrastructure.  Having them
+as a package rather than distributed via bootstrap kits means we can
+easily update the package when keys become obsolete and newer ones are
+issues.
