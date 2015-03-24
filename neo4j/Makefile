@@ -1,6 +1,6 @@
 # $NetBSD$
 
-DISTNAME=	neo4j-community-2.1.4-unix
+DISTNAME=	neo4j-community-2.1.7-unix
 PKGNAME=	${DISTNAME:S/-community//:S/-unix//}
 CATEGORIES=	databases
 MASTER_SITES=	http://neo4j.com/artifact.php?name=

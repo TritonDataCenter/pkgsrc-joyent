@@ -25,7 +25,7 @@ neo4j/lib/neo4j-lucene-index-${PKGVERSION}.jar
 neo4j/lib/neo4j-primitive-collections-${PKGVERSION}.jar
 neo4j/lib/neo4j-shell-${PKGVERSION}.jar
 neo4j/lib/neo4j-udc-${PKGVERSION}.jar
-neo4j/lib/opencsv-2.0.jar
+neo4j/lib/opencsv-2.3.jar
 neo4j/lib/org.apache.servicemix.bundles.jline-0.9.94_1.jar
 neo4j/lib/parboiled-core-1.1.6.jar
 neo4j/lib/parboiled-scala_2.10-1.1.6.jar
@@ -70,7 +70,7 @@ neo4j/system/lib/mimepull-1.6.jar
 neo4j/system/lib/neo4j-browser-${PKGVERSION}.jar
 neo4j/system/lib/neo4j-server-${PKGVERSION}-static-web.jar
 neo4j/system/lib/neo4j-server-${PKGVERSION}.jar
-neo4j/system/lib/opencsv-2.0.jar
+neo4j/system/lib/opencsv-2.3.jar
 neo4j/system/lib/rhino-1.7R4.jar
 neo4j/system/lib/rrd4j-2.0.7.jar
 neo4j/system/lib/slf4j-api-1.6.2.jar
