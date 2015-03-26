@@ -6,6 +6,7 @@ Size (mysql-cluster-gpl-7.3.6.tar.gz) = 42119293 bytes
 SHA1 (patch-CMakeLists.txt) = fabc427d8e7974cb8af1ce057f994b1436628443
 SHA1 (patch-cmake_dtrace.cmake) = 3df1213e41eabf8006390b3e27250063efb2879d
 SHA1 (patch-cmake_plugin.cmake) = 1be952a33471d79660521ecc52477d051fa1a586
+SHA1 (patch-cmake_ssl.cmake) = 6c41cd60e851006d7fb8f8664c28a5f11b96a52e
 SHA1 (patch-mysys__ssl_CMakeLists.txt) = f88dc14c3f69042c6eeeadc7d6135db98296d768
 SHA1 (patch-scripts_mysql__install__db.pl.in) = 7a45264301177b83cede2457f67e8078dc36a6ce
 SHA1 (patch-storage_archive_CMakeLists.txt) = 7cabac32bd500e23a7c2ecaaff2d9fe86b1e8c80
