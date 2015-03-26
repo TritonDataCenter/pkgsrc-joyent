@@ -11,8 +11,11 @@ PKG_SUGGESTED_OPTIONS+=	dtrace
 
 .include "../../mk/bsd.options.mk"
 
+PLIST_VARS+=		dtrace
+
 .if !empty(PKG_OPTIONS:Mdtrace)
 CONFIGURE_ARGS+=	--with-dtrace
+PLIST.dtrace=		yes
 .else
 CONFIGURE_ARGS+=	--without-dtrace
 .endif
