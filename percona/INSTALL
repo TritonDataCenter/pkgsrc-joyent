@@ -2,6 +2,7 @@
 #
 # This script is currently used by:
 #
+#   databases/mysql-cluster
 #   joyent/mysql73-cluster
 #   joyent/percona55-cluster
 #   joyent/percona56-cluster
@@ -12,10 +13,9 @@
 case ${STAGE} in
 POST-INSTALL)
 	# Logging
-	if [ ! -f @VARBASE@/log/mysql/error.log ]; then
+	if [ ! -d @VARBASE@/log/mysql ]; then
 		mkdir -p @VARBASE@/log/mysql
-		touch @VARBASE@/log/mysql/error.log
-		chown -R @MYSQL_USER@:@MYSQL_GROUP@ @VARBASE@/log/mysql
+		chown @MYSQL_USER@:@MYSQL_GROUP@ @VARBASE@/log/mysql
 	fi
 
 	# Supported configuration files, used later.
@@ -79,10 +79,7 @@ POST-INSTALL)
 	done
 
 	# Initialize MySQL system tables
-	if [ -d @MYSQL_DATADIR@/mysql ]; then
-		echo "Skipping MySQL database initialization, as databases" \
-		     "already exist."
-	else
+	if [ ! -d @MYSQL_DATADIR@/mysql ]; then
 		@LOCALBASE@/bin/mysql_install_db \
 		    --basedir=@LOCALBASE@ \
 		    --datadir=@MYSQL_DATADIR@ \
