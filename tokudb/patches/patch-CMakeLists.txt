@@ -3,7 +3,7 @@ $NetBSD: patch-CMakeLists.txt,v 1.6 2014/11/29 10:01:29 adam Exp $
 Split configuration between mysql-client and mysql-server.
 Build with newer DTrace.
 
---- CMakeLists.txt.orig	2014-11-04 07:49:52.000000000 +0000
+--- CMakeLists.txt.orig	2015-01-21 20:49:23.000000000 +0000
 +++ CMakeLists.txt
 @@ -165,6 +165,7 @@ IF(DISABLE_SHARED)
    SET(WITHOUT_DYNAMIC_PLUGINS 1)
@@ -13,7 +13,7 @@ Build with newer DTrace.
  OPTION(CYBOZU "" OFF)
  OPTION(BACKUP_TEST "" OFF)
  OPTION(WITHOUT_SERVER OFF)
-@@ -375,7 +376,6 @@ ADD_SUBDIRECTORY(strings)
+@@ -377,7 +378,6 @@ ADD_SUBDIRECTORY(strings)
  ADD_SUBDIRECTORY(vio)
  ADD_SUBDIRECTORY(regex)
  ADD_SUBDIRECTORY(mysys)
@@ -21,7 +21,7 @@ Build with newer DTrace.
  
  IF(WITH_UNIT_TESTS)
   ENABLE_TESTING()
-@@ -387,9 +387,13 @@ IF(WITH_UNIT_TESTS)
+@@ -389,9 +389,13 @@ IF(WITH_UNIT_TESTS)
  ENDIF()
  
  ADD_SUBDIRECTORY(extra)
@@ -37,7 +37,7 @@ Build with newer DTrace.
    ADD_SUBDIRECTORY(sql)
    ADD_SUBDIRECTORY(sql/share)
    ADD_SUBDIRECTORY(libservices)
-@@ -402,11 +406,7 @@ IF(NOT WITHOUT_SERVER)
+@@ -404,11 +408,7 @@ IF(NOT WITHOUT_SERVER)
    ADD_SUBDIRECTORY(mysql-test)
    ADD_SUBDIRECTORY(mysql-test/lib/My/SafeProcess)
    ADD_SUBDIRECTORY(support-files)

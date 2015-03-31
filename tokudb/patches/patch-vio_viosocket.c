@@ -1,6 +1,6 @@
 $NetBSD: patch-vio_viosocket.c,v 1.1 2014/07/18 13:42:24 ryoon Exp $
 
---- vio/viosocket.c.orig	2014-01-14 08:16:26.000000000 +0000
+--- vio/viosocket.c.orig	2015-01-21 20:49:23.000000000 +0000
 +++ vio/viosocket.c
 @@ -34,6 +34,12 @@
  # include <sys/filio.h>

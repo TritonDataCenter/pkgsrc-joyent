@@ -20,6 +20,7 @@ lib/mysql/plugin/adt_null.so
 lib/mysql/plugin/auth.so
 lib/mysql/plugin/auth_test_plugin.so
 lib/mysql/plugin/daemon_example.ini
+lib/mysql/plugin/ha_sphinx.so
 lib/mysql/plugin/libdaemon_example.so
 lib/mysql/plugin/mypluglib.so
 lib/mysql/plugin/qa_auth_client.so
@@ -100,6 +101,7 @@ share/mysql/serbian/errmsg.sys
 share/mysql/slovak/errmsg.sys
 share/mysql/solaris/postinstall-solaris
 share/mysql/spanish/errmsg.sys
+share/mysql/sql-bench/sql-bench/CTestTestfile.cmake
 share/mysql/sql-bench/sql-bench/Data/ATIS/aircraft.txt
 share/mysql/sql-bench/sql-bench/Data/ATIS/airline.txt
 share/mysql/sql-bench/sql-bench/Data/ATIS/airport.txt
@@ -135,6 +137,7 @@ share/mysql/sql-bench/sql-bench/Data/Wisconsin/tenk.data
 share/mysql/sql-bench/sql-bench/README
 share/mysql/sql-bench/sql-bench/bench-count-distinct
 share/mysql/sql-bench/sql-bench/bench-init.pl
+share/mysql/sql-bench/sql-bench/cmake_install.cmake
 share/mysql/sql-bench/sql-bench/compare-results
 share/mysql/sql-bench/sql-bench/copy-db
 share/mysql/sql-bench/sql-bench/crash-me

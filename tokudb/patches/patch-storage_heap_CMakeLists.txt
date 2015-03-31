@@ -2,7 +2,7 @@ $NetBSD: patch-storage_heap_CMakeLists.txt,v 1.1 2014/02/13 15:47:15 jperkin Exp
 
 Build with newer DTrace.
 
---- storage/heap/CMakeLists.txt.orig	2014-01-14 08:16:26.000000000 +0000
+--- storage/heap/CMakeLists.txt.orig	2015-01-21 20:49:23.000000000 +0000
 +++ storage/heap/CMakeLists.txt
 @@ -22,7 +22,8 @@ SET(HEAP_SOURCES  _check.c _rectest.c hp
  				hp_rename.c hp_rfirst.c hp_rkey.c hp_rlast.c hp_rnext.c hp_rprev.c

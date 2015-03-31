@@ -1,6 +1,6 @@
 $NetBSD: patch-mysys_my__getopt.c,v 1.1 2014/07/18 13:42:24 ryoon Exp $
 
---- mysys/my_getopt.c.orig	2014-01-14 08:16:26.000000000 +0000
+--- mysys/my_getopt.c.orig	2015-01-21 20:49:23.000000000 +0000
 +++ mysys/my_getopt.c
 @@ -22,6 +22,11 @@
  #include <errno.h>

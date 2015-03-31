@@ -2,9 +2,9 @@ $NetBSD: patch-libmysql_CMakeLists.txt,v 1.2 2014/03/31 08:03:22 adam Exp $
 
 Use uniform shared library names to avoid packaging list divergence.
 
---- libmysql/CMakeLists.txt.orig	2014-03-14 18:58:32.000000000 +0000
+--- libmysql/CMakeLists.txt.orig	2015-01-21 20:49:23.000000000 +0000
 +++ libmysql/CMakeLists.txt
-@@ -207,14 +207,8 @@ IF(NOT DISABLE_SHARED)
+@@ -206,14 +206,8 @@ IF(NOT DISABLE_SHARED)
      COMPONENT SharedLibraries)
    IF(UNIX)
      # libtool compatability

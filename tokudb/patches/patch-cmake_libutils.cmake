@@ -2,9 +2,9 @@ $NetBSD: patch-cmake_libutils.cmake,v 1.1.1.1 2011/04/25 21:12:53 adam Exp $
 
 On Mac OS X, use PkgSrc libtool.
 
---- cmake/libutils.cmake.orig	2011-04-05 12:38:41.000000000 +0000
+--- cmake/libutils.cmake.orig	2015-01-21 20:49:23.000000000 +0000
 +++ cmake/libutils.cmake
-@@ -178,7 +178,7 @@ MACRO(MERGE_STATIC_LIBS TARGET OUTPUT_NA
+@@ -179,7 +179,7 @@ MACRO(MERGE_STATIC_LIBS TARGET OUTPUT_NA
        "${LINKER_EXTRA_FLAGS}")
    ELSE()
      GET_TARGET_PROPERTY(TARGET_LOCATION ${TARGET} LOCATION)  

@@ -2,7 +2,7 @@ $NetBSD: patch-client_mysqladmin.cc,v 1.3 2014/07/18 13:42:24 ryoon Exp $
 
 Redefine signals for Irix.
 
---- client/mysqladmin.cc.orig	2014-01-14 08:16:26.000000000 +0000
+--- client/mysqladmin.cc.orig	2015-01-21 20:49:23.000000000 +0000
 +++ client/mysqladmin.cc
 @@ -29,6 +29,11 @@
  #define SHUTDOWN_DEF_TIMEOUT 3600		/* Wait for shutdown */
@@ -16,7 +16,7 @@ Redefine signals for Irix.
  char *host= NULL, *user= 0, *opt_password= 0,
       *default_charset= (char*) MYSQL_AUTODETECT_CHARSET_NAME;
  char truncated_var_names[MAX_MYSQL_VAR][MAX_TRUNC_LENGTH];
-@@ -332,8 +337,14 @@ int main(int argc,char *argv[])
+@@ -336,8 +341,14 @@ int main(int argc,char *argv[])
    if (tty_password)
      opt_password = get_tty_password(NullS);
  

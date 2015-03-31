@@ -1,6 +1,6 @@
 $NetBSD: patch-strtoll.c,v 1.1 2014/07/18 13:42:24 ryoon Exp $
 
---- strtoll.c.orig	2014-03-09 04:03:38.000000000 +0000
+--- strtoll.c.orig	2015-03-30 13:13:15.940719639 +0000
 +++ strtoll.c
 @@ -0,0 +1,158 @@
 +#if !defined(LLONG_MAX)

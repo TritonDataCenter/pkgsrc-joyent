@@ -2,7 +2,7 @@ $NetBSD: patch-vio_viossl.c,v 1.1 2013/04/20 08:06:56 adam Exp $
 
 Compatibility fix.
 
---- vio/viossl.c.orig	2013-04-20 07:00:23.000000000 +0000
+--- vio/viossl.c.orig	2015-01-21 20:49:23.000000000 +0000
 +++ vio/viossl.c
 @@ -171,7 +171,7 @@ static int ssl_do(struct st_VioSSLFd *pt
    SSL_clear(ssl);

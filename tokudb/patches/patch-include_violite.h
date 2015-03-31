@@ -1,6 +1,6 @@
 $NetBSD: patch-include_violite.h,v 1.1 2014/07/18 13:42:24 ryoon Exp $
 
---- include/violite.h.orig	2014-01-14 08:16:26.000000000 +0000
+--- include/violite.h.orig	2015-01-21 20:49:23.000000000 +0000
 +++ include/violite.h
 @@ -196,8 +196,14 @@ struct st_vio
    HANDLE hPipe;

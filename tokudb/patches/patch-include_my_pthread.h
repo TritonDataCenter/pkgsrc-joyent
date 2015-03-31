@@ -1,6 +1,6 @@
 $NetBSD: patch-include_my_pthread.h,v 1.1.1.1 2011/04/25 21:12:53 adam Exp $
 
---- include/my_pthread.h.orig	2011-04-16 09:13:17.000000000 +0000
+--- include/my_pthread.h.orig	2015-01-21 20:49:23.000000000 +0000
 +++ include/my_pthread.h
 @@ -20,6 +20,13 @@
  
@@ -16,7 +16,7 @@ $NetBSD: patch-include_my_pthread.h,v 1.1.1.1 2011/04/25 21:12:53 adam Exp $
  #ifndef ETIME
  #define ETIME ETIMEDOUT				/* For FreeBSD */
  #endif
-@@ -238,6 +245,10 @@ int sigwait(sigset_t *set, int *sig);
+@@ -248,6 +255,10 @@ int sigwait(sigset_t *set, int *sig);
  #endif
  
  #ifndef HAVE_NONPOSIX_SIGWAIT

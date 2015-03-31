@@ -1,6 +1,6 @@
 $NetBSD: patch-storage_innobase_include_os0sync.h,v 1.2 2011/07/08 09:32:07 adam Exp $
 
---- storage/innobase/include/os0sync.h.orig	2011-03-31 13:36:18.000000000 +0000
+--- storage/innobase/include/os0sync.h.orig	2015-01-21 20:49:23.000000000 +0000
 +++ storage/innobase/include/os0sync.h
 @@ -327,7 +327,7 @@ compare to, new_val is the value to swap
  	(atomic_cas_ulong(ptr, old_val, new_val) == old_val)

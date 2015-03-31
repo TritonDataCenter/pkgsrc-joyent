@@ -2,7 +2,7 @@ $NetBSD: patch-cmake_readline.cmake,v 1.1 2013/08/22 12:28:08 ryoon Exp $
 
 * Fix cmake's check build error. Borrowed from mysql56's readline.cmake.
 
---- cmake/readline.cmake.orig	2013-06-19 15:26:27.000000000 +0000
+--- cmake/readline.cmake.orig	2015-01-21 20:49:23.000000000 +0000
 +++ cmake/readline.cmake
 @@ -156,8 +156,11 @@ MACRO (MYSQL_FIND_SYSTEM_READLINE name)
      #include <readline/readline.h>

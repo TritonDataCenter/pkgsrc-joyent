@@ -2,7 +2,7 @@ $NetBSD: patch-cmake_plugin.cmake,v 1.1 2014/02/13 15:47:15 jperkin Exp $
 
 Build with newer DTrace.
 
---- cmake/plugin.cmake.orig	2014-01-14 08:16:26.000000000 +0000
+--- cmake/plugin.cmake.orig	2015-01-21 20:49:23.000000000 +0000
 +++ cmake/plugin.cmake
 @@ -21,6 +21,7 @@ INCLUDE(${MYSQL_CMAKE_SCRIPT_DIR}/cmake_
  # [STORAGE_ENGINE]

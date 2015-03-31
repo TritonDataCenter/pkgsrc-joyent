@@ -1,8 +1,8 @@
 $NetBSD: patch-sql_mysqld.cc,v 1.3 2012/10/01 15:54:40 adam Exp $
 
---- sql/mysqld.cc.orig	2011-06-21 16:42:40.000000000 +0000
+--- sql/mysqld.cc.orig	2015-01-21 20:49:23.000000000 +0000
 +++ sql/mysqld.cc
-@@ -160,7 +160,7 @@ extern int memcntl(caddr_t, size_t, int,
+@@ -161,7 +161,7 @@ extern int memcntl(caddr_t, size_t, int,
  int initgroups(const char *,unsigned int);
  #endif
  
@@ -11,7 +11,7 @@ $NetBSD: patch-sql_mysqld.cc,v 1.3 2012/10/01 15:54:40 adam Exp $
  #include <ieeefp.h>
  #ifdef HAVE_FP_EXCEPT				// Fix type conflict
  typedef fp_except fp_except_t;
-@@ -191,7 +191,7 @@ extern "C" my_bool reopen_fstreams(const
+@@ -192,7 +192,7 @@ extern "C" my_bool reopen_fstreams(const
  
  inline void setup_fpu()
  {

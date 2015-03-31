@@ -1,6 +1,6 @@
 $NetBSD: patch-client_mysqlshow.c,v 1.1 2014/07/18 13:42:24 ryoon Exp $
 
---- client/mysqlshow.c.orig	2014-01-14 08:16:26.000000000 +0000
+--- client/mysqlshow.c.orig	2015-01-21 20:49:23.000000000 +0000
 +++ client/mysqlshow.c
 @@ -29,6 +29,11 @@
  #include <sslopt-vars.h>

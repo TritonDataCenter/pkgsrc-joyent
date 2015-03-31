@@ -89,6 +89,9 @@ CXXFLAGS+=		-DHAVE_CURSES_H
 CMAKE_ARGS+=		-DHAVE_READDIR_R=OFF
 .endif
 
+# Clumsy workaround for error thrown for storage/tokudb/ft-index/ft/txn/txn.cc:345:5
+CPPFLAGS+=		-Wno-missing-braces
+
 .include "../../mk/pthread.buildlink3.mk"
 
 .if (defined(PTHREAD_TYPE) && (${PTHREAD_TYPE} == "pth")) || \

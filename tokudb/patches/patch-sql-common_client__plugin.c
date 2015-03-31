@@ -1,6 +1,6 @@
 $NetBSD: patch-sql-common_client__plugin.c,v 1.1 2014/11/25 14:54:22 joerg Exp $
 
---- sql-common/client_plugin.c.orig	2014-11-21 12:41:46.000000000 +0000
+--- sql-common/client_plugin.c.orig	2015-01-21 20:49:23.000000000 +0000
 +++ sql-common/client_plugin.c
 @@ -179,6 +179,18 @@ err1:
    return NULL;

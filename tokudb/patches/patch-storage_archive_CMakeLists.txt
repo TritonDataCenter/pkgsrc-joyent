@@ -2,7 +2,7 @@ $NetBSD: patch-storage_archive_CMakeLists.txt,v 1.1 2014/02/13 15:47:15 jperkin 
 
 Build with newer DTrace.
 
---- storage/archive/CMakeLists.txt.orig	2014-01-14 08:16:26.000000000 +0000
+--- storage/archive/CMakeLists.txt.orig	2015-01-21 20:49:23.000000000 +0000
 +++ storage/archive/CMakeLists.txt
 @@ -14,5 +14,6 @@
  # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA

@@ -12,21 +12,21 @@ COMMENT=	High-performance storage engine for MySQL
 #LICENSE=	# TODO: (see mk/license.mk)
 
 TKNAME=		tokudb-7.5.6
-TKFILES=	backup-plugin ft-index jemalloc mysql-5.5 tokudb-engine
+TKFILES=	tokudb-backup-plugin ft-index jemalloc mysql-5.5 tokudb-engine
 
-.include "../../joyent/mysql55-tokudb/Makefile.common"
+.include "../../joyent/tokudb/Makefile.common"
 
 DIST_SUBDIR=	tokudb
 
 .for file in ${TKFILES}
 DISTFILES+=				${file}-${TKNAME}${EXTRACT_SUFX}
-SITES.${file}-${TKNAME}${EXTRACT_SUFX}=	-http://github.com/Tokutek/${file}/archive/${TKNAME}
+SITES.${file}-${TKNAME}${EXTRACT_SUFX}=	-http://github.com/Tokutek/${file}/archive/${TKNAME}${EXTRACT_SUFX}
 .endfor
 
 WRKSRC=		${WRKDIR}/mysql-5.5-${TKNAME}
 USE_CMAKE=	yes
 USE_LANGUAGES=	c c++
-USE_TOOLS+=	pax
+USE_TOOLS+=	yacc pax
 
 CHECK_PORTABILITY_SKIP+=	extra/jemalloc/configure	\
 				storage/tokudb/ft-index/third_party/jemalloc/configure
@@ -43,18 +43,25 @@ CMAKE_ARGS+=	-DUSE_ETAGS=OFF
 CMAKE_ARGS+=	-DUSE_GTAGS=OFF
 CMAKE_ARGS+=	-DUSE_VALGRIND=OFF
 CMAKE_ARGS+=	-DWITH_JEMALLOC=bundled
+CMAKE_ARGS+=	-DWITH_TOKUDB=ON
+CMAKE_ARGS+=	-DWITH_TOKUDB_STORAGE_ENGINE=ON
+
+BUILDLINK_TRANSFORM+=	rm:-flto 
+BUILDLINK_TRANSFORM+=	rm:-fuse-linker-plugin
 
 SUBST_CLASSES+=		ver
 SUBST_STAGE.ver=	pre-configure
 SUBST_MESSAGE.ver=	Preparing build
 SUBST_FILES.ver=	VERSION
-SUBST_SED.ver=		-e '/MYSQL_VERSION_EXTRA/s/=/=tokudb-${PKGVERSION_NOREV}/'
+SUBST_SED.ver=		-e '/MYSQL_VERSION_EXTRA/s/=/=-tokudb-${PKGVERSION_NOREV}/'
 
-post-extract:
-#	${LN} -s ${WRKDIR}/tokudb-engine-${TKNAME} ${WRKSRC}/storage/tokudb
-#	${LN} -s ${WRKDIR}/ft-index-${TKNAME} ${WRKSRC}/storage/tokudb/ft-index
-#	${LN} -s ${WRKDIR}/jemalloc-${TKNAME} ${WRKSRC}/storage/tokudb/ft-index/third_party/jemalloc
-#	${LN} -s ${WRKDIR}/tokudb-backup-plugin-${TKNAME} ${WRKSRC}/plugin/tokudb-backup-plugin
+# This should not be needed
+#SUBST_CLASSES+=		jem
+#SUBST_STAGE.jem=	pre-build
+#SUBST_FILES.jem=	sql/CMakeLists.txt
+#SUBST_SED.jem=		-e 's,jemalloc,-L../extra/jemalloc/lib jemalloc,'
+
+pre-patch:
 	cp -Rp ${WRKDIR}/tokudb-engine-${TKNAME}/storage/tokudb ${WRKSRC}/storage/tokudb
 	cp -Rp ${WRKDIR}/ft-index-${TKNAME} ${WRKSRC}/storage/tokudb/ft-index
 	cp -Rp ${WRKDIR}/jemalloc-${TKNAME} ${WRKSRC}/storage/tokudb/ft-index/third_party/jemalloc

@@ -1,6 +1,6 @@
 $NetBSD: patch-strtoull.c,v 1.1 2014/07/18 13:42:24 ryoon Exp $
 
---- strtoull.c.orig	2014-03-09 04:03:38.000000000 +0000
+--- strtoull.c.orig	2015-03-30 13:13:15.995180423 +0000
 +++ strtoull.c
 @@ -0,0 +1,131 @@
 +/*-
