@@ -24,7 +24,7 @@ Make SunOS portable. Patch by Derek Crudgington.
      do
 -        ss -p state listening "( sport = :$PORT )" | grep -qE 'socat|nc' && break
 +        if [[ $(uname -s | grep SunOS) ]]; then
-+            pfiles $(pgrep 'socat|nc') | grep "AF_INET.* ${PORT}$" >/dev/null && break
++            pfiles $(pgrep 'socat|nc') || true | grep "AF_INET.* ${PORT}$" >/dev/null && break
 +        else
 +            ss -p state listening "( sport = :$PORT )" | grep -qE 'socat|nc' && break
 +        fi
