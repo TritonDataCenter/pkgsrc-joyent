@@ -1,11 +1,11 @@
 # $NetBSD$
 
-DISTNAME=	mongodb-src-r2.6.9
+DISTNAME=	mongodb-src-r3.0.2
 PKGNAME=	${DISTNAME:S/src-r//:S/-rc/rc/}
 CATEGORIES=	databases
 MASTER_SITES=	http://fastdl.mongodb.org/src/
 
-MAINTAINER=	filip@joyent.com
+MAINTAINER=	bartosz.kuzma@gmail.com
 HOMEPAGE=	http://mongodb.org/
 COMMENT=	NOSQL distributed document-oriented database
 LICENSE=	gnu-agpl-v3 # Client and tools licensed under apache-2.0
@@ -13,11 +13,11 @@ LICENSE=	gnu-agpl-v3 # Client and tools licensed under apache-2.0
 NO_CONFIGURE=	yes
 USE_LANGUAGES=	c c++
 
-BUILD_DEPENDS+=	scons-[0-9]*:../../devel/scons
+BUILD_DEPENDS+=	scons>=2.3:../../devel/scons
 
 SCONS_BIN=	${PREFIX}/bin/scons
 SCONS_ARGS=	${_MAKE_JOBS}
-SCONS_ARGS+=	--c++11=C++11
+SCONS_ARGS+=	--c++11=on
 SCONS_ARGS+=	--cc=${WRAPPER_BINDIR}/${CC:Q}
 SCONS_ARGS+=	--cxx=${WRAPPER_BINDIR}/${CXX:Q}
 SCONS_ARGS+=	--use-system-boost=USE-SYSTEM-BOOST
@@ -26,6 +26,11 @@ SCONS_ARGS+=	--use-system-snappy=USE-SYSTEM-SNAPPY
 SCONS_ARGS+=	--use-system-tcmalloc=USE-SYSTEM-TCMALLOC
 
 .include "../../mk/bsd.fast.prefs.mk"
+
+# Real requirement is 4.8.2, but lang/gcc48 is not finished
+# in terms of the gcc48/gcc48-libs split up, so we'll go with
+# gcc49 instead.
+GCC_REQD+=	4.9
 
 .if ${MACHINE_ARCH} == "x86_64"
 SCONS_ARGS+=	--64
@@ -100,7 +105,7 @@ do-build:
 
 do-install:
 	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${SCONS_BIN} ${SCONS_ARGS} \
-		--full --prefix=${DESTDIR}${PREFIX} install
+		--prefix=${DESTDIR}${PREFIX} install
 
 do-test:
 	cd ${WRKSRC} && ./test
