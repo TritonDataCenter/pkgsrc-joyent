@@ -4,7 +4,7 @@
 
 PKGNAME=		zabbix22-agent-${VER}
 
-CONFLICTS+=     	zabbix24-agent-*
+CONFLICTS+=     	zabbix24-agent-[0-9]*
 
 CONFIGURE_ARGS+=	--enable-agent
 CONFIGURE_ARGS+=	--disable-server

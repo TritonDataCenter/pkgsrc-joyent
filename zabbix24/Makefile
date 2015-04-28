@@ -2,7 +2,7 @@
 
 PKGNAME=	zabbix24-${VER}
 
-CONFLICTS+=     zabbix22
+CONFLICTS+=     zabbix22-[0-9]*
 
 DEPENDS+=       zabbix24-agent>=${PKGVERSION_NOREV}:../../joyent/zabbix24-agent
 

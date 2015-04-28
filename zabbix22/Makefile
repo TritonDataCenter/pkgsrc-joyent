@@ -1,6 +1,6 @@
 # $NetBSD$
 
-CONFLICTS+=     zabbix24
+CONFLICTS+=     zabbix24-[0-9]*
 
 DEPENDS+=       zabbix22-agent>=${PKGVERSION_NOREV}:../../joyent/zabbix22-agent
 

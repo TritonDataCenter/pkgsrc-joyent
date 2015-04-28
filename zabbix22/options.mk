@@ -5,15 +5,15 @@ PKG_OPTIONS_VAR=	PKG_OPTIONS.zabbix
 PKG_SUPPORTED_OPTIONS+=	curl
 PKG_SUPPORTED_OPTIONS+=	ldap
 PKG_SUPPORTED_OPTIONS+=	snmp
-PKG_SUPPORTED_OPTIONS+=	zabbix-static
+PKG_SUPPORTED_OPTIONS+=	static
 PKG_SUPPORTED_OPTIONS+=	jabber
-PKG_SUPPORTED_OPTIONS+=	ssh
-PKG_SUPPORTED_OPTIONS+=	ipv6
+PKG_SUPPORTED_OPTIONS+=	libssh2
+PKG_SUPPORTED_OPTIONS+=	inet6
 #PKG_SUPPORTED_OPTIONS+=ipmi
 #PKG_SUPPORTED_OPTIONS+=odbc
 
 .if !empty(PKG_OPTIONS:Mzabbix-server)
-PKG_SUGGESTED_OPTIONS=	curl ldap snmp ssh jabber ipv6
+PKG_SUGGESTED_OPTIONS=	curl ldap snmp libssh2 jabber inet6
 .endif
 
 .include "../../mk/bsd.prefs.mk"
@@ -24,7 +24,7 @@ CONFIGURE_ARGS+=	--with-jabber
 .include "../../textproc/iksemel/buildlink3.mk"
 .endif
 
-.if !empty(PKG_OPTIONS:Mssh)
+.if !empty(PKG_OPTIONS:Mlibssh2)
 CONFIGURE_ARGS+=	--with-ssh2
 .include "../../security/libssh2/buildlink3.mk"
 .endif
@@ -37,7 +37,7 @@ CONFIGURE_ARGS+=	--with-ssh2
 # don't know quite yet
 #.endif
 
-.if !empty(PKG_OPTIONS:Mipv6)
+.if !empty(PKG_OPTIONS:Minet6)
 CONFIGURE_ARGS+=	--enable-ipv6
 .endif
 
@@ -79,6 +79,6 @@ CONFIGURE_ARGS+=	--with-net-snmp
 CONFIGURE_ARGS+=	--with-ldap=${BUILDLINK_PREFIX.openldap-client:Q}
 .endif
 
-.if !empty(PKG_OPTIONS:Mzabbix-static)
+.if !empty(PKG_OPTIONS:Mstatic)
 CONFIGURE_ARGS+=	--enable-static
 .endif
