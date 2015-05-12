@@ -1,0 +1,11 @@
+$NetBSD$
+
+Build with newer DTrace.
+
+--- mysys_ssl/CMakeLists.txt.orig	2015-02-25 15:40:55.000000000 +0000
++++ mysys_ssl/CMakeLists.txt
+@@ -43,4 +43,3 @@ SET(MYSYS_SSL_SOURCES
+ 
+ ADD_CONVENIENCE_LIBRARY(mysys_ssl ${MYSYS_SSL_SOURCES})
+ TARGET_LINK_LIBRARIES(mysys_ssl dbug strings ${SSL_LIBRARIES})
+-DTRACE_INSTRUMENT(mysys_ssl)
