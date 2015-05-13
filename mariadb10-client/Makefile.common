@@ -70,7 +70,7 @@ CMAKE_ARGS+=		-DDTRACE_FLAGS="-${ABI}"
 # Override some configure bits that are not correct (fixes groonga)
 .if ${OPSYS} == "SunOS"
 CMAKE_ARGS+=		-DHAVE_NETINET_TCP_H=ON
-CMAKE_ARGS+=		_D_XPG4_2=1 -D__EXTENSIONS__=1
+CMAKE_ARGS+=		-D_XPG4_2=1 -D__EXTENSIONS__=1
 .endif
 
 REPLACE_SH=		scripts/mysql_install_db.sh scripts/mysqld_safe.sh
