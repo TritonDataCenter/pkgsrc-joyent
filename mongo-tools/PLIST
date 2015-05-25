@@ -1,0 +1,10 @@
+@comment $NetBSD$
+bin/bsondump
+bin/mongodump
+bin/mongoexport
+bin/mongofiles
+bin/mongoimport
+bin/mongooplog
+bin/mongorestore
+bin/mongostat
+bin/mongotop

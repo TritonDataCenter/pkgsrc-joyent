@@ -1,0 +1,2 @@
+This package contains the MongoDB CLI tools that no longer build
+with the official MongoDB tarball since 3.0.
