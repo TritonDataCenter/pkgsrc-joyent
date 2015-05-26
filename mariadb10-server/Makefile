@@ -77,6 +77,11 @@ SUBST_STAGE.perl=	pre-configure
 SUBST_FILES.perl=	sql-bench/test-table-elimination.sh
 SUBST_SED.perl=		-e 's,@PERL@,${PERL5},'
 
+BUILDLINK_TRANSFORM+=	rm:-fuse-linker-plugin
+
+# Clumsy workaround for error thrown for storage/tokudb/ft-index/ft/txn/txn.cc:345:5
+CPPFLAGS+=		-Wno-missing-braces
+
 CONF_FILES=		${PREFIX}/share/mysql/my-joyent.cnf \
 			${PKG_SYSCONFDIR}/my.cnf
 
