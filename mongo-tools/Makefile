@@ -12,14 +12,17 @@ LICENSE=	apache-2.0
 
 GITHUB_PROJECT=	mongo-tools
 GITHUB_TAG=	r${PKGVERSION_NOREV}
-
 DIST_SUBDIR=	${GITHUB_PROJECT}
 WRKSRC=		${WRKDIR}/${GITHUB_PROJECT}-${DISTNAME}
 
 USE_TOOLS+=	pkg-config
 
-MONGO_TOOLS=	bsondump mongostat mongofiles mongoexport mongoimport mongorestore mongodump mongotop mongooplog
+.include "options.mk"
 
+MONGO_TOOLS=	bsondump mongostat mongofiles mongoexport mongoimport \
+		mongorestore mongodump mongotop mongooplog
+
+# go uses volatile /tmp dirs that contain required includes files too
 BUILDLINK_PASSTHRU_DIRS+=	/tmp
 
 INSTALLATION_DIRS+=	bin
@@ -32,7 +35,9 @@ post-extract:
 
 do-build:
 .for tool in ${MONGO_TOOLS}
-	cd ${WRKSRC} && ${PKGSRC_SETENV} GOPATH=${WRKSRC}:${WRKSRC}/vendor:${PREFIX}/gopkg go build -v -o bin/${tool} ${tool}/main/${tool}.go
+	cd ${WRKSRC} && \
+	  ${PKGSRC_SETENV} GOPATH=${WRKSRC}:${WRKSRC}/vendor:${PREFIX}/gopkg \
+	  go build -tags "${MONGO_TAGS}" -o bin/${tool} ${tool}/main/${tool}.go
 .endfor
 
 do-install:

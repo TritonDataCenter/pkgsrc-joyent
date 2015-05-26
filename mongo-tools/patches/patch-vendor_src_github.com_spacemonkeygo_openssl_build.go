@@ -8,5 +8,5 @@ SunOS also needs to link the OpenSSL libs.
  // #cgo linux pkg-config: openssl
  // #cgo windows CFLAGS: -DWIN32_LEAN_AND_MEAN
  // #cgo darwin LDFLAGS: -lssl -lcrypto
-+// #cgo solaris LDFLAGS: -lssl -lcrypto
++// #cgo solaris pkg-config: openssl
  import "C"
