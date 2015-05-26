@@ -15,6 +15,7 @@ GITHUB_TAG=	r${PKGVERSION_NOREV}
 DIST_SUBDIR=	${GITHUB_PROJECT}
 WRKSRC=		${WRKDIR}/${GITHUB_PROJECT}-${DISTNAME}
 
+BUILD_DEPENDS+=	go-${GO_VERSION}*:../../lang/go
 CONFLICTS+=	mongodb<3.0
 
 USE_TOOLS+=	pkg-config
@@ -26,6 +27,9 @@ MONGO_TOOLS=	bsondump mongostat mongofiles mongoexport mongoimport \
 
 # go uses volatile /tmp dirs that contain required includes files too
 BUILDLINK_PASSTHRU_DIRS+=	/tmp
+
+# go builds sanitize all paths, so -L/lib is no longer there
+BUILDLINK_TRANSFORM+=		rm:-lumem
 
 INSTALLATION_DIRS+=	bin
 
