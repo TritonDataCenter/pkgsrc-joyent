@@ -2,9 +2,11 @@
 $NetBSD$
 
 MongoDB 3.0 and later no longer comes with the usual CLI tools like
-mongodump and mongorestore, which have been moved to a discrete upstream
-repository. These tools have been rewritten in Go and do not currently
-build on SmartOS (Illumos/SunOS) platforms. If you need the CLI tools,
-please continue using the MongoDB 2.6.x packages for the time being.
+mongodump and mongorestore, which have been moved to a separate repository
+by upstream project maintainers.
+
+Please install the mongo-tools package for these:
+
+  pkgin -y in mongo-tools
 
 ===========================================================================
