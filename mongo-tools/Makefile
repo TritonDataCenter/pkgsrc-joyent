@@ -15,6 +15,8 @@ GITHUB_TAG=	r${PKGVERSION_NOREV}
 DIST_SUBDIR=	${GITHUB_PROJECT}
 WRKSRC=		${WRKDIR}/${GITHUB_PROJECT}-${DISTNAME}
 
+CONFLICTS+=	mongodb<3.0
+
 USE_TOOLS+=	pkg-config
 
 .include "options.mk"
