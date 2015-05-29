@@ -1,5 +1,6 @@
 $NetBSD$
 
+Detect endianness on SunOS.
 --- storage/tokudb/ft-index/portability/toku_htod.h.orig	2015-02-25 15:40:56.000000000 +0000
 +++ storage/tokudb/ft-index/portability/toku_htod.h
 @@ -116,6 +116,15 @@ PATENT RIGHTS GRANT:

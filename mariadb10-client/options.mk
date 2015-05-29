@@ -1,8 +1,8 @@
 # $NetBSD$
 
-PKG_OPTIONS_VAR=	PKG_OPTIONS.mariadb
+PKG_OPTIONS_VAR=	PKG_OPTIONS.mariadb10
 
-PKG_SUPPORTED_OPTIONS+=	dtrace ssl
+PKG_SUPPORTED_OPTIONS+=	dtrace ssl tokudb
 PKG_SUGGESTED_OPTIONS+=	ssl
 
 .include "../../mk/bsd.options.mk"
@@ -24,4 +24,11 @@ PLIST.dtrace=		yes
 CMAKE_ARGS+=		-DWITH_SSL=system
 .else
 CMAKE_ARGS+=		-DWITH_SSL=no
+.endif
+
+# Enable TokuDB engine
+.if !empty(PKG_OPTIONS:Mtokudb)
+PLIST_SRC=		${PLIST_SRC_DFLT} PLIST.tokudb
+.else
+CMAKE_ARGS+=		-DWITHOUT_TOKUDB=yes
 .endif

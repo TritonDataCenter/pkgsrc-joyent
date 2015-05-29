@@ -1,5 +1,6 @@
 $NetBSD$
 
+Add thread and fcntl support on SunOS.
 --- storage/tokudb/ft-index/portability/portability.cc.orig	2015-02-25 15:40:56.000000000 +0000
 +++ storage/tokudb/ft-index/portability/portability.cc
 @@ -130,6 +130,9 @@ PATENT RIGHTS GRANT:
@@ -58,3 +59,14 @@ $NetBSD$
      if (r==0) r = close(fildes);
      return r;
  }
+@@ -407,6 +433,10 @@ toku_os_get_processor_frequency(uint64_t
+         r = toku_get_processor_frequency_sys(hzret);
+         if (r != 0)
+             r = toku_get_processor_frequency_cpuinfo(hzret);
++#if defined(__sun)
++        if (r != 0)
++            r = toku_get_processor_frequency_sysctl("kstat -p 'cpu_info:0:cpu_info0:current_clock_Hz'|awk '{print $2}'", hzret);
++#endif
+         if (r != 0)
+             r = toku_get_processor_frequency_sysctl("sysctl -n hw.cpufrequency", hzret);
+         if (r != 0)

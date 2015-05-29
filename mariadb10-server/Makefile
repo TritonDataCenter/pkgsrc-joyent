@@ -78,6 +78,7 @@ SUBST_FILES.perl=	sql-bench/test-table-elimination.sh
 SUBST_SED.perl=		-e 's,@PERL@,${PERL5},'
 
 BUILDLINK_TRANSFORM+=	rm:-fuse-linker-plugin
+BUILDLINK_TRANSFORM+=	rm:--version-script
 
 # Clumsy workaround for error thrown for storage/tokudb/ft-index/ft/txn/txn.cc:345:5
 CPPFLAGS+=		-Wno-missing-braces

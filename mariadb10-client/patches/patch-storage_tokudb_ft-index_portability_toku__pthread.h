@@ -1,5 +1,6 @@
 $NetBSD$
 
+Add thread support on SunOS.
 --- storage/tokudb/ft-index/portability/toku_pthread.h.orig	2015-02-25 15:40:56.000000000 +0000
 +++ storage/tokudb/ft-index/portability/toku_pthread.h
 @@ -142,7 +142,7 @@ typedef struct toku_mutex_aligned {

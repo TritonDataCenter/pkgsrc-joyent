@@ -1,5 +1,6 @@
 $NetBSD$
 
+Disable the arch check, which never works (at least on SunOS).
 --- storage/tokudb/CMakeLists.txt.orig	2015-02-25 15:40:56.000000000 +0000
 +++ storage/tokudb/CMakeLists.txt
 @@ -1,5 +1,5 @@
