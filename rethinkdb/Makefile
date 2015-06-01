@@ -3,7 +3,7 @@
 DISTNAME=	rethinkdb-2.0.2
 CATEGORIES=	databases
 MASTER_SITES=	${MASTER_SITE_GITHUB:=jperkin/}
-GITHUB_TAG=	92d24dd24e5ec3b6a1229655d06ca3142b3b0425
+GITHUB_TAG=	b25e169055f7378e6510c91dbd62677cc0d67ca6
 
 MAINTAINER=	jperkin@joyent.com
 HOMEPAGE=	http://download.rethinkdb.com/dist/
