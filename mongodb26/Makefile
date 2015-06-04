@@ -1,6 +1,6 @@
 # $NetBSD$
 
-DISTNAME=	mongodb-src-r2.6.9
+DISTNAME=	mongodb-src-r2.6.10
 PKGNAME=	${DISTNAME:S/src-r//:S/-rc/rc/}
 CATEGORIES=	databases
 MASTER_SITES=	http://fastdl.mongodb.org/src/
