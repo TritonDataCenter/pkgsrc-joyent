@@ -14,6 +14,7 @@
       <method_credential user="@NEO4J_USER@" group="@NEO4J_GROUP@" />
       <method_environment>
         <envvar name='JAVA_HOME' value='@PKG_JAVA_HOME@' />
+        <envvar name='PATH' value='@PREFIX@/sbin:@PREFIX@/bin:/usr/sbin:/usr/bin'/>
       </method_environment>
     </method_context>
     <exec_method type="method" name="start" exec="@PREFIX@/neo4j/bin/neo4j start-no-wait" timeout_seconds="60" />

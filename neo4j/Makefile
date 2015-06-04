@@ -1,6 +1,6 @@
 # $NetBSD$
 
-DISTNAME=	neo4j-community-2.1.7-unix
+DISTNAME=	neo4j-community-2.2.2-unix
 PKGNAME=	${DISTNAME:S/-community//:S/-unix//}
 CATEGORIES=	databases
 MASTER_SITES=	http://neo4j.com/artifact.php?name=
@@ -15,7 +15,7 @@ WRKSRC=		${WRKDIR}/${DISTNAME:S/-unix//}
 NO_BUILD=	yes
 USE_JAVA2=	7
 USE_LANGUAGES=	# none
-USE_TOOLS+=	pax
+USE_TOOLS+=	bash:run pax
 
 .include "../../mk/bsd.prefs.mk"
 
@@ -47,7 +47,11 @@ CONF_FILES_PERMS+=	share/examples/neo4j/${f} ${PKG_SYSCONFDIR}/${f} \
 			${NEO4J_USER} ${NEO4J_GROUP} 0644
 .endfor
 
+REPLACE_SH+=		bin/neo4j
 INSTALLATION_DIRS+=	neo4j share/examples/neo4j
+
+pre-install:
+	${RM} -f ${WRKSRC}/bin/neo4j.orig
 
 do-install:
 	cd ${WRKSRC} && ${PAX} -rw -pp bin lib plugins system \
