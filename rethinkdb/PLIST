@@ -1,0 +1,5 @@
+@comment $NetBSD$
+bin/rethinkdb
+man/man1/rethinkdb.1
+share/doc/rethinkdb/copyright
+share/examples/rethinkdb/default.conf.sample

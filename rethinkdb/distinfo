@@ -1,0 +1,12 @@
+$NetBSD$
+
+SHA1 (rethinkdb-2.0.2-b25e169055f7378e6510c91dbd62677cc0d67ca6.tar.gz) = 52f85f7557add479586dd8849c4e8bfdd3efa091
+RMD160 (rethinkdb-2.0.2-b25e169055f7378e6510c91dbd62677cc0d67ca6.tar.gz) = f9768186b9bd4eac8bfcf4ee7c112ddf9365a145
+Size (rethinkdb-2.0.2-b25e169055f7378e6510c91dbd62677cc0d67ca6.tar.gz) = 26058441 bytes
+SHA1 (patch-external_re2__20140111_Makefile) = 83d24457eafc75aa4d3ce4ceafa58b1bfb03bbc2
+SHA1 (patch-external_v8__3.30.33.16_third__party_icu_icu.gyp) = 79e173b4b4c932651852b1e279fe343cb812a7e4
+SHA1 (patch-external_v8__3.30.33.16_tools_run-llprof.sh) = be0be2b9a7ec28644f714c9875a7878f76a5b353
+SHA1 (patch-mk_install.mk) = 5d559df357af88be75659358b41513f7d275b95d
+SHA1 (patch-mk_support_pkg_v8.sh) = 2e058dd40b57b97417e0a081b207478f993ec227
+SHA1 (patch-mk_webui.mk) = 34a0c6a3f50ecc71bdc050c50b23dfb68026fb12
+SHA1 (patch-packaging_assets_config_default.conf.sample) = c9aa1c47ff55df1984bfe03bfac94b37f36eb330

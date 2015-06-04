@@ -1,0 +1,15 @@
+$NetBSD$
+
+Split ld arguments so we can BUILDLINK_TRANSFORM them easily.
+
+--- external/re2_20140111/Makefile.orig	2015-01-29 04:30:55.000000000 +0000
++++ external/re2_20140111/Makefile
+@@ -40,7 +40,7 @@ SONAME=0
+ ifeq ($(shell uname),Darwin)
+ MAKE_SHARED_LIBRARY=$(CXX) -dynamiclib $(LDFLAGS) -exported_symbols_list libre2.symbols.darwin
+ else
+-MAKE_SHARED_LIBRARY=$(CXX) -shared -Wl,-soname,libre2.so.$(SONAME),--version-script=libre2.symbols $(LDFLAGS)
++MAKE_SHARED_LIBRARY=$(CXX) -shared -Wl,-soname,libre2.so.$(SONAME) -Wl,--version-script=libre2.symbols $(LDFLAGS)
+ endif
+ 
+ INSTALL_HFILES=\
