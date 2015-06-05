@@ -7,6 +7,10 @@ CONFLICTS=	mysql-server-[0-9]*
 
 .include "../../joyent/mariadb10-client/Makefile.common"
 
+.if !empty(PKG_OPTIONS:Mtokudb)
+PLIST_SRC+=		PLIST.tokudb
+.endif
+
 CMAKE_ARGS+=		-DWITH_EMBEDDED_SERVER=ON
 
 #.if !empty(PKG_OPTIONS:Membedded-server)
@@ -93,5 +97,8 @@ post-install:
 	       -e 's,@VARBASE@,${VARBASE:Q},g' ${FILESDIR}/my-joyent.cnf.sh \
 	       > ${DESTDIR}${PREFIX}/share/mysql/my-joyent.cnf
 
+.include "../../devel/libjudy/buildlink3.mk"
 .include "../../joyent/mariadb10-client/buildlink3.mk"
+.include "../../security/tcp_wrappers/buildlink3.mk"
+.include "../../textproc/libxml2/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"

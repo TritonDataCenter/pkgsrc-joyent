@@ -1,5 +1,7 @@
 $NetBSD$
 
+Portability.
+
 --- storage/tokudb/ft-index/src/CMakeLists.txt.orig	2015-02-25 15:40:56.000000000 +0000
 +++ storage/tokudb/ft-index/src/CMakeLists.txt
 @@ -36,7 +36,9 @@ set_property(TARGET ${LIBTOKUDB} tokudb_

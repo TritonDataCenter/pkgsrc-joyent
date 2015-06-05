@@ -28,7 +28,7 @@ CMAKE_ARGS+=		-DWITH_SSL=no
 
 # Enable TokuDB engine
 .if !empty(PKG_OPTIONS:Mtokudb)
-PLIST_SRC=		${PLIST_SRC_DFLT} PLIST.tokudb
+CMAKE_ARGS+=		-DWITH_TOKUDB=yes
 .else
 CMAKE_ARGS+=		-DWITHOUT_TOKUDB=yes
 .endif
