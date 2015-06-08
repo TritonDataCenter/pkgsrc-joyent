@@ -16,7 +16,7 @@ PATCHDIR=	${.CURDIR}/../../joyent/syslog-ng/patches
 DISTINFO_FILE=	${.CURDIR}/../../joyent/syslog-ng/distinfo
 
 USE_LANGUAGES=	c c99
-USE_TOOLS+=	flex pkg-config gmake awk:run
+USE_TOOLS+=	bison flex pkg-config gmake awk:run
 USE_LIBTOOL=	yes
 GNU_CONFIGURE=	yes
 
@@ -47,6 +47,7 @@ CONFIGURE_ARGS+=	--sysconfdir=${PKG_SYSCONFDIR}
 
 .if ${OPSYS} == "SunOS"
 CONFIGURE_ARGS+=	--enable-dynamic-linking
+CONFIGURE_ARGS+=	ac_cv_func_epoll_create=no
 CPPFLAGS+=		-D_XOPEN_SOURCE=600 -D__EXTENSIONS__
 .endif
 
