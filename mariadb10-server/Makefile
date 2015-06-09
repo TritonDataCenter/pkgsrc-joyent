@@ -97,7 +97,9 @@ post-install:
 	       -e 's,@VARBASE@,${VARBASE:Q},g' ${FILESDIR}/my-joyent.cnf.sh \
 	       > ${DESTDIR}${PREFIX}/share/mysql/my-joyent.cnf
 
+.include "../../devel/boost-libs/buildlink3.mk"
 .include "../../devel/libjudy/buildlink3.mk"
+.include "../../devel/pcre/buildlink3.mk"
 .include "../../joyent/mariadb10-client/buildlink3.mk"
 .include "../../security/tcp_wrappers/buildlink3.mk"
 .include "../../textproc/libxml2/buildlink3.mk"

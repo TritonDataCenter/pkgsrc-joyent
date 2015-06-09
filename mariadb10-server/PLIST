@@ -91,7 +91,6 @@ include/mysql/private/opt_subselect.h
 include/mysql/private/parse_file.h
 include/mysql/private/partition_element.h
 include/mysql/private/partition_info.h
-include/mysql/private/pcre.h
 include/mysql/private/procedure.h
 include/mysql/private/protocol.h
 include/mysql/private/records.h
