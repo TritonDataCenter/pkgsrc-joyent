@@ -134,6 +134,13 @@ SUBST_SED.scr=		-e "s,chown,${CHOWN},g"
 SUBST_SED.scr+=		-e "s,/bin/sh,${RCD_SCRIPTS_SHELL},g"
 SUBST_MESSAGE.scr=	Fixing scripts.
 
+SUBST_CLASSES+=		fixpaths
+SUBST_STAGE.fixpaths=	post-install
+SUBST_FILES.fixpaths=	${DESTDIR}${PREFIX}/bin/mysqlbug
+SUBST_FILES.fixpaths+=	${DESTDIR}${PREFIX}/share/doc/mysql/INFO_BIN
+SUBST_SED.fixpaths=	-e "s,${WRAPPER_BINDIR}/gcc,${CCPATH},g"
+SUBST_SED.fixpaths+=	-e "s,${WRAPPER_BINDIR}/g++,${CXXPATH},g"
+
 .include "../../devel/readline/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../security/openssl/buildlink3.mk"
