@@ -1,0 +1,7 @@
+$NetBSD$
+
+SHA1 (libsass-3.2.5.tar.gz) = a9987e6113ac9e990d7e44282122e765cc1327a4
+RMD160 (libsass-3.2.5.tar.gz) = 0fe6ee74aa5738f4d20a38ed085cec13a255e742
+Size (libsass-3.2.5.tar.gz) = 222793 bytes
+SHA1 (patch-configure.ac) = 23333d61c5ddec288f353a4f7d09e14f6b1963ec
+SHA1 (patch-units.hpp) = c35529d5dbd21ac069ec265aa5eb84e494046e29
