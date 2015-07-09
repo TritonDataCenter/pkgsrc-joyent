@@ -53,8 +53,6 @@ innodb_write_io_threads = 8
 #long_query_time = 0.5
 slow_query_log_file = @VARBASE@/log/mysql/slowquery.log
 slow_query_log = 1
-log_slow_filter = "full_scan,tmp_table_on_disk,filesort_on_disk"
-log_slow_verbosity = "full"
 
 # Other general MySQL settings
 table_open_cache = 512
