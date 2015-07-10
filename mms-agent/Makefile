@@ -16,7 +16,7 @@ COMMENT=	MongoDB Monitoring Service agent
 PKG_DESTDIR_SUPPORT=	user-destdir
 
 DEPENDS+=	${PYPKGPREFIX}-mongo>=1.9:../../joyent/py-mongo
-DEPENDS+=	mongodb>=1.6:../../wip/mongodb
+DEPENDS+=	mongodb>=1.6:../../joyent/mongodb26
 
 WRKSRC=		${WRKDIR}/mms-agent
 USE_LANGUAGES=	# none
