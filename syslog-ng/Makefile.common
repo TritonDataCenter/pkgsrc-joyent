@@ -48,6 +48,7 @@ CONFIGURE_ARGS+=	--sysconfdir=${PKG_SYSCONFDIR}
 .if ${OPSYS} == "SunOS"
 CONFIGURE_ARGS+=	--enable-dynamic-linking
 CONFIGURE_ARGS+=	ac_cv_func_epoll_create=no
+CONFIGURE_ARGS+=	ac_cv_func_inotify_init=no
 CPPFLAGS+=		-D_XOPEN_SOURCE=600 -D__EXTENSIONS__
 .endif
 

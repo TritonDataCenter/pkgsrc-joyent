@@ -8,11 +8,7 @@ CONFIGURE_ARGS+=	--enable-ssl
 CONFIGURE_ARGS+=	--enable-tcp-wrapper
 
 .if ${OPSYS} == "SunOS"
-CONFIGURE_ARGS+=	--enable-dynamic-linking
 CONFIGURE_ARGS+=	--enable-sun-streams
-# Newer platforms may have inotify. Avoid having to manage two PLISTs
-CONFIGURE_ARGS+=	ac_cv_func_inotify_init=no
-CPPFLAGS+=		-D_XOPEN_SOURCE=600 -D__EXTENSIONS__
 .endif
 
 .include "options.mk"
