@@ -11,6 +11,10 @@ CONFLICTS=	mysql-server-[0-9]*
 PLIST_SRC+=		PLIST.tokudb
 .endif
 
+.if !empty(PKG_OPTIONS:Mmroonga)
+PLIST_SRC+=		PLIST.mroonga
+.endif
+
 CMAKE_ARGS+=		-DWITH_EMBEDDED_SERVER=ON
 
 #.if !empty(PKG_OPTIONS:Membedded-server)
@@ -98,6 +102,7 @@ post-install:
 	       > ${DESTDIR}${PREFIX}/share/mysql/my-joyent.cnf
 
 .include "../../devel/boost-libs/buildlink3.mk"
+.include "../../devel/libexecinfo/buildlink3.mk"
 .include "../../devel/libjudy/buildlink3.mk"
 .include "../../devel/pcre/buildlink3.mk"
 .include "../../joyent/mariadb10-client/buildlink3.mk"

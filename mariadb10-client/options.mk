@@ -9,6 +9,9 @@ PKG_SUGGESTED_OPTIONS+=	ssl
 
 .if ${OPSYS} == "SunOS"
 PKG_SUGGESTED_OPTIONS+=	dtrace
+.else
+PKG_SUPPORTED_OPTIONS+=	mroonga
+PKG_SUGGESTED_OPTIONS+=	mroonga
 .endif
 
 # Enable DTrace support
@@ -24,6 +27,13 @@ PLIST.dtrace=		yes
 CMAKE_ARGS+=		-DWITH_SSL=system
 .else
 CMAKE_ARGS+=		-DWITH_SSL=no
+.endif
+
+# Enable mroonga plugin
+.if !empty(PKG_OPTIONS:Mmroonga)
+CMAKE_ARGS+=		-DWITH_MROONGA=yes
+.else
+CMAKE_ARGS+=		-DWITHOUT_MROONGA=yes
 .endif
 
 # Enable TokuDB engine

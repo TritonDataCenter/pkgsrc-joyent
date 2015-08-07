@@ -1,12 +1,13 @@
 $NetBSD$
 
-SHA1 (mariadb-10.0.17.tar.gz) = 240253b3ee21dea5e2f501778e8ee72b32a5d052
-RMD160 (mariadb-10.0.17.tar.gz) = b0f211c1657be26ebfe2e42e1cbf3c6f9f59a2e6
-Size (mariadb-10.0.17.tar.gz) = 55989700 bytes
-SHA1 (patch-CMakeLists.txt) = 6f959e9ede8ed1eee9221ac9064d27491ed83388
+SHA1 (mariadb-10.0.21.tar.gz) = ee40a5c912e414c9d0e5170b664974fc79343e78
+RMD160 (mariadb-10.0.21.tar.gz) = afff9c544c373d7042c7c46aeebf2aaed5b7b951
+Size (mariadb-10.0.21.tar.gz) = 56216903 bytes
+SHA1 (patch-CMakeLists.txt) = 708fb1f23161c896d1cfc09e783a41db617ae3e7
 SHA1 (patch-cmake_dtrace.cmake) = 50fa7a9957d5d1fbc6284d98f222cdc9a2687838
 SHA1 (patch-cmake_plugin.cmake) = e36f35ab2998f0082a5d220464d2a93db53a7482
 SHA1 (patch-include_CMakeLists.txt) = e549c17d4beafb4aa24001daa9b7b19047066577
+SHA1 (patch-include_my__global.h) = a3b831f91ba2efea9f78e70ab4f706da23b80403
 SHA1 (patch-mysys__ssl_CMakeLists.txt) = f25bf1d46afb10b9119ece8928a4d0f26bc35e8f
 SHA1 (patch-mysys_my__context.c) = b9795b37d57b4eed8807f95a47de18f8cfdb8194
 SHA1 (patch-storage_connect_filamvct.cpp) = 1d619675be3db80b2a943ea9104b4cb82f584547
