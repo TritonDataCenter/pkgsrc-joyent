@@ -1,0 +1,15 @@
+$NetBSD$
+
+File may not exist.
+
+--- cmd/traffic_top/Makefile.in.orig	2015-06-30 04:11:56.000000000 +0000
++++ cmd/traffic_top/Makefile.in
+@@ -904,7 +904,7 @@ uninstall-am: uninstall-binPROGRAMS
+ 
+ # Install a compatibility symlink because traffic_top was named tstop in previous releases.
+ @BUILD_TSTOP_TRUE@install-exec-hook:
+-@BUILD_TSTOP_TRUE@	cd $(DESTDIR)$(bindir) && $(RM) tstop && $(LN_S) traffic_top tstop
++@BUILD_TSTOP_TRUE@	cd $(DESTDIR)$(bindir) && $(RM) -f tstop && $(LN_S) traffic_top tstop
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.

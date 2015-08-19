@@ -1,0 +1,15 @@
+$NetBSD$
+
+SHA1 (trafficserver-5.3.1.tar.bz2) = 771d3fafac6b8e144376fb16398f03b79f39912f
+RMD160 (trafficserver-5.3.1.tar.bz2) = f1cb1d73270a0efc2195d876ceec591b90cb5f75
+Size (trafficserver-5.3.1.tar.bz2) = 7739777 bytes
+SHA1 (patch-cmd_traffic__top_Makefile.in) = 74177f61da07c07e4e07266a53bb55ce9de019ac
+SHA1 (patch-cmd_traffic__wccp_wccp__client.cc) = 135b341f81401b4c40fa0c0473e0a17a65fdc1b5
+SHA1 (patch-configure) = 96a8c85cdcf737efce03d1b44fd29b7a9fb1dc05
+SHA1 (patch-lib_wccp_wccp-test-router.cc) = 950014ed07186b4979eaf48f9f5d54441debe80b
+SHA1 (patch-proxy_Makefile.in) = 00bc5c483107798054d46eb136e236a3e588963f
+SHA1 (patch-proxy_config_Makefile.in) = fc1fe7ae06db9147271bb4a2a422619f234f8f6d
+SHA1 (patch-proxy_spdy_SpdyCallbacks.cc) = ec7c670d18d50234d0714e8f94c6488fabacc318
+SHA1 (patch-proxy_spdy_SpdyClientSession.cc) = 2875804382b8c0718e66fce2e09dec1dd2a0359b
+SHA1 (patch-proxy_spdy_SpdyClientSession.h) = 70cd085d763e53d01f68428bae22c406bd2baa90
+SHA1 (patch-rc_traffixserver.ml.in) = 1f0185ba67379aed11fd99e5696228a50063008d
