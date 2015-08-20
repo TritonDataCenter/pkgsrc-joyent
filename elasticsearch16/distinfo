@@ -1,0 +1,6 @@
+$NetBSD: distinfo,v 1.9 2015/07/07 14:11:59 fhajny Exp $
+
+SHA1 (elasticsearch-1.6.2.tar.gz) = a2f949ce79c4c289cf0529cf63f3aba66ad6d525
+RMD160 (elasticsearch-1.6.2.tar.gz) = 1979e1384af7875c2012b340551370b95f662713
+Size (elasticsearch-1.6.2.tar.gz) = 28491082 bytes
+SHA1 (patch-config_elasticsearch.yml) = 769fdd62aacdc4743979edbc986e983a5c42a7f8
