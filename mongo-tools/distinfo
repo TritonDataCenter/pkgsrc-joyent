@@ -1,7 +1,7 @@
 $NetBSD$
 
-SHA1 (mongo-tools/r3.0.3.tar.gz) = ccd3a688485a3b6c83ac76998d32a726805bffc0
-RMD160 (mongo-tools/r3.0.3.tar.gz) = 7df1c6693080f8affb0423459d5950a09e7551d6
-Size (mongo-tools/r3.0.3.tar.gz) = 2151771 bytes
+SHA1 (mongo-tools/r3.0.6.tar.gz) = 62ae853e82d3f7a4e09aea8f69ae560a1e3e6001
+RMD160 (mongo-tools/r3.0.6.tar.gz) = db59f15127e928034fc36d7f7c323331eea66613
+Size (mongo-tools/r3.0.6.tar.gz) = 2161424 bytes
 SHA1 (patch-vendor_src_github.com_howeyc_gopass_bsd.go) = 13efab29de38877ef9948439edc23d57ca41e48d
 SHA1 (patch-vendor_src_github.com_spacemonkeygo_openssl_build.go) = e403b7e49b6c6be5775efa44bfb116e635c7fd06
