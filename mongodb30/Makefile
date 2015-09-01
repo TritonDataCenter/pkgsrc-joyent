@@ -1,19 +1,19 @@
 # $NetBSD$
 
-DISTNAME=	mongodb-src-r3.0.3
+DISTNAME=	mongodb-src-r3.0.6
 PKGNAME=	${DISTNAME:S/src-r//:S/-rc/rc/}
 CATEGORIES=	databases
 MASTER_SITES=	http://fastdl.mongodb.org/src/
 
 MAINTAINER=	bartosz.kuzma@gmail.com
 HOMEPAGE=	http://mongodb.org/
-COMMENT=	NOSQL distributed document-oriented database
+COMMENT=	NoSQL distributed document-oriented database
 LICENSE=	gnu-agpl-v3 # Client and tools licensed under apache-2.0
 
 NO_CONFIGURE=	yes
 USE_LANGUAGES=	c c++
 
-BUILD_DEPENDS+=	scons>=2.3:../../devel/scons
+BUILD_DEPENDS+=	scons-[0-9]*:../../devel/scons
 
 SCONS_BIN=	${PREFIX}/bin/scons
 SCONS_ARGS=	${_MAKE_JOBS}
@@ -24,13 +24,18 @@ SCONS_ARGS+=	--use-system-boost=USE-SYSTEM-BOOST
 SCONS_ARGS+=	--use-system-pcre=USE-SYSTEM-PCRE
 SCONS_ARGS+=	--use-system-snappy=USE-SYSTEM-SNAPPY
 SCONS_ARGS+=	--use-system-tcmalloc=USE-SYSTEM-TCMALLOC
+SCONS_ARGS+=	--js-engine=v8-3.25
+# Avoid Argument list too long from mongod linking
+SCONS_ARGS+=	--variant-dir=pkgsrc
 
-.include "../../mk/bsd.fast.prefs.mk"
+PYTHON_VERSIONS_INCOMPATIBLE=	33 34 # not yet supported as of 3.0.4
 
 # Real requirement is 4.8.2, but lang/gcc48 is not finished
 # in terms of the gcc48/gcc48-libs split up, so we'll go with
 # gcc49 instead.
 GCC_REQD+=	4.9
+
+.include "../../mk/bsd.prefs.mk"
 
 .if ${MACHINE_ARCH} == "x86_64"
 SCONS_ARGS+=	--64
