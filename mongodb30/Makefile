@@ -30,12 +30,12 @@ SCONS_ARGS+=	--variant-dir=pkgsrc
 
 PYTHON_VERSIONS_INCOMPATIBLE=	33 34 # not yet supported as of 3.0.4
 
+.include "../../mk/bsd.prefs.mk"
+
 # Real requirement is 4.8.2, but lang/gcc48 is not finished
 # in terms of the gcc48/gcc48-libs split up, so we'll go with
 # gcc49 instead.
 GCC_REQD+=	4.9
-
-.include "../../mk/bsd.prefs.mk"
 
 .if ${MACHINE_ARCH} == "x86_64"
 SCONS_ARGS+=	--64
