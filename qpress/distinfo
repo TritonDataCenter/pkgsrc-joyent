@@ -3,4 +3,5 @@ $NetBSD$
 SHA1 (qpress-11-source.zip) = f2dc040fd27e1378a810c69cbc228aa8f5d1c8e4
 RMD160 (qpress-11-source.zip) = 2510b76a96d7e647107eb39616dc1e2f54e3cd36
 Size (qpress-11-source.zip) = 26998 bytes
+SHA1 (patch-qpress.cpp) = df1c0d96d8790e3241a02c17d94176c9ab9bb9c2
 SHA1 (patch-utilities.cpp) = d45bbf2c7a47a217f2cba9e2ecc048c589bc247f
