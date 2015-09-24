@@ -26,9 +26,10 @@ CONFIGURE_ARGS+=	--with-intl=system-icu
 .endif
 
 .if !empty(PKG_OPTIONS:Mopenssl)
-BUILDLINK_API_DEPENDS.openssl+=	openssl>=1.0.2
-.include "../../security/openssl/buildlink3.mk"
-CONFIGURE_ARGS+=	--shared-openssl
+#BUILDLINK_API_DEPENDS.openssl+=	openssl>=1.0.2
+#.include "../../security/openssl/buildlink3.mk"
+#CONFIGURE_ARGS+=	--shared-openssl
+PLIST_SRC=		${PLIST_SRC_DFLT} PLIST.openssl
 .else
 CONFIGURE_ARGS+=	--without-openssl
 .endif
