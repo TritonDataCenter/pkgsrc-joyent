@@ -1,0 +1,4 @@
+- Override gradle home automatically (-g/--gradle-user-home, or GRADLE_USER_HOME)
+- Look at -q/--quiet and --offline
+- Implement --parallel and --max-workersa
+- GRADLE_OPTS?
