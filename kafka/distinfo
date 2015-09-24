@@ -1,0 +1,9 @@
+$NetBSD$
+
+SHA1 (kafka-0.8.2.1-src.tgz) = 99d61c6e23cb2694112f844afedb6f13d711c356
+RMD160 (kafka-0.8.2.1-src.tgz) = 3da84cfcde548b4902506b0e9fe9cca6ffa5cdea
+Size (kafka-0.8.2.1-src.tgz) = 688447 bytes
+SHA1 (patch-bin_kafka-run-class.sh) = b1a16793beb90d2d2e348f5cc1c4c09b6b3786b4
+SHA1 (patch-bin_kafka-server-start.sh) = 2e93ef575af6738e4af5555b395a10092e6de933
+SHA1 (patch-bin_kafka-server-stop.sh) = ced17bf8e6d6f2c27450835c9736dd118868a0de
+SHA1 (patch-config_server.properties) = 1bdb5bfded1325a3a5afe070dc3081f6b24185a8
