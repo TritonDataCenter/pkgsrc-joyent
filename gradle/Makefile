@@ -29,7 +29,7 @@ SUBST_VARS.java+=	PKG_JAVA_HOME
 INSTALLATION_DIRS+=	bin share/gradle
 
 post-extract:
-	${CHMOD} -R g-w * ${WRKSRC}
+	${CHMOD} -R g-w ${WRKSRC}
 
 do-install:
 	${INSTALL_SCRIPT} ${WRKSRC}/bin/gradle ${DESTDIR}${PREFIX}/bin/gradle
