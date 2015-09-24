@@ -14,7 +14,7 @@ LICENSE=	apache-2.0
 USE_LANGUAGES=	# none
 
 BUILD_DEPENDS+=	gradle-[0-9]*:../../joyent/gradle
-DEPENDS+=	zookeeper-[0-9]*:../../wip/zookeeper-server
+DEPENDS+=	zookeeper-server-[0-9]*:../../wip/zookeeper-server
 
 REPLACE_SH+=	bin/kafka-*
 
