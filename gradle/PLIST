@@ -37,13 +37,13 @@ share/gradle/lib/log4j-over-slf4j-1.7.10.jar
 share/gradle/lib/minlog-1.2.jar
 share/gradle/lib/native-platform-0.10.jar
 share/gradle/lib/native-platform-freebsd-amd64-0.10.jar
-share/gradle/lib/native-platform-freebsd-${MACHINE_ARCH}-0.10.jar
+share/gradle/lib/native-platform-freebsd-i386-0.10.jar
 share/gradle/lib/native-platform-linux-amd64-0.10.jar
-share/gradle/lib/native-platform-linux-${MACHINE_ARCH}-0.10.jar
+share/gradle/lib/native-platform-linux-i386-0.10.jar
 share/gradle/lib/native-platform-osx-amd64-0.10.jar
-share/gradle/lib/native-platform-osx-${MACHINE_ARCH}-0.10.jar
+share/gradle/lib/native-platform-osx-i386-0.10.jar
 share/gradle/lib/native-platform-windows-amd64-0.10.jar
-share/gradle/lib/native-platform-windows-${MACHINE_ARCH}-0.10.jar
+share/gradle/lib/native-platform-windows-i386-0.10.jar
 share/gradle/lib/objenesis-1.2.jar
 share/gradle/lib/plugins/aether-api-1.13.1.jar
 share/gradle/lib/plugins/aether-connector-wagon-1.13.1.jar
