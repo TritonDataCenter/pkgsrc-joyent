@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-DISTNAME=	newrelic-sysmond-2.0.2.111-joyent
+DISTNAME=	newrelic-sysmond-2.2.0.125-joyent
 PKGNAME=	${DISTNAME:S/newrelic-/nr/:S/-joyent//}
 CATEGORIES=	sysutils
 MASTER_SITES=	http://download.newrelic.com/server_monitor/release/
