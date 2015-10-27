@@ -1,5 +1,6 @@
 $NetBSD$
 
+Fix openssl path, use pkgsrc zlib and lua. 
 --- src/Makeall.orig	2015-06-10 15:38:32.000000000 +0000
 +++ src/Makeall
 @@ -63,10 +63,10 @@ if [ "X${ARGV}" = "Xall" -o "X${ARGV}" =
@@ -7,11 +8,11 @@ $NetBSD$
  
      # Checking for OpenSSLconf.h
 -    if [ -e /usr/include/openssl/opensslconf.h ]; then
-+    if [ -e /opt/local/include/openssl/opensslconf.h ]; then
++    if [ -e @BUILDLINK_PREFIX.openssl@/include/openssl/opensslconf.h ]; then
          echo "DEXTRA=-DUSE_OPENSSL" >> Config.OS
          echo "OPENSSLCMD=-lssl -lcrypto" >> Config.OS
 -    elif [ -e /usr/include/openssl/conf.h ]; then
-+    elif [ -e /opt/local/include/openssl/conf.h ]; then
++    elif [ -e @BUILDLINK_PREFIX.openssl@/include/openssl/conf.h ]; then
          echo "DEXTRA=-DUSE_OPENSSL" >> Config.OS
          echo "OPENSSLCMD=-lssl -lcrypto" >> Config.OS
      fi    

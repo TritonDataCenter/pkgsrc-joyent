@@ -6,5 +6,5 @@ Size (ossec-hids-2.8.2.tar.gz) = 1635142 bytes
 SHA1 (patch-src_Config.Make) = a0f3ca17eb5b70f5906c7eeb16bfba50d0a92a38
 SHA1 (patch-src_InstallAgent.sh) = ef0346efad181ce45280ecbcb6604ed71631aaeb
 SHA1 (patch-src_InstallServer.sh) = 9f076a5b215ff9fbfd621613c3f875897484b2ad
-SHA1 (patch-src_Makeall) = 9819390864af3ee8a0da5b91557910bcc8742d02
+SHA1 (patch-src_Makeall) = bf4122793250ecac673d22e000d603cf44def864
 SHA1 (patch-src_os__dbd_dbmake.sh) = d98ba53e4b574268a93dd30c2f07d62aaae5f6d8

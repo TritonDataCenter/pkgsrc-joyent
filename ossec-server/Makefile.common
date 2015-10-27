@@ -71,6 +71,13 @@ SUBST_FILES.dir+=	contrib/util.sh etc/ossec*.conf etc/rules/ossec_rules.xml
 SUBST_FILES.dir+=	src/agentlessd/scripts/ssh_asa-fwsmconfig_diff src/headers/defs.h
 SUBST_SED.dir=		-e 's,/var/ossec,${OSSEC_DIR},g'
 
+SUBST_CLASSES+=		ssl
+SUBST_STAGE.ssl=	pre-configure
+SUBST_MESSAGE.ssl=	Fixing references to buildlink directories
+SUBST_FILES.ssl=	src/Makeall
+SUBST_VARS.ssl=		BUILDLINK_PREFIX.openssl
+
+
 CHECK_INTERPRETER_SKIP+=	ossec/agentless/*
 
 BUILD_DIRS=		src
