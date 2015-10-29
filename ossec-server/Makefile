@@ -1,6 +1,7 @@
 # $NetBSD$
 
 PKGNAME=	${DISTNAME:S/hids/server/}
+PKGREVISION=	1
 COMMENT=	Security tool to monitor logs and intrusions - server package
 
 CONFLICTS+=	ossec-client-[0-9]* ossec-local-[0-9]*

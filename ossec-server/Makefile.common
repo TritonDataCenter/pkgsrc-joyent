@@ -18,7 +18,7 @@ MAKE_JOBS_SAFE=	no
 
 DISTINFO_FILE=	${.CURDIR}/../../joyent/ossec-server/distinfo
 PATCHDIR=	${.CURDIR}/../../joyent/ossec-server/patches
-SMF_SRCDIR=	${.CURDIR}/../../joyent/ossec-server/files/smf
+FILESDIR=	${.CURDIR}/../../joyent/ossec-server/files
 SMF_NAME=	ossec
 
 LUA_VERSIONS_ACCEPTED=	52
@@ -79,11 +79,12 @@ BUILD_TARGET+=		all build
 INSTALL_MAKE_FLAGS+=	LUA_VERSION_MAJOR=${LUA_VERSION_MAJOR}
 INSTALL_MAKE_FLAGS+=	LUA_VERSION_MINOR=${LUA_VERSION_MINOR}
 
-pre-build:
-	${ECHO} HEXTRA=-DMAX_AGENTS=4096 > ${WRKSRC}/src/Config.OS
+post-extract:
+	${INSTALL_DATA} ${FILESDIR}/Config.OS ${WRKSRC}/src/Config.OS
 
 pre-install:
 	${ECHO} DIR=\"${DESTDIR}${PREFIX}/ossec\" > ${WRKSRC}/src/LOCATION
 
 .include "../../devel/zlib/buildlink3.mk"
+.include "../../security/openssl/buildlink3.mk"
 .include "../../lang/lua/module.mk"
