@@ -248,7 +248,6 @@ lib/node_modules/npm/html/doc/misc/npm-disputes.html
 lib/node_modules/npm/html/doc/misc/npm-faq.html
 lib/node_modules/npm/html/doc/misc/npm-index.html
 lib/node_modules/npm/html/doc/misc/npm-registry.html
-lib/node_modules/npm/html/doc/misc/npm-scope.html
 lib/node_modules/npm/html/doc/misc/npm-scripts.html
 lib/node_modules/npm/html/doc/misc/removing-npm.html
 lib/node_modules/npm/html/doc/misc/semver.html
@@ -432,7 +431,6 @@ lib/node_modules/npm/man/man7/npm-disputes.7
 lib/node_modules/npm/man/man7/npm-faq.7
 lib/node_modules/npm/man/man7/npm-index.7
 lib/node_modules/npm/man/man7/npm-registry.7
-lib/node_modules/npm/man/man7/npm-scope.7
 lib/node_modules/npm/man/man7/npm-scripts.7
 lib/node_modules/npm/man/man7/removing-npm.7
 lib/node_modules/npm/man/man7/semver.7
