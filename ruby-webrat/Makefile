@@ -9,12 +9,19 @@ HOMEPAGE=	http://github.com/brynary/webrat
 COMMENT=	Ruby Acceptance Testing for Web applications
 LICENSE=	mit
 
-RUBY_VERSION_SUPPORTED=		193		# No 1.8 for nokogiri
+.include "../../lang/ruby/rubyversion.mk"
+
+.if defined(RUBY193_VERSION)
+RUBY_VERSION_SUPPORTED+=	193		# No 1.8 for nokogiri
+.endif
 .if defined(RUBY200_VERSION)
 RUBY_VERSION_SUPPORTED+=	200
 .endif
 .if defined(RUBY21_VERSION)
 RUBY_VERSION_SUPPORTED+=	21
+.endif
+.if defined(RUBY22_VERSION)
+RUBY_VERSION_SUPPORTED+=	22
 .endif
 
 DEPENDS+=	${RUBY_PKGPREFIX}-rack>=1.0:../../www/ruby-rack
