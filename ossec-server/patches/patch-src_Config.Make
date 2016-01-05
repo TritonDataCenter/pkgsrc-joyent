@@ -8,7 +8,7 @@ Use pkgsrc zlib.
  OS_ROOTCHECK = ${PT}rootcheck/rootcheck_lib.a
  OS_CONFIG = ${PT}config/lib_config.a
 -OS_ZLIB = ${PT}os_zlib/os_zlib.c ${PT}external/libz.a
-+OS_ZLIB = ${PT}os_zlib/os_zlib.c -lz
++OS_ZLIB = ${PT}os_zlib/os_zlib.c -lz $(LDFLAGS)
  OS_LINK = ${IEXTRA}
  OS_CJSON = ${PT}external/libcJSON.a -lm
  DBS = cdb/cdb.a

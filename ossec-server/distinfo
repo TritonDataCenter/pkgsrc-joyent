@@ -3,7 +3,7 @@ $NetBSD$
 SHA1 (ossec-hids-2.8.2.tar.gz) = a0f403270f388fbc6a0a4fd46791b1371f5597ec
 RMD160 (ossec-hids-2.8.2.tar.gz) = bd65d5763e054a6289d78a52d07fbd8e3786c858
 Size (ossec-hids-2.8.2.tar.gz) = 1635142 bytes
-SHA1 (patch-src_Config.Make) = a0f3ca17eb5b70f5906c7eeb16bfba50d0a92a38
+SHA1 (patch-src_Config.Make) = 7d9bf888090a2c908b66aa91d5ca7cedb8d35652
 SHA1 (patch-src_InstallAgent.sh) = ef0346efad181ce45280ecbcb6604ed71631aaeb
 SHA1 (patch-src_InstallServer.sh) = 9f076a5b215ff9fbfd621613c3f875897484b2ad
 SHA1 (patch-src_Makeall) = f3b6d8fd08808221d2e9576ca854ee40300a2ef7
