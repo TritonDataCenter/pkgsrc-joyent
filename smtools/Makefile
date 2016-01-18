@@ -19,6 +19,8 @@ GIT_TAG=		${PKGVERSION_NOREV}
 NO_CHECKSUM=	yes
 NO_BUILD=	yes
 
+WRKSRC=		${WRKDIR}/${PKGBASE}
+
 .include "../../mk/bsd.prefs.mk"
 
 SM_SCRIPTS=	cpuinfo create-db create-dbuser create-vhost	\
@@ -56,13 +58,13 @@ SUBST_VARS.vars+=	PHP_VERSION_DEFAULT PYTHON_VERSION_DEFAULT
 SUBST_VARS.vars+=	RUBY_VERSION_DEFAULT RUBY_RAILS_DEFAULT
 
 do-install:
-.	for file in ${SM_SCRIPTS}
+.for file in ${SM_SCRIPTS}
 	${INSTALL_SCRIPT} ${WRKSRC}/sm-${file} ${DESTDIR}${PREFIX}/bin
-.	endfor
+.endfor
 	${LN} -s sm-lsof ${DESTDIR}${PREFIX}/bin/lsof
 	${INSTALL_SCRIPT} ${WRKSRC}/zoneinit/zoneinit \
 	  ${DESTDIR}${PREFIX}/lib/zoneinit
-	${INSTALL_SCRIPT} ${WRKSRC}/zoneinit/zoneinit.json \
+	${INSTALL_DATA} ${WRKSRC}/zoneinit/zoneinit.json \
 	  ${DESTDIR}${PREFIX}/lib/zoneinit/zoneinit.json
 	${INSTALL_DATA} ${WRKSRC}/zoneinit/zoneinit.xml \
 	  ${DESTDIR}${PREFIX}/lib/zoneinit
@@ -72,10 +74,10 @@ do-install:
 	  ${DESTDIR}${PREFIX}/lib/zoneinit
 	${INSTALL_DATA} ${WRKSRC}/zoneinit/mdata.xml \
 	  ${DESTDIR}${PREFIX}/lib/zoneinit
-.	for include in ${ZONEINIT_INCS}
+.for include in ${ZONEINIT_INCS}
 	${INSTALL_DATA} ${WRKSRC}/zoneinit/includes/${include} \
 	  ${DESTDIR}${PREFIX}/lib/zoneinit/includes
-.	endfor
+.endfor
 
 .include "../../wip/mk/git-package.mk"
 .include "../../mk/bsd.pkg.mk"
