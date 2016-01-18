@@ -1,10 +1,8 @@
 # $NetBSD$
 #
 
-DISTNAME=	smtools
-PKGNAME=	${DISTNAME}-${PKGVERSION}
+DISTNAME=	smtools-20150811
 CATEGORIES=	sysutils
-PKGVERSION=	20150811
 
 MAINTAINER=	filip@joyent.com
 HOMEPAGE=	http://www.joyent.com/
