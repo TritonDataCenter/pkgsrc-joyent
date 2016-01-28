@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-DISTNAME=	build-essential-1.1
+DISTNAME=	build-essential-1.2
 CATEGORIES=	devel meta-pkgs
 MASTER_SITES=	# empty
 
@@ -9,11 +9,13 @@ MAINTAINER=	jperkin@joyent.com
 HOMEPAGE=	http://www.joyent.com/
 COMMENT=	Meta-package for essential build utilities
 
+.include "../../mk/compiler.mk"
+
 DEPENDS+=	autoconf-[0-9]*:../../devel/autoconf
 DEPENDS+=	automake-[0-9]*:../../devel/automake
 DEPENDS+=	binutils-[0-9]*:../../devel/binutils
 DEPENDS+=	bison-[0-9]*:../../devel/bison
-DEPENDS+=	gcc47-[0-9]*:../../lang/gcc47
+DEPENDS+=	${_GCC_DEPENDS}:${_GCC_PKGSRCDIR}
 DEPENDS+=	gmake-[0-9]*:../../devel/gmake
 DEPENDS+=	libtool-[0-9]*:../../devel/libtool
 DEPENDS+=	m4-[0-9]*:../../devel/m4
