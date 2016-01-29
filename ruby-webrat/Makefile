@@ -11,6 +11,8 @@ LICENSE=	mit
 
 .include "../../lang/ruby/rubyversion.mk"
 
+RUBY_VERSION_SUPPORTED=		# reset to re-evaluate
+
 .if defined(RUBY193_VERSION)
 RUBY_VERSION_SUPPORTED+=	193		# No 1.8 for nokogiri
 .endif
