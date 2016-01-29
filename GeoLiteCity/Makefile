@@ -10,7 +10,7 @@ EXTRACT_SUFX=	.gz
 MAINTAINER=	filip@joyent.com
 HOMEPAGE=	http://geolite.maxmind.com/download/geoip/database/
 COMMENT=	Free alternative for the GeoIP City database
-#LICENSE=	# TODO: (see mk/license.mk)
+LICENSE=	cc-by-sa-v3.0
 
 PKG_DESTDIR_SUPPORT=	user-destdir
 
