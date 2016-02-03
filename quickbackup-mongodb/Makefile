@@ -13,7 +13,11 @@ GIT_REPO.qb-mongodb=	git@git.joyent.com:qb-mongodb.git
 GIT_TAG=		3.6
 
 DEPENDS+=	findutils-[0-9]*:../../sysutils/findutils
+.if exists(${.CURDIR}/../../databases/mongodb)
+DEPENDS+=	mongodb>=2.6.0:../../databases/mongodb
+.else
 DEPENDS+=	mongodb>=2.6.0:../../wip/mongodb
+.endif
 
 NO_CHECKSUM=	yes
 NO_BUILD=	yes
