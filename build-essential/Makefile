@@ -15,7 +15,9 @@ DEPENDS+=	autoconf-[0-9]*:../../devel/autoconf
 DEPENDS+=	automake-[0-9]*:../../devel/automake
 DEPENDS+=	binutils-[0-9]*:../../devel/binutils
 DEPENDS+=	bison-[0-9]*:../../devel/bison
+.if ${PKGSRC_COMPILER} == "gcc"
 DEPENDS+=	${_GCC_DEPENDS}:${_GCC_PKGSRCDIR}
+.endif
 DEPENDS+=	gmake-[0-9]*:../../devel/gmake
 DEPENDS+=	libtool-[0-9]*:../../devel/libtool
 DEPENDS+=	m4-[0-9]*:../../devel/m4
