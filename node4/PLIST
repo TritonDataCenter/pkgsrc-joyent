@@ -1,4 +1,4 @@
-@comment $NetBSD$
+@comment $NetBSD: PLIST,v 1.2 2015/12/29 20:33:47 fhajny Exp $
 bin/node
 bin/npm
 include/node/android-ifaddrs.h
