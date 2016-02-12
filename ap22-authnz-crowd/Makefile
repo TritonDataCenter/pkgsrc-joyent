@@ -26,14 +26,10 @@ USE_TOOLS+=	autoconf automake
 
 CPPFLAGS+=	-I${BUILDLINK_PREFIX.libxml2}/include/libxml2
 
-#INSTALLATION_DIRS+=	share/doc/authnz-crowd
-
 CONFIGURE_ENV+=	ac_cv_path_HTTPD=${BUILDLINK_PREFIX.apache:Q}/sbin/httpd
 CONFIGURE_ENV+=	APXS=${APXS:Q}
 CONFIGURE_ENV+=	BUILDLINK_PREFIX_apache=${BUILDLINK_PREFIX.apache:Q}
 CONFIGURE_ENV+=	BUILDLINK_PREFIX_subversion=${BUILDLINK_PREFIX.subversion-base:Q}
-#CONFIGURE_ENV+=	PKG_APACHE_INCLUDE_DIR=${BUILDLINK_PREFIX.apache:Q}/include/httpd
-#CONFIGURE_ENV+=	PKG_APACHE_MODULE_DIR=${BUILDLINK_PREFIX.apache:Q}/lib/httpd
 
 pre-configure:
 	cd ${WRKSRC} && autoreconf -fiv
