@@ -1,0 +1,15 @@
+$NetBSD$
+
+Fix automake failures.
+
+--- src/Makefile.am.orig	2013-09-25 06:41:53.000000000 +0000
++++ src/Makefile.am
+@@ -5,7 +5,7 @@ mod_authnz_crowd_la_SOURCES = mod_authnz
+ mod_authnz_crowd_la_LDFLAGS = -module -lcurl `xml2-config --libs`
+ AM_CFLAGS = `apr-1-config --cflags`
+ AM_CPPFLAGS = -I@APACHE_INCLUDE_DIR@ `apr-1-config --cppflags --includes` `xml2-config --cflags`
+-CFLAGS=-g -Wmissing-prototypes -O1   # -O2 causes mysterious crashes
++AM_CFLAGS += -g -Wmissing-prototypes -O1   # -O2 causes mysterious crashes
+ TESTS = test.py
+ TESTS_ENVIRONMENT = APACHE_BIN_DIR=@APACHE_BIN_DIR@
+ 

@@ -1,0 +1,10 @@
+$NetBSD$
+
+SHA1 (mod_authnz_crowd-2.2.2.tar.gz) = 72678d22e520dd4cb10b3ecc537897a1260bca20
+RMD160 (mod_authnz_crowd-2.2.2.tar.gz) = 22e5053b62a812b44c75af6c5fefbb0694d53ad8
+SHA512 (mod_authnz_crowd-2.2.2.tar.gz) = 9e8c8aaa1b30285f03d10e442feabd3fdc838b10d0358a6fb5bb7c7ba5629ac8073217ead0e5bc581532f3670484b85ff30b1bda08d54cd1928b7065ee90b05a
+Size (mod_authnz_crowd-2.2.2.tar.gz) = 30782 bytes
+SHA1 (patch-configure.ac) = 2a87af317ec9a89aed305bfee5fe0749e21b1c3e
+SHA1 (patch-src_Makefile.am) = cb349190a650156bd51089fc40fd4943ff1995d4
+SHA1 (patch-src_crowd__client.c) = 73bcd4fbaaf2dfaf55f6701edc332e418a3ff89c
+SHA1 (patch-src_svn_Makefile.am) = 204b979d8974a6a636baeb89510e3c60e459e40d
