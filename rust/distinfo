@@ -1,0 +1,25 @@
+$NetBSD: distinfo,v 1.4 2014/07/03 03:11:31 schmonz Exp $
+
+SHA1 (rust-stage0-2016-02-17-4d3eebf-solaris-x86_64-f2b346f48520dad54c77fc9a60d8c331c7b2bc31.tar.bz2) = f2b346f48520dad54c77fc9a60d8c331c7b2bc31
+RMD160 (rust-stage0-2016-02-17-4d3eebf-solaris-x86_64-f2b346f48520dad54c77fc9a60d8c331c7b2bc31.tar.bz2) = 6da6c112d369384c090b4fb9a8ed8b92fd9be23e
+SHA512 (rust-stage0-2016-02-17-4d3eebf-solaris-x86_64-f2b346f48520dad54c77fc9a60d8c331c7b2bc31.tar.bz2) = 0eb6f5dc6dd5b5603f252f7193990684ae2b25e3502ffdd1f0d4d3323ea9bcb18a751bcab27f1505eed999ea43265100fc266430b73177ba87410238ebeb37c8
+Size (rust-stage0-2016-02-17-4d3eebf-solaris-x86_64-f2b346f48520dad54c77fc9a60d8c331c7b2bc31.tar.bz2) = 19800588 bytes
+SHA1 (rustc-beta-src.tar.gz) = 9df2d0f58e6000c8d862094b18ff577a6212363a
+RMD160 (rustc-beta-src.tar.gz) = 124f5386c02109b74cdec931b431310e14de35f0
+SHA512 (rustc-beta-src.tar.gz) = c1aff996e10c5e79ba7ea9f0d88bafbfc19a9f6a489850661d23f2478a9a3f71aa60eaccac040904c3b7a9a4a8b53ee3ee2604b430e682da68dbeeaa251c8698
+Size (rustc-beta-src.tar.gz) = 25641692 bytes
+SHA1 (patch-configure) = 9f2d4bf5a95fee8c6b6ced332fa5b79ed550bca3
+SHA1 (patch-mk_dist.mk) = b7667dad68440010944404ed8cc4cd9598f4076f
+SHA1 (patch-mk_install.mk) = b19845cdc28975e29ba2b7ae2f5723c25dc94728
+SHA1 (patch-mk_main.mk) = 01dec33aa86e866eb9442171748b86b708e2d2c9
+SHA1 (patch-mk_platform.mk) = 1bbc47e5ed17d2b433e75d1ef2f82d47accf75f8
+SHA1 (patch-mk_rustllvm.mk) = 344470e860fa9df0228612fc2e1d4375d18b1431
+SHA1 (patch-src_etc_snapshot.py) = 6d7376ebdf3015aeb200b5eae2e4d0be37855539
+SHA1 (patch-src_liblibc_src_unix_solaris_mod.rs) = 4fcc33b0750e41c0a53a4353d9b5c4c1107f7afc
+SHA1 (patch-src_llvm_utils_buildit_build__llvm) = bc2c729153f3eee77ff3f018364544b947bab9d0
+SHA1 (patch-src_rust-installer_gen-install-script.sh) = 5875e414c46bf2b4baa9fd98c55b3f491eac3cdd
+SHA1 (patch-src_rust-installer_gen-installer.sh) = a2039603ae2a8b73ec5527019160fec84b88ddd9
+SHA1 (patch-src_rust-installer_install-template.sh) = b43d5b99c7472edfea7bab9ba2fd943aa49ac2e9
+SHA1 (patch-src_rust-installer_test.sh) = f9e201b2c6113a588d8216247e85b44b1372e50a
+SHA1 (patch-src_rustllvm_RustWrapper.cpp) = eb2a9f453e3c8982c54dec6b04f7fb738d1e72bb
+SHA1 (patch-src_snapshots.txt) = fc567c2247cbf638f78e3a586e120e0dfbaf017a
