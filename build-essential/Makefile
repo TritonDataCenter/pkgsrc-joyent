@@ -9,6 +9,8 @@ MAINTAINER=	jperkin@joyent.com
 HOMEPAGE=	http://www.joyent.com/
 COMMENT=	Meta-package for essential build utilities
 
+META_PACKAGE=	yes
+
 .include "../../mk/compiler.mk"
 
 DEPENDS+=	autoconf-[0-9]*:../../devel/autoconf
@@ -29,7 +31,5 @@ DEPENDS+=	git-docs-[0-9]*:../../devel/git-docs
 DEPENDS+=	scmgit-base-[0-9]*:../../devel/scmgit-base
 DEPENDS+=	scmgit-docs-[0-9]*:../../devel/scmgit-docs
 .endif
-
-META_PACKAGE=	yes
 
 .include "../../mk/bsd.pkg.mk"
