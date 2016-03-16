@@ -1,4 +1,4 @@
-$NetBSD$
+$NetBSD: patch-configure.ac,v 1.1 2016/02/15 16:34:32 jperkin Exp $
 
 Fix hardcoded paths and automake failures.
 
@@ -16,7 +16,7 @@ Fix hardcoded paths and automake failures.
  AC_CHECK_LIB([xml2], [xmlFree], [CFLAGS+=" `xml2-config --cflags`" LIBS+=" `xml2-config --libs`"], [AC_MSG_ERROR([libxml2 was not found])])
  
 -AC_CHECK_FILE([/usr/local/apache2/include/httpd.h], [APACHE_INCLUDE_DIR="/usr/local/apache2/include"], [
-+AC_CHECK_FILE([$BUILDLINK_PREFIX_apache/include/httpd/httpd.h], [APACHE_INCLUDE_DIR="$BUILDLINK_PREFIX_apache/include/httpd"], [
++AC_CHECK_FILE([${BUILDLINK_PREFIX_apache}/include/httpd/httpd.h], [APACHE_INCLUDE_DIR="${BUILDLINK_PREFIX_apache}/include/httpd"], [
      AC_CHECK_FILE([/usr/include/httpd/httpd.h], [APACHE_INCLUDE_DIR="/usr/include/httpd"], [
          AC_CHECK_FILE([/usr/include/apache2/httpd.h], [APACHE_INCLUDE_DIR="/usr/include/apache2"], [
              AC_MSG_ERROR([Could not locate Apache include directory])
@@ -25,7 +25,7 @@ Fix hardcoded paths and automake failures.
  AC_SUBST([APACHE_BIN_DIR])
  
 -AC_CHECK_FILE([/usr/local/include/subversion-1/svn_client.h], [SVN_DIR="/usr/local"], [
-+AC_CHECK_FILE([$BUILDLINK_PREFIX_subversion/include/subversion-1/svn_client.h], [SVN_DIR="$BUILDLINK_PREFIX_subversion"], [
++AC_CHECK_FILE([${BUILDLINK_PREFIX_subversion}/include/subversion-1/svn_client.h], [SVN_DIR="${BUILDLINK_PREFIX_subversion}"], [
      AC_CHECK_FILE([/usr/include/subversion-1/svn_client.h], [SVN_DIR="/usr"], [
          AC_MSG_ERROR([Could not locate Subversion directory])
      ])
@@ -33,7 +33,7 @@ Fix hardcoded paths and automake failures.
  AC_SUBST([SVN_DIR])
  
 -AC_CHECK_FILE([/usr/libexec/apache2/mod_dav.so], [APACHE_MODULES_DIR="/usr/libexec/apache2"], [
-+AC_CHECK_FILE([$BUILDLINK_PREFIX_apache/lib/httpd/mod_dav.so], [APACHE_MODULES_DIR="$BUILDLINK_PREFIX_apache/lib/httpd"], [
++AC_CHECK_FILE([${BUILDLINK_PREFIX_apache}/lib/httpd/mod_dav.so], [APACHE_MODULES_DIR="${BUILDLINK_PREFIX_apache}/lib/httpd"], [
      AC_CHECK_FILE([/usr/lib64/httpd/modules/mod_dav.so], [APACHE_MODULES_DIR="/usr/lib64/httpd/modules"], [
          AC_CHECK_FILE([/usr/lib/httpd/modules/mod_dav.so], [APACHE_MODULES_DIR="/usr/lib/httpd/modules"], [
              AC_CHECK_FILE([/usr/lib/apache2/modules/mod_dav.so], [APACHE_MODULES_DIR="/usr/lib/apache2/modules"], [
@@ -60,7 +60,7 @@ Fix hardcoded paths and automake failures.
  AC_SUBST([APXS])
  
 -AC_CHECK_FILE([/usr/local/apache2/bin/apachectl], [APACHECTL="/usr/local/apache2/bin/apachectl"], [
-+AC_CHECK_FILE([$BUILDLINK_PREFIX_apache/sbin/apachectl], [APACHECTL="$BUILDLINK_PREFIX_apache/sbin/apachectl"], [
++AC_CHECK_FILE([${BUILDLINK_PREFIX_apache}/sbin/apachectl], [APACHECTL="${BUILDLINK_PREFIX_apache}/sbin/apachectl"], [
      AC_CHECK_FILE([/usr/sbin/apache2ctl], [APACHECTL="/usr/sbin/apache2ctl"], [
          AC_CHECK_FILE([/usr/sbin/apachectl], [APACHECTL="/usr/sbin/apachectl"], [
              AC_MSG_ERROR([Could not locate Apache apachectl binary])

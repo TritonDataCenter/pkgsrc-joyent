@@ -1,8 +1,9 @@
-# $NetBSD$
+# $NetBSD: Makefile,v 1.3 2016/03/05 11:29:34 jperkin Exp $
 #
 
-DISTNAME=	mod_authnz_crowd-${DISTVERS}
-PKGNAME=	${APACHE_PKG_PREFIX}-authnz-crowd-${DISTVERS}
+DISTNAME=	mod_authnz_crowd-2.2.2
+PKGNAME=	${APACHE_PKG_PREFIX}-${DISTNAME:S/mod_//:S/_/-/}
+PKGREVISION=	2
 CATEGORIES=	www
 MASTER_SITES=	http://downloads.atlassian.com/software/crowd/downloads/cwdapache/
 
@@ -11,31 +12,36 @@ HOMEPAGE=	https://confluence.atlassian.com/display/CROWD/Integrating+Crowd+with+
 COMMENT=	Apache module for Crowd authentication
 LICENSE=	apache-2.0
 
+APACHE_MODULE=		yes
 PKG_APACHE_ACCEPTED=	apache22 apache24
 
-APACHE_MODULE_NAME=	mod_authnz_crowd.${MODULE_EXT}
-
-DISTVERS=	2.2.2
-MODULE_EXT=	la
-
-APACHE_MODULE_SRCDIR=	${WRKSRC}/src
+DEPENDS+=	${APACHE_PKG_PREFIX}-subversion>0:../../www/ap2-subversion
 
 GNU_CONFIGURE=	yes
 USE_LIBTOOL=	yes
-USE_TOOLS+=	autoconf automake
+USE_TOOLS+=	autoconf automake autoreconf
 
-CPPFLAGS+=	-I${BUILDLINK_PREFIX.libxml2}/include/libxml2
-
-CONFIGURE_ENV+=	ac_cv_path_HTTPD=${BUILDLINK_PREFIX.apache:Q}/sbin/httpd
+CONFIGURE_ENV+=	ac_cv_path_HTTPD=${BUILDLINK_PREFIX.apache}/sbin/httpd
 CONFIGURE_ENV+=	APXS=${APXS:Q}
-CONFIGURE_ENV+=	BUILDLINK_PREFIX_apache=${BUILDLINK_PREFIX.apache:Q}
-CONFIGURE_ENV+=	BUILDLINK_PREFIX_subversion=${BUILDLINK_PREFIX.subversion-base:Q}
+CONFIGURE_ENV+=	BUILDLINK_PREFIX_apache=${BUILDLINK_PREFIX.apache}
+CONFIGURE_ENV+=	BUILDLINK_PREFIX_subversion=${BUILDLINK_PREFIX.subversion-base}
+
+BUILDLINK_TRANSFORM+=	opt:-O2:-O1
+
+INSTALLATION_DIRS+=	lib/httpd
 
 pre-configure:
 	cd ${WRKSRC} && autoreconf -fiv
 
-.include "../../mk/apache.module.mk"
+do-install:
+	for mod in mod_authnz_crowd.la svn/mod_authz_svn_crowd.la; do \
+		${PREFIX}/share/httpd/build/instdso.sh \
+		    SH_LIBTOOL=${PREFIX}/share/httpd/build/libtool \
+		    ${WRKSRC}/src/$$mod ${DESTDIR}${PREFIX}/lib/httpd; \
+	done
+
 .include "../../devel/subversion-base/buildlink3.mk"
 .include "../../textproc/libxml2/buildlink3.mk"
 .include "../../www/curl/buildlink3.mk"
+.include "../../mk/apache.mk"
 .include "../../mk/bsd.pkg.mk"
