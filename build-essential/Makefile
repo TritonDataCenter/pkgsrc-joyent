@@ -18,7 +18,12 @@ DEPENDS+=	automake-[0-9]*:../../devel/automake
 DEPENDS+=	binutils-[0-9]*:../../devel/binutils
 DEPENDS+=	bison-[0-9]*:../../devel/bison
 .if ${PKGSRC_COMPILER} == "gcc"
-DEPENDS+=	${_GCC_DEPENDS}:${_GCC_PKGSRCDIR}
+#  XXX: _GCC_PKGSRCDIR is only defined when USE_LANGUAGES+=c
+.  if !empty(_GCC_DEPENDS:Mgcc49*)
+DEPENDS+=	${_GCC_DEPENDS}:../../lang/gcc49
+.  elif !empty(_GCC_DEPENDS:Mgcc47*)
+DEPENDS+=	${_GCC_DEPENDS}:../../lang/gcc47
+.  endif
 .endif
 DEPENDS+=	gmake-[0-9]*:../../devel/gmake
 DEPENDS+=	libtool-[0-9]*:../../devel/libtool
