@@ -270,7 +270,6 @@ share/mysql/romanian/errmsg.sys
 share/mysql/russian/errmsg.sys
 share/mysql/serbian/errmsg.sys
 share/mysql/slovak/errmsg.sys
-share/mysql/solaris/postinstall-solaris
 share/mysql/spanish/errmsg.sys
 share/mysql/sql-bench/sql-bench/Data/ATIS/aircraft.txt
 share/mysql/sql-bench/sql-bench/Data/ATIS/airline.txt
@@ -359,7 +358,6 @@ share/mysql/test/Makefile
 share/mysql/test/README
 share/mysql/test/README.gcov
 share/mysql/test/README.stress
-share/mysql/test/cmake_install.cmake
 share/mysql/test/collections/README
 share/mysql/test/collections/README.experimental
 share/mysql/test/collections/default.daily
