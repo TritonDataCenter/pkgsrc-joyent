@@ -1,11 +1,13 @@
 $NetBSD$
 
-SHA1 (percona-server-5.5.41-37.0.tar.gz) = 74610892ba6402e8df04320db444d6dcc7cb2fe8
-RMD160 (percona-server-5.5.41-37.0.tar.gz) = a45a42769cfaa478c2fe4ff6694600bec69578a0
-Size (percona-server-5.5.41-37.0.tar.gz) = 22670445 bytes
-SHA1 (sphinx-2.2.6-release.tar.gz) = 9c458ed999a3e771d417a704e12c469e06423e4a
-RMD160 (sphinx-2.2.6-release.tar.gz) = cd129250ccd00213878dcecb8176a5ba890d32e9
-Size (sphinx-2.2.6-release.tar.gz) = 2959375 bytes
+SHA1 (percona-server-5.5.48-37.8.tar.gz) = 8b92e9fe4d3dafb4aba25df50256379f665d98bd
+RMD160 (percona-server-5.5.48-37.8.tar.gz) = 5a552ca7d2c2cf468b228ca77cacf8a03dc8a6b4
+SHA512 (percona-server-5.5.48-37.8.tar.gz) = 75afafd3e022f0050db2f5fc393c94baf01b0689892bce00b566cb2cbf6e3967759c3e6f31d8d6c076f5871dd17e753e8d3e75bb04ab69c0344d8b83516269cd
+Size (percona-server-5.5.48-37.8.tar.gz) = 22782980 bytes
+SHA1 (sphinx-2.2.10-release.tar.gz) = 0f2372dd41df2848ea06c6076a86af6f0f66a071
+RMD160 (sphinx-2.2.10-release.tar.gz) = 2712e8ce85609e78c53bd2d9fba877f1e630d5f2
+SHA512 (sphinx-2.2.10-release.tar.gz) = 07683f64df730368563e11a7d2939b521837c9a04944ab7d6d09732ab06e451b674169eca4f85db2aae41d883bd16fb4d17b9265912fea9691d07d407d7212d8
+Size (sphinx-2.2.10-release.tar.gz) = 3109250 bytes
 SHA1 (patch-BUILD_compile-pentium-gcov) = a1ac666efa953a98455a726e5db359c903d699b6
 SHA1 (patch-CMakeLists.txt) = cbbe9b7be0089e815e5710cf9aa9e7b558c26df1
 SHA1 (patch-client_completion_hash.cc) = b86ec80beac624b2aa21c7587e351ff126400ecb
