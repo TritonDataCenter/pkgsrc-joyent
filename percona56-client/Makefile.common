@@ -3,8 +3,8 @@
 # used by joyent/percona56-client/Makefile
 # used by joyent/percona56-server/Makefile
 
-SILLYREV=	72.0	# Seriously, what's the point?
-DISTNAME=	percona-server-5.6.22-${SILLYREV}
+SILLYREV=	76.2	# Seriously, what's the point?
+DISTNAME=	percona-server-5.6.29-${SILLYREV}
 CATEGORIES=	databases
 MASTER_SITES=	http://www.percona.com/downloads/Percona-Server-5.6/Percona-Server-${PKGVERSION_NOREV}-${SILLYREV}/source/tarball/
 
@@ -64,7 +64,7 @@ CMAKE_ARGS+=		-DINSTALL_SQLBENCHDIR="share/mysql/sql-bench"
 CMAKE_ARGS+=		-DINSTALL_SUPPORTFILESDIR="share/mysql"
 CMAKE_ARGS+=		-DMYSQL_DATADIR=${MYSQL_DATADIR}
 
-# always use our own readline, not MySQL bundled one
+CMAKE_ARGS+=		-DWITH_EDITLINE=bundled
 CMAKE_ARGS+=		-DWITH_ZLIB="system"
 CMAKE_ARGS+=		-DDEFAULT_CHARSET=${MYSQL_CHARSET:Q}
 CMAKE_ARGS+=		-DDEFAULT_COLLATION=${MYSQL_COLLATION:Q}

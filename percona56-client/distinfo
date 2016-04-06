@@ -1,22 +1,23 @@
 $NetBSD$
 
-SHA1 (percona-server-5.6.22-72.0.tar.gz) = ff65416c0c053c251bf091fa4a9db4723790c0a1
-RMD160 (percona-server-5.6.22-72.0.tar.gz) = 9cfc17834fce82f3330f10154ca1c65382540201
-Size (percona-server-5.6.22-72.0.tar.gz) = 34022879 bytes
-SHA1 (sphinx-2.2.6-release.tar.gz) = 9c458ed999a3e771d417a704e12c469e06423e4a
-RMD160 (sphinx-2.2.6-release.tar.gz) = cd129250ccd00213878dcecb8176a5ba890d32e9
-Size (sphinx-2.2.6-release.tar.gz) = 2959375 bytes
+SHA1 (percona-server-5.6.29-76.2.tar.gz) = 1954b89646d66da5ecf8cbab18460bfba4fd7e57
+RMD160 (percona-server-5.6.29-76.2.tar.gz) = 0c326f8b47c85c2cb90b3b1bbab9f5e8a80ac78c
+SHA512 (percona-server-5.6.29-76.2.tar.gz) = 0765ba02dcceaa3e4cb8f1b7261982f66ea5a14982723a9eb0a47177d03c18ffb3e647f10736780f6312dccb23f082ebcdd1f6330f9bf08ec714e43bf9fb4e57
+Size (percona-server-5.6.29-76.2.tar.gz) = 55032788 bytes
+SHA1 (sphinx-2.2.10-release.tar.gz) = 0f2372dd41df2848ea06c6076a86af6f0f66a071
+RMD160 (sphinx-2.2.10-release.tar.gz) = 2712e8ce85609e78c53bd2d9fba877f1e630d5f2
+SHA512 (sphinx-2.2.10-release.tar.gz) = 07683f64df730368563e11a7d2939b521837c9a04944ab7d6d09732ab06e451b674169eca4f85db2aae41d883bd16fb4d17b9265912fea9691d07d407d7212d8
+Size (sphinx-2.2.10-release.tar.gz) = 3109250 bytes
 SHA1 (patch-CMakeLists.txt) = 06682148a6436a8f9a9818f7c0d1739c8e7ea57c
 SHA1 (patch-build-ps_build-rpm.sh) = 6b6f706aa8867bb653f2b4405b0a57feb5d934e6
 SHA1 (patch-client_completion_hash.cc) = 94f1843f8b3d71d8fc6af810eddf2c076d50599d
 SHA1 (patch-client_mysqladmin.cc) = 2bb9f9ba1097d39ac42a2682517c1e33a37af9df
 SHA1 (patch-cmake_libutils.cmake) = d988a05e8073ce8722fce714cb7e47cc4ed68ed2
-SHA1 (patch-cmake_readline.cmake) = c7121042d9aa0ad7b43dbc610e5f3f7acd9d9b5b
 SHA1 (patch-include_CMakeLists.txt) = 295a399a33aea51c820c2fa8e9c4a3524ad44e7b
 SHA1 (patch-include_my__global.h) = 4ec786c2f2b23cff671d2178d7312ed12bfbbc68
 SHA1 (patch-include_my_compare.h) = 2584240fb04fc3e967f0ff1e4be1eee8607f86f8
-SHA1 (patch-include_my_net.h) = be5a9e97fc2ff3cddb2da3dcf1bc5ded81d300f7
-SHA1 (patch-include_my_pthread.h) = 06a73b28ee2cdf062d751d44ef6097499579ad49
+SHA1 (patch-include_my_net.h) = cd35ef74401936627316da6cf00992e53242b307
+SHA1 (patch-include_my_pthread.h) = d85d2ea524143fa93bfade135d648e59337be114
 SHA1 (patch-libmysql_CMakeLists.txt) = ffd8c2357b0ce4820bea5b78fe5bceac9bfb613b
 SHA1 (patch-mysql-test_CMakeLists.txt) = 79f560cc31a3158986d360c4cdb9e415a54ed8b5
 SHA1 (patch-mysys__ssl_CMakeLists.txt) = 673ff0ab8fae5a9975f8525b7f88932d61ec65f2
