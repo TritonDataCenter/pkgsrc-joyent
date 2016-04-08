@@ -1,9 +1,8 @@
 # $NetBSD$
 
-SILLYREV=	70.1    # Seriously, what's the point?
-OTHERSILLYREV=	25.8
-DISTNAME=	Percona-XtraDB-Cluster-5.6.21-${SILLYREV}
-PKGREVISION=	3
+SILLYREV=	76.1    # Seriously, what's the point?
+OTHERSILLYREV=	25.14
+DISTNAME=	Percona-XtraDB-Cluster-5.6.28-${SILLYREV}
 CATEGORIES=	databases
 MASTER_SITES=	http://www.percona.com/downloads/Percona-XtraDB-Cluster-56/${DISTNAME:S/${SILLYREV}/${OTHERSILLYREV}/}/source/tarball/
 
@@ -17,7 +16,7 @@ LICENSE=	gnu-gpl-v2
 CONFLICTS=	{mysql,percona}*-{client,server}-[0-9]*
 
 # Include the Sphinx storage engine
-SPHINX=		sphinx-2.2.6-release
+SPHINX=		sphinx-2.2.10-release
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX} ${SPHINX}.tar.gz
 SITES.${SPHINX}.tar.gz=	http://sphinxsearch.com/files/
 
@@ -53,7 +52,7 @@ PKG_GROUPS_VARS+=	MYSQL_GROUP
 
 CONFIG_SHELL=		${TOOLS_PATH.bash}
 
-CHECK_PORTABILITY_SKIP+=build-ps/deprecated/build-rpm.sh
+CHECK_PORTABILITY_SKIP+=build-ps/build-rpm.sh build-ps/deprecated/build-rpm.sh
 
 .if ${OPSYS} == "IRIX"
 CFLAGS+=		-DIRIX5 -DNEEDS_BSTRING_H
@@ -78,8 +77,7 @@ CMAKE_ARGS+=		-DINSTALL_SQLBENCHDIR="share/mysql/sql-bench"
 CMAKE_ARGS+=		-DINSTALL_SUPPORTFILESDIR="share/mysql"
 CMAKE_ARGS+=		-DMYSQL_DATADIR=${MYSQL_DATADIR}
 
-# always use our own readline, not MySQL bundled one
-CMAKE_ARGS+=		-DWITH_LIBEDIT=OFF
+CMAKE_ARGS+=		-DWITH_EDITLINE=bundled
 CMAKE_ARGS+=		-DWITH_READLINE=OFF
 CMAKE_ARGS+=		-DDEFAULT_CHARSET=${MYSQL_CHARSET:Q}
 CMAKE_ARGS+=		-DDEFAULT_COLLATION=${MYSQL_COLLATION:Q}

@@ -1,17 +1,20 @@
 $NetBSD$
 
-SHA1 (Percona-XtraDB-Cluster-5.6.21-70.1.tar.gz) = a8ddab93a3e134465006136a6da0c6b9aa51454e
-RMD160 (Percona-XtraDB-Cluster-5.6.21-70.1.tar.gz) = e2a24c2363c146321411aea366db6180c3fccdcc
-Size (Percona-XtraDB-Cluster-5.6.21-70.1.tar.gz) = 35787173 bytes
-SHA1 (sphinx-2.2.6-release.tar.gz) = 9c458ed999a3e771d417a704e12c469e06423e4a
-RMD160 (sphinx-2.2.6-release.tar.gz) = cd129250ccd00213878dcecb8176a5ba890d32e9
-Size (sphinx-2.2.6-release.tar.gz) = 2959375 bytes
+SHA1 (Percona-XtraDB-Cluster-5.6.28-76.1.tar.gz) = ab03b028289eca0ca7fff25f1659ab28a8028807
+RMD160 (Percona-XtraDB-Cluster-5.6.28-76.1.tar.gz) = e6f58bcd6dfe9ec5d67be83e1ece7b13c1e68294
+SHA512 (Percona-XtraDB-Cluster-5.6.28-76.1.tar.gz) = 6d491d893bf4e6366bf9d7e7d5e174052be9d9c9d77a954e18e3ef4dd61e953b99d176479cffeaf1b7d61a6eef2bc132786e98491179b40eee3601e782e4ef96
+Size (Percona-XtraDB-Cluster-5.6.28-76.1.tar.gz) = 52784529 bytes
+SHA1 (sphinx-2.2.10-release.tar.gz) = 0f2372dd41df2848ea06c6076a86af6f0f66a071
+RMD160 (sphinx-2.2.10-release.tar.gz) = 2712e8ce85609e78c53bd2d9fba877f1e630d5f2
+SHA512 (sphinx-2.2.10-release.tar.gz) = 07683f64df730368563e11a7d2939b521837c9a04944ab7d6d09732ab06e451b674169eca4f85db2aae41d883bd16fb4d17b9265912fea9691d07d407d7212d8
+Size (sphinx-2.2.10-release.tar.gz) = 3109250 bytes
 SHA1 (patch-cmake_install__macros.cmake) = ac79c567cf734810c9b48d780e6d25e2285ea3c1
+SHA1 (patch-include_my_net.h) = cd35ef74401936627316da6cf00992e53242b307
 SHA1 (patch-mysys__ssl_CMakeLists.txt) = 10ad73eeded9c7c552cdf3cb99c501a41a947cfa
 SHA1 (patch-plugin_HandlerSocket-Plugin-for-MySQL_libhsclient_allocator.hpp) = 1c71757b579efcc2d68c340acd64f4d34994d551
 SHA1 (patch-plugin_audit__log_audit__log.c) = 02c41975ba9c4a521da47e76fe9578e940f01d94
 SHA1 (patch-scripts_mysqld__safe.sh) = 21d97c74e21798b153f77597e5b425ea8577c2dc
-SHA1 (patch-scripts_wsrep__sst__xtrabackup-v2.sh) = 7807e00643f2b5bdbf9e05d40a146dc4ed8afa9a
+SHA1 (patch-scripts_wsrep__sst__xtrabackup-v2.sh) = 4d6ba5640cb9104397296fb72f9e4404d3030d90
 SHA1 (patch-scripts_wsrep__sst__xtrabackup.sh) = f5b248f2257e470cc166d7faed58381cd5fc8d29
 SHA1 (patch-support-files_mysql.server.sh) = 329efd613d7bf14db55542ec5b1b06fd311de516
 SHA1 (patch-wsrep_CMakeLists.txt) = 48fb4f2b8f580fc32013ebcd4b610fe47efe8c15
