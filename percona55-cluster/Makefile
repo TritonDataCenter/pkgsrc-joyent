@@ -1,9 +1,8 @@
 # $NetBSD$
 
-SILLYREV=	36.0
+SILLYREV=	37.0
 OTHERSILLYREV=	25.11
-DISTNAME=	Percona-XtraDB-Cluster-5.5.39-${SILLYREV}
-PKGREVISION=	2
+DISTNAME=	Percona-XtraDB-Cluster-5.5.41-${SILLYREV}
 CATEGORIES=	databases
 MASTER_SITES=	http://www.percona.com/downloads/Percona-XtraDB-Cluster/${DISTNAME:S/${SILLYREV}/${OTHERSILLYREV}/}/source/tarball/
 
@@ -17,7 +16,7 @@ LICENSE=	gnu-gpl-v2
 CONFLICTS=	{mysql,percona}*-{client,server}-[0-9]*
 
 # Include the Sphinx storage engine
-SPHINX=		sphinx-2.0.9-release
+SPHINX=		sphinx-2.2.10-release
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX} ${SPHINX}.tar.gz
 SITES.${SPHINX}.tar.gz=	http://sphinxsearch.com/files/
 

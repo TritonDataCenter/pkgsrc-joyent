@@ -1,9 +1,9 @@
 $NetBSD$
 
 Make SunOS portable. Patch by Derek Crudgington.
---- scripts/wsrep_sst_xtrabackup-v2.sh.orig	2014-09-05 08:16:57.000000000 +0000
+--- scripts/wsrep_sst_xtrabackup-v2.sh.orig	2015-03-26 08:01:34.000000000 +0000
 +++ scripts/wsrep_sst_xtrabackup-v2.sh
-@@ -334,7 +334,13 @@ get_stream()
+@@ -359,7 +359,13 @@ get_stream()
  get_proc()
  {
      set +e
@@ -18,7 +18,7 @@ Make SunOS portable. Patch by Derek Crudgington.
      [[ -z $nproc || $nproc -eq 0 ]] && nproc=1
      set -e
  }
-@@ -433,7 +439,11 @@ wait_for_listen()
+@@ -491,7 +497,11 @@ wait_for_listen()
      local MODULE=$3
      for i in {1..50}
      do
@@ -30,4 +30,4 @@ Make SunOS portable. Patch by Derek Crudgington.
 +        fi
          sleep 0.2
      done
-     if [[ $incremental -eq 1 ]];then 
+     echo "ready ${ADDR}/${MODULE}"
