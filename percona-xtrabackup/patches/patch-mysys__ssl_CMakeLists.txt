@@ -1,5 +1,7 @@
 $NetBSD$
 
+Build with newer DTrace.
+
 --- mysys_ssl/CMakeLists.txt.orig	2015-01-12 10:31:35.000000000 +0000
 +++ mysys_ssl/CMakeLists.txt
 @@ -60,7 +60,6 @@ SET(MYSYS_SSL_SOURCES

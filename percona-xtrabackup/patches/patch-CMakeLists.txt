@@ -1,12 +1,14 @@
 $NetBSD$
 
---- CMakeLists.txt.orig	2015-01-12 10:31:35.000000000 +0000
+Build with newer DTrace.
+
+--- CMakeLists.txt.orig	2016-03-29 11:27:21.000000000 +0000
 +++ CMakeLists.txt
-@@ -194,6 +194,7 @@ IF(DISABLE_SHARED)
+@@ -212,6 +212,7 @@ IF(DISABLE_SHARED)
    SET(WITHOUT_DYNAMIC_PLUGINS 1)
  ENDIF()
  OPTION(ENABLED_PROFILING "Enable profiling" OFF)
 +OPTION(ENABLE_DTRACE "Include support for DTrace probes" OFF)
- OPTION(CYBOZU "" OFF)
- OPTION(BACKUP_TEST "" OFF)
  OPTION(WITHOUT_SERVER OFF)
+ IF(UNIX)
+   OPTION(WITH_VALGRIND "Valgrind instrumentation" OFF)

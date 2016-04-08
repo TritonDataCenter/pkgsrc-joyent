@@ -1,10 +1,10 @@
 # $NetBSD$
 #
 
-DISTNAME=	percona-xtrabackup-2.2.8
+DISTNAME=	percona-xtrabackup-2.4.2
 PKGNAME=	${MYSQL_PKG_PREFIX}-${DISTNAME:S/percona-//}
 CATEGORIES=	databases
-MASTER_SITES=	http://www.percona.com/downloads/XtraBackup/XtraBackup-${PKGVERSION_NOREV}/source/tarball/
+MASTER_SITES=	http://www.percona.com/downloads/XtraBackup/Percona-XtraBackup-${PKGVERSION_NOREV}/source/tarball/
 
 MAINTAINER=	pkgsrc-users@NetBSD.org
 HOMEPAGE=	http://www.percona.com/software/percona-xtrabackup
@@ -31,19 +31,27 @@ BROKEN=			Only supports Percona packages
 USE_CMAKE=		yes
 USE_GCC_RUNTIME=	yes
 USE_LANGUAGES=		c c++
-USE_TOOLS+=		bison cmake gmake patch perl:run
+USE_TOOLS+=		bison cmake gmake patch perl
 
 # nbpatch is unable to parse the patch files.
 TOOLS_PLATFORM.patch=	${LOCALBASE}/bin/gpatch
 
-CMAKE_ARGS+=		-DENABLE_OPENSSL=ON -DWITH_SSL=system -DENABLE_DTRACE=ON
+CMAKE_ARGS+=		-DENABLE_DTRACE=ON
+CMAKE_ARGS+=		-DENABLE_OPENSSL=ON
+
+CMAKE_ARGS+=		-DWITH_LIBEV=system
+CMAKE_ARGS+=		-DWITH_SSL=system
+CMAKE_ARGS+=		-DWITH_ZLIB=system
+CMAKE_ARGS+=		-DLIBEV_INCLUDE_PATHS=${BUILDLINK_PREFIX.libev}/include/ev
+CMAKE_ARGS+=		-DLIBEV_LIB_PATHS=${BUILDLINK_PREFIX.libev}/lib/ev
+
 CMAKE_ARGS+=		-DBUILD_CONFIG=xtrabackup_release
 CMAKE_ARGS+=		-DINSTALL_MYSQLTESTDIR=percona-xtrabackup-test
 
 CFLAGS+=		-D_POSIX_PTHREAD_SEMANTICS
 LDFLAGS.SunOS+=		-lsocket -lnsl
 
-REPLACE_PERL=			storage/innobase/xtrabackup/innobackupex.pl
+CHECK_PORTABILITY_SKIP+=	storage/ndb/mcc/frontend/dojo/dojox/mobile/build/build.sh
 CHECK_INTERPRETER_SKIP+=	percona-xtrabackup-test/*
 
 post-patch:
@@ -62,7 +70,9 @@ post-install:
 	${INSTALL_PROGRAM} ${WRKDIR}/${LIBTAR}/libtar/tar4ibd ${DESTDIR}${PREFIX}/bin
 
 .include "../../archivers/xz/buildlink3.mk"
+.include "../../devel/libev/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../security/libgcrypt/buildlink3.mk"
 .include "../../security/openssl/buildlink3.mk"
+.include "../../www/curl/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"

@@ -1,10 +1,12 @@
 $NetBSD$
 
---- storage/blackhole/CMakeLists.txt.orig	2015-01-12 10:31:35.000000000 +0000
+Build with newer DTrace.
+
+--- storage/blackhole/CMakeLists.txt.orig	2016-03-29 11:27:21.000000000 +0000
 +++ storage/blackhole/CMakeLists.txt
-@@ -14,4 +14,4 @@
- # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
+@@ -15,4 +15,4 @@
  
  SET(BLACKHOLE_SOURCES  ha_blackhole.cc ha_blackhole.h)
--MYSQL_ADD_PLUGIN(blackhole ${BLACKHOLE_SOURCES} STORAGE_ENGINE)
-+MYSQL_ADD_PLUGIN(blackhole ${BLACKHOLE_SOURCES} STORAGE_ENGINE DTRACE_INSTRUMENTED)
+ MYSQL_ADD_PLUGIN(blackhole ${BLACKHOLE_SOURCES} STORAGE_ENGINE
+-RECOMPILE_FOR_EMBEDDED)
++RECOMPILE_FOR_EMBEDDED DTRACE_INSTRUMENTED)
