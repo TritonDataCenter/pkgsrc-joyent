@@ -1,9 +1,9 @@
 # $NetBSD$
 #
-# used by joyent/mariadb10-client/Makefile
-# used by joyent/mariadb10-server/Makefile
+# used by joyent/mariadb100-client/Makefile
+# used by joyent/mariadb100-server/Makefile
 
-DISTNAME=	mariadb-10.0.21
+DISTNAME=	mariadb-10.0.24
 CATEGORIES=	databases
 MASTER_SITES=	https://downloads.mariadb.org/f/${DISTNAME}/source/
 
@@ -11,8 +11,8 @@ MAINTAINER?=	pkgsrc-users@NetBSD.org
 HOMEPAGE=	https://mariadb.org/en/
 LICENSE=	gnu-gpl-v2
 
-DISTINFO_FILE?=		${.CURDIR}/../../joyent/mariadb10-client/distinfo
-PATCHDIR?=		${.CURDIR}/../../joyent/mariadb10-client/patches
+DISTINFO_FILE?=		${.CURDIR}/../../joyent/mariadb100-client/distinfo
+PATCHDIR?=		${.CURDIR}/../../joyent/mariadb100-client/patches
 
 USE_CMAKE=		yes
 USE_LANGUAGES=		c c++

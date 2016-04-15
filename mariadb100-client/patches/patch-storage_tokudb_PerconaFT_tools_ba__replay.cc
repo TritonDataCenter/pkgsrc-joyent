@@ -2,8 +2,8 @@ $NetBSD$
 
 Portability.
 
---- storage/tokudb/ft-index/tools/ba_replay.cc.orig	2015-02-25 15:40:56.000000000 +0000
-+++ storage/tokudb/ft-index/tools/ba_replay.cc
+--- storage/tokudb/PerconaFT/tools/ba_replay.cc.orig	2015-02-25 15:40:56.000000000 +0000
++++ storage/tokudb/PerconaFT/tools/ba_replay.cc
 @@ -574,10 +574,10 @@ static void print_result(uint64_t alloca
  static int only_aggregate_reports;
  

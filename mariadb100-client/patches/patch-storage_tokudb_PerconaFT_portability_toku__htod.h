@@ -1,8 +1,8 @@
 $NetBSD$
 
 Detect endianness on SunOS.
---- storage/tokudb/ft-index/portability/toku_htod.h.orig	2015-02-25 15:40:56.000000000 +0000
-+++ storage/tokudb/ft-index/portability/toku_htod.h
+--- storage/tokudb/PerconaFT/portability/toku_htod.h.orig	2015-02-25 15:40:56.000000000 +0000
++++ storage/tokudb/PerconaFT/portability/toku_htod.h
 @@ -116,6 +116,15 @@ PATENT RIGHTS GRANT:
  # define __BYTE_ORDER __DARWIN_BYTE_ORDER
  # define __LITTLE_ENDIAN __DARWIN_LITTLE_ENDIAN

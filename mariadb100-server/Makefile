@@ -5,7 +5,7 @@ COMMENT=	MariaDB, a free SQL database (server)
 
 CONFLICTS=	mysql-server-[0-9]*
 
-.include "../../joyent/mariadb10-client/Makefile.common"
+.include "../../joyent/mariadb100-client/Makefile.common"
 
 .if !empty(PKG_OPTIONS:Mtokudb)
 PLIST_SRC+=		PLIST.tokudb
@@ -94,14 +94,16 @@ CPPFLAGS+=		-Wno-missing-braces
 CONF_FILES=		${PREFIX}/share/mysql/my-joyent.cnf \
 			${PKG_SYSCONFDIR}/my.cnf
 
-# Disabling oqgraph until it's made to work with boost>=1.60
-# https://jira.mariadb.org/browse/MDEV-9479
 post-extract:
+	# Temporarily disable oqgraph until it's updated to build with boost>=1.60
 	${RM} -rf ${WRKSRC}/storage/oqgraph
+	# Needed for tokudb
+	${CHMOD} +x ${WRKSRC}/storage/tokudb/PerconaFT/xz/src/build_lzma/build-aux/install-sh
 
 post-install:
 	${RM} -rf ${DESTDIR}${PKG_SYSCONFDIR}
-	${SED} -e 's,@LOCALBASE@,${LOCALBASE:Q},g' \
+	${RM} -f ${DESTDIR}${PREFIX}/sbin/rcmysql
+	${SED} -e 's,@PREFIX@,${PREFIX:Q},g' \
 	       -e 's,@MYSQL_DATADIR@,${MYSQL_DATADIR:Q},g' \
 	       -e 's,@VARBASE@,${VARBASE:Q},g' ${FILESDIR}/my-joyent.cnf.sh \
 	       > ${DESTDIR}${PREFIX}/share/mysql/my-joyent.cnf
@@ -110,7 +112,7 @@ post-install:
 .include "../../devel/libexecinfo/buildlink3.mk"
 .include "../../devel/libjudy/buildlink3.mk"
 .include "../../devel/pcre/buildlink3.mk"
-.include "../../joyent/mariadb10-client/buildlink3.mk"
+.include "../../joyent/mariadb100-client/buildlink3.mk"
 .include "../../security/tcp_wrappers/buildlink3.mk"
 .include "../../textproc/libxml2/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"

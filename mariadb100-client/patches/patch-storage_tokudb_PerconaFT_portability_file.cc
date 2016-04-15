@@ -1,8 +1,8 @@
 $NetBSD$
 
 Add directio support on SunOS.
---- storage/tokudb/ft-index/portability/file.cc.orig	2015-02-25 15:40:56.000000000 +0000
-+++ storage/tokudb/ft-index/portability/file.cc
+--- storage/tokudb/PerconaFT/portability/file.cc.orig	2015-02-25 15:40:56.000000000 +0000
++++ storage/tokudb/PerconaFT/portability/file.cc
 @@ -373,6 +373,9 @@ toku_os_open_direct(const char *path, in
              perror("setting F_NOCACHE");
          }

@@ -1,8 +1,8 @@
 $NetBSD$
 
 Add thread and fcntl support on SunOS.
---- storage/tokudb/ft-index/portability/portability.cc.orig	2015-02-25 15:40:56.000000000 +0000
-+++ storage/tokudb/ft-index/portability/portability.cc
+--- storage/tokudb/PerconaFT/portability/portability.cc.orig	2015-02-25 15:40:56.000000000 +0000
++++ storage/tokudb/PerconaFT/portability/portability.cc
 @@ -130,6 +130,9 @@ PATENT RIGHTS GRANT:
  #include "memory.h"
  #include <portability/toku_atomic.h>

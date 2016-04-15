@@ -1,0 +1,26 @@
+$NetBSD$
+
+SHA1 (mariadb-10.0.24.tar.gz) = 526aef4390f9c14c63b0f32dde50faea77348bd7
+RMD160 (mariadb-10.0.24.tar.gz) = a63e9abd13460ac0970edf4aae1c750a2a7d5ed1
+SHA512 (mariadb-10.0.24.tar.gz) = 57c91edd45e779401f934b18364bce3b933fc096647727e586c2fc6543ddcec60662b46ffaa4f950a84e927dac38f55547117761d9bd7a29e5c38abed7164482
+Size (mariadb-10.0.24.tar.gz) = 57438082 bytes
+SHA1 (patch-CMakeLists.txt) = 708fb1f23161c896d1cfc09e783a41db617ae3e7
+SHA1 (patch-cmake_dtrace.cmake) = 50fa7a9957d5d1fbc6284d98f222cdc9a2687838
+SHA1 (patch-cmake_plugin.cmake) = e36f35ab2998f0082a5d220464d2a93db53a7482
+SHA1 (patch-include_CMakeLists.txt) = e549c17d4beafb4aa24001daa9b7b19047066577
+SHA1 (patch-include_my__global.h) = a3b831f91ba2efea9f78e70ab4f706da23b80403
+SHA1 (patch-mysys__ssl_CMakeLists.txt) = f25bf1d46afb10b9119ece8928a4d0f26bc35e8f
+SHA1 (patch-mysys_my__context.c) = b9795b37d57b4eed8807f95a47de18f8cfdb8194
+SHA1 (patch-storage_connect_filamvct.cpp) = 1d619675be3db80b2a943ea9104b4cb82f584547
+SHA1 (patch-storage_connect_tabvct.cpp) = 2e3c7cd7e4b0a86d443da47d3cc514b8b276d836
+SHA1 (patch-storage_csv_CMakeLists.txt) = edd6bee4a2091f11c35c26c328bce65fc1f3660a
+SHA1 (patch-storage_mroonga_vendor_groonga_lib_com.c) = 810d1ecd1a4c20eb505791c48d97141edbe3f4bd
+SHA1 (patch-storage_tokudb_CMakeLists.txt) = 64ac3ee7df495ec59fa737b6b43203dace507f6c
+SHA1 (patch-storage_tokudb_PerconaFT_portability_file.cc) = 34df489a2d21e7eece6bbbd93be95a67661319f6
+SHA1 (patch-storage_tokudb_PerconaFT_portability_portability.cc) = 37a1d5a01fd3101b7a6c357c7ec2510d7ceb4aa6
+SHA1 (patch-storage_tokudb_PerconaFT_portability_toku__htod.h) = 5b095ecbb5ee09db5d8c85de7ca07c6136b45dbd
+SHA1 (patch-storage_tokudb_PerconaFT_portability_toku__portability.h) = 75ede1251371eb467901a59672d39443d8c28031
+SHA1 (patch-storage_tokudb_PerconaFT_portability_toku__pthread.cc) = fc15349cae8ed1a44597406c10fb814005c92398
+SHA1 (patch-storage_tokudb_PerconaFT_portability_toku__pthread.h) = 5e7fd93d3389dc42e9678864e63fc6253f3366fc
+SHA1 (patch-storage_tokudb_PerconaFT_src_CMakeLists.txt) = 3a9fb10c8515d256a9d58f18605733840bba1039
+SHA1 (patch-storage_tokudb_PerconaFT_tools_ba__replay.cc) = 2e7f908e26e6cceeaa2abae2ec12f2a3292884ad

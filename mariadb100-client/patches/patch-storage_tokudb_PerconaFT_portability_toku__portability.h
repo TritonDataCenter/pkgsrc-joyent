@@ -2,8 +2,8 @@ $NetBSD$
 
 Use proper attribute syntax on SunOS.
 
---- storage/tokudb/ft-index/portability/toku_portability.h.orig	2015-02-25 15:40:56.000000000 +0000
-+++ storage/tokudb/ft-index/portability/toku_portability.h
+--- storage/tokudb/PerconaFT/portability/toku_portability.h.orig	2015-02-25 15:40:56.000000000 +0000
++++ storage/tokudb/PerconaFT/portability/toku_portability.h
 @@ -200,7 +200,7 @@ int      _dup2(int fd, int fd2)
  #undef strdup
  #    if defined(__FreeBSD__)

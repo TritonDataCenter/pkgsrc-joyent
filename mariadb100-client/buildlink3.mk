@@ -7,7 +7,7 @@ MARIADB_CLIENT_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.mariadb-client+=	mariadb-client>=10.0.11
 BUILDLINK_ABI_DEPENDS.mariadb-client+=	mariadb-client>=10.0.11
-BUILDLINK_PKGSRCDIR.mariadb-client?=	../../joyent/mariadb10-client
+BUILDLINK_PKGSRCDIR.mariadb-client?=	../../joyent/mariadb100-client
 BUILDLINK_INCDIRS.mariadb-client?=	include/mysql
 BUILDLINK_LIBDIRS.mariadb-client?=	lib
 
