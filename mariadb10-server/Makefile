@@ -94,6 +94,11 @@ CPPFLAGS+=		-Wno-missing-braces
 CONF_FILES=		${PREFIX}/share/mysql/my-joyent.cnf \
 			${PKG_SYSCONFDIR}/my.cnf
 
+# Disabling oqgraph until it's made to work with boost>=1.60
+# https://jira.mariadb.org/browse/MDEV-9479
+post-extract:
+	${RM} -rf ${WRKSRC}/storage/oqgraph
+
 post-install:
 	${RM} -rf ${DESTDIR}${PKG_SYSCONFDIR}
 	${SED} -e 's,@LOCALBASE@,${LOCALBASE:Q},g' \
