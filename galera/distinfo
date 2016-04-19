@@ -1,7 +1,8 @@
 $NetBSD$
 
-SHA1 (galera-3-25.3.9.tar.gz) = 3085eebe8cadc44a4b7a80aa4cb23b4eb94c375f
-RMD160 (galera-3-25.3.9.tar.gz) = 8e6062e95e32ed069c2d3fbed8a907560a22985e
-Size (galera-3-25.3.9.tar.gz) = 2989064 bytes
-SHA1 (patch-SConstruct) = 15322f71ced16d2703d96f45038bbaa99a9e1393
-SHA1 (patch-garb_files_freebsd_garb.sh) = a6228e4df6862256a363420eb7015a110293e038
+SHA1 (galera-3-25.3.15.tar.gz) = 883b7a68d3aa61d3ae3f5c4d6d0fe028ffdac475
+RMD160 (galera-3-25.3.15.tar.gz) = 33eb3723fca69996e8ec0c82b9ed29e3b7c5f30b
+SHA512 (galera-3-25.3.15.tar.gz) = 717c431d29653cba3252dae5a845e82c02e4cb122a6477253e68688600bf130a753f89f94b7b2461695ede9033ca0107324831d2c5b7d2d0479a0936d2779e84
+Size (galera-3-25.3.15.tar.gz) = 2994995 bytes
+SHA1 (patch-SConstruct) = fc84f13b3b083a10dde072ec091c7bd176c07180
+SHA1 (patch-galera_src_saved__state.cpp) = 7e641f423a12495f41da60c8a9c9db8ef5c65e28

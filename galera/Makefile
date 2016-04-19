@@ -1,6 +1,6 @@
 # $NetBSD$
 
-DISTNAME=	galera-3-25.3.9
+DISTNAME=	galera-3-25.3.15
 PKGNAME=	${MYSQL_PKG_PREFIX}-${DISTNAME:S/-3-/-/}
 CATEGORIES=	databases
 MASTER_SITES=	http://releases.galeracluster.com/source/
@@ -20,6 +20,7 @@ MAKE_ENV+=	LIBPATH=${PREFIX}/lib
 MAKE_ENV+=	RPATH=${PREFIX}/lib
 
 CPPFLAGS+=	-fPIC -DPIC
+CFLAGS+=	-mcrc32
 LDFLAGS+=	${COMPILER_RPATH_FLAG}${PREFIX}/lib
 
 CHECK_PORTABILITY_SKIP+=	scripts/mysql/*
