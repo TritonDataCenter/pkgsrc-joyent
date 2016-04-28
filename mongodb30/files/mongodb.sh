@@ -1,6 +1,6 @@
 #!@RCD_SCRIPTS_SHELL@
 #
-# $NetBSD$
+# $NetBSD: mongodb.sh,v 1.1 2015/05/02 08:10:33 ryoon Exp $
 #
 # PROVIDE: mongodb
 # REQUIRE: DAEMON LOGIN mountall
@@ -31,7 +31,7 @@ pidfile="${mongodb_dbpath}/mongod.pid"
 logfile="${mongodb_dbpath}/mongod.log"
 required_dirs="${mongodb_dbpath}"
 
-command_args="--fork --logpath ${logfile} --logappend --pidfilepath ${pidfile} --dbpath ${mongodb_dbpath}"
+command_args="--fork --logpath ${logfile} --logappend --pidfilepath ${pidfile} --dbpath ${mongodb_dbpath} --smallfiles"
 
 load_rc_config ${name}
 run_rc_command "$1"

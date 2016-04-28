@@ -1,10 +1,18 @@
-$NetBSD$
+$NetBSD: distinfo,v 1.8 2015/10/18 05:45:37 ryoon Exp $
 
-SHA1 (mongodb-src-r3.0.6.tar.gz) = b80acf2cd63b3bce27d860581ce17a3aad2b8ea8
-RMD160 (mongodb-src-r3.0.6.tar.gz) = 3e3dc920c0790826b54d02e5a82faace48da9e9f
-Size (mongodb-src-r3.0.6.tar.gz) = 26241944 bytes
-SHA1 (patch-SConstruct) = 1a0e1e80db3b5cc31a36e9f86f395d56d8dcedb3
-SHA1 (patch-debian_mongod.conf) = 50a9d4ba7444d8d2e0cb01d0270d23f043ecc45c
-SHA1 (patch-src_mongo_base_initializer.h) = 02c88f31766f14a027493e04feb585a2d8ae0534
+SHA1 (mongodb-src-r3.0.11.tar.gz) = 38beefc57c05a64875a0cd7cdea62da463753950
+RMD160 (mongodb-src-r3.0.11.tar.gz) = 3c21d647c526413d2ea52ff78378807a546475d0
+SHA512 (mongodb-src-r3.0.11.tar.gz) = db91f94cd8b59915286b00bb91493de6ca880e63bb132b2cff59ffd8bc76307996e7cd3772f5c598f90fc87d5a515661661fcb348680ffa509d15526da851e81
+Size (mongodb-src-r3.0.11.tar.gz) = 29336301 bytes
+SHA1 (patch-SConstruct) = 71f06ac82474f81a6b1b6660cd9e23cd5a63d55f
+SHA1 (patch-debian_mongod.conf) = 499a664ad22ca7085b164ae0e897f4f11c5190b4
+SHA1 (patch-src_mongo_base_initializer.h) = add32c5940c922a98122d0e6883eb3ad52dc25c5
+SHA1 (patch-src_mongo_db_repl_isself.c) = c27e7ac0f19158eff9d5bf59d5d07835ab222bc4
 SHA1 (patch-src_mongo_platform_random.cpp) = 4e962e0ffdcbd80956bacebfcb052cb25508d4ca
 SHA1 (patch-src_mongo_shell_linenoise__utf8.h) = 2d18e46cb63313e6fb09714e0662c98347f4f74e
+SHA1 (patch-src_third__party_s2_base_port.h) = 8e715efbfcacaba51d957c21aa32ccfd3cc4f736
+SHA1 (patch-src_third__party_v8-3.25_SConscript) = a8da59130c36b2be3b89498ba0b23b1c7c9ab9e6
+SHA1 (patch-src_third__party_v8-3.25_src_platform-posix.cc) = 2fa27016a9af828d1c01815739770918a2d53d16
+SHA1 (patch-src_third__party_v8-3.25_src_platform_semaphore.cc) = 92447c13b379eeb4d9f8bac9455d78d54b4f9e32
+SHA1 (patch-src_third__party_wiredtiger_SConscript) = b9ed24d0c05e812d66941f94a77cf4c91f55d43b
+SHA1 (patch-src_third__party_wiredtiger_build__netbsd_wiredtiger__config.h) = e41064c0ff7268efc795782312ff413295cbcba7

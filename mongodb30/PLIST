@@ -1,4 +1,4 @@
-@comment $NetBSD$
+@comment $NetBSD: PLIST,v 1.1 2015/05/02 08:10:33 ryoon Exp $
 bin/mongo
 bin/mongod
 bin/mongoperf

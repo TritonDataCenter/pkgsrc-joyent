@@ -1,6 +1,6 @@
-# $NetBSD$
+# $NetBSD: Makefile,v 1.8 2015/10/18 05:45:37 ryoon Exp $
 
-DISTNAME=	mongodb-src-r3.0.6
+DISTNAME=	mongodb-src-r3.0.11
 PKGNAME=	${DISTNAME:S/src-r//:S/-rc/rc/}
 CATEGORIES=	databases
 MASTER_SITES=	http://fastdl.mongodb.org/src/
@@ -32,9 +32,6 @@ PYTHON_VERSIONS_INCOMPATIBLE=	33 34 # not yet supported as of 3.0.4
 
 .include "../../mk/bsd.prefs.mk"
 
-# Real requirement is 4.8.2, but lang/gcc48 is not finished
-# in terms of the gcc48/gcc48-libs split up, so we'll go with
-# gcc49 instead.
 GCC_REQD+=	4.9
 
 .if ${MACHINE_ARCH} == "x86_64"
@@ -126,7 +123,11 @@ post-install:
 
 .include "../../devel/boost-headers/buildlink3.mk"
 .include "../../devel/boost-libs/buildlink3.mk"
+.if exists(${.CURDIR}/../../devel/py-boost/buildlink3.mk)
+.include "../../devel/py-boost/buildlink3.mk"
+.else
 .include "../../devel/boost-python/buildlink3.mk"
+.endif
 .include "../../devel/libexecinfo/buildlink3.mk"
 .include "../../devel/pcre/buildlink3.mk"
 .include "../../devel/snappy/buildlink3.mk"
