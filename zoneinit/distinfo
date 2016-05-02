@@ -1,5 +1,6 @@
 $NetBSD$
 
-SHA1 (zoneinit-1.6.8.tar.gz) = f5dbcc372be8ccc1ef90da17939a467084594dc2
-RMD160 (zoneinit-1.6.8.tar.gz) = 17ea3bfe8fa6ff2290b672ee75c34de38d7bfe0c
-Size (zoneinit-1.6.8.tar.gz) = 8962 bytes
+SHA1 (zoneinit-1.6.9.tar.gz) = 9cb6fc30156628aaa48af3c16e4c98e8da23ffcd
+RMD160 (zoneinit-1.6.9.tar.gz) = b4b371cb9bab793630113f31fafe25e19e5befc5
+SHA512 (zoneinit-1.6.9.tar.gz) = 539f831bfd54422d42f0596edf0b88e2e65759f75297e25e6c777dbe6535b06e77f6d0da6631c8872314e1cb78f9186279cf151ffd8c04c070c722f1cd3a4a4b
+Size (zoneinit-1.6.9.tar.gz) = 9123 bytes
