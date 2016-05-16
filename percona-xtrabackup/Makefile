@@ -3,6 +3,7 @@
 
 DISTNAME=	percona-xtrabackup-2.4.2
 PKGNAME=	${MYSQL_PKG_PREFIX}-${DISTNAME:S/percona-//}
+PKGREVISION=	1
 CATEGORIES=	databases
 MASTER_SITES=	http://www.percona.com/downloads/XtraBackup/Percona-XtraBackup-${PKGVERSION_NOREV}/source/tarball/
 
@@ -15,8 +16,12 @@ BUILD_DEPENDS+=	patch-[0-9]*:../../devel/patch
 DEPENDS+=	qpress-[0-9]*:../../joyent/qpress
 DEPENDS+=	p5-DBD-${MYSQL_PKG_PREFIX}-[0-9]*:../../databases/p5-DBD-mysql
 
+# MySQL requires a specific version of boost, so we use our own
+# copy here
+BOOST=			boost_1_59_0
 LIBTAR=			libtar-1.2.11
-DISTFILES=		${DISTNAME}${EXTRACT_SUFX} ${LIBTAR}.tar.gz
+DISTFILES=		${DISTNAME}${EXTRACT_SUFX} ${LIBTAR}.tar.gz ${BOOST}.tar.bz2
+SITES.${BOOST}.tar.bz2=	${MASTER_SITE_SOURCEFORGE:=boost/}
 SITES.${LIBTAR}.tar.gz=	ftp://ftp.feep.net/pub/software/libtar
 
 .include "../../mk/mysql.buildlink3.mk"
@@ -39,6 +44,7 @@ TOOLS_PLATFORM.patch=	${LOCALBASE}/bin/gpatch
 CMAKE_ARGS+=		-DENABLE_DTRACE=ON
 CMAKE_ARGS+=		-DENABLE_OPENSSL=ON
 
+CMAKE_ARGS+=		-DWITH_BOOST=${WRKDIR}/${BOOST}
 CMAKE_ARGS+=		-DWITH_LIBEV=system
 CMAKE_ARGS+=		-DWITH_SSL=system
 CMAKE_ARGS+=		-DWITH_ZLIB=system
@@ -70,7 +76,6 @@ post-install:
 	${INSTALL_PROGRAM} ${WRKDIR}/${LIBTAR}/libtar/tar4ibd ${DESTDIR}${PREFIX}/bin
 
 .include "../../archivers/xz/buildlink3.mk"
-.include "../../devel/boost-headers/buildlink3.mk"
 .include "../../devel/libev/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../security/libgcrypt/buildlink3.mk"
