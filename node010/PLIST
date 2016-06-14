@@ -29,7 +29,6 @@ include/node/v8.h
 include/node/v8stdint.h
 include/node/zconf.h
 include/node/zlib.h
-lib/dtrace/node.d
 ${PLIST.dtrace}lib/dtrace/node.d
 lib/node_modules/npm/.mailmap
 lib/node_modules/npm/.npmignore
