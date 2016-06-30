@@ -3,7 +3,7 @@
 # used by joyent/mariadb100-client/Makefile
 # used by joyent/mariadb100-server/Makefile
 
-DISTNAME=	mariadb-10.0.24
+DISTNAME=	mariadb-10.0.26
 CATEGORIES=	databases
 MASTER_SITES=	https://downloads.mariadb.org/f/${DISTNAME}/source/
 

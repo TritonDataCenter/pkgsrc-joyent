@@ -95,10 +95,8 @@ CONF_FILES=		${PREFIX}/share/mysql/my-joyent.cnf \
 			${PKG_SYSCONFDIR}/my.cnf
 
 post-extract:
-	# Temporarily disable oqgraph until it's updated to build with boost>=1.60
-	${RM} -rf ${WRKSRC}/storage/oqgraph
 	# Needed for tokudb
-	${CHMOD} +x ${WRKSRC}/storage/tokudb/PerconaFT/xz/src/build_lzma/build-aux/install-sh
+	${CHMOD} +x ${WRKSRC}/storage/tokudb/PerconaFT/third_party/xz-4.999.9beta/build-aux/install-sh
 
 post-install:
 	${RM} -rf ${DESTDIR}${PKG_SYSCONFDIR}

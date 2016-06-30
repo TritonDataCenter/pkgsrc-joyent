@@ -1,6 +1,10 @@
+@comment $NetBSD$
 bin/tokuft_logprint
 bin/tokuftdump
 lib/mysql/plugin/ha_tokudb.so
+share/doc/mysql/COPYING.AGPLv3
+share/doc/mysql/COPYING.GPLv2
+share/doc/mysql/PATENTS
 share/doc/mysql/README.md
 share/mysql/test/plugin/tokudb/README.tokudb
 share/mysql/test/plugin/tokudb/rpl/disabled.def
@@ -53,6 +57,7 @@ share/mysql/test/plugin/tokudb/rpl/r/rpl_truncate_3tokudb.result
 share/mysql/test/plugin/tokudb/rpl/r/rpl_typeconv_tokudb.result
 share/mysql/test/plugin/tokudb/rpl/r/tokudb_innodb_xa_crash.result
 share/mysql/test/plugin/tokudb/rpl/suite.pm
+share/mysql/test/plugin/tokudb/rpl/t/disabled.def
 share/mysql/test/plugin/tokudb/rpl/t/rpl_deadlock_tokudb-slave.opt
 share/mysql/test/plugin/tokudb/rpl/t/rpl_deadlock_tokudb.test
 share/mysql/test/plugin/tokudb/rpl/t/rpl_extra_col_master_tokudb.test
@@ -92,7 +97,6 @@ share/mysql/test/plugin/tokudb/rpl/t/rpl_tokudb_delete_pk.test
 share/mysql/test/plugin/tokudb/rpl/t/rpl_tokudb_delete_pk_lookup1-slave.opt
 share/mysql/test/plugin/tokudb/rpl/t/rpl_tokudb_delete_pk_lookup1.test
 share/mysql/test/plugin/tokudb/rpl/t/rpl_tokudb_mixed_ddl.test
-share/mysql/test/plugin/tokudb/rpl/t/rpl_tokudb_mixed_dml-master.opt
 share/mysql/test/plugin/tokudb/rpl/t/rpl_tokudb_mixed_dml.test
 share/mysql/test/plugin/tokudb/rpl/t/rpl_tokudb_read_only_ff-slave.opt
 share/mysql/test/plugin/tokudb/rpl/t/rpl_tokudb_read_only_ff.test
@@ -124,15 +128,18 @@ share/mysql/test/plugin/tokudb/rpl/t/rpl_tokudb_write_unique_uc1-slave.opt
 share/mysql/test/plugin/tokudb/rpl/t/rpl_tokudb_write_unique_uc1.test
 share/mysql/test/plugin/tokudb/rpl/t/rpl_truncate_3tokudb.test
 share/mysql/test/plugin/tokudb/rpl/t/rpl_typeconv_tokudb.test
+share/mysql/test/plugin/tokudb/rpl/t/suite.opt
 share/mysql/test/plugin/tokudb/rpl/t/tokudb_innodb_xa_crash-slave.opt
 share/mysql/test/plugin/tokudb/rpl/t/tokudb_innodb_xa_crash.test
 share/mysql/test/plugin/tokudb/tokudb/bulk-fetch-gen.py
 share/mysql/test/plugin/tokudb/tokudb/disabled.def
+share/mysql/test/plugin/tokudb/tokudb/include/cluster_key.inc
 share/mysql/test/plugin/tokudb/tokudb/include/have_tokudb.inc
 share/mysql/test/plugin/tokudb/tokudb/locks-blocking-row-locks-testgen.py
 share/mysql/test/plugin/tokudb/tokudb/r/auto_increment.result
 share/mysql/test/plugin/tokudb/tokudb/r/auto_increment_boundary.result
 share/mysql/test/plugin/tokudb/tokudb/r/auto_increment_boundary_traditional.result
+share/mysql/test/plugin/tokudb/tokudb/r/background_job_manager.result
 share/mysql/test/plugin/tokudb/tokudb/r/bf_create_select.result
 share/mysql/test/plugin/tokudb/tokudb/r/bf_create_select_hash_part.result
 share/mysql/test/plugin/tokudb/tokudb/r/bf_create_select_range_part.result
@@ -151,6 +158,7 @@ share/mysql/test/plugin/tokudb/tokudb/r/bulk-fetch.result
 share/mysql/test/plugin/tokudb/tokudb/r/bulk-fetch2.result
 share/mysql/test/plugin/tokudb/tokudb/r/card_add_drop.result
 share/mysql/test/plugin/tokudb/tokudb/r/card_add_index.result
+share/mysql/test/plugin/tokudb/tokudb/r/card_auto_analyze_lots.result
 share/mysql/test/plugin/tokudb/tokudb/r/card_drop_index.result
 share/mysql/test/plugin/tokudb/tokudb/r/card_drop_index_2.result
 share/mysql/test/plugin/tokudb/tokudb/r/card_drop_pk.result
@@ -158,6 +166,7 @@ share/mysql/test/plugin/tokudb/tokudb/r/card_no_keys.result
 share/mysql/test/plugin/tokudb/tokudb/r/card_pk.result
 share/mysql/test/plugin/tokudb/tokudb/r/card_pk_2.result
 share/mysql/test/plugin/tokudb/tokudb/r/card_pk_sk.result
+share/mysql/test/plugin/tokudb/tokudb/r/card_scale_percent.result
 share/mysql/test/plugin/tokudb/tokudb/r/card_sk.result
 share/mysql/test/plugin/tokudb/tokudb/r/card_sk_2.result
 share/mysql/test/plugin/tokudb/tokudb/r/card_unique_sk.result
@@ -400,6 +409,8 @@ share/mysql/test/plugin/tokudb/tokudb/suite.pm
 share/mysql/test/plugin/tokudb/tokudb/t/auto_increment.test
 share/mysql/test/plugin/tokudb/tokudb/t/auto_increment_boundary.test
 share/mysql/test/plugin/tokudb/tokudb/t/auto_increment_boundary_traditional.test
+share/mysql/test/plugin/tokudb/tokudb/t/background_job_manager.opt
+share/mysql/test/plugin/tokudb/tokudb/t/background_job_manager.test
 share/mysql/test/plugin/tokudb/tokudb/t/bf_create_select.test
 share/mysql/test/plugin/tokudb/tokudb/t/bf_create_select_hash_part.test
 share/mysql/test/plugin/tokudb/tokudb/t/bf_create_select_range_part.test
@@ -418,6 +429,7 @@ share/mysql/test/plugin/tokudb/tokudb/t/bulk-fetch.test
 share/mysql/test/plugin/tokudb/tokudb/t/bulk-fetch2.test
 share/mysql/test/plugin/tokudb/tokudb/t/card_add_drop.test
 share/mysql/test/plugin/tokudb/tokudb/t/card_add_index.test
+share/mysql/test/plugin/tokudb/tokudb/t/card_auto_analyze_lots.test
 share/mysql/test/plugin/tokudb/tokudb/t/card_drop_index.test
 share/mysql/test/plugin/tokudb/tokudb/t/card_drop_index_2.test
 share/mysql/test/plugin/tokudb/tokudb/t/card_drop_pk.test
@@ -425,6 +437,7 @@ share/mysql/test/plugin/tokudb/tokudb/t/card_no_keys.test
 share/mysql/test/plugin/tokudb/tokudb/t/card_pk.test
 share/mysql/test/plugin/tokudb/tokudb/t/card_pk_2.test
 share/mysql/test/plugin/tokudb/tokudb/t/card_pk_sk.test
+share/mysql/test/plugin/tokudb/tokudb/t/card_scale_percent.test
 share/mysql/test/plugin/tokudb/tokudb/t/card_sk.test
 share/mysql/test/plugin/tokudb/tokudb/t/card_sk_2.test
 share/mysql/test/plugin/tokudb/tokudb/t/card_unique_sk.test
@@ -522,6 +535,7 @@ share/mysql/test/plugin/tokudb/tokudb/t/ctype_ascii.test
 share/mysql/test/plugin/tokudb/tokudb/t/ctype_collate.test
 share/mysql/test/plugin/tokudb/tokudb/t/ctype_cp1250_ch.test
 share/mysql/test/plugin/tokudb/tokudb/t/ctype_cp1251.test
+share/mysql/test/plugin/tokudb/tokudb/t/disabled.def
 share/mysql/test/plugin/tokudb/tokudb/t/ext_key_1_innodb.test
 share/mysql/test/plugin/tokudb/tokudb/t/ext_key_1_tokudb.test
 share/mysql/test/plugin/tokudb/tokudb/t/ext_key_2_innodb.test
@@ -656,6 +670,7 @@ share/mysql/test/plugin/tokudb/tokudb/t/simple_join_tokudb_myisam.test
 share/mysql/test/plugin/tokudb/tokudb/t/simple_truncate.test
 share/mysql/test/plugin/tokudb/tokudb/t/sql_mode_default.test
 share/mysql/test/plugin/tokudb/tokudb/t/storage_engine_default.test
+share/mysql/test/plugin/tokudb/tokudb/t/suite.opt
 share/mysql/test/plugin/tokudb/tokudb/t/tokudb_support_xa.test
 share/mysql/test/plugin/tokudb/tokudb/t/truncate_row_count.test
 share/mysql/test/plugin/tokudb/tokudb/t/truncate_txn_commit.test
@@ -684,7 +699,6 @@ share/mysql/test/plugin/tokudb/tokudb/t/type_timestamp_explicit.test
 share/mysql/test/plugin/tokudb/tokudb/t/type_uint.test
 share/mysql/test/plugin/tokudb/tokudb/t/type_varchar.test
 share/mysql/test/plugin/tokudb/tokudb/t/type_year.test
-share/mysql/test/plugin/tokudb/tokudb_add_index/disabled.def
 share/mysql/test/plugin/tokudb/tokudb_add_index/include/have_tokudb.inc
 share/mysql/test/plugin/tokudb/tokudb_add_index/r/1522.result
 share/mysql/test/plugin/tokudb/tokudb_add_index/r/add_index_1.result
@@ -745,8 +759,8 @@ share/mysql/test/plugin/tokudb/tokudb_add_index/t/falcon_bug_23818_A.test
 share/mysql/test/plugin/tokudb/tokudb_add_index/t/falcon_bug_23818_B.test
 share/mysql/test/plugin/tokudb/tokudb_add_index/t/falcon_bug_23818_C.test
 share/mysql/test/plugin/tokudb/tokudb_add_index/t/hot_create_unique_index.test
+share/mysql/test/plugin/tokudb/tokudb_add_index/t/suite.opt
 share/mysql/test/plugin/tokudb/tokudb_add_index/t/tokudb_bug_1152.test
-share/mysql/test/plugin/tokudb/tokudb_alter_table/disabled.def
 share/mysql/test/plugin/tokudb/tokudb_alter_table/include/have_tokudb.inc
 share/mysql/test/plugin/tokudb/tokudb_alter_table/r/4630.result
 share/mysql/test/plugin/tokudb/tokudb_alter_table/r/5260.result
@@ -828,6 +842,7 @@ share/mysql/test/plugin/tokudb/tokudb_alter_table/t/ai_part.test
 share/mysql/test/plugin/tokudb/tokudb_alter_table/t/alter_column_default.test
 share/mysql/test/plugin/tokudb/tokudb_alter_table/t/auto_inc.test
 share/mysql/test/plugin/tokudb/tokudb_alter_table/t/di_dui.test
+share/mysql/test/plugin/tokudb/tokudb_alter_table/t/disabled.def
 share/mysql/test/plugin/tokudb/tokudb_alter_table/t/drop_add_pk_104.test
 share/mysql/test/plugin/tokudb/tokudb_alter_table/t/drop_add_pk_part_104.test
 share/mysql/test/plugin/tokudb/tokudb_alter_table/t/drop_pk_with_prefix.test
@@ -888,8 +903,14 @@ share/mysql/test/plugin/tokudb/tokudb_alter_table/t/other_alter2.test
 share/mysql/test/plugin/tokudb/tokudb_alter_table/t/rename_column_cold_104.test
 share/mysql/test/plugin/tokudb/tokudb_alter_table/t/rename_column_cold_part_104.test
 share/mysql/test/plugin/tokudb/tokudb_alter_table/t/row_format_alter.test
+share/mysql/test/plugin/tokudb/tokudb_alter_table/t/suite.opt
 share/mysql/test/plugin/tokudb/tokudb_alter_table/t/test_field_same_detection.test
 share/mysql/test/plugin/tokudb/tokudb_alter_table/t/virtual_columns.test
+share/mysql/test/plugin/tokudb/tokudb_backup/r/tokudb_backup_exclude.result
+share/mysql/test/plugin/tokudb/tokudb_backup/r/tokudb_backup_set_last_error.result
+share/mysql/test/plugin/tokudb/tokudb_backup/t/suite.opt
+share/mysql/test/plugin/tokudb/tokudb_backup/t/tokudb_backup_exclude.test
+share/mysql/test/plugin/tokudb/tokudb_backup/t/tokudb_backup_set_last_error.test
 share/mysql/test/plugin/tokudb/tokudb_bugs/disabled.def
 share/mysql/test/plugin/tokudb/tokudb_bugs/include/have_tokudb.inc
 share/mysql/test/plugin/tokudb/tokudb_bugs/include/not_5_5.inc
@@ -956,6 +977,7 @@ share/mysql/test/plugin/tokudb/tokudb_bugs/r/checkpoint_lock_2.result
 share/mysql/test/plugin/tokudb/tokudb_bugs/r/checkpoint_lock_3.result
 share/mysql/test/plugin/tokudb/tokudb_bugs/r/commit_index_end_1.result
 share/mysql/test/plugin/tokudb/tokudb_bugs/r/commit_index_end_2.result
+share/mysql/test/plugin/tokudb/tokudb_bugs/r/db233.result
 share/mysql/test/plugin/tokudb/tokudb_bugs/r/db397_delete_trigger.result
 share/mysql/test/plugin/tokudb/tokudb_bugs/r/db397_insert_trigger.result
 share/mysql/test/plugin/tokudb/tokudb_bugs/r/db397_update_trigger.result
@@ -981,6 +1003,9 @@ share/mysql/test/plugin/tokudb/tokudb_bugs/r/db811.result
 share/mysql/test/plugin/tokudb/tokudb_bugs/r/db811s.result
 share/mysql/test/plugin/tokudb/tokudb_bugs/r/db817.result
 share/mysql/test/plugin/tokudb/tokudb_bugs/r/db823.result
+share/mysql/test/plugin/tokudb/tokudb_bugs/r/db917.result
+share/mysql/test/plugin/tokudb/tokudb_bugs/r/db938.result
+share/mysql/test/plugin/tokudb/tokudb_bugs/r/db945.result
 share/mysql/test/plugin/tokudb/tokudb_bugs/r/dict_leak_3518.result
 share/mysql/test/plugin/tokudb/tokudb_bugs/r/expand_tinytext_text.result
 share/mysql/test/plugin/tokudb/tokudb_bugs/r/fileops-2.result
@@ -1083,6 +1108,7 @@ share/mysql/test/plugin/tokudb/tokudb_bugs/t/checkpoint_lock_2.test
 share/mysql/test/plugin/tokudb/tokudb_bugs/t/checkpoint_lock_3.test
 share/mysql/test/plugin/tokudb/tokudb_bugs/t/commit_index_end_1.test
 share/mysql/test/plugin/tokudb/tokudb_bugs/t/commit_index_end_2.test
+share/mysql/test/plugin/tokudb/tokudb_bugs/t/db233.test
 share/mysql/test/plugin/tokudb/tokudb_bugs/t/db397_delete_trigger.test
 share/mysql/test/plugin/tokudb/tokudb_bugs/t/db397_insert_trigger.test
 share/mysql/test/plugin/tokudb/tokudb_bugs/t/db397_update_trigger.test
@@ -1108,7 +1134,11 @@ share/mysql/test/plugin/tokudb/tokudb_bugs/t/db811.test
 share/mysql/test/plugin/tokudb/tokudb_bugs/t/db811s.test
 share/mysql/test/plugin/tokudb/tokudb_bugs/t/db817.test
 share/mysql/test/plugin/tokudb/tokudb_bugs/t/db823.test
+share/mysql/test/plugin/tokudb/tokudb_bugs/t/db917.test
+share/mysql/test/plugin/tokudb/tokudb_bugs/t/db938.test
+share/mysql/test/plugin/tokudb/tokudb_bugs/t/db945.test
 share/mysql/test/plugin/tokudb/tokudb_bugs/t/dict_leak_3518.test
+share/mysql/test/plugin/tokudb/tokudb_bugs/t/disabled.def
 share/mysql/test/plugin/tokudb/tokudb_bugs/t/expand_tinytext_text.test
 share/mysql/test/plugin/tokudb/tokudb_bugs/t/fileops-2.test
 share/mysql/test/plugin/tokudb/tokudb_bugs/t/fileops-3.test
@@ -1132,6 +1162,7 @@ share/mysql/test/plugin/tokudb/tokudb_bugs/t/rpl_row_replace_into.test
 share/mysql/test/plugin/tokudb/tokudb_bugs/t/rpl_stmt_replace_into.test
 share/mysql/test/plugin/tokudb/tokudb_bugs/t/simple_icp.test
 share/mysql/test/plugin/tokudb/tokudb_bugs/t/subselect_index_next_same_bug_157.test
+share/mysql/test/plugin/tokudb/tokudb_bugs/t/suite.opt
 share/mysql/test/plugin/tokudb/tokudb_bugs/t/tokudb718.test
 share/mysql/test/plugin/tokudb/tokudb_bugs/t/tokudb_drop_part_table_668.test
 share/mysql/test/plugin/tokudb/tokudb_bugs/t/tokudb_drop_simple_table_668.test
@@ -1224,6 +1255,7 @@ share/mysql/test/plugin/tokudb/tokudb_parts/r/partition_syntax_tokudb.result
 share/mysql/test/plugin/tokudb/tokudb_parts/r/partition_value_tokudb.result
 share/mysql/test/plugin/tokudb/tokudb_parts/suite.opt
 share/mysql/test/plugin/tokudb/tokudb_parts/suite.pm
+share/mysql/test/plugin/tokudb/tokudb_parts/t/disabled.def
 share/mysql/test/plugin/tokudb/tokudb_parts/t/part_blocked_sql_func_tokudb.test
 share/mysql/test/plugin/tokudb/tokudb_parts/t/part_supported_sql_func_tokudb.test
 share/mysql/test/plugin/tokudb/tokudb_parts/t/partition_alter1_1_2_tokudb.test
@@ -1235,7 +1267,6 @@ share/mysql/test/plugin/tokudb/tokudb_parts/t/partition_alter2_2_1_tokudb.test
 share/mysql/test/plugin/tokudb/tokudb_parts/t/partition_alter2_2_2_tokudb.test
 share/mysql/test/plugin/tokudb/tokudb_parts/t/partition_alter3_tokudb.test
 share/mysql/test/plugin/tokudb/tokudb_parts/t/partition_alter4_tokudb.test
-share/mysql/test/plugin/tokudb/tokudb_parts/t/partition_auto_increment_tokudb-master.opt
 share/mysql/test/plugin/tokudb/tokudb_parts/t/partition_auto_increment_tokudb.test
 share/mysql/test/plugin/tokudb/tokudb_parts/t/partition_basic_symlink_tokudb.test
 share/mysql/test/plugin/tokudb/tokudb_parts/t/partition_basic_tokudb.test
@@ -1288,3 +1319,24 @@ share/mysql/test/plugin/tokudb/tokudb_parts/t/partition_special_tokudb.test
 share/mysql/test/plugin/tokudb/tokudb_parts/t/partition_syntax_tokudb.test
 share/mysql/test/plugin/tokudb/tokudb_parts/t/partition_tokudb_status_file-master.opt
 share/mysql/test/plugin/tokudb/tokudb_parts/t/partition_value_tokudb.test
+share/mysql/test/plugin/tokudb/tokudb_parts/t/suite.opt
+share/mysql/test/plugin/tokudb/tokudb_rpl/r/rpl_rfr_disable_on_expl_pk_absence.result
+share/mysql/test/plugin/tokudb/tokudb_rpl/t/rpl_rfr_disable_on_expl_pk_absence-slave.opt
+share/mysql/test/plugin/tokudb/tokudb_rpl/t/rpl_rfr_disable_on_expl_pk_absence.test
+share/mysql/test/plugin/tokudb/tokudb_sys_vars/r/tokudb_analyze_delete_fraction.result
+share/mysql/test/plugin/tokudb/tokudb_sys_vars/r/tokudb_analyze_in_background_basic.result
+share/mysql/test/plugin/tokudb/tokudb_sys_vars/r/tokudb_analyze_mode_basic.result
+share/mysql/test/plugin/tokudb/tokudb_sys_vars/r/tokudb_analyze_throttle_basic.result
+share/mysql/test/plugin/tokudb/tokudb_sys_vars/r/tokudb_analyze_time_basic.result
+share/mysql/test/plugin/tokudb/tokudb_sys_vars/r/tokudb_auto_analyze.result
+share/mysql/test/plugin/tokudb/tokudb_sys_vars/r/tokudb_cardinality_scale_percent_basic.result
+share/mysql/test/plugin/tokudb/tokudb_sys_vars/r/tokudb_pk_insert_mode_basic.result
+share/mysql/test/plugin/tokudb/tokudb_sys_vars/t/suite.opt
+share/mysql/test/plugin/tokudb/tokudb_sys_vars/t/tokudb_analyze_delete_fraction.test
+share/mysql/test/plugin/tokudb/tokudb_sys_vars/t/tokudb_analyze_in_background_basic.test
+share/mysql/test/plugin/tokudb/tokudb_sys_vars/t/tokudb_analyze_mode_basic.test
+share/mysql/test/plugin/tokudb/tokudb_sys_vars/t/tokudb_analyze_throttle_basic.test
+share/mysql/test/plugin/tokudb/tokudb_sys_vars/t/tokudb_analyze_time_basic.test
+share/mysql/test/plugin/tokudb/tokudb_sys_vars/t/tokudb_auto_analyze.test
+share/mysql/test/plugin/tokudb/tokudb_sys_vars/t/tokudb_cardinality_scale_percent_basic.test
+share/mysql/test/plugin/tokudb/tokudb_sys_vars/t/tokudb_pk_insert_mode_basic.test
