@@ -1,0 +1,14 @@
+===========================================================================
+$NetBSD$
+
+To install the SphinxSE MySQL plugin, log into your MySQL console
+and issue the following query:
+
+  INSTALL PLUGIN sphinx SONAME 'ha_sphinx.so';
+
+You can verify it has been loaded properly by checking whether
+it shows up in the list when list your engines:
+
+  SHOW ENGINES;
+
+===========================================================================

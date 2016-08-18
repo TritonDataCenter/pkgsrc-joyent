@@ -1,0 +1,35 @@
+$NetBSD$
+
+SHA1 (boost_1_59_0.tar.bz2) = b94de47108b2cdb0f931833a7a9834c2dd3ca46e
+RMD160 (boost_1_59_0.tar.bz2) = a106b3cd1dbda2323e5e84c7106cedee327db03c
+SHA512 (boost_1_59_0.tar.bz2) = 8139e1ae997a86974071c5714ad3307e3d8fd15ef702b81a953410dd4d424b932135f53a0ef4891d9b9b747a38e539e66d6a803388fe0cc98e5166be872d682a
+Size (boost_1_59_0.tar.bz2) = 70389425 bytes
+SHA1 (percona-server-5.7.13-6.tar.gz) = 2692f2c419562de2ee171478259e74bcc95495bc
+RMD160 (percona-server-5.7.13-6.tar.gz) = 3f9efbe2c062a590378eccb09d27f253b62d07f6
+SHA512 (percona-server-5.7.13-6.tar.gz) = ac0802ec0143da8317e81c61332a24ffa0310938c99373e451d4767db0efb049c4352c0601c7c951e8c91f10e5b6167e92f51309737b522556e78270a6199143
+Size (percona-server-5.7.13-6.tar.gz) = 73694795 bytes
+SHA1 (sphinx-2.2.11-release.tar.gz) = 34e83f43de0e69e258bf749ea00348c60a51632a
+RMD160 (sphinx-2.2.11-release.tar.gz) = 5804b4cce64bc03fa20bac26c7391cd661cecc77
+SHA512 (sphinx-2.2.11-release.tar.gz) = cf1a262a5b0fbf0bd2827ec6ec629edeaf709ce855a6e7b509b65342baaeb26c02717ca63f1578d32c83d21e2fd6d1e92dceb34660e6351b93cd96fd4e623689
+Size (sphinx-2.2.11-release.tar.gz) = 3061998 bytes
+SHA1 (patch-CMakeLists.txt) = b47592cf8801538375da3df2990fde4d292fc365
+SHA1 (patch-build-ps_build-rpm.sh) = 6b6f706aa8867bb653f2b4405b0a57feb5d934e6
+SHA1 (patch-client_CMakeLists.txt) = ce1f73a3791b560f191e828ed81868dfcadf73b0
+SHA1 (patch-client_completion_hash.cc) = 94f1843f8b3d71d8fc6af810eddf2c076d50599d
+SHA1 (patch-client_mysqladmin.cc) = 2bb9f9ba1097d39ac42a2682517c1e33a37af9df
+SHA1 (patch-cmake_dtrace.cmake) = 8331ff8461770204c849d895b9987d85eebec6ea
+SHA1 (patch-cmake_libutils.cmake) = d988a05e8073ce8722fce714cb7e47cc4ed68ed2
+SHA1 (patch-include_CMakeLists.txt) = 944991702f046ea7a5e2b6ea4dc390f17426e55a
+SHA1 (patch-include_my__global.h) = 234ff70bb7e1a9dd17a4092f39a0d3d587d960e2
+SHA1 (patch-include_my__thread.h) = 0f095acf94f8d130516dc4d858de1c64dd2bc127
+SHA1 (patch-include_my_compare.h) = f45bac4b488332a668b0005751856279b67401f5
+SHA1 (patch-include_sql__string.h) = 35d3ce7b4b56ac727dab11d6682d5d9808b3888a
+SHA1 (patch-libmysql_CMakeLists.txt) = 517bae93acbb5b46b593d9d667aee7aabe33ea69
+SHA1 (patch-mysql-test_CMakeLists.txt) = 79f560cc31a3158986d360c4cdb9e415a54ed8b5
+SHA1 (patch-mysys__ssl_CMakeLists.txt) = 2f89a8cc6f860df6623082331286f919b6b2eb9e
+SHA1 (patch-plugin_audit__log_audit__log.c) = 7d165864003e70e27ae77f11b76f199ebe913f5f
+SHA1 (patch-rapid_plugin_x_CMakeLists.txt) = ec9b7ce8a64f67dbf3f11a072ea2c10d8e2c8205
+SHA1 (patch-scripts_CMakeLists.txt) = 4773ef0ab860121a41aa8730d2bf6ebaa73cced8
+SHA1 (patch-sql_conn__handler_socket__connection.cc) = f2c89f1aca3dae616d32f1b980564d44270f2eba
+SHA1 (patch-storage_ndb_mcc_frontend_dojo_dojox_mobile_build_build.sh) = fb7d813fdc253efcc7d18740eea10d3d8ea53ad0
+SHA1 (patch-strings_decimal.c) = fc9306f41cd535cbffec7904fd9f875b0d0f27ec
