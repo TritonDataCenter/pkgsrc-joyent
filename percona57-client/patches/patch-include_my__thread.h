@@ -1,5 +1,7 @@
 $NetBSD$
 
+NetBSD needs signal.h.
+
 --- include/my_thread.h.orig	2016-03-28 18:06:12.000000000 +0000
 +++ include/my_thread.h
 @@ -24,6 +24,13 @@

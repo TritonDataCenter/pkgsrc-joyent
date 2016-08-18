@@ -38,15 +38,15 @@ CMAKE_ARGS+=		-DWITH_INNODB_MEMCACHED=OFF
 
 # Enable Sphinx SE support
 # http://sphinxsearch.com/docs/current.html#sphinxse-overview
-PLIST_VARS+=	sphinx
+PLIST_VARS+=		sphinx
 .if !empty(PKG_OPTIONS:Msphinx) || make(distinfo) || make(makesum) || make(mdi)
-SPHINX=		sphinx-2.2.11-release
-DISTFILES+=	${SPHINX}.tar.gz
+SPHINX=			sphinx-2.2.11-release
+DISTFILES+=		${SPHINX}.tar.gz
 SITES.${SPHINX}.tar.gz=	http://sphinxsearch.com/files/
 .  if !empty(PKGPATH:Mjoyent/percona57-server)
-MESSAGE_SRC=	${PKGDIR}/MESSAGE ${PKGDIR}/MESSAGE.sphinx
+MESSAGE_SRC=		${PKGDIR}/MESSAGE ${PKGDIR}/MESSAGE.sphinx
 .  endif
-PLIST.sphinx=	yes
+PLIST.sphinx=		yes
 
 post-extract:
 	${CP} -R ${WRKDIR}/${SPHINX}/mysqlse ${WRKSRC}/storage/sphinx

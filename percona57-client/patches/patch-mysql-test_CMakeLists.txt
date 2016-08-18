@@ -1,4 +1,4 @@
-$NetBSD: patch-mysql-test_CMakeLists.txt,v 1.1 2013/02/13 21:00:05 adam Exp $
+$NetBSD$
 
 Exclude some unwated files.
 

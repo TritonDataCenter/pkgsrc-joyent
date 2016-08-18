@@ -1,4 +1,4 @@
-$NetBSD: patch-include_CMakeLists.txt,v 1.1 2013/02/13 21:00:04 adam Exp $
+$NetBSD$
 
 Only mysql-client installs includes.
 

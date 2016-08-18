@@ -1,4 +1,4 @@
-$NetBSD: patch-strings_decimal.c,v 1.3 2013/12/03 20:02:42 adam Exp $
+$NetBSD$
 
 * Portability: include <bstring.h> if exists.
 

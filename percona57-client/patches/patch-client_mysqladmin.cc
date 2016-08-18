@@ -1,4 +1,4 @@
-$NetBSD: patch-client_mysqladmin.cc,v 1.1 2013/02/13 21:00:03 adam Exp $
+$NetBSD$
 
 Redefine signals for Irix.
 

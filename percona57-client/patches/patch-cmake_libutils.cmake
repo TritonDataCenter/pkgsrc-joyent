@@ -1,4 +1,4 @@
-$NetBSD: patch-cmake_libutils.cmake,v 1.2 2013/04/20 08:06:01 adam Exp $
+$NetBSD$
 
 On Mac OS X, use PkgSrc libtool.
 

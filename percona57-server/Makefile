@@ -8,16 +8,16 @@ CONFLICTS=	mysql-server-[0-9]*
 .include "../../joyent/percona57-client/Makefile.common"
 
 INFO_FILES=		yes
-#CMAKE_ARGS+=		-DWITH_LIBWRAP=OFF
 CMAKE_ARGS+=		-DINSTALL_INFODIR=${PKGINFODIR}
 
 .if !empty(PKG_OPTIONS:Membedded-server)
-CMAKE_ARGS+=		-DWITH_EMBEDDED_SERVER=ON
-PLIST.embedded=		yes
+CMAKE_ARGS+=			-DWITH_EMBEDDED_SERVER=ON
+PLIST.embedded=			yes
 .else
-CMAKE_ARGS+=		-DWITH_EMBEDDED_SERVER=OFF
+CMAKE_ARGS+=			-DWITH_EMBEDDED_SERVER=OFF
 # We only need readline to placate the configure script if we don't build
 # the embedded server as it is the only binary linked against "readline".
+BUILDLINK_DEPMETHOD.editline=	build
 BUILDLINK_DEPMETHOD.readline=	build
 .endif
 

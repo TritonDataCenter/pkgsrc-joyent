@@ -1,4 +1,4 @@
-$NetBSD: patch-client_completion_hash.cc,v 1.1 2013/02/13 21:00:03 adam Exp $
+$NetBSD$
 
 * Portability: include <bstring.h> if exists.
 

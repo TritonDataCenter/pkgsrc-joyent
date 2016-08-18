@@ -1,5 +1,7 @@
 $NetBSD$
 
+* Portability: include <bstring.h> if exists.
+
 --- include/sql_string.h.orig	2016-03-28 18:06:12.000000000 +0000
 +++ include/sql_string.h
 @@ -29,6 +29,10 @@ extern PSI_memory_key key_memory_String_
