@@ -1,18 +1,19 @@
 $NetBSD$
 
-SHA1 (percona-server-5.6.29-76.2.tar.gz) = 1954b89646d66da5ecf8cbab18460bfba4fd7e57
-RMD160 (percona-server-5.6.29-76.2.tar.gz) = 0c326f8b47c85c2cb90b3b1bbab9f5e8a80ac78c
-SHA512 (percona-server-5.6.29-76.2.tar.gz) = 0765ba02dcceaa3e4cb8f1b7261982f66ea5a14982723a9eb0a47177d03c18ffb3e647f10736780f6312dccb23f082ebcdd1f6330f9bf08ec714e43bf9fb4e57
-Size (percona-server-5.6.29-76.2.tar.gz) = 55032788 bytes
-SHA1 (sphinx-2.2.10-release.tar.gz) = 0f2372dd41df2848ea06c6076a86af6f0f66a071
-RMD160 (sphinx-2.2.10-release.tar.gz) = 2712e8ce85609e78c53bd2d9fba877f1e630d5f2
-SHA512 (sphinx-2.2.10-release.tar.gz) = 07683f64df730368563e11a7d2939b521837c9a04944ab7d6d09732ab06e451b674169eca4f85db2aae41d883bd16fb4d17b9265912fea9691d07d407d7212d8
-Size (sphinx-2.2.10-release.tar.gz) = 3109250 bytes
+SHA1 (percona-server-5.6.31-77.0.tar.gz) = d86068719164fb1b67cc66171f1cf5e72b917a87
+RMD160 (percona-server-5.6.31-77.0.tar.gz) = ea6de0cecfd02bf989b9d37a3a7ee4b00ff41cf2
+SHA512 (percona-server-5.6.31-77.0.tar.gz) = b166f3765052336b593bf2a3c3d0fa998d4ab413b2d86a494d6ef52689e04b7b681c95d434c67bb4536a818a8bebeaf27b519f274ba1ce8c447d36f7346858ee
+Size (percona-server-5.6.31-77.0.tar.gz) = 55086290 bytes
+SHA1 (sphinx-2.2.11-release.tar.gz) = 34e83f43de0e69e258bf749ea00348c60a51632a
+RMD160 (sphinx-2.2.11-release.tar.gz) = 5804b4cce64bc03fa20bac26c7391cd661cecc77
+SHA512 (sphinx-2.2.11-release.tar.gz) = cf1a262a5b0fbf0bd2827ec6ec629edeaf709ce855a6e7b509b65342baaeb26c02717ca63f1578d32c83d21e2fd6d1e92dceb34660e6351b93cd96fd4e623689
+Size (sphinx-2.2.11-release.tar.gz) = 3061998 bytes
 SHA1 (patch-CMakeLists.txt) = 06682148a6436a8f9a9818f7c0d1739c8e7ea57c
 SHA1 (patch-build-ps_build-rpm.sh) = 6b6f706aa8867bb653f2b4405b0a57feb5d934e6
 SHA1 (patch-client_completion_hash.cc) = 94f1843f8b3d71d8fc6af810eddf2c076d50599d
 SHA1 (patch-client_mysqladmin.cc) = 2bb9f9ba1097d39ac42a2682517c1e33a37af9df
 SHA1 (patch-cmake_libutils.cmake) = d988a05e8073ce8722fce714cb7e47cc4ed68ed2
+SHA1 (patch-cmake_readline.cmake) = fb79ed969240ae2984098f72c2d3fb501154902c
 SHA1 (patch-include_CMakeLists.txt) = 295a399a33aea51c820c2fa8e9c4a3524ad44e7b
 SHA1 (patch-include_my__global.h) = 4ec786c2f2b23cff671d2178d7312ed12bfbbc68
 SHA1 (patch-include_my_compare.h) = 2584240fb04fc3e967f0ff1e4be1eee8607f86f8
@@ -23,7 +24,7 @@ SHA1 (patch-mysql-test_CMakeLists.txt) = 79f560cc31a3158986d360c4cdb9e415a54ed8b
 SHA1 (patch-mysys__ssl_CMakeLists.txt) = 673ff0ab8fae5a9975f8525b7f88932d61ec65f2
 SHA1 (patch-mysys_stacktrace.c) = bad3827cc56b62ceaa185df80883206d2b8c5237
 SHA1 (patch-plugin_HandlerSocket-Plugin-for-MySQL_libhsclient_allocator.hpp) = c011662c9103018e8762b409e7a8d0a4b4d24e43
-SHA1 (patch-plugin_audit__log_audit__log.c) = 24d6c0823a6c295d588854c42e39c33777cda615
+SHA1 (patch-plugin_audit__log_audit__log.c) = ae59a8dc654c8f89311db7ac7bf2713db73e3195
 SHA1 (patch-scripts_CMakeLists.txt) = 21273693920658adf504d534e46ab429ec7e777d
 SHA1 (patch-scripts_mysqld_safe.sh) = 5389850699d9ecef41a181808c416b908121720a
 SHA1 (patch-sql_CMakeLists.txt) = 5322471f1913201565e8b36156bcc7bf342398c4

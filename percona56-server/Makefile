@@ -7,11 +7,6 @@ CONFLICTS=	{mysql-server-[0-9]*,mysql3-server-[0-9]*}
 
 .include "../../joyent/percona56-client/Makefile.common"
 
-# Include the Sphinx storage engine
-SPHINX=		sphinx-2.2.10-release
-DISTFILES=	${DISTNAME}${EXTRACT_SUFX} ${SPHINX}.tar.gz
-SITES.${SPHINX}.tar.gz=	http://sphinxsearch.com/files/
-
 INFO_FILES=		yes
 CMAKE_ARGS+=		-DWITH_LIBWRAP=ON
 CMAKE_ARGS+=		-DINSTALL_INFODIR=${PKGINFODIR}
@@ -79,7 +74,7 @@ REPLACE_PERL+=		mysql-test/suite/funcs_2/lib/gen_charset_utf8.pl
 REPLACE_PERL+=		mysql-test/suite/rpl/extension/bhs.pl
 REPLACE_PERL+=		mysql-test/suite/rpl/extension/checksum.pl
 
-CHECK_INTERPRETER_SKIP+=	share/mysql/test/suite/opt_trace/validate_json.py
+CHECK_INTERPRETER_SKIP+=	share/mysql/test/suite/*
 
 INSTALLATION_DIRS+=	bin
 
@@ -90,13 +85,9 @@ CFLAGS+=		-D_POSIX_C_SOURCE=199506L -D__EXTENSIONS__
 CXXFLAGS+=		-D_POSIX_C_SOURCE=199506L -D__EXTENSIONS__
 .endif
 
-post-extract:
-	${CP} -R ${WRKDIR}/${SPHINX}/mysqlse ${WRKSRC}/storage/sphinx
-
 post-install:
 	${SED} ${CNFSUBST} < ${FILESDIR}/my-joyent.cnf.sh \
 	    > ${DESTDIR}${PREFIX}/share/mysql/my-joyent.cnf
-
 
 BUILDLINK_AUTO_DIRS.percona-client=	no
 .include "../../joyent/percona56-client/buildlink3.mk"

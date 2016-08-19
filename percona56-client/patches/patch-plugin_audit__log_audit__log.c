@@ -1,9 +1,9 @@
 $NetBSD$
 
---- plugin/audit_log/audit_log.c.orig	2014-11-21 10:02:01.000000000 +0000
+--- plugin/audit_log/audit_log.c.orig	2016-06-30 11:33:20.000000000 +0000
 +++ plugin/audit_log/audit_log.c
-@@ -62,8 +62,14 @@ ulong audit_log_syslog_priority= 0;
- 
+@@ -62,8 +62,14 @@ ulong audit_log_syslog_facility= 0;
+ ulong audit_log_syslog_priority= 0;
  
  static int audit_log_syslog_facility_codes[]=
 -  { LOG_USER,   LOG_AUTHPRIV, LOG_CRON,   LOG_DAEMON, LOG_FTP,
