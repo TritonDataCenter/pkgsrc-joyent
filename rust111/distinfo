@@ -1,0 +1,21 @@
+$NetBSD: distinfo,v 1.4 2014/07/03 03:11:31 schmonz Exp $
+
+SHA1 (rust-110-stage2-solaris-x86_64.tar.xz) = da9432f83baccca53144bcf123408c64b5c35d17
+RMD160 (rust-110-stage2-solaris-x86_64.tar.xz) = cfecd939aee984b3e218627c651f09fc47b53829
+SHA512 (rust-110-stage2-solaris-x86_64.tar.xz) = 0c0a8ba051533fecdd2667a72feca9af96627b2dbdd3e62da15719d0a0e1d0fd35e61b8e8e19288c4071bed33e4f1a06cf2b4ebe07c2f29c4e1b70c9b1d0dbde
+Size (rust-110-stage2-solaris-x86_64.tar.xz) = 196506836 bytes
+SHA1 (rustc-1.11.0-src.tar.gz) = d4c7177fd939be64c08b6460d89a1595b24406b4
+RMD160 (rustc-1.11.0-src.tar.gz) = ada0761c38febb423677c1b8bb2fd5c8fee05d53
+SHA512 (rustc-1.11.0-src.tar.gz) = 6ad050a02e3a3b48f205f5d5ed9393fd2a1a2237e5c78b3e51af8162f410b93a831ebe5980ce78c4d38c5a692395c7fec8442956497a5d21e9f7157404c6b5aa
+Size (rustc-1.11.0-src.tar.gz) = 26126471 bytes
+SHA1 (patch-mk_rt.mk) = da138a83712c9432d45d04298988760e916cc1ef
+SHA1 (patch-mk_rustllvm.mk) = 500ce129d9ea83fc97317679b45a79f12c8ca9e8
+SHA1 (patch-src_liblibc_src_unix_solaris_mod.rs) = c764deb6ff0625fe81ebe3f8e9e5804fd7f2ea36
+SHA1 (patch-src_libstd_rtdeps.rs) = 8abf8a9950222b908e00551cea83c441cad5f314
+SHA1 (patch-src_libstd_sys_unix_thread.rs) = 03ea5a505427faeaf66a58cb2134ac651daf3fb5
+SHA1 (patch-src_llvm_Makefile.rules) = c5f76ef8ee1fc283d2feb7dc388c7938a81c8849
+SHA1 (patch-src_llvm_cmake_modules_AddLLVM.cmake) = 282d97cce8d01cfefe565185d4999c2db9ccc13f
+SHA1 (patch-src_llvm_utils_buildit_build__llvm) = bc2c729153f3eee77ff3f018364544b947bab9d0
+SHA1 (patch-src_rust-installer_gen-install-script.sh) = 689ff4e8fa3ee9cd41202b40b6575f568eef6415
+SHA1 (patch-src_rust-installer_gen-installer.sh) = 43087b7471bfb9b0bcbd7c94cc0de22b2dd2f757
+SHA1 (patch-src_rust-installer_install-template.sh) = 85be7f5a0706c3d3fa9078458555723e797a7c5e
