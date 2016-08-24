@@ -2,7 +2,7 @@ $NetBSD$
 
 Fix library location on SunOS.
 
---- mk/rt.mk.orig	2016-08-19 09:17:11.563171964 +0000
+--- mk/rt.mk.orig	2016-08-16 01:54:35.000000000 +0000
 +++ mk/rt.mk
 @@ -269,6 +269,11 @@ endif
  COMPRT_DEFINES_$(1) := -DCOMPILER_RT_ENABLE_IOS=ON

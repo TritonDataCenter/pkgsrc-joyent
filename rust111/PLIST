@@ -44,6 +44,7 @@ lib/rustlib/manifest-rustc
 lib/rustlib/rust-installer-version
 lib/rustlib/uninstall.sh
 lib/rustlib/${RUST_ARCH}/lib/liballoc-${RUST_VERHASH}.rlib
+${PLIST.jemalloc}lib/rustlib/${RUST_ARCH}/lib/liballoc_jemalloc-${RUST_VERHASH}.rlib
 lib/rustlib/${RUST_ARCH}/lib/liballoc_system-${RUST_VERHASH}.rlib
 lib/rustlib/${RUST_ARCH}/lib/libarena-${RUST_VERHASH}.${SOEXT}
 lib/rustlib/${RUST_ARCH}/lib/libcollections-${RUST_VERHASH}.rlib

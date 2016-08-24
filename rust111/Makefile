@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.5 2014/07/30 13:33:55 schmonz Exp $
+# $NetBSD$
 
 DISTNAME=	rustc-1.11.0-src
 PKGNAME=	${DISTNAME:S/rustc/rust/:S/-src//}
@@ -14,12 +14,12 @@ WRKSRC=		${WRKDIR}/${DISTNAME:S/-src//}
 
 USE_GCC_RUNTIME=	yes
 USE_LANGUAGES=		c c++
-USE_TOOLS+=		bash gmake xz
+USE_TOOLS+=		bash gmake
 
 HAS_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--prefix=${PREFIX}
+CONFIGURE_ARGS+=	--build=${RUST_ARCH}
 CONFIGURE_ARGS+=	--mandir=${PREFIX}/${PKGMANDIR}
-CONFIGURE_ARGS+=	--disable-jemalloc
 CONFIGURE_ARGS+=	--release-channel=stable
 CONFIGURE_ENV+=		CFG_DISABLE_CODEGEN_TESTS=1
 
@@ -33,12 +33,24 @@ REPLACE_BASH+=	src/rust-installer/gen-installer.sh
 #
 CONFIGURE_ARGS+=	--disable-docs
 
-# Must match llvm.
-GCC_REQD+=	4.8
-
 TEST_TARGET=	check
 
+# Required for LLVM (-std=c++11)
+GCC_REQD+=	4.8
+
 .include "../../mk/bsd.prefs.mk"
+
+#
+# Use jemalloc on systems where rust does by default too.
+#
+PLIST_VARS+=		jemalloc
+.if ${OPSYS} == "Linux" || ${OPSYS} == "Darwin"
+.include "../../devel/jemalloc/buildlink3.mk"
+CONFIGURE_ARGS+=	--jemalloc-root=${BUILDLINK_PREFIX.jemalloc}/lib
+PLIST.jemalloc=		yes
+.else
+CONFIGURE_ARGS+=	--disable-jemalloc
+.endif
 
 #
 # Rust unfortunately requires itself to build.  On platforms which aren't
@@ -54,29 +66,27 @@ TEST_TARGET=	check
 # a stage2 bootstrap.
 #
 CONFIGURE_ARGS+=	--enable-local-rust
-CONFIGURE_ARGS+=	--local-rust-root=${WRKDIR}/stage2
-# XXX: not working
-#CONFIGURE_ARGS+=	--llvm-root=${BUILDLINK_PREFIX.llvm}
-#.include "../../lang/llvm/buildlink3.mk"
+CONFIGURE_ARGS+=	--local-rust-root=${WRKDIR}/rust-${RUST_STAGE2_VER}-${RUST_ARCH}/rustc
 #
 .if !empty(MACHINE_PLATFORM:MDarwin-*-i386)
 RUST_ARCH=		i686-apple-darwin
-RUST_STAGE2_ARCH=	macos-i386
 .elif !empty(MACHINE_PLATFORM:MDarwin-*-x86_64)
 RUST_ARCH=		x86_64-apple-darwin
-RUST_STAGE2_ARCH=	macos-x86_64
 .elif !empty(MACHINE_PLATFORM:MLinux-*-i386)
 RUST_ARCH=		i686-unknown-linux-gnu
-RUST_STAGE2_ARCH=	linux-i386
 .elif !empty(MACHINE_PLATFORM:MLinux-*-x86_64)
 RUST_ARCH=		x86_64-unknown-linux-gnu
-RUST_STAGE2_ARCH=	linux-x86_64
 .elif !empty(MACHINE_PLATFORM:MSunOS-*-x86_64)
 RUST_ARCH=		x86_64-sun-solaris
-RUST_STAGE2_ARCH=	solaris-x86_64
+SITES.${RUST_STAGE2}=	https://us-east.manta.joyent.com/pkgsrc/public/tmp/
 .else
 NOT_FOR_PLATFORM+=	${MACHINE_PLATFORM}
 .endif
+
+RUST_STAGE2_VER=	1.10.0
+RUST_STAGE2?=		rust-${RUST_STAGE2_VER}-${RUST_ARCH}.tar.gz
+SITES.${RUST_STAGE2}?=	https://static.rust-lang.org/dist/
+DISTFILES=		${DEFAULT_DISTFILES} ${RUST_STAGE2}
 
 PLIST_SRC=		PLIST
 .if ${OPSYS} == "Darwin"
@@ -88,14 +98,6 @@ PLIST_SRC+=		PLIST.gdb
 OPSYSVARS+=		SOEXT
 SOEXT.Darwin=		dylib
 SOEXT.*=		so
-
-PLIST_VARS+=		jemalloc
-
-CONFIGURE_ARGS+=	--build=${RUST_ARCH}
-
-RUST_STAGE2?=		rust-110-stage2-${RUST_STAGE2_ARCH}.tar.xz
-DISTFILES=		${DEFAULT_DISTFILES} ${RUST_STAGE2}
-SITES.${RUST_STAGE2}?=	https://us-east.manta.joyent.com/pkgsrc/public/tmp/
 
 RUST_VERHASH=		39b92f95
 PLIST_SUBST+=		RUST_ARCH=${RUST_ARCH:Q}
@@ -120,6 +122,31 @@ SUBST_SED.ranlib=	-e 's,RANLIB=.* \\,RANLIB="true" \\,g'
 
 post-install:
 	${RM} -f ${DESTDIR}${PREFIX}/lib/rustlib/install.log
+
+.if ${OPSYS} == "Darwin"
+.PHONY: fix-darwin-install-name
+post-install: fix-darwin-install-name
+fix-darwin-install-name:
+.  for bin in rustc rustdoc
+	otool -XL ${DESTDIR}${PREFIX}/bin/${bin}			\
+	    | ${GREP} '@rpath' | while read rpath rest; do		\
+		install_name_tool -change $$rpath			\
+		    `${ECHO} $$rpath | ${SED} -e 's,@rpath,${PREFIX}/lib,g'` \
+		    ${DESTDIR}${PREFIX}/bin/${bin};			\
+	done
+.  endfor
+.  for libdir in lib lib/rustlib/${RUST_ARCH}/lib
+	for f in ${DESTDIR}${PREFIX}/${libdir}/lib*.dylib; do		\
+		[ ! -f $$f ] && continue;				\
+		install_name_tool -id `${ECHO} $$f | ${SED} -e 's,${DESTDIR},,g'` $$f; \
+		otool -XL $$f | grep '@rpath' | while read rpath rest; do \
+			install_name_tool -change $$rpath \
+			    `${ECHO} $$rpath | ${SED} -e 's,@rpath,${PREFIX}/${libdir},g'` \
+			    $$f;					\
+		done;							\
+	done
+.  endfor
+.endif
 
 .include "../../devel/cmake/buildlink3.mk"
 .include "../../lang/python/tool.mk"
