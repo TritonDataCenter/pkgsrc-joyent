@@ -1,5 +1,9 @@
 $NetBSD$
 
+SHA1 (rust-1.10.0-i686-unknown-linux-gnu.tar.gz) = 616ae9629c76a4958b3358f6cb6d6e6e69d6f478
+RMD160 (rust-1.10.0-i686-unknown-linux-gnu.tar.gz) = 6ba250554b97c8a7bbaffbbafca2f01c9ce2be88
+SHA512 (rust-1.10.0-i686-unknown-linux-gnu.tar.gz) = 80f0e8455e1f304d2bdaabfbe59e10bf1536c5f922fd48daace437d2e3c2683a73346ce5efb1b61648b1adf46ab3efc5709ead55344921ad977df29a630e6438
+Size (rust-1.10.0-i686-unknown-linux-gnu.tar.gz) = 102485660 bytes
 SHA1 (rust-1.10.0-x86_64-apple-darwin.tar.gz) = 9d88b5a1203f91ac12a2f3d33944d6dbeabf3347
 RMD160 (rust-1.10.0-x86_64-apple-darwin.tar.gz) = 046553af4b914421d2ddcde64b6025f18f610bf5
 SHA512 (rust-1.10.0-x86_64-apple-darwin.tar.gz) = 428c53bd402094254e16b5b29303ce5565abf11275546aaa7fecf4f6ea2b13ec46a7d455b1e9c2a6f50a0fcd5573c10adcef09afd29dc390202fa152c31400ac
