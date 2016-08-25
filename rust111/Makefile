@@ -23,6 +23,8 @@ CONFIGURE_ARGS+=	--mandir=${PREFIX}/${PKGMANDIR}
 CONFIGURE_ARGS+=	--release-channel=stable
 CONFIGURE_ENV+=		CFG_DISABLE_CODEGEN_TESTS=1
 
+UNLIMIT_RESOURCES+=	cputime
+
 REPLACE_BASH+=	src/rust-installer/gen-install-script.sh
 REPLACE_BASH+=	src/rust-installer/gen-installer.sh
 
