@@ -10,6 +10,11 @@ CONFLICTS=	mysql-server-[0-9]*
 INFO_FILES=		yes
 CMAKE_ARGS+=		-DINSTALL_INFODIR=${PKGINFODIR}
 
+# Regression due to code overhaul in 5.7, new solution needed for:
+# https://bugs.mysql.com/bug.php?id=18246
+#
+# CMAKE_ARGS+=		-DWITH_LIBWRAP=ON
+
 .if !empty(PKG_OPTIONS:Membedded-server)
 CMAKE_ARGS+=			-DWITH_EMBEDDED_SERVER=ON
 PLIST.embedded=			yes
