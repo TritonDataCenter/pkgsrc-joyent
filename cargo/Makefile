@@ -11,7 +11,7 @@ HOMEPAGE=	${MASTER_SITE_GITHUB:=rust-lang/cargo/}
 COMMENT=	Cargo package manager for Rust
 LICENSE=	apache-2.0 OR mit
 
-#DEPENDS+=	${PYPKGPREFIX}-dulwich>0:../../devel/py-dulwich
+DEPENDS+=	${PYPKGPREFIX}-dulwich>0:../../devel/py-dulwich
 DEPENDS+=	${PYPKGPREFIX}-pytoml>0:../../textproc/py-pytoml
 DEPENDS+=	rust>0:../../joyent/rust111
 
