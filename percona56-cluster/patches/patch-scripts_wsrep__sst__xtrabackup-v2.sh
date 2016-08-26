@@ -18,13 +18,31 @@ Make SunOS portable. Patch by Derek Crudgington.
      [[ -z $nproc || $nproc -eq 0 ]] && nproc=1
      set -e
  }
+@@ -397,7 +403,7 @@ cleanup_joiner()
+     fi
+ 
+     # Final cleanup 
+-    pgid=$(ps -o pgid= $$ | grep -o '[0-9]*')
++    pgid=$(ps -o pgid= -p $$ | grep -o '[0-9]*')
+ 
+     # This means no setsid done in mysqld.
+     # We don't want to kill mysqld here otherwise.
+@@ -454,7 +460,7 @@ cleanup_donor()
+     fi
+ 
+     # Final cleanup 
+-    pgid=$(ps -o pgid= $$ | grep -o '[0-9]*')
++    pgid=$(ps -o pgid= -p $$ | grep -o '[0-9]*')
+ 
+     # This means no setsid done in mysqld.
+     # We don't want to kill mysqld here otherwise.
 @@ -501,7 +507,11 @@ wait_for_listen()
      local MODULE=$3
      for i in {1..50}
      do
 -        ss -p state listening "( sport = :$PORT )" | grep -qE 'socat|nc' && break
 +        if [[ $(uname -s | grep SunOS) ]]; then
-+            pfiles $(pgrep 'socat|nc') || true | grep "AF_INET.* ${PORT}$" >/dev/null && break
++            (pfiles $(pgrep 'socat|nc') || true) | grep "AF_INET.* ${PORT}$" >/dev/null && break
 +        else
 +            ss -p state listening "( sport = :$PORT )" | grep -qE 'socat|nc' && break
 +        fi

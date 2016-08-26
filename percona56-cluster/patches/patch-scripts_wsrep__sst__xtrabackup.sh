@@ -1,9 +1,9 @@
 $NetBSD$
 
 Make SunOS portable. Patch by Derek Crudgington.
---- scripts/wsrep_sst_xtrabackup.sh.orig	2014-11-25 06:30:35.000000000 +0000
+--- scripts/wsrep_sst_xtrabackup.sh.orig	2016-01-24 07:05:46.000000000 +0000
 +++ scripts/wsrep_sst_xtrabackup.sh
-@@ -289,7 +289,13 @@ get_stream()
+@@ -288,7 +288,13 @@ get_stream()
  get_proc()
  {
      set +e
@@ -18,13 +18,13 @@ Make SunOS portable. Patch by Derek Crudgington.
      [[ -z $nproc || $nproc -eq 0 ]] && nproc=1
      set -e
  }
-@@ -375,7 +381,11 @@ wait_for_listen()
+@@ -374,7 +380,11 @@ wait_for_listen()
      local MODULE=$3
      for i in {1..50}
      do
 -        ss -p state listening "( sport = :$PORT )" | grep -qE 'socat|nc' && break
 +        if [[ $(uname -s | grep SunOS) ]]; then
-+            pfiles $(pgrep 'socat|nc') | grep "AF_INET.* ${PORT}$" >/dev/null && break
++            (pfiles $(pgrep 'socat|nc') || true) | grep "AF_INET.* ${PORT}$" >/dev/null && break
 +        else
 +            ss -p state listening "( sport = :$PORT )" | grep -qE 'socat|nc' && break
 +        fi
