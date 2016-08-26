@@ -1,0 +1,14 @@
+$NetBSD$
+
+Remove unsupported CFLAG which kills the build.
+
+--- deps/libgit2-sys-0.4.3/libgit2/CMakeLists.txt.orig	2016-03-09 18:23:59.000000000 +0000
++++ deps/libgit2-sys-0.4.3/libgit2/CMakeLists.txt
+@@ -476,7 +476,6 @@ ELSE ()
+ 	ADD_C_FLAG_IF_SUPPORTED(-Wstrict-aliasing=2)
+ 	ADD_C_FLAG_IF_SUPPORTED(-Wstrict-prototypes)
+ 	ADD_C_FLAG_IF_SUPPORTED(-Wdeclaration-after-statement)
+-	ADD_C_FLAG_IF_SUPPORTED(-Wno-unused-const-variable)
+ 	ADD_C_FLAG_IF_SUPPORTED(-Wno-unused-function)
+ 
+ 	IF (APPLE) # Apple deprecated OpenSSL

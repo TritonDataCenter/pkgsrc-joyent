@@ -1,0 +1,25 @@
+$NetBSD$
+
+SHA1 (ad9a3abfecf6340aed54a0ede0b63349e830d79b.tar.gz) = 497da0059c52135c0769b9036c089c6cb5dbbe55
+RMD160 (ad9a3abfecf6340aed54a0ede0b63349e830d79b.tar.gz) = 189c41dabeaa29a9cf4e719e3fe61e922a6d3696
+SHA512 (ad9a3abfecf6340aed54a0ede0b63349e830d79b.tar.gz) = bf703a68c24c1a7c8755d78015e25912fb9a193b6399f7f4b3e91561cfdde9b1ee884dc520b79602ab6ee80527329a35178d01684f16e7bdb04df0d742a35a6f
+Size (ad9a3abfecf6340aed54a0ede0b63349e830d79b.tar.gz) = 777823 bytes
+SHA1 (cargo-0.11.0.tar.gz) = b0d10a54fbad6ad18c0d7a050bfb2d62e52d47a5
+RMD160 (cargo-0.11.0.tar.gz) = ff1e9874d5e0aa74eeeb10d1098920334906ccdb
+SHA512 (cargo-0.11.0.tar.gz) = deb7254541182b0035cda2d4aecc30c55555ddcfebd660004de9b45d5c799619cbf4e79142dddca9e0a8469558d8f0d5268ea53221e62ef13a26a717731e6553
+Size (cargo-0.11.0.tar.gz) = 566557 bytes
+SHA1 (cargo_0.11.0.orig-deps.tar.gz) = 4159f229b9587a5ae529c566215e472ae439d35f
+RMD160 (cargo_0.11.0.orig-deps.tar.gz) = ccdb80b76bff684ce970d12b4fc7a2fd57076c9c
+SHA512 (cargo_0.11.0.orig-deps.tar.gz) = 9613747b04c5670bb2376f919ee9c2b922a1cde333c9071559abdea216e07d209fca441b348382648d7e83749903636b235b8e1fa2fa68fe8992373ab99d9f42
+Size (cargo_0.11.0.orig-deps.tar.gz) = 8234408 bytes
+SHA1 (patch-Cargo.toml) = a265702be54232fdef9d8ab7c68090c854ba41c8
+SHA1 (patch-Makefile.in) = 4e64ceefad15b9c30787b24e17980d4fa0ba290d
+SHA1 (patch-deps_crates-io-0.2.0_Cargo.toml) = 2479faefbb34f7cf1b825290b2b44500461d7595
+SHA1 (patch-deps_curl-0.2.19_Cargo.toml) = 4339b1ffe30a712db9b5c777abb7506af84f8f68
+SHA1 (patch-deps_flate2-0.2.13_Cargo.toml) = 60386c332e0b75102c705403a059debe6dfd8b00
+SHA1 (patch-deps_git2-0.4.3_Cargo.toml) = 4fcb99536a4dfef4ee1871d5c6af924824db1ed8
+SHA1 (patch-deps_git2-curl-0.4.1_Cargo.toml) = 583da95c4cdce4554a19be8f7343fc5aa29e6326
+SHA1 (patch-deps_libgit2-sys-0.4.3_build.rs) = 7d7bd699cc8c24cedf0bbbf1d627e38ccd47df78
+SHA1 (patch-deps_libgit2-sys-0.4.3_libgit2_CMakeLists.txt) = 077e8a5cea9677a72a2ca5a391aa91bb90f67691
+SHA1 (patch-deps_log-0.3.5_Cargo.toml) = 9b2d88e4ba0ee9290ad8229834dcfcd894a4e136
+SHA1 (patch-deps_semver-0.2.3_Cargo.toml) = 5219de65df298b86f7e41d3f1d8bcba4272c4a47

@@ -1,0 +1,15 @@
+$NetBSD$
+
+Fix dependencies.
+
+--- deps/git2-0.4.3/Cargo.toml.orig	2016-04-28 00:41:44.000000000 +0000
++++ deps/git2-0.4.3/Cargo.toml
+@@ -16,7 +16,7 @@ repositories.
+ """
+ 
+ [dependencies]
+-url = "1.0"
++url = "1.1.0"
+ bitflags = "0.1"
+ libc = "0.2"
+ libgit2-sys = { path = "libgit2-sys", version = "0.4.3" }

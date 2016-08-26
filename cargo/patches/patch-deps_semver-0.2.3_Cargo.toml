@@ -1,0 +1,15 @@
+$NetBSD$
+
+Fix dependencies.
+
+--- deps/semver-0.2.3/Cargo.toml.orig	2016-02-11 22:47:57.000000000 +0000
++++ deps/semver-0.2.3/Cargo.toml
+@@ -12,7 +12,7 @@ Semantic version parsing and comparison.
+ """
+ 
+ [dependencies]
+-nom = "1.0.1"
++nom = "1.2.0"
+ 
+ [features]
+ default = []

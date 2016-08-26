@@ -1,0 +1,22 @@
+$NetBSD$
+
+Fix dependencies.
+
+--- deps/log-0.3.5/Cargo.toml.orig	2016-01-16 18:03:39.000000000 +0000
++++ deps/log-0.3.5/Cargo.toml
+@@ -17,7 +17,7 @@ name = "filters"
+ harness = false
+ 
+ [dependencies]
+-libc = {version = "0.2", optional = true}
++libc = {version = "0.2"}
+ 
+ [features]
+ max_level_off   = []
+@@ -35,5 +35,5 @@ release_max_level_debug = []
+ release_max_level_trace = []
+ 
+ nightly = []
+-use_std = ["libc"]
++use_std = []
+ default = ["use_std"]

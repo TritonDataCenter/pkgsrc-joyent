@@ -1,0 +1,13 @@
+$NetBSD$
+
+Fix dependencies.
+
+--- deps/crates-io-0.2.0/Cargo.toml.orig	2016-05-21 01:52:38.000000000 +0000
++++ deps/crates-io-0.2.0/Cargo.toml
+@@ -14,5 +14,5 @@ path = "lib.rs"
+ 
+ [dependencies]
+ curl = "0.2"
+-url = "1.0"
++url = "1.1.0"
+ rustc-serialize = "0.3"

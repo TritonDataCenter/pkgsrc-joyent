@@ -1,0 +1,9 @@
+@comment $NetBSD$
+bin/cargo
+share/doc/cargo/LICENSE-APACHE
+share/doc/cargo/LICENSE-MIT
+share/doc/cargo/LICENSE-THIRD-PARTY
+share/doc/cargo/README.md
+share/examples/cargo/bash_completion.d/cargo
+share/man/man1/cargo.1
+share/zsh/site-functions/_cargo
