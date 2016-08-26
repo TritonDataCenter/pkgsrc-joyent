@@ -1,0 +1,14 @@
+# $NetBSD$
+
+BUILDLINK_TREE+=	rust
+
+.if !defined(RUST_BUILDLINK3_MK)
+RUST_BUILDLINK3_MK:=
+
+BUILDLINK_API_DEPENDS.rust+=	rust>=0.11.0
+BUILDLINK_PKGSRCDIR.rust?=	../../joyent/rust111
+.endif
+
+BUILDLINK_PASSTHRU_DIRS+=	${PREFIX}/lib/rustlib
+
+BUILDLINK_TREE+=	-rust

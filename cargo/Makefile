@@ -13,7 +13,6 @@ LICENSE=	apache-2.0 OR mit
 
 DEPENDS+=	${PYPKGPREFIX}-dulwich>0:../../devel/py-dulwich
 DEPENDS+=	${PYPKGPREFIX}-pytoml>0:../../textproc/py-pytoml
-DEPENDS+=	rust>0:../../joyent/rust111
 
 #
 # Needs additional downloads.
@@ -88,6 +87,7 @@ post-install:
 	done
 
 .include "../../devel/cmake/buildlink3.mk"
+.include "../../joyent/rust111/buildlink3.mk"
 .include "../../lang/python/tool.mk"
 .include "../../security/openssl/buildlink3.mk"
 .include "../../www/curl/buildlink3.mk"
