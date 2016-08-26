@@ -47,11 +47,19 @@ GCC_REQD+=	4.8
 #
 PLIST_VARS+=		jemalloc
 .if ${OPSYS} == "Linux" || ${OPSYS} == "Darwin"
-.include "../../devel/jemalloc/buildlink3.mk"
+.  include "../../devel/jemalloc/buildlink3.mk"
 CONFIGURE_ARGS+=	--jemalloc-root=${BUILDLINK_PREFIX.jemalloc}/lib
 PLIST.jemalloc=		yes
 .else
 CONFIGURE_ARGS+=	--disable-jemalloc
+.endif
+
+#
+# Can't use pkgsrc llvm on SunOS at the moment due to a relocation error.
+#
+.if ${OPSYS} != "SunOS"
+.  include "../../lang/llvm/buildlink3.mk"
+CONFIGURE_ARGS+=	--llvm-root=${BUILDLINK_PREFIX.llvm}
 .endif
 
 #
