@@ -2,8 +2,8 @@ $NetBSD$
 
 Fix dependencies.
 
---- deps/crates-io-0.2.0/Cargo.toml.orig	2016-05-21 01:52:38.000000000 +0000
-+++ deps/crates-io-0.2.0/Cargo.toml
+--- src/crates-io/Cargo.toml.orig	2016-05-21 01:52:38.000000000 +0000
++++ src/crates-io/Cargo.toml
 @@ -14,5 +14,5 @@ path = "lib.rs"
  
  [dependencies]

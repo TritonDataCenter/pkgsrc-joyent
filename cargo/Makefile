@@ -64,11 +64,14 @@ post-extract:
 	${CP} ${FILESDIR}/bootstrap.py ${WRKDIR}
 	${CP} ${FILESDIR}/cargo-vendor-pack.py ${WRKDIR}
 	${MV} ${WRKDIR}/deps ${WRKSRC}/deps
-	${MV} ${WRKSRC}/src/crates-io ${WRKSRC}/deps/crates-io-0.2.0
+	${LN} -s ${WRKSRC}/src/crates-io ${WRKSRC}/deps/crates-io-0.2.0
 
-pre-configure:
+${WRKDIR}/.cargo-vendor-pack_done:
 	cd ${WRKSRC} && \
 		${MAKE_ENV} ${PYTHONBIN} ${WRKDIR}/cargo-vendor-pack.py
+	${TOUCH} ${.TARGET}
+
+${WRKDIR}/.bootstrap_done: ${WRKDIR}/.cargo-vendor-pack_done
 	cd ${WRKSRC} && \
 		${MAKE_ENV} ${PYTHONBIN} ${WRKDIR}/bootstrap.py \
 	    --no-clean --no-clone --no-git --no-download \
@@ -79,6 +82,9 @@ pre-configure:
 	# Workaround for https://github.com/rust-lang/cargo/issues/1423
 	${MV} ${WRKSRC}/deps ${WRKSRC}/.deps
 	${LN} -s ${WRKSRC}/.deps/cargo-${PKGVERSION_NOREV:S/./_/g} ${WRKSRC}/cargo-stage0
+	${TOUCH} ${.TARGET}
+
+pre-configure: ${WRKDIR}/.bootstrap_done
 
 post-install:
 	for file in components install.log manifest-cargo \
