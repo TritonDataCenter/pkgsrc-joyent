@@ -1,0 +1,20 @@
+$NetBSD$
+
+Fix dependencies.
+
+--- deps/toml-0.1.28/Cargo.toml.orig	2016-03-11 17:22:48.000000000 +0000
++++ deps/toml-0.1.28/Cargo.toml
+@@ -16,11 +16,11 @@ facilitate deserializing and serializing
+ """
+ 
+ [dependencies]
+-rustc-serialize = { optional = true, version = "0.3.0" }
++rustc-serialize = { version = "0.3" }
+ serde = { optional = true, version = "0.7" }
+ 
+ [features]
+-default = ["rustc-serialize"]
++default = []
+ 
+ [dev-dependencies]
+ rustc-serialize = "0.3"
