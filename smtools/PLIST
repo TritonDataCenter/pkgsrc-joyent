@@ -20,7 +20,6 @@ bin/sm-set-timezone
 bin/sm-shutdown
 bin/sm-summary
 bin/sm-sync-to-master
-bin/sm-tune-mysql
 lib/zoneinit/includes/00-mdata.sh
 lib/zoneinit/includes/01-reboot-file.sh
 lib/zoneinit/includes/02-config.sh
