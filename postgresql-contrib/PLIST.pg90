@@ -1,6 +1,5 @@
 @comment $NetBSD$
 bin/oid2name
-bin/pgbench
 bin/vacuumlo
 lib/postgresql/autoinc.so
 lib/postgresql/btree_gin.so

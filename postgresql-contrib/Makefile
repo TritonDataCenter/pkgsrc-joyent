@@ -41,7 +41,7 @@ CONTRIB_DIRS+=	pg_prewarm test_decoding
 CONTRIB_DIRS+=	test_shm_mq
 .endif
 .if empty(PGSQL_VERSION:M95)
-CONTRIB_DIRS+=	pgbench test_parser
+CONTRIB_DIRS+=	test_parser
 .endif
 
 .for dir in ${CONTRIB_DIRS}

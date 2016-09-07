@@ -1,6 +1,5 @@
 @comment $NetBSD$
 bin/oid2name
-bin/pgbench
 bin/vacuumlo
 lib/postgresql/auth_delay.so
 lib/postgresql/autoinc.so
