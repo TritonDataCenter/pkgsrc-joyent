@@ -1,7 +1,5 @@
 @comment $NetBSD$
 bin/oid2name
-bin/pg_test_fsync
-bin/pg_xlogdump
 bin/pgbench
 bin/vacuumlo
 lib/postgresql/auth_delay.so
@@ -11,7 +9,6 @@ lib/postgresql/chkpass.so
 lib/postgresql/cube.so
 lib/postgresql/dict_int.so
 lib/postgresql/dict_xsyn.so
-lib/postgresql/dummy_seclabel.so
 lib/postgresql/earthdistance.so
 lib/postgresql/file_fdw.so
 lib/postgresql/insert_username.so
@@ -34,7 +31,6 @@ lib/postgresql/test_parser.so
 lib/postgresql/test_shm_mq.so
 lib/postgresql/timetravel.so
 lib/postgresql/tsearch2.so
-lib/postgresql/worker_spi.so
 share/doc/postgresql/extension/autoinc.example
 share/doc/postgresql/extension/insert_username.example
 share/doc/postgresql/extension/moddatetime.example
@@ -117,8 +113,6 @@ share/postgresql/extension/timetravel.control
 share/postgresql/extension/tsearch2--1.0.sql
 share/postgresql/extension/tsearch2--unpackaged--1.0.sql
 share/postgresql/extension/tsearch2.control
-share/postgresql/extension/worker_spi--1.0.sql
-share/postgresql/extension/worker_spi.control
 share/postgresql/extension/xml2--1.0.sql
 share/postgresql/extension/xml2--unpackaged--1.0.sql
 share/postgresql/extension/xml2.control

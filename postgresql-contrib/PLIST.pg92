@@ -1,6 +1,5 @@
 @comment $NetBSD$
 bin/oid2name
-bin/pg_test_fsync
 bin/pgbench
 bin/vacuumlo
 lib/postgresql/auth_delay.so
@@ -10,7 +9,6 @@ lib/postgresql/chkpass.so
 lib/postgresql/cube.so
 lib/postgresql/dict_int.so
 lib/postgresql/dict_xsyn.so
-lib/postgresql/dummy_seclabel.so
 lib/postgresql/earthdistance.so
 lib/postgresql/file_fdw.so
 lib/postgresql/insert_username.so

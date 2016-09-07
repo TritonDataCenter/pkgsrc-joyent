@@ -12,12 +12,12 @@ PATCHDIR=	${.CURDIR}/${PGPKGSRCDIR:S/-client//}/patches
 
 DEPENDS+=	${PGSQL_TYPE:S/client/server/}>=${PKGVERSION_NOREV}:${PGPKGSRCDIR:S/client/server/}
 
-BUILD_MAKE_FLAGS=	PGXS=1
+BUILD_MAKE_FLAGS=	USE_PGXS=1
 
 CONTRIB_DIRS=	btree_gin chkpass cube dict_int dict_xsyn			\
 		earthdistance intagg oid2name pageinspect pg_freespacemap	\
-		pg_trgm pgbench pgrowlocks seg spi sslinfo tablefunc		\
-		test_parser tsearch2 vacuumlo xml2
+		pg_trgm pgrowlocks seg spi sslinfo tablefunc			\
+		tsearch2 vacuumlo xml2
 
 .if !empty(PGSQL_VERSION:M84)
 CONTRIB_DIRS+=	btree_gist
@@ -26,16 +26,22 @@ CONTRIB_DIRS+=	btree_gist
 CONTRIB_DIRS+=	passwordcheck
 .endif
 .if !empty(PGSQL_VERSION:M9[1-9])
-CONTRIB_DIRS+=	auth_delay dummy_seclabel file_fdw pg_test_fsync
+CONTRIB_DIRS+=	auth_delay file_fdw
 .endif
 .if !empty(PGSQL_VERSION:M9[2-9])
 CONTRIB_DIRS+=	tcn
 .endif
 .if !empty(PGSQL_VERSION:M9[3-9])
-CONTRIB_DIRS+=	pg_xlogdump postgres_fdw worker_spi
+CONTRIB_DIRS+=	postgres_fdw
 .endif
 .if !empty(PGSQL_VERSION:M9[4-9])
-CONTRIB_DIRS+=	pg_prewarm test_decoding test_shm_mq
+CONTRIB_DIRS+=	pg_prewarm test_decoding
+.endif
+.if !empty(PGSQL_VERSION:M94)
+CONTRIB_DIRS+=	test_shm_mq
+.endif
+.if empty(PGSQL_VERSION:M95)
+CONTRIB_DIRS+=	pgbench test_parser
 .endif
 
 .for dir in ${CONTRIB_DIRS}
