@@ -4,7 +4,6 @@ bin/pgbench
 bin/vacuumlo
 lib/postgresql/autoinc.so
 lib/postgresql/btree_gin.so
-lib/postgresql/btree_gist.so
 lib/postgresql/chkpass.so
 lib/postgresql/cube.so
 lib/postgresql/dict_int.so
@@ -32,7 +31,6 @@ share/doc/postgresql/contrib/refint.example
 share/doc/postgresql/contrib/timetravel.example
 share/postgresql/contrib/autoinc.sql
 share/postgresql/contrib/btree_gin.sql
-share/postgresql/contrib/btree_gist.sql
 share/postgresql/contrib/chkpass.sql
 share/postgresql/contrib/cube.sql
 share/postgresql/contrib/dict_int.sql
@@ -54,7 +52,6 @@ share/postgresql/contrib/test_parser.sql
 share/postgresql/contrib/timetravel.sql
 share/postgresql/contrib/tsearch2.sql
 share/postgresql/contrib/uninstall_btree_gin.sql
-share/postgresql/contrib/uninstall_btree_gist.sql
 share/postgresql/contrib/uninstall_chkpass.sql
 share/postgresql/contrib/uninstall_cube.sql
 share/postgresql/contrib/uninstall_dict_int.sql

@@ -7,7 +7,6 @@ bin/vacuumlo
 lib/postgresql/auth_delay.so
 lib/postgresql/autoinc.so
 lib/postgresql/btree_gin.so
-lib/postgresql/btree_gist.so
 lib/postgresql/chkpass.so
 lib/postgresql/cube.so
 lib/postgresql/dict_int.so
@@ -47,9 +46,6 @@ share/postgresql/extension/autoinc.control
 share/postgresql/extension/btree_gin--1.0.sql
 share/postgresql/extension/btree_gin--unpackaged--1.0.sql
 share/postgresql/extension/btree_gin.control
-share/postgresql/extension/btree_gist--1.0.sql
-share/postgresql/extension/btree_gist--unpackaged--1.0.sql
-share/postgresql/extension/btree_gist.control
 share/postgresql/extension/chkpass--1.0.sql
 share/postgresql/extension/chkpass--unpackaged--1.0.sql
 share/postgresql/extension/chkpass.control

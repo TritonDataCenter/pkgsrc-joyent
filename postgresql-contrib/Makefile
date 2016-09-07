@@ -1,6 +1,7 @@
 # $NetBSD$
 
 PKGNAME=	${DISTNAME:C/postgresql/postgresql${PGSQL_VERSION}-contrib/}
+PKGREVISION=	1
 COMMENT=	Contrib subtree of tools and plug-ins
 
 .include "../../mk/pgsql.buildlink3.mk"
@@ -13,11 +14,14 @@ DEPENDS+=	${PGSQL_TYPE:S/client/server/}>=${PKGVERSION_NOREV}:${PGPKGSRCDIR:S/cl
 
 BUILD_MAKE_FLAGS=	PGXS=1
 
-CONTRIB_DIRS=	btree_gin btree_gist chkpass cube dict_int dict_xsyn		\
+CONTRIB_DIRS=	btree_gin chkpass cube dict_int dict_xsyn			\
 		earthdistance intagg oid2name pageinspect pg_freespacemap	\
 		pg_trgm pgbench pgrowlocks seg spi sslinfo tablefunc		\
 		test_parser tsearch2 vacuumlo xml2
 
+.if !empty(PGSQL_VERSION:M84)
+CONTRIB_DIRS+=	btree_gist
+.endif
 .if !empty(PGSQL_VERSION:M9[0-9])
 CONTRIB_DIRS+=	passwordcheck
 .endif
