@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-PKGNAME=	smtools-20160922
+PKGNAME=	smtools-20160926
 DISTNAME=	${PKGVERSION_NOREV}
 CATEGORIES=	sysutils
 MASTER_SITES=	https://github.com/joyent/smtools/archive/
@@ -9,7 +9,7 @@ MASTER_SITES=	https://github.com/joyent/smtools/archive/
 MAINTAINER=	filip@joyent.com
 HOMEPAGE=	http://www.joyent.com/
 COMMENT=	Joyent tools relevant to SmartOS and SmartMachines
-#LICENSE=	#
+LICENSE=	mpl-2.0
 
 PKG_DESTDIR_SUPPORT=	user-destdir
 
