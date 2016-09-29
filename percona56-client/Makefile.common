@@ -3,8 +3,8 @@
 # used by joyent/percona56-client/Makefile
 # used by joyent/percona56-server/Makefile
 
-SILLYREV=	77.0	# Seriously, what's the point?
-DISTNAME=	percona-server-5.6.31-${SILLYREV}
+SILLYREV=	78.1	# Seriously, what's the point?
+DISTNAME=	percona-server-5.6.32-${SILLYREV}
 CATEGORIES=	databases
 MASTER_SITES=	http://www.percona.com/downloads/Percona-Server-5.6/Percona-Server-${PKGVERSION_NOREV}-${SILLYREV}/source/tarball/
 
