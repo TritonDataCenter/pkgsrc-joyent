@@ -2,7 +2,7 @@ $NetBSD$
 
 Build with newer DTrace.
 
---- mysys_ssl/CMakeLists.txt.orig	2016-06-30 06:22:11.000000000 +0000
+--- mysys_ssl/CMakeLists.txt.orig	2016-09-19 11:15:23.000000000 +0000
 +++ mysys_ssl/CMakeLists.txt
 @@ -48,7 +48,6 @@ TARGET_LINK_LIBRARIES(mysys_ssl dbug str
  IF(WIN32 AND NOT WITH_SSL STREQUAL "bundled")
@@ -10,5 +10,5 @@ Build with newer DTrace.
  ENDIF()
 -DTRACE_INSTRUMENT(mysys_ssl)
  
- RESTRICT_SYMBOL_SOURCE("my_sha1.cc")
- 
+ IF(MSVC)
+    INSTALL_DEBUG_TARGET(mysys_ssl DESTINATION ${INSTALL_LIBDIR}/debug)

@@ -3,8 +3,8 @@
 # used by joyent/percona57-client/Makefile
 # used by joyent/percona57-server/Makefile
 
-SILLYREV=	6
-DISTNAME=	percona-server-5.7.13-${SILLYREV}
+SILLYREV=	8
+DISTNAME=	percona-server-5.7.14-${SILLYREV}
 CATEGORIES=	databases
 MASTER_SITES=	http://www.percona.com/downloads/Percona-Server-5.7/Percona-Server-${PKGVERSION_NOREV}-${SILLYREV}/source/tarball/
 
@@ -72,7 +72,8 @@ CMAKE_ARGS+=		-DMYSQL_DATADIR=${MYSQL_DATADIR}
 CMAKE_ARGS+=		-DCMAKE_BUILD_TYPE=Release
 
 CMAKE_ARGS+=		-DWITH_BOOST=${WRKDIR}/${BOOST}
-CMAKE_ARGS+=		-DWITH_LZ4="system"
+# Temporarily use bundled, until we bring in the xxhash.h include
+#CMAKE_ARGS+=		-DWITH_LZ4="system"
 CMAKE_ARGS+=		-DWITH_SSL="system"
 CMAKE_ARGS+=		-DWITH_ZLIB="system"
 CMAKE_ARGS+=		-DDEFAULT_CHARSET=${MYSQL_CHARSET:Q}
@@ -131,6 +132,6 @@ CMAKE_ARGS+=		-DWITH_READLINE="system"
 CMAKE_ARGS+=		-DWITH_EDITLINE="system"
 .endif
 
-.include "../../archivers/lz4/buildlink3.mk"
+#.include "../../archivers/lz4/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../security/openssl/buildlink3.mk"
