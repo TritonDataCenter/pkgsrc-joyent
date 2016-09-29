@@ -2,7 +2,7 @@ $NetBSD: patch-client_mysqlbinlog.cc,v 1.2 2012/10/01 15:54:40 adam Exp $
 
 * Portability: include <bstring.h> if exists.
 
---- client/mysqlbinlog.cc.orig	2015-01-07 09:49:52.000000000 +0000
+--- client/mysqlbinlog.cc.orig	2016-09-19 11:05:01.000000000 +0000
 +++ client/mysqlbinlog.cc
 @@ -38,6 +38,9 @@
  #include "sql_common.h"
@@ -12,5 +12,5 @@ $NetBSD: patch-client_mysqlbinlog.cc,v 1.2 2012/10/01 15:54:40 adam Exp $
 +#include <bstring.h> /* defines bzero() */
 +#endif
  
- /* Needed for Rpl_filter */
- CHARSET_INFO* system_charset_info= &my_charset_utf8_general_ci;
+ /**
+    The function represents Log_event delete wrapper

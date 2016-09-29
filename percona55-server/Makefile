@@ -8,7 +8,7 @@ CONFLICTS=	{mysql-server-[0-9]*,mysql3-server-[0-9]*,mysql55-server-[0-9]*}
 .include "../../joyent/percona55-client/Makefile.common"
 
 # Include the Sphinx storage engine
-SPHINX=		sphinx-2.2.10-release
+SPHINX=		sphinx-2.2.11-release
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX} ${SPHINX}.tar.gz
 SITES.${SPHINX}.tar.gz=	http://sphinxsearch.com/files/
 
