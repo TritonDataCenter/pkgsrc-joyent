@@ -101,6 +101,10 @@ include/mysql/sslopt-case.h
 include/mysql/sslopt-longopts.h
 include/mysql/sslopt-vars.h
 include/mysql/typelib.h
+lib/libmysqlclient.a
+lib/libmysqlclient.so
+lib/libmysqlclient_r.a
+lib/libmysqlclient_r.so
 lib/libperconaserverclient.a
 lib/libperconaserverclient.so
 lib/libperconaserverclient.so.18

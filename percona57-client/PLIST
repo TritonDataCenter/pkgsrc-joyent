@@ -118,6 +118,8 @@ include/mysql/thr_cond.h
 include/mysql/thr_mutex.h
 include/mysql/thr_rwlock.h
 include/mysql/typelib.h
+lib/libmysqlclient.a
+lib/libmysqlclient.so
 lib/libperconaserverclient.a
 lib/libperconaserverclient.so
 lib/libperconaserverclient.so.20
