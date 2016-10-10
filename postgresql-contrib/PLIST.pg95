@@ -18,7 +18,6 @@ lib/postgresql/pg_freespacemap.so
 lib/postgresql/pg_prewarm.so
 lib/postgresql/pg_trgm.so
 lib/postgresql/pgrowlocks.so
-lib/postgresql/pgxml.so
 lib/postgresql/postgres_fdw.so
 lib/postgresql/refint.so
 lib/postgresql/seg.so
@@ -106,7 +105,4 @@ share/postgresql/extension/timetravel.control
 share/postgresql/extension/tsearch2--1.0.sql
 share/postgresql/extension/tsearch2--unpackaged--1.0.sql
 share/postgresql/extension/tsearch2.control
-share/postgresql/extension/xml2--1.0.sql
-share/postgresql/extension/xml2--unpackaged--1.0.sql
-share/postgresql/extension/xml2.control
 share/postgresql/tsearch_data/xsyn_sample.rules

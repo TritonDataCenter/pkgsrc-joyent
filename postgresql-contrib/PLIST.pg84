@@ -15,7 +15,6 @@ lib/postgresql/pageinspect.so
 lib/postgresql/pg_freespacemap.so
 lib/postgresql/pg_trgm.so
 lib/postgresql/pgrowlocks.so
-lib/postgresql/pgxml.so
 lib/postgresql/refint.so
 lib/postgresql/seg.so
 lib/postgresql/sslinfo.so
@@ -43,7 +42,6 @@ share/postgresql/contrib/pageinspect.sql
 share/postgresql/contrib/pg_freespacemap.sql
 share/postgresql/contrib/pg_trgm.sql
 share/postgresql/contrib/pgrowlocks.sql
-share/postgresql/contrib/pgxml.sql
 share/postgresql/contrib/refint.sql
 share/postgresql/contrib/seg.sql
 share/postgresql/contrib/sslinfo.sql
@@ -63,7 +61,6 @@ share/postgresql/contrib/uninstall_pageinspect.sql
 share/postgresql/contrib/uninstall_pg_freespacemap.sql
 share/postgresql/contrib/uninstall_pg_trgm.sql
 share/postgresql/contrib/uninstall_pgrowlocks.sql
-share/postgresql/contrib/uninstall_pgxml.sql
 share/postgresql/contrib/uninstall_seg.sql
 share/postgresql/contrib/uninstall_sslinfo.sql
 share/postgresql/contrib/uninstall_tablefunc.sql
