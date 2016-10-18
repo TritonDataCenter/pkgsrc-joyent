@@ -1,9 +1,9 @@
 $NetBSD$
 
-SHA1 (node-v0.10.47.tar.gz) = 41ff9feb9622fc191e2125502f33649e65e4284e
-RMD160 (node-v0.10.47.tar.gz) = 2e91b56d32cdc914e401372bee4b986aa00e6b83
-SHA512 (node-v0.10.47.tar.gz) = 5eacc3d686c58d1b947f0d269445d448290ee22fdfd31e1fff65c0fd37c2ec2d44fa191315b5571a20595e4514457807266518b011e0a17eda8e6a3725fd939c
-Size (node-v0.10.47.tar.gz) = 15696799 bytes
+SHA1 (node-v0.10.48.tar.gz) = 747a45439c0169f373de14ee274d2675a52b7a73
+RMD160 (node-v0.10.48.tar.gz) = 367ea6b37115e9cb56ed41a86c1342af35b36d0f
+SHA512 (node-v0.10.48.tar.gz) = c79c135e9c56ea08c15a9f8ae0537cd1046adfd10d3886f30b71c7c8190b3388c6612c5899039049747eb60c380c7ce94b7b9584e618e461b4ea4453cf834960
+Size (node-v0.10.48.tar.gz) = 15696584 bytes
 SHA1 (patch-common.gypi) = 46fc99cc5ab4ceb84a2d70d0ef2acc08c9961088
 SHA1 (patch-deps_cares_cares.gyp) = 2235eb44bc984fa2e745fdf1786f1ae6de6ef80f
 SHA1 (patch-deps_npm_node__modules_node-gyp_gyp_pylib_gyp_generator_make.py) = 78d6ddd37ae30e869e0da666a78baad86a638c50
