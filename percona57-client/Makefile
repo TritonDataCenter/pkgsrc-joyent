@@ -1,7 +1,6 @@
 # $NetBSD$
 
 PKGNAME=	${DISTNAME:C/-${SILLYREV}//:S/server/client/}
-PKGREVISION=	1
 COMMENT=	Percona Server, a MySQL server fork (client)
 
 CONFLICTS=	mysql-client-[0-9]*

@@ -28,7 +28,6 @@ lib/mysql/plugin/mypluglib.so
 lib/mysql/plugin/qa_auth_client.so
 lib/mysql/plugin/qa_auth_interface.so
 lib/mysql/plugin/qa_auth_server.so
-lib/mysql/plugin/scalability_metrics.so
 lib/mysql/plugin/semisync_master.so
 lib/mysql/plugin/semisync_slave.so
 sbin/mysqld
@@ -1250,6 +1249,7 @@ share/mysql/test/r/percona_log_slow_admin_statements-config_false.result
 share/mysql/test/r/percona_log_slow_admin_statements-config_foo.result
 share/mysql/test/r/percona_log_slow_admin_statements-config_true.result
 share/mysql/test/r/percona_log_slow_admin_statements.result
+share/mysql/test/r/percona_log_slow_admin_statements_sp.result
 share/mysql/test/r/percona_log_slow_filter-cl.result
 share/mysql/test/r/percona_log_slow_global_control_default.result
 share/mysql/test/r/percona_log_slow_innodb.result
@@ -1277,6 +1277,7 @@ share/mysql/test/r/percona_query_response_time-replication.result
 share/mysql/test/r/percona_query_response_time-stored.result
 share/mysql/test/r/percona_query_response_time.result
 share/mysql/test/r/percona_query_response_time_1453277.result
+share/mysql/test/r/percona_secure_file_priv_insecure.result
 share/mysql/test/r/percona_secure_file_priv_noarg.result
 share/mysql/test/r/percona_server_variables_debug.result
 share/mysql/test/r/percona_server_variables_release.result
@@ -1659,7 +1660,19 @@ share/mysql/test/std_data/warnings_loaddata.dat
 share/mysql/test/std_data/words.dat
 share/mysql/test/std_data/words2.dat
 share/mysql/test/suite/auth_sec/r/cert_verify.result
+share/mysql/test/suite/auth_sec/r/secure_file_priv_error.result
+share/mysql/test/suite/auth_sec/r/secure_file_priv_null.result
+share/mysql/test/suite/auth_sec/r/secure_file_priv_warnings.result
+share/mysql/test/suite/auth_sec/r/secure_file_priv_warnings_not_win.result
+share/mysql/test/suite/auth_sec/r/secure_file_priv_warnings_win.result
 share/mysql/test/suite/auth_sec/t/cert_verify.test
+share/mysql/test/suite/auth_sec/t/secure_file_priv_error.test
+share/mysql/test/suite/auth_sec/t/secure_file_priv_null-master.opt
+share/mysql/test/suite/auth_sec/t/secure_file_priv_null.test
+share/mysql/test/suite/auth_sec/t/secure_file_priv_warnings-master.opt
+share/mysql/test/suite/auth_sec/t/secure_file_priv_warnings.test
+share/mysql/test/suite/auth_sec/t/secure_file_priv_warnings_not_win.test
+share/mysql/test/suite/auth_sec/t/secure_file_priv_warnings_win.test
 share/mysql/test/suite/binlog/combinations
 share/mysql/test/suite/binlog/r/binlog_base64_flag.result
 share/mysql/test/suite/binlog/r/binlog_bug23533.result
@@ -3993,7 +4006,6 @@ share/mysql/test/suite/perfschema/include/privilege.inc
 share/mysql/test/suite/perfschema/include/setup_helper.inc
 share/mysql/test/suite/perfschema/include/start_server_common.inc
 share/mysql/test/suite/perfschema/include/upgrade_check.inc
-share/mysql/test/suite/perfschema/r/aggregate.result
 share/mysql/test/suite/perfschema/r/bad_option_1.result
 share/mysql/test/suite/perfschema/r/bad_option_2.result
 share/mysql/test/suite/perfschema/r/bad_option_3.result
@@ -4074,7 +4086,6 @@ share/mysql/test/suite/perfschema/r/start_server_off.result
 share/mysql/test/suite/perfschema/r/start_server_on.result
 share/mysql/test/suite/perfschema/r/tampered_perfschema_table1.result
 share/mysql/test/suite/perfschema/r/thread_cache.result
-share/mysql/test/suite/perfschema/t/aggregate.test
 share/mysql/test/suite/perfschema/t/bad_option_1.test
 share/mysql/test/suite/perfschema/t/bad_option_2.test
 share/mysql/test/suite/perfschema/t/bad_option_3.test
@@ -6768,6 +6779,7 @@ share/mysql/test/t/percona_log_slow_admin_statements-config_foo.test
 share/mysql/test/t/percona_log_slow_admin_statements-config_true.cnf
 share/mysql/test/t/percona_log_slow_admin_statements-config_true.test
 share/mysql/test/t/percona_log_slow_admin_statements.test
+share/mysql/test/t/percona_log_slow_admin_statements_sp.test
 share/mysql/test/t/percona_log_slow_filter-cl-master.opt
 share/mysql/test/t/percona_log_slow_filter-cl.test
 share/mysql/test/t/percona_log_slow_global_control_default.test
@@ -6801,6 +6813,8 @@ share/mysql/test/t/percona_query_response_time-stored.test
 share/mysql/test/t/percona_query_response_time.test
 share/mysql/test/t/percona_query_response_time_1453277-master.opt
 share/mysql/test/t/percona_query_response_time_1453277.test
+share/mysql/test/t/percona_secure_file_priv_insecure-master.opt
+share/mysql/test/t/percona_secure_file_priv_insecure.test
 share/mysql/test/t/percona_secure_file_priv_noarg-master.opt
 share/mysql/test/t/percona_secure_file_priv_noarg.test
 share/mysql/test/t/percona_server_variables_debug.test
