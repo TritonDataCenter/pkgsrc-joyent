@@ -1,0 +1,22 @@
+$NetBSD$
+
+SHA1 (rust-1.12.1-x86_64-sun-solaris.tar.gz) = 46e84bcaf04f76e4f2d2ec4efe0489e5ddd25736
+RMD160 (rust-1.12.1-x86_64-sun-solaris.tar.gz) = 6a8b7ed4414bd300fbeed76a93a90b8b5fb61a22
+SHA512 (rust-1.12.1-x86_64-sun-solaris.tar.gz) = f39ecc91c9a62cd84958ec3e8b35c58a8f00fe26498a392f439911479942a74d131686fd90f11154d6659f6f730339cbafc041d53e3bd2cd965812aa849025d1
+Size (rust-1.12.1-x86_64-sun-solaris.tar.gz) = 147285929 bytes
+SHA1 (rustc-1.13.0-src.tar.gz) = 4aabc0020d665948cf1a93ad94e91a848d461233
+RMD160 (rustc-1.13.0-src.tar.gz) = 10c43ce11961d3ba9082c8421ff0e60a3d9cf56d
+SHA512 (rustc-1.13.0-src.tar.gz) = 6d2983c28834165139b06b9f1bdc909c35814b32500072f5265a53360f7ca54f3a34a1e463a1c0ce58ffd0d3d7c3cb5b1b4ddcb24a374e2279fbbdc30b03d992
+Size (rustc-1.13.0-src.tar.gz) = 27483805 bytes
+SHA1 (patch-mk_cfg_x86__64-apple-darwin.mk) = 37b50b64ea5607588d541852e07f02a4611d38c8
+SHA1 (patch-mk_rustllvm.mk) = 285fb33ce5477d18914289323c0e2db16cc7ccae
+SHA1 (patch-src_compiler-rt_lib_builtins_CMakeLists.txt) = 288870c40b5e4ce29cbfb19cc9f56d35152c47fa
+SHA1 (patch-src_etc_local__stage0.sh) = 4d8b18f67f26111b27b240d0a876349e501875e1
+SHA1 (patch-src_librustc__trans_back_linker.rs) = 279850f534bed6380bbc3ffd47e49938fa6423df
+SHA1 (patch-src_libstd_rtdeps.rs) = ed271c5b83a8d623469abd39a2d072bfffbcc890
+SHA1 (patch-src_libstd_sys_unix_os.rs) = f7fb01cf3e4a5460961802dbe5fd71239b05037a
+SHA1 (patch-src_llvm_cmake_modules_AddLLVM.cmake) = 282d97cce8d01cfefe565185d4999c2db9ccc13f
+SHA1 (patch-src_llvm_lib_CodeGen_MachineDominanceFrontier.cpp) = 2899771b1a23be840b9305eff7e5e5f957239ccb
+SHA1 (patch-src_rust-installer_gen-install-script.sh) = 689ff4e8fa3ee9cd41202b40b6575f568eef6415
+SHA1 (patch-src_rust-installer_gen-installer.sh) = df59e1f39b307a1deacd7ac2ba82147cbf161056
+SHA1 (patch-src_rust-installer_install-template.sh) = d42b6d55fdbb8640cee75588a230efb3c2641e32
