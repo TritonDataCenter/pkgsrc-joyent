@@ -1,10 +1,9 @@
 # $NetBSD$
 #
 
-DISTNAME=	quickbackup-percona-3.5
+DISTNAME=	quickbackup-percona-3.6
 CATEGORIES=	sysutils
-# Remove PKGREVISION with next version/tag release
-PKGREVISION=	20140212
+PKGREVISION=	#
 
 MAINTAINER=	jperkin@joyent.com
 HOMEPAGE=	http://wiki.joyent.com/jpc2/Joyent+Percona+SmartMachine
@@ -12,7 +11,7 @@ COMMENT=	Percona quickbackup SMF service
 
 GIT_REPOSITORIES=	qb-percona
 GIT_REPO.qb-percona=	git@git.joyent.com:qb-percona.git
-GIT_TAG=		3.5
+GIT_TAG.qb-percona=	3.6
 
 NO_CHECKSUM=	yes
 NO_BUILD=	yes
