@@ -1,9 +1,8 @@
 # $NetBSD$
 #
 
-DISTNAME=	percona-xtrabackup-2.4.2
+DISTNAME=	percona-xtrabackup-2.4.5
 PKGNAME=	${MYSQL_PKG_PREFIX}-${DISTNAME:S/percona-//}
-PKGREVISION=	1
 CATEGORIES=	databases
 MASTER_SITES=	http://www.percona.com/downloads/XtraBackup/Percona-XtraBackup-${PKGVERSION_NOREV}/source/tarball/
 
