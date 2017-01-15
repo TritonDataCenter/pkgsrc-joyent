@@ -1,6 +1,6 @@
 # $NetBSD$
 
-DISTNAME=	galera-3-25.3.15
+DISTNAME=	galera-3-25.3.19
 PKGNAME=	${MYSQL_PKG_PREFIX}-${DISTNAME:S/-3-/-/}
 CATEGORIES=	databases
 MASTER_SITES=	http://releases.galeracluster.com/source/
