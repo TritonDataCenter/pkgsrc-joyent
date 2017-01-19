@@ -14,6 +14,7 @@ SHA512 (percona-xtrabackup-2.4.5.tar.gz) = 07d93ea7de987a06687cc772b32dff13e75e3
 Size (percona-xtrabackup-2.4.5.tar.gz) = 54104240 bytes
 SHA1 (patch-CMakeLists.txt) = 56e84f131120db840d452b60fd80c289f0040bc7
 SHA1 (patch-cmake_FindLibEv.cmake) = f65c3129fc90cd68841a3184c54af8310661cb49
+SHA1 (patch-cmake_os_SunOS.cmake) = f5b44de1cb7e14c33be6ebb961157c67f651df4b
 SHA1 (patch-cmake_plugin.cmake) = 8f614a9dd8505c63f0685cb4677c976fe7c4cf06
 SHA1 (patch-mysys__ssl_CMakeLists.txt) = 60bee6047421e35c72c66d4e1df485d0b0a4eafe
 SHA1 (patch-storage_archive_CMakeLists.txt) = b837e60f23964361034d147c4ab8b2559b39e563
