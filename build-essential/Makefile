@@ -29,6 +29,7 @@ DEPENDS+=	gmake-[0-9]*:../../devel/gmake
 DEPENDS+=	libtool-[0-9]*:../../devel/libtool
 DEPENDS+=	m4-[0-9]*:../../devel/m4
 DEPENDS+=	patch-[0-9]*:../../devel/patch
+DEPENDS+= pkg-config-[0-9]*:../../devel/pkg-config
 .if exists(../../devel/git/Makefile)
 DEPENDS+=	git-base-[0-9]*:../../devel/git-base
 DEPENDS+=	git-docs-[0-9]*:../../devel/git-docs
