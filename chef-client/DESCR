@@ -1,0 +1,4 @@
+The full stack of chef.
+
+This package does not behave as a proper pkgsrc package, because
+for it installs outside the regular PREFIX.
