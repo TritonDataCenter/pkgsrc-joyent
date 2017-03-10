@@ -1,9 +1,9 @@
 $NetBSD$
 
-SHA1 (percona-server-5.6.34-79.1.tar.gz) = dec8ca5b0cab808fa901153ad122dcb0aeecb386
-RMD160 (percona-server-5.6.34-79.1.tar.gz) = d16c52378690dea2adffecc1e3d397ddc5f6d289
-SHA512 (percona-server-5.6.34-79.1.tar.gz) = 3691daf14042cb35ab8cfe487c760e3da8f0758384224511ef84f388f895a5e15cbbf1a5ae1022d8a9d8ff7ee8ae7651ec8f39381cefce14b4f0fe3f2de2608b
-Size (percona-server-5.6.34-79.1.tar.gz) = 55763384 bytes
+SHA1 (percona-server-5.6.35-80.0.tar.gz) = a4750e2ae2bceb8daa56375dcd39c7b404a187ab
+RMD160 (percona-server-5.6.35-80.0.tar.gz) = be97cbc2d9dba84390c1d6f0f40e85240a44e3b2
+SHA512 (percona-server-5.6.35-80.0.tar.gz) = 78b0b9cd69f26dc3ac13e4c6165590736d723b0f07d18a8ac1056281522de22b67d9fd931b035962bc278c97775fe7f98c46791328ece286268c7d31a484b69d
+Size (percona-server-5.6.35-80.0.tar.gz) = 55839147 bytes
 SHA1 (sphinx-2.2.11-release.tar.gz) = 34e83f43de0e69e258bf749ea00348c60a51632a
 RMD160 (sphinx-2.2.11-release.tar.gz) = 5804b4cce64bc03fa20bac26c7391cd661cecc77
 SHA512 (sphinx-2.2.11-release.tar.gz) = cf1a262a5b0fbf0bd2827ec6ec629edeaf709ce855a6e7b509b65342baaeb26c02717ca63f1578d32c83d21e2fd6d1e92dceb34660e6351b93cd96fd4e623689
@@ -13,6 +13,7 @@ SHA1 (patch-build-ps_build-rpm.sh) = 6b6f706aa8867bb653f2b4405b0a57feb5d934e6
 SHA1 (patch-client_completion_hash.cc) = 94f1843f8b3d71d8fc6af810eddf2c076d50599d
 SHA1 (patch-client_mysqladmin.cc) = 2bb9f9ba1097d39ac42a2682517c1e33a37af9df
 SHA1 (patch-cmake_libutils.cmake) = d988a05e8073ce8722fce714cb7e47cc4ed68ed2
+SHA1 (patch-cmake_os_SunOS.cmake) = ed492ad3e8dea45d6ed86b842844cf0c1412e25f
 SHA1 (patch-cmake_readline.cmake) = fb79ed969240ae2984098f72c2d3fb501154902c
 SHA1 (patch-include_CMakeLists.txt) = 295a399a33aea51c820c2fa8e9c4a3524ad44e7b
 SHA1 (patch-include_my__global.h) = 4ec786c2f2b23cff671d2178d7312ed12bfbbc68
