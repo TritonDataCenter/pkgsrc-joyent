@@ -3,7 +3,7 @@
 # used by joyent/percona57-client/Makefile
 # used by joyent/percona57-server/Makefile
 
-SILLYREV=	11
+SILLYREV=	12
 DISTNAME=	percona-server-5.7.17-${SILLYREV}
 CATEGORIES=	databases
 MASTER_SITES=	http://www.percona.com/downloads/Percona-Server-5.7/Percona-Server-${PKGVERSION_NOREV}-${SILLYREV}/source/tarball/
