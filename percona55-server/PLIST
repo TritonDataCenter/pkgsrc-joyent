@@ -354,6 +354,7 @@ share/mysql/test/include/delete_anonymous_users.inc
 share/mysql/test/include/diff_tables.inc
 share/mysql/test/include/end_include_file.inc
 share/mysql/test/include/endspace.inc
+share/mysql/test/include/expect_crash.inc
 share/mysql/test/include/file_does_not_exist.inc
 share/mysql/test/include/force_restart.inc
 share/mysql/test/include/force_restart_if_skipped.inc
@@ -526,6 +527,7 @@ share/mysql/test/include/percona_query_cache_with_comments_show.inc
 share/mysql/test/include/percona_server_variables.inc
 share/mysql/test/include/percona_show_ibd_size.inc
 share/mysql/test/include/percona_show_slave_status_nolock.inc
+share/mysql/test/include/percona_signal_handling.inc
 share/mysql/test/include/percona_slow_log_verbosity_grep.inc
 share/mysql/test/include/percona_slow_query_log_rate.inc
 share/mysql/test/include/percona_userstat_conn_handling.inc
@@ -1217,6 +1219,7 @@ share/mysql/test/r/percona_bug1354011.result
 share/mysql/test/r/percona_bug1354988.result
 share/mysql/test/r/percona_bug1379582.result
 share/mysql/test/r/percona_bug1416582.result
+share/mysql/test/r/percona_bug1617586.result
 share/mysql/test/r/percona_bug45702.result
 share/mysql/test/r/percona_bug643149.result
 share/mysql/test/r/percona_bug74578.result
@@ -1294,6 +1297,7 @@ share/mysql/test/r/percona_show_temp_tables.result
 share/mysql/test/r/percona_show_temp_tables_debug.result
 share/mysql/test/r/percona_show_temp_tables_stress.result
 share/mysql/test/r/percona_signal_handling.result
+share/mysql/test/r/percona_signal_handling_threadpool.result
 share/mysql/test/r/percona_slow_extended_error_on_quit.result
 share/mysql/test/r/percona_slow_extended_log_error.result
 share/mysql/test/r/percona_slow_query_log_always_write.result
@@ -1520,6 +1524,7 @@ share/mysql/test/std_data/bug11747416_32228_binlog.000001
 share/mysql/test/std_data/bug15328.cnf
 share/mysql/test/std_data/bug16171518_1.dat
 share/mysql/test/std_data/bug16171518_2.dat
+share/mysql/test/std_data/bug1617586.sql
 share/mysql/test/std_data/bug16266.000001
 share/mysql/test/std_data/bug19371.MYD
 share/mysql/test/std_data/bug19371.MYI
@@ -6748,6 +6753,7 @@ share/mysql/test/t/percona_bug1354011.test
 share/mysql/test/t/percona_bug1354988.test
 share/mysql/test/t/percona_bug1379582.test
 share/mysql/test/t/percona_bug1416582.test
+share/mysql/test/t/percona_bug1617586.test
 share/mysql/test/t/percona_bug45702.test
 share/mysql/test/t/percona_bug643149.test
 share/mysql/test/t/percona_bug74578.test
@@ -6844,6 +6850,8 @@ share/mysql/test/t/percona_show_temp_tables.test
 share/mysql/test/t/percona_show_temp_tables_debug.test
 share/mysql/test/t/percona_show_temp_tables_stress.test
 share/mysql/test/t/percona_signal_handling.test
+share/mysql/test/t/percona_signal_handling_threadpool-master.opt
+share/mysql/test/t/percona_signal_handling_threadpool.test
 share/mysql/test/t/percona_slow_extended_error_on_quit.test
 share/mysql/test/t/percona_slow_extended_log_error.test
 share/mysql/test/t/percona_slow_query_log_always_write.test
