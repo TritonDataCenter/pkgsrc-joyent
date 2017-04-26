@@ -1,0 +1,17 @@
+$NetBSD$
+
+Use pkgsrc libsqlite3.
+
+--- lib/Makefile.orig	2017-03-26 11:18:09.000000000 +0000
++++ lib/Makefile
+@@ -59,8 +59,8 @@ $(ODIR)/%.o: %.c
+ $(ODIR)/%.oo: %.cpp
+ 	$(CXX) -fPIC -c -o $@ $< $(MYCPPFLAGS) $(CPPFLAGS)
+ 
+-libproxysql.a: $(ODIR) $(OBJ) $(OBJ_CPP) $(RE2_PATH)/obj/libre2.a $(SQLITE3_DIR)/sqlite3.o 
+-	ar rcs $@ $(OBJ) $(OBJ_CPP) $(RE2_PATH)/obj/libre2.a $(SQLITE3_DIR)/sqlite3.o
++libproxysql.a: $(ODIR) $(OBJ) $(OBJ_CPP) $(RE2_PATH)/obj/libre2.a
++	ar rcs $@ $(OBJ) $(OBJ_CPP) $(RE2_PATH)/obj/libre2.a $(SQLITE3_DIR)/lib/libsqlite3.a
+ 
+ $(ODIR):
+ 	mkdir $(ODIR)

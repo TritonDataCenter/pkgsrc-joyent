@@ -1,0 +1,15 @@
+$NetBSD$
+
+Default paths.
+
+--- etc/proxysql.cnf.orig	2017-03-26 11:18:09.000000000 +0000
++++ etc/proxysql.cnf
+@@ -6,7 +6,7 @@
+ 
+ 
+ 
+-datadir="/var/lib/proxysql"
++datadir="@VARBASE@/lib/proxysql"
+ 
+ admin_variables=
+ {

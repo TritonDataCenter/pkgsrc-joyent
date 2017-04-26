@@ -1,0 +1,3 @@
+@comment $NetBSD$
+bin/proxysql
+share/examples/proxysql/proxysql.cnf

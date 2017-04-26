@@ -1,0 +1,15 @@
+$NetBSD$
+
+Fix build on SunOS.
+
+--- Makefile.orig	2014-01-10 10:00:08.000000000 +0000
++++ Makefile	2017-04-26 12:14:32.482676014 +0000
+@@ -39,6 +39,8 @@
+ 
+ ifeq ($(shell uname),Darwin)
+ MAKE_SHARED_LIBRARY=$(CXX) -dynamiclib $(LDFLAGS) -exported_symbols_list libre2.symbols.darwin
++else if ($(shell uname),SunOS)
++MAKE_SHARED_LIBRARY=$(CXX) -shared -Wl,-soname,libre2.so.$(SONAME) $(LDFLAGS)
+ else
+ MAKE_SHARED_LIBRARY=$(CXX) -shared -Wl,-soname,libre2.so.$(SONAME),--version-script=libre2.symbols $(LDFLAGS)
+ endif
