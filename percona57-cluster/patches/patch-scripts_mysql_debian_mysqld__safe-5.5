@@ -1,0 +1,15 @@
+$NetBSD$
+
+Fix check-portability.
+
+--- ./percona-xtradb-cluster-galera/scripts/mysql/debian/mysqld_safe-5.5.orig   2017-05-03 07:45:09.564282760 +0000
++++ ./percona-xtradb-cluster-galera/scripts/mysql/debian/mysqld_safe-5.5        2017-05-03 07:38:48.978124290 +0000
+@@ -169,7 +169,7 @@
+     nc -z "$host" $port >/dev/null && break
+   done
+ 
+-  if [ "$url" == "0" ]; then
++  if [ "$url" = "0" ]; then
+     log_error "ERROR: none of the URLs in '$@' is reachable."
+     return 1
+   fi

@@ -1,0 +1,15 @@
+$NetBSD$
+
+Fix check-portability.
+
+--- percona-xtradb-cluster-galera/scripts/mysql/centos/mysqld_safe.orig 2017-05-03 07:50:02.462006030 +0000
++++ percona-xtradb-cluster-galera/scripts/mysql/centos/mysqld_safe      2017-05-03 07:38:03.930088925 +0000
+@@ -164,7 +164,7 @@
+     nc -z "$host" $port >/dev/null && break
+   done
+ 
+-  if [ "$url" == "0" ]; then
++  if [ "$url" = "0" ]; then
+     log_error "ERROR: none of the URLs in '$@' is reachable."
+     return 1
+   fi

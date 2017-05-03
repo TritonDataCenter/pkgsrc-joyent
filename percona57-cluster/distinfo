@@ -1,0 +1,32 @@
+$NetBSD$
+
+SHA1 (Percona-XtraDB-Cluster-5.7.17-29.20.tar.gz) = c8fa728fb59b3cfcbbf1fed1d426a7a2d3f0255a
+RMD160 (Percona-XtraDB-Cluster-5.7.17-29.20.tar.gz) = dff7910974e6ab2b30662773d88204c0bb7e180a
+SHA512 (Percona-XtraDB-Cluster-5.7.17-29.20.tar.gz) = 82f4bb5c4f626a045441a77a15730ad42f159b3673d792de29421f13b73dcbcb12e892986ac964087b59c98fcba7cb9dbc93e3d0d3357de8bc26c99714009ad6
+Size (Percona-XtraDB-Cluster-5.7.17-29.20.tar.gz) = 82828218 bytes
+SHA1 (boost_1_59_0.tar.bz2) = b94de47108b2cdb0f931833a7a9834c2dd3ca46e
+RMD160 (boost_1_59_0.tar.bz2) = a106b3cd1dbda2323e5e84c7106cedee327db03c
+SHA512 (boost_1_59_0.tar.bz2) = 8139e1ae997a86974071c5714ad3307e3d8fd15ef702b81a953410dd4d424b932135f53a0ef4891d9b9b747a38e539e66d6a803388fe0cc98e5166be872d682a
+Size (boost_1_59_0.tar.bz2) = 70389425 bytes
+SHA1 (patch-build-ps_build-rpm.sh) = 6b6f706aa8867bb653f2b4405b0a57feb5d934e6
+SHA1 (patch-client_completion_hash.cc) = 94f1843f8b3d71d8fc6af810eddf2c076d50599d
+SHA1 (patch-client_mysqladmin.cc) = 2bb9f9ba1097d39ac42a2682517c1e33a37af9df
+SHA1 (patch-cmake_dtrace.cmake) = 8331ff8461770204c849d895b9987d85eebec6ea
+SHA1 (patch-cmake_libutils.cmake) = d988a05e8073ce8722fce714cb7e47cc4ed68ed2
+SHA1 (patch-cmake_readline.cmake) = fb79ed969240ae2984098f72c2d3fb501154902c
+SHA1 (patch-include_my__compare.h) = f45bac4b488332a668b0005751856279b67401f5
+SHA1 (patch-include_my__global.h) = 1634b3d55818a3d30008cb33c2d07fc19f04136b
+SHA1 (patch-include_my__thread.h) = 78d9421bbafbc4e41c1d8d3d18808ae2604a6cd4
+SHA1 (patch-include_sql__string.h) = fb0f1f8034e5f957e79a3ea929688a4dcc0acbf8
+SHA1 (patch-mysql-test_CMakeLists.txt) = 79f560cc31a3158986d360c4cdb9e415a54ed8b5
+SHA1 (patch-mysys__ssl_CMakeLists.txt) = 286cea1544d7eadf5c29dc8dc673cec0a90ad470
+SHA1 (patch-plugin_audit__log_audit__log.c) = 7d165864003e70e27ae77f11b76f199ebe913f5f
+SHA1 (patch-rapid_plugin_group__replication_rpcgen.cmake) = 5c14be97bd1fd04b2b845f1a2422452445733474
+SHA1 (patch-rapid_plugin_x_CMakeLists.txt) = ec9b7ce8a64f67dbf3f11a072ea2c10d8e2c8205
+SHA1 (patch-scripts_mysql_centos_mysqld__safe) = c3223e88c1ea28408715b961770acd67827a2ed2
+SHA1 (patch-scripts_mysql_debian_mysqld__safe-5.1) = 6703cf9705df6d212f395c9c105786e44b51f0c8
+SHA1 (patch-scripts_mysql_debian_mysqld__safe-5.5) = db82cea44acaf4a50ddda674fffc1ea63874fe2c
+SHA1 (patch-sql_conn__handler_socket__connection.cc) = f2c89f1aca3dae616d32f1b980564d44270f2eba
+SHA1 (patch-storage_ndb_mcc_frontend_dojo_dojox_mobile_build_build.sh) = fb7d813fdc253efcc7d18740eea10d3d8ea53ad0
+SHA1 (patch-strings_decimal.c) = fc9306f41cd535cbffec7904fd9f875b0d0f27ec
+SHA1 (patch-wsrep_CMakeLists.txt) = 027712b9d856e92baa2f12982ae6d3fbf81ca060
