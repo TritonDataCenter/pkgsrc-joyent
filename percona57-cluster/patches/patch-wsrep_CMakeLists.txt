@@ -1,0 +1,14 @@
+$NetBSD$
+
+Fix build with newer DTrace.
+
+--- wsrep/CMakeLists.txt.orig   2017-05-03 08:00:48.715926226 +0000
++++ wsrep/CMakeLists.txt        2017-05-03 08:00:54.990324497 +0000
+@@ -18,7 +18,6 @@
+ SET(WSREP_SOURCES wsrep_gtid.c wsrep_uuid.c wsrep_loader.c wsrep_dummy.c)
+ 
+ ADD_CONVENIENCE_LIBRARY(wsrep ${WSREP_SOURCES})
+-DTRACE_INSTRUMENT(wsrep)
+ 
+ #ADD_EXECUTABLE(listener wsrep_listener.c ${WSREP_SOURCES})
+ #TARGET_LINK_LIBRARIES(listener ${LIBDL})
