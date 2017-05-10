@@ -12064,6 +12064,10 @@ percona-xtrabackup-test/t/bug1566228.sh
 percona-xtrabackup-test/t/bug1590351.sh
 percona-xtrabackup-test/t/bug1623210.sh
 percona-xtrabackup-test/t/bug1630841.sh
+percona-xtrabackup-test/t/bug1642826.sh
+percona-xtrabackup-test/t/bug1647340.sh
+percona-xtrabackup-test/t/bug1652044.sh
+percona-xtrabackup-test/t/bug1669592.sh
 percona-xtrabackup-test/t/bug17076131-master.opt
 percona-xtrabackup-test/t/bug17076131.test
 percona-xtrabackup-test/t/bug33509-master.opt
@@ -13342,6 +13346,7 @@ percona-xtrabackup-test/t/xb_part_range.sh
 percona-xtrabackup-test/t/xb_perm_basic.sh
 percona-xtrabackup-test/t/xb_perm_stream.sh
 percona-xtrabackup-test/t/xb_print_param.sh
+percona-xtrabackup-test/t/xb_remove_original.sh
 percona-xtrabackup-test/t/xb_stats.sh
 percona-xtrabackup-test/t/xb_stats_datadir.sh
 percona-xtrabackup-test/t/xb_stream_compress.sh
@@ -13354,5 +13359,6 @@ percona-xtrabackup-test/t/xb_stream_xbstream.sh
 percona-xtrabackup-test/t/xb_version.sh
 percona-xtrabackup-test/t/xbcloud.sh
 percona-xtrabackup-test/t/xbcrypt.sh
+percona-xtrabackup-test/t/xbstream_parallel_decrypt.sh
 percona-xtrabackup-test/t/xml.test
 percona-xtrabackup-test/valgrind.supp
