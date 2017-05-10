@@ -2,11 +2,11 @@ $NetBSD$
 
 Fix check-portability.
 
---- support-files/mysql.server.sh.orig	2014-11-25 06:30:35.000000000 +0000
+--- support-files/mysql.server.sh.orig	2017-04-13 12:11:11.000000000 +0000
 +++ support-files/mysql.server.sh
-@@ -346,9 +346,9 @@ case "$mode" in
+@@ -355,9 +355,9 @@ case "$mode" in
        # may be overwritten at next upgrade.
-       $bindir/mysqld_safe --datadir="$datadir" --pid-file="$mysqld_pid_file_path" $other_args >/dev/null 2>&1 &
+       $bindir/mysqld_safe --datadir="$datadir" --pid-file="$mysqld_pid_file_path" $other_args >/dev/null &
        wait_for_pid created "$!" "$mysqld_pid_file_path"; return_value=$?
 -      if [ $return_value == 1 ];then 
 +      if [ $return_value = 1 ];then 
