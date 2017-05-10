@@ -9,6 +9,7 @@ RMD160 (sphinx-2.2.10-release.tar.gz) = 2712e8ce85609e78c53bd2d9fba877f1e630d5f2
 SHA512 (sphinx-2.2.10-release.tar.gz) = 07683f64df730368563e11a7d2939b521837c9a04944ab7d6d09732ab06e451b674169eca4f85db2aae41d883bd16fb4d17b9265912fea9691d07d407d7212d8
 Size (sphinx-2.2.10-release.tar.gz) = 3109250 bytes
 SHA1 (patch-cmake_install__macros.cmake) = ac79c567cf734810c9b48d780e6d25e2285ea3c1
+SHA1 (patch-cmake_os_SunOS.cmake) = 3617d5339462f3fe27ff2823c72788ef2f152b71
 SHA1 (patch-include_my_net.h) = cd35ef74401936627316da6cf00992e53242b307
 SHA1 (patch-mysys__ssl_CMakeLists.txt) = 10ad73eeded9c7c552cdf3cb99c501a41a947cfa
 SHA1 (patch-plugin_HandlerSocket-Plugin-for-MySQL_libhsclient_allocator.hpp) = 1c71757b579efcc2d68c340acd64f4d34994d551
