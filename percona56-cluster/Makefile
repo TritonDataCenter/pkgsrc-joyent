@@ -52,7 +52,8 @@ PKG_GROUPS_VARS+=	MYSQL_GROUP
 
 CONFIG_SHELL=		${TOOLS_PATH.bash}
 
-CHECK_PORTABILITY_SKIP+=build-ps/build-rpm.sh build-ps/deprecated/build-rpm.sh
+CHECK_PORTABILITY_SKIP+=	build-ps/build-rpm.sh build-ps/deprecated/build-rpm.sh
+CHECK_INTERPRETER_SKIP+=	share/mysql/test/suite/tokudb/t/*.py
 
 .if ${OPSYS} == "IRIX"
 CFLAGS+=		-DIRIX5 -DNEEDS_BSTRING_H
@@ -108,6 +109,7 @@ PLIST_VARS+=		embedded auth_socket
 CMAKE_ARGS+=            -DWITH_EMBEDDED_SERVER=ON
 PLIST.embedded=         yes
 .else
+CMAKE_ARGS+=		-DWITH_EMBEDDED_SERVER=OFF
 # We only need readline to placate the configure script if we don't build
 # the embedded server as it is the only binary linked against "readline".
 BUILDLINK_DEPMETHOD.readline=   build
