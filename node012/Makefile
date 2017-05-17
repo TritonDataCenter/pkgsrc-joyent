@@ -33,7 +33,6 @@ SUBST_VARS.man=		PKGMANDIR
 CONFIG_SHELL=		${PYTHONBIN}
 CONFIGURE_ARGS+=	--prefix=${PREFIX}
 CONFIGURE_ARGS+=	--shared-zlib
-CONFIGURE_ARGS+=	--with-intl=system-icu
 
 .if ${OPSYS} == "NetBSD"
 CONFIGURE_ENV+=		GYP_DEFINES="OS=netbsd"
@@ -60,6 +59,5 @@ pre-install:
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../lang/python/application.mk"
 .include "../../lang/python/tool.mk"
-.include "../../textproc/icu/buildlink3.mk"
 .include "../../mk/pthread.buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"
