@@ -1,7 +1,7 @@
 # $NetBSD: options.mk,v 1.3 2013/06/26 11:51:50 jperkin Exp $
 
 PKG_OPTIONS_VAR=	PKG_OPTIONS.node
-PKG_SUPPORTED_OPTIONS=	openssl dtrace
+PKG_SUPPORTED_OPTIONS=	openssl dtrace icu
 PKG_SUGGESTED_OPTIONS=	openssl
 
 .if (${OPSYS} == "SunOS" || ${OPSYS} == "Darwin") \
@@ -18,6 +18,11 @@ CONFIGURE_ARGS+=	--with-dtrace
 PLIST.dtrace=		yes
 .else
 CONFIGURE_ARGS+=	--without-dtrace
+.endif
+
+.if !empty(PKG_OPTIONS:Micu)
+CONFIGURE_ARGS+=	--with-intl=system-icu
+.include "../../textproc/icu/buildlink3.mk"
 .endif
 
 .if !empty(PKG_OPTIONS:Mopenssl)
