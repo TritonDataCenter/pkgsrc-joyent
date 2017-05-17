@@ -3,17 +3,18 @@ $NetBSD$
 Only build that which comes with local patches.
 Use portable sed calls.
 
---- deps/Makefile.orig	2017-03-26 11:18:09.000000000 +0000
+--- deps/Makefile.orig	2017-04-23 05:15:16.000000000 +0000
 +++ deps/Makefile
-@@ -1,6 +1,6 @@
+@@ -9,7 +9,7 @@ MYCFLAGS=-O2
+ MYJEOPT=--enable-xmalloc --enable-munmap --enable-prof
+ endif
  
- 
--default: libconfig libdaemon jemalloc mariadb_client re2 sqlite3
-+default: mariadb_client re2
+-default: libconfig libdaemon jemalloc mariadb_client re2 sqlite3 pcre
++default: jemalloc mariadb_client re2 sqlite3
  .PHONY: default
  
  
-@@ -26,13 +26,16 @@ mariadb-client-library/mariadb_client/in
+@@ -36,13 +36,16 @@ mariadb-client-library/mariadb_client/in
  #	cd mariadb-client-library && tar -zxf mariadb-connector-c-2.1.0-src.tar.gz
  	cd mariadb-client-library && rm -rf mariadb-connector-c-2.3.1
  	cd mariadb-client-library && tar -zxf mariadb-connector-c-2.3.1-src.tar.gz
@@ -31,16 +32,12 @@ Use portable sed calls.
  	cd mariadb-client-library/mariadb_client && CC=${CC} CXX=${CXX} ${MAKE}
  # cd mariadb-client-library/mariadb_client/include && make my_config.h
  
-@@ -56,9 +59,12 @@ libconfig: libconfig/libconfig/lib/.libs
- re2/re2/obj/libre2.a:
- 	cd re2 && rm -rf re2
- 	cd re2 && tar -zxf re2-20140304.tgz
--	cd re2/re2 && sed -i -e 's/-O3 -g /-O3 -fPIC /' Makefile
-+#	cd re2/re2 && sed -i -e 's/-O3 -g /-O3 -fPIC /' Makefile
+@@ -72,7 +75,9 @@ re2/re2/obj/libre2.a:
+ 	cd re2 && tar -zxf re2.tar.gz
+ #	cd re2/re2 && sed -i -e 's/-O3 -g /-O3 -fPIC /' Makefile
  #	cd re2 && patch re2/util/mutex.h < mutex.h.patch
 -	cd re2/re2 && sed -i -e 's/-O3 /-O3 -DMEMORY_SANITIZER /' Makefile
 +#	cd re2/re2 && sed -i -e 's/-O3 /-O3 -DMEMORY_SANITIZER /' Makefile
-+	cd re2 && patch re2/Makefile < patch-Makefile
 +	cd re2/re2 && sed -e 's/-O3 -g /-O3 -fPIC -DMEMORY_SANITIZER /' Makefile > Makefile.tmp && \
 +		cp Makefile.tmp Makefile && rm -f Makefile.tmp
  	cd re2/re2 && CC=${CC} CXX=${CXX} ${MAKE}

@@ -2,18 +2,18 @@ $NetBSD$
 
 Sane symbol naming.
 
---- include/MySQL_Data_Stream.h.orig	2017-03-26 11:18:09.000000000 +0000
+--- include/MySQL_Data_Stream.h.orig	2017-04-23 05:15:16.000000000 +0000
 +++ include/MySQL_Data_Stream.h
-@@ -16,7 +16,7 @@ typedef struct _queue_t {
- 	//unsigned char *pkt;
+@@ -15,7 +15,7 @@ typedef struct _queue_t {
+ 	unsigned int partial;
  	PtrSize_t pkt;
  	mysql_hdr hdr;
 -} queue_t;
 +} ps_queue_t;
  
  
- /*
-@@ -67,9 +67,9 @@ class MySQL_Data_Stream
+ // this class avoid copying data
+@@ -53,9 +53,9 @@ class MySQL_Data_Stream
  	void * operator new(size_t);
  	void operator delete(void *);
  
