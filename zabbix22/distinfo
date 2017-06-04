@@ -1,0 +1,7 @@
+$NetBSD$
+
+SHA1 (zabbix-2.2.9.tar.gz) = eb914ec6b4d238bb9add88e6019eda371b07933f
+RMD160 (zabbix-2.2.9.tar.gz) = 0ceba77c2a1a9f51b939d529d71699a117061f95
+Size (zabbix-2.2.9.tar.gz) = 15032149 bytes
+SHA1 (patch-conf_zabbix_agentd.conf) = 87131ca93454092d10ae902ba222520b7918de05
+SHA1 (patch-src_zabbix_agent_Makefile.in) = 319be9cb21ce47b8f08653c51d812646e960c223
