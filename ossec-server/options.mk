@@ -4,6 +4,10 @@ PKG_OPTIONS_VAR=	PKG_OPTIONS.ossec
 PKG_SUPPORTED_OPTIONS=	mysql pgsql
 PKG_SUGGESTED_OPTIONS=	#
 
+INCLUDE_PREFIX?= /opt/local
+
+BUILDLINK_PREFIX.openssl= ${INCLUDE_PREFIX}
+
 .include "../../mk/bsd.options.mk"
 
 .if !empty(PKG_OPTIONS:Mmysql) || !empty(PKG_OPTIONS:Mpgsql)
