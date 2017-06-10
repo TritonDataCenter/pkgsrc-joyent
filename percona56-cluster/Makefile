@@ -1,23 +1,30 @@
 # $NetBSD$
 
-SILLYREV=	81.0    # Seriously, what's the point?
-OTHERSILLYREV=	26.20-3
-DISTNAME=	Percona-XtraDB-Cluster-5.6.35-${SILLYREV}
+MYSQL_VER=	5.6.36
+MYSQLEXT_VER=	82.0
+WSREP_API_VER=	26
+GALERA_MAJOR=	3
+GALERA_MINOR=	20
+
+DISTNAME=	Percona-XtraDB-Cluster-${MYSQL_VER}-${MYSQLEXT_VER}
+PKGNAME=	percona-cluster-${MYSQL_VER}
 CATEGORIES=	databases
-MASTER_SITES=	http://www.percona.com/downloads/Percona-XtraDB-Cluster-56/${DISTNAME:S/${SILLYREV}/${OTHERSILLYREV}/}/source/tarball/
+MASTER_SITES=	http://www.percona.com/downloads/Percona-XtraDB-Cluster-56/Percona-XtraDB-Cluster-${MYSQL_VER}-${WSREP_API_VER}-${GALERA_MINOR}/source/tarball/
 
-PKGNAME=	${DISTNAME:tl:S/-xtradb//:C/-${SILLYREV}//}
 COMMENT=	Percona Cluster Server 5.6
-
 MAINTAINER=	jperkin@joyent.com
 HOMEPAGE=	http://www.percona.com/
-LICENSE=	gnu-gpl-v2
+LICENSE=	gnu-gpl-v2 AND gnu-gpl-v3
 
-CONFLICTS=	{mysql,percona}*-{client,server}-[0-9]*
+# Galera
+BUILD_DEPENDS+=		scons-[0-9]*:../../devel/scons
+CONFLICTS=		{mysql,percona}*-{client,server}-[0-9]*
 
-# Include the Sphinx storage engine
-SPHINX=		sphinx-2.2.10-release
-DISTFILES=	${DISTNAME}${EXTRACT_SUFX} ${SPHINX}.tar.gz
+GALERA=		percona-xtradb-cluster-galera-${GALERA_MAJOR}
+SPHINX=		sphinx-2.2.11-release
+DISTFILES=	${DISTNAME}${EXTRACT_SUFX}
+DISTFILES+=	${GALERA}-${GALERA_MAJOR}.${GALERA_MINOR}.tar.gz
+DISTFILES+=	${SPHINX}.tar.gz
 SITES.${SPHINX}.tar.gz=	http://sphinxsearch.com/files/
 
 USE_CMAKE=		yes
@@ -32,8 +39,6 @@ UNWRAP_FILES+=		scripts/mysql_config
 INSTALL_TEMPLATES+=	${.CURDIR}/../../joyent/percona/INSTALL
 
 .include "../../mk/bsd.prefs.mk"
-
-.include "options.mk"
 
 # MYSQL_USER		username of the database administrator
 # MYSQL_GROUP		group of the database administrator
@@ -54,10 +59,7 @@ CONFIG_SHELL=		${TOOLS_PATH.bash}
 
 CHECK_PORTABILITY_SKIP+=	build-ps/build-rpm.sh build-ps/deprecated/build-rpm.sh
 CHECK_INTERPRETER_SKIP+=	share/mysql/test/suite/tokudb/t/*.py
-
-.if ${OPSYS} == "IRIX"
-CFLAGS+=		-DIRIX5 -DNEEDS_BSTRING_H
-.endif
+CHECK_INTERPRETER_SKIP+=	share/mysql/test/std_data/checkDBI_DBD-mysql.pl
 
 BUILD_DEFS+=		VARBASE
 
@@ -78,6 +80,7 @@ CMAKE_ARGS+=		-DINSTALL_SQLBENCHDIR="share/mysql/sql-bench"
 CMAKE_ARGS+=		-DINSTALL_SUPPORTFILESDIR="share/mysql"
 CMAKE_ARGS+=		-DMYSQL_DATADIR=${MYSQL_DATADIR}
 
+CMAKE_ARGS+=		-DWITH_SSL=system
 CMAKE_ARGS+=		-DWITH_EDITLINE=bundled
 CMAKE_ARGS+=		-DWITH_READLINE=OFF
 CMAKE_ARGS+=		-DDEFAULT_CHARSET=${MYSQL_CHARSET:Q}
@@ -85,14 +88,13 @@ CMAKE_ARGS+=		-DDEFAULT_COLLATION=${MYSQL_COLLATION:Q}
 CMAKE_ARGS+=		-DWITH_EXTRA_CHARSETS=${MYSQL_EXTRA_CHARSET:Q}
 BROKEN_READLINE_DETECTION=	yes # At least on RHEL 5.6
 
-CMAKE_ARGS+=		-DWITH_LIBWRAP=ON
-CMAKE_ARGS+=		-DWITHOUT_AUTH_PAM=1 -DWITHOUT_AUTH_PAM_COMPAT=1
-CMAKE_ARGS+=		-DHAVE_EMBEDDED_PRIVILEGE_CONTROL=1
-
 CMAKE_ARGS+=		-DENABLE_DTRACE=ON
-
-CMAKE_ARGS+=		-DWITH_WSREP=1
+CMAKE_ARGS+=		-DFORCE_UNSUPPORTED_COMPILER=ON
+CMAKE_ARGS+=		-DHAVE_EMBEDDED_PRIVILEGE_CONTROL=1
+CMAKE_ARGS+=		-DWITH_EMBEDDED_SERVER=OFF
 CMAKE_ARGS+=		-DWITH_INNODB_DISALLOW_WRITES=1
+CMAKE_ARGS+=		-DWITH_LIBWRAP=ON
+CMAKE_ARGS+=		-DWITH_WSREP=1
 
 # Engines
 CMAKE_ARGS+=		-DWITH_ARCHIVE_STORAGE_ENGINE=ON
@@ -103,23 +105,15 @@ CMAKE_ARGS+=		-DWITH_INNOBASE_STORAGE_ENGINE=ON
 CMAKE_ARGS+=		-DWITH_PARTITION_STORAGE_ENGINE=ON
 CMAKE_ARGS+=		-DWITH_PERFSCHEMA_STORAGE_ENGINE=ON
 
-PLIST_VARS+=		embedded auth_socket
-
-.if !empty(PKG_OPTIONS:Membedded-server)
-CMAKE_ARGS+=            -DWITH_EMBEDDED_SERVER=ON
-PLIST.embedded=         yes
-.else
-CMAKE_ARGS+=		-DWITH_EMBEDDED_SERVER=OFF
-# We only need readline to placate the configure script if we don't build
-# the embedded server as it is the only binary linked against "readline".
-BUILDLINK_DEPMETHOD.readline=   build
-.endif
-
 # Ensure dtrace builds the correct ABI
 .if !empty(ABI:M32)
 CMAKE_ARGS+=		-DDTRACE_FLAGS="-32"
 .elif !empty(ABI:M64)
 CMAKE_ARGS+=		-DDTRACE_FLAGS="-64"
+.endif
+
+.if ${OPSYS} == "IRIX"
+CFLAGS+=		-DIRIX5 -DNEEDS_BSTRING_H
 .endif
 
 # MySQL 5 depends on builtin functions enabled with i486 and later with GCC.
@@ -135,6 +129,9 @@ CFLAGS+=		-DUSE_OLD_FUNCTIONS # 3.23.x compat
 CFLAGS+=		-fPIC -DPIC
 CXXFLAGS+=		-fPIC -DPIC
 .endif
+
+# Galera
+CPPFLAGS.SunOS+=	-DHAVE_SYS_BYTEORDER_H
 
 # force HAVE_CURSES_H on Solaris since the configure script is broken
 # and does not properly detect this, breaking the build later on.  Also
@@ -198,7 +195,6 @@ REPLACE_PERL+=		scripts/mysqld_multi.sh
 REPLACE_PERL+=		scripts/mysqldumpslow.sh
 REPLACE_PERL+=		scripts/mysqlhotcopy.sh
 
-REPLACE_PYTHON=		mysql-test/suite/opt_trace/validate_json.py
 REPLACE_PYTHON+=	scripts/pyclustercheck
 
 SUBST_CLASSES+=		scr
@@ -219,6 +215,10 @@ SUBST_SED.fixpaths+=	-e "s,${WRAPPER_BINDIR}/g++,${CXXPATH},g"
 
 post-extract:
 	${CP} -R ${WRKDIR}/${SPHINX}/mysqlse ${WRKSRC}/storage/sphinx
+	${CP} -R ${WRKDIR}/${GALERA} ${WRKSRC}/percona-xtradb-cluster-galera
+
+post-build:
+	cd ${WRKDIR}/${GALERA} && ${SETENV} ${MAKE_ENV} ${GALERA_ENV} scons strict_build_flags=0 tests=0
 
 # Replace manual pages which only include other ones with a symbolic link
 # if manual compression is activated. The manual pages won't work otherwise.
@@ -232,10 +232,19 @@ post-install:
 	${LN} -s ${FILE:S/_embedded//} ${DESTDIR}${PREFIX}/${PKGMANDIR}/man1/${FILE}
 .  endfor
 .endif
+	${INSTALL_LIB} ${WRKDIR}/${GALERA}/libgalera_smm.so ${DESTDIR}${PREFIX}/lib/mysql/plugin/
+	${INSTALL_PROGRAM} ${WRKDIR}/${GALERA}/garb/garbd ${DESTDIR}${PREFIX}/bin/garbd
+	${INSTALL_MAN} ${WRKSRC}/percona-xtradb-cluster-galera/man/garbd.8 ${DESTDIR}${PREFIX}/${PKGMANDIR}/man8/
 
+.include "../../devel/boost-build/buildlink3.mk"
+.include "../../devel/boost-headers/buildlink3.mk"
+.include "../../devel/boost-libs/buildlink3.mk"
+.include "../../devel/check/buildlink3.mk"
+BUILDLINK_DEPMETHOD.readline=	build
 .include "../../devel/readline/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../lang/python/application.mk"
 .include "../../security/openssl/buildlink3.mk"
 .include "../../security/tcp_wrappers/buildlink3.mk"
+.include "../../mk/pthread.buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"

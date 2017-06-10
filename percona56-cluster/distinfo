@@ -1,17 +1,23 @@
 $NetBSD$
 
-SHA1 (Percona-XtraDB-Cluster-5.6.35-81.0.tar.gz) = 46866b54454fa3225131ee43cb225a7b4e2d71c0
-RMD160 (Percona-XtraDB-Cluster-5.6.35-81.0.tar.gz) = 2887edd24acc293d43700be57f17435d0fa486d6
-SHA512 (Percona-XtraDB-Cluster-5.6.35-81.0.tar.gz) = 568e265abbb045eafa9b7245fc1e8bcec50be027c3a2f5230b5239d2e88c5c0d14d7d858525095628c7bd00d74b621b64f7e645c05f09cf358d8e28852717c9a
-Size (Percona-XtraDB-Cluster-5.6.35-81.0.tar.gz) = 53782403 bytes
-SHA1 (sphinx-2.2.10-release.tar.gz) = 0f2372dd41df2848ea06c6076a86af6f0f66a071
-RMD160 (sphinx-2.2.10-release.tar.gz) = 2712e8ce85609e78c53bd2d9fba877f1e630d5f2
-SHA512 (sphinx-2.2.10-release.tar.gz) = 07683f64df730368563e11a7d2939b521837c9a04944ab7d6d09732ab06e451b674169eca4f85db2aae41d883bd16fb4d17b9265912fea9691d07d407d7212d8
-Size (sphinx-2.2.10-release.tar.gz) = 3109250 bytes
+SHA1 (Percona-XtraDB-Cluster-5.6.36-82.0.tar.gz) = bba31b5be1926710c7c212b659ffc0bd95004d39
+RMD160 (Percona-XtraDB-Cluster-5.6.36-82.0.tar.gz) = 573dfe78dc4bf62864a0e9325113c293009e534b
+SHA512 (Percona-XtraDB-Cluster-5.6.36-82.0.tar.gz) = d015c1260fdfa8dc5296d85b5b73777b6f00717e032ff4cdc2c6910b86a57f2d5a365df7cd33485e69904ecbbabef979af4b623acd884810a34e402b75a9f8e1
+Size (Percona-XtraDB-Cluster-5.6.36-82.0.tar.gz) = 53804174 bytes
+SHA1 (percona-xtradb-cluster-galera-3-3.20.tar.gz) = b983a0e840e9670ef72dea82422bc3d72090b194
+RMD160 (percona-xtradb-cluster-galera-3-3.20.tar.gz) = 00d780b744a24abe8b3ffb8caf3248c63ae62aab
+SHA512 (percona-xtradb-cluster-galera-3-3.20.tar.gz) = 63ca4e761e8454d9a962ee5ea2294c9db8d0b6413ddfcfc2416b04e7daea76e03065d085fa92a040197ad4fc2a2574b69ef464d111ccadf587cd4b6279929f0b
+Size (percona-xtradb-cluster-galera-3-3.20.tar.gz) = 3284194 bytes
+SHA1 (sphinx-2.2.11-release.tar.gz) = 34e83f43de0e69e258bf749ea00348c60a51632a
+RMD160 (sphinx-2.2.11-release.tar.gz) = 5804b4cce64bc03fa20bac26c7391cd661cecc77
+SHA512 (sphinx-2.2.11-release.tar.gz) = cf1a262a5b0fbf0bd2827ec6ec629edeaf709ce855a6e7b509b65342baaeb26c02717ca63f1578d32c83d21e2fd6d1e92dceb34660e6351b93cd96fd4e623689
+Size (sphinx-2.2.11-release.tar.gz) = 3061998 bytes
 SHA1 (patch-cmake_install__macros.cmake) = ac79c567cf734810c9b48d780e6d25e2285ea3c1
-SHA1 (patch-cmake_os_SunOS.cmake) = 3617d5339462f3fe27ff2823c72788ef2f152b71
 SHA1 (patch-include_my_net.h) = cd35ef74401936627316da6cf00992e53242b307
 SHA1 (patch-mysys__ssl_CMakeLists.txt) = 10ad73eeded9c7c552cdf3cb99c501a41a947cfa
+SHA1 (patch-percona-xtradb-cluster-galera_SConstruct) = 53e2afe9a203103fa1c2d79b5beb887f790f25b2
+SHA1 (patch-percona-xtradb-cluster-galera_galerautils_src_gu__arch.h) = a8adb286c4f8f28467bf44ade8c13362f192f632
+SHA1 (patch-percona-xtradb-cluster-galera_gcs_src_gcs__gcomm.cpp) = 58c4871377566fe8e0104cb939339b1d2f1b8e71
 SHA1 (patch-plugin_HandlerSocket-Plugin-for-MySQL_libhsclient_allocator.hpp) = 1c71757b579efcc2d68c340acd64f4d34994d551
 SHA1 (patch-plugin_audit__log_audit__log.c) = 04f11b324d072126fd70154bb2508b0852415cbc
 SHA1 (patch-scripts_mysqld__safe.sh) = 21d97c74e21798b153f77597e5b425ea8577c2dc
