@@ -1,0 +1,27 @@
+$NetBSD$
+
+Fix problem with 'ar' and pass RPATH properly.
+
+--- percona-xtradb-cluster-galera/SConstruct.orig	2017-05-31 07:19:41.000000000 +0000
++++ percona-xtradb-cluster-galera/SConstruct
+@@ -158,6 +158,10 @@ if 'CCACHE_DIR' in os.environ:
+ if 'CCACHE_CPP2' in os.environ:
+     env['ENV']['CCACHE_CPP2'] = os.environ['CCACHE_CPP2']
+ 
++# Add support for pkgsrc cwrappers
++if 'CWRAPPERS_CONFIG_DIR' in os.environ:
++    env['ENV']['CWRAPPERS_CONFIG_DIR'] = os.environ['CWRAPPERS_CONFIG_DIR']
++
+ # Set CC and CXX compilers
+ cc = os.getenv('CC', 'default')
+ if cc != 'default':
+@@ -188,6 +192,9 @@ if sysname == 'freebsd' or sysname == 's
+     env.Append(CCFLAGS = ' -I/usr/local/include ')
+ if sysname == 'sunos':
+    env.Replace(SHLINKFLAGS = '-shared ')
++   env.Replace(AR = 'ar')
++   env.Replace(ARFLAGS= 'r')
++   env.Replace(ARCOM = '$AR $ARFLAGS $TARGET $SOURCES')
+ 
+ # Add paths is extra_sysroot argument was specified
+ extra_sysroot = ARGUMENTS.get('extra_sysroot', '')

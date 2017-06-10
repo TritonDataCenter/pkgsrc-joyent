@@ -1,5 +1,6 @@
 @comment $NetBSD$
 bin/clustercheck
+bin/garbd
 bin/innochecksum
 bin/lz4_decompress
 bin/my_print_defaults
@@ -170,6 +171,7 @@ lib/mysql/plugin/keyring_udf.so
 lib/mysql/plugin/libdaemon_example.so
 lib/mysql/plugin/libfnv1a_udf.so
 lib/mysql/plugin/libfnv_udf.so
+lib/mysql/plugin/libgalera_smm.so
 lib/mysql/plugin/libmemcached.so
 lib/mysql/plugin/libmurmur_udf.so
 lib/mysql/plugin/libtest_framework.so
@@ -252,6 +254,7 @@ man/man1/replace.1
 man/man1/resolve_stack_dump.1
 man/man1/resolveip.1
 man/man1/zlib_decompress.1
+man/man8/garbd.8
 man/man8/mysqld.8
 sbin/mysqld
 share/aclocal/mysql.m4

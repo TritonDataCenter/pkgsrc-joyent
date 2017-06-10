@@ -1,29 +1,30 @@
 # $NetBSD$
 
-SILLYREV=	29.20
-DISTNAME=	Percona-XtraDB-Cluster-5.7.17-${SILLYREV}
+MYSQL_VER=	5.7.18
+WSREP_API_VER=  29
+GALERA_MAJOR=   3
+GALERA_MINOR=   20
+
+DISTNAME=	Percona-XtraDB-Cluster-5.7.17-${WSREP_API_VER}.${GALERA_MINOR}
+PKGNAME=	percona-cluster-${MYSQL_VER}
 CATEGORIES=	databases
 MASTER_SITES=	https://www.percona.com/downloads/Percona-XtraDB-Cluster-57/${DISTNAME}/source/tarball/
 
-PKGNAME=	${DISTNAME:tl:S/-xtradb//:C/-${SILLYREV}//}
 COMMENT=	Percona Cluster Server 5.7
-
 MAINTAINER=	jperkin@joyent.com
 HOMEPAGE=	http://www.percona.com/
-LICENSE=	gnu-gpl-v2
+LICENSE=	gnu-gpl-v2 AND gnu-gpl-v3
 
-CONFLICTS=	{mysql,percona}*-{client,server}-[0-9]*
+# Galera
+BUILD_DEPENDS+=         scons-[0-9]*:../../devel/scons
+CONFLICTS=		{mysql,percona}*-{client,server}-[0-9]*
 
 # MySQL 5.7 requires a specific version of boost, so we use our own
 # copy here
 BOOST=			boost_1_59_0
-DISTFILES=		${DISTNAME}${EXTRACT_SUFX} ${BOOST}.tar.bz2
+DISTFILES=		${DISTNAME}${EXTRACT_SUFX}
+DISTFILES+=		${BOOST}.tar.bz2
 SITES.${BOOST}.tar.bz2=	${MASTER_SITE_SOURCEFORGE:=boost/}
-
-# Include the Sphinx storage engine
-#SPHINX=		sphinx-2.2.10-release
-#DISTFILES+=	${DISTNAME}${EXTRACT_SUFX} ${SPHINX}.tar.gz
-#SITES.${SPHINX}.tar.gz=	http://sphinxsearch.com/files/
 
 USE_CMAKE=		yes
 USE_LANGUAGES=		c c++ c99
@@ -59,10 +60,6 @@ CHECK_PORTABILITY_SKIP+=	build-ps/*
 CHECK_PORTABILITY_SKIP+=	percona-xtradb-cluster-galera/scripts/*
 CHECK_PORTABILITY_SKIP+=	storage/ndb/mcc/frontend/dojo/dojox/mobile/build/build.sh
 
-.if ${OPSYS} == "IRIX"
-CFLAGS+=		-DIRIX5 -DNEEDS_BSTRING_H
-.endif
-
 BUILD_DEFS+=		VARBASE
 
 # paths
@@ -78,7 +75,6 @@ CMAKE_ARGS+=		-DINSTALL_MYSQLTESTDIR="share/mysql/test"
 CMAKE_ARGS+=		-DINSTALL_PLUGINDIR="lib${LIBARCHSUFFIX}/mysql/plugin"
 CMAKE_ARGS+=		-DINSTALL_SBINDIR="sbin${BINARCHSUFFIX}"
 CMAKE_ARGS+=		-DINSTALL_SCRIPTDIR="bin${BINARCHSUFFIX}"
-###CMAKE_ARGS+=		-DINSTALL_SQLBENCHDIR="share/mysql/sql-bench"
 CMAKE_ARGS+=		-DINSTALL_SUPPORTFILESDIR="share/mysql"
 CMAKE_ARGS+=		-DMYSQL_DATADIR=${MYSQL_DATADIR}
 
@@ -124,6 +120,10 @@ CMAKE_ARGS+=		-DDTRACE_FLAGS="-32"
 CMAKE_ARGS+=		-DDTRACE_FLAGS="-64"
 .endif
 
+.if ${OPSYS} == "IRIX"
+CFLAGS+=		-DIRIX5 -DNEEDS_BSTRING_H
+.endif
+
 # MySQL 5 depends on builtin functions enabled with i486 and later with GCC.
 .if ${OPSYS} == "NetBSD" && !empty(MACHINE_ARCH:Mi386)
 GNU_ARCH.i386=		i486
@@ -137,6 +137,9 @@ CFLAGS+=		-DUSE_OLD_FUNCTIONS # 3.23.x compat
 CFLAGS+=		-fPIC -DPIC
 CXXFLAGS+=		-fPIC -DPIC
 .endif
+
+# Galera
+CPPFLAGS.SunOS+=	-DHAVE_SYS_BYTEORDER_H
 
 # force HAVE_CURSES_H on Solaris since the configure script is broken
 # and does not properly detect this, breaking the build later on.  Also
@@ -211,6 +214,10 @@ SUBST_SED.fixpaths+=	-e "s,${WRAPPER_BINDIR}/g++,${CXXPATH},g"
 
 #post-extract:
 #	${CP} -R ${WRKDIR}/${SPHINX}/mysqlse ${WRKSRC}/storage/sphinx
+#
+
+post-build:
+	cd ${WRKSRC}/percona-xtradb-cluster-galera && ${SETENV} ${MAKE_ENV} scons strict_build_flags=0 tests=0
 
 # Replace manual pages which only include other ones with a symbolic link
 # if manual compression is activated. The manual pages won't work otherwise.
@@ -224,12 +231,20 @@ post-install:
 	${LN} -s ${FILE:S/_embedded//} ${DESTDIR}${PREFIX}/${PKGMANDIR}/man1/${FILE}
 .  endfor
 .endif
+	${INSTALL_LIB} ${WRKSRC}/percona-xtradb-cluster-galera/libgalera_smm.so ${DESTDIR}${PREFIX}/lib/mysql/plugin/
+	${INSTALL_PROGRAM} ${WRKSRC}/percona-xtradb-cluster-galera/garb/garbd ${DESTDIR}${PREFIX}/bin/
+	${INSTALL_MAN} ${WRKSRC}/percona-xtradb-cluster-galera/man/garbd.8 ${DESTDIR}${PREFIX}/${PKGMANDIR}/man8/
 
 .include "../../archivers/lz4/buildlink3.mk"
+.include "../../devel/boost-build/buildlink3.mk"
+.include "../../devel/boost-headers/buildlink3.mk"
+.include "../../devel/boost-libs/buildlink3.mk"
+.include "../../devel/check/buildlink3.mk"
 .include "../../devel/libevent/buildlink3.mk"
 .include "../../devel/readline/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../lang/python/application.mk"
 .include "../../security/openssl/buildlink3.mk"
 .include "../../security/tcp_wrappers/buildlink3.mk"
+.include "../../mk/pthread.buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"
