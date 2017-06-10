@@ -77,7 +77,7 @@ POST-INSTALL)
 
 	# Initialize MySQL system tables
 	if [ ! -d @MYSQL_DATADIR@/mysql ]; then
-		@LOCALBASE@/sbin/mysqld --user=@MYSQL_USER@ --initialize-secure
+		@LOCALBASE@/sbin/mysqld --user=@MYSQL_USER@ --initialize-insecure
 	fi
 	;;
 esac
