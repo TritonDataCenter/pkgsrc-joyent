@@ -76,7 +76,6 @@ max_heap_table_size = 64M
 # Replication settings (master to slave)
 # This is not enabled by default.  There are more steps
 # to this besides uncommenting the lines below.
-# See: http://wiki.joyent.com/wiki/display/jpc2/Replication
 #
 binlog_format=row
 log-bin = @VARBASE@/log/mysql/bin.log

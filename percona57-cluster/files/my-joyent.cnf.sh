@@ -37,7 +37,6 @@ innodb_data_home_dir = @MYSQL_DATADIR@
 innodb_log_group_home_dir = @MYSQL_DATADIR@
 innodb_data_file_path = ibdata1:100M:autoextend
 innodb_buffer_pool_size = 256M
-innodb_additional_mem_pool_size = 20M
 innodb_log_file_size = 400M
 innodb_log_buffer_size = 8M
 innodb_flush_log_at_trx_commit = 2
@@ -63,7 +62,6 @@ thread_cache_size = 1000
 #query_cache_strip_comments
 query_cache_type = 0
 back_log = 64
-thread_concurrency = 32 
 tmpdir = /var/tmp
 max_connections = 1000
 max_allowed_packet = 24M
@@ -76,7 +74,6 @@ max_heap_table_size = 64M
 # Replication settings (master to slave)
 # This is not enabled by default.  There are more steps
 # to this besides uncommenting the lines below.
-# See: http://wiki.joyent.com/wiki/display/jpc2/Replication
 #
 binlog_format=row
 log-bin = @VARBASE@/log/mysql/bin.log
