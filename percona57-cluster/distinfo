@@ -17,6 +17,7 @@ SHA1 (patch-client_completion_hash.cc) = 94f1843f8b3d71d8fc6af810eddf2c076d50599
 SHA1 (patch-client_mysqladmin.cc) = 2bb9f9ba1097d39ac42a2682517c1e33a37af9df
 SHA1 (patch-cmake_dtrace.cmake) = 8331ff8461770204c849d895b9987d85eebec6ea
 SHA1 (patch-cmake_libutils.cmake) = d988a05e8073ce8722fce714cb7e47cc4ed68ed2
+SHA1 (patch-cmake_os_SunOS.cmake) = 7746f72d25364e0279a2a947a368bdcc9b1eac38
 SHA1 (patch-cmake_readline.cmake) = fb79ed969240ae2984098f72c2d3fb501154902c
 SHA1 (patch-config.h.cmake) = ebd9431eb7ed7f4a5966f67bb53e11314464720d
 SHA1 (patch-configure.cmake) = 8083e665c93b695df240f087626b0733e2cf6e27
