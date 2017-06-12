@@ -1,2 +1,4 @@
 @comment $NetBSD$
+bin/garbd
 lib/mysql/plugin/libgalera_smm.so
+man/man8/garbd.8

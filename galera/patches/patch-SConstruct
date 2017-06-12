@@ -2,9 +2,9 @@ $NetBSD$
 
 Fix problem with 'ar' and pass RPATH properly.
 
---- SConstruct.orig	2016-03-12 09:07:22.000000000 +0000
+--- SConstruct.orig	2017-01-25 07:55:06.000000000 +0000
 +++ SConstruct
-@@ -154,6 +154,10 @@ if 'CCACHE_DIR' in os.environ:
+@@ -158,6 +158,10 @@ if 'CCACHE_DIR' in os.environ:
  if 'CCACHE_CPP2' in os.environ:
      env['ENV']['CCACHE_CPP2'] = os.environ['CCACHE_CPP2']
  
@@ -15,15 +15,7 @@ Fix problem with 'ar' and pass RPATH properly.
  # Set CC and CXX compilers
  cc = os.getenv('CC', 'default')
  if cc != 'default':
-@@ -172,6 +176,7 @@ env.Replace(CFLAGS    = os.getenv('CFLAG
- env.Replace(CXXFLAGS  = os.getenv('CXXFLAGS', ''))
- env.Replace(LINKFLAGS = os.getenv('LDFLAGS',  link_arch))
- env.Replace(LIBPATH   = [os.getenv('LIBPATH', '')])
-+env.Replace(RPATH     = [os.getenv('RPATH', '')])
- 
- # Set -pthread flag explicitly to make sure that pthreads are
- # enabled on all platforms.
-@@ -183,6 +188,9 @@ if sysname == 'freebsd' or sysname == 's
+@@ -188,6 +192,9 @@ if sysname == 'freebsd' or sysname == 's
      env.Append(CPPFLAGS = ' -I/usr/local/include ')
  if sysname == 'sunos':
     env.Replace(SHLINKFLAGS = '-shared ')

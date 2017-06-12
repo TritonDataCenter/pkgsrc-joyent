@@ -1,8 +1,9 @@
 $NetBSD$
 
-SHA1 (galera-3-25.3.19.tar.gz) = d0e738f2c8b52864390c45a58adcfff503b43496
-RMD160 (galera-3-25.3.19.tar.gz) = 037645c6210c483fca32acb4d06160941a58f7ed
-SHA512 (galera-3-25.3.19.tar.gz) = 4d43452ecfb5524f89ae409544f0d76091289866e81bb3ac823af2948347dea63f03e035338d94d7575bd2b224613706ab8287f2003e92f9891d8c1642afe439
-Size (galera-3-25.3.19.tar.gz) = 3137188 bytes
-SHA1 (patch-SConstruct) = fc84f13b3b083a10dde072ec091c7bd176c07180
-SHA1 (patch-galera_src_saved__state.cpp) = 7e641f423a12495f41da60c8a9c9db8ef5c65e28
+SHA1 (galera-3-25.3.20.tar.gz) = 09ed27959f3763845994dbc1a1bcaa445105cadf
+RMD160 (galera-3-25.3.20.tar.gz) = 6c3d4da4375f46855504394a0d54bc052c45292c
+SHA512 (galera-3-25.3.20.tar.gz) = 4531073bbd13542cf4b0ed06788ec0b857971bd2e0161b8df2d90072b134d5343216c012d2f712ff336209f6e34920e2aadf7b0f58f91d6ce365fb2b65ed7fbd
+Size (galera-3-25.3.20.tar.gz) = 3319355 bytes
+SHA1 (patch-SConstruct) = f6a05d5e6f513bb42d5adab698e0680b93d24b72
+SHA1 (patch-galerautils_src_gu__arch.h) = 06105aa9b7be05c1b84801db4bff57205357a6b9
+SHA1 (patch-gcs_src_gcs__gcomm.cpp) = 22eaa1455504cab1793d10d651a86342a52b445b
