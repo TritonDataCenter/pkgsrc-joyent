@@ -1,6 +1,6 @@
 # $NetBSD$
 
-PKGNAME=	${DISTNAME:C/-${SILLYREV}//:S/server/client/}
+PKGNAME=	${DISTNAME:C/-${MYSQLEXT_VER}//:S/server/client/}
 COMMENT=	Percona Server, a MySQL server fork (client)
 
 CONFLICTS=	mysql-client-[0-9]*
@@ -21,10 +21,10 @@ post-install:
 .if defined(MANZ)
 .  for FILE in mysql_client_test_embedded.1 mysqltest_embedded.1
 	${RM} -f ${DESTDIR}${PREFIX}/${PKGMANDIR}/man1/${FILE}
-	${LN} -s ${FILE:S/_embedded//} ${DESTDIR}${PREFIX}/${PKGMANDIR}/man1/${FILE}
+	${LN} -sf ${FILE:S/_embedded//} ${DESTDIR}${PREFIX}/${PKGMANDIR}/man1/${FILE}
 .  endfor
 .endif
-	cd ${DESTDIR}${PREFIX}/lib && ${LN} -s libperconaserverclient.a libmysqlclient.a
-	cd ${DESTDIR}${PREFIX}/lib && ${LN} -s libperconaserverclient.so libmysqlclient.so
+	cd ${DESTDIR}${PREFIX}/lib && ${LN} -sf libperconaserverclient.a libmysqlclient.a
+	cd ${DESTDIR}${PREFIX}/lib && ${LN} -sf libperconaserverclient.so libmysqlclient.so
 
 .include "../../mk/bsd.pkg.mk"

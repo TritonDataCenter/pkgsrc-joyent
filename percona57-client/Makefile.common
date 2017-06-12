@@ -3,10 +3,11 @@
 # used by joyent/percona57-client/Makefile
 # used by joyent/percona57-server/Makefile
 
-SILLYREV=	12
-DISTNAME=	percona-server-5.7.17-${SILLYREV}
+MYSQLEXT_VER=	15
+
+DISTNAME=	percona-server-5.7.18-${MYSQLEXT_VER}
 CATEGORIES=	databases
-MASTER_SITES=	http://www.percona.com/downloads/Percona-Server-5.7/Percona-Server-${PKGVERSION_NOREV}-${SILLYREV}/source/tarball/
+MASTER_SITES=	http://www.percona.com/downloads/Percona-Server-5.7/Percona-Server-${PKGVERSION_NOREV}-${MYSQLEXT_VER}/source/tarball/
 
 MAINTAINER?=	pkgsrc-users@NetBSD.org
 HOMEPAGE=	http://www.percona.com/

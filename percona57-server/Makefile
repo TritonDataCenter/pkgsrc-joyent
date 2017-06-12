@@ -1,6 +1,6 @@
 # $NetBSD$
 
-PKGNAME=	${DISTNAME:tl:C/-${SILLYREV}//}
+PKGNAME=	${DISTNAME:tl:C/-${MYSQLEXT_VER}//}
 COMMENT=	Percona Server, a MySQL server fork (server)
 
 CONFLICTS=	mysql-server-[0-9]*
@@ -65,6 +65,7 @@ CNFSUBST+=		-e 's,@VARBASE@,${VARBASE},g'
 CONF_FILES=		${PREFIX}/share/mysql/my-joyent.cnf \
 			${PKG_SYSCONFDIR}/my.cnf
 
+REPLACE_PERL+=		scripts/mysqldumpslow.sh
 REPLACE_PERL+=		mysql-test/lib/v1/mysql-test-run.pl
 REPLACE_PERL+=		mysql-test/mysql-stress-test.pl
 REPLACE_PERL+=		mysql-test/mysql-test-run.pl
