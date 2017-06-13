@@ -34,8 +34,8 @@ post-install:
 .  endfor
 .endif
 .  for FILE in client client_r
-	cd ${DESTDIR}${PREFIX}/lib && ${LN} -s libperconaserver${FILE}.a libmysql${FILE}.a
-	cd ${DESTDIR}${PREFIX}/lib && ${LN} -s libperconaserver${FILE}.so libmysql${FILE}.so
+	cd ${DESTDIR}${PREFIX}/lib${LIBARCHSUFFIX} && ${LN} -s libperconaserver${FILE}.a libmysql${FILE}.a
+	cd ${DESTDIR}${PREFIX}/lib${LIBARCHSUFFIX} && ${LN} -s libperconaserver${FILE}.so libmysql${FILE}.so
 .  endfor
 
 .include "../../mk/bsd.pkg.mk"

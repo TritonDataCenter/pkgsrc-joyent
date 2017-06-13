@@ -24,7 +24,7 @@ post-install:
 	${LN} -sf ${FILE:S/_embedded//} ${DESTDIR}${PREFIX}/${PKGMANDIR}/man1/${FILE}
 .  endfor
 .endif
-	cd ${DESTDIR}${PREFIX}/lib && ${LN} -sf libperconaserverclient.a libmysqlclient.a
-	cd ${DESTDIR}${PREFIX}/lib && ${LN} -sf libperconaserverclient.so libmysqlclient.so
+	cd ${DESTDIR}${PREFIX}/lib${LIBARCHSUFFIX} && ${LN} -sf libperconaserverclient.a libmysqlclient.a
+	cd ${DESTDIR}${PREFIX}/lib${LIBARCHSUFFIX} && ${LN} -sf libperconaserverclient.so libmysqlclient.so
 
 .include "../../mk/bsd.pkg.mk"
