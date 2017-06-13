@@ -219,7 +219,7 @@ post-extract:
 	${CP} -R ${WRKDIR}/${GALERA} ${WRKSRC}/percona-xtradb-cluster-galera
 
 post-build:
-	cd ${WRKDIR}/${GALERA} && ${SETENV} ${MAKE_ENV} ${GALERA_ENV} scons strict_build_flags=0 tests=0
+	cd ${WRKDIR}/percona-xtradb-cluster-galera && ${SETENV} ${MAKE_ENV} scons strict_build_flags=0 tests=0
 
 # Replace manual pages which only include other ones with a symbolic link
 # if manual compression is activated. The manual pages won't work otherwise.
@@ -233,8 +233,8 @@ post-install:
 	${LN} -s ${FILE:S/_embedded//} ${DESTDIR}${PREFIX}/${PKGMANDIR}/man1/${FILE}
 .  endfor
 .endif
-	${INSTALL_LIB} ${WRKDIR}/${GALERA}/libgalera_smm.so ${DESTDIR}${PREFIX}/lib/mysql/plugin/
-	${INSTALL_PROGRAM} ${WRKDIR}/${GALERA}/garb/garbd ${DESTDIR}${PREFIX}/bin/garbd
+	${INSTALL_LIB} ${WRKSRC}/percona-xtradb-cluster-galera/libgalera_smm.so ${DESTDIR}${PREFIX}/lib/mysql/plugin/
+	${INSTALL_PROGRAM} ${WRKSRC}/percona-xtradb-cluster-galera/garb/garbd ${DESTDIR}${PREFIX}/bin/garbd
 	${INSTALL_MAN} ${WRKSRC}/percona-xtradb-cluster-galera/man/garbd.8 ${DESTDIR}${PREFIX}/${PKGMANDIR}/man8/
 
 .include "../../devel/boost-build/buildlink3.mk"
