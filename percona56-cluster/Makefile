@@ -219,7 +219,7 @@ post-extract:
 	${CP} -R ${WRKDIR}/${GALERA} ${WRKSRC}/percona-xtradb-cluster-galera
 
 post-build:
-	cd ${WRKDIR}/percona-xtradb-cluster-galera && ${SETENV} ${MAKE_ENV} scons strict_build_flags=0 tests=0
+	cd ${WRKSRC}/percona-xtradb-cluster-galera && ${SETENV} ${MAKE_ENV} scons strict_build_flags=0 tests=0
 
 # Replace manual pages which only include other ones with a symbolic link
 # if manual compression is activated. The manual pages won't work otherwise.
