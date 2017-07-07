@@ -1,0 +1,7 @@
+$NetBSD$
+
+SHA1 (pg_repack-1.4.0.tar.gz) = fd5d566c591be83bfafbd3e4d246a6eaccec42f7
+RMD160 (pg_repack-1.4.0.tar.gz) = b61caa42ba4c6722192b652cd45acfaef7bc33d0
+SHA512 (pg_repack-1.4.0.tar.gz) = 94351aba8d4659bc39d83d31fe0e3fa225300704bcfe29deb6d7e607070cadc9a189864dc922b87be48a09dcb551c7b86d599fffa3e7d76ee832e7a4e29c4934
+Size (pg_repack-1.4.0.tar.gz) = 90971 bytes
+SHA1 (patch-bin_Makefile) = 7e82083f0df7e9a1532be323196875bd8ba44520
