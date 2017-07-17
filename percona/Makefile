@@ -11,8 +11,6 @@ LICENSE=	public-domain
 
 META_PACKAGE=	yes
 
-MYSQL_VERSIONS_ACCEPTED=	percona57 percona56 percona55 percona57-cluster percona56-cluster percona55-cluster
-
 .include "../../mk/mysql.buildlink3.mk"
 
 .if empty(MYSQL_PKG_PREFIX:Mpercona*)
