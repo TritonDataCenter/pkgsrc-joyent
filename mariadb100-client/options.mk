@@ -1,9 +1,9 @@
 # $NetBSD$
 
-PKG_OPTIONS_VAR=	PKG_OPTIONS.mariadb10
+PKG_OPTIONS_VAR=	PKG_OPTIONS.mariadb100
 
-PKG_SUPPORTED_OPTIONS+=	dtrace ssl tokudb
-PKG_SUGGESTED_OPTIONS+=	ssl
+PKG_SUPPORTED_OPTIONS+=	dtrace embedded-server ssl tokudb
+PKG_SUGGESTED_OPTIONS+=	embedded-server ssl
 
 .include "../../mk/bsd.options.mk"
 

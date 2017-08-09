@@ -1,9 +1,9 @@
 $NetBSD$
 
-SHA1 (mariadb-10.0.31.tar.gz) = a88c90b79a081c5b4cd2c257940af10c41d70af2
-RMD160 (mariadb-10.0.31.tar.gz) = 84e5172372fe9ef6e9fa1dbc139152ee2c4c4469
-SHA512 (mariadb-10.0.31.tar.gz) = 8f4b6d59999fec77b965b98028ca3f253e950549ad785149d205fe36c3c8f05afd38fc81fd7fa7f44d50dcee83130dc28db18f0e3d198daffa28f24321477f5b
-Size (mariadb-10.0.31.tar.gz) = 63461177 bytes
+SHA1 (mariadb-10.0.32.tar.gz) = 868a79760b4c4668f11336b9295cbe627b035fb7
+RMD160 (mariadb-10.0.32.tar.gz) = a83bf7546ef53be193c5bab7da8fa12fb8828e5b
+SHA512 (mariadb-10.0.32.tar.gz) = e1ecfc2b819b5ffa72fc0d4131fc9d7b6811919e10f15608830611028746580731c653a6b3eb43c92640cd29716b6278f48d27af5322dd2084f2d5f356e6f628
+Size (mariadb-10.0.32.tar.gz) = 63567828 bytes
 SHA1 (patch-CMakeLists.txt) = 708fb1f23161c896d1cfc09e783a41db617ae3e7
 SHA1 (patch-cmake_dtrace.cmake) = 50fa7a9957d5d1fbc6284d98f222cdc9a2687838
 SHA1 (patch-cmake_plugin.cmake) = e36f35ab2998f0082a5d220464d2a93db53a7482
