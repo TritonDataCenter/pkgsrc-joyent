@@ -3,7 +3,7 @@
 # used by joyent/percona57-client/Makefile
 # used by joyent/percona57-server/Makefile
 
-MYSQLEXT_VER=	15
+MYSQLEXT_VER=	16
 
 DISTNAME=	percona-server-5.7.18-${MYSQLEXT_VER}
 CATEGORIES=	databases
