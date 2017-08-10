@@ -2,6 +2,7 @@
 
 PKGNAME=	${DISTNAME:S/-/-server-/}
 COMMENT=	MariaDB, a free SQL database (server)
+PKGREVISION=	1
 
 CONFLICTS=	mysql-server-[0-9]*
 
