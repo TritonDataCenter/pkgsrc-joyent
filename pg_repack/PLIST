@@ -1,5 +1,5 @@
 @comment $NetBSD$
 bin/pg_repack
 lib/postgresql/pg_repack.so
-share/postgresql/extension/pg_repack--1.4.sql
+share/postgresql/extension/pg_repack--${PKGVERSION}.sql
 share/postgresql/extension/pg_repack.control

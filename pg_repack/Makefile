@@ -1,6 +1,6 @@
 # $NetBSD$
 
-DISTNAME=	pg_repack-1.4.0
+DISTNAME=	pg_repack-1.4.1
 PKGNAME=	postgresql${PGSQL_VERSION}-${DISTNAME}
 CATEGORIES=	databases
 MASTER_SITES=	${MASTER_SITE_GITHUB:=reorg/}
