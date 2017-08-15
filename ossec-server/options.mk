@@ -6,9 +6,9 @@ PKG_SUGGESTED_OPTIONS=	#
 
 .include "../../mk/bsd.options.mk"
 
-.if !empty(PKG_OPTIONS:Mmysql) || !empty(PKG_OPTIONS:Mpgsql)
-BUILD_TARGET+=	setdb
-.endif
+#.if !empty(PKG_OPTIONS:Mmysql) || !empty(PKG_OPTIONS:Mpgsql)
+#BUILD_TARGET+=	setdb
+#.endif
 
 .if !empty(PKG_OPTIONS:Mmysql)
 .  include "../../mk/mysql.buildlink3.mk"

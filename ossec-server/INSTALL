@@ -8,8 +8,7 @@ ROOT_USER=@ROOT_USER@
 case ${STAGE} in
 POST-INSTALL)
 	cd ${OSSEC_DIR}
-	${CHOWN} ${ROOT_USER}:${OSSEC_GROUP} etc/decoder.xml etc/internal_options.conf etc/ossec.conf
-	${CHOWN} -R ${ROOT_USER}:${OSSEC_GROUP} etc/shared
+	${CHOWN} -R ${ROOT_USER}:${OSSEC_GROUP} etc
 	${CHOWN} ${ROOT_USER}:${OSSEC_GROUP} active-response/bin/* bin/* 
 	${TOUCH} logs/ossec.log logs/active-responses.log
 	${CHOWN} ${OSSEC_USER}:${OSSEC_GROUP} logs/*

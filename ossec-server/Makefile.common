@@ -3,15 +3,17 @@
 # used by joyent/ossec-local/Makefile
 # used by joyent/ossec-server/Makefile
 
-DISTNAME=	ossec-hids-2.8.2
+DISTNAME=	ossec-hids-2.9.2
 CATEGORIES=	security
-MASTER_SITES=	http://www.ossec.net/files/
+MASTER_SITES=	${MASTER_SITE_GITHUB:=ossec/}
+GITHUB_PROJECT=	ossec-hids
+GITHUB_TAG=	${PKGVERSION_NOREV}
 
 MAINTAINER=	filip@joyent.com
 HOMEPAGE=	http://www.ossec.net/
 LICENSE=	gnu-gpl-v2
 
-USE_TOOLS+=	pkg-config
+USE_TOOLS+=	gmake pkg-config
 USE_LANGUAGES=	c c++
 
 MAKE_JOBS_SAFE=	no
@@ -21,7 +23,11 @@ PATCHDIR=	${.CURDIR}/../../joyent/ossec-server/patches
 FILESDIR=	${.CURDIR}/../../joyent/ossec-server/files
 SMF_NAME=	ossec
 
+.include "../../mk/bsd.prefs.mk"
+
 LUA_VERSIONS_ACCEPTED=	52
+
+PKG_SYSCONFSUBDIR=	ossec
 
 OSSEC_DIR?=		${PREFIX}/ossec
 OSSEC_USER?=		ossec
@@ -37,25 +43,21 @@ PKG_HOME.${OSSEC_USER}=		${OSSEC_DIR}
 PKG_HOME.${OSSEC_MAILUSER}=	${OSSEC_DIR}
 PKG_HOME.${OSSEC_REMUSER}=	${OSSEC_DIR}
 
-OWN_DIRS_PERMS+=	${OSSEC_DIR} ${OSSEC_USER} ${OSSEC_GROUP} 0750
+OWN_DIRS_PERMS+=	${OSSEC_DIR} ${REAL_ROOT_USER} ${OSSEC_GROUP} 0750
+OWN_DIRS_PERMS+=	${OSSEC_DIR}/.ssh ${REAL_ROOT_USER} ${OSSEC_GROUP} 0700
 OWN_DIRS_PERMS+=	${OSSEC_DIR}/etc ${REAL_ROOT_USER} ${OSSEC_GROUP} 0550
-OWN_DIRS_PERMS+=	${OSSEC_DIR}/etc/shared ${REAL_ROOT_USER} ${OSSEC_GROUP} 0770
+OWN_DIRS_PERMS+=	${OSSEC_DIR}/etc/shared ${REAL_ROOT_USER} ${OSSEC_GROUP} 0550
 OWN_DIRS_PERMS+=	${OSSEC_DIR}/logs ${OSSEC_USER} ${OSSEC_GROUP} 0750
-OWN_DIRS_PERMS+=	${OSSEC_DIR}/logs/alerts ${OSSEC_USER} ${OSSEC_GROUP} 0750
-OWN_DIRS_PERMS+=	${OSSEC_DIR}/logs/archives ${OSSEC_USER} ${OSSEC_GROUP} 0750
-OWN_DIRS_PERMS+=	${OSSEC_DIR}/logs/firewall ${OSSEC_USER} ${OSSEC_GROUP} 0750
-OWN_DIRS_PERMS+=	${OSSEC_DIR}/queue/agent-info ${OSSEC_REMUSER} ${OSSEC_GROUP} 0750
-OWN_DIRS_PERMS+=	${OSSEC_DIR}/queue/agentless ${OSSEC_USER} ${OSSEC_GROUP} 0750
+OWN_DIRS_PERMS+=	${OSSEC_DIR}/queue ${REAL_ROOT_USER} ${OSSEC_GROUP} 0550
 OWN_DIRS_PERMS+=	${OSSEC_DIR}/queue/alerts ${OSSEC_USER} ${OSSEC_GROUP} 0770
 OWN_DIRS_PERMS+=	${OSSEC_DIR}/queue/diff ${OSSEC_USER} ${OSSEC_GROUP} 0750
-OWN_DIRS_PERMS+=	${OSSEC_DIR}/queue/fts ${OSSEC_USER} ${OSSEC_GROUP} 0750
 OWN_DIRS_PERMS+=	${OSSEC_DIR}/queue/ossec ${OSSEC_USER} ${OSSEC_GROUP} 0770
-OWN_DIRS_PERMS+=	${OSSEC_DIR}/queue/rids ${OSSEC_REMUSER} ${OSSEC_GROUP} 0770
-OWN_DIRS_PERMS+=	${OSSEC_DIR}/queue/rootcheck ${OSSEC_USER} ${OSSEC_GROUP} 0750
 OWN_DIRS_PERMS+=	${OSSEC_DIR}/queue/syscheck ${OSSEC_USER} ${OSSEC_GROUP} 0750
-OWN_DIRS_PERMS+=	${OSSEC_DIR}/stats ${OSSEC_USER} ${OSSEC_GROUP} 0750
 OWN_DIRS_PERMS+=	${OSSEC_DIR}/tmp ${REAL_ROOT_USER} ${OSSEC_GROUP} 0750
 OWN_DIRS_PERMS+=	${OSSEC_DIR}/var/run ${REAL_ROOT_USER} ${OSSEC_GROUP} 0770
+.if ${OPSYS} == "SunOS"
+OWN_DIRS+=		${OSSEC_DIR}/usr/share/lib/zoneinfo
+.endif
 
 FILES_SUBST+=		OSSEC_DIR=${OSSEC_DIR} OSSEC_GROUP=${OSSEC_GROUP} \
 			OSSEC_USER=${OSSEC_USER} ROOT_USER=${REAL_ROOT_USER}
@@ -74,16 +76,22 @@ SUBST_SED.dir=		-e 's,/var/ossec,${OSSEC_DIR},g'
 CHECK_INTERPRETER_SKIP+=	ossec/agentless/*
 
 BUILD_DIRS=		src
-BUILD_TARGET+=		all build
+BUILD_TARGET+=		build
 
+MAKE_FLAGS+=		PREFIX=${OSSEC_DIR}
 INSTALL_MAKE_FLAGS+=	LUA_VERSION_MAJOR=${LUA_VERSION_MAJOR}
 INSTALL_MAKE_FLAGS+=	LUA_VERSION_MINOR=${LUA_VERSION_MINOR}
+INSTALL_MAKE_FLAGS+=	PREFIX=${DESTDIR}${OSSEC_DIR}
 
 post-extract:
 	${INSTALL_DATA} ${FILESDIR}/Config.OS ${WRKSRC}/src/Config.OS
 
 pre-install:
-	${ECHO} DIR=\"${DESTDIR}${PREFIX}/ossec\" > ${WRKSRC}/src/LOCATION
+	${ECHO} DIR=\"${DESTDIR}${OSSEC_DIR}\" > ${WRKSRC}/src/LOCATION
+
+post-install:
+	${LN} -sf ${LUA_INTERPRETER} ${DESTDIR}${OSSEC_DIR}/bin/ossec-lua
+	${LN} -sf ${LUA_COMPILER} ${DESTDIR}${OSSEC_DIR}/bin/ossec-luac
 
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../security/openssl/buildlink3.mk"

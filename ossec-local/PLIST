@@ -1,10 +1,13 @@
 @comment $NetBSD$
 ossec/active-response/bin/disable-account.sh
 ossec/active-response/bin/firewall-drop.sh
+ossec/active-response/bin/firewalld-drop.sh
 ossec/active-response/bin/host-deny.sh
 ossec/active-response/bin/ip-customblock.sh
 ossec/active-response/bin/ipfw.sh
 ossec/active-response/bin/ipfw_mac.sh
+ossec/active-response/bin/npf.sh
+ossec/active-response/bin/ossec-slack.sh
 ossec/active-response/bin/ossec-tweeter.sh
 ossec/active-response/bin/pf.sh
 ossec/active-response/bin/restart-ossec.sh
@@ -49,11 +52,15 @@ ossec/bin/syscheck_update
 ossec/bin/util.sh
 ossec/bin/verify-agent-conf
 ossec/etc/TIMEZONE
+ossec/etc/client.keys
 ossec/etc/decoder.xml
 ossec/etc/internal_options.conf
+ossec/etc/local_internal_options.conf
 ossec/etc/ossec.conf.sample
 ossec/etc/shared/cis_debian_linux_rcl.txt
 ossec/etc/shared/cis_rhel5_linux_rcl.txt
+ossec/etc/shared/cis_rhel6_linux_rcl.txt
+ossec/etc/shared/cis_rhel7_linux_rcl.txt
 ossec/etc/shared/cis_rhel_linux_rcl.txt
 ossec/etc/shared/rootkit_files.txt
 ossec/etc/shared/rootkit_trojans.txt
@@ -62,6 +69,7 @@ ossec/etc/shared/win_applications_rcl.txt
 ossec/etc/shared/win_audit_rcl.txt
 ossec/etc/shared/win_malware_rcl.txt
 ossec/rules/apache_rules.xml
+ossec/rules/apparmor_rules.xml
 ossec/rules/arpwatch_rules.xml
 ossec/rules/asterisk_rules.xml
 ossec/rules/attack_rules.xml
@@ -71,7 +79,9 @@ ossec/rules/clam_av_rules.xml
 ossec/rules/courier_rules.xml
 ossec/rules/dovecot_rules.xml
 ossec/rules/dropbear_rules.xml
+ossec/rules/exim_rules.xml
 ossec/rules/firewall_rules.xml
+ossec/rules/firewalld_rules.xml
 ossec/rules/ftpd_rules.xml
 ossec/rules/hordeimp_rules.xml
 ossec/rules/ids_rules.xml
@@ -89,6 +99,7 @@ ossec/rules/named_rules.xml
 ossec/rules/netscreenfw_rules.xml
 ossec/rules/nginx_rules.xml
 ossec/rules/openbsd_rules.xml
+ossec/rules/opensmtpd_rules.xml
 ossec/rules/ossec_rules.xml
 ossec/rules/pam_rules.xml
 ossec/rules/php_rules.xml
@@ -111,8 +122,11 @@ ossec/rules/sshd_rules.xml
 ossec/rules/symantec-av_rules.xml
 ossec/rules/symantec-ws_rules.xml
 ossec/rules/syslog_rules.xml
+ossec/rules/sysmon_rules.xml
+ossec/rules/systemd_rules.xml
 ossec/rules/telnetd_rules.xml
 ossec/rules/trend-osce_rules.xml
+ossec/rules/unbound_rules.xml
 ossec/rules/vmpop3d_rules.xml
 ossec/rules/vmware_rules.xml
 ossec/rules/vpn_concentrator_rules.xml

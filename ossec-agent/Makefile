@@ -1,13 +1,13 @@
 # $NetBSD$
 
 PKGNAME=	${DISTNAME:S/hids/agent/}
-PKGREVISION=	1
 COMMENT=	Security tool to monitor and check logs and intrusions
 
 CONFLICTS+=	ossec-server-[0-9]* ossec-local-[0-9]*
 
-BUILD_TARGET=		setagent
-INSTALL_TARGET=		agent
+MAKE_FLAGS+=	TARGET=agent
+
+OWN_DIRS_PERMS+=	${OSSEC_DIR}/queue/rids ${OSSEC_USER} ${OSSEC_GROUP} 0770
 
 .include "../../joyent/ossec-server/Makefile.common"
 .include "../../mk/bsd.pkg.mk"
