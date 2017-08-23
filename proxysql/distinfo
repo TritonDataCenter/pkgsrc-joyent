@@ -1,11 +1,11 @@
 $NetBSD$
 
-SHA1 (proxysql-1.4.0.tar.gz) = ba5ae3cb9304d26be099f6036c4debdc3d8510c8
-RMD160 (proxysql-1.4.0.tar.gz) = 9f02c59ec86f0ee0bb7863c08ac1e507aa4c2d2a
-SHA512 (proxysql-1.4.0.tar.gz) = 7d9903547f8fbf05c3a737e30a054c06d92235dfcfd3dcf6e39fb42cced9a82746f96a345a40eda4cbbc31045f641d62f555c177bc24b6539d72ee02afe23043
-Size (proxysql-1.4.0.tar.gz) = 6895017 bytes
-SHA1 (patch-Makefile) = ebc130d5eea071280891a308fd0375b13592e6a8
-SHA1 (patch-deps_Makefile) = 318e758f78e93bafccdc9f4ebd55b60cf4574a4c
+SHA1 (proxysql-1.4.1.tar.gz) = 32270c271249a5ee0ee810635973ec84575b29d4
+RMD160 (proxysql-1.4.1.tar.gz) = c3bd332aff6b73dc2b5e0f188e7c94bacfe21f73
+SHA512 (proxysql-1.4.1.tar.gz) = b1dcc7eeedd96992453f6da3fada8155ad4e9b1e6ce4b110fd42b3b3c1b31bef2899acc8b27181e65bc7743008199592d63b6622ca933267def99a0da74cfb85
+Size (proxysql-1.4.1.tar.gz) = 6963682 bytes
+SHA1 (patch-Makefile) = 0a81f7cce00b3d532069c81be00706d8ad91b8ee
+SHA1 (patch-deps_Makefile) = 79006c9617e30512e2c33bfacb2a4eddfd054d00
 SHA1 (patch-etc_proxysql.cnf) = b7f5b4cd3d1930fff7cd46c12a31d80415c1245e
 SHA1 (patch-include_MySQL__Data__Stream.h) = 27d7cf5e989e4d2c86ce35d015ae4a91f27e69da
 SHA1 (patch-include_proxy__defines.h) = 92869e76dc6219ff0d5161d2e933d6bcf9fa81fd

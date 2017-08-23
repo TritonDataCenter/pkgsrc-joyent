@@ -1,7 +1,6 @@
 # $NetBSD$
 
-DISTNAME=	proxysql-1.4.0
-PKGNAME=	${DISTNAME}b1
+DISTNAME=	proxysql-1.4.1
 CATEGORIES=	databases
 MASTER_SITES=	${MASTER_SITE_GITHUB:=sysown/}
 
@@ -14,10 +13,6 @@ GITHUB_TAG=	v${PKGVERSION_NOREV}
 
 USE_LANGUAGES=	c c++ c99
 USE_TOOLS+=	gmake
-
-WRKSRC=		${WRKDIR}/${DISTNAME}
-
-#MAKE_JOBS_SAFE=	no
 
 SUBST_CLASSES+=		path
 SUBST_STAGE.path=	pre-configure
@@ -34,6 +29,7 @@ BUILD_TARGET=	default
 
 MAKE_FLAGS+=	EXTRALINK="-lnsl -lsocket -lresolv -liconv"
 MAKE_FLAGS+=	GIT_VERSION=${PKGVERSION_NOREV}
+MAKE_FLAGS+=	MAKEOPT=${_MAKE_JOBS}
 
 # Redirect to pkgsrc packages
 MAKE_FLAGS+=	DAEMONPATH_IDIR="${BUILDLINK_PREFIX.libdaemon}/include"

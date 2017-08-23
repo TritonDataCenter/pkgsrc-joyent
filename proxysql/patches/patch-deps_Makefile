@@ -3,7 +3,7 @@ $NetBSD$
 Only build that which comes with local patches.
 Use portable sed calls.
 
---- deps/Makefile.orig	2017-04-23 05:15:16.000000000 +0000
+--- deps/Makefile.orig	2017-08-01 09:47:01.000000000 +0000
 +++ deps/Makefile
 @@ -9,7 +9,7 @@ MYCFLAGS=-O2
  MYJEOPT=--enable-xmalloc --enable-munmap --enable-prof
@@ -14,7 +14,7 @@ Use portable sed calls.
  .PHONY: default
  
  
-@@ -36,13 +36,16 @@ mariadb-client-library/mariadb_client/in
+@@ -36,7 +36,6 @@ mariadb-client-library/mariadb_client/in
  #	cd mariadb-client-library && tar -zxf mariadb-connector-c-2.1.0-src.tar.gz
  	cd mariadb-client-library && rm -rf mariadb-connector-c-2.3.1
  	cd mariadb-client-library && tar -zxf mariadb-connector-c-2.3.1-src.tar.gz
@@ -22,9 +22,10 @@ Use portable sed calls.
  	cd mariadb-client-library/mariadb_client && patch libmariadb/libmariadb.c < ../libmariadb.c.patch
  	cd mariadb-client-library/mariadb_client && patch libmariadb/net.c < ../net.c.patch
  #	cd mariadb-client-library/mariadb_client && patch libmariadb/mysql_async.c < ../mysql_async.c.patch
- 	cd mariadb-client-library/mariadb_client && patch libmariadb/password.c < ../password.c.patch
+@@ -44,6 +43,10 @@ mariadb-client-library/mariadb_client/in
  #	cd mariadb-client-library/mariadb_client && patch libmariadb/ma_secure.c < ../ma_secure.c.patch
  	cd mariadb-client-library/mariadb_client && patch include/mysql.h < ../mysql.h.patch
+ 	cd mariadb-client-library/mariadb_client && patch libmariadb/my_alloc.c < ../my_alloc.c.patch
 +	cd mariadb-client-library/mariadb_client && patch cmake/CheckTypes.cmake < ../patch-cmake_CheckTypes.cmake
 +	cd mariadb-client-library/mariadb_client && patch libmariadb/my_context.c < ../patch-libmariadb_my__context.c
 +	cd mariadb-client-library/mariadb_client && patch include/my_pthread.h < ../patch-include_my__pthread.h
@@ -32,7 +33,7 @@ Use portable sed calls.
  	cd mariadb-client-library/mariadb_client && CC=${CC} CXX=${CXX} ${MAKE}
  # cd mariadb-client-library/mariadb_client/include && make my_config.h
  
-@@ -72,7 +75,9 @@ re2/re2/obj/libre2.a:
+@@ -73,7 +76,9 @@ re2/re2/obj/libre2.a:
  	cd re2 && tar -zxf re2.tar.gz
  #	cd re2/re2 && sed -i -e 's/-O3 -g /-O3 -fPIC /' Makefile
  #	cd re2 && patch re2/util/mutex.h < mutex.h.patch
