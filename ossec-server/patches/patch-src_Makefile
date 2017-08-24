@@ -67,17 +67,17 @@ $NetBSD$
 -	install -d -m 0750 -o ${OSSEC_USER} -g ${OSSEC_GROUP} ${PREFIX}/queue/ossec
 -	install -d -m 0750 -o ${OSSEC_USER} -g ${OSSEC_GROUP} ${PREFIX}/queue/syscheck
 -	install -d -m 0750 -o ${OSSEC_USER} -g ${OSSEC_GROUP} ${PREFIX}/queue/diff
-+	install -d -m 0550 ${PREFIX}/
++	install -d -m 0750 ${PREFIX}/
 +	install -d -m 0750 ${PREFIX}/logs
  
 -	install -d -m 0550 -o root -g ${OSSEC_GROUP} ${PREFIX}/etc
 -	install -m 0440 -o root -g ${OSSEC_GROUP} /etc/localtime ${PREFIX}/etc
 -
 -	install -d -m 1550 -o root -g ${OSSEC_GROUP} ${PREFIX}/tmp
-+	install -d -m 0550 ${PREFIX}/bin
-+	install -d -m 0550 ${PREFIX}/lua
-+	install -d -m 0550 ${PREFIX}/lua/native
-+	install -d -m 0550 ${PREFIX}/lua/compiled
++	install -d -m 0750 ${PREFIX}/bin
++	install -d -m 0750 ${PREFIX}/lua
++	install -d -m 0750 ${PREFIX}/lua/native
++	install -d -m 0750 ${PREFIX}/lua/compiled
 +	install -m 0550 ossec-logcollector ${PREFIX}/bin
 +	install -m 0550 ossec-syscheckd ${PREFIX}/bin
 +	install -m 0550 ossec-execd ${PREFIX}/bin
@@ -85,13 +85,13 @@ $NetBSD$
 +	install -m 0550 ../contrib/util.sh ${PREFIX}/bin/
 +	install -m 0550 ${OSSEC_CONTROL_SRC} ${PREFIX}/bin/ossec-control
 +
-+	install -d -m 0550 ${PREFIX}/queue
++	install -d -m 0750 ${PREFIX}/queue
 +	install -d -m 0770 ${PREFIX}/queue/alerts
 +	install -d -m 0750 ${PREFIX}/queue/ossec
 +	install -d -m 0750 ${PREFIX}/queue/syscheck
 +	install -d -m 0750 ${PREFIX}/queue/diff
 +
-+	install -d -m 0550 ${PREFIX}/etc
++	install -d -m 0750 ${PREFIX}/etc
 +ifneq (,$(wildcard /etc/localtime))
 +	install -m 0440 /etc/localtime ${PREFIX}/etc
 +endif
@@ -150,7 +150,7 @@ $NetBSD$
  
 -	install -d -m 0550 -o root -g ${OSSEC_GROUP} ${PREFIX}/var
 -	install -d -m 0770 -o root -g ${OSSEC_GROUP} ${PREFIX}/var/run
-+	install -d -m 0550 ${PREFIX}/var
++	install -d -m 0750 ${PREFIX}/var
 +	install -d -m 0770 ${PREFIX}/var/run
  
  	./init/fw-check.sh execute
@@ -220,7 +220,7 @@ $NetBSD$
 +	install -m 0550 rootcheck_control ${PREFIX}/bin/
 +
 +	install -d -m 0750 ${PREFIX}/stats
-+	install -d -m 0550 ${PREFIX}/rules
++	install -d -m 0750 ${PREFIX}/rules
 +	install -m 0640 -b ../etc/rules/*.xml ${PREFIX}/rules
 +	mv ${PREFIX}/rules/local_rules.xml ${PREFIX}/rules/local_rules.xml.sample
 +

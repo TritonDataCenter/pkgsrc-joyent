@@ -6,5 +6,5 @@ SHA512 (ossec-hids-2.9.2.tar.gz) = 53aa181d0da7c14dd7a4c2d854d0532e6254c68abebf3
 Size (ossec-hids-2.9.2.tar.gz) = 1688945 bytes
 SHA1 (patch-etc_ossec-local.conf) = 0318351ef364eec82f93a309c925700369aa12eb
 SHA1 (patch-etc_ossec-server.conf) = 41ac1671a14a9d751db5add33dc9e2f15a360e45
-SHA1 (patch-src_Makefile) = 93be631e386351be76a2734bf20df48939864121
+SHA1 (patch-src_Makefile) = 1937ebc287841e1716a0645804ec45b7201b5624
 SHA1 (patch-src_os__dbd_dbmake.sh) = f0f32cf365756cd11d2747c3b0d2c04da4805a8d
