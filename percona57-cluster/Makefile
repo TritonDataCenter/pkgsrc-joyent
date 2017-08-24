@@ -7,6 +7,7 @@ GALERA_MINOR=   20
 
 DISTNAME=	Percona-XtraDB-Cluster-5.7.17-${WSREP_API_VER}.${GALERA_MINOR}
 PKGNAME=	percona-cluster-${MYSQL_VER}
+PKGREVISION=	1
 CATEGORIES=	databases
 MASTER_SITES=	https://www.percona.com/downloads/Percona-XtraDB-Cluster-57/${DISTNAME}/source/tarball/
 
