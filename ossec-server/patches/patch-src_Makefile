@@ -95,7 +95,7 @@ $NetBSD$
 +ifneq (,$(wildcard /etc/localtime))
 +	install -m 0440 /etc/localtime ${PREFIX}/etc
 +endif
-+	install -d -m 1550 ${PREFIX}/tmp
++	install -d -m 1750 ${PREFIX}/tmp
  
  ifneq (,$(wildcard /etc/TIMEZONE))
 -	install -m 440 -o root -g ${OSSEC_GROUP} /etc/TIMEZONE ${PREFIX}/etc/
@@ -135,9 +135,9 @@ $NetBSD$
 -	install -d -m 0550 -o root -g ${OSSEC_GROUP} ${PREFIX}/active-response/bin
 -	install -d -m 0550 -o root -g ${OSSEC_GROUP} ${PREFIX}/agentless
 -	install -m 0550 -o root -g ${OSSEC_GROUP} agentlessd/scripts/* ${PREFIX}/agentless/
-+	install -d -m 0550 ${PREFIX}/active-response
-+	install -d -m 0550 ${PREFIX}/active-response/bin
-+	install -d -m 0550 ${PREFIX}/agentless
++	install -d -m 0750 ${PREFIX}/active-response
++	install -d -m 0750 ${PREFIX}/active-response/bin
++	install -d -m 0750 ${PREFIX}/agentless
 +	install -m 0550 agentlessd/scripts/* ${PREFIX}/agentless/
  
 -	install -d -m 0700 -o root -g ${OSSEC_GROUP} ${PREFIX}/.ssh
