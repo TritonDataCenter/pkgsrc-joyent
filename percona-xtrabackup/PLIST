@@ -11997,6 +11997,7 @@ percona-xtrabackup-test/t/bug1085099.sh
 percona-xtrabackup-test/t/bug1112224.sh
 percona-xtrabackup-test/t/bug1125993.sh
 percona-xtrabackup-test/t/bug1130627.sh
+percona-xtrabackup-test/t/bug1135431.sh
 percona-xtrabackup-test/t/bug1164945.sh
 percona-xtrabackup-test/t/bug1168513.sh
 percona-xtrabackup-test/t/bug1177201.sh
@@ -12006,6 +12007,8 @@ percona-xtrabackup-test/t/bug1183793.sh
 percona-xtrabackup-test/t/bug1190335.sh
 percona-xtrabackup-test/t/bug1190716.sh
 percona-xtrabackup-test/t/bug1192347.sh
+percona-xtrabackup-test/t/bug1192834-purge.sh
+percona-xtrabackup-test/t/bug1192834-rollback.sh
 percona-xtrabackup-test/t/bug1206363.sh
 percona-xtrabackup-test/t/bug1213778.sh
 percona-xtrabackup-test/t/bug1222062.sh
@@ -12037,6 +12040,7 @@ percona-xtrabackup-test/t/bug1376874.sh
 percona-xtrabackup-test/t/bug1382347.sh
 percona-xtrabackup-test/t/bug1388122.sh
 percona-xtrabackup-test/t/bug1391041.sh
+percona-xtrabackup-test/t/bug1394493.sh
 percona-xtrabackup-test/t/bug1399471.sh
 percona-xtrabackup-test/t/bug1410339.sh
 percona-xtrabackup-test/t/bug1414221.sh
@@ -12060,14 +12064,18 @@ percona-xtrabackup-test/t/bug1527081.sh
 percona-xtrabackup-test/t/bug1532101.sh
 percona-xtrabackup-test/t/bug1533542.sh
 percona-xtrabackup-test/t/bug1535312.sh
+percona-xtrabackup-test/t/bug1551634.sh
 percona-xtrabackup-test/t/bug1566228.sh
 percona-xtrabackup-test/t/bug1590351.sh
+percona-xtrabackup-test/t/bug1600656.sh
 percona-xtrabackup-test/t/bug1623210.sh
 percona-xtrabackup-test/t/bug1630841.sh
 percona-xtrabackup-test/t/bug1642826.sh
 percona-xtrabackup-test/t/bug1647340.sh
 percona-xtrabackup-test/t/bug1652044.sh
 percona-xtrabackup-test/t/bug1669592.sh
+percona-xtrabackup-test/t/bug1671722.sh
+percona-xtrabackup-test/t/bug1691093.sh
 percona-xtrabackup-test/t/bug17076131-master.opt
 percona-xtrabackup-test/t/bug17076131.test
 percona-xtrabackup-test/t/bug33509-master.opt
@@ -12648,6 +12656,7 @@ percona-xtrabackup-test/t/m_i_db_createschema.sql
 percona-xtrabackup-test/t/main.lowercase_table_qcache-master.opt
 percona-xtrabackup-test/t/max_statement_time-master.opt
 percona-xtrabackup-test/t/max_statement_time.test
+percona-xtrabackup-test/t/mdl_locks.sh
 percona-xtrabackup-test/t/mdl_sync-master.opt
 percona-xtrabackup-test/t/mdl_sync.test
 percona-xtrabackup-test/t/mdl_tablespace.test
