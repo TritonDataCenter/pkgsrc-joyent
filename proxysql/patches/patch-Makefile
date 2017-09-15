@@ -2,17 +2,17 @@ $NetBSD$
 
 Sane installation.
 
---- Makefile.orig	2017-08-01 09:47:01.000000000 +0000
+--- Makefile.orig	2017-09-08 14:30:47.000000000 +0000
 +++ Makefile
 @@ -12,7 +12,6 @@ DEBUG=${ALL_DEBUG}
  #export EXTRALINK
- CURVER=1.4.1
+ CURVER?=1.4.2
  MAKEOPT="-j 4"
 -DISTRO := $(shell gawk -F= '/^NAME/{print $$2}' /etc/os-release)
  ifeq ($(wildcard /usr/lib/systemd/system), /usr/lib/systemd/system)
  	SYSTEMD=1
  else
-@@ -441,25 +440,8 @@ cleanall:
+@@ -523,25 +522,8 @@ cleanall:
  	rm binaries/*rpm || true
  
  install: src/proxysql

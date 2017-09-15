@@ -2,8 +2,8 @@ $NetBSD$
 
 Avoid symbol conflicts.
 
---- include/my_pthread.h.orig	2016-08-03 15:39:12.000000000 +0000
-+++ include/my_pthread.h
+--- deps/mariadb-client-library/mariadb_client/include/my_pthread.h.orig	2016-08-03 15:39:12.000000000 +0000
++++ deps/mariadb-client-library/mariadb_client/include/my_pthread.h
 @@ -214,7 +214,7 @@ extern int my_sigwait(const sigset_t *se
  #ifdef HAVE_SCHED_H
  #include <sched.h>

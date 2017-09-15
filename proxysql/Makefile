@@ -1,6 +1,6 @@
 # $NetBSD$
 
-DISTNAME=	proxysql-1.4.1
+DISTNAME=	proxysql-1.4.2
 CATEGORIES=	databases
 MASTER_SITES=	${MASTER_SITE_GITHUB:=sysown/}
 
@@ -12,7 +12,7 @@ LICENSE=	gnu-gpl-v3
 GITHUB_TAG=	v${PKGVERSION_NOREV}
 
 USE_LANGUAGES=	c c++ c99
-USE_TOOLS+=	gmake
+USE_TOOLS+=	gmake tar
 
 SUBST_CLASSES+=		path
 SUBST_STAGE.path=	pre-configure
@@ -41,10 +41,9 @@ MAKE_FLAGS+=	PCRE_PATH="${BUILDLINK_PREFIX.pcre}/include"
 
 INSTALLATION_DIRS+=	bin share/examples/proxysql
 
+# Pre-extract, so that we may patch the source
 post-extract:
-	${CP} ${.CURDIR}/files/patch-cmake_CheckTypes.cmake ${WRKSRC}/deps/mariadb-client-library
-	${CP} ${.CURDIR}/files/patch-libmariadb_my__context.c ${WRKSRC}/deps/mariadb-client-library
-	${CP} ${.CURDIR}/files/patch-include_my__pthread.h ${WRKSRC}/deps/mariadb-client-library
+	cd ${WRKSRC}/deps/mariadb-client-library && ${TAR} -xzf mariadb-connector-c-*.tar.gz
 
 # Use embedded sources, because upstream applies custom patches:
 #.include "../../databases/sqlite3/buildlink3.mk"
