@@ -31,6 +31,7 @@ CONF_FILES+=	${JAVA_HOME}/lib/${file}.default ${JAVA_HOME}/lib/${file}
 
 CHECK_FILES_SKIP+=	${JAVA_HOME}/lib/${EMUL_ARCH}/client/classes.jsa
 CHECK_SHLIBS_SUPPORTED=	NO
+CHECK_SSP_SUPPORTED=	NO
 
 PKG_OPTIONS_VAR=	PKG_OPTIONS.sun-jre6
 PKG_SUPPORTED_OPTIONS=	sun-jre-jce
