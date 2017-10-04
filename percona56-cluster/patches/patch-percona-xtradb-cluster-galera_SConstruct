@@ -2,9 +2,9 @@ $NetBSD$
 
 Fix problem with 'ar' and pass RPATH properly.
 
---- percona-xtradb-cluster-galera/SConstruct.orig	2017-05-31 07:19:41.000000000 +0000
+--- percona-xtradb-cluster-galera/SConstruct.orig	2017-10-04 12:55:51.434028604 +0000
 +++ percona-xtradb-cluster-galera/SConstruct
-@@ -158,6 +158,10 @@ if 'CCACHE_DIR' in os.environ:
+@@ -159,6 +159,10 @@ if 'CCACHE_DIR' in os.environ:
  if 'CCACHE_CPP2' in os.environ:
      env['ENV']['CCACHE_CPP2'] = os.environ['CCACHE_CPP2']
  
@@ -15,8 +15,8 @@ Fix problem with 'ar' and pass RPATH properly.
  # Set CC and CXX compilers
  cc = os.getenv('CC', 'default')
  if cc != 'default':
-@@ -188,6 +192,9 @@ if sysname == 'freebsd' or sysname == 's
-     env.Append(CCFLAGS = ' -I/usr/local/include ')
+@@ -189,6 +193,9 @@ if sysname == 'freebsd' or sysname == 's
+     env.Append(CPPPATH = ['/usr/local/include'])
  if sysname == 'sunos':
     env.Replace(SHLINKFLAGS = '-shared ')
 +   env.Replace(AR = 'ar')

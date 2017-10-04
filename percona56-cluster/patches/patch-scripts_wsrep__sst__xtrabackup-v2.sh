@@ -1,9 +1,9 @@
 $NetBSD$
 
 Make SunOS portable. Patch by Derek Crudgington.
---- scripts/wsrep_sst_xtrabackup-v2.sh.orig	2016-01-24 07:05:46.000000000 +0000
+--- scripts/wsrep_sst_xtrabackup-v2.sh.orig	2017-09-18 02:28:03.000000000 +0000
 +++ scripts/wsrep_sst_xtrabackup-v2.sh
-@@ -367,7 +367,13 @@ get_stream()
+@@ -572,7 +572,13 @@ get_stream()
  get_proc()
  {
      set +e
@@ -18,7 +18,7 @@ Make SunOS portable. Patch by Derek Crudgington.
      [[ -z $nproc || $nproc -eq 0 ]] && nproc=1
      set -e
  }
-@@ -397,7 +403,7 @@ cleanup_joiner()
+@@ -602,7 +608,7 @@ cleanup_joiner()
      fi
  
      # Final cleanup 
@@ -27,7 +27,7 @@ Make SunOS portable. Patch by Derek Crudgington.
  
      # This means no setsid done in mysqld.
      # We don't want to kill mysqld here otherwise.
-@@ -454,7 +460,7 @@ cleanup_donor()
+@@ -641,7 +647,7 @@ cleanup_donor()
      fi
  
      # Final cleanup 
@@ -36,9 +36,9 @@ Make SunOS portable. Patch by Derek Crudgington.
  
      # This means no setsid done in mysqld.
      # We don't want to kill mysqld here otherwise.
-@@ -501,7 +507,11 @@ wait_for_listen()
-     local MODULE=$3
-     for i in {1..50}
+@@ -681,7 +687,11 @@ wait_for_listen()
+ 
+     for i in {1..300}
      do
 -        ss -p state listening "( sport = :$PORT )" | grep -qE 'socat|nc' && break
 +        if [[ $(uname -s | grep SunOS) ]]; then
@@ -48,4 +48,4 @@ Make SunOS portable. Patch by Derek Crudgington.
 +        fi
          sleep 0.2
      done
-     echo "ready ${ADDR}/${MODULE}//$sst_ver"
+ 
