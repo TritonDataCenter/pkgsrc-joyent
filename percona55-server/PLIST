@@ -526,11 +526,9 @@ share/mysql/test/include/percona_query_cache_with_comments_eval.inc
 share/mysql/test/include/percona_query_cache_with_comments_show.inc
 share/mysql/test/include/percona_server_variables.inc
 share/mysql/test/include/percona_show_ibd_size.inc
-share/mysql/test/include/percona_show_slave_status_nolock.inc
 share/mysql/test/include/percona_signal_handling.inc
 share/mysql/test/include/percona_slow_log_verbosity_grep.inc
 share/mysql/test/include/percona_slow_query_log_rate.inc
-share/mysql/test/include/percona_userstat_conn_handling.inc
 share/mysql/test/include/plugin.defs
 share/mysql/test/include/ps_conv.inc
 share/mysql/test/include/ps_create.inc
@@ -666,6 +664,7 @@ share/mysql/test/lib/My/SafeProcess/my_safe_process
 share/mysql/test/lib/My/SysInfo.pm
 share/mysql/test/lib/My/Test.pm
 share/mysql/test/lib/Subunit.pm
+share/mysql/test/lib/generate_percona_ssl_certs.sh
 share/mysql/test/lib/mtr_cases.pm
 share/mysql/test/lib/mtr_gcov.pl
 share/mysql/test/lib/mtr_gprof.pl
@@ -729,6 +728,7 @@ share/mysql/test/r/bench_count_distinct.result
 share/mysql/test/r/big_test.require
 share/mysql/test/r/bigint.result
 share/mysql/test/r/binary.result
+share/mysql/test/r/binary_to_hex.result
 share/mysql/test/r/binlog_tx_isolation.result
 share/mysql/test/r/blackhole.result
 share/mysql/test/r/blackhole_plugin.result
@@ -758,7 +758,11 @@ share/mysql/test/r/bug78230.result
 share/mysql/test/r/bug80134.result
 share/mysql/test/r/bug81409.result
 share/mysql/test/r/bug81447.result
+share/mysql/test/r/bug81449.result
 share/mysql/test/r/bug81457.result
+share/mysql/test/r/bug84640.result
+share/mysql/test/r/bug84656.result
+share/mysql/test/r/bug86260.result
 share/mysql/test/r/bulk_replace.result
 share/mysql/test/r/cache_innodb.result
 share/mysql/test/r/case.result
@@ -1220,6 +1224,8 @@ share/mysql/test/r/percona_bug1354988.result
 share/mysql/test/r/percona_bug1379582.result
 share/mysql/test/r/percona_bug1416582.result
 share/mysql/test/r/percona_bug1617586.result
+share/mysql/test/r/percona_bug1657941.result
+share/mysql/test/r/percona_bug1704056.result
 share/mysql/test/r/percona_bug45702.result
 share/mysql/test/r/percona_bug643149.result
 share/mysql/test/r/percona_bug74578.result
@@ -1316,7 +1322,6 @@ share/mysql/test/r/percona_status_wait_query_cache_mutex.result
 share/mysql/test/r/percona_tls.result
 share/mysql/test/r/percona_userstat.result
 share/mysql/test/r/percona_userstat_conn_handling.result
-share/mysql/test/r/percona_userstat_conn_handling_threadpool.result
 share/mysql/test/r/percona_utf8_general50_ci.result
 share/mysql/test/r/percona_utility_user.result
 share/mysql/test/r/percona_xtradb_admin_command.result
@@ -1429,6 +1434,8 @@ share/mysql/test/r/ssl_compress.result
 share/mysql/test/r/ssl_connect.result
 share/mysql/test/r/ssl_mode.result
 share/mysql/test/r/ssl_mode_no_ssl.result
+share/mysql/test/r/ssl_san.result
+share/mysql/test/r/ssl_san_ipv6.result
 share/mysql/test/r/status.result
 share/mysql/test/r/status2.result
 share/mysql/test/r/status_bug17954.result
@@ -1653,6 +1660,10 @@ share/mysql/test/std_data/parts/t1_will_crash#P#p4.MYI
 share/mysql/test/std_data/parts/t1_will_crash#P#p6.MYD
 share/mysql/test/std_data/parts/t1_will_crash#P#p6_2.MYD
 share/mysql/test/std_data/parts/t1_will_crash#P#p6_3.MYD
+share/mysql/test/std_data/percona-cacert.pem
+share/mysql/test/std_data/percona-cakey.pem
+share/mysql/test/std_data/percona-serversan-cert.pem
+share/mysql/test/std_data/percona-serversan-key.pem
 share/mysql/test/std_data/rpl_bug28618.dat
 share/mysql/test/std_data/rpl_loaddata.dat
 share/mysql/test/std_data/rpl_loaddata2.dat
@@ -4400,6 +4411,7 @@ share/mysql/test/suite/rpl/r/rpl_replicate_do.result
 share/mysql/test/suite/rpl/r/rpl_replicate_ignore_db.result
 share/mysql/test/suite/rpl/r/rpl_report.result
 share/mysql/test/suite/rpl/r/rpl_report_port.result
+share/mysql/test/suite/rpl/r/rpl_reset_slave_fail.result
 share/mysql/test/suite/rpl/r/rpl_rotate_logs.result
 share/mysql/test/suite/rpl/r/rpl_rotate_purge_deadlock.result
 share/mysql/test/suite/rpl/r/rpl_row_001.result
@@ -4798,6 +4810,7 @@ share/mysql/test/suite/rpl/t/rpl_report-slave.opt
 share/mysql/test/suite/rpl/t/rpl_report.test
 share/mysql/test/suite/rpl/t/rpl_report_port-master.opt
 share/mysql/test/suite/rpl/t/rpl_report_port.test
+share/mysql/test/suite/rpl/t/rpl_reset_slave_fail.test
 share/mysql/test/suite/rpl/t/rpl_rotate_logs.cnf
 share/mysql/test/suite/rpl/t/rpl_rotate_logs.test
 share/mysql/test/suite/rpl/t/rpl_rotate_purge_deadlock-master.opt
@@ -5445,7 +5458,6 @@ share/mysql/test/suite/sys_vars/r/query_cache_type_basic.result
 share/mysql/test/suite/sys_vars/r/query_cache_type_func.result
 share/mysql/test/suite/sys_vars/r/query_cache_wlock_invalidate_basic.result
 share/mysql/test/suite/sys_vars/r/query_cache_wlock_invalidate_func.result
-share/mysql/test/suite/sys_vars/r/query_exec_id_basic.result
 share/mysql/test/suite/sys_vars/r/query_exec_time_basic.result
 share/mysql/test/suite/sys_vars/r/query_prealloc_size_basic.result
 share/mysql/test/suite/sys_vars/r/query_prealloc_size_func.result
@@ -6030,7 +6042,6 @@ share/mysql/test/suite/sys_vars/t/query_cache_type_basic.test
 share/mysql/test/suite/sys_vars/t/query_cache_type_func.test
 share/mysql/test/suite/sys_vars/t/query_cache_wlock_invalidate_basic.test
 share/mysql/test/suite/sys_vars/t/query_cache_wlock_invalidate_func.test
-share/mysql/test/suite/sys_vars/t/query_exec_id_basic.test
 share/mysql/test/suite/sys_vars/t/query_exec_time_basic.test
 share/mysql/test/suite/sys_vars/t/query_prealloc_size_basic.test
 share/mysql/test/suite/sys_vars/t/query_prealloc_size_func.test
@@ -6236,6 +6247,7 @@ share/mysql/test/t/auto_increment.test
 share/mysql/test/t/bench_count_distinct.test
 share/mysql/test/t/bigint.test
 share/mysql/test/t/binary.test
+share/mysql/test/t/binary_to_hex.test
 share/mysql/test/t/blackhole.test
 share/mysql/test/t/blackhole_plugin-master.opt
 share/mysql/test/t/blackhole_plugin.test
@@ -6272,7 +6284,12 @@ share/mysql/test/t/bug78230.test
 share/mysql/test/t/bug80134.test
 share/mysql/test/t/bug81409.test
 share/mysql/test/t/bug81447.test
+share/mysql/test/t/bug81449.test
 share/mysql/test/t/bug81457.test
+share/mysql/test/t/bug84640.test
+share/mysql/test/t/bug84656-master.opt
+share/mysql/test/t/bug84656.test
+share/mysql/test/t/bug86260.test
 share/mysql/test/t/bulk_replace.test
 share/mysql/test/t/cache_innodb.test
 share/mysql/test/t/case.test
@@ -6754,6 +6771,8 @@ share/mysql/test/t/percona_bug1354988.test
 share/mysql/test/t/percona_bug1379582.test
 share/mysql/test/t/percona_bug1416582.test
 share/mysql/test/t/percona_bug1617586.test
+share/mysql/test/t/percona_bug1657941.test
+share/mysql/test/t/percona_bug1704056.test
 share/mysql/test/t/percona_bug45702.test
 share/mysql/test/t/percona_bug643149.test
 share/mysql/test/t/percona_bug74578.test
@@ -6875,8 +6894,6 @@ share/mysql/test/t/percona_tls.test
 share/mysql/test/t/percona_ucs2_general50_ci.test
 share/mysql/test/t/percona_userstat.test
 share/mysql/test/t/percona_userstat_conn_handling.test
-share/mysql/test/t/percona_userstat_conn_handling_threadpool-master.opt
-share/mysql/test/t/percona_userstat_conn_handling_threadpool.test
 share/mysql/test/t/percona_utf8_general50_ci.test
 share/mysql/test/t/percona_utility_user-master.opt
 share/mysql/test/t/percona_utility_user.test
@@ -7007,6 +7024,10 @@ share/mysql/test/t/ssl_connect.test
 share/mysql/test/t/ssl_mode.test
 share/mysql/test/t/ssl_mode_no_ssl-master.opt
 share/mysql/test/t/ssl_mode_no_ssl.test
+share/mysql/test/t/ssl_san-master.opt
+share/mysql/test/t/ssl_san.test
+share/mysql/test/t/ssl_san_ipv6-master.opt
+share/mysql/test/t/ssl_san_ipv6.test
 share/mysql/test/t/status-master.opt
 share/mysql/test/t/status.test
 share/mysql/test/t/status2.test
