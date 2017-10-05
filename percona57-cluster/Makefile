@@ -236,6 +236,7 @@ post-install:
 	${INSTALL_MAN} ${WRKSRC}/percona-xtradb-cluster-galera/man/garbd.8 ${DESTDIR}${PREFIX}/${PKGMANDIR}/man8/
 
 .include "../../archivers/lz4/buildlink3.mk"
+.include "../../devel/boost-libs/buildlink3.mk"
 .include "../../devel/check/buildlink3.mk"
 .include "../../devel/libevent/buildlink3.mk"
 .include "../../devel/readline/buildlink3.mk"
