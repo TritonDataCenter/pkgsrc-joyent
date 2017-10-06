@@ -23,6 +23,7 @@ USE_TOOLS+=	pax
 NO_CONFIGURE=	yes
 
 CHECK_INTERPRETER_SKIP+=	chef/embedded/*
+CHECK_SSP_SUPPORTED=		no
 
 do-build:
 	${RUN} for l in $$(awk '{if($$2=="s") print $$4}' ${WRKSRC}/pkgmap); do \
