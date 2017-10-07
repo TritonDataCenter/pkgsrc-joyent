@@ -26,6 +26,7 @@ DISTINFO_FILE=	${.CURDIR}/distinfo.${OS_PLATFORM}
 WRKSRC=		${WRKDIR}/instantclient_${ORACLE_VERSION}
 
 CHECK_SHLIBS_SUPPORTED=	no
+CHECK_SSP_SUPPORTED=	no
 
 RESTRICTED=	Packaging prohibited by Oracle license
 NO_BIN_ON_CDROM=	${RESTRICTED}
