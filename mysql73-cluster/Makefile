@@ -117,8 +117,10 @@ CXXFLAGS+=		-fPIC -DPIC
 .endif
 
 # force HAVE_CURSES_H on Solaris since the configure script is broken
-# and does not properly detect this, breaking the build later on.
+# and does not properly detect this, breaking the build later on.  Also
+# # explicitly disable epoll support as it is Linux-specific.
 .if ${OPSYS} == "SunOS"
+CMAKE_ARGS+=		-DHAVE_SYS_EPOLL_H=NO
 CFLAGS+=		-DHAVE_CURSES_H
 CXXFLAGS+=		-DHAVE_CURSES_H
 .endif
