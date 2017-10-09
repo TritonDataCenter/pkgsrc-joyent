@@ -4,6 +4,7 @@ MYSQL_VER=	5.7.19
 WSREP_API_VER=  29
 GALERA_MAJOR=   3
 GALERA_MINOR=   22
+PKGREVISION=	1
 
 DISTNAME=	Percona-XtraDB-Cluster-${MYSQL_VER}-${WSREP_API_VER}.${GALERA_MINOR}
 PKGNAME=	percona-cluster-${MYSQL_VER}
@@ -18,13 +19,6 @@ LICENSE=	gnu-gpl-v2 AND gnu-gpl-v3
 # Galera
 BUILD_DEPENDS+=         scons-[0-9]*:../../devel/scons
 CONFLICTS=		{mysql,percona}*-{client,server}-[0-9]*
-
-# MySQL 5.7 requires a specific version of boost, so we use our own
-# copy here
-BOOST=			boost_1_59_0
-DISTFILES=		${DISTNAME}${EXTRACT_SUFX}
-DISTFILES+=		${BOOST}.tar.bz2
-SITES.${BOOST}.tar.bz2=	${MASTER_SITE_SOURCEFORGE:=boost/}
 
 USE_CMAKE=		yes
 USE_LANGUAGES=		c c++ c99
@@ -80,7 +74,7 @@ CMAKE_ARGS+=		-DMYSQL_DATADIR=${MYSQL_DATADIR}
 
 CMAKE_ARGS+=		-DCMAKE_BUILD_TYPE=Release
 CMAKE_ARGS+=		-DLIBEVENT_LIBRARY=event
-CMAKE_ARGS+=		-DWITH_BOOST=${WRKDIR}/${BOOST}
+CMAKE_ARGS+=		-DWITH_BOOST=system
 CMAKE_ARGS+=		-DWITH_LIBEVENT=system
 CMAKE_ARGS+=		-DWITH_LZ4=system
 CMAKE_ARGS+=		-DWITH_READLINE=system
@@ -236,6 +230,7 @@ post-install:
 	${INSTALL_MAN} ${WRKSRC}/percona-xtradb-cluster-galera/man/garbd.8 ${DESTDIR}${PREFIX}/${PKGMANDIR}/man8/
 
 .include "../../archivers/lz4/buildlink3.mk"
+.include "../../devel/boost-headers/buildlink3.mk"
 .include "../../devel/boost-libs/buildlink3.mk"
 .include "../../devel/check/buildlink3.mk"
 .include "../../devel/libevent/buildlink3.mk"
