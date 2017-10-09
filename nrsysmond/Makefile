@@ -42,6 +42,8 @@ SMF_MANIFEST=		nrsysmond.xml
 SMF_MANIFEST.nrsysmond=	nrsysmond.xml
 SMF_MANIFEST_SRC=	${SMF_SRCDIR}/${SMF_MANIFEST}
 
+CHECK_SSP_SUPPORTED=	no
+
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/daemon/nrsysmond.${NARCH}	\
 	  ${DESTDIR}${PREFIX}/sbin/nrsysmond
