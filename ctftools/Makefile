@@ -36,6 +36,7 @@ LICENSE=	cddl-1.0
 
 USE_LANGUAGES=	# none
 NO_BUILD=	yes
+CTF_SUPPORTED=	yes
 
 CTFBINDIR=	onbld/bin/i386
 CTFLIBDIR=	onbld/lib/i386
