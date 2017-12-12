@@ -1,4 +1,29 @@
 # $NetBSD$
+#
+# These tools were built on jperkin's smartos-live build host running
+# joyent_20170202T033902Z, patched with fixes for the following issues:
+#
+# OS-6428
+# OS-6457
+# OS-6469
+# OS-6485
+# OS-6486
+# OS-6488
+# OS-6505
+#
+# The tarball was generated with:
+#
+# $ bldenv ..
+# $ cd usr/src
+# $ dmake setup
+# $ cd tools/proto/root_i386-nd/opt
+# $ cp /lib/libavl.so.1 onbld/lib/i386
+# $ tar zcf ctftools-1.0.tar.gz onbld/bin/i386/ctf* \
+#     onbld/lib/i386/lib{avl,ctf,dwarf}.so.1
+#
+# The platform libavl.so.1 is required due to difference between the
+# build platform and the 2014Q4 build hosts (joyent_20141030T081701Z)
+#
 
 DISTNAME=	ctftools-1.0
 CATEGORIES=	sysutils
