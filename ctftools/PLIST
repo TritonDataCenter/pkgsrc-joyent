@@ -1,0 +1,12 @@
+@comment $NetBSD$
+onbld/bin/i386/ctfconvert
+onbld/bin/i386/ctfconvert-altexec
+onbld/bin/i386/ctfdiff
+onbld/bin/i386/ctfdump
+onbld/bin/i386/ctfmerge
+onbld/bin/i386/ctfmerge-altexec
+onbld/bin/i386/ctfstabs
+onbld/bin/i386/ctfstrip
+onbld/lib/i386/libavl.so.1
+onbld/lib/i386/libctf.so.1
+onbld/lib/i386/libdwarf.so.1
