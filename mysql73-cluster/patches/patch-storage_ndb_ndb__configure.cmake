@@ -1,0 +1,16 @@
+$NetBSD$
+
+Explicitly disable epoll on SunOS.
+
+--- storage/ndb/ndb_configure.cmake.orig	2014-07-02 09:22:14.000000000 +0000
++++ storage/ndb/ndb_configure.cmake
+@@ -56,7 +56,9 @@ CHECK_FUNCTION_EXISTS(sched_get_priority
+ CHECK_FUNCTION_EXISTS(sched_setaffinity HAVE_SCHED_SETAFFINITY)
+ CHECK_FUNCTION_EXISTS(sched_setscheduler HAVE_SCHED_SETSCHEDULER)
+ CHECK_FUNCTION_EXISTS(processor_bind HAVE_PROCESSOR_BIND)
++IF(NOT CMAKE_SYSTEM_NAME MATCHES "SunOS")
+ CHECK_FUNCTION_EXISTS(epoll_create HAVE_EPOLL_CREATE)
++ENDIF()
+ CHECK_FUNCTION_EXISTS(memalign HAVE_MEMALIGN)
+ CHECK_FUNCTION_EXISTS(sysconf HAVE_SYSCONF)
+ CHECK_FUNCTION_EXISTS(directio HAVE_DIRECTIO)
