@@ -54,6 +54,10 @@ CHECK_PORTABILITY_SKIP+=	build-ps/*
 CHECK_PORTABILITY_SKIP+=	percona-xtradb-cluster-galera/scripts/*
 CHECK_PORTABILITY_SKIP+=	storage/ndb/mcc/frontend/dojo/dojox/mobile/build/build.sh
 
+# failed to set type size for 601 to 0x200: Invalid argument
+CTF_FILES_SKIP+=	${PREFIX}/bin/myisamlog
+CTF_FILES_SKIP+=	${PREFIX}/bin/replace
+
 BUILD_DEFS+=		VARBASE
 
 # paths
