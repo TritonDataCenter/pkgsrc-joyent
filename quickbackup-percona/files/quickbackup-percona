@@ -1,0 +1,429 @@
+#!/sbin/sh
+#
+# Joyent QuickBackup, A MySQL backup service powered by Percona Xtrabackup.
+# See: http://wiki.joyent.com/jpc2/Joyent+Quickbackup+for+Percona+MySQL+Server
+# Version 3.5
+
+. /lib/svc/share/smf_include.sh
+set -f
+
+PATH="/opt/local/bin:/opt/local/sbin:/usr/bin:/usr/sbin";
+DATE=`date +%Y-%m-%d_%H-%M-%S`;
+LOGFILE="/var/log/mysql/quickbackup-percona.log";
+BACKUPFILE="${DATE}-backup";
+DATADIR="/var/mysql";
+SMF_FMRI="svc:/pkgsrc/quickbackup-percona";
+MEMCAP=`kstat -m memory_cap -c zone_memory_cap -s physcap -p | cut -f2 | awk '{ printf("%d", $1/1024/1024)}'`;
+MEMUSED=`kstat -m memory_cap -c zone_memory_cap -s rss -p | cut -f2 | awk '{ printf("%d", $1/1024/1024) }'`
+MEMFREE=`echo "(${MEMCAP}-${MEMUSED})/2" | bc`;
+MYSQLCONF="/opt/local/etc/my.cnf";
+trap sighandler SIGINT SIGTERM
+
+sighandler() {
+	echo "Caught signal, cleaning up..";
+	rm -rf `svcprop -p quickbackup/backupdir ${SMF_FMRI} 2> /dev/null`/${BACKUPFILE}.tar.gz > /dev/null 2>&1 \
+	`svcprop -p quickbackup/backupdir ${SMF_FMRI} 2> /dev/null`/${BACKUPFILE}.xbs > /dev/null 2>&1 \
+	`svcprop -p quickbackup/backupdir ${SMF_FMRI} 2> /dev/null`/.tmp > /dev/null 2>&1;
+	exit 1;
+}
+getprops() {
+	# Check if SMF_FMRI exists
+        CHECK=`svcs ${SMF_FMRI} 2>/dev/null`;
+        [ $? -gt 0 ] && logerror "ERROR - ${SMF_FMRI} wasn't found in SMF." && exit 1;
+
+	# Get SMF properties
+	USERNAME=`svcprop -p quickbackup/username ${SMF_FMRI} 2>/dev/null`;
+	PASSWORD=`svcprop -p quickbackup/password ${SMF_FMRI} 2>/dev/null`;
+	MINUTEARG=`svcprop -p quickbackup/minute ${SMF_FMRI} 2>/dev/null`;
+	HOURARG=`svcprop -p quickbackup/hour ${SMF_FMRI} 2>/dev/null`;
+	DAYARG=`svcprop -p quickbackup/day ${SMF_FMRI} 2>/dev/null`;
+	EXPIREDAYSARG=`svcprop -p quickbackup/expiredays ${SMF_FMRI} 2>/dev/null`;
+	DATABASESARG=`svcprop -p quickbackup/databases ${SMF_FMRI} 2>/dev/null`;
+	BACKUPDIR=`svcprop -p quickbackup/backupdir ${SMF_FMRI} 2>/dev/null`;
+	STREAM=`svcprop -p quickbackup/stream ${SMF_FMRI} 2>/dev/null`;
+}
+dochecks() {
+	# Check if properties are set
+	[ -z "${USERNAME}" ] && logerror "ERROR - quickbackup/username property not set" && exit 1;
+	[ -z "${PASSWORD}" ] && logerror "ERROR - quickbackup/password property not set" && exit 1;
+	[ -z "${MINUTEARG}" ] && logerror "ERROR - quickbackup/minute property not set" && exit 1;
+	[ -z "${HOURARG}" ] && logerror "ERROR - quickbackup/hour property not set" && exit 1;
+	[ -z "${DAYARG}" ] && logerror "ERROR - quickbackup/day property not set" && exit 1;
+	[ -z "${EXPIREDAYSARG}" ] && logerror "ERROR - quickbackup/expiredays property not set" && exit 1;
+	[ -z "${DATABASESARG}" ] && logerror "ERROR - quickbackup/databases property not set" && exit 1;
+	[ -z "${BACKUPDIR}" ] && logerror "ERROR - quickbackup/backupdir property not set" && exit 1;
+	[ -z "${STREAM}" ] && logerror "ERROR - quickbackup/stream property not set" && exit 1;
+
+	[ ${STREAM} = "tar" ] && log "* Backup for ${BACKUPDIR}/${BACKUPFILE}.tar.gz";
+	[ ${STREAM} = "xbstream" ] && log "* Backup for ${BACKUPDIR}/${BACKUPFILE}.xbs";
+
+	# Check if innobackupex/xtrabackup exist
+	command -v innobackupex >/dev/null 2>&1 || { echo >&2 "* ERROR - innobackupex was not found in your PATH."; exit 1; }
+	command -v xtrabackup >/dev/null 2>&1 || { echo >&2 "* ERROR - xtrabackup was not found in your PATH."; exit 1; }
+
+	# Check that quickbackup/stream is either tar or xbstream
+	[ ${STREAM} != "tar" ] && [ ${STREAM} != "xbstream" ] && logerror "ERROR - Stream must be either tar or xbstream" && exit 1;
+
+	# Check if mysql percona is running
+	[ ! `pgrep mysqld` ] && logerror "ERROR - MySQL percona isn't running" && exit 1;
+
+	# Check if we can connect to mysql with the user/password set in SMF
+	CONNECT=`mysqladmin -u"${USERNAME}" -p${PASSWORD} status 2>/dev/null`;
+	[ $? -gt 0 ] && logerror "ERROR - Couldn't connect to mysql with ${USERNAME}/${PASSWORD}" && exit 1;
+
+	# Check if databases exist
+        IFS=,;
+        for i in ${DATABASESARG}; do
+		[ "${i}" = "all" ] && continue;
+		[ -z "${i}" ] && logerror "ERROR - quickbackup/databases property is not in the right format." && exit 1;
+		[ ! -d "${DATADIR}/${i}" ] && logerror "ERROR - Database $i doesn't exist" && exit 1;
+	done
+
+	# Check if quickbackup/backupdir exists and is writeable
+	[ ! -d "${BACKUPDIR}" ] && logerror "ERROR - ${BACKUPDIR} doesn't exist.  mkdir ${BACKUPDIR} && chown mysql:mysql ${BACKUPDIR}." && exit 1;
+	CHECKWRITE=`touch ${BACKUPDIR}/.test 2>/dev/null`;
+        [ $? -ne 0 ] && logerror "ERROR - Can't write to ${BACKUPDIR}.  chown mysql:mysql ${BACKUPDIR}." && exit 1;
+	rm ${BACKUPDIR}/.test 2>/dev/null;
+}
+
+createstring() { 
+	# Check if properties are within accepted values and assign them
+	# quickbackup/databases - Matches dbname1,dbname2,dbname3 or 'all'.  Currently accepts a maximum of 100 databases.
+        N=0;
+        IFS=,;
+        for i in ${DATABASESARG}; do
+                if [ "${i}" = "all" ]; then
+                        DATABASESSTRING="all";
+                else
+                        eval "DATABASE${N}='$i '";
+                        N=`expr ${N} + 1`;
+                fi
+        done
+
+        i=0;
+	if [ -n "${DATABASESSTRING}" ]; then
+		:
+	else
+        	while [ "${i}" -lt 100 ]; do
+                	eval DATABASESSTRING1="\${DATABASESSTRING1}\${DATABASE${i}}";
+                	i=`expr ${i} + 1`;
+        	done
+		DATABASESSTRING=`echo "${DATABASESSTRING1}" | sed '$s/.$//'`;
+	fi
+
+	# quickbackup/expiredays - Matches none or 1-255
+	if [ `echo "${EXPIREDAYSARG}" | egrep "^none$|^[1-9]$|^[1-9][0-9]$|^1[0-9][0-9]$|^2[0-4][0-9]$|^25[0-5]$"` ]; then
+		EXPIREDAYSSTRING=${EXPIREDAYSARG};
+	else
+        	logerror "ERROR - Wrong value for expiredays: ${EXPIREDAYSARG}.  Acceptable values are 'none' or 1-255.";
+		exit 1;
+	fi
+
+	# quickbackup/minute - Matches 0-59
+	N=0;
+	IFS=,;
+	for i in ${MINUTEARG}; do
+        	case "$i" in
+                	[12345][0-9]|[0-9])
+                        	eval "MIN${N}='$i,'";
+	                        N=`expr ${N} + 1`;
+       	                	;;
+                	all)
+                        	MINSTRING="*";
+                        	;;
+                	*)
+                        	logerror "ERROR - Wrong value for minute: $i.  Acceptable values are 0-59.";
+                        	exit 1;
+        	esac
+	done
+
+	if [ -n "${MINSTRING}" ]; then
+        	:
+	else
+        	for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 \
+        	23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 \
+        	46 47 48 49 50 51 52 53 54 55 56 57 58 59; do
+                	eval MINSTRING1="\${MINSTRING1}\${MIN${i}}";
+        	done
+        	MINSTRING=`echo "${MINSTRING1}" | sed 's/,$//g'`;
+	fi
+
+	# quickbackup/hour - Matches 0-23
+	N=0;
+	IFS=,;
+	for i in ${HOURARG}; do
+        	case "$i" in
+                	[0-9]|[1][0-9]|2[0-3])
+                        	eval "HOUR${N}='$i,'";
+                        	N=`expr ${N} + 1`;
+                        	;;
+                	all)
+                        	HOURSTRING="*";
+                        	;;
+                	*)
+                        	logerror "ERROR - Wrong value for hour: $i.  Acceptable values are 0-23.";
+                        	exit 1;
+        	esac
+	done
+
+	if [ -n "${HOURSTRING}" ]; then
+        	:
+	else
+        	for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23; do
+                	eval HOURSTRING1="\${HOURSTRING1}\$HOUR${i}";
+        	done
+        	HOURSTRING=`echo "${HOURSTRING1}" | sed 's/,$//g'`;
+	fi
+
+	# quickbackup/day - Matches 0-6
+	N=0;
+	IFS=,;
+	for i in ${DAYARG}; do
+        	case "$i" in
+                	sun)
+                        	eval "DAY${N}='0,'";
+                        	N=`expr ${N} + 1`;
+                        	;;
+                	mon)
+                        	eval "DAY${N}='1,'";
+                        	N=`expr ${N} + 1`;
+                        	;;
+                	tue)
+                        	eval "DAY${N}='2,'";
+                        	N=`expr ${N} + 1`;
+                        	;;
+                	wed)    
+                        	eval "DAY${N}='3,'";
+                        	N=`expr ${N} + 1`;
+                        	;;
+                	thur)
+                        	eval "DAY${N}='4,'";
+                        	N=`expr ${N} + 1`;
+                        	;;
+                	fri)
+                        	eval "DAY${N}='5,'";
+                        	N=`expr ${N} + 1`;
+                        	;;
+                	sat)
+                        	eval "DAY${N}='6,'";
+                        	N=`expr ${N} + 1`;
+                        	;;
+                	all)
+                        	DAYSTRING="*";
+                        	;;
+                	*)
+                        	logerror "ERROR - Wrong value for day: $i.  Acceptable values are 'all' or sun-mon.";
+                        	exit 1;
+        	esac
+	done
+
+	if [ -n "${DAYSTRING}" ]; then
+        	:
+	else
+        	for i in 0 1 2 3 4 5 6; do
+                	eval DAYSTRING1="\${DAYSTRING1}\${DAY${i}}"
+        	done
+        	DAYSTRING=`echo "${DAYSTRING1}" | sed 's/,$//g'`;
+	fi
+}
+
+startcron() {
+	crontab -l | egrep -vi "quickbackup-percona" > /tmp/.cron
+	echo "# Joyent QuickBackup.  For svc:/pkgsrc/quickbackup-percona service" >> /tmp/.cron
+	echo "${MINSTRING} ${HOURSTRING} * * ${DAYSTRING} PATH=\"/opt/local/bin:/opt/local/sbin:/usr/bin:/usr/sbin:\" /opt/local/bin/quickbackup-percona backup > /dev/null 2>&1" >> /tmp/.cron
+	crontab /tmp/.cron; rm /tmp/.cron 2>/dev/null
+        [ $? -eq 0 ] && exit $SMF_EXIT_OK || exit $SMF_EXIT_ERR_FATAL;
+}
+
+stopcron() {
+	crontab -l | egrep -vi "quickbackup-percona" > /tmp/.cron	
+	crontab /tmp/.cron; rm /tmp/.cron 2>/dev/null
+        [ $? -eq 0 ] && exit $SMF_EXIT_OK || exit $SMF_EXIT_ERR_FATAL;
+}
+
+startbackup() {
+	mkdir ${BACKUPDIR}/.tmp 2>/dev/null;
+
+	case "${STREAM}" in
+		'tar')
+			command -v tar4ibd >/dev/null 2>&1 || { echo >&2 "* ERROR - tar4ibd was not found in your PATH."; exit 1; }
+
+			[ "${DATABASESSTRING}" = "all" ] && innobackupex --defaults-file=${MYSQLCONF} --user=${USERNAME} --password=${PASSWORD} \
+			--ibbackup=/opt/local/bin/xtrabackup --use-memory=${MEMFREE}MB --slave-info --tmpdir="${BACKUPDIR}/.tmp" \
+			--stream=tar ${BACKUPDIR} 2>> ${LOGFILE} | gzip - > ${BACKUPDIR}/${BACKUPFILE}.tar.gz || \
+			innobackupex --defaults-file=${MYSQLCONF} --user=${USERNAME} --password=${PASSWORD} --ibbackup=/opt/local/bin/xtrabackup \
+			--use-memory=${MEMFREE}MB --slave-info --tmpdir="${BACKUPDIR}/.tmp" --databases="${DATABASESSTRING}" \
+			--stream=tar ${BACKUPDIR} 2>> ${LOGFILE} | gzip - > ${BACKUPDIR}/${BACKUPFILE}.tar.gz;
+			;;
+
+		'xbstream')
+			command -v xbstream >/dev/null 2>&1 || { echo >&2 "* ERROR - xbstream was not found in your PATH."; exit 1; }
+			command -v qpress >/dev/null 2>&1 || { echo >&2 "* ERROR - qpress was not found in your PATH."; exit 1; }
+
+			[ "${DATABASESSTRING}" = "all" ] && innobackupex --defaults-file=${MYSQLCONF} --user=${USERNAME} --password=${PASSWORD} \
+			--ibbackup=/opt/local/bin/xtrabackup --use-memory=${MEMFREE}MB --slave-info --parallel=8 --tmpdir="${BACKUPDIR}/.tmp" \
+			--compress --compress-threads=8 --stream=xbstream ./ > ${BACKUPDIR}/${BACKUPFILE}.xbs 2>> ${LOGFILE} || \
+			innobackupex --defaults-file=${MYSQLCONF} --user=${USERNAME} --password=${PASSWORD} --ibbackup=/opt/local/bin/xtrabackup \
+                        --use-memory=${MEMFREE}MB --slave-info --parallel=8 --tmpdir="${BACKUPDIR}/.tmp" --databases="${DATABASESSTRING}" \
+                        --compress --compress-threads=8 --stream=xbstream ./ > ${BACKUPDIR}/${BACKUPFILE}.xbs 2>> ${LOGFILE}
+			;;
+	esac
+
+	rm -rf ${BACKUPDIR}/.tmp 2>/dev/null;
+
+	CHECKRESTORE=`tail -1 ${LOGFILE} | grep "completed OK\!"`;
+	[ $? -gt 0 ] && logerror "There was an error with the last backup.  Check ${LOGFILE}." && exit 1;
+
+	chown -R mysql:mysql ${BACKUPDIR};
+	chown mysql:mysql ${LOGFILE};
+
+	log "* Backup completed successfully";
+}
+
+startrestore() {
+        RESTOREFILE=$1;
+
+        [ -z "${RESTOREFILE}" ] && usage;
+        [ ! -f "${RESTOREFILE}" ] && logerror "ERROR - ${RESTOREFILE} file not found." && exit 1;
+	command -v innobackupex >/dev/null 2>&1 || { echo >&2 "* ERROR - innobackupex was not found in your PATH."; exit 1; }
+	command -v xtrabackup >/dev/null 2>&1 || { echo >&2 "* ERROR - xtrabackup was not found in your PATH."; exit 1; }
+
+        CHECKMYSQL=`pgrep mysqld 2>/dev/null`;
+        [ $? -eq 0 ] && logerror "ERROR - MySQL must be shut down before doing a restore." && exit 1;
+
+	case "${STREAM}" in
+		'tar')
+			command -v tar4ibd >/dev/null 2>&1 || { echo >&2 "* ERROR - tar4ibd was not found in your PATH."; exit 1; }
+
+			CHECKSTRINGS=`strings -a ${RESTOREFILE} | head -500 | grep -i XBSTC`;
+			[ $? -eq 0 ] && logerror "\nERROR - ${RESTOREFILE} appears to not be gzip format.\nCheck that your quickbackup/stream setting is set to the type of file\nyou are trying to restore.\n" && exit 1;
+
+			[ `file ${RESTOREFILE} | awk '{ print $2 }'` != "gzip" ] && logerror "\nERROR - ${RESTOREFILE} appears to not be gzip format.\nCheck that your quickbackup\/stream setting is set to the type of file\nyou are trying to restore.\n" && exit 1;
+
+        		mkdir ${BACKUPDIR}/.tmp 2>/dev/null;
+
+        		gtar zxvif ${RESTOREFILE} -C ${BACKUPDIR}/.tmp > /dev/null 2>&1;
+
+        		rm -r ${DATADIR} > /dev/null 2>&1;
+        		mkdir ${DATADIR} > /dev/null 2>&1;
+
+        		innobackupex --defaults-file=${MYSQLCONF} --use-memory=${MEMFREE}MB --apply-log --ibbackup=/opt/local/bin/xtrabackup ${BACKUPDIR}/.tmp >> ${LOGFILE} 2>&1;
+        		innobackupex --defaults-file=${MYSQLCONF} --use-memory=${MEMFREE}MB --copy-back --ibbackup=/opt/local/bin/xtrabackup ${BACKUPDIR}/.tmp >> ${LOGFILE} 2>&1;
+			;;
+
+		'xbstream')
+			command -v xbstream >/dev/null 2>&1 || { echo >&2 "* ERROR - xbstream was not found in your PATH."; exit 1; }
+			command -v qpress >/dev/null 2>&1 || { echo >&2 "* ERROR - qpress was not found in your PATH."; exit 1; }
+
+			CHECKSTRINGS=`strings -a ${RESTOREFILE} | head -500 | grep -i XBSTC`;
+			[ $? -ne 0 ] && logerror "\nERROR - ${RESTOREFILE} appears to not be xbstream format.\nCheck that your quickbackup/stream setting is set to the type of file\nyou are trying to restore.\n" && exit 1;
+
+			[ `file ${RESTOREFILE} | awk '{ print $2 }'` != "data" ] && logerror "\nERROR - ${RESTOREFILE} appears to not be xbstream format.\nCheck that your quickbackup/stream setting is set to the type of file\nyou are trying to restore.\n" && exit 1;
+
+        		mkdir ${BACKUPDIR}/.tmp 2>/dev/null;
+
+			xbstream -C ${BACKUPDIR}/.tmp -x < ${RESTOREFILE};
+			for i in `find ${BACKUPDIR}/.tmp -name "*.qp"`; do
+				FILEDIR=$(dirname $i);
+				qpress -dv $i ${FILEDIR} >> /dev/null 2>&1;
+				rm $i;
+		 	done
+
+        		rm -r ${DATADIR} > /dev/null 2>&1;
+        		mkdir ${DATADIR} > /dev/null 2>&1;
+
+        		innobackupex --defaults-file=${MYSQLCONF} --use-memory=${MEMFREE}MB --apply-log --ibbackup=/opt/local/bin/xtrabackup ${BACKUPDIR}/.tmp >> ${LOGFILE} 2>&1;
+        		innobackupex --defaults-file=${MYSQLCONF} --use-memory=${MEMFREE}MB --copy-back --ibbackup=/opt/local/bin/xtrabackup ${BACKUPDIR}/.tmp >> ${LOGFILE} 2>&1;
+			;;
+	esac
+	
+        chown -R mysql:mysql ${DATADIR};
+        chown mysql:mysql ${LOGFILE};
+
+	rm -rf ${BACKUPDIR}/.tmp 2>/dev/null;
+
+        CHECKRESTORE=`tail -1 ${LOGFILE} | grep "completed OK\!"`;
+        [ $? -gt 0 ] && logerror "ERROR - There was an error with restoring.  Check ${LOGFILE}." && exit 1;
+
+        log "* Restore completed successfully";
+}
+
+rotate() {
+	find ${BACKUPDIR} -name "????-??-??_??-??-??-backup.tar.gz" -mtime +${EXPIREDAYSSTRING} -exec rm {} \;
+	find ${BACKUPDIR} -name "????-??-??_??-??-??-backup.xbs" -mtime +${EXPIREDAYSSTRING} -exec rm {} \;
+        log "* Rotation completed successfully";
+}
+
+log() {
+	MESSAGE=$1;
+
+	echo "${MESSAGE}";
+	echo "${MESSAGE}" >> ${LOGFILE};
+}
+
+logerror() {
+	MESSAGE=$1;
+
+	echo "${MESSAGE}" >&2;
+	echo "${MESSAGE}" >> ${LOGFILE};
+}
+
+usage() {
+	cat <<EOF
+
+Joyent QuickBackup; A MySQL backup service powered by Percona Xtrabackup.
+
+Usage: $0 [ backup | rotate | restore <backup file> ]
+       backup  - Starts a backup and deletes backups older than expiredays set.
+       rotate  - Deletes backups longer than expiredays set.
+       restore - Restores a backup from the backup file specified.
+
+EOF
+
+exit;
+}
+
+case "$1" in
+	'start')
+		getprops;
+		dochecks;
+		createstring;
+		startcron;
+		;;
+
+	'stop')
+		stopcron;
+		;;
+
+	'restart')
+		stopcron;
+		getprops;
+		dochecks;
+		createstring;
+		startcron;
+		;;
+
+	'backup')
+		getprops;
+		dochecks;
+		createstring;
+		startbackup;
+		rotate;
+		;;
+
+	'restore')
+		getprops;
+      		log "* Restore from $2";
+		startrestore $2;
+		;;
+
+	'rotate')
+		getprops;
+		createstring;
+		rotate;
+		;;
+
+	*)
+		usage;
+		;;
+esac
