@@ -1,9 +1,9 @@
 $NetBSD$
 
-SHA1 (ossec-hids-2.9.2.tar.gz) = a482c83ca025857080e5ae2cfbbdb91e12c4373b
-RMD160 (ossec-hids-2.9.2.tar.gz) = f7d9c509efaed395d90722ee81094321a15026e2
-SHA512 (ossec-hids-2.9.2.tar.gz) = 53aa181d0da7c14dd7a4c2d854d0532e6254c68abebf38c43c67bb4bad420130a792987c036ee7c14ea592cc99da97e055f30c24112b007b3d1180455c6d035e
-Size (ossec-hids-2.9.2.tar.gz) = 1688945 bytes
+SHA1 (ossec-hids-2.9.3.tar.gz) = 6bde2daaa8793bfcc61cc81dca7e690d8a3f51fd
+RMD160 (ossec-hids-2.9.3.tar.gz) = 86bd1e4034fd53aa4d8175657bdf23ac7e0648d6
+SHA512 (ossec-hids-2.9.3.tar.gz) = 4c98d9f7c94e4a25966b73d9c7348039dd4da5e22d3361abc7811f648986383c262fffe72339db8af2a57fdf3debd4285afccbdef5befad3bde9f0e7acf8b6d7
+Size (ossec-hids-2.9.3.tar.gz) = 1711222 bytes
 SHA1 (patch-etc_ossec-local.conf) = 0318351ef364eec82f93a309c925700369aa12eb
 SHA1 (patch-etc_ossec-server.conf) = 41ac1671a14a9d751db5add33dc9e2f15a360e45
 SHA1 (patch-src_Makefile) = 068ef8355b116f781d872bc6df557c4caf61922f

@@ -3,7 +3,7 @@
 # used by joyent/ossec-local/Makefile
 # used by joyent/ossec-server/Makefile
 
-DISTNAME=	ossec-hids-2.9.2
+DISTNAME=	ossec-hids-2.9.3
 CATEGORIES=	security
 MASTER_SITES=	${MASTER_SITE_GITHUB:=ossec/}
 GITHUB_PROJECT=	ossec-hids
