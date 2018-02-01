@@ -96,6 +96,8 @@ CFLAGS+=		-fPIC -DPIC
 CXXFLAGS+=		-fPIC -DPIC
 .endif
 
+CMAKE_ARGS.SunOS+=	-DFORCE_UNSUPPORTED_COMPILER=YES
+
 # force HAVE_CURSES_H on Solaris since the configure script is broken
 # and does not properly detect this, breaking the build later on.  Also
 # explicitly disable epoll support as it is Linux-specific.
