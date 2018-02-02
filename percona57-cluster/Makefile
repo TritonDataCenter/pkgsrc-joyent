@@ -1,9 +1,9 @@
 # $NetBSD$
 
-MYSQL_VER=	5.7.19
+MYSQL_VER=	5.7.20
 WSREP_API_VER=  29
 GALERA_MAJOR=   3
-GALERA_MINOR=   22
+GALERA_MINOR=   24
 PKGREVISION=	1
 
 DISTNAME=	Percona-XtraDB-Cluster-${MYSQL_VER}-${WSREP_API_VER}.${GALERA_MINOR}
@@ -139,6 +139,8 @@ CXXFLAGS+=		-fPIC -DPIC
 # Galera
 CPPFLAGS.SunOS+=	-DHAVE_SYS_BYTEORDER_H
 
+CMAKE_ARGS.SunOS+=	-DFORCE_UNSUPPORTED_COMPILER=YES
+
 # force HAVE_CURSES_H on Solaris since the configure script is broken
 # and does not properly detect this, breaking the build later on.  Also
 # explicitly disable epoll support as it is Linux-specific.
@@ -214,6 +216,9 @@ SUBST_SED.fixpaths+=	-e "s,${WRAPPER_BINDIR}/g++,${CXXPATH},g"
 #	${CP} -R ${WRKDIR}/${SPHINX}/mysqlse ${WRKSRC}/storage/sphinx
 #
 
+MAKE_ENV+=		LIBPATH=${BUILDLINK_PREFIX.openssl}/lib
+MAKE_ENV+=		RPATH=${BUILDLINK_PREFIX.openssl}/lib
+
 post-build:
 	cd ${WRKSRC}/percona-xtradb-cluster-galera && ${SETENV} ${MAKE_ENV} scons strict_build_flags=0 tests=0
 
@@ -243,5 +248,6 @@ post-install:
 .include "../../lang/python/application.mk"
 .include "../../security/openssl/buildlink3.mk"
 .include "../../security/tcp_wrappers/buildlink3.mk"
+.include "../../www/curl/buildlink3.mk"
 .include "../../mk/pthread.buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"
