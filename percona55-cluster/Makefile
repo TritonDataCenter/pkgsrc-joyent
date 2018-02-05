@@ -22,7 +22,7 @@ SITES.${SPHINX}.tar.gz=	http://sphinxsearch.com/files/
 
 USE_CMAKE=		yes
 USE_GNU_READLINE=	yes
-USE_LANGUAGES=		c c++
+USE_LANGUAGES=		c c++ c++03
 USE_TOOLS+=		bash bison gmake perl:run python:run
 
 INFO_FILES=		yes
