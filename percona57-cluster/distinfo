@@ -32,4 +32,5 @@ SHA1 (patch-scripts_wsrep__sst__xtrabackup-v2.sh) = 5bfbb52490fe38785dca50ae83f6
 SHA1 (patch-sql_item__geofunc__internal.cc) = 752862c3a30231e694e508ced1a215a610649fc6
 SHA1 (patch-storage_ndb_mcc_frontend_dojo_dojox_mobile_build_build.sh) = fb7d813fdc253efcc7d18740eea10d3d8ea53ad0
 SHA1 (patch-strings_decimal.c) = fc9306f41cd535cbffec7904fd9f875b0d0f27ec
+SHA1 (patch-support-files_mysql.server.sh) = 22ef278b97801aef1468d8a5b21f76fa33ba9492
 SHA1 (patch-wsrep_CMakeLists.txt) = 10a2a35ef40b240d159c63fef0fe64daec9054b5
