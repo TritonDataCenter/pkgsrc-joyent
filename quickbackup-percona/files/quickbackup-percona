@@ -1,4 +1,4 @@
-#!/sbin/sh
+#!@SH@
 #
 # Joyent QuickBackup, A MySQL backup service powered by Percona Xtrabackup.
 # See: http://wiki.joyent.com/jpc2/Joyent+Quickbackup+for+Percona+MySQL+Server
@@ -7,7 +7,7 @@
 . /lib/svc/share/smf_include.sh
 set -f
 
-PATH="/opt/local/bin:/opt/local/sbin:/usr/bin:/usr/sbin";
+PATH="@PREFIX@/sbin:@PREFIX@/bin:/usr/sbin:/usr/bin:/sbin";
 DATE=`date +%Y-%m-%d_%H-%M-%S`;
 LOGFILE="/var/log/mysql/quickbackup-percona.log";
 BACKUPFILE="${DATE}-backup";
@@ -16,7 +16,7 @@ SMF_FMRI="svc:/pkgsrc/quickbackup-percona";
 MEMCAP=`kstat -m memory_cap -c zone_memory_cap -s physcap -p | cut -f2 | awk '{ printf("%d", $1/1024/1024)}'`;
 MEMUSED=`kstat -m memory_cap -c zone_memory_cap -s rss -p | cut -f2 | awk '{ printf("%d", $1/1024/1024) }'`
 MEMFREE=`echo "(${MEMCAP}-${MEMUSED})/2" | bc`;
-MYSQLCONF="/opt/local/etc/my.cnf";
+MYSQLCONF="@PKG_SYSCONFDIR@/my.cnf";
 trap sighandler SIGINT SIGTERM
 
 sighandler() {
@@ -230,7 +230,7 @@ createstring() {
 startcron() {
 	crontab -l | egrep -vi "quickbackup-percona" > /tmp/.cron
 	echo "# Joyent QuickBackup.  For svc:/pkgsrc/quickbackup-percona service" >> /tmp/.cron
-	echo "${MINSTRING} ${HOURSTRING} * * ${DAYSTRING} PATH=\"/opt/local/bin:/opt/local/sbin:/usr/bin:/usr/sbin:\" /opt/local/bin/quickbackup-percona backup > /dev/null 2>&1" >> /tmp/.cron
+	echo "${MINSTRING} ${HOURSTRING} * * ${DAYSTRING} PATH=\"@PREFIX@/bin:@PREFIX@/sbin:/usr/bin:/usr/sbin:\" @PREFIX@/bin/quickbackup-percona backup > /dev/null 2>&1" >> /tmp/.cron
 	crontab /tmp/.cron; rm /tmp/.cron 2>/dev/null
         [ $? -eq 0 ] && exit $SMF_EXIT_OK || exit $SMF_EXIT_ERR_FATAL;
 }
@@ -249,9 +249,9 @@ startbackup() {
 			command -v tar4ibd >/dev/null 2>&1 || { echo >&2 "* ERROR - tar4ibd was not found in your PATH."; exit 1; }
 
 			[ "${DATABASESSTRING}" = "all" ] && innobackupex --defaults-file=${MYSQLCONF} --user=${USERNAME} --password=${PASSWORD} \
-			--ibbackup=/opt/local/bin/xtrabackup --use-memory=${MEMFREE}MB --slave-info --tmpdir="${BACKUPDIR}/.tmp" \
+			--ibbackup=@PREFIX@/bin/xtrabackup --use-memory=${MEMFREE}MB --slave-info --tmpdir="${BACKUPDIR}/.tmp" \
 			--stream=tar ${BACKUPDIR} 2>> ${LOGFILE} | gzip - > ${BACKUPDIR}/${BACKUPFILE}.tar.gz || \
-			innobackupex --defaults-file=${MYSQLCONF} --user=${USERNAME} --password=${PASSWORD} --ibbackup=/opt/local/bin/xtrabackup \
+			innobackupex --defaults-file=${MYSQLCONF} --user=${USERNAME} --password=${PASSWORD} --ibbackup=@PREFIX@/bin/xtrabackup \
 			--use-memory=${MEMFREE}MB --slave-info --tmpdir="${BACKUPDIR}/.tmp" --databases="${DATABASESSTRING}" \
 			--stream=tar ${BACKUPDIR} 2>> ${LOGFILE} | gzip - > ${BACKUPDIR}/${BACKUPFILE}.tar.gz;
 			;;
@@ -261,9 +261,9 @@ startbackup() {
 			command -v qpress >/dev/null 2>&1 || { echo >&2 "* ERROR - qpress was not found in your PATH."; exit 1; }
 
 			[ "${DATABASESSTRING}" = "all" ] && innobackupex --defaults-file=${MYSQLCONF} --user=${USERNAME} --password=${PASSWORD} \
-			--ibbackup=/opt/local/bin/xtrabackup --use-memory=${MEMFREE}MB --slave-info --parallel=8 --tmpdir="${BACKUPDIR}/.tmp" \
+			--ibbackup=@PREFIX@/bin/xtrabackup --use-memory=${MEMFREE}MB --slave-info --parallel=8 --tmpdir="${BACKUPDIR}/.tmp" \
 			--compress --compress-threads=8 --stream=xbstream ./ > ${BACKUPDIR}/${BACKUPFILE}.xbs 2>> ${LOGFILE} || \
-			innobackupex --defaults-file=${MYSQLCONF} --user=${USERNAME} --password=${PASSWORD} --ibbackup=/opt/local/bin/xtrabackup \
+			innobackupex --defaults-file=${MYSQLCONF} --user=${USERNAME} --password=${PASSWORD} --ibbackup=@PREFIX@/bin/xtrabackup \
                         --use-memory=${MEMFREE}MB --slave-info --parallel=8 --tmpdir="${BACKUPDIR}/.tmp" --databases="${DATABASESSTRING}" \
                         --compress --compress-threads=8 --stream=xbstream ./ > ${BACKUPDIR}/${BACKUPFILE}.xbs 2>> ${LOGFILE}
 			;;
@@ -307,8 +307,8 @@ startrestore() {
         		rm -r ${DATADIR} > /dev/null 2>&1;
         		mkdir ${DATADIR} > /dev/null 2>&1;
 
-        		innobackupex --defaults-file=${MYSQLCONF} --use-memory=${MEMFREE}MB --apply-log --ibbackup=/opt/local/bin/xtrabackup ${BACKUPDIR}/.tmp >> ${LOGFILE} 2>&1;
-        		innobackupex --defaults-file=${MYSQLCONF} --use-memory=${MEMFREE}MB --copy-back --ibbackup=/opt/local/bin/xtrabackup ${BACKUPDIR}/.tmp >> ${LOGFILE} 2>&1;
+        		innobackupex --defaults-file=${MYSQLCONF} --use-memory=${MEMFREE}MB --apply-log --ibbackup=@PREFIX@/bin/xtrabackup ${BACKUPDIR}/.tmp >> ${LOGFILE} 2>&1;
+        		innobackupex --defaults-file=${MYSQLCONF} --use-memory=${MEMFREE}MB --copy-back --ibbackup=@PREFIX@/bin/xtrabackup ${BACKUPDIR}/.tmp >> ${LOGFILE} 2>&1;
 			;;
 
 		'xbstream')
@@ -332,8 +332,8 @@ startrestore() {
         		rm -r ${DATADIR} > /dev/null 2>&1;
         		mkdir ${DATADIR} > /dev/null 2>&1;
 
-        		innobackupex --defaults-file=${MYSQLCONF} --use-memory=${MEMFREE}MB --apply-log --ibbackup=/opt/local/bin/xtrabackup ${BACKUPDIR}/.tmp >> ${LOGFILE} 2>&1;
-        		innobackupex --defaults-file=${MYSQLCONF} --use-memory=${MEMFREE}MB --copy-back --ibbackup=/opt/local/bin/xtrabackup ${BACKUPDIR}/.tmp >> ${LOGFILE} 2>&1;
+        		innobackupex --defaults-file=${MYSQLCONF} --use-memory=${MEMFREE}MB --apply-log --ibbackup=@PREFIX@/bin/xtrabackup ${BACKUPDIR}/.tmp >> ${LOGFILE} 2>&1;
+        		innobackupex --defaults-file=${MYSQLCONF} --use-memory=${MEMFREE}MB --copy-back --ibbackup=@PREFIX@/bin/xtrabackup ${BACKUPDIR}/.tmp >> ${LOGFILE} 2>&1;
 			;;
 	esac
 	
