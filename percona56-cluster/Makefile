@@ -214,6 +214,9 @@ SUBST_FILES.fixpaths+=	${DESTDIR}${PREFIX}/share/doc/mysql/INFO_BIN
 SUBST_SED.fixpaths=	-e "s,${WRAPPER_BINDIR}/gcc,${CCPATH},g"
 SUBST_SED.fixpaths+=	-e "s,${WRAPPER_BINDIR}/g++,${CXXPATH},g"
 
+MAKE_ENV+=		LIBPATH=${BUILDLINK_PREFIX.openssl}/lib
+MAKE_ENV+=		RPATH=${BUILDLINK_PREFIX.openssl}/lib
+
 post-extract:
 	${CP} -R ${WRKDIR}/${SPHINX}/mysqlse ${WRKSRC}/storage/sphinx
 	${CP} -R ${WRKDIR}/${GALERA} ${WRKSRC}/percona-xtradb-cluster-galera

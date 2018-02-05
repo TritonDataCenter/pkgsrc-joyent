@@ -24,5 +24,6 @@ SHA1 (patch-plugin_audit__log_audit__log.c) = 04f11b324d072126fd70154bb2508b0852
 SHA1 (patch-scripts_mysqld__safe.sh) = 21d97c74e21798b153f77597e5b425ea8577c2dc
 SHA1 (patch-scripts_wsrep__sst__xtrabackup-v2.sh) = d1df41289b2fecea5a1748474cd142859ff4a47f
 SHA1 (patch-scripts_wsrep__sst__xtrabackup.sh) = 9ece83ae7dad62a1f1f9d23ccda418ddf93e61f5
+SHA1 (patch-sql-common_client__authentication.cc) = 6e50be50f5f87d20b8674e2e31ceef69f9d6d993
 SHA1 (patch-support-files_mysql.server.sh) = a1c660fe8589633d3f513d060585d060c0fe1b02
 SHA1 (patch-wsrep_CMakeLists.txt) = 48fb4f2b8f580fc32013ebcd4b610fe47efe8c15
