@@ -1,0 +1,38 @@
+$NetBSD: patch-aa,v 1.8 2016/09/08 16:03:55 fhajny Exp $
+
+Set pkgsrc standard paths.
+Expand compatibility to Erlang 18 and 19.
+
+--- configure.orig	2014-08-21 23:15:40.000000000 +0000
++++ configure
+@@ -19212,13 +19213,15 @@ localdatadir=${datadir}/${package_identi
+ 
+ localdocdir=${datadir}/doc/${package_identifier}
+ 
++localegdir=@COUCH_EGDIR@
++
+ locallibdir=${libdir}/${package_identifier}
+ 
+-localstatelibdir=${localstatedir}/lib/${package_identifier}
++localstatelibdir=@COUCH_DBDIR@
+ 
+-localstatelogdir=${localstatedir}/log/${package_identifier}
++localstatelogdir=@COUCH_LOGDIR@
+ 
+-localstaterundir=${localstatedir}/run/${package_identifier}
++localstaterundir=@COUCH_RUNDIR@
+ 
+ erlangversion=${erlangversion}
+ 
+@@ -19233,9 +19236,9 @@ if test x${IS_WINDOWS} = xTRUE; then
+     localerlanglibdir=${libdir}
+ 
+ else
+-    locallibbindir=${locallibdir}/bin
++    locallibbindir=${libexecdir}/${package_identifier}
+ 
+-    localerlanglibdir=${locallibdir}/erlang/lib
++    localerlanglibdir=@ERLANG_PREFIX@/lib/erlang/lib
+ 
+ fi
+ 
