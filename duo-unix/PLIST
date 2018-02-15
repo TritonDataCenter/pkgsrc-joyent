@@ -1,7 +1,7 @@
 @comment $NetBSD$
 include/duo.h
+include/shell.h
 include/util.h
-lib/libduo.la
 lib/pkgconfig/libduo.pc
 ${PLIST.pam}lib/security/pam_duo.la
 man/man3/duo.3

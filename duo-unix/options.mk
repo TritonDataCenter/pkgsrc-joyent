@@ -2,7 +2,6 @@
 
 PKG_OPTIONS_VAR=		PKG_OPTIONS.duo-unix
 PKG_SUPPORTED_OPTIONS+=		pam
-
 PKG_SUGGESTED_OPTIONS=		pam
 
 .include "../../mk/bsd.options.mk"

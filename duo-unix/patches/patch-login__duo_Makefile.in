@@ -1,37 +1,15 @@
 $NetBSD$
 
-Install config file to the right location.
---- login_duo/Makefile.in.orig	Tue May 28 21:09:25 2013
-+++ login_duo/Makefile.in	Fri Aug  2 16:08:21 2013
-@@ -222,6 +222,7 @@
- sharedstatedir = @sharedstatedir@
- srcdir = @srcdir@
- sysconfdir = @sysconfdir@
-+egdir = @prefix@/share/examples/duo-unix
- target_alias = @target_alias@
- top_build_prefix = @top_build_prefix@
- top_builddir = @top_builddir@
-@@ -607,16 +608,16 @@
- 	 chmod 4755 $(DESTDIR)$(sbindir)/login_duo
+Secure a setuid binary.
+
+--- login_duo/Makefile.in.orig	2017-08-15 19:31:47.000000000 +0000
++++ login_duo/Makefile.in
+@@ -712,7 +712,7 @@ uninstall-man: uninstall-man8
+ 
+ install-exec-hook:
+ 	-chown root $(DESTDIR)$(sbindir)/login_duo && \
+-	 chmod 4755 $(DESTDIR)$(sbindir)/login_duo
++	 chmod 4555 $(DESTDIR)$(sbindir)/login_duo
  
  install-data-local:
--	$(MKDIR_P) $(DESTDIR)$(sysconfdir)
--	-@if [ ! -f $(DESTDIR)$(sysconfdir)/login_duo.conf ]; then \
--	  cp login_duo.conf $(DESTDIR)$(sysconfdir)/login_duo.conf; \
--	  echo "Created ${DESTDIR}$(sysconfdir)/login_duo.conf"; \
-+	$(MKDIR_P) $(DESTDIR)$(egdir)
-+	-@if [ ! -f $(DESTDIR)$(egdir)/login_duo.conf ]; then \
-+	  cp login_duo.conf $(DESTDIR)$(egdir)/login_duo.conf; \
-+	  echo "Created ${DESTDIR}$(egdir)/login_duo.conf"; \
- 	  echo "Please edit it to add your Duo integration and secret keys"; \
- 	else \
--	  echo "Found existing ${DESTDIR}$(sysconfdir)/login_duo.conf - updating permissions"; \
-+	  echo "Found existing ${DESTDIR}$(egdir)/login_duo.conf - updating permissions"; \
- 	fi
--	-chown $(DUO_PRIVSEP_USER) $(DESTDIR)$(sysconfdir)/login_duo.conf
--	-chmod 600 $(DESTDIR)$(sysconfdir)/login_duo.conf
-+	-chown $(DUO_PRIVSEP_USER) $(DESTDIR)$(egdir)/login_duo.conf
-+	-chmod 600 $(DESTDIR)$(egdir)/login_duo.conf
- 
- # Tell versions [3.59,3.63) of GNU make to not export all variables.
- # Otherwise a system limit (for SysV at least) may be exceeded.
+ 	$(MKDIR_P) $(DESTDIR)$(sysconfdir)

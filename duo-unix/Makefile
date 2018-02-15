@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-DISTNAME=	duo_unix-1.9.7
+DISTNAME=	duo_unix-1.10.1
 PKGNAME=	${DISTNAME:S/_/-/}
 CATEGORIES=	security
 MASTER_SITES=	https://dl.duosecurity.com/
@@ -14,13 +14,14 @@ LICENSE=	gnu-gpl-v2
 USE_LIBTOOL=	yes
 USE_TOOLS+=	gmake pkg-config
 GNU_CONFIGURE=	yes
-FETCH_USING=	curl
 
 PKGCONFIG_OVERRIDE+=	lib/libduo.pc.in
 
 .include "options.mk"
 
 CONFIGURE_ARGS+=	--sysconfdir=${PKG_SYSCONFDIR}
+
+INSTALL_MAKE_FLAGS+=	sysconfdir=${PREFIX}/share/examples/duo-unix
 
 INSTALLATION_DIRS=	share/examples/duo-unix
 
