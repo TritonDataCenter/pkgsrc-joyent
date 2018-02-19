@@ -746,11 +746,14 @@ share/mysql/test/r/bug46080.result
 share/mysql/test/r/bug46261.result
 share/mysql/test/r/bug46760.result
 share/mysql/test/r/bug47671.result
+share/mysql/test/r/bug53588.result
 share/mysql/test/r/bug58669.result
 share/mysql/test/r/bug71858.result
 share/mysql/test/r/bug74499.result
 share/mysql/test/r/bug74644.result
+share/mysql/test/r/bug74898.result
 share/mysql/test/r/bug75701.result
+share/mysql/test/r/bug75721.result
 share/mysql/test/r/bug75940.result
 share/mysql/test/r/bug75943.result
 share/mysql/test/r/bug76039.result
@@ -760,6 +763,8 @@ share/mysql/test/r/bug81409.result
 share/mysql/test/r/bug81447.result
 share/mysql/test/r/bug81449.result
 share/mysql/test/r/bug81457.result
+share/mysql/test/r/bug81472.result
+share/mysql/test/r/bug82652.result
 share/mysql/test/r/bug84640.result
 share/mysql/test/r/bug84656.result
 share/mysql/test/r/bug86260.result
@@ -1776,6 +1781,7 @@ share/mysql/test/suite/binlog/r/binlog_write_error.result
 share/mysql/test/suite/binlog/r/percona_binlog_max_nr.result
 share/mysql/test/suite/binlog/r/percona_binlog_unsafe_limit.result
 share/mysql/test/suite/binlog/r/percona_bug1162085.result
+share/mysql/test/suite/binlog/r/percona_bug1733781.result
 share/mysql/test/suite/binlog/r/percona_mysqlbinlog_rewritedb.result
 share/mysql/test/suite/binlog/std_data/binlog_old_version_4_1.000001
 share/mysql/test/suite/binlog/std_data/bug32407.001
@@ -1884,6 +1890,7 @@ share/mysql/test/suite/binlog/t/percona_binlog_max_nr-master.opt
 share/mysql/test/suite/binlog/t/percona_binlog_max_nr.test
 share/mysql/test/suite/binlog/t/percona_binlog_unsafe_limit.test
 share/mysql/test/suite/binlog/t/percona_bug1162085.test
+share/mysql/test/suite/binlog/t/percona_bug1733781.test
 share/mysql/test/suite/binlog/t/percona_mysqlbinlog_rewritedb-master.opt
 share/mysql/test/suite/binlog/t/percona_mysqlbinlog_rewritedb.test
 share/mysql/test/suite/engines/README
@@ -2837,6 +2844,8 @@ share/mysql/test/suite/federated/include/federated.inc
 share/mysql/test/suite/federated/include/federated_cleanup.inc
 share/mysql/test/suite/federated/include/have_federated_db.inc
 share/mysql/test/suite/federated/my.cnf
+share/mysql/test/suite/federated/percona_bug1739734.result
+share/mysql/test/suite/federated/percona_bug1739734.test
 share/mysql/test/suite/funcs_1/README.txt
 share/mysql/test/suite/funcs_1/bitdata/bitdata_master.test
 share/mysql/test/suite/funcs_1/cursors/cursors_master.test
@@ -6271,12 +6280,15 @@ share/mysql/test/t/bug46760-master.opt
 share/mysql/test/t/bug46760.test
 share/mysql/test/t/bug47671-master.opt
 share/mysql/test/t/bug47671.test
+share/mysql/test/t/bug53588.test
 share/mysql/test/t/bug58669-master.opt
 share/mysql/test/t/bug58669.test
 share/mysql/test/t/bug71858.test
 share/mysql/test/t/bug74499.test
 share/mysql/test/t/bug74644.test
+share/mysql/test/t/bug74898.test
 share/mysql/test/t/bug75701.test
+share/mysql/test/t/bug75721.test
 share/mysql/test/t/bug75940.test
 share/mysql/test/t/bug75943.test
 share/mysql/test/t/bug76039.test
@@ -6286,6 +6298,8 @@ share/mysql/test/t/bug81409.test
 share/mysql/test/t/bug81447.test
 share/mysql/test/t/bug81449.test
 share/mysql/test/t/bug81457.test
+share/mysql/test/t/bug81472.test
+share/mysql/test/t/bug82652.test
 share/mysql/test/t/bug84640.test
 share/mysql/test/t/bug84656-master.opt
 share/mysql/test/t/bug84656.test
