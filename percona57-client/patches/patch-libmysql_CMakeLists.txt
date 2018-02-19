@@ -3,11 +3,18 @@ $NetBSD$
 Do not install libperconaserverclient with the server.
 Generate versioned lib symlinks on FreeBSD to supress PLIST divergence.
 
---- libmysql/CMakeLists.txt.orig	2016-06-30 06:22:11.000000000 +0000
+--- libmysql/CMakeLists.txt.orig	2017-12-28 09:28:11.000000000 +0000
 +++ libmysql/CMakeLists.txt
-@@ -231,7 +231,11 @@ IF(WIN32)
+@@ -230,12 +230,18 @@ IF(WIN32)
+   LIST(APPEND LIBS auth_win_client)
  ENDIF()
  
++IF(NOT WITHOUT_SERVER)
+ # LDAP authentication SASL client plugin
+ MESSAGE(STATUS "Creating LDAP authentication SASL client library.")
+ ADD_SUBDIRECTORY(authentication_ldap)
++ENDIF()
+   
  # Merge several convenience libraries into one big perconaserverclient
 +IF(WITHOUT_SERVER)
  MERGE_LIBRARIES(perconaserverclient STATIC ${LIBS} COMPONENT Development)
@@ -17,7 +24,7 @@ Generate versioned lib symlinks on FreeBSD to supress PLIST divergence.
  
  # Visual Studio users need debug  static library for debug projects
  IF(MSVC)
-@@ -271,12 +275,18 @@ ENDIF()
+@@ -275,12 +281,18 @@ ENDIF()
  IF(NOT DISABLE_SHARED)
    # Merge several convenience libraries into one big perconaserverclient
    # and link them together into shared library.

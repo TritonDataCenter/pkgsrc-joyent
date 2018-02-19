@@ -2,9 +2,9 @@ $NetBSD$
 
 Split configuration between mysql-client and mysql-server.
 
---- scripts/CMakeLists.txt.orig	2017-07-26 16:31:39.000000000 +0000
+--- scripts/CMakeLists.txt.orig	2017-12-28 09:28:11.000000000 +0000
 +++ scripts/CMakeLists.txt
-@@ -411,16 +411,17 @@ ELSE()
+@@ -417,9 +417,11 @@ ELSE()
    # On Unix, most of the files end up in the bin directory
    SET(mysql_config_COMPONENT COMPONENT Development)
  
@@ -17,6 +17,7 @@ Split configuration between mysql-client and mysql-server.
        mysqldumpslow
        ps_tokudb_admin
        ps_mysqld_helper
+@@ -427,7 +429,6 @@ ELSE()
        )
    ELSE()
      SET(BIN_SCRIPTS
@@ -24,15 +25,15 @@ Split configuration between mysql-client and mysql-server.
        mysqldumpslow
        mysqld_multi
        mysqld_safe
-@@ -428,6 +429,7 @@ ELSE()
-       ps_mysqld_helper
+@@ -436,6 +437,7 @@ ELSE()
+       ps-admin
        )
    ENDIF()
 +  ENDIF()
  
    SET(PKGCONFIG_FILE ${LIBMYSQL_OS_OUTPUT_NAME}.pc)
    STRING(REGEX REPLACE "/mysql$" "" PKGCONFIG_DIR "${INSTALL_LIBDIR}")
-@@ -443,7 +445,7 @@ ELSE()
+@@ -451,7 +453,7 @@ ELSE()
      ${CMAKE_CURRENT_BINARY_DIR}/${PKGCONFIG_FILE}
      ESCAPE_QUOTES @ONLY)
  

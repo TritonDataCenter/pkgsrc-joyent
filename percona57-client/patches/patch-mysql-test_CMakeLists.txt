@@ -2,7 +2,7 @@ $NetBSD$
 
 Exclude some unwated files.
 
---- mysql-test/CMakeLists.txt.orig	2014-11-21 10:02:01.000000000 +0000
+--- mysql-test/CMakeLists.txt.orig	2017-12-28 09:28:11.000000000 +0000
 +++ mysql-test/CMakeLists.txt
 @@ -24,9 +24,11 @@ INSTALL(
    PATTERN "lib/t*" EXCLUDE
@@ -15,4 +15,4 @@ Exclude some unwated files.
 +  PATTERN "*.cmake" EXCLUDE
    PATTERN "*.in" EXCLUDE
  )
- ENDIF()
+   IF(NOT INSTALL_LAYOUT MATCHES "RPM")

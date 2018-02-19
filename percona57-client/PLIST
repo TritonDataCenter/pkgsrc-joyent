@@ -123,7 +123,7 @@ lib/libmysqlclient.so
 lib/libperconaserverclient.a
 lib/libperconaserverclient.so
 lib/libperconaserverclient.so.20
-lib/libperconaserverclient.so.20.3.5
+lib/libperconaserverclient.so.20.3.7
 lib/pkgconfig/perconaserverclient.pc
 man/man1/comp_err.1
 man/man1/innochecksum.1
