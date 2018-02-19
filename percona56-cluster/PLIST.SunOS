@@ -1,3 +1,2 @@
 @comment $NetBSD$
 share/mysql/solaris/postinstall-solaris
-share/mysql/test/cmake_install.cmake

@@ -1,7 +1,7 @@
 $NetBSD$
 
 Make SunOS portable. Patch by Derek Crudgington.
---- scripts/wsrep_sst_xtrabackup-v2.sh.orig	2017-09-18 02:28:03.000000000 +0000
+--- scripts/wsrep_sst_xtrabackup-v2.sh.orig	2018-01-11 05:21:46.000000000 +0000
 +++ scripts/wsrep_sst_xtrabackup-v2.sh
 @@ -572,7 +572,13 @@ get_stream()
  get_proc()
@@ -36,16 +36,20 @@ Make SunOS portable. Patch by Derek Crudgington.
  
      # This means no setsid done in mysqld.
      # We don't want to kill mysqld here otherwise.
-@@ -681,7 +687,11 @@ wait_for_listen()
+@@ -681,12 +687,16 @@ wait_for_listen()
  
      for i in {1..300}
      do
--        ss -p state listening "( sport = :$PORT )" | grep -qE 'socat|nc' && break
-+        if [[ $(uname -s | grep SunOS) ]]; then
-+            (pfiles $(pgrep 'socat|nc') || true) | grep "AF_INET.* ${PORT}$" >/dev/null && break
-+        else
-+            ss -p state listening "( sport = :$PORT )" | grep -qE 'socat|nc' && break
-+        fi
++      if [[ $(uname -s | grep SunOS) ]]; then
++        (pfiles $(pgrep 'socat|nc') || true) | grep "AF_INET.* ${PORT}$" >/dev/null && break
++      else
+         if [ "`uname`" = "FreeBSD" ] ; then
+             get_listening_on_port_cmd="sockstat -l -P tcp -p $PORT"
+         else
+             get_listening_on_port_cmd="ss -p state listening ( sport = :$PORT )"
+         fi
+         $get_listening_on_port_cmd | grep -qE 'socat|nc' && break
++      fi
          sleep 0.2
      done
  
