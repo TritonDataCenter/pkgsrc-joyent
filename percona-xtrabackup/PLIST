@@ -217,6 +217,7 @@ percona-xtrabackup-test/inc/bug723097.sql
 percona-xtrabackup-test/inc/common.sh
 percona-xtrabackup-test/inc/decrypt_v1_test_file.txt
 percona-xtrabackup-test/inc/decrypt_v1_test_file.xbcrypt
+percona-xtrabackup-test/inc/decrypt_v2_test_file.xbcrypt
 percona-xtrabackup-test/inc/ib_incremental_common.sh
 percona-xtrabackup-test/inc/ib_local.sh
 percona-xtrabackup-test/inc/ib_part.sh
@@ -11947,6 +11948,7 @@ percona-xtrabackup-test/suite/xplugin/t/update_sql_o.test
 percona-xtrabackup-test/suite/xplugin/t/update_table-master.opt
 percona-xtrabackup-test/suite/xplugin/t/update_table.test
 percona-xtrabackup-test/t/1st.test
+percona-xtrabackup-test/t/PXB-197.sh
 percona-xtrabackup-test/t/acl_tables_errors_debug.test
 percona-xtrabackup-test/t/alias.test
 percona-xtrabackup-test/t/almost_full.test
@@ -12063,6 +12065,7 @@ percona-xtrabackup-test/t/bug1523687.sh
 percona-xtrabackup-test/t/bug1527081.sh
 percona-xtrabackup-test/t/bug1532101.sh
 percona-xtrabackup-test/t/bug1533542.sh
+percona-xtrabackup-test/t/bug1533722.sh
 percona-xtrabackup-test/t/bug1535312.sh
 percona-xtrabackup-test/t/bug1551634.sh
 percona-xtrabackup-test/t/bug1566228.sh
@@ -12078,6 +12081,7 @@ percona-xtrabackup-test/t/bug1671722.sh
 percona-xtrabackup-test/t/bug1691093.sh
 percona-xtrabackup-test/t/bug17076131-master.opt
 percona-xtrabackup-test/t/bug17076131.test
+percona-xtrabackup-test/t/bug1717158.sh
 percona-xtrabackup-test/t/bug33509-master.opt
 percona-xtrabackup-test/t/bug33509.test
 percona-xtrabackup-test/t/bug369913.sh
@@ -12833,6 +12837,7 @@ percona-xtrabackup-test/t/outfile_loaddata.test
 percona-xtrabackup-test/t/overflow.test
 percona-xtrabackup-test/t/packet.test
 percona-xtrabackup-test/t/page_compression.sh
+percona-xtrabackup-test/t/parallel_copyback.sh
 percona-xtrabackup-test/t/parser-big-32bit.test
 percona-xtrabackup-test/t/parser-big-64bit.test
 percona-xtrabackup-test/t/parser.test
@@ -12980,6 +12985,7 @@ percona-xtrabackup-test/t/range_mrr.test
 percona-xtrabackup-test/t/range_mrr_cost.test
 percona-xtrabackup-test/t/range_none.test
 percona-xtrabackup-test/t/range_with_memory_limit.test
+percona-xtrabackup-test/t/read_buffer_size.sh
 percona-xtrabackup-test/t/read_many_rows_innodb.test
 percona-xtrabackup-test/t/read_only.test
 percona-xtrabackup-test/t/read_only_innodb.test
