@@ -1,6 +1,6 @@
 # $NetBSD$
 
-DISTNAME=	proxysql-1.4.2
+DISTNAME=	proxysql-1.4.6
 CATEGORIES=	databases
 MASTER_SITES=	${MASTER_SITE_GITHUB:=sysown/}
 
@@ -38,6 +38,8 @@ MAKE_FLAGS+=	LIBCONFIG_IDIR="-I${BUILDLINK_PREFIX.libconfig}/include"
 MAKE_FLAGS+=	LIBCONFIG_LDIR="-L${BUILDLINK_PREFIX.libconfig}/lib ${COMPILER_RPATH_FLAG}${BUILDLINK_PREFIX.libconfig}/lib"
 MAKE_FLAGS+=	PCRE_LDIR="${BUILDLINK_PREFIX.pcre}/lib"
 MAKE_FLAGS+=	PCRE_PATH="${BUILDLINK_PREFIX.pcre}/include"
+MAKE_FLAGS+=	CURL_IDIR="${BUILDLINK_PREFIX.curl}/include"
+MAKE_FLAGS+=	CURL_LDIR="${BUILDLINK_PREFIX.curl}/lib"
 
 INSTALLATION_DIRS+=	bin share/examples/proxysql
 
@@ -54,4 +56,5 @@ post-extract:
 .include "../../devel/libconfig/buildlink3.mk"
 .include "../../devel/libdaemon/buildlink3.mk"
 .include "../../devel/pcre/buildlink3.mk"
+.include "../../www/curl/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"

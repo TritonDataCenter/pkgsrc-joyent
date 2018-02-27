@@ -3,27 +3,30 @@ $NetBSD$
 Only build that which comes with local patches.
 Use portable sed calls.
 
---- deps/Makefile.orig	2017-09-08 14:30:47.000000000 +0000
+--- deps/Makefile.orig	2018-02-01 02:06:06.000000000 +0000
 +++ deps/Makefile
-@@ -9,7 +9,7 @@ MYCFLAGS=-O2
- MYJEOPT=--enable-xmalloc --enable-munmap --enable-prof
- endif
+@@ -11,9 +11,9 @@ endif
  
--default: libconfig libdaemon jemalloc mariadb_client re2 sqlite3 pcre
-+default: jemalloc mariadb_client re2 sqlite3
+ PROXYSQLCLICKHOUSE := $(shell echo $(PROXYSQLCLICKHOUSE))
+ ifeq ($(PROXYSQLCLICKHOUSE),1)
+-default: libconfig libdaemon jemalloc mariadb_client re2 sqlite3 pcre clickhouse-cpp lz4 cityhash microhttpd curl
++default: jemalloc mariadb_client re2 sqlite3 clickhouse-cpp lz4 cityhash microhttpd
+ else
+-default: libconfig libdaemon jemalloc mariadb_client re2 sqlite3 pcre microhttpd curl
++default: jemalloc mariadb_client re2 sqlite3 microhttpd
+ endif
  .PHONY: default
  
+@@ -69,8 +69,6 @@ jemalloc: jemalloc/jemalloc/lib/libjemal
  
-@@ -34,8 +34,6 @@ jemalloc: jemalloc/jemalloc/lib/libjemal
+ 
  mariadb-client-library/mariadb_client/include/my_config.h:
- #	cd mariadb-client-library && rm -rf mariadb-connector-c-2.1.0-src
- #	cd mariadb-client-library && tar -zxf mariadb-connector-c-2.1.0-src.tar.gz
 -	cd mariadb-client-library && rm -rf mariadb-connector-c-2.3.1
 -	cd mariadb-client-library && tar -zxf mariadb-connector-c-2.3.1-src.tar.gz
  	cd mariadb-client-library/mariadb_client && cmake .
+ #	cd mariadb-client-library/mariadb_client && cmake . -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl # this is needed on MacOSX
  	cd mariadb-client-library/mariadb_client && patch libmariadb/libmariadb.c < ../libmariadb.c.patch
- 	cd mariadb-client-library/mariadb_client && patch libmariadb/net.c < ../net.c.patch
-@@ -73,7 +71,8 @@ re2/re2/obj/libre2.a:
+@@ -110,7 +108,8 @@ re2/re2/obj/libre2.a:
  	cd re2 && tar -zxf re2.tar.gz
  #	cd re2/re2 && sed -i -e 's/-O3 -g /-O3 -fPIC /' Makefile
  #	cd re2 && patch re2/util/mutex.h < mutex.h.patch

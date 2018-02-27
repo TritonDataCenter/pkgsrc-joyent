@@ -1,9 +1,9 @@
 $NetBSD$
 
-Using socket types needs libsocket on at least SunOS.
+libsocket needed on SunOS.
 
---- deps/mariadb-client-library/mariadb_client/cmake/CheckTypes.cmake.orig	2016-08-03 15:39:12.000000000 +0000
-+++ deps/mariadb-client-library/mariadb_client/cmake/CheckTypes.cmake
+--- deps/mariadb-client-library/mariadb-connector-c-2.3.1/cmake/CheckTypes.cmake.orig	2016-08-03 15:39:12.000000000 +0000
++++ deps/mariadb-client-library/mariadb-connector-c-2.3.1/cmake/CheckTypes.cmake
 @@ -98,6 +98,7 @@ IF(WIN32)
  ELSE(WIN32)
    FOREACH(CHECK_TYPE "socklen_t" "size_t" "int")

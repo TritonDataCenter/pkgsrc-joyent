@@ -1,9 +1,9 @@
 $NetBSD$
 
-Use proper CFI start/end tags.
+Incorrect assembler syntax.
 
---- deps/mariadb-client-library/mariadb_client/libmariadb/my_context.c.orig	2016-08-03 15:39:12.000000000 +0000
-+++ deps/mariadb-client-library/mariadb_client/libmariadb/my_context.c
+--- deps/mariadb-client-library/mariadb-connector-c-2.3.1/libmariadb/my_context.c.orig	2016-08-03 15:39:12.000000000 +0000
++++ deps/mariadb-client-library/mariadb-connector-c-2.3.1/libmariadb/my_context.c
 @@ -204,6 +204,7 @@ my_context_spawn(struct my_context *c, v
    */
    __asm__ __volatile__

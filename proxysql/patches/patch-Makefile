@@ -2,17 +2,17 @@ $NetBSD$
 
 Sane installation.
 
---- Makefile.orig	2017-09-08 14:30:47.000000000 +0000
+--- Makefile.orig	2018-02-01 02:06:06.000000000 +0000
 +++ Makefile
 @@ -12,7 +12,6 @@ DEBUG=${ALL_DEBUG}
  #export EXTRALINK
- CURVER?=1.4.2
- MAKEOPT="-j 4"
+ CURVER?=1.4.6
+ MAKEOPT=-j 4
 -DISTRO := $(shell gawk -F= '/^NAME/{print $$2}' /etc/os-release)
  ifeq ($(wildcard /usr/lib/systemd/system), /usr/lib/systemd/system)
  	SYSTEMD=1
  else
-@@ -523,25 +522,8 @@ cleanall:
+@@ -654,29 +653,8 @@ cleanall:
  	rm binaries/*rpm || true
  
  install: src/proxysql
@@ -21,7 +21,6 @@ Sane installation.
 -	if [ ! -d /var/lib/proxysql ]; then mkdir /var/lib/proxysql ; fi
 -ifeq ($(SYSTEMD), 1)
 -	install -m 0644 systemd/proxysql.service /usr/lib/systemd/system/
--	systemctl daemon-reload
 -	systemctl enable proxysql.service
 -else
 -	install -m 0755 etc/init.d/proxysql /etc/init.d
@@ -31,7 +30,12 @@ Sane installation.
 -ifeq ($(DISTRO),"Red Hat Enterprise Linux Server")
 -		chkconfig --level 0123456 proxysql on
 -else
+-ifeq ($(DISTRO),"Ubuntu")
 -		update-rc.d proxysql defaults
+-else
+-ifeq ($(DISTRO),"Debian GNU/Linux")
+-		update-rc.d proxysql defaults
+-endif
 -endif
 -endif
 -endif
@@ -40,3 +44,11 @@ Sane installation.
  .PHONY: install
  
  uninstall:
+@@ -705,7 +683,6 @@ ifeq ($(DISTRO),"Debian GNU/Linux")
+ endif
+ endif
+ endif
+-endif
+ endif
+ endif
+ .PHONY: uninstall

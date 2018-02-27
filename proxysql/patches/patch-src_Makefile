@@ -1,0 +1,26 @@
+$NetBSD$
+
+We use some pkgsrc deps.
+
+--- src/Makefile.orig	2018-02-01 02:06:06.000000000 +0000
++++ src/Makefile
+@@ -43,6 +43,7 @@ MICROHTTPD_LDIR=$(MICROHTTPD_DIR)/microh
+ CURL_DIR=$(DEPS_PATH)/curl/curl/
+ CURL_IDIR=$(CURL_DIR)/include
+ CURL_LDIR=$(CURL_DIR)/lib/.libs
++CURL_LIBS := $(shell curl-config --libs)
+ 
+ IDIR=../include
+ LDIR=../lib
+@@ -68,9 +69,9 @@ MYCXXFLAGS=-std=c++11 $(IDIRS) $(OPTZ) $
+ LDFLAGS+=
+ NOJEMALLOC := $(shell echo $(NOJEMALLOC))
+ ifeq ($(NOJEMALLOC),1)
+-MYLIBS=-Wl,--export-dynamic -Wl,-Bstatic -lconfig -lproxysql -ldaemon -lconfig++ -lre2 -lpcrecpp -lpcre -lmariadbclient -lmicrohttpd -lcurl -Wl,-Bdynamic -lpthread -lm -lz -lrt -lcrypto -lssl $(EXTRALINK)
++MYLIBS=-Wl,--export-dynamic -Wl,-Bstatic -lconfig -lproxysql -ldaemon -lconfig++ -lre2 -lpcrecpp -lpcre -lmariadbclient -lmicrohttpd -Wl,-Bdynamic $(CURL_LIBS) -lpthread -lm -lz -lrt -lcrypto -lssl $(EXTRALINK)
+ else
+-MYLIBS=-Wl,--export-dynamic -Wl,-Bstatic -lconfig -lproxysql -ldaemon -ljemalloc -lconfig++ -lre2 -lpcrecpp -lpcre -lmariadbclient -lmicrohttpd -lcurl -Wl,-Bdynamic -lpthread -lm -lz -lrt -lcrypto -lssl $(EXTRALINK)
++MYLIBS=-Wl,--export-dynamic -Wl,-Bstatic -lconfig -lproxysql -ldaemon -ljemalloc -lconfig++ -lre2 -lpcrecpp -lpcre -lmariadbclient -lmicrohttpd -Wl,-Bdynamic $(CURL_LIBS) -lpthread -lm -lz -lrt -lcrypto -lssl $(EXTRALINK)
+ endif
+ 
+ ifeq ($(UNAME_S),Darwin)
