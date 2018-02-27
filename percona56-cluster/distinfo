@@ -1,13 +1,13 @@
 $NetBSD$
 
-SHA1 (Percona-XtraDB-Cluster-5.6.38-83.0.tar.gz) = 808e92cfdde6b43bd89200e26bbf2b624de9a287
-RMD160 (Percona-XtraDB-Cluster-5.6.38-83.0.tar.gz) = 9d03c7ebdd2a8514febb87ca5576c747511b0a31
-SHA512 (Percona-XtraDB-Cluster-5.6.38-83.0.tar.gz) = 4946a3f46f01f38fc8c59be4505a001c5cc7a73a16eec5580bb0f860bfaf3dd6e916875a9070af05169efd6bf5ee82ca941db40acf08a6df39f5e390f5ab2285
-Size (Percona-XtraDB-Cluster-5.6.38-83.0.tar.gz) = 54140923 bytes
-SHA1 (percona-xtradb-cluster-galera-3-3.23.tar.gz) = c5fd7092f27d8e871af2e3ccfd36310c4d0ef9bc
-RMD160 (percona-xtradb-cluster-galera-3-3.23.tar.gz) = 4cd3f71b2ecb0a3f4736ce9e9dd6011fef37cd6c
-SHA512 (percona-xtradb-cluster-galera-3-3.23.tar.gz) = 233940c3e1434dda506766571938143383d3f1ae5a820e3f0a4e9dae3fa10007c4019d4f0eb22e26e156ae54c87721ccfd7f0ef93def95d3ebc8a63309213188
-Size (percona-xtradb-cluster-galera-3-3.23.tar.gz) = 3289233 bytes
+SHA1 (Percona-XtraDB-Cluster-5.6.39-83.1.tar.gz) = a1e42320b5371a6cbfaf434a076590eee70ed3aa
+RMD160 (Percona-XtraDB-Cluster-5.6.39-83.1.tar.gz) = 0b8a493cbf8248821098f44b7a39f30fe0eb4a14
+SHA512 (Percona-XtraDB-Cluster-5.6.39-83.1.tar.gz) = 004ee151268dad6025dbdaf9c8999a9c2b32248200b49ad82779c03de872b4de211b2646f13569b5ce9be041845bce0504134e65d3453ebcc29149aec73f9f93
+Size (Percona-XtraDB-Cluster-5.6.39-83.1.tar.gz) = 54100022 bytes
+SHA1 (percona-xtradb-cluster-galera-3-3.25.tar.gz) = 14d36cd0ae0606b116cb73192e651a60bb35afab
+RMD160 (percona-xtradb-cluster-galera-3-3.25.tar.gz) = c36f4a784083c16a712d2a762b26b97a9401ae7b
+SHA512 (percona-xtradb-cluster-galera-3-3.25.tar.gz) = e7a13e630418abdbf2c09c10048a69639f40d1d87171065f373919b5ef58c2753cb23ae43c149fbab1b16be63aa70221849fbfaed1053c00e633d923d0c59a28
+Size (percona-xtradb-cluster-galera-3-3.25.tar.gz) = 3298965 bytes
 SHA1 (sphinx-2.2.11-release.tar.gz) = 34e83f43de0e69e258bf749ea00348c60a51632a
 RMD160 (sphinx-2.2.11-release.tar.gz) = 5804b4cce64bc03fa20bac26c7391cd661cecc77
 SHA512 (sphinx-2.2.11-release.tar.gz) = cf1a262a5b0fbf0bd2827ec6ec629edeaf709ce855a6e7b509b65342baaeb26c02717ca63f1578d32c83d21e2fd6d1e92dceb34660e6351b93cd96fd4e623689
