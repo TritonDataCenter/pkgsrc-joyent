@@ -1,6 +1,6 @@
 # $NetBSD$
 
-DISTNAME=	proxysql-1.4.6
+DISTNAME=	proxysql-1.4.7
 CATEGORIES=	databases
 MASTER_SITES=	${MASTER_SITE_GITHUB:=sysown/}
 

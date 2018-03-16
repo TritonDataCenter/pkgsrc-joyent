@@ -1,10 +1,10 @@
 $NetBSD$
 
-SHA1 (proxysql-1.4.6.tar.gz) = 4de5e96d236ebc0e079bbd8e0537593b7f7a44da
-RMD160 (proxysql-1.4.6.tar.gz) = 792fbd07b40969b35f5120aab7fa9b300af59675
-SHA512 (proxysql-1.4.6.tar.gz) = f105db8666a79e0b82197063e3c76d0f337375b8393a18b37b7eeafcdb8c194e27546f8d070a7d9688b1001e6423a4c780d6a9741d2b44efd5ff20e77f414175
-Size (proxysql-1.4.6.tar.gz) = 12999983 bytes
-SHA1 (patch-Makefile) = fa136405c7cfb868b08e06a817e5f6ad196a1769
+SHA1 (proxysql-1.4.7.tar.gz) = 67f7eb7e231bb9fbee3ff6a6e8548538374ff976
+RMD160 (proxysql-1.4.7.tar.gz) = 3b023bce6c46d80852d92e2c1b19ba8a1bb30885
+SHA512 (proxysql-1.4.7.tar.gz) = 3ea490d2ffbdabce3c2ae7fa37b6880feed1d7f250a506481642e7efe22a54b1b67b4e6b44f876d38fa721aabb1841afee7cc7b6d2a4606be341e43b3cd754ad
+Size (proxysql-1.4.7.tar.gz) = 13013128 bytes
+SHA1 (patch-Makefile) = f52d1e5be05fbf7a657b9f9bc5eaa4aba7e911dd
 SHA1 (patch-deps_Makefile) = cd456f2943d33233f6504b55a98d4cf379ffb926
 SHA1 (patch-deps_mariadb-client-library_mariadb-connector-c-2.3.1_cmake_CheckTypes.cmake) = 9abc7bb9cedccafd95cd7450568f89828a7fb384
 SHA1 (patch-deps_mariadb-client-library_mariadb-connector-c-2.3.1_include_my__pthread.h) = 26b278f7d3ea8e4e5a0fecab60f333573f4ae7ee

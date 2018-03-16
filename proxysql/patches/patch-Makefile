@@ -6,7 +6,7 @@ Sane installation.
 +++ Makefile
 @@ -12,7 +12,6 @@ DEBUG=${ALL_DEBUG}
  #export EXTRALINK
- CURVER?=1.4.6
+ CURVER?=1.4.7
  MAKEOPT=-j 4
 -DISTRO := $(shell gawk -F= '/^NAME/{print $$2}' /etc/os-release)
  ifeq ($(wildcard /usr/lib/systemd/system), /usr/lib/systemd/system)
