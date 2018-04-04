@@ -789,6 +789,7 @@ llvm6/include/llvm/MC/MCAsmInfoDarwin.h
 llvm6/include/llvm/MC/MCAsmInfoELF.h
 llvm6/include/llvm/MC/MCAsmInfoWasm.h
 llvm6/include/llvm/MC/MCAsmLayout.h
+llvm6/include/llvm/MC/MCAsmMacro.h
 llvm6/include/llvm/MC/MCAssembler.h
 llvm6/include/llvm/MC/MCCodeEmitter.h
 llvm6/include/llvm/MC/MCCodePadder.h
