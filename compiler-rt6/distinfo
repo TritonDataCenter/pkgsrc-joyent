@@ -1,0 +1,7 @@
+$NetBSD: distinfo,v 1.35 2015/09/11 01:21:57 tnn Exp $
+
+SHA1 (compiler-rt-6.0.0rc3.src.tar.xz) = 8b117a747231f0ff658e01ac21a0748737330b16
+RMD160 (compiler-rt-6.0.0rc3.src.tar.xz) = 654d0e5f2c89e58caa1273dcd21890c5444c4e19
+SHA512 (compiler-rt-6.0.0rc3.src.tar.xz) = f2897fbf4b9f27c4ddd1dbdcd0720874e85eeb861d31422208308e6fe2142ae92dc081c06e5cc795fde6066e9a9c03e4e10373517810ca89e110ededc49c77ad
+Size (compiler-rt-6.0.0rc3.src.tar.xz) = 1631896 bytes
+SHA1 (patch-cmake_config-ix.cmake) = f2a871dfe7c2ee2e938e0812aa19b7498b0e71cc

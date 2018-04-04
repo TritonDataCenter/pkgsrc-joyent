@@ -1,0 +1,5 @@
+@comment $NetBSD$
+llvm6/lib/libunwind.a
+llvm6/lib/libunwind.so
+llvm6/lib/libunwind.so.1
+llvm6/lib/libunwind.so.1.0

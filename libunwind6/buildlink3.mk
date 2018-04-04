@@ -1,0 +1,21 @@
+# $NetBSD$
+
+BUILDLINK_TREE+=	libunwind6
+
+.if !defined(LIBUNWIND6_BUILDLINK3_MK)
+LIBUNWIND6_BUILDLINK3_MK:=
+
+BUILDLINK_API_DEPENDS.libunwind6+=	libunwind6>=${LLVM_VERSION}
+BUILDLINK_PKGSRCDIR.libunwind6?=	../../joyent/libunwind6
+
+LIBUNWIND6_PREFIX=	${BUILDLINK_PREFIX.libunwind6}/llvm6
+
+BUILDLINK_PASSTHRU_DIRS+=	${LIBUNWIND6_PREFIX}/lib
+
+LDFLAGS+=		-L${LIBUNWIND6_PREFIX}/lib
+LDFLAGS+=               ${COMPILER_RPATH_FLAG}${LIBUNWIND6_PREFIX}/lib
+
+.include "../../joyent/llvm6/buildlink3.mk"
+.endif	# LIBUNWIND6_BUILDLINK3_MK
+
+BUILDLINK_TREE+=	-libunwind6

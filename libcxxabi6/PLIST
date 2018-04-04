@@ -1,0 +1,5 @@
+@comment $NetBSD$
+llvm6/lib/libc++abi.a
+llvm6/lib/libc++abi.so
+llvm6/lib/libc++abi.so.1
+llvm6/lib/libc++abi.so.1.0

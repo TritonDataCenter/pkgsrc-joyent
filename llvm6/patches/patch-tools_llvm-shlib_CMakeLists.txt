@@ -1,0 +1,20 @@
+$NetBSD: patch-tools_llvm-shlib_CMakeLists.txt,v 1.2 2017/12/01 19:22:12 adam Exp $
+
+Use the Linux style linking everywhere except Darwin and SunOS.
+
+--- tools/llvm-shlib/CMakeLists.txt.orig	2018-01-09 07:09:28.000000000 +0000
++++ tools/llvm-shlib/CMakeLists.txt
+@@ -46,10 +46,12 @@ if(("${CMAKE_SYSTEM_NAME}" STREQUAL "Lin
+   ${LLVM_LIBRARY_DIR}/tools/llvm-shlib/simple_version_script.map)
+ 
+   # GNU ld doesn't resolve symbols in the version script.
+-  set(LIB_NAMES -Wl,--whole-archive ${LIB_NAMES} -Wl,--no-whole-archive)
+   if (NOT LLVM_LINKER_IS_SOLARISLD)
++    set(LIB_NAMES -Wl,--whole-archive ${LIB_NAMES} -Wl,--no-whole-archive)
+     # Solaris ld does not accept global: *; so there is no way to version *all* global symbols
+     set(LIB_NAMES -Wl,--version-script,${LLVM_LIBRARY_DIR}/tools/llvm-shlib/simple_version_script.map ${LIB_NAMES})
++  else()
++    set(LIB_NAMES -Wl,-Bsymbolic -Wl,-z -Wl,allextract ${LIB_NAMES} -Wl,-z -Wl,defaultextract)
+   endif()
+ elseif("${CMAKE_SYSTEM_NAME}" STREQUAL "Darwin")
+   set(LIB_NAMES -Wl,-all_load ${LIB_NAMES})

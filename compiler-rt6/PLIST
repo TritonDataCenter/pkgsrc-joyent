@@ -1,0 +1,18 @@
+@comment $NetBSD$
+llvm6/lib/clang/${PKGVERSION_NOREV}/include/sanitizer/allocator_interface.h
+llvm6/lib/clang/${PKGVERSION_NOREV}/include/sanitizer/asan_interface.h
+llvm6/lib/clang/${PKGVERSION_NOREV}/include/sanitizer/common_interface_defs.h
+llvm6/lib/clang/${PKGVERSION_NOREV}/include/sanitizer/coverage_interface.h
+llvm6/lib/clang/${PKGVERSION_NOREV}/include/sanitizer/dfsan_interface.h
+llvm6/lib/clang/${PKGVERSION_NOREV}/include/sanitizer/esan_interface.h
+llvm6/lib/clang/${PKGVERSION_NOREV}/include/sanitizer/hwasan_interface.h
+llvm6/lib/clang/${PKGVERSION_NOREV}/include/sanitizer/linux_syscall_hooks.h
+llvm6/lib/clang/${PKGVERSION_NOREV}/include/sanitizer/lsan_interface.h
+llvm6/lib/clang/${PKGVERSION_NOREV}/include/sanitizer/msan_interface.h
+llvm6/lib/clang/${PKGVERSION_NOREV}/include/sanitizer/scudo_interface.h
+llvm6/lib/clang/${PKGVERSION_NOREV}/include/sanitizer/tsan_interface.h
+llvm6/lib/clang/${PKGVERSION_NOREV}/include/sanitizer/tsan_interface_atomic.h
+llvm6/lib/clang/${PKGVERSION_NOREV}/include/xray/xray_interface.h
+llvm6/lib/clang/${PKGVERSION_NOREV}/include/xray/xray_log_interface.h
+llvm6/lib/clang/${PKGVERSION_NOREV}/lib/${COMPILER_RT_OS_DIR}/libclang_rt.builtins-i386.a
+llvm6/lib/clang/${PKGVERSION_NOREV}/lib/${COMPILER_RT_OS_DIR}/libclang_rt.builtins-x86_64.a

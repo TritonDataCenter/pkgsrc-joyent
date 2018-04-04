@@ -1,0 +1,10 @@
+$NetBSD: distinfo,v 1.50 2017/12/30 10:39:24 adam Exp $
+
+SHA1 (cfe-6.0.0rc3.src.tar.xz) = ca075968682ed845dc506f027c89a21152c6b467
+RMD160 (cfe-6.0.0rc3.src.tar.xz) = 7d47230630d3736f816f095da1f839ae915ffe23
+SHA512 (cfe-6.0.0rc3.src.tar.xz) = 364e1ae830f453b4da06e5396b6cbe934f46c8e30ca962951d71e0f228ddd9825109c20038ed1cc76f016dab52c0fe54e61b0e054fac3d1135443469030bc3d4
+Size (cfe-6.0.0rc3.src.tar.xz) = 11959032 bytes
+SHA1 (patch-lib_Basic_Targets_OSTargets.h) = 73043149874a79bc7f048eb854832381939a1397
+SHA1 (patch-lib_Driver_ToolChains_Solaris.cpp) = 7cf1d43b50e7a0bf0842f2265b0449b0fea44007
+SHA1 (patch-lib_Driver_ToolChains_Solaris.h) = 13849df72a4b719bbb6109ab1d1abf2e7b97014f
+SHA1 (patch-lib_Frontend_InitHeaderSearch.cpp) = 924cb81bd8e2eb07c3577e25c1b1d4f405e9360f
