@@ -3,7 +3,7 @@
 .include "../../joyent/llvm6/version.mk"
 
 DISTNAME=	compiler-rt-${LLVM_VERSION}.src
-PKGNAME=	compiler-rt-${LLVM_VERSION}
+PKGNAME=	compiler-rt6-${LLVM_VERSION}
 CATEGORIES=	lang devel
 MASTER_SITES=	${LLVM_MASTER_SITE}
 EXTRACT_SUFX=	.tar.xz
