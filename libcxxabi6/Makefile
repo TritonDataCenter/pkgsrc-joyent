@@ -18,8 +18,8 @@ LICENSE=	modified-bsd OR mit
 # in both of them to get them to build against each other without causing
 # circular dependencies.  This must be kept in sync with libcxxabi6/Makefile.
 #
-LIBCXX=		libcxx-${LLVM_VERSION}.src${EXTRACT_SUFX}
-DISTFILES=	${DEFAULT_DISTFILES} ${LIBCXX}
+LIBCXX=		libcxx-${LLVM_VERSION}.src
+DISTFILES=	${DEFAULT_DISTFILES} ${LIBCXX}${EXTRACT_SUFX}
 
 CONFIGURE_DIRS=		${WRKDIR}/build
 CMAKE_ARG_PATH=		${WRKSRC}
@@ -33,7 +33,7 @@ CMAKE_INSTALL_PREFIX=	${PREFIX}/llvm6
 CMAKE_ARGS+=	-DCMAKE_BUILD_TYPE=Release
 CMAKE_ARGS+=	-DCMAKE_C_COMPILER=${CC:Q}
 CMAKE_ARGS+=	-DCMAKE_CXX_COMPILER=${CXX:Q}
-CMAKE_ARGS+=	-DLIBCXXABI_LIBCXX_INCLUDES=${WRKDIR}/libcxx-${LIBCXX_SHA}/include
+CMAKE_ARGS+=	-DLIBCXXABI_LIBCXX_INCLUDES=${WRKDIR}/${LIBCXX}/include
 CMAKE_ARGS+=	-DLIBCXXABI_USE_LLVM_UNWINDER=YES
 
 post-extract:
