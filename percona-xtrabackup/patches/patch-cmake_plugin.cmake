@@ -2,7 +2,7 @@ $NetBSD$
 
 Build with newer DTrace.
 
---- cmake/plugin.cmake.orig	2016-03-29 11:27:21.000000000 +0000
+--- cmake/plugin.cmake.orig	2018-03-19 12:59:26.000000000 +0000
 +++ cmake/plugin.cmake
 @@ -21,6 +21,7 @@ INCLUDE(${MYSQL_CMAKE_SCRIPT_DIR}/cmake_
  # [STORAGE_ENGINE]
@@ -21,10 +21,10 @@ Build with newer DTrace.
      ${ARGN}
    )
    
-@@ -123,7 +124,9 @@ MACRO(MYSQL_ADD_PLUGIN)
-   IF (WITH_${plugin} AND NOT ARG_MODULE_ONLY)
-     ADD_LIBRARY(${target} STATIC ${SOURCES})
-     SET_TARGET_PROPERTIES(${target} PROPERTIES COMPILE_DEFINITONS "MYSQL_SERVER")
+@@ -125,7 +126,9 @@ MACRO(MYSQL_ADD_PLUGIN)
+     SET_TARGET_PROPERTIES(${target}
+       PROPERTIES COMPILE_DEFINITIONS "MYSQL_SERVER")
+ 
 -    DTRACE_INSTRUMENT(${target})
 +    IF (ARG_DTRACE_INSTRUMENTED)
 +      DTRACE_INSTRUMENT(${target})
@@ -32,7 +32,7 @@ Build with newer DTrace.
      ADD_DEPENDENCIES(${target} GenError ${ARG_DEPENDENCIES})
      IF(WITH_EMBEDDED_SERVER AND NOT ARG_NOT_FOR_EMBEDDED)
        # Embedded library should contain PIC code and be linkable
-@@ -131,7 +134,9 @@ MACRO(MYSQL_ADD_PLUGIN)
+@@ -133,7 +136,9 @@ MACRO(MYSQL_ADD_PLUGIN)
        IF(ARG_RECOMPILE_FOR_EMBEDDED OR NOT _SKIP_PIC)
          # Recompile some plugins for embedded
          ADD_CONVENIENCE_LIBRARY(${target}_embedded ${SOURCES})
@@ -43,7 +43,7 @@ Build with newer DTrace.
          IF(ARG_RECOMPILE_FOR_EMBEDDED)
            SET_TARGET_PROPERTIES(${target}_embedded 
              PROPERTIES COMPILE_DEFINITIONS "MYSQL_SERVER;EMBEDDED_LIBRARY")
-@@ -195,7 +200,9 @@ MACRO(MYSQL_ADD_PLUGIN)
+@@ -197,7 +202,9 @@ MACRO(MYSQL_ADD_PLUGIN)
  
      ADD_VERSION_INFO(${target} MODULE SOURCES)
      ADD_LIBRARY(${target} MODULE ${SOURCES}) 
