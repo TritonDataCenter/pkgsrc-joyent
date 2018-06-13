@@ -123,7 +123,7 @@ lib/libmysqlclient.so
 lib/libperconaserverclient.a
 lib/libperconaserverclient.so
 lib/libperconaserverclient.so.20
-lib/libperconaserverclient.so.20.3.7
+lib/libperconaserverclient.so.20.3.9
 lib/pkgconfig/perconaserverclient.pc
 man/man1/comp_err.1
 man/man1/innochecksum.1
@@ -133,12 +133,8 @@ man/man1/myisam_ftdump.1
 man/man1/myisamchk.1
 man/man1/myisamlog.1
 man/man1/myisampack.1
-man/man1/mysql-stress-test.pl.1
-man/man1/mysql-test-run.pl.1
 man/man1/mysql.1
 man/man1/mysql.server.1
-man/man1/mysql_client_test.1
-man/man1/mysql_client_test_embedded.1
 man/man1/mysql_config.1
 man/man1/mysql_config_editor.1
 man/man1/mysql_install_db.1
@@ -159,8 +155,6 @@ man/man1/mysqlman.1
 man/man1/mysqlpump.1
 man/man1/mysqlshow.1
 man/man1/mysqlslap.1
-man/man1/mysqltest.1
-man/man1/mysqltest_embedded.1
 man/man1/perror.1
 man/man1/replace.1
 man/man1/resolve_stack_dump.1

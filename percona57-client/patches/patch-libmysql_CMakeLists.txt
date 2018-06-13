@@ -3,7 +3,7 @@ $NetBSD$
 Do not install libperconaserverclient with the server.
 Generate versioned lib symlinks on FreeBSD to supress PLIST divergence.
 
---- libmysql/CMakeLists.txt.orig	2017-12-28 09:28:11.000000000 +0000
+--- libmysql/CMakeLists.txt.orig	2018-05-29 21:11:24.000000000 +0000
 +++ libmysql/CMakeLists.txt
 @@ -230,12 +230,18 @@ IF(WIN32)
    LIST(APPEND LIBS auth_win_client)
@@ -17,23 +17,23 @@ Generate versioned lib symlinks on FreeBSD to supress PLIST divergence.
    
  # Merge several convenience libraries into one big perconaserverclient
 +IF(WITHOUT_SERVER)
- MERGE_LIBRARIES(perconaserverclient STATIC ${LIBS} COMPONENT Development)
+ MERGE_CONVENIENCE_LIBRARIES(perconaserverclient ${LIBS} COMPONENT Development)
 +ELSE()
-+MERGE_LIBRARIES(perconaserverclient STATIC NOINSTALL ${LIBS} COMPONENT Development)
++MERGE_CONVENIENCE_LIBRARIES(perconaserverclient SKIP_INSTALL ${LIBS} COMPONENT Development)
 +ENDIF()
  
  # Visual Studio users need debug  static library for debug projects
  IF(MSVC)
-@@ -275,12 +281,18 @@ ENDIF()
+@@ -282,12 +288,18 @@ ENDIF()
  IF(NOT DISABLE_SHARED)
    # Merge several convenience libraries into one big perconaserverclient
    # and link them together into shared library.
 +  IF(WITHOUT_SERVER)
-   MERGE_LIBRARIES(libmysql SHARED ${LIBS}
+   MERGE_LIBRARIES_SHARED(libmysql ${LIBS}
      EXPORTS ${CLIENT_API_FUNCTIONS} ${CLIENT_API_FUNCTIONS_UNDOCUMENTED}
      COMPONENT SharedLibraries)
 +  ELSE()
-+  MERGE_LIBRARIES(libmysql SHARED NOINSTALL ${LIBS}
++  MERGE_LIBRARIES_SHARED(libmysql SKIP_INSTALL ${LIBS}
 +    EXPORTS ${CLIENT_API_FUNCTIONS} ${CLIENT_API_FUNCTIONS_UNDOCUMENTED}
 +    COMPONENT SharedLibraries)
 +  ENDIF()
@@ -44,3 +44,15 @@ Generate versioned lib symlinks on FreeBSD to supress PLIST divergence.
        SET(OS_SHARED_LIB_VERSION "${SHARED_LIB_MAJOR_VERSION}")
      ELSE()
        SET(OS_SHARED_LIB_VERSION
+@@ -361,11 +373,7 @@ IF(LIBRT)
+   TARGET_LINK_LIBRARIES(libmysql_api_test ${LIBRT})
+ ENDIF()
+ 
+-IF(DISABLE_SHARED)
+   TARGET_LINK_LIBRARIES(libmysql_api_test ${LIBS})
+-ELSE()
+-  TARGET_LINK_LIBRARIES(libmysql_api_test libmysql)
+-ENDIF()
+ 
+ # Verify that libmysql_api_test runs OK
+ ADD_CUSTOM_COMMAND(TARGET libmysql_api_test POST_BUILD
