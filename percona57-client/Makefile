@@ -16,14 +16,6 @@ REPLACE_PERL+=	scripts/mysqld_multi.sh
 REPLACE_PERL+=	scripts/mysqldumpslow.sh
 
 post-install:
-# Replace manual pages which only include other ones with a symbolic link
-# if manual compression is activated. The manual pages won't work otherwise.
-.if defined(MANZ)
-.  for FILE in mysql_client_test_embedded.1 mysqltest_embedded.1
-	${RM} -f ${DESTDIR}${PREFIX}/${PKGMANDIR}/man1/${FILE}
-	${LN} -sf ${FILE:S/_embedded//} ${DESTDIR}${PREFIX}/${PKGMANDIR}/man1/${FILE}
-.  endfor
-.endif
 	cd ${DESTDIR}${PREFIX}/lib${LIBARCHSUFFIX} && ${LN} -sf libperconaserverclient.a libmysqlclient.a
 	cd ${DESTDIR}${PREFIX}/lib${LIBARCHSUFFIX} && ${LN} -sf libperconaserverclient.so libmysqlclient.so
 
