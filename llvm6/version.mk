@@ -1,6 +1,6 @@
 # $NetBSD$
 
-LLVM_VERSION=		6.0.0rc3
-LLVM_MASTER_SITE=	http://prereleases.llvm.org/6.0.0/rc3/
+LLVM_VERSION=		6.0.1
+LLVM_MASTER_SITE=	http://releases.llvm.org/${LLVM_VERSION}/
 
 SSP_SUPPORTED=		no

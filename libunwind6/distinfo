@@ -1,6 +1,6 @@
 $NetBSD$
 
-SHA1 (libunwind-6.0.0rc3.src.tar.xz) = ad315ce8a921cca57b884fcdc94bfeddc49bc508
-RMD160 (libunwind-6.0.0rc3.src.tar.xz) = 063cb6ec53db536fe10fa2232bcb1195cf295a0f
-SHA512 (libunwind-6.0.0rc3.src.tar.xz) = e98ef7c0e74c65e99f261f32c95de6fb9f941656da8e42eeeb89ddfbd0c56f75e69da5baa7329c007d036bba76d20b1d202ed3e42fb0ab1d348e99d1e8ab4f1b
-Size (libunwind-6.0.0rc3.src.tar.xz) = 76580 bytes
+SHA1 (libunwind-6.0.1.src.tar.xz) = 9592003fd0e41a69880318ae6b25ebbbabd59703
+RMD160 (libunwind-6.0.1.src.tar.xz) = f980b76798d06e8a866b90580f85da9b66610fd9
+SHA512 (libunwind-6.0.1.src.tar.xz) = 78568c28720abdd1f8471c462421df9965e05e1db048689d16ac85378716c4080ec1723af78e9f61d133b0ff82ac8c1f0dde7fd42d194485f62c1a17c02db37f
+Size (libunwind-6.0.1.src.tar.xz) = 77036 bytes
