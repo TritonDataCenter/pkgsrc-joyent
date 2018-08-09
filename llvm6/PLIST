@@ -1250,7 +1250,7 @@ llvm6/lib/cmake/llvm/LLVMInstallSymlink.cmake
 llvm6/lib/cmake/llvm/LLVMProcessSources.cmake
 llvm6/lib/cmake/llvm/TableGen.cmake
 llvm6/lib/cmake/llvm/VersionFromVCS.cmake
-llvm6/lib/libLLVM-6.0.0.so
+llvm6/lib/libLLVM-${PKGVERSION}.so
 llvm6/lib/libLLVM-6.0.so
 llvm6/lib/libLLVM.so
 llvm6/lib/libLLVMAArch64AsmParser.a
@@ -1382,7 +1382,7 @@ llvm6/lib/libLLVMXRay.a
 llvm6/lib/libLLVMipo.a
 llvm6/lib/libLTO.so
 llvm6/lib/libLTO.so.6
-llvm6/lib/libLTO.so.6.0.0
+llvm6/lib/libLTO.so.${PKGVERSION}
 llvm6/share/opt-viewer/opt-diff.py
 llvm6/share/opt-viewer/opt-stats.py
 llvm6/share/opt-viewer/opt-viewer.py
