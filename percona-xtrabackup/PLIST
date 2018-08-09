@@ -5,7 +5,6 @@ bin/xbcloud_osenv
 bin/xbcrypt
 bin/xbstream
 bin/xtrabackup
-lib/libmysqlservices.a
 lib/plugin/keyring_file.so
 lib/plugin/keyring_vault.so
 percona-xtrabackup-test/Makefile
@@ -11948,6 +11947,7 @@ percona-xtrabackup-test/t/archive_no_symlink.test
 percona-xtrabackup-test/t/archive_plugin-master.opt
 percona-xtrabackup-test/t/archive_plugin.test
 percona-xtrabackup-test/t/archive_symlink.test
+percona-xtrabackup-test/t/argument_handling.sh
 percona-xtrabackup-test/t/audit_plugin-master.opt
 percona-xtrabackup-test/t/audit_plugin.test
 percona-xtrabackup-test/t/audit_plugin_2-master.opt
@@ -12066,6 +12066,7 @@ percona-xtrabackup-test/t/bug1706582.sh
 percona-xtrabackup-test/t/bug17076131-master.opt
 percona-xtrabackup-test/t/bug17076131.test
 percona-xtrabackup-test/t/bug1717158.sh
+percona-xtrabackup-test/t/bug1737525.sh
 percona-xtrabackup-test/t/bug33509-master.opt
 percona-xtrabackup-test/t/bug33509.test
 percona-xtrabackup-test/t/bug369913.sh
@@ -12512,6 +12513,7 @@ percona-xtrabackup-test/t/innodb_disabled-master.opt
 percona-xtrabackup-test/t/innodb_disabled.test
 percona-xtrabackup-test/t/innodb_encryption.sh
 percona-xtrabackup-test/t/innodb_encryption_export.sh
+percona-xtrabackup-test/t/innodb_encryption_mix_plugins.sh
 percona-xtrabackup-test/t/innodb_explain_json_non_select_all.test
 percona-xtrabackup-test/t/innodb_explain_json_non_select_none.test
 percona-xtrabackup-test/t/innodb_explain_non_select_all.test

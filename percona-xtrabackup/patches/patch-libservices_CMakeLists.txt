@@ -1,0 +1,11 @@
+$NetBSD$
+
+Do not install useless archive.
+
+--- libservices/CMakeLists.txt.orig	2018-04-18 16:20:32.000000000 +0000
++++ libservices/CMakeLists.txt
+@@ -35,4 +35,3 @@ SET(MYSQLSERVICES_SOURCES
+   mysql_keyring_service.c)
+ 
+ ADD_CONVENIENCE_LIBRARY(mysqlservices ${MYSQLSERVICES_SOURCES})
+-INSTALL(TARGETS mysqlservices DESTINATION ${INSTALL_LIBDIR} COMPONENT Development)
