@@ -3,7 +3,7 @@ $NetBSD$
 Use bundled boost, but system OpenSSL and zlib.
 Fix mysqlxtest binary linking.
 
---- rapid/plugin/x/CMakeLists.txt.orig	2017-09-22 12:46:54.000000000 +0000
+--- rapid/plugin/x/CMakeLists.txt.orig	2018-06-29 03:13:57.000000000 +0000
 +++ rapid/plugin/x/CMakeLists.txt
 @@ -92,14 +92,14 @@ ELSE()
      ${CMAKE_SOURCE_DIR}/include #temporary
@@ -33,5 +33,5 @@ Fix mysqlxtest binary linking.
 +    TARGET_LINK_LIBRARIES(mysqlxtest "socket")
 +  ENDIF()
  
-   IF( WIN32 )
-     ADD_DEFINITIONS(-DMYSQLXTEST_EXPORTS)
+   IF(INSTALL_MYSQLTESTDIR)
+     INSTALL(

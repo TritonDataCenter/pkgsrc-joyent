@@ -2,13 +2,10 @@ $NetBSD$
 
 No dtrace probes in mysys_ssl.
 
---- mysys_ssl/CMakeLists.txt.orig	2016-09-19 11:15:23.000000000 +0000
+--- mysys_ssl/CMakeLists.txt.orig	2018-06-29 03:13:57.000000000 +0000
 +++ mysys_ssl/CMakeLists.txt
-@@ -48,7 +48,6 @@ TARGET_LINK_LIBRARIES(mysys_ssl dbug str
+@@ -50,4 +50,3 @@ TARGET_LINK_LIBRARIES(mysys_ssl dbug str
  IF(WIN32 AND NOT WITH_SSL STREQUAL "bundled")
    TARGET_LINK_LIBRARIES(mysys_ssl crypt32)
  ENDIF()
 -DTRACE_INSTRUMENT(mysys_ssl)
- 
- IF(MSVC)
-    INSTALL_DEBUG_TARGET(mysys_ssl DESTINATION ${INSTALL_LIBDIR}/debug)
