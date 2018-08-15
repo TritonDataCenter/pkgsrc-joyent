@@ -227,12 +227,6 @@ post-install:
 	${SED} ${CNFSUBST} < ${FILESDIR}/my-joyent.cnf.sh \
 		> ${DESTDIR}${PREFIX}/share/mysql/my-joyent.cnf
 	${RM} -rf ${DESTDIR}${PREFIX}/xinetd.d
-.if defined(MANZ)
-.  for FILE in mysql_client_test_embedded.1 mysqltest_embedded.1
-	${RM} -f ${DESTDIR}${PREFIX}/${PKGMANDIR}/man1/${FILE}
-	${LN} -s ${FILE:S/_embedded//} ${DESTDIR}${PREFIX}/${PKGMANDIR}/man1/${FILE}
-.  endfor
-.endif
 	${INSTALL_LIB} ${WRKSRC}/percona-xtradb-cluster-galera/libgalera_smm.so ${DESTDIR}${PREFIX}/lib/mysql/plugin/
 	${INSTALL_PROGRAM} ${WRKSRC}/percona-xtradb-cluster-galera/garb/garbd ${DESTDIR}${PREFIX}/bin/
 	${INSTALL_MAN} ${WRKSRC}/percona-xtradb-cluster-galera/man/garbd.8 ${DESTDIR}${PREFIX}/${PKGMANDIR}/man8/
