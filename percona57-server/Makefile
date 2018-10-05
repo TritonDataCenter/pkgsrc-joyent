@@ -96,4 +96,5 @@ post-install:
 BUILDLINK_AUTO_DIRS.percona-client=	no
 .include "../../joyent/percona57-client/buildlink3.mk"
 .include "../../security/tcp_wrappers/buildlink3.mk"
+.include "../../www/curl/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"
