@@ -1,7 +1,6 @@
 # $NetBSD$
-#
 
-DISTNAME=	build-essential-1.2
+DISTNAME=	build-essential-1.3
 CATEGORIES=	devel meta-pkgs
 MASTER_SITES=	# empty
 
@@ -10,6 +9,9 @@ HOMEPAGE=	http://www.joyent.com/
 COMMENT=	Meta-package for essential build utilities
 
 META_PACKAGE=	yes
+
+# Going via tools helps pick up pkgconf vs pkg-config.
+USE_TOOLS+=	pkg-config:run
 
 .include "../../mk/compiler.mk"
 
