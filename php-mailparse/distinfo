@@ -1,6 +1,7 @@
 $NetBSD: distinfo,v 1.2 2005/02/23 14:45:25 agc Exp $
 
-SHA1 (php-mailparse/mailparse-2.1.6.tgz) = f0deaa433a1f7833e80f80dabc1bbbdbe0071b3c
-RMD160 (php-mailparse/mailparse-2.1.6.tgz) = 68b2fedcacda2850c10e3551131502429b8daee1
-Size (php-mailparse/mailparse-2.1.6.tgz) = 36538 bytes
-SHA1 (patch-aa) = 8cb02d4059c93fd8843a4028d56e8a94005a74dd
+SHA1 (php-mailparse/mailparse-3.0.2.tgz) = 6a63fcc2d85f6cb2bd1028cf8559dff92f258959
+RMD160 (php-mailparse/mailparse-3.0.2.tgz) = c96c24aa440f302ad8b65d1b44d947bb4a8e1ebd
+SHA512 (php-mailparse/mailparse-3.0.2.tgz) = be04e15cf3577542447186d7ead4e31159c171c99de0a255d4ee2f6f760b80ecb44be056bd9089180601f622b9a71f4331f194e1adaa702d1d964009682896f6
+Size (php-mailparse/mailparse-3.0.2.tgz) = 38206 bytes
+SHA1 (patch-aa) = e987dbb78d423c2a85d8b9dda94d2987c3642ad8

@@ -1,7 +1,7 @@
 # $NetBSD: Makefile,v 1.7 2006/06/04 16:26:52 joerg Exp $
 
 MODNAME=		mailparse
-PECL_VERSION=		2.1.6
+PECL_VERSION=		3.0.2
 CATEGORIES+=		mail
 COMMENT=		PHP extension for email message manipulation
 
