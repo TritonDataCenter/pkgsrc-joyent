@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	rust
 RUST_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.rust+=	rust>=1.20.0
-BUILDLINK_PKGSRCDIR.rust?=	../../lang/rust
+BUILDLINK_PKGSRCDIR.rust?=	../../joyent/rust129
 
 BUILDLINK_PASSTHRU_DIRS+=	${PREFIX}/lib/rustlib
 .endif
