@@ -1,18 +1,23 @@
 # $NetBSD$
 
-DISTNAME=	proxysql-1.4.7
+DISTNAME=	proxysql-1.4.12
 CATEGORIES=	databases
 MASTER_SITES=	${MASTER_SITE_GITHUB:=sysown/}
+GITHUB_TAG=	v${PKGVERSION_NOREV}
 
 MAINTAINER=	filip@joyent.com
-HOMEPAGE=	http://www.proxysql.com/
+HOMEPAGE=	https://proxysql.com/
 COMMENT=	High-performance MySQL proxy
 LICENSE=	gnu-gpl-v3
 
-GITHUB_TAG=	v${PKGVERSION_NOREV}
-
+WRKSRC=		${WRKDIR}/proxysql-1.4.12
 USE_LANGUAGES=	c c++ c99
-USE_TOOLS+=	gmake tar
+USE_TOOLS+=	gawk gmake tar
+
+SMF_NAME=	proxysql
+
+BUILD_DEFS+=	VARBASE
+DEPENDS+=	patch>=2.4:../../devel/patch
 
 SUBST_CLASSES+=		path
 SUBST_STAGE.path=	pre-configure
@@ -46,11 +51,6 @@ INSTALLATION_DIRS+=	bin share/examples/proxysql
 # Pre-extract, so that we may patch the source
 post-extract:
 	cd ${WRKSRC}/deps/mariadb-client-library && ${TAR} -xzf mariadb-connector-c-*.tar.gz
-
-# Use embedded sources, because upstream applies custom patches:
-#.include "../../databases/sqlite3/buildlink3.mk"
-#.include "../../devel/jemalloc/buildlink3.mk"
-#.include "../../devel/re2/buildlink3.mk"
 
 .include "../../converters/libiconv/buildlink3.mk"
 .include "../../devel/libconfig/buildlink3.mk"
