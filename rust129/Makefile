@@ -90,6 +90,8 @@ CONFIGURE_ARGS+=	--enable-vendor
 # cargo defaults to using the number of available CPUs
 MAKE_ENV+=		CARGO_BUILD_JOBS=${MAKE_JOBS:U1}
 
+CFLAGS.SunOS+=		-D_POSIX_PTHREAD_SEMANTICS
+
 UNLIMIT_RESOURCES+=	cputime
 
 PYTHON_VERSIONS_ACCEPTED=	27
