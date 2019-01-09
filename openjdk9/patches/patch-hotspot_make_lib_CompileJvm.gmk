@@ -1,0 +1,20 @@
+$NetBSD$
+
+Support SunOS/gcc.
+
+--- hotspot/make/lib/CompileJvm.gmk.orig	2017-08-01 09:03:05.000000000 +0000
++++ hotspot/make/lib/CompileJvm.gmk
+@@ -171,11 +171,13 @@ endif
+ 
+ # Inline assembly for solaris
+ ifeq ($(OPENJDK_TARGET_OS), solaris)
++ ifeq ($(TOOLCHAIN_TYPE), solstudio)
+   ifeq ($(OPENJDK_TARGET_CPU), x86_64)
+     JVM_CFLAGS += $(HOTSPOT_TOPDIR)/src/os_cpu/solaris_x86/vm/solaris_x86_64.il
+   else ifeq ($(OPENJDK_TARGET_CPU), sparcv9)
+     JVM_CFLAGS += $(HOTSPOT_TOPDIR)/src/os_cpu/solaris_sparc/vm/solaris_sparc.il
+   endif
++ endif
+ endif
+ 
+ ifeq ($(OPENJDK_TARGET_OS)-$(OPENJDK_TARGET_CPU), solaris-sparcv9)

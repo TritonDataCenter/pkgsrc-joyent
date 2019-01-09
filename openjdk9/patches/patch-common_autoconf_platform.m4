@@ -1,0 +1,16 @@
+$NetBSD$
+
+Support SunOS/gcc.
+
+--- common/autoconf/platform.m4.orig	2017-07-27 18:04:46.000000000 +0000
++++ common/autoconf/platform.m4
+@@ -530,7 +530,9 @@ AC_DEFUN([PLATFORM_SET_COMPILER_TARGET_B
+ 
+   JVM_CFLAGS="$JVM_CFLAGS $ADDED_CFLAGS"
+   JVM_LDFLAGS="$JVM_LDFLAGS $ADDED_LDFLAGS"
++ if test "x$TOOLCHAIN_TYPE" != xgcc; then
+   JVM_ASFLAGS="$JVM_ASFLAGS $ADDED_CFLAGS"
++ fi
+ ])
+ 
+ AC_DEFUN_ONCE([PLATFORM_SETUP_OPENJDK_TARGET_BITS],

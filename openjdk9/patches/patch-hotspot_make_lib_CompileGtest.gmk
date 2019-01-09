@@ -1,0 +1,32 @@
+$NetBSD$
+
+Support SunOS/gcc. XXX: retain solstudio support.
+
+--- hotspot/make/lib/CompileGtest.gmk.orig	2017-08-01 09:03:05.000000000 +0000
++++ hotspot/make/lib/CompileGtest.gmk
+@@ -77,7 +77,7 @@ $(eval $(call SetupNativeCompilation, BU
+         -I$(GTEST_FRAMEWORK_SRC)/include \
+         $(addprefix -I,$(GTEST_TEST_SRC)), \
+     CFLAGS_windows := -EHsc, \
+-    CFLAGS_solaris := -DGTEST_HAS_EXCEPTIONS=0 -library=stlport4, \
++    CFLAGS_solaris := -DGTEST_HAS_EXCEPTIONS=0, \
+     CFLAGS_macosx := -DGTEST_OS_MAC=1, \
+     CFLAGS_aix := -qpic=large, \
+     CFLAGS_DEBUG_SYMBOLS := $(JVM_CFLAGS_SYMBOLS), \
+@@ -87,7 +87,7 @@ $(eval $(call SetupNativeCompilation, BU
+         tautological-undefined-compare $(BUILD_LIBJVM_DISABLED_WARNINGS_clang), \
+     DISABLED_WARNINGS_solstudio := identexpected, \
+     LDFLAGS := $(JVM_LDFLAGS), \
+-    LDFLAGS_solaris := -library=stlport4 $(call SET_SHARED_LIBRARY_ORIGIN), \
++    LDFLAGS_solaris := $(call SET_SHARED_LIBRARY_ORIGIN), \
+     LDFLAGS_aix := -bbigtoc, \
+     LIBS := $(JVM_LIBS), \
+     OPTIMIZATION := $(JVM_OPTIMIZATION), \
+@@ -116,7 +116,6 @@ $(eval $(call SetupNativeCompilation, BU
+     CXXFLAGS_DEBUG_SYMBOLS := $(JVM_CFLAGS_SYMBOLS), \
+     LDFLAGS := $(LDFLAGS_JDKEXE), \
+     LDFLAGS_unix := -L$(JVM_OUTPUTDIR)/gtest $(call SET_SHARED_LIBRARY_ORIGIN), \
+-    LDFLAGS_solaris := -library=stlport4, \
+     LIBS_linux := $(LIBCXX), \
+     LIBS_unix := -ljvm, \
+     LIBS_windows := $(JVM_OUTPUTDIR)/gtest/objs/jvm.lib, \

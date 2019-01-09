@@ -1,0 +1,19 @@
+$NetBSD$
+
+Support SunOS/gcc.
+
+--- jdk/make/lib/Lib-jdk.crypto.ec.gmk.orig	2019-01-07 08:01:59.000000000 +0000
++++ jdk/make/lib/Lib-jdk.crypto.ec.gmk
+@@ -43,6 +43,12 @@ ifeq ($(ENABLE_INTREE_EC), true)
+     ECC_JNI_SOLSPARC_FILTER := -xregs=no%appl
+   endif
+ 
++  ifeq ($(OPENJDK_TARGET_OS), solaris)
++    ifeq ($(TOOLCHAIN_TYPE), gcc)
++      BUILD_LIBSUNEC_FLAGS += -D__EXTENSIONS__
++    endif
++  endif
++
+   $(eval $(call SetupNativeCompilation,BUILD_LIBSUNEC, \
+       LIBRARY := sunec, \
+       OUTPUT_DIR := $(INSTALL_LIBRARIES_HERE), \

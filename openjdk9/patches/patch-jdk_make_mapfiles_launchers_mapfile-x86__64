@@ -1,0 +1,15 @@
+$NetBSD$
+
+Remove symbols missing in SunOS/gcc.
+
+--- jdk/make/mapfiles/launchers/mapfile-x86_64.orig	2017-07-27 18:04:48.000000000 +0000
++++ jdk/make/mapfiles/launchers/mapfile-x86_64
+@@ -36,8 +36,6 @@ SUNWprivate_1.1 {
+ 
+ 		# These are needed by the c runtime in SS12u4
+ 		___Argv;
+-		__xargv;
+-		__xargc;
+ 		_start;
+ 		__longdouble_used;
+ 		_lib_version;

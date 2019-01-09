@@ -1,0 +1,15 @@
+$NetBSD$
+
+Support SunOS/gcc.  XXX: retain solstudio support.
+
+--- jdk/make/lib/Lib-jdk.crypto.ucrypto.gmk.orig	2019-01-07 08:01:59.000000000 +0000
++++ jdk/make/lib/Lib-jdk.crypto.ucrypto.gmk
+@@ -27,7 +27,7 @@ include LibCommon.gmk
+ 
+ ################################################################################
+ 
+-ifeq ($(OPENJDK_TARGET_OS), solaris)
++ifeq ($(OPENJDK_TARGET_OS), notsolaris)
+ 
+   LIBJ2UCRYPTO_SRC := $(JDK_TOPDIR)/src/jdk.crypto.ucrypto/solaris/native/libj2ucrypto
+ 

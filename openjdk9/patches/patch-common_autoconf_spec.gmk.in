@@ -1,0 +1,28 @@
+$NetBSD$
+
+Ensure the built java can find its libraries without using $ORIGIN.
+
+--- common/autoconf/spec.gmk.in.orig	2019-01-07 07:55:27.000000000 +0000
++++ common/autoconf/spec.gmk.in
+@@ -557,9 +557,9 @@ JAVA_SMALL=@FIXPATH@ $(JAVA_CMD) $(JAVA_
+ JAVA_JAVAC=@FIXPATH@ $(JAVA_CMD) $(JAVA_FLAGS_JAVAC) $(JAVA_FLAGS)
+ JAVAC=@FIXPATH@ $(JAVAC_CMD)
+ JAVAH=@FIXPATH@ $(JAVAH_CMD)
+-JAR=@FIXPATH@ $(JAR_CMD)
+-JLINK = @FIXPATH@ $(JLINK_CMD) $(JAVA_TOOL_FLAGS_SMALL)
+-JMOD = @FIXPATH@ $(JMOD_CMD) $(JAVA_TOOL_FLAGS_SMALL)
++JAR = LD_LIBRARY_PATH=$(BUILD_JDK)/lib:$(BUILD_JDK)/lib/jli @FIXPATH@ $(JAR_CMD)
++JLINK = LD_LIBRARY_PATH=$(BUILD_JDK)/lib:$(BUILD_JDK)/lib/jli @FIXPATH@ $(JLINK_CMD) $(JAVA_TOOL_FLAGS_SMALL)
++JMOD = LD_LIBRARY_PATH=$(BUILD_JDK)/lib:$(BUILD_JDK)/lib/jli @FIXPATH@ $(JMOD_CMD) $(JAVA_TOOL_FLAGS_SMALL)
+ JARSIGNER=@FIXPATH@ $(JARSIGNER_CMD)
+ # A specific java binary with specific options can be used to run
+ # the long running background sjavac servers and other long running tasks.
+@@ -572,7 +572,7 @@ JAVAC_FLAGS?=@JAVAC_FLAGS@
+ 
+ 
+ BUILD_JAVA_FLAGS := @BOOTCYCLE_JVM_ARGS_BIG@
+-BUILD_JAVA=@FIXPATH@ $(BUILD_JDK)/bin/java $(BUILD_JAVA_FLAGS)
++BUILD_JAVA=LD_LIBRARY_PATH=$(BUILD_JDK)/lib:$(BUILD_JDK)/lib/jli @FIXPATH@ $(BUILD_JDK)/bin/java $(BUILD_JAVA_FLAGS)
+ 
+ # Use ?= as this can be overridden from bootcycle-spec.gmk
+ BOOT_JDK_MODULAR ?= @BOOT_JDK_MODULAR@

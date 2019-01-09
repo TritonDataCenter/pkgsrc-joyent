@@ -1,0 +1,33 @@
+$NetBSD: distinfo,v 1.65 2018/12/15 20:27:45 jperkin Exp $
+
+SHA1 (openjdk9-9.0.181.tar.gz) = 3e0fd8c19909d42302226f1741cb6998bb4e36d3
+RMD160 (openjdk9-9.0.181.tar.gz) = 7298a68a00f280255c4ce4c11e223baaa6ca9177
+SHA512 (openjdk9-9.0.181.tar.gz) = 4fa5204d76739a3b6446f5ce13b27cacb24decad2bbe31ee156abc82f141bb583a3b761cd0c7e723348356b2463850f02524e3d2db16fc8520c982ae56ffe018
+Size (openjdk9-9.0.181.tar.gz) = 112262446 bytes
+SHA1 (patch-common_autoconf_basics.m4) = b1db6dc452df639e5a294d9d798eeb129bd92c64
+SHA1 (patch-common_autoconf_flags.m4) = 076f7a7554e712b6226876cb4912c23e0078de34
+SHA1 (patch-common_autoconf_libraries.m4) = d2124ea8d203f0faaefcf51d6ebf16ed7be32ce6
+SHA1 (patch-common_autoconf_platform.m4) = 73b2ac9493bd3dde7712e4d5e6e95ff1f6b831ad
+SHA1 (patch-common_autoconf_spec.gmk.in) = 64807cd2398bf6ac3c2791f612c44630d9ff4b37
+SHA1 (patch-common_autoconf_toolchain.m4) = 63c6f2fd67548305284820f4022678952135381e
+SHA1 (patch-hotspot_make_gensrc_GensrcAdlc.gmk) = 11342e34d5e9fedd4e44ca2c9ad56e76d4c52521
+SHA1 (patch-hotspot_make_gensrc_GensrcDtrace.gmk) = d5441aea307cf9ffa4b448a803325c9514e773da
+SHA1 (patch-hotspot_make_lib_CompileGtest.gmk) = dd0b92daf6811b0f79fa10e30b11819ff2476352
+SHA1 (patch-hotspot_make_lib_CompileJvm.gmk) = 8909c771e53b5c8f0324f63ac317698a85de401e
+SHA1 (patch-hotspot_make_lib_CompileLibjsig.gmk) = 234e7ab7a798150bd98ea94b61315afc0567f254
+SHA1 (patch-hotspot_make_lib_JvmOverrideFiles.gmk) = d147ad36d37b4214521a63b8391bbe69350674f6
+SHA1 (patch-hotspot_src_os__cpu_solaris__x86_vm_atomic__solaris__x86.hpp) = 5e72700a6004ea1fdf5aafaaa3cd987959da9fdc
+SHA1 (patch-hotspot_src_os__cpu_solaris__x86_vm_os__solaris__x86.cpp) = d8caca052c8c3d1ace2963f935d2b09fe5c97e3f
+SHA1 (patch-hotspot_src_os__cpu_solaris__x86_vm_prefetch__solaris__x86.inline.hpp) = cb3a565be2fbe01594fec2db4af12c9dd58fc3aa
+SHA1 (patch-hotspot_src_os_solaris_vm_os__solaris.cpp) = 74f2c7db3885f35efb665dae68d76c6b1a0aa960
+SHA1 (patch-hotspot_src_share_vm_gc_g1_g1Analytics.cpp) = 9f72e00ea0d24b5c3372ae8a5c6d31c531af6874
+SHA1 (patch-hotspot_src_share_vm_utilities_globalDefinitions__gcc.hpp) = 9427289de7bf9363176d151b653b176130f778a3
+SHA1 (patch-hotspot_src_share_vm_utilities_hashtable.cpp) = 8b64ad676059560d6f5f10d997386417810b1a6e
+SHA1 (patch-jdk_make_lib_Awt2dLibraries.gmk) = 792282d991bf7752a83267bea16e98c2d9a3a491
+SHA1 (patch-jdk_make_lib_Lib-jdk.crypto.ec.gmk) = a2d2a4644f4e3fdbefe93984c16b678743064f0c
+SHA1 (patch-jdk_make_lib_Lib-jdk.crypto.ucrypto.gmk) = 5bcfbdc8583f6b39970b26188fe3eaf60b500024
+SHA1 (patch-jdk_make_mapfiles_launchers_mapfile-x86__64) = 6898c4fe0ee854059936043fe87e308772adfb78
+SHA1 (patch-jdk_make_mapfiles_libunpack_mapfile-vers-unpack200-solaris-x86) = 75a8c8c4c9dea281e41049ee25a72006531cda4b
+SHA1 (patch-jdk_src_java.desktop_share_native_libsplashscreen_libpng_pngpriv.h) = 6b87e5239d7b6fa9ab6cb2d86b1f883fca0b46d0
+SHA1 (patch-jdk_src_jdk.crypto.ec_share_native_libsunec_ECC__JNI.cpp) = 55d3169315bc082016675cdf8a4ec3831f357bd4
+SHA1 (patch-make_GenerateLinkOptData.gmk) = 77a5ad864919d9311a3281b8fdfd16556164fa39

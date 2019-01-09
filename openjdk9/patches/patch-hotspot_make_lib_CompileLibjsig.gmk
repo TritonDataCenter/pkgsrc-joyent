@@ -1,0 +1,20 @@
+$NetBSD$
+
+Support SunOS/gcc.
+
+--- hotspot/make/lib/CompileLibjsig.gmk.orig	2017-08-01 09:03:05.000000000 +0000
++++ hotspot/make/lib/CompileLibjsig.gmk
+@@ -57,8 +57,13 @@ ifneq ($(OPENJDK_TARGET_OS), windows)
+       endif
+ 
+     else ifeq ($(OPENJDK_TARGET_OS), solaris)
++     ifeq ($(TOOLCHAIN_TYPE), solstudio)
+       LIBJSIG_CFLAGS := -m64 -KPIC -mt
+       LIBJSIG_LDFLAGS := -m64 -mt -xnolib
++     else
++      LIBJSIG_CFLAGS := -m64 -fPIC
++      LIBJSIG_LDFLAGS := -m64 -nodefaultlibs
++     endif
+       LIBJSIG_LIBS := $(LIBDL)
+ 
+       # NOTE: The old build compiled this library without -soname.
