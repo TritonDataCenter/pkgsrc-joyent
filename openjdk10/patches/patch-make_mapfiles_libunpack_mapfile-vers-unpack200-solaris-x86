@@ -1,0 +1,15 @@
+$NetBSD$
+
+Remove symbols missing in SunOS/gcc.
+
+--- make/mapfiles/libunpack/mapfile-vers-unpack200-solaris-x86.orig	2019-01-08 12:44:56.000000000 +0000
++++ make/mapfiles/libunpack/mapfile-vers-unpack200-solaris-x86
+@@ -31,8 +31,6 @@ SUNWprivate_1.1 {
+ 		_environ;
+ 		__environ_lock;
+ 		___Argv;
+-		__xargv;
+-		__xargc;
+ 		_start;
+ 		__longdouble_used;
+ 		_lib_version;

@@ -1,0 +1,16 @@
+$NetBSD$
+
+Support SunOS/gcc.
+
+--- make/hotspot/lib/JvmOverrideFiles.gmk.orig	2019-01-08 12:44:54.000000000 +0000
++++ make/hotspot/lib/JvmOverrideFiles.gmk
+@@ -68,7 +68,8 @@ ifeq ($(OPENJDK_TARGET_OS), linux)
+     $(foreach s, $(NONPIC_SRC), $(eval BUILD_LIBJVM_$(notdir $s)_CXXFLAGS := -fno-PIC))
+   endif
+ 
+-else ifeq ($(OPENJDK_TARGET_OS), solaris)
++# All of the following are SunStudio flags.
++else ifeq ($(TOOLCHAIN_TYPE), solstudio)
+   ifneq ($(DEBUG_LEVEL), slowdebug)
+     # Workaround for a bug in dtrace.  If ciEnv::post_compiled_method_load_event()
+     # is inlined, the resulting dtrace object file needs a reference to this

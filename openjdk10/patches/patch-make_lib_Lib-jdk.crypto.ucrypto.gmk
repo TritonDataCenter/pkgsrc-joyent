@@ -1,0 +1,22 @@
+$NetBSD$
+
+Support SunOS/gcc.
+
+--- make/lib/Lib-jdk.crypto.ucrypto.gmk.orig	2019-01-08 12:44:54.000000000 +0000
++++ make/lib/Lib-jdk.crypto.ucrypto.gmk
+@@ -29,6 +29,7 @@ include LibCommon.gmk
+ 
+ ifeq ($(OPENJDK_TARGET_OS), solaris)
+ 
++ ifeq ($(TOOLCHAIN_TYPE), solstudio)
+   LIBJ2UCRYPTO_SRC := $(TOPDIR)/src/jdk.crypto.ucrypto/solaris/native/libj2ucrypto
+ 
+   $(eval $(call SetupNativeCompilation,BUILD_LIBJ2UCRYPTO, \
+@@ -48,6 +49,7 @@ ifeq ($(OPENJDK_TARGET_OS), solaris)
+   $(BUILD_LIBJ2UCRYPTO): $(BUILD_LIBJAVA)
+ 
+   TARGETS += $(BUILD_LIBJ2UCRYPTO)
++ endif
+ 
+ endif
+ 
