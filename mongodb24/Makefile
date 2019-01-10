@@ -13,7 +13,11 @@ LICENSE=	gnu-agpl-v3 # Client and tools licensed under apache-2.0
 NO_CONFIGURE=	yes
 USE_LANGUAGES=	c c++
 
+.if exists(${.CURDIR}/../../devel/scons/buildlink3.mk)
+.include "../../devel/scons/buildlink3.mk"
+.else
 BUILD_DEPENDS+=	scons-[0-9]*:../../devel/scons
+.endif
 
 SCONS_BIN=	${PREFIX}/bin/scons
 SCONS_ARGS=	${_MAKE_JOBS}

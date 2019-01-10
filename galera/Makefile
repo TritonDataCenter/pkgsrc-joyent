@@ -10,7 +10,11 @@ HOMEPAGE=	http://www.codership.com/
 COMMENT=	Synchronous Multi-Master replication plugin for MySQL
 LICENSE=	gnu-gpl-v3
 
+.if exists(${.CURDIR}/../../devel/scons/buildlink3.mk)
+.include "../../devel/scons/buildlink3.mk"
+.else
 BUILD_DEPENDS+=	scons-[0-9]*:../../devel/scons
+.endif
 
 MYSQL_VERSIONS_ACCEPTED=	#
 

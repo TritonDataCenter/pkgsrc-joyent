@@ -16,7 +16,11 @@ HOMEPAGE=	http://www.percona.com/
 LICENSE=	gnu-gpl-v2 AND gnu-gpl-v3
 
 # Galera
+.if exists(${.CURDIR}/../../devel/scons/buildlink3.mk)
+.include "../../devel/scons/buildlink3.mk"
+.else
 BUILD_DEPENDS+=         scons-[0-9]*:../../devel/scons
+.endif
 CONFLICTS=		{mysql,percona}*-{client,server}-[0-9]*
 
 USE_CMAKE=		yes
