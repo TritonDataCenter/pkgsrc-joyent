@@ -1,0 +1,15 @@
+$NetBSD$
+
+Ensure correct zlib is linked.
+
+--- jdk/make/lib/LibCommon.gmk.orig	2019-01-07 08:01:59.000000000 +0000
++++ jdk/make/lib/LibCommon.gmk
+@@ -71,7 +71,7 @@ INSTALL_LIBRARIES_HERE := $(call FindLib
+ 
+ # Define it here since there are multiple uses.
+ ifeq ($(USE_EXTERNAL_LIBZ), true)
+-  LIBZ := -lz
++  LIBZ := @COMPILER_RPATH_FLAG@@BUILDLINK_PREFIX.zlib@/lib -L@BUILDLINK_PREFIX.zlib@/lib -lz
+ else
+   ZLIB_CPPFLAGS := -I$(JDK_TOPDIR)/src/java.base/share/native/libzip/zlib
+ endif

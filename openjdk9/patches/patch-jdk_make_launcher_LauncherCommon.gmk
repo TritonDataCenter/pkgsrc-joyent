@@ -1,0 +1,15 @@
+$NetBSD$
+
+Ensure correct zlib is linked.
+
+--- jdk/make/launcher/LauncherCommon.gmk.orig	2019-01-07 08:01:59.000000000 +0000
++++ jdk/make/launcher/LauncherCommon.gmk
+@@ -146,7 +146,7 @@ define SetupBuildLauncherBody
+   endif
+ 
+   ifeq ($(USE_EXTERNAL_LIBZ), true)
+-    $1_LIBS += -lz
++    $1_LIBS += @COMPILER_RPATH_FLAG@@BUILDLINK_PREFIX.zlib@/lib -L@BUILDLINK_PREFIX.zlib@/lib -lz
+   endif
+ 
+   ifeq ($$($1_WINDOWS_STATIC_LINK), true)

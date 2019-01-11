@@ -1,0 +1,15 @@
+$NetBSD$
+
+Ensure correct zlib is linked.
+
+--- jdk/make/launcher/Launcher-jdk.pack.gmk.orig	2019-01-07 08:01:59.000000000 +0000
++++ jdk/make/launcher/Launcher-jdk.pack.gmk
+@@ -42,7 +42,7 @@ UNPACKEXE_CFLAGS := -I$(JDK_TOPDIR)/src/
+ 
+ ifeq ($(USE_EXTERNAL_LIBZ), true)
+   UNPACKEXE_CFLAGS += -DSYSTEM_ZLIB
+-  UNPACKEXE_LIBS := -lz
++  UNPACKEXE_LIBS := @COMPILER_RPATH_FLAG@@BUILDLINK_PREFIX.zlib@/lib -L@BUILDLINK_PREFIX.zlib@/lib -lz
+ else
+   UNPACKEXE_CFLAGS += -I$(JDK_TOPDIR)/src/java.base/share/native/libzip/zlib
+   UNPACKEXE_ZIPOBJS := $(SUPPORT_OUTPUTDIR)/native/java.base/libzip/zcrc32$(OBJ_SUFFIX) \

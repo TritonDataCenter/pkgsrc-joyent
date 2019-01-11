@@ -182,7 +182,6 @@ java/openjdk9/include/ir.idl
 java/openjdk9/include/jawt.h
 java/openjdk9/include/jdwpTransport.h
 java/openjdk9/include/jni.h
-java/openjdk9/include/jni_md.h
 java/openjdk9/include/jvmti.h
 java/openjdk9/include/jvmticmlr.h
 java/openjdk9/include/orb.idl
