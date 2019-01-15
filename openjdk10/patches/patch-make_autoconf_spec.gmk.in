@@ -4,6 +4,20 @@ Ensure the built java can find its libraries without using $ORIGIN.
 
 --- make/autoconf/spec.gmk.in.orig	2019-01-08 12:44:55.000000000 +0000
 +++ make/autoconf/spec.gmk.in
+@@ -458,11 +458,11 @@ SDKROOT:=@SDKROOT@
+ USING_BROKEN_SUSE_LD:=@USING_BROKEN_SUSE_LD@
+ 
+ # LDFLAGS used to link the jdk native libraries (C-code)
+-LDFLAGS_JDKLIB:=@LDFLAGS_JDKLIB@
++LDFLAGS_JDKLIB:=-Xlinker -R@prefix@/java/openjdk10/lib -Xlinker -R@prefix@/java/openjdk10/lib/jli -Xlinker -R@prefix@/java/openjdk10/lib/server @LDFLAGS_JDKLIB@
+ JDKLIB_LIBS:=@JDKLIB_LIBS@
+ 
+ # LDFLAGS used to link the jdk native launchers (C-code)
+-LDFLAGS_JDKEXE:=@LDFLAGS_JDKEXE@
++LDFLAGS_JDKEXE:=-Xlinker -R@prefix@/java/openjdk10/lib/jli @LDFLAGS_JDKEXE@
+ JDKEXE_LIBS:=@JDKEXE_LIBS@
+ 
+ # LDFLAGS specific to C++ linking.
 @@ -581,9 +581,9 @@ JAVA_SMALL=@FIXPATH@ $(JAVA_CMD) $(JAVA_
  JAVA_JAVAC=@FIXPATH@ $(JAVA_CMD) $(JAVA_FLAGS_JAVAC) $(JAVA_FLAGS)
  JAVAC=@FIXPATH@ $(JAVAC_CMD)

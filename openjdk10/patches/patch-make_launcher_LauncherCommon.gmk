@@ -1,0 +1,15 @@
+$NetBSD$
+
+Ensure correct zlib is linked.
+
+--- make/launcher/LauncherCommon.gmk.orig	2019-01-08 12:44:55.000000000 +0000
++++ make/launcher/LauncherCommon.gmk
+@@ -154,7 +154,7 @@ define SetupBuildLauncherBody
+   endif
+ 
+   ifeq ($(USE_EXTERNAL_LIBZ), true)
+-    $1_LIBS += -lz
++    $1_LIBS += @COMPILER_RPATH_FLAG@@BUILDLINK_PREFIX.zlib@/lib -L@BUILDLINK_PREFIX.zlib@/lib -lz
+   endif
+ 
+   ifeq ($$($1_WINDOWS_STATIC_LINK), true)
