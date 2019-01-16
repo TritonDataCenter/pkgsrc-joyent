@@ -31,8 +31,6 @@ CONFIGURE_ARGS+=	--disable-option-checking # for --with-libiconv-prefix
 CONFIGURE_ARGS+=	--prefix=${PREFIX:Q}
 CONFIGURE_ARGS+=	--build=${MACHINE_GNU_PLATFORM:Q}
 CONFIGURE_ARGS+=	--host=${MACHINE_GNU_PLATFORM:Q}
-# XXX: download from pkg-bootstraps
-CONFIGURE_ARGS+=	--with-boot-jdk=/var/tmp/openjdk9
 CONFIGURE_ARGS+=	--with-zlib=system
 CONFIGURE_ARGS+=	--with-giflib=bundled
 CONFIGURE_ARGS+=	--with-cups-include=${BUILDLINK_PREFIX.cups-base}/include
@@ -41,7 +39,6 @@ CONFIGURE_ARGS+=	--with-freetype-include=${BUILDLINK_PREFIX.freetype2}/include
 CONFIGURE_ARGS+=	--disable-freetype-bundling
 CONFIGURE_ARGS+=	--with-jobs=${MAKE_JOBS:U1}
 CONFIGURE_ARGS+=	--with-num-cores=${MAKE_JOBS:U1}
-#CONFIGURE_ARGS+=	--with-memory-size=2048
 CONFIGURE_ARGS+=	--with-cacerts-file=${PREFIX}/share/mozilla-rootcerts/cacert.pem
 CONFIGURE_ARGS+=	--disable-precompiled-headers
 CONFIGURE_ARGS+=	--disable-ccache
@@ -74,12 +71,24 @@ SUBST_FILES.libpaths+=	make/launcher/Launcher-jdk.pack.gmk
 SUBST_FILES.libpaths+=	make/lib/LibCommon.gmk
 SUBST_VARS.libpaths=	BUILDLINK_PREFIX.zlib COMPILER_RPATH_FLAG
 
+.include "../../mk/bsd.prefs.mk"
+
+# Bootstrap support, using pre-built OpenJDK9 binaries.
+.if !empty(MACHINE_PLATFORM:MSunOS-*-x86_64) || make(distinfo) || make (makesum) || make(mdi)
+BOOTSTRAP_JDK:=		openjdk9-9.0.181-x86_64-sun-solaris.tar.gz
+SITES.${BOOTSTRAP_JDK}=	https://us-east.manta.joyent.com/pkgsrc/public/pkg-bootstraps/
+DISTFILES:=		${DEFAULT_DISTFILES} ${BOOTSTRAP_JDK}
+.endif
+
+CONFIGURE_ARGS+=	--with-boot-jdk=${WRKDIR}/openjdk9
+
 BUILD_OPSYS=	${OPSYS:C/.*BSD/bsd/:S/DragonFly/bsd/:S/SunOS/solaris/:S/Linux/linux/}
 BUILD_ARCH=	${MACHINE_ARCH:S/i386/x86/:S/sparc64/sparcv9/:C/^e?arm.*$/arm/}
 SERVER_DIR=	${BUILD_OPSYS}-${BUILD_ARCH}-normal-server-release
 IMAGEJDKDIR=	${WRKSRC}/build/${SERVER_DIR}/images/jdk
 
-.include "../../mk/bsd.prefs.mk"
+PLIST_SUBST+=		JAVA_NAME=${JAVA_NAME}
+PRINT_PLIST_AWK+=	{ gsub(/${JAVA_NAME}/, "$${JAVA_NAME}") }
 
 pre-configure:
 	cd ${WRKSRC} && ${BASH} make/autoconf/autogen.sh
