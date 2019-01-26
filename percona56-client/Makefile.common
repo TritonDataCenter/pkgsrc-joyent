@@ -3,9 +3,9 @@
 # used by joyent/percona56-client/Makefile
 # used by joyent/percona56-server/Makefile
 
-MYSQLEXT_VER=	84.1
+MYSQLEXT_VER=	84.2
 
-DISTNAME=	percona-server-5.6.41-${MYSQLEXT_VER}
+DISTNAME=	percona-server-5.6.42-${MYSQLEXT_VER}
 CATEGORIES=	databases
 MASTER_SITES=	http://www.percona.com/downloads/Percona-Server-5.6/Percona-Server-${PKGVERSION_NOREV}-${MYSQLEXT_VER}/source/tarball/
 
