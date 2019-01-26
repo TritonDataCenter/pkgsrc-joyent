@@ -23,11 +23,10 @@ REPLACE_PERL+=	scripts/mysqldumpslow.sh
 REPLACE_PERL+=	scripts/mysqlhotcopy.sh
 
 post-install:
-	cd ${DESTDIR}${PREFIX}/lib${LIBARCHSUFFIX}
 .for f in client client_r
 .  for sfx in a so
-	${RM} -f libmysql${f}.${sfx}
-	${LN} -s libperconaserver${f}.${sfx} libmysql${f}.${sfx}
+	${RM} -f ${DESTDIR}${PREFIX}/lib${LIBARCHSUFFIX}/libmysql${f}.${sfx}
+	${LN} -s libperconaserver${f}.${sfx} ${DESTDIR}${PREFIX}/lib${LIBARCHSUFFIX}/libmysql${f}.${sfx}
 .  endfor
 .endfor
 
