@@ -3,9 +3,9 @@
 # used by joyent/percona57-client/Makefile
 # used by joyent/percona57-server/Makefile
 
-MYSQLEXT_VER=	22
+MYSQLEXT_VER=	27
 
-DISTNAME=	percona-server-5.7.22-${MYSQLEXT_VER}
+DISTNAME=	percona-server-5.7.24-${MYSQLEXT_VER}
 CATEGORIES=	databases
 MASTER_SITES=	http://www.percona.com/downloads/Percona-Server-5.7/Percona-Server-${PKGVERSION_NOREV}-${MYSQLEXT_VER}/source/tarball/
 
