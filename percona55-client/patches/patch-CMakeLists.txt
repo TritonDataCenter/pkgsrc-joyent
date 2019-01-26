@@ -2,9 +2,9 @@ $NetBSD: patch-CMakeLists.txt,v 1.3 2012/10/01 15:54:40 adam Exp $
 
 Split configuration between mysql-client and mysql-server.
 
---- CMakeLists.txt.orig	2015-01-07 09:49:52.000000000 +0000
+--- CMakeLists.txt.orig	2018-11-15 13:19:23.000000000 +0000
 +++ CMakeLists.txt
-@@ -388,7 +388,6 @@ ADD_SUBDIRECTORY(strings)
+@@ -455,7 +455,6 @@ ADD_SUBDIRECTORY(strings)
  ADD_SUBDIRECTORY(vio)
  ADD_SUBDIRECTORY(regex)
  ADD_SUBDIRECTORY(mysys)
@@ -12,31 +12,39 @@ Split configuration between mysql-client and mysql-server.
  
  IF(WITH_UNIT_TESTS)
   ENABLE_TESTING()
-@@ -400,9 +399,13 @@ IF(WITH_UNIT_TESTS)
+@@ -467,29 +466,27 @@ IF(WITH_UNIT_TESTS)
  ENDIF()
  
  ADD_SUBDIRECTORY(extra)
--IF(NOT WITHOUT_SERVER)
+-ADD_SUBDIRECTORY(client)
+ ADD_SUBDIRECTORY(sql/share)
+ ADD_SUBDIRECTORY(libservices)
+ 
+-IF(UNIX)
+-  ADD_SUBDIRECTORY(man)
+-ENDIF()
+-
+ IF(NOT WITHOUT_SERVER)
 -  ADD_SUBDIRECTORY(tests)
-+IF(WITHOUT_SERVER)
-+  ADD_SUBDIRECTORY(libmysql)
-   ADD_SUBDIRECTORY(client)
-+  ADD_SUBDIRECTORY(scripts)
-+  ADD_SUBDIRECTORY(man)
-+  ADD_SUBDIRECTORY(tests)
-+ELSE()
    ADD_SUBDIRECTORY(sql)
-   ADD_SUBDIRECTORY(sql/share)
-   ADD_SUBDIRECTORY(libservices)
-@@ -415,11 +418,7 @@ IF(NOT WITHOUT_SERVER)
+   OPTION (WITH_EMBEDDED_SERVER "Compile MySQL with embedded server" OFF)
+   IF(WITH_EMBEDDED_SERVER) 
+    ADD_SUBDIRECTORY(libmysqld)
+    ADD_SUBDIRECTORY(libmysqld/examples)
+   ENDIF(WITH_EMBEDDED_SERVER)
++ELSE()
++  ADD_SUBDIRECTORY(client)
++  ADD_SUBDIRECTORY(libmysql)
++  ADD_SUBDIRECTORY(man)
++  ADD_SUBDIRECTORY(scripts)
++  ADD_SUBDIRECTORY(tests)
+ ENDIF()
+ 
+ # scripts/mysql_config depends on client and server targets loaded above.
+ # It is referenced by some of the directories below, so we insert it here.
+ 
+-ADD_SUBDIRECTORY(scripts)
+-
+ IF(NOT WITHOUT_SERVER)
    ADD_SUBDIRECTORY(mysql-test)
    ADD_SUBDIRECTORY(mysql-test/lib/My/SafeProcess)
-   ADD_SUBDIRECTORY(support-files)
--  ADD_SUBDIRECTORY(scripts)
-   ADD_SUBDIRECTORY(sql-bench)
--  IF(UNIX)
--    ADD_SUBDIRECTORY(man)
--  ENDIF()
-   IF(EXISTS ${CMAKE_SOURCE_DIR}/internal/CMakeLists.txt)
-     ADD_SUBDIRECTORY(internal)
-   ENDIF()

@@ -23,17 +23,12 @@ REPLACE_PERL+=	scripts/mysqldumpslow.sh
 REPLACE_PERL+=	scripts/mysqlhotcopy.sh
 
 post-install:
-# Replace manual pages which only include other ones with a symbolic link
-# if manual compression is activated. The manual pages won't work otherwise.
-.if defined(MANZ)
-.  for FILE in mysql_client_test_embedded.1 mysqltest_embedded.1
-	${RM} -f ${DESTDIR}${PREFIX}/${PKGMANDIR}/man1/${FILE}
-	${LN} -s ${FILE:S/_embedded//} ${DESTDIR}${PREFIX}/${PKGMANDIR}/man1/${FILE}
+	cd ${DESTDIR}${PREFIX}/lib${LIBARCHSUFFIX}
+.for f in client client_r
+.  for sfx in a so
+	${RM} -f libmysql${f}.${sfx}
+	${LN} -s libperconaserver${f}.${sfx} libmysql${f}.${sfx}
 .  endfor
-.endif
-.  for FILE in client client_r
-	cd ${DESTDIR}${PREFIX}/lib${LIBARCHSUFFIX} && ${LN} -s libperconaserver${FILE}.a libmysql${FILE}.a
-	cd ${DESTDIR}${PREFIX}/lib${LIBARCHSUFFIX} && ${LN} -s libperconaserver${FILE}.so libmysql${FILE}.so
-.  endfor
+.endfor
 
 .include "../../mk/bsd.pkg.mk"
