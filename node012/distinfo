@@ -9,6 +9,7 @@ SHA1 (patch-deps_cares_cares.gyp) = e4ec415fe6dd0213e041a15238bdb9490d0d7102
 SHA1 (patch-deps_cares_common.gypi) = 48ef61b1d54e61bd2871fb3e1fb08aed5765d6c0
 SHA1 (patch-deps_npm_node__modules_node-gyp_gyp_pylib_gyp_generator_make.py) = 695b2db961d21236828f70c864d7a2972e131726
 SHA1 (patch-deps_uv_common.gypi) = 04a63f47e2377a43be74c0bbcaba56cdb21a6e24
+SHA1 (patch-deps_v8_include_v8.h) = 482844f7c2a5889a0575863953639d9ad0e00fe8
 SHA1 (patch-deps_v8_src_base_platform_platform-posix.cc) = 9eedc844c467c43559fa5a14efd52d9e16b2cd3f
 SHA1 (patch-deps_v8_src_base_platform_platform-solaris.cc) = 1d77c6afd2397dc87e749089c76a10c7c457c493
 SHA1 (patch-deps_v8_src_base_platform_platform.h) = 0837b2a5f1f2c5074a978c76e6b348dadf76fed9
