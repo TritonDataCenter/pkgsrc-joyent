@@ -31,17 +31,17 @@ CONFIGURE_ARGS+=	--disable-option-checking # for --with-libiconv-prefix
 CONFIGURE_ARGS+=	--prefix=${PREFIX:Q}
 CONFIGURE_ARGS+=	--build=${MACHINE_GNU_PLATFORM:Q}
 CONFIGURE_ARGS+=	--host=${MACHINE_GNU_PLATFORM:Q}
-# XXX
-CONFIGURE_ARGS+=	--with-boot-jdk=/var/tmp/openjdk10
+CONFIGURE_ARGS+=	--target=${MACHINE_GNU_PLATFORM:Q}
+CONFIGURE_ARGS+=	--with-libjpeg=system
 CONFIGURE_ARGS+=	--with-zlib=system
 CONFIGURE_ARGS+=	--with-giflib=bundled
 CONFIGURE_ARGS+=	--with-cups-include=${BUILDLINK_PREFIX.cups-base}/include
+CONFIGURE_ARGS+=	--with-fontconfig=${BUILDLINK_PREFIX.fontconfig}
+CONFIGURE_ARGS+=	--with-freetype=system
 CONFIGURE_ARGS+=	--with-freetype-lib=${BUILDLINK_PREFIX.freetype2}/lib
 CONFIGURE_ARGS+=	--with-freetype-include=${BUILDLINK_PREFIX.freetype2}/include
-CONFIGURE_ARGS+=	--disable-freetype-bundling
 CONFIGURE_ARGS+=	--with-jobs=${MAKE_JOBS:U1}
 CONFIGURE_ARGS+=	--with-num-cores=${MAKE_JOBS:U1}
-CONFIGURE_ARGS+=	--with-memory-size=4096
 CONFIGURE_ARGS+=	--with-cacerts-file=${PREFIX}/share/mozilla-rootcerts/cacert.pem
 CONFIGURE_ARGS+=	--disable-precompiled-headers
 CONFIGURE_ARGS+=	--disable-ccache
@@ -50,7 +50,12 @@ CONFIGURE_ARGS+=	--with-extra-cxxflags=${CXXFLAGS:Q}
 CONFIGURE_ARGS+=	--with-extra-ldflags=${LDFLAGS:Q}
 CONFIGURE_ARGS+=	--with-native-debug-symbols=none
 CONFIGURE_ARGS+=	--with-jvm-variants=server
-CONFIGURE_ARGS+=	--with-debug-level=fastdebug
+CONFIGURE_ARGS+=	--with-debug-level=release
+CONFIGURE_ARGS+=	--disable-warnings-as-errors
+
+CONFIGURE_ARGS+=	--with-toolchain-type=gcc
+CONFIGURE_ARGS+=	--disable-gtest
+CONFIGURE_ARGS+=	--disable-hotspot-gtest
 
 # Causes unresolved symbols (GCId::print_prefix, LogTagSet::LogTagSet) that are
 # proving difficult to track down.
@@ -60,7 +65,7 @@ MAKE_JOBS_SAFE=		no # Set manually
 
 # Avoid build errors when JAVA_HOME and CLASSPATH are defined by user.
 MAKE_ENV+=	JAVA_HOME=
-MAKE_ENV+=	CLASSPATH=
+#MAKE_ENV+=	CLASSPATH=
 
 BUILDLINK_PASSTHRU_RPATHDIRS+=	${JAVA_HOME}/lib
 
@@ -74,17 +79,24 @@ SUBST_FILES.libpaths+=	make/launcher/LauncherCommon.gmk
 SUBST_FILES.libpaths+=	make/launcher/Launcher-jdk.pack.gmk
 SUBST_VARS.libpaths=	BUILDLINK_PREFIX.zlib COMPILER_RPATH_FLAG
 
+.include "../../mk/bsd.prefs.mk"
+
+# Bootstrap support, using pre-built OpenJDK10 binaries.
+.if !empty(MACHINE_PLATFORM:MSunOS-*-x86_64) || make(distinfo) || make (makesum) || make(mdi)
+BOOTSTRAP_JDK:=		openjdk10-10.0.46-x86_64-sun-solaris.tar.gz
+SITES.${BOOTSTRAP_JDK}=	https://us-east.manta.joyent.com/pkgsrc/public/pkg-bootstraps/
+DISTFILES:=		${DEFAULT_DISTFILES} ${BOOTSTRAP_JDK}
+.endif
+
+CONFIGURE_ARGS+=	--with-boot-jdk=${WRKDIR}/openjdk10
+
 BUILD_OPSYS=	${OPSYS:C/.*BSD/bsd/:S/DragonFly/bsd/:S/SunOS/solaris/:S/Linux/linux/}
 BUILD_ARCH=	${MACHINE_ARCH:S/i386/x86/:S/sparc64/sparcv9/:C/^e?arm.*$/arm/}
 SERVER_DIR=	${BUILD_OPSYS}-${BUILD_ARCH}-normal-server-release
 IMAGEJDKDIR=	${WRKSRC}/build/${SERVER_DIR}/images/jdk
 
-post-wrapper:
-.for file in jconfig.h jerror.h jmorecfg.h jpeglib.h turbojpeg.h
-	${RM} -f ${BUILDLINK_DIR}/include/${file}
-.endfor
-
-.include "../../mk/bsd.prefs.mk"
+PLIST_SUBST+=		JAVA_NAME=${JAVA_NAME}
+PRINT_PLIST_AWK+=	{ gsub(/${JAVA_NAME}/, "$${JAVA_NAME}") }
 
 do-configure:
 	cd ${WRKSRC} && ${SETENV} ${CONFIGURE_ENV} ${BASH} configure autogen ${CONFIGURE_ARGS}

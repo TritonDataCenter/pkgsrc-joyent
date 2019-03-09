@@ -1,6 +1,6 @@
 $NetBSD$
 
-Ensure the bootstrap libraries can be found.
+Ensure java libraries can be found during build.
 
 --- make/GenerateLinkOptData.gmk.orig	2019-01-08 09:40:28.000000000 +0000
 +++ make/GenerateLinkOptData.gmk

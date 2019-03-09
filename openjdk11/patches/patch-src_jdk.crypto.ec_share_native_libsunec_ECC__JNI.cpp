@@ -2,9 +2,9 @@ $NetBSD$
 
 Support SunOS/gcc. XXX!
 
---- src/jdk.crypto.ec/share/native/libsunec/ECC_JNI.cpp.orig	2019-01-08 12:45:00.000000000 +0000
+--- src/jdk.crypto.ec/share/native/libsunec/ECC_JNI.cpp.orig	2019-01-08 09:40:35.000000000 +0000
 +++ src/jdk.crypto.ec/share/native/libsunec/ECC_JNI.cpp
-@@ -36,6 +36,8 @@
+@@ -39,6 +39,8 @@
  
  extern "C" {
  

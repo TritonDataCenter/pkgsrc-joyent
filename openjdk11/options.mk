@@ -1,6 +1,6 @@
 # $NetBSD$
 
-PKG_OPTIONS_VAR=		PKG_OPTIONS.openjdk9
+PKG_OPTIONS_VAR=		PKG_OPTIONS.openjdk11
 PKG_SUPPORTED_OPTIONS=		jre-jce x11
 PKG_SUGGESTED_OPTIONS=		jre-jce x11
 
@@ -20,7 +20,6 @@ PLIST.x11=	yes
 CONFIGURE_ARGS+=	--with-x=yes
 CONFIGURE_ARGS+=	--x-includes=${X11BASE}/include
 CONFIGURE_ARGS+=	--x-libraries=${X11BASE}/lib
-CONFIGURE_ARGS+=	--enable-headful
 DEPENDS+=		dejavu-ttf-[0-9]*:../../fonts/dejavu-ttf
 .include "../../x11/libXext/buildlink3.mk"
 .include "../../x11/libXi/buildlink3.mk"

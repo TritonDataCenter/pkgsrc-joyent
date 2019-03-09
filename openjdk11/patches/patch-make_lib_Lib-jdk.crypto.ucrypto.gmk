@@ -4,10 +4,12 @@ Support SunOS/gcc.
 
 --- make/lib/Lib-jdk.crypto.ucrypto.gmk.orig	2019-01-08 09:40:29.000000000 +0000
 +++ make/lib/Lib-jdk.crypto.ucrypto.gmk
-@@ -28,6 +28,7 @@ include LibCommon.gmk
+@@ -27,7 +27,8 @@ include LibCommon.gmk
+ 
  ################################################################################
  
- ifeq ($(OPENJDK_TARGET_OS), solaris)
+-ifeq ($(OPENJDK_TARGET_OS), solaris)
++ifeq ($(OPENJDK_TARGET_OS), notsolaris)
 + ifeq ($(TOOLCHAIN_TYPE), solstudio)
  
    $(eval $(call SetupJdkLibrary, BUILD_LIBJ2UCRYPTO, \
