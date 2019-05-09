@@ -15,6 +15,9 @@ HAS_CONFIGURE=	yes
 USE_TOOLS+=	gmake pkg-config
 USE_LANGUAGES=	c c++
 
+PYTHON_FOR_BUILD_ONLY=		yes
+PYTHON_VERSIONS_ACCEPTED=	27
+
 .include "../../mk/bsd.prefs.mk"
 .include "options.mk"
 

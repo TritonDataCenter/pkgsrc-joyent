@@ -17,11 +17,11 @@ HAS_CONFIGURE=		yes
 USE_LANGUAGES=		c c++
 USE_TOOLS+=		gmake pkg-config
 
+PYTHON_FOR_BUILD_ONLY=		yes
+PYTHON_VERSIONS_ACCEPTED=	27
+
 .include "../../mk/bsd.prefs.mk"
 .include "options.mk"
-
-PYTHON_FOR_BUILD_ONLY=	yes
-PYTHON_VERSIONS_INCOMPATIBLE=	31
 
 REPLACE_PYTHON+=	tools/node-waf tools/waf-light
 MAKE_ENV+=		PYTHON=${PYTHONBIN}
