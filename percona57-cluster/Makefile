@@ -1,9 +1,9 @@
 # $NetBSD$
 
-MYSQL_VER=	5.7.22
-WSREP_API_VER=  29
+MYSQL_VER=	5.7.25
+WSREP_API_VER=  31
 GALERA_MAJOR=   3
-GALERA_MINOR=   26
+GALERA_MINOR=   35
 
 DISTNAME=	Percona-XtraDB-Cluster-${MYSQL_VER}-${WSREP_API_VER}.${GALERA_MINOR}
 PKGNAME=	percona-cluster-${MYSQL_VER}
@@ -22,6 +22,12 @@ LICENSE=	gnu-gpl-v2 AND gnu-gpl-v3
 BUILD_DEPENDS+=         scons-[0-9]*:../../devel/scons
 .endif
 CONFLICTS=		{mysql,percona}*-{client,server}-[0-9]*
+
+DEPENDS+=		coreutils>=0:../../sysutils/coreutils	# GNU mktemp
+DEPENDS+=		findutils>=0:../../sysutils/findutils	# find -regex
+DEPENDS+=		grep>=0:../../textproc/grep		# grep -o
+DEPENDS+=		socat>=0:../../net/socat
+DEPENDS+=		percona-xtrabackup>=0:../../joyent/percona-xtrabackup
 
 USE_CMAKE=		yes
 USE_LANGUAGES=		c c++ c99

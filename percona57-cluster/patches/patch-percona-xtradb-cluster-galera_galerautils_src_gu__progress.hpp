@@ -1,5 +1,7 @@
 $NetBSD$
 
+Avoid ambiguous function call.
+
 --- percona-xtradb-cluster-galera/galerautils/src/gu_progress.hpp.orig	2017-10-04 12:55:51.475551297 +0000
 +++ percona-xtradb-cluster-galera/galerautils/src/gu_progress.hpp
 @@ -69,7 +69,7 @@ namespace gu

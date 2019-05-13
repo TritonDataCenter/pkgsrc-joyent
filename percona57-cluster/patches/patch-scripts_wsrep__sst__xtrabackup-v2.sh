@@ -1,9 +1,10 @@
 $NetBSD$
 
-Make SunOS portable. Patch by Derek Crudgington.
---- scripts/wsrep_sst_xtrabackup-v2.sh.orig	2017-09-22 12:46:54.000000000 +0000
+Make SunOS portable.  XXX: needs to be better really.
+
+--- scripts/wsrep_sst_xtrabackup-v2.sh.orig	2019-02-20 05:46:05.000000000 +0000
 +++ scripts/wsrep_sst_xtrabackup-v2.sh
-@@ -765,7 +765,13 @@ get_stream()
+@@ -813,7 +813,13 @@ get_stream()
  get_proc()
  {
      set +e
@@ -18,7 +19,7 @@ Make SunOS portable. Patch by Derek Crudgington.
      [[ -z $nproc || $nproc -eq 0 ]] && nproc=1
      set -e
  }
-@@ -801,7 +807,7 @@ cleanup_joiner()
+@@ -849,7 +855,7 @@ cleanup_joiner()
      fi
  
      # Final cleanup
@@ -27,7 +28,7 @@ Make SunOS portable. Patch by Derek Crudgington.
  
      # This means no setsid done in mysqld.
      # We don't want to kill mysqld here otherwise.
-@@ -840,7 +846,7 @@ cleanup_donor()
+@@ -888,7 +894,7 @@ cleanup_donor()
      fi
  
      # Final cleanup
@@ -36,16 +37,14 @@ Make SunOS portable. Patch by Derek Crudgington.
  
      # This means no setsid done in mysqld.
      # We don't want to kill mysqld here otherwise.
-@@ -882,7 +888,11 @@ wait_for_listen()
+@@ -978,6 +984,10 @@ wait_for_listen()
+     local port=$3
+     local module=$4
  
-     for i in {1..300}
-     do
--        ss -p state listening "( sport = :$PORT )" | grep -qE 'socat|nc' && break
-+        if [[ $(uname -s | grep SunOS) ]]; then
-+            (pfiles $(pgrep 'socat|nc') || true) | grep "AF_INET.* ${PORT}$" >/dev/null && break
-+        else
-+            ss -p state listening "( sport = :$PORT )" | grep -qE 'socat|nc' && break
-+        fi
-         sleep 0.2
-     done
- 
++    sleep 10
++    echo "ready ${host}:${port}/${module}//$sst_ver"
++    return
++
+     # Get the index for the 'local_address' column in /proc/xxxx/net/tcp
+     # We expect this to be the same for IPv4 (net/tcp) and IPv6 (net/tcp6)
+     local ip_index=0
