@@ -7,7 +7,7 @@
 #   $ gpg --export pkgsrc-security@NetBSD.org >files/pkgsrc-security.gpg
 #
 
-DISTNAME=	pkgsrc-gnupg-keys-20170418
+DISTNAME=	pkgsrc-gnupg-keys-20190423
 CATEGORIES=	security
 MASTER_SITES=	#empty
 DISTFILES=	#empty
