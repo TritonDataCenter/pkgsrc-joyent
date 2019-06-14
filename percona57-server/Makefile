@@ -9,6 +9,7 @@ CONFLICTS=	mysql-server-[0-9]*
 
 INFO_FILES=		yes
 CMAKE_ARGS+=		-DINSTALL_INFODIR=${PKGINFODIR}
+CMAKE_ARGS+=		-DINSTALL_MYSQLTESTDIR=""
 
 # Regression due to code overhaul in 5.7, new solution needed for:
 # https://bugs.mysql.com/bug.php?id=18246

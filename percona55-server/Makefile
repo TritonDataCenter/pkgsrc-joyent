@@ -15,6 +15,8 @@ SITES.${SPHINX}.tar.gz=	http://sphinxsearch.com/files/
 INFO_FILES=		yes
 CPPFLAGS+=		-DHAVE_EMBEDDED_PRIVILEGE_CONTROL=1
 
+CMAKE_ARGS+=		-DINSTALL_MYSQLTESTDIR=""
+
 PLIST_VARS+=		embedded auth_socket
 
 .if ${OPSYS} == "Linux"
