@@ -1,7 +1,7 @@
 # $NetBSD: Makefile,v 1.6 2013/06/04 18:17:25 adam Exp $
 
 PKGNAME=	${DISTNAME:tl:C/-${MYSQLEXT_VER}//}
-COMMENT=	Percona MySQL 5.5, a free SQL database (server)
+COMMENT=	Percona MySQL 5.6, a free SQL database (server)
 
 CONFLICTS=	{mysql-server-[0-9]*,mysql3-server-[0-9]*}
 
