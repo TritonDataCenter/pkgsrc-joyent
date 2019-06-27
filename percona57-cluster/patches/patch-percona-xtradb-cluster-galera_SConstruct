@@ -2,9 +2,9 @@ $NetBSD$
 
 Fix problem with 'ar' and pass RPATH properly.
 
---- percona-xtradb-cluster-galera/SConstruct.orig	2017-09-22 12:52:08.000000000 +0000
+--- percona-xtradb-cluster-galera/SConstruct.orig	2019-02-20 22:04:33.000000000 +0000
 +++ percona-xtradb-cluster-galera/SConstruct
-@@ -164,6 +164,10 @@ if 'CCACHE_DIR' in os.environ:
+@@ -171,6 +171,10 @@ if 'CCACHE_DIR' in os.environ:
  if 'CCACHE_CPP2' in os.environ:
      env['ENV']['CCACHE_CPP2'] = os.environ['CCACHE_CPP2']
  
@@ -15,7 +15,22 @@ Fix problem with 'ar' and pass RPATH properly.
  # Set CC and CXX compilers
  cc = os.getenv('CC', 'default')
  if cc != 'default':
-@@ -194,6 +198,9 @@ if sysname == 'freebsd' or sysname == 's
+@@ -186,14 +190,6 @@ if link != 'default':
+ cc_version = str(read_first_line(env['CC'].split() + ['--version']))
+ cxx_version = str(read_first_line(env['CXX'].split() + ['--version']))
+ 
+-if python_ver >= 3:
+-    cc_version = cc_version.decode()
+-    cxx_version = cxx_version.decode()
+-
+-if python_ver >= 3:
+-    cc_version = cc_version.decode()
+-    cxx_version = cxx_version.decode()
+-
+ print('Using C compiler executable: ' + env['CC'])
+ print('C compiler version is: ' + cc_version)
+ print('Using C++ compiler executable: ' + env['CXX'])
+@@ -218,6 +214,9 @@ if sysname == 'freebsd' or sysname == 's
      env.Append(CPPPATH = ['/usr/local/include'])
  if sysname == 'sunos':
     env.Replace(SHLINKFLAGS = '-shared ')
