@@ -1,0 +1,43 @@
+$NetBSD$
+
+Split configuration between -client and -server.
+
+--- scripts/CMakeLists.txt.orig	2019-05-03 11:55:18.000000000 +0000
++++ scripts/CMakeLists.txt
+@@ -456,16 +456,17 @@ ELSE()
+   # On Unix, most of the files end up in the bin directory
+   SET(mysql_config_COMPONENT Development)
+ 
++ IF(WITHOUT_SERVER)
++   SET(BIN_SCRIPTS mysql_config)
++ ELSE()
+   IF(WITH_SYSTEMD)
+     SET(BIN_SCRIPTS
+-      mysql_config
+       mysqldumpslow
+       ps_mysqld_helper
+       ps-admin
+       )
+   ELSE()
+     SET(BIN_SCRIPTS
+-      mysql_config
+       mysqldumpslow
+       mysqld_multi
+       mysqld_safe
+@@ -473,6 +474,7 @@ ELSE()
+       ps-admin
+       )
+   ENDIF()
++ ENDIF()
+ 
+   SET(PKGCONFIG_FILE ${LIBMYSQL_OS_OUTPUT_NAME}.pc)
+   STRING(REGEX REPLACE "/mysql$" "" PKGCONFIG_DIR "${INSTALL_LIBDIR}")
+@@ -488,7 +490,7 @@ ELSE()
+     ${CMAKE_CURRENT_BINARY_DIR}/${PKGCONFIG_FILE}
+     ESCAPE_QUOTES @ONLY)
+ 
+-  IF(INSTALL_PKGCONFIGDIR)
++  IF(INSTALL_PKGCONFIGDIR AND WITHOUT_SERVER)
+     MESSAGE(STATUS "INSTALL ${PKGCONFIG_FILE} ${INSTALL_PKGCONFIGDIR}")
+     INSTALL(FILES
+       ${CMAKE_CURRENT_BINARY_DIR}/${PKGCONFIG_FILE}

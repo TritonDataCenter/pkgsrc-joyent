@@ -1,0 +1,15 @@
+$NetBSD$
+
+Disable section specific to Solaris Studio.
+
+--- router/CMakeLists.txt.orig	2019-05-03 11:55:18.000000000 +0000
++++ router/CMakeLists.txt
+@@ -51,7 +51,7 @@ ELSE()
+   PROJECT("MySQLRouter")
+ ENDIF()
+ 
+-IF(SOLARIS)
++IF(notSOLARIS)
+   # disable rapidjson optimisation on Solaris as it breaks
+   # shared objects that build with -fPIC
+   ADD_DEFINITIONS(-DRAPIDJSON_48BITPOINTER_OPTIMIZATION=0)

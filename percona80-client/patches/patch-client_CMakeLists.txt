@@ -1,0 +1,61 @@
+$NetBSD$
+
+Split configuration between -client and -server.
+
+--- client/CMakeLists.txt.orig	2019-05-03 11:55:18.000000000 +0000
++++ client/CMakeLists.txt
+@@ -31,15 +31,19 @@ INCLUDE(${MYSQL_CMAKE_SCRIPT_DIR}/compil
+ ## Subdirectory with common client code.
+ ADD_SUBDIRECTORY(base)
+ ## Subdirectory for mysqlpump code.
++IF(WITHOUT_SERVER)
+ ADD_SUBDIRECTORY(dump)
++ENDIF()
+ 
+ INCLUDE(${MYSQL_CMAKE_SCRIPT_DIR}/compile_flags.cmake)
+ 
++IF(WITHOUT_SERVER)
+ MYSQL_ADD_EXECUTABLE(mysql completion_hash.cc mysql.cc readline.cc ../sql-common/sql_string.cc pattern_matcher.cc)
+ TARGET_LINK_LIBRARIES(mysql perconaserverclient)
+ IF(UNIX)
+   TARGET_LINK_LIBRARIES(mysql ${MY_READLINE_LIBRARY})
+ ENDIF(UNIX)
++ENDIF()
+ 
+ IF(NOT WITHOUT_SERVER)
+   MYSQL_ADD_EXECUTABLE(mysql_upgrade upgrade/program.cc)
+@@ -51,13 +55,16 @@ SET(MYSQLTEST_SRC
+   mysqltest/mysqltest_expected_error.cc
+ )
+ 
++IF(WITHOUT_SERVER)
+ MYSQL_ADD_EXECUTABLE(mysqltest mysqltest.cc ${MYSQLTEST_SRC} COMPONENT Test)
+ TARGET_LINK_LIBRARIES(mysqltest perconaserverclient regex)
+ ADD_DEPENDENCIES(mysqltest GenError GenClientError)
++ENDIF()
+ 
+ ADD_CONVENIENCE_LIBRARY(mysqlcheck_core check/mysqlcheck_core.cc)
+ TARGET_LINK_LIBRARIES(mysqlcheck_core perconaserverclient)
+ 
++IF(WITHOUT_SERVER)
+ MYSQL_ADD_EXECUTABLE(mysqlcheck check/mysqlcheck.cc)
+ TARGET_LINK_LIBRARIES(mysqlcheck mysqlcheck_core)
+ 
+@@ -114,7 +121,9 @@ TARGET_LINK_LIBRARIES(mysqlslap perconas
+ 
+ MYSQL_ADD_EXECUTABLE(mysql_config_editor mysql_config_editor.cc)
+ TARGET_LINK_LIBRARIES(mysql_config_editor perconaserverclient)
++ENDIF()
+ 
++IF(NOT WITHOUT_SERVER)
+ MYSQL_ADD_EXECUTABLE(mysql_secure_installation mysql_secure_installation.cc)
+ TARGET_LINK_LIBRARIES(mysql_secure_installation perconaserverclient)
+ 
+@@ -124,6 +133,7 @@ TARGET_LINK_LIBRARIES(mysql_ssl_rsa_setu
+ IF(CMAKE_CXX_COMPILER_VERSION VERSION_EQUAL "9.0.0")
+   TARGET_LINK_LIBRARIES(mysql_ssl_rsa_setup -static-libstdc++)
+ ENDIF()
++ENDIF()
+ 
+ # "WIN32" also covers 64 bit. "echo" is used in some files below "mysql-test/".
+ IF(WIN32)
