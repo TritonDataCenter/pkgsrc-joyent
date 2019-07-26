@@ -2,7 +2,7 @@ $NetBSD$
 
 Fix problem with 'ar' and pass RPATH properly.
 
---- percona-xtradb-cluster-galera/SConstruct.orig	2019-02-20 22:04:33.000000000 +0000
+--- percona-xtradb-cluster-galera/SConstruct.orig	2019-06-20 05:19:58.000000000 +0000
 +++ percona-xtradb-cluster-galera/SConstruct
 @@ -171,6 +171,10 @@ if 'CCACHE_DIR' in os.environ:
  if 'CCACHE_CPP2' in os.environ:
@@ -30,13 +30,21 @@ Fix problem with 'ar' and pass RPATH properly.
  print('Using C compiler executable: ' + env['CC'])
  print('C compiler version is: ' + cc_version)
  print('Using C++ compiler executable: ' + env['CXX'])
-@@ -218,6 +214,9 @@ if sysname == 'freebsd' or sysname == 's
+@@ -218,11 +214,16 @@ if sysname == 'freebsd' or sysname == 's
      env.Append(CPPPATH = ['/usr/local/include'])
  if sysname == 'sunos':
     env.Replace(SHLINKFLAGS = '-shared ')
 +   env.Replace(AR = 'ar')
 +   env.Replace(ARFLAGS= 'r')
 +   env.Replace(ARCOM = '$AR $ARFLAGS $TARGET $SOURCES')
+ 
+ # Build shared objects with dynamic symbol dispatching disabled.
+ # This enables predictable behavior upon dynamic loading with programs
+ # that have own versions of commonly used libraries linked in (boost, asio, etc.)
+-env.Append(SHLINKFLAGS = ' -Wl,-Bsymbolic -Wl,-Bsymbolic-functions')
++env.Append(SHLINKFLAGS = ' -Wl,-Bsymbolic')
++if sysname != 'sunos':
++   env.Append(SHLINKFLAGS = ' -Wl,-Bsymbolic-functions')
  
  # Add paths is extra_sysroot argument was specified
  extra_sysroot = ARGUMENTS.get('extra_sysroot', '')

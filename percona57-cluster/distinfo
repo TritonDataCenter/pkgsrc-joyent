@@ -1,9 +1,9 @@
 $NetBSD$
 
-SHA1 (Percona-XtraDB-Cluster-5.7.25-31.35.tar.gz) = 7356f9ed821cc081163e721ed4d375701ff105b4
-RMD160 (Percona-XtraDB-Cluster-5.7.25-31.35.tar.gz) = 3375a882e4857d13d39d551101d2339425799392
-SHA512 (Percona-XtraDB-Cluster-5.7.25-31.35.tar.gz) = 81ff3a0ee92029a1e5879b40a4505f4c5f9137da6311d5c8a4743a4477ef8831eb2de56cc789b903f6a642b2e7735a345342aa94689f98d30bcb6df2adb0c0e0
-Size (Percona-XtraDB-Cluster-5.7.25-31.35.tar.gz) = 77786295 bytes
+SHA1 (Percona-XtraDB-Cluster-5.7.26-31.37.tar.gz) = a68cfdf40f6efb5640f70b9ae676f09d4e45dd83
+RMD160 (Percona-XtraDB-Cluster-5.7.26-31.37.tar.gz) = e8c2850fe170374b0a3aaca1486859bab353618f
+SHA512 (Percona-XtraDB-Cluster-5.7.26-31.37.tar.gz) = 37df2bd6064cba782c0bd6471f51b206062f1b8860593ecb3f3e20c1ce7e181ccbc1c90658cb9747f60a9afe3a8039ff6f496cb6a985101e90383e0b35e6af9e
+Size (Percona-XtraDB-Cluster-5.7.26-31.37.tar.gz) = 79821966 bytes
 SHA1 (patch-CMakeLists.txt) = 8e6f8806a586eabfdc2d41f9698835369cd1f2be
 SHA1 (patch-build-ps_build-rpm.sh) = 6b6f706aa8867bb653f2b4405b0a57feb5d934e6
 SHA1 (patch-client_completion_hash.cc) = 94f1843f8b3d71d8fc6af810eddf2c076d50599d
@@ -19,7 +19,7 @@ SHA1 (patch-include_sql__string.h) = fb0f1f8034e5f957e79a3ea929688a4dcc0acbf8
 SHA1 (patch-libmysql_CMakeLists.txt) = e4d6d9d7e5828902dc2dfc160ae13f7e349faf3d
 SHA1 (patch-mysql-test_CMakeLists.txt) = 85943de74a7cd997b00c26a52cf2c9d14744bf83
 SHA1 (patch-mysys__ssl_CMakeLists.txt) = 8a734af12a658912490e410514aa10f3c53fae70
-SHA1 (patch-percona-xtradb-cluster-galera_SConstruct) = 41168cc2f98de5130c49a3d046ebadb1fccabbf3
+SHA1 (patch-percona-xtradb-cluster-galera_SConstruct) = dd81baecf09ccf3af7b378739c4eef1d9b83bec6
 SHA1 (patch-percona-xtradb-cluster-galera_galera_src_replicator__str.cpp) = 9b9b7877cc214a3ac9effc3c7ae8750ceff18fff
 SHA1 (patch-percona-xtradb-cluster-galera_galerautils_src_gu__arch.h) = a8adb286c4f8f28467bf44ade8c13362f192f632
 SHA1 (patch-percona-xtradb-cluster-galera_galerautils_src_gu__progress.hpp) = a236946145e5a5478d94941134ceba3e6caebe95
@@ -30,8 +30,9 @@ SHA1 (patch-percona-xtradb-cluster-galera_scripts_mysql_debian_mysqld__safe-5.5)
 SHA1 (patch-plugin_audit__log_audit__log.c) = 7d165864003e70e27ae77f11b76f199ebe913f5f
 SHA1 (patch-rapid_plugin_group__replication_rpcgen.cmake) = 5c14be97bd1fd04b2b845f1a2422452445733474
 SHA1 (patch-rapid_plugin_x_CMakeLists.txt) = 164e0da0a5bc5de0ebb32a73d3d119c362b5694b
-SHA1 (patch-scripts_wsrep__sst__xtrabackup-v2.sh) = 6aea6f0b99b4284c21333182066934938888dae2
+SHA1 (patch-scripts_wsrep__sst__xtrabackup-v2.sh) = 2df38b35020112a1bb906f38bde539e1b5ca1c9f
 SHA1 (patch-sql_item__geofunc__internal.cc) = 752862c3a30231e694e508ced1a215a610649fc6
+SHA1 (patch-sql_mysqld.cc) = 5c324591b2b5d3dbaba4815be77ec69770c6e510
 SHA1 (patch-storage_ndb_mcc_frontend_dojo_dojox_mobile_build_build.sh) = fb7d813fdc253efcc7d18740eea10d3d8ea53ad0
 SHA1 (patch-strings_decimal.c) = fc9306f41cd535cbffec7904fd9f875b0d0f27ec
 SHA1 (patch-support-files_mysql.server.sh) = 22ef278b97801aef1468d8a5b21f76fa33ba9492

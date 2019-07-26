@@ -1,9 +1,9 @@
 # $NetBSD$
 
-MYSQL_VER=	5.7.25
+MYSQL_VER=	5.7.26
 WSREP_API_VER=  31
 GALERA_MAJOR=   3
-GALERA_MINOR=   35
+GALERA_MINOR=   37
 
 DISTNAME=	Percona-XtraDB-Cluster-${MYSQL_VER}-${WSREP_API_VER}.${GALERA_MINOR}
 PKGNAME=	percona-cluster-${MYSQL_VER}
@@ -30,7 +30,7 @@ DEPENDS+=		socat>=0:../../net/socat
 DEPENDS+=		percona-xtrabackup>=0:../../joyent/percona-xtrabackup
 
 USE_CMAKE=		yes
-USE_LANGUAGES=		c c++ c99
+USE_LANGUAGES=		c c++11 c99
 USE_MULTIARCH=		bin lib
 USE_TOOLS+=		bash bison gmake perl:run
 
@@ -78,7 +78,7 @@ CMAKE_ARGS+=		-DINSTALL_INFODIR="info"
 CMAKE_ARGS+=		-DINSTALL_LIBDIR="lib${LIBARCHSUFFIX}"
 CMAKE_ARGS+=		-DINSTALL_MANDIR="${PKGMANDIR}"
 CMAKE_ARGS+=		-DINSTALL_MYSQLSHAREDIR="share/mysql"
-CMAKE_ARGS+=		-DINSTALL_MYSQLTESTDIR="share/mysql/test"
+CMAKE_ARGS+=		-DINSTALL_MYSQLTESTDIR=""
 CMAKE_ARGS+=		-DINSTALL_PLUGINDIR="lib${LIBARCHSUFFIX}/mysql/plugin"
 CMAKE_ARGS+=		-DINSTALL_SBINDIR="sbin${BINARCHSUFFIX}"
 CMAKE_ARGS+=		-DINSTALL_SCRIPTDIR="bin${BINARCHSUFFIX}"
@@ -221,15 +221,13 @@ SUBST_FILES.fixpaths=	${DESTDIR}${PREFIX}/share/doc/mysql/INFO_BIN
 SUBST_SED.fixpaths=	-e "s,${WRAPPER_BINDIR}/gcc,${CCPATH},g"
 SUBST_SED.fixpaths+=	-e "s,${WRAPPER_BINDIR}/g++,${CXXPATH},g"
 
-#post-extract:
-#	${CP} -R ${WRKDIR}/${SPHINX}/mysqlse ${WRKSRC}/storage/sphinx
-#
-
 MAKE_ENV+=		LIBPATH=${BUILDLINK_PREFIX.openssl}/lib
 MAKE_ENV+=		RPATH=${BUILDLINK_PREFIX.openssl}/lib
 
 post-build:
-	cd ${WRKSRC}/percona-xtradb-cluster-galera && ${SETENV} ${MAKE_ENV} scons strict_build_flags=0 tests=0
+	cd ${WRKSRC}/percona-xtradb-cluster-galera && \
+	    ${SETENV} ${MAKE_ENV} scons psi=1 libgalera_smm.so && \
+	    ${SETENV} ${MAKE_ENV} scons garb/garbd
 
 # Replace manual pages which only include other ones with a symbolic link
 # if manual compression is activated. The manual pages won't work otherwise.
