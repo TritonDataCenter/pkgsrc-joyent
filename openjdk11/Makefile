@@ -8,7 +8,9 @@
 # distribute OpenJDK 11 (for example RedHat). 
 # By default Shenadoah is not active and the JVM behaves just like the 
 # "vanilla" OpenJDK 11 JVM.
-DISTNAME=	openjdk11-11.0.2
+#
+# Currently configured for tag 'shenandoah-jdk-11.0.4+11'.
+DISTNAME=	openjdk11-11.0.4
 CATEGORIES=	lang
 MASTER_SITES=	https://us-east.manta.joyent.com/pkgsrc/public/pkg-distfiles/
 
