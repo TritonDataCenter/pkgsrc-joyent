@@ -1,5 +1,13 @@
 # $NetBSD$
 
+# Tarball should be created from the OpenJDK 11 'shenandoah' branch by
+# using tags which have shenandoah in them. For example 
+# 'shenandoah-jdk-11.0.2+9' for 'jdk-11.0.2+9 '.
+# These contain the Shenandoah ultra low pause GC backported to OpenJDK 11. 
+# The Shenandoah branch is also used by various other organisations which 
+# distribute OpenJDK 11 (for example RedHat). 
+# By default Shenadoah is not active and the JVM behaves just like the 
+# "vanilla" OpenJDK 11 JVM.
 DISTNAME=	openjdk11-11.0.2
 CATEGORIES=	lang
 MASTER_SITES=	https://us-east.manta.joyent.com/pkgsrc/public/pkg-distfiles/
