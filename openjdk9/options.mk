@@ -24,8 +24,6 @@ CONFIGURE_ARGS+=	--enable-headful
 DEPENDS+=		dejavu-ttf-[0-9]*:../../fonts/dejavu-ttf
 .include "../../x11/libXext/buildlink3.mk"
 .include "../../x11/libXi/buildlink3.mk"
-BUILDLINK_DEPMETHOD.libXp?=	build
-.include "../../x11/libXp/buildlink3.mk"
 BUILDLINK_DEPMETHOD.libXt?=	build
 .include "../../x11/libXt/buildlink3.mk"
 .include "../../x11/libXtst/buildlink3.mk"
