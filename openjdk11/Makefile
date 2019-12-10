@@ -1,6 +1,7 @@
 # $NetBSD$
 
 DISTNAME=	openjdk11-11.0.2
+PKGREVISION=	1
 CATEGORIES=	lang
 MASTER_SITES=	https://us-east.manta.joyent.com/pkgsrc/public/pkg-distfiles/
 
@@ -14,7 +15,7 @@ JAVA_HOME=	${PREFIX}/java/${JAVA_NAME}
 JAVA_WRAPPERS=	jar java javac javadoc javah javap jcmd jhat jps jstack \
 		keytool orbd policytool rmid rmiregistry servertool tnameserv
 
-BUILD_DEPENDS+=	mozilla-rootcerts>=1.0.20140820nb2:../../security/mozilla-rootcerts
+BUILD_DEPENDS+=	mozilla-rootcerts-[0-9]*:../../security/mozilla-rootcerts
 
 BUILD_TARGET=	images
 
@@ -42,7 +43,7 @@ CONFIGURE_ARGS+=	--with-freetype-lib=${BUILDLINK_PREFIX.freetype2}/lib
 CONFIGURE_ARGS+=	--with-freetype-include=${BUILDLINK_PREFIX.freetype2}/include
 CONFIGURE_ARGS+=	--with-jobs=${MAKE_JOBS:U1}
 CONFIGURE_ARGS+=	--with-num-cores=${MAKE_JOBS:U1}
-CONFIGURE_ARGS+=	--with-cacerts-file=${PREFIX}/share/mozilla-rootcerts/cacert.pem
+CONFIGURE_ARGS+=	--with-cacerts-file=${CACERTS_STORE}
 CONFIGURE_ARGS+=	--disable-precompiled-headers
 CONFIGURE_ARGS+=	--disable-ccache
 CONFIGURE_ARGS+=	--with-extra-cflags=${CFLAGS:Q}
@@ -88,7 +89,10 @@ SITES.${BOOTSTRAP_JDK}=	https://us-east.manta.joyent.com/pkgsrc/public/pkg-boots
 DISTFILES:=		${DEFAULT_DISTFILES} ${BOOTSTRAP_JDK}
 .endif
 
-CONFIGURE_ARGS+=	--with-boot-jdk=${WRKDIR}/openjdk10
+BOOTJDK_DIR=		${WRKDIR}/openjdk10
+CACERTS_STORE=		${WRKDIR}/cacerts.keystore
+
+CONFIGURE_ARGS+=	--with-boot-jdk=${BOOTJDK_DIR}
 
 BUILD_OPSYS=	${OPSYS:C/.*BSD/bsd/:S/DragonFly/bsd/:S/SunOS/solaris/:S/Linux/linux/}
 BUILD_ARCH=	${MACHINE_ARCH:S/i386/x86/:S/sparc64/sparcv9/:C/^e?arm.*$/arm/}
@@ -97,6 +101,22 @@ IMAGEJDKDIR=	${WRKSRC}/build/${SERVER_DIR}/images/jdk
 
 PLIST_SUBST+=		JAVA_NAME=${JAVA_NAME}
 PRINT_PLIST_AWK+=	{ gsub(/${JAVA_NAME}/, "$${JAVA_NAME}") }
+
+pre-configure: ${CACERTS_STORE}
+${CACERTS_STORE}:
+	${MKDIR} ${WRKDIR}/cacerts
+	cd ${WRKDIR}/cacerts &&	${PREFIX}/sbin/mozilla-rootcerts extract
+	for cert in ${WRKDIR}/cacerts/*.pem; do				\
+		${SETENV} ${CONFIGURE_ENV} LC_ALL=C			\
+		    ${BOOTJDK_DIR}/bin/keytool				\
+			-noprompt					\
+			-importcert					\
+			-keystore ${.TARGET}.tmp			\
+			-alias `${ECHO} $$cert | sed 's,.*/\\([^/]*\\)\\.pem,\\1,'` \
+			-file $${cert}					\
+			-storepass changeit;				\
+	done
+	${MV} ${.TARGET}.tmp ${.TARGET}
 
 do-configure:
 	cd ${WRKSRC} && ${SETENV} ${CONFIGURE_ENV} ${BASH} configure autogen ${CONFIGURE_ARGS}
