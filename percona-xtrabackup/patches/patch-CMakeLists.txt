@@ -1,14 +1,24 @@
 $NetBSD$
 
-Build with newer DTrace.
+Don't install MySQL manual pages or INFO_SRC.
 
---- CMakeLists.txt.orig	2016-03-29 11:27:21.000000000 +0000
+--- CMakeLists.txt.orig	2019-12-14 16:07:34.000000000 +0000
 +++ CMakeLists.txt
-@@ -212,6 +212,7 @@ IF(DISABLE_SHARED)
-   SET(WITHOUT_DYNAMIC_PLUGINS 1)
+@@ -1350,7 +1350,7 @@ ENDIF()
+ # It is referenced by some of the directories below, so we insert it here.
+ ADD_SUBDIRECTORY(scripts)
+ 
+-IF(NOT WITHOUT_SERVER)
++IF(0)
+   ADD_SUBDIRECTORY(mysql-test)
+   IF(EXISTS ${CMAKE_SOURCE_DIR}/internal/CMakeLists.txt)
+     ADD_SUBDIRECTORY(internal)
+@@ -1378,7 +1378,7 @@ IF(ENABLE_GCOV)
+   INCLUDE(fastcov)
  ENDIF()
- OPTION(ENABLED_PROFILING "Enable profiling" OFF)
-+OPTION(ENABLE_DTRACE "Include support for DTrace probes" OFF)
- OPTION(WITHOUT_SERVER OFF)
- IF(UNIX)
-   OPTION(WITH_VALGRIND "Valgrind instrumentation" OFF)
+ 
+-IF(UNIX)
++IF(0)
+   ADD_SUBDIRECTORY(man)
+ ENDIF()
+ 
