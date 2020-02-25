@@ -1,0 +1,24 @@
+$NetBSD$
+
+SHA1 (boost_1_70_0.tar.bz2) = 5b2e5ccc454503cfbba6c1221f5d495f0de279ea
+RMD160 (boost_1_70_0.tar.bz2) = 83440e32058f68390b979b88b116daa971f19c86
+SHA512 (boost_1_70_0.tar.bz2) = 7f2ea9636baf0210e8ed1d21ee798efb6ce23c0710ff8228b285e2214f82193bcd2d912fd435929c554289a59101c7be2e27ce798f93833f307976f0dd070b49
+Size (boost_1_70_0.tar.bz2) = 97887058 bytes
+SHA1 (percona-xtrabackup-8.0.9.tar.gz) = 35ca862200c6351f7b77b65d5a2140bb910a44cd
+RMD160 (percona-xtrabackup-8.0.9.tar.gz) = 6e9fb1106914e89c304c0a607db7c15f2190bf0b
+SHA512 (percona-xtrabackup-8.0.9.tar.gz) = 5d07fff21b2707f0bea67ff81f298f7a2815d46ff52f7b4073cfa6c1b4a252dae03064b2605d55c2774043e0091757ede2fc2b6173c98614ea994250ec4761f4
+Size (percona-xtrabackup-8.0.9.tar.gz) = 201398786 bytes
+SHA1 (patch-CMakeLists.txt) = db3212b72a713fb7504aad15feb31195e0326eb1
+SHA1 (patch-cmake_FindLibEv.cmake) = 8c19bb32b5829bdb0de125a476f123f04cb7f075
+SHA1 (patch-extra_protobuf_protobuf-3.6.1_cmake_libprotobuf-lite.cmake) = 29b8a3df132988f517fc3b73230596531d4f14aa
+SHA1 (patch-extra_protobuf_protobuf-3.6.1_cmake_libprotobuf.cmake) = d17678c7a2cad7993f556ae524dc3f8fb136f680
+SHA1 (patch-libmysql_CMakeLists.txt) = 979734e7963eae784bffaf0c8b92d4f65dc2e538
+SHA1 (patch-libservices_CMakeLists.txt) = df678a9809efc3a360645768121aea2c6b7193d0
+SHA1 (patch-mysql-test_CMakeLists.txt) = f63a89bfc5c4fe9c86cef46ef5a6d96029cd909a
+SHA1 (patch-mysys_CMakeLists.txt) = efc52a85c9a5222a4300bc0d8ee38d2830f201fd
+SHA1 (patch-plugin_keyring__vault_CMakeLists.txt) = 6f9c8582c79aa01903e65d58dcbef497725e94a3
+SHA1 (patch-sql_mysqld.cc) = 34f7cad02344e5a9394cfdd5df4f06765f6e5d77
+SHA1 (patch-sql_resourcegroups_platform_thread__attrs__api__solaris.cc) = e6d26955adad76295cf9e2bf9dda70779ab1363e
+SHA1 (patch-storage_innobase_xtrabackup_CMakeLists.txt) = c6053adaba791003deda056009d98f8c283c931b
+SHA1 (patch-storage_myisam_mi__dynrec.cc) = 92cecf53f1bc34444e3c1acd10f5e1e3dc866994
+SHA1 (patch-storage_myisam_mi__extra.cc) = 99dc1707fd4831c54ee46fe8a861699a7c05579f
