@@ -1,4 +1,5 @@
 @comment $NetBSD$
+bin/innobackupex
 bin/xbcloud
 bin/xbcloud_osenv
 bin/xbcrypt

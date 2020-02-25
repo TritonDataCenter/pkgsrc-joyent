@@ -1,0 +1,11 @@
+$NetBSD$
+
+Build with newer DTrace.
+
+--- mysys_ssl/CMakeLists.txt.orig	2019-12-14 16:04:59.000000000 +0000
++++ mysys_ssl/CMakeLists.txt
+@@ -48,4 +48,3 @@ TARGET_LINK_LIBRARIES(mysys_ssl dbug str
+ IF(WIN32 AND NOT WITH_SSL STREQUAL "bundled")
+   TARGET_LINK_LIBRARIES(mysys_ssl crypt32)
+ ENDIF()
+-DTRACE_INSTRUMENT(mysys_ssl)

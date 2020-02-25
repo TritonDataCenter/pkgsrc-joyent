@@ -1,0 +1,22 @@
+$NetBSD$
+
+Fix CMake configure error, not sure why...
+
+--- sql/CMakeLists.txt.orig	2019-12-14 16:04:59.000000000 +0000
++++ sql/CMakeLists.txt
+@@ -519,6 +519,7 @@ ENDIF()
+ # from static libraries
+  
+ 
++IF(0)
+ SET(WITH_MYSQLD_LDFLAGS "" CACHE STRING "Additional linker flags for mysqld")
+ MARK_AS_ADVANCED(WITH_MYSQLD_LDFLAGS)
+ IF(WITH_MYSQLD_LDFLAGS)
+@@ -528,6 +529,7 @@ IF(WITH_MYSQLD_LDFLAGS)
+   SET_TARGET_PROPERTIES(mysqld PROPERTIES LINK_FLAGS 
+      "${MYSQLD_LINK_FLAGS} ${WITH_MYSQLD_LDFLAGS}")
+ ENDIF()
++ENDIF()
+ 
+ # See DEBUG_EXTNAME above: mysqld may already have name mysqld-debug,
+ # and the rename is a no-op. If it is called 'mysqld' we rename it.
