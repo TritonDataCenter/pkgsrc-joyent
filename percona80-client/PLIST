@@ -3,6 +3,7 @@ bin/mysql
 bin/mysql_client_test
 bin/mysql_config
 bin/mysql_config_editor
+bin/mysql_ssl_rsa_setup
 bin/mysqladmin
 bin/mysqlbinlog
 bin/mysqlcheck
@@ -12,9 +13,10 @@ bin/mysqlpump
 bin/mysqlshow
 bin/mysqlslap
 bin/mysqltest
-include/mysql/binary_log_types.h
 include/mysql/errmsg.h
+include/mysql/field_types.h
 include/mysql/my_command.h
+include/mysql/my_compress.h
 include/mysql/my_list.h
 include/mysql/mysql.h
 include/mysql/mysql/client_plugin.h
@@ -29,7 +31,7 @@ lib/libmysqlclient.so
 lib/libperconaserverclient.a
 lib/libperconaserverclient.so
 lib/libperconaserverclient.so.21
-lib/libperconaserverclient.so.21.0.15
+lib/libperconaserverclient.so.21.1.18
 lib/pkgconfig/perconaserverclient.pc
 man/man1/comp_err.1
 man/man1/ibd2sdi.1

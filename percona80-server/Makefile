@@ -44,6 +44,8 @@ CONF_FILES=		${PREFIX}/share/mysql/my-joyent.cnf \
 
 TEST_TARGET=		test
 
+MAKE_ENV+=		LD_LIBRARY_PATH=${WRKDIR}/build/library_output_directory
+
 post-build:
 	${SED} ${FILES_SUBST_SED} ${FILESDIR}/my-joyent.cnf.sh \
 	    >${WRKSRC}/my-joyent.cnf

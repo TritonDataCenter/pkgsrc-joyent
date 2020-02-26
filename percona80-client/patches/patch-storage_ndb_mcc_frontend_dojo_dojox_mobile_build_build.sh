@@ -2,11 +2,11 @@ $NetBSD: patch-storage_ndb_mcc_frontend_dojo_dojox_mobile_build_build.sh,v 1.1 2
 
 Shell portability.
 
---- storage/ndb/mcc/frontend/dojo/dojox/mobile/build/build.sh.orig	2016-03-28 18:06:12.000000000 +0000
+--- storage/ndb/mcc/frontend/dojo/dojox/mobile/build/build.sh.orig	2019-12-05 20:21:35.000000000 +0000
 +++ storage/ndb/mcc/frontend/dojo/dojox/mobile/build/build.sh
-@@ -16,14 +16,14 @@ profile=mobile
+@@ -14,10 +14,10 @@ optimize=closure
+ profile=mobile
  dir=release-mobile-separate
- webkit=
  #standalone=standaloneScrollable=true
 -if [ "$1" == "single" ]; then
 +if [ "$1" = "single" ]; then
@@ -17,8 +17,3 @@ Shell portability.
    dir=release-mobile-single
  fi
  shift 1
--if [ "$1" == "webkit" ]; then
-+if [ "$1" = "webkit" ]; then
-   webkit=webkitMobile=true
-   shift 1
- fi

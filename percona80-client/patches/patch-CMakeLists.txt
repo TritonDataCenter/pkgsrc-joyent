@@ -2,20 +2,25 @@ $NetBSD$
 
 Split configuration between -client and -server.
 
---- CMakeLists.txt.orig	2019-01-25 22:33:03.000000000 +0000
+--- CMakeLists.txt.orig	2019-12-05 20:21:35.000000000 +0000
 +++ CMakeLists.txt
-@@ -1040,12 +1040,10 @@ ADD_SUBDIRECTORY(utilities)
+@@ -1328,8 +1328,9 @@ ADD_SUBDIRECTORY(utilities)
  ADD_SUBDIRECTORY(share)
  ADD_SUBDIRECTORY(libservices)
+ 
+-IF(NOT WITHOUT_SERVER)
++IF(WITHOUT_SERVER)
+   ADD_SUBDIRECTORY(testclients)
++ELSE()
+   ADD_SUBDIRECTORY(sql)
+ ENDIF()
+ 
+@@ -1367,7 +1368,7 @@ IF(ENABLE_GCOV)
+   INCLUDE(fastcov)
+ ENDIF()
  
 -IF(UNIX)
 +IF(WITHOUT_SERVER)
    ADD_SUBDIRECTORY(man)
--ENDIF()
--
--IF(NOT WITHOUT_SERVER)
-   ADD_SUBDIRECTORY(testclients)
-+ELSE()
-   ADD_SUBDIRECTORY(sql)
  ENDIF()
  

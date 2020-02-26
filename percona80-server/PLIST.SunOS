@@ -1,2 +1,2 @@
-@comment $NetBSD: PLIST.SunOS,v 1.1 2016/09/16 06:49:12 adam Exp $
+@comment $NetBSD$
 share/mysql/solaris/postinstall-solaris

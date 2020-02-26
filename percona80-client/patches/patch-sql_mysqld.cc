@@ -2,9 +2,9 @@ $NetBSD$
 
 SunOS does not expose s6_addr32 to userland code.
 
---- sql/mysqld.cc.orig	2019-05-03 11:55:18.000000000 +0000
+--- sql/mysqld.cc.orig	2019-12-05 20:21:35.000000000 +0000
 +++ sql/mysqld.cc
-@@ -807,6 +807,10 @@ inline void setup_fpu() {
+@@ -841,6 +841,10 @@ inline void setup_fpu() {
  #endif /* __i386__ */
  }
  
@@ -15,3 +15,12 @@ SunOS does not expose s6_addr32 to userland code.
  extern "C" void handle_fatal_signal(int sig);
  
  /* Constants */
+@@ -4667,7 +4671,7 @@ int init_common_variables() {
+     */
+   }
+ #endif /* HAVE_LINUX_LARGE_PAGES */
+-#ifdef HAVE_SOLARIS_LARGE_PAGES
++#ifdef notHAVE_SOLARIS_LARGE_PAGES
+ #define LARGE_PAGESIZE (4 * 1024 * 1024)         /* 4MB */
+ #define SUPER_LARGE_PAGESIZE (256 * 1024 * 1024) /* 256MB */
+   if (opt_large_pages) {
