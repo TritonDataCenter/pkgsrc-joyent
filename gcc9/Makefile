@@ -143,7 +143,6 @@ post-install:
 BUILDLINK_DEPMETHOD.binutils=	full
 .include "../../devel/binutils/buildlink3.mk"
 .include "../../devel/gmp/inplace.mk"
-.include "../../lang/python/application.mk"
 .include "../../math/mpcomplex/inplace.mk"
 .include "../../math/mpfr/inplace.mk"
 .include "../../mk/dlopen.buildlink3.mk"
