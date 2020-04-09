@@ -141,4 +141,6 @@ CMAKE_ARGS+=		-DWITH_READLINE="system"
 CMAKE_ARGS+=		-DWITH_EDITLINE="system"
 .endif
 
+CHECK_PORTABILITY_SKIP+=	packaging/deb-in/mysql-packagesource-server.config.in
+
 .include "../../devel/zlib/buildlink3.mk"

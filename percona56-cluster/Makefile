@@ -63,6 +63,7 @@ CONFIG_SHELL=		${TOOLS_PATH.bash}
 
 CHECK_PORTABILITY_SKIP+=	build-ps/build-rpm.sh build-ps/deprecated/build-rpm.sh
 CHECK_PORTABILITY_SKIP+=	percona-xtradb-cluster-galera/scripts/mysql/*
+CHECK_PORTABILITY_SKIP+=	packaging/deb-in/*
 CHECK_INTERPRETER_SKIP+=	share/mysql/test/suite/tokudb/t/*.py
 CHECK_INTERPRETER_SKIP+=	share/mysql/test/std_data/checkDBI_DBD-mysql.pl
 

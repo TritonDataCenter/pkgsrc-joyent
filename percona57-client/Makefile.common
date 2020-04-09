@@ -135,6 +135,9 @@ CMAKE_ARGS+=		-DWITH_READLINE="system"
 CMAKE_ARGS+=		-DWITH_EDITLINE="system"
 .endif
 
+CHECK_PORTABILITY_SKIP+=	packaging/deb-in/mysql-packagesource-server.config.in
+CHECK_PORTABILITY_SKIP+=	storage/rocksdb/rocksdb/Makefile
+
 #.include "../../archivers/lz4/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../security/openssl/buildlink3.mk"

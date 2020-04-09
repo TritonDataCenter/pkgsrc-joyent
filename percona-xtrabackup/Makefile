@@ -40,6 +40,7 @@ CMAKE_ARGS+=		-DEVENT__HAVE_EPOLL=NO
 CFLAGS+=		-D_POSIX_PTHREAD_SEMANTICS
 LDFLAGS.SunOS+=		-lsocket -lnsl
 
+CHECK_PORTABILITY_SKIP+=	packaging/deb-in/mysql-packagesource-server.config.in
 CHECK_PORTABILITY_SKIP+=	storage/ndb/mcc/frontend/dojo/dojox/mobile/build/build.sh
 
 .include "../../archivers/xz/buildlink3.mk"
