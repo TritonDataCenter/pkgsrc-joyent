@@ -60,6 +60,7 @@ CONFIG_SHELL=		${TOOLS_PATH.bash}
 
 CHECK_INTERPRETER_SKIP+=	share/mysql/test/*
 CHECK_PORTABILITY_SKIP+=	build-ps/*
+CHECK_PORTABILITY_SKIP+=	packaging/deb-in/*
 CHECK_PORTABILITY_SKIP+=	percona-xtradb-cluster-galera/scripts/*
 CHECK_PORTABILITY_SKIP+=	storage/ndb/mcc/frontend/dojo/dojox/mobile/build/build.sh
 
