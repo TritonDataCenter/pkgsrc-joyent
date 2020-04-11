@@ -22,7 +22,7 @@ DEPENDS+=	bison-[0-9]*:../../devel/bison
 .if ${PKGSRC_COMPILER} == "gcc"
 .  if !empty(_GCC_DEPENDS:Mgcc9*)
 DEPENDS+=	${_GCC_DEPENDS}:../../joyent/gcc9
-.  if !empty(_GCC_DEPENDS:Mgcc7*)
+.  elif !empty(_GCC_DEPENDS:Mgcc7*)
 DEPENDS+=	${_GCC_DEPENDS}:../../lang/gcc7
 .  elif !empty(_GCC_DEPENDS:Mgcc49*)
 DEPENDS+=	${_GCC_DEPENDS}:../../lang/gcc49
