@@ -43,8 +43,9 @@ CMAKE_ARGS+=		-DINSTALL_MYSQLTESTDIR=percona-xtrabackup-test
 CFLAGS+=		-D_POSIX_PTHREAD_SEMANTICS
 LDFLAGS.SunOS+=		-lsocket -lnsl
 
-CHECK_PORTABILITY_SKIP+=	storage/ndb/mcc/frontend/dojo/dojox/mobile/build/build.sh
 CHECK_INTERPRETER_SKIP+=	percona-xtrabackup-test/*
+CHECK_PORTABILITY_SKIP+=	packaging/deb-in/*
+CHECK_PORTABILITY_SKIP+=	storage/ndb/mcc/frontend/dojo/dojox/mobile/build/build.sh
 
 post-extract:
 	${MKDIR} ${WRKDIR}/build
