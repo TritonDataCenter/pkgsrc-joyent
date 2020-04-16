@@ -66,7 +66,7 @@ SUBST_SED.libpath+=	-e 's/:%R@PREFIX@[^}]*//'
 #
 # Disable fixincludes on SmartOS, header changes result in broken includes
 # being generated, see https://github.com/joyent/pkgsrc-legacy/issues/270
-# 
+#
 # It's not 100% clear why other distributions do not do this, but is more than
 # likely due to them building on newer platforms.
 #
