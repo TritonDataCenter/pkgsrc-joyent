@@ -1,6 +1,6 @@
 # $NetBSD$
 
-DISTNAME=	${MYSQL_PKG_PREFIX}-1.3
+DISTNAME=	${MYSQL_PKG_PREFIX}-1.4
 CATEGORIES=	meta-pkgs
 MASTER_SITES=	# empty
 DISTFILES=	# empty
@@ -18,7 +18,12 @@ BROKEN=		Only supports Percona packages
 .endif
 
 DEPENDS+=	p5-DBD-${MYSQL_PKG_PREFIX}-[0-9]*:../../databases/p5-DBD-mysql
-DEPENDS+=	percona-xtrabackup-[0-9]*:../../joyent/percona-xtrabackup
+
+.if !empty(MYSQL_PKG_PREFIX:Mpercona8*)
+DEPENDS+=	percona-xtrabackup>=8:../../joyent/percona80-xtrabackup
+.else
+DEPENDS+=	percona-xtrabackup<8:../../joyent/percona-xtrabackup
+.endif
 DEPENDS+=	quickbackup-percona-[0-9]*:../../joyent/quickbackup-percona
 
 FILES_SUBST+=	HOSTNAME_CMD=${HOSTNAME_CMD:Q}
