@@ -104,4 +104,6 @@ CHECK_PORTABILITY_SKIP+=	storage/rocksdb/rocksdb/Makefile
 .include "../../archivers/lz4/buildlink3.mk"
 .include "../../devel/libevent/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
+.include "../../security/cyrus-sasl/buildlink3.mk"
 .include "../../security/openssl/buildlink3.mk"
+.include "../../www/curl/buildlink3.mk"
