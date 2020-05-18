@@ -1,0 +1,30 @@
+$NetBSD$
+
+SHA1 (Percona-XtraDB-Cluster-8.0.18-9.tar.gz) = 5abfab13f3d1a163210e6579417495cb291605c9
+RMD160 (Percona-XtraDB-Cluster-8.0.18-9.tar.gz) = 1937c17e9be347176dc4cbdfc26ae6040955e618
+SHA512 (Percona-XtraDB-Cluster-8.0.18-9.tar.gz) = a76012b3c91cbc3f65394d68e9d2704b473eed38f04da0d6a7a34ce9a7a24613cab3b2cc6ffddb2368d26f4fc971cd697a8b344493d0b67b36da7808d30753d5
+Size (Percona-XtraDB-Cluster-8.0.18-9.tar.gz) = 252477006 bytes
+SHA1 (boost_1_70_0.tar.bz2) = 5b2e5ccc454503cfbba6c1221f5d495f0de279ea
+RMD160 (boost_1_70_0.tar.bz2) = 83440e32058f68390b979b88b116daa971f19c86
+SHA512 (boost_1_70_0.tar.bz2) = 7f2ea9636baf0210e8ed1d21ee798efb6ce23c0710ff8228b285e2214f82193bcd2d912fd435929c554289a59101c7be2e27ce798f93833f307976f0dd070b49
+Size (boost_1_70_0.tar.bz2) = 97887058 bytes
+SHA1 (patch-cmake_build__configurations_compiler__options.cmake) = e42d2172da815e84c189312ede3f2f829a20a707
+SHA1 (patch-include_my__compare.h) = 9b4ebb1bc371b92dbdd1f3476ded1edcbb25327a
+SHA1 (patch-include_myisam.h) = 132aac8a30a1918a401ba1b0db788e5186ac9cf4
+SHA1 (patch-include_violite.h) = 0e5b33133969cbeb76e2f44ecc8258b6b4e4ef93
+SHA1 (patch-libmysql_CMakeLists.txt) = d2ea39638f3ee9078b0d9804c96bcd5a771ff0ce
+SHA1 (patch-percona-xtradb-cluster-galera_SConstruct) = f2889f2ba62981e941cba38b15d908f02c12b06c
+SHA1 (patch-percona-xtradb-cluster-galera_galera_src_replicator__str.cpp) = 49178a8d614205c4d20469847d0d371a2349c2ee
+SHA1 (patch-percona-xtradb-cluster-galera_galera_src_wsdb.cpp) = 05403339248ec8fe0a80746b41e1065ce6c74228
+SHA1 (patch-percona-xtradb-cluster-galera_galerautils_src_gu__progress.hpp) = a236946145e5a5478d94941134ceba3e6caebe95
+SHA1 (patch-percona-xtradb-cluster-galera_gcs_src_gcs__gcomm.cpp) = a8bd0ab6b571962ec701764362f117c95a79a8d3
+SHA1 (patch-plugin_x_CMakeLists.txt) = 2c02b377e3d8ccb9e2a1b7896f85367eec8f3461
+SHA1 (patch-plugin_x_client_mysqlxclient_xmessage.h) = 86aa6198cd55667ab84b3595a2d636109965f815
+SHA1 (patch-plugin_x_ngs_include_ngs_protocol_protocol__protobuf.h) = d4455dc59aff8118c7c828cea271836f7adca45b
+SHA1 (patch-router_CMakeLists.txt) = 7b8ca4601561c7df581d431015f1cdce8ddb2333
+SHA1 (patch-scripts_wsrep__sst__common.sh) = 92dbfa52a02cbfb61360a882d04930481b521bcf
+SHA1 (patch-scripts_wsrep__sst__xtrabackup-v2.sh) = 9621da7998dab5400aa48793f192abea5056344a
+SHA1 (patch-sql_mysqld.cc) = ae001516d3af0c81755d3fe5441b632bb28c2b71
+SHA1 (patch-sql_resourcegroups_platform_thread__attrs__api__solaris.cc) = 10039638c4fff9347f53466118f94466ebf12e5c
+SHA1 (patch-storage_myisam_mi__dynrec.cc) = 75b164d3b8315b54ea1389deebae2b8875f1ac6b
+SHA1 (patch-storage_myisam_mi__extra.cc) = 55443b27ded1156a3dd60bb66101ff95833650f2
