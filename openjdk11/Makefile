@@ -112,7 +112,7 @@ ${CACERTS_STORE}:
 			-noprompt					\
 			-importcert					\
 			-keystore ${.TARGET}.tmp			\
-			-alias `${ECHO} $$cert | sed 's,.*/\\([^/]*\\)\\.pem,\\1,'` \
+			-alias `basename "$$cert" .pem`			\
 			-file $${cert}					\
 			-storetype jks					\
 			-storepass changeit;				\
