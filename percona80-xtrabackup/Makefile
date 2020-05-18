@@ -1,6 +1,6 @@
 # $NetBSD$
 
-DISTNAME=	percona-xtrabackup-8.0.9
+DISTNAME=	percona-xtrabackup-8.0.11
 CATEGORIES=	databases
 MASTER_SITES=	https://www.percona.com/downloads/Percona-XtraBackup-LATEST/Percona-XtraBackup-${PKGVERSION_NOREV}/source/tarball/
 
