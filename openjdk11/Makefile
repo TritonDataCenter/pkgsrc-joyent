@@ -1,6 +1,6 @@
 # $NetBSD$
 
-DISTNAME=	openjdk11-11.0.5
+DISTNAME=	openjdk11-11.0.6
 PKGREVISION=	0
 CATEGORIES=	lang
 MASTER_SITES=	https://us-east.manta.joyent.com/pkgsrc/public/pkg-distfiles/

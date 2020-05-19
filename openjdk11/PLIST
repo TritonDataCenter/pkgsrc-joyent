@@ -28,6 +28,7 @@ java/${JAVA_NAME}/bin/jconsole
 java/${JAVA_NAME}/bin/jdb
 java/${JAVA_NAME}/bin/jdeprscan
 java/${JAVA_NAME}/bin/jdeps
+java/${JAVA_NAME}/bin/jfr
 java/${JAVA_NAME}/bin/jhsdb
 java/${JAVA_NAME}/bin/jimage
 java/${JAVA_NAME}/bin/jinfo
@@ -288,7 +289,7 @@ java/${JAVA_NAME}/legal/java.desktop/lcms.md
 java/${JAVA_NAME}/legal/java.desktop/libpng.md
 java/${JAVA_NAME}/legal/java.desktop/mesa3d.md
 java/${JAVA_NAME}/legal/java.desktop/opengl.md
-java/${JAVA_NAME}/legal/java.desktop/xwindows.md
+java/${JAVA_NAME}/legal/java.desktop/xwd.md
 java/${JAVA_NAME}/legal/java.instrument/ADDITIONAL_LICENSE_INFO
 java/${JAVA_NAME}/legal/java.instrument/ASSEMBLY_EXCEPTION
 java/${JAVA_NAME}/legal/java.instrument/LICENSE
