@@ -1,23 +1,34 @@
 #!@SH@
 #
 # Joyent QuickBackup, A MySQL backup service powered by Percona Xtrabackup.
-# See: http://wiki.joyent.com/jpc2/Joyent+Quickbackup+for+Percona+MySQL+Server
-# Version 3.5
+#
+# Note that this script runs as the MYSQL_USER user.
+#
 
 . /lib/svc/share/smf_include.sh
 set -f
 
-PATH="@PREFIX@/sbin:@PREFIX@/bin:/usr/sbin:/usr/bin:/sbin";
+PATH="@PREFIX@/sbin:@PREFIX@/bin:/usr/sbin:/usr/bin:/sbin"
 DATE=`date +%Y-%m-%d_%H-%M-%S`;
-LOGFILE="/var/log/mysql/quickbackup-percona.log";
+LOGFILE="@VARBASE@/log/mysql/quickbackup-percona.log";
 BACKUPFILE="${DATE}-backup";
-DATADIR="/var/mysql";
+DATADIR="@MYSQL_DATADIR@";
+MYSQL_USER="@MYSQL_USER@"
+MYSQL_GROUP="@MYSQL_GROUP@"
 SMF_FMRI="svc:/pkgsrc/quickbackup-percona";
 MEMCAP=`kstat -m memory_cap -c zone_memory_cap -s physcap -p | cut -f2 | awk '{ printf("%d", $1/1024/1024)}'`;
 MEMUSED=`kstat -m memory_cap -c zone_memory_cap -s rss -p | cut -f2 | awk '{ printf("%d", $1/1024/1024) }'`
 MEMFREE=`echo "(${MEMCAP}-${MEMUSED})/2" | bc`;
 MYSQLCONF="@PKG_SYSCONFDIR@/my.cnf";
 trap sighandler SIGINT SIGTERM
+
+XTRABACKUP="@PREFIX@/bin/xtrabackup"
+
+if @PREFIX@/sbin/pkg_info -qe 'percona-xtrabackup>8'; then
+	is_pxc8=true
+else
+	is_pxc8=false
+fi
 
 sighandler() {
 	echo "Caught signal, cleaning up..";
@@ -54,12 +65,17 @@ dochecks() {
 	[ -z "${BACKUPDIR}" ] && logerror "ERROR - quickbackup/backupdir property not set" && exit 1;
 	[ -z "${STREAM}" ] && logerror "ERROR - quickbackup/stream property not set" && exit 1;
 
-	[ ${STREAM} = "tar" ] && log "* Backup for ${BACKUPDIR}/${BACKUPFILE}.tar.gz";
-	[ ${STREAM} = "xbstream" ] && log "* Backup for ${BACKUPDIR}/${BACKUPFILE}.xbs";
+	# Ignore STREAM setting completely for XtraBackup 8.0
+	if ${is_pxc8}; then
+		log "* Backup for ${BACKUPDIR}/${DATE}"
+	else
+		[ ${STREAM} = "tar" ] && log "* Backup for ${BACKUPDIR}/${BACKUPFILE}.tar.gz";
+		[ ${STREAM} = "xbstream" ] && log "* Backup for ${BACKUPDIR}/${BACKUPFILE}.xbs";
 
-	# Check if innobackupex/xtrabackup exist
-	command -v innobackupex >/dev/null 2>&1 || { echo >&2 "* ERROR - innobackupex was not found in your PATH."; exit 1; }
-	command -v xtrabackup >/dev/null 2>&1 || { echo >&2 "* ERROR - xtrabackup was not found in your PATH."; exit 1; }
+		# Check if innobackupex/xtrabackup exist
+		command -v innobackupex >/dev/null 2>&1 || { echo >&2 "* ERROR - innobackupex was not found in your PATH."; exit 1; }
+		command -v xtrabackup >/dev/null 2>&1 || { echo >&2 "* ERROR - xtrabackup was not found in your PATH."; exit 1; }
+	fi
 
 	# Check that quickbackup/stream is either tar or xbstream
 	[ ${STREAM} != "tar" ] && [ ${STREAM} != "xbstream" ] && logerror "ERROR - Stream must be either tar or xbstream" && exit 1;
@@ -80,9 +96,9 @@ dochecks() {
 	done
 
 	# Check if quickbackup/backupdir exists and is writeable
-	[ ! -d "${BACKUPDIR}" ] && logerror "ERROR - ${BACKUPDIR} doesn't exist.  mkdir ${BACKUPDIR} && chown mysql:mysql ${BACKUPDIR}." && exit 1;
+	[ ! -d "${BACKUPDIR}" ] && logerror "ERROR - ${BACKUPDIR} doesn't exist.  mkdir ${BACKUPDIR} && chown ${MYSQL_USER}:${MYSQL_GROUP} ${BACKUPDIR}." && exit 1;
 	CHECKWRITE=`touch ${BACKUPDIR}/.test 2>/dev/null`;
-        [ $? -ne 0 ] && logerror "ERROR - Can't write to ${BACKUPDIR}.  chown mysql:mysql ${BACKUPDIR}." && exit 1;
+        [ $? -ne 0 ] && logerror "ERROR - Can't write to ${BACKUPDIR}.  chown ${MYSQL_USER}:${MYSQL_GROUP} ${BACKUPDIR}." && exit 1;
 	rm ${BACKUPDIR}/.test 2>/dev/null;
 }
 
@@ -230,7 +246,7 @@ createstring() {
 startcron() {
 	crontab -l | egrep -vi "quickbackup-percona" > /tmp/.cron
 	echo "# Joyent QuickBackup.  For svc:/pkgsrc/quickbackup-percona service" >> /tmp/.cron
-	echo "${MINSTRING} ${HOURSTRING} * * ${DAYSTRING} PATH=\"@PREFIX@/bin:@PREFIX@/sbin:/usr/bin:/usr/sbin:\" @PREFIX@/bin/quickbackup-percona backup > /dev/null 2>&1" >> /tmp/.cron
+	echo "${MINSTRING} ${HOURSTRING} * * ${DAYSTRING} @PREFIX@/bin/quickbackup-percona backup >/dev/null 2>&1" >> /tmp/.cron
 	crontab /tmp/.cron; rm /tmp/.cron 2>/dev/null
         [ $? -eq 0 ] && exit $SMF_EXIT_OK || exit $SMF_EXIT_ERR_FATAL;
 }
@@ -241,6 +257,36 @@ stopcron() {
         [ $? -eq 0 ] && exit $SMF_EXIT_OK || exit $SMF_EXIT_ERR_FATAL;
 }
 
+startbackup_pxc8()
+{
+	mkdir -p ${BACKUPDIR}/.tmp
+
+	case "${DATABASESSTRING}" in
+	all)
+		log "* Starting backup of all databases"
+		${XTRABACKUP} --backup --compress --compress-threads=8 \
+		    --user=${USERNAME} --password=${PASSWORD} \
+		    --parallel=8 --target-dir=${BACKUPDIR}/.tmp \
+		    2>>${LOGFILE}
+		;;
+	*)
+		log "* Starting backup of databases: ${DATABASESSTRING}"
+		${XTRABACKUP} --backup --compress --compress-threads=8 \
+		    --user=${USERNAME} --password=${PASSWORD} \
+		    --databases="${DATABASESSTRING}" \
+		    --parallel=8 --target-dir=${BACKUPDIR}/.tmp \
+		    2>>${LOGFILE}
+		;;
+	esac
+
+	if [ $? -ne 0 ]; then
+		logerror "ERROR: Backup failed"
+		exit 1
+	fi
+
+	mv ${BACKUPDIR}/.tmp ${BACKUPDIR}/${DATE}
+}
+
 startbackup() {
 	mkdir ${BACKUPDIR}/.tmp 2>/dev/null;
 
@@ -249,9 +295,9 @@ startbackup() {
 			command -v tar4ibd >/dev/null 2>&1 || { echo >&2 "* ERROR - tar4ibd was not found in your PATH."; exit 1; }
 
 			[ "${DATABASESSTRING}" = "all" ] && innobackupex --defaults-file=${MYSQLCONF} --user=${USERNAME} --password=${PASSWORD} \
-			--ibbackup=@PREFIX@/bin/xtrabackup --use-memory=${MEMFREE}MB --slave-info --tmpdir="${BACKUPDIR}/.tmp" \
+			--ibbackup=${XTRABACKUP} --use-memory=${MEMFREE}MB --slave-info --tmpdir="${BACKUPDIR}/.tmp" \
 			--stream=tar ${BACKUPDIR} 2>> ${LOGFILE} | gzip - > ${BACKUPDIR}/${BACKUPFILE}.tar.gz || \
-			innobackupex --defaults-file=${MYSQLCONF} --user=${USERNAME} --password=${PASSWORD} --ibbackup=@PREFIX@/bin/xtrabackup \
+			innobackupex --defaults-file=${MYSQLCONF} --user=${USERNAME} --password=${PASSWORD} --ibbackup=${XTRABACKUP} \
 			--use-memory=${MEMFREE}MB --slave-info --tmpdir="${BACKUPDIR}/.tmp" --databases="${DATABASESSTRING}" \
 			--stream=tar ${BACKUPDIR} 2>> ${LOGFILE} | gzip - > ${BACKUPDIR}/${BACKUPFILE}.tar.gz;
 			;;
@@ -261,11 +307,11 @@ startbackup() {
 			command -v qpress >/dev/null 2>&1 || { echo >&2 "* ERROR - qpress was not found in your PATH."; exit 1; }
 
 			[ "${DATABASESSTRING}" = "all" ] && innobackupex --defaults-file=${MYSQLCONF} --user=${USERNAME} --password=${PASSWORD} \
-			--ibbackup=@PREFIX@/bin/xtrabackup --use-memory=${MEMFREE}MB --slave-info --parallel=8 --tmpdir="${BACKUPDIR}/.tmp" \
+			--ibbackup=${XTRABACKUP} --use-memory=${MEMFREE}MB --slave-info --parallel=8 --tmpdir="${BACKUPDIR}/.tmp" \
 			--compress --compress-threads=8 --stream=xbstream ./ > ${BACKUPDIR}/${BACKUPFILE}.xbs 2>> ${LOGFILE} || \
-			innobackupex --defaults-file=${MYSQLCONF} --user=${USERNAME} --password=${PASSWORD} --ibbackup=@PREFIX@/bin/xtrabackup \
-                        --use-memory=${MEMFREE}MB --slave-info --parallel=8 --tmpdir="${BACKUPDIR}/.tmp" --databases="${DATABASESSTRING}" \
-                        --compress --compress-threads=8 --stream=xbstream ./ > ${BACKUPDIR}/${BACKUPFILE}.xbs 2>> ${LOGFILE}
+			innobackupex --defaults-file=${MYSQLCONF} --user=${USERNAME} --password=${PASSWORD} --ibbackup=${XTRABACKUP} \
+			--use-memory=${MEMFREE}MB --slave-info --parallel=8 --tmpdir="${BACKUPDIR}/.tmp" --databases="${DATABASESSTRING}" \
+			--compress --compress-threads=8 --stream=xbstream ./ > ${BACKUPDIR}/${BACKUPFILE}.xbs 2>> ${LOGFILE}
 			;;
 	esac
 
@@ -274,10 +320,51 @@ startbackup() {
 	CHECKRESTORE=`tail -1 ${LOGFILE} | grep "completed OK\!"`;
 	[ $? -gt 0 ] && logerror "There was an error with the last backup.  Check ${LOGFILE}." && exit 1;
 
-	chown -R mysql:mysql ${BACKUPDIR};
-	chown mysql:mysql ${LOGFILE};
-
 	log "* Backup completed successfully";
+}
+
+startrestore_pxc8()
+{
+	[ $# -eq 1 ] || usage
+
+	RESTOREDIR="$1"; shift
+
+	if [ ! -d ${RESTOREDIR} ]; then
+		logerror "ERROR: Restore directory ${RESTOREDIR} not found"
+		exit 1
+	fi
+
+	if $(pgrep mysqld >/dev/null); then
+		logerror "ERROR: MySQL must be shut down prior to restore"
+		exit 1
+	fi
+
+	log "Uncompressing backup in ${RESTOREDIR}"
+	${XTRABACKUP} --decompress --target-dir=${RESTOREDIR} 2>>${LOGFILE}
+	if [ $? -ne 0 ]; then
+		logerror "ERROR: Restore decompression failed"
+		exit 1
+	fi
+
+	log "Preparing backup in ${RESTOREDIR}"
+	${XTRABACKUP} --prepare --target-dir=${RESTOREDIR} 2>>${LOGFILE}
+	if [ $? -ne 0 ]; then
+		logerror "ERROR: Restore preparation failed"
+		exit 1
+	fi
+
+	log "Removing compressed *.qp files"
+	find ${RESTOREDIR} -name "*.qp" -exec rm -- {} +
+
+	log "Copying backup from ${RESTOREDIR} back to ${DATADIR}"
+	${XTRABACKUP} --copy-back --target-dir=${RESTOREDIR} \
+	    --datadir=${MYSQL_DATADIR} 2>>${LOGFILE}
+	if [ $? -ne 0 ]; then
+		logerror "ERROR: Restore copy back failed"
+		exit 1
+	fi
+
+        log "* Restore completed successfully"
 }
 
 startrestore() {
@@ -285,6 +372,7 @@ startrestore() {
 
         [ -z "${RESTOREFILE}" ] && usage;
         [ ! -f "${RESTOREFILE}" ] && logerror "ERROR - ${RESTOREFILE} file not found." && exit 1;
+
 	command -v innobackupex >/dev/null 2>&1 || { echo >&2 "* ERROR - innobackupex was not found in your PATH."; exit 1; }
 	command -v xtrabackup >/dev/null 2>&1 || { echo >&2 "* ERROR - xtrabackup was not found in your PATH."; exit 1; }
 
@@ -307,8 +395,8 @@ startrestore() {
         		rm -r ${DATADIR} > /dev/null 2>&1;
         		mkdir ${DATADIR} > /dev/null 2>&1;
 
-        		innobackupex --defaults-file=${MYSQLCONF} --use-memory=${MEMFREE}MB --apply-log --ibbackup=@PREFIX@/bin/xtrabackup ${BACKUPDIR}/.tmp >> ${LOGFILE} 2>&1;
-        		innobackupex --defaults-file=${MYSQLCONF} --use-memory=${MEMFREE}MB --copy-back --ibbackup=@PREFIX@/bin/xtrabackup ${BACKUPDIR}/.tmp >> ${LOGFILE} 2>&1;
+			innobackupex --defaults-file=${MYSQLCONF} --use-memory=${MEMFREE}MB --apply-log --ibbackup=${XTRABACKUP} ${BACKUPDIR}/.tmp >> ${LOGFILE} 2>&1;
+			innobackupex --defaults-file=${MYSQLCONF} --use-memory=${MEMFREE}MB --copy-back --ibbackup=${XTRABACKUP} ${BACKUPDIR}/.tmp >> ${LOGFILE} 2>&1;
 			;;
 
 		'xbstream')
@@ -332,14 +420,11 @@ startrestore() {
         		rm -r ${DATADIR} > /dev/null 2>&1;
         		mkdir ${DATADIR} > /dev/null 2>&1;
 
-        		innobackupex --defaults-file=${MYSQLCONF} --use-memory=${MEMFREE}MB --apply-log --ibbackup=@PREFIX@/bin/xtrabackup ${BACKUPDIR}/.tmp >> ${LOGFILE} 2>&1;
-        		innobackupex --defaults-file=${MYSQLCONF} --use-memory=${MEMFREE}MB --copy-back --ibbackup=@PREFIX@/bin/xtrabackup ${BACKUPDIR}/.tmp >> ${LOGFILE} 2>&1;
+			innobackupex --defaults-file=${MYSQLCONF} --use-memory=${MEMFREE}MB --apply-log --ibbackup=${XTRABACKUP} ${BACKUPDIR}/.tmp >> ${LOGFILE} 2>&1;
+			innobackupex --defaults-file=${MYSQLCONF} --use-memory=${MEMFREE}MB --copy-back --ibbackup=${XTRABACKUP} ${BACKUPDIR}/.tmp >> ${LOGFILE} 2>&1;
 			;;
 	esac
 	
-        chown -R mysql:mysql ${DATADIR};
-        chown mysql:mysql ${LOGFILE};
-
 	rm -rf ${BACKUPDIR}/.tmp 2>/dev/null;
 
         CHECKRESTORE=`tail -1 ${LOGFILE} | grep "completed OK\!"`;
@@ -351,6 +436,7 @@ startrestore() {
 rotate() {
 	find ${BACKUPDIR} -name "????-??-??_??-??-??-backup.tar.gz" -mtime +${EXPIREDAYSSTRING} -exec rm {} \;
 	find ${BACKUPDIR} -name "????-??-??_??-??-??-backup.xbs" -mtime +${EXPIREDAYSSTRING} -exec rm {} \;
+	find ${BACKUPDIR} -name "????-??-??_??-??-??" -mtime +${EXPIREDAYSSTRING} -exec rm {} \;
         log "* Rotation completed successfully";
 }
 
@@ -373,10 +459,10 @@ usage() {
 
 Joyent QuickBackup; A MySQL backup service powered by Percona Xtrabackup.
 
-Usage: $0 [ backup | rotate | restore <backup file> ]
+Usage: $0 [ backup | rotate | restore <backup file|dir> ]
        backup  - Starts a backup and deletes backups older than expiredays set.
        rotate  - Deletes backups longer than expiredays set.
-       restore - Restores a backup from the backup file specified.
+       restore - Restores a backup from the backup file or directory specified.
 
 EOF
 
@@ -407,14 +493,22 @@ case "$1" in
 		getprops;
 		dochecks;
 		createstring;
-		startbackup;
+		if ${is_pxc8}; then
+			startbackup_pxc8
+		else
+			startbackup
+		fi
 		rotate;
 		;;
 
 	'restore')
 		getprops;
       		log "* Restore from $2";
-		startrestore $2;
+		if ${is_pxc8}; then
+			startrestore_pxc8 $2
+		else
+			startrestore $2
+		fi
 		;;
 
 	'rotate')

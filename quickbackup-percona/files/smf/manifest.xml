@@ -10,15 +10,15 @@
     <dependency name='net' grouping='require_all' restart_on='none' type='service'>
       <service_fmri value='svc:/network/loopback'/>
     </dependency>
-    <method_context project=':default' resource_pool=':default' working_directory='@VARBASE@/mysql'>
-      <method_credential group='mysql' limit_privileges=':default' privileges=':default' supp_groups=':default' user='mysql'/>
+    <method_context project=':default' resource_pool=':default' working_directory='@MYSQL_DATADIR@'>
+      <method_credential user='@MYSQL_USER@' group='@MYSQL_GROUP@' limit_privileges=':default' privileges=':default' supp_groups=':default' />
       <method_environment>
-        <envvar name='PATH' value='@PREFIX@/sbin:@PREFIX@/bin:/usr/sbin:/usr/bin'/>
+        <envvar name='PATH' value='@PREFIX@/sbin:@PREFIX@/bin:/usr/sbin:/usr/bin:/sbin' />
       </method_environment>
     </method_context>
-    <exec_method name='start' type='method' exec='@PREFIX@/bin/quickbackup-percona start' timeout_seconds='18446744073709551615'/>
-    <exec_method name='stop' type='method' exec='@PREFIX@/bin/quickbackup-percona stop' timeout_seconds='18446744073709551615'/>
-    <exec_method name='restart' type='method' exec='@PREFIX@/bin/quickbackup-percona restart' timeout_seconds='18446744073709551615'/>
+    <exec_method name='start' type='method' exec='@PREFIX@/bin/quickbackup-percona start' timeout_seconds='300' />
+    <exec_method name='stop' type='method' exec='@PREFIX@/bin/quickbackup-percona stop' timeout_seconds='300' />
+    <exec_method name='restart' type='method' exec='@PREFIX@/bin/quickbackup-percona restart' timeout_seconds='300' />
     <property_group name='startd' type='framework'>
       <propval name='duration' type='astring' value='transient'/>
     </property_group>
@@ -37,9 +37,6 @@
       <common_name>
         <loctext xml:lang='C'>Joyent QuickBackup service for Percona Server (MySQL)</loctext>
       </common_name>
-      <documentation>
-        <doc_link name='wiki.joyent.com' uri='http://wiki.joyent.com/jpc2/Joyent+Percona+SmartMachine'/>
-      </documentation>
     </template>
   </service>
 </service_bundle>

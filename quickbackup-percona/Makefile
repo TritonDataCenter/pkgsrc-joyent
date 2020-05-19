@@ -1,20 +1,32 @@
 # $NetBSD$
 #
 
-DISTNAME=	quickbackup-percona-3.7
+DISTNAME=	quickbackup-percona-8.0
 CATEGORIES=	sysutils
 MASTER_SITES=	# empty
 DISTFILES=	# empty
 
 MAINTAINER=	jperkin@joyent.com
-HOMEPAGE=	http://wiki.joyent.com/jpc2/Joyent+Percona+SmartMachine
-COMMENT=	Percona quickbackup SMF service
+HOMEPAGE=	https://github.com/joyent/pkgsrc/wiki/use:percona-cluster
+COMMENT=	Percona XtraBackup SMF service
 LICENSE=	public-domain
 
 NO_CHECKSUM=	yes
 NO_CONFIGURE=	yes
 
 INSTALLATION_DIRS=	bin
+
+.include "../../mk/bsd.prefs.mk"
+
+MYSQL_USER?=	mysql
+MYSQL_GROUP?=	mysql
+MYSQL_DATADIR?=	${VARBASE}/mysql
+
+FILES_SUBST+=	MYSQL_USER=${MYSQL_USER} MYSQL_GROUP=${MYSQL_GROUP}
+FILES_SUBST+=	MYSQL_DATADIR=${MYSQL_DATADIR}
+
+BUILD_DEFS+=	MYSQL_USER MYSQL_GROUP
+BUILD_DEFS+=	MYSQL_DATADIR VARBASE
 
 do-build:
 	${SED} ${FILES_SUBST_SED} ${FILESDIR}/quickbackup-percona \
