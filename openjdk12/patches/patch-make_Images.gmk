@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- make/Images.gmk.orig	2020-05-19 22:21:25.792448370 +0000
++++ make/Images.gmk
+@@ -99,7 +99,7 @@ $(JDK_IMAGE_DIR)/$(JIMAGE_TARGET_FILE):
+ 	)
+         ifeq ($(BUILD_CDS_ARCHIVE), true)
+ 	  $(call LogWarn, Creating CDS archive for jdk image)
+-	  $(JDK_IMAGE_DIR)/bin/java -Xshare:dump -Xmx128M -Xms128M $(LOG_INFO)
++	  LD_LIBRARY_PATH=$(BUILD_JDK)/lib:$(BUILD_JDK)/lib/server $(JDK_IMAGE_DIR)/bin/java -Xshare:dump -Xmx128M -Xms128M $(LOG_INFO)
+         endif
+ 	$(TOUCH) $@
+ 

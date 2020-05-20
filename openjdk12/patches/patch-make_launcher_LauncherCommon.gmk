@@ -1,0 +1,25 @@
+$NetBSD$
+
+Support for SunOS/gcc.
+
+--- make/launcher/LauncherCommon.gmk.orig	2019-07-16 16:38:28.000000000 +0000
++++ make/launcher/LauncherCommon.gmk
+@@ -37,7 +37,9 @@ include ToolsJdk.gmk
+ # Also provide an override for non-conformant libraries.
+ ifeq ($(TOOLCHAIN_TYPE), gcc)
+   LAUNCHER_CFLAGS += -fvisibility=hidden
++ ifneq ($(OPENJDK_TARGET_OS), solaris)
+   LDFLAGS_JDKEXE += -Wl,--exclude-libs,ALL
++ endif
+ else ifeq ($(TOOLCHAIN_TYPE), clang)
+   LAUNCHER_CFLAGS += -fvisibility=hidden
+ else ifeq ($(TOOLCHAIN_TYPE), solstudio)
+@@ -131,7 +133,7 @@ define SetupBuildLauncherBody
+   endif
+ 
+   ifeq ($(USE_EXTERNAL_LIBZ), true)
+-    $1_LIBS += -lz
++    $1_LIBS += -Wl,-R/opt/local/lib -L/opt/local/lib -lz
+   endif
+ 
+   $1_WINDOWS_JLI_LIB := $(call FindStaticLib, java.base, jli, /libjli)
