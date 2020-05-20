@@ -114,6 +114,7 @@ ${CACERTS_STORE}:
 			-keystore ${.TARGET}.tmp			\
 			-alias `${ECHO} $$cert | sed 's,.*/\\([^/]*\\)\\.pem,\\1,'` \
 			-file $${cert}					\
+			-storetype jks					\
 			-storepass changeit;				\
 	done
 	${MV} ${.TARGET}.tmp ${.TARGET}
