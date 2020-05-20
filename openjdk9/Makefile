@@ -84,8 +84,15 @@ IMAGEJDKDIR=	${WRKSRC}/build/${SERVER_DIR}/images/jdk
 pre-configure:
 	cd ${WRKSRC} && ${BASH} common/autoconf/autogen.sh
 
+do-install:
+	${INSTALL_DATA_DIR} ${DESTDIR}${JAVA_HOME}
+	cd ${IMAGEJDKDIR} && ${PAX} -rwpp . ${DESTDIR}${JAVA_HOME}/.
+
+ELFEDIT?=	/usr/bin/elfedit
+
 .PHONY: bootstrap
 bootstrap: install
+	${RM} -rf ${WRKDIR}/bootstrap/${JAVA_NAME}
 	${MKDIR} ${WRKDIR}/bootstrap/${JAVA_NAME}
 	cd ${DESTDIR}${JAVA_HOME} && \
 	    ${PAX} -rwpp . ${WRKDIR}/bootstrap/${JAVA_NAME}/
@@ -102,25 +109,24 @@ bootstrap: install
 		    ${WRKDIR}/bootstrap/${JAVA_NAME}/lib/pkgsrc/; \
 	done
 	for f in ${WRKDIR}/bootstrap/${JAVA_NAME}/bin/*; do \
-		/shared/tmp/elfedit -e 'dyn:runpath $$ORIGIN/../lib/jli:$$ORIGIN/../lib/pkgsrc' $$f; \
+		${ELFEDIT} -e 'dyn:runpath $$ORIGIN/../lib/jli:$$ORIGIN/../lib/pkgsrc' $$f; \
 	done
 	for f in ${WRKDIR}/bootstrap/${JAVA_NAME}/lib/{jspawnhelper,*.so}; do \
-		/shared/tmp/elfedit -e 'dyn:runpath $$ORIGIN:$$ORIGIN/jli:$$ORIGIN/server:$$ORIGIN/pkgsrc' $$f; \
+		${ELFEDIT} -e 'dyn:runpath $$ORIGIN:$$ORIGIN/jli:$$ORIGIN/server:$$ORIGIN/pkgsrc' $$f; \
 	done
 	for f in ${WRKDIR}/bootstrap/${JAVA_NAME}/lib/jli/*.so; do \
-		/shared/tmp/elfedit -e 'dyn:runpath $$ORIGIN/../pkgsrc' $$f; \
+		${ELFEDIT} -e 'dyn:runpath $$ORIGIN/../pkgsrc' $$f; \
 	done
 	for f in ${WRKDIR}/bootstrap/${JAVA_NAME}/lib/pkgsrc/*.so*; do \
-		/shared/tmp/elfedit -e 'dyn:runpath $$ORIGIN' $$f; \
+		${ELFEDIT} -e 'dyn:runpath $$ORIGIN' $$f; \
 	done
 	for f in ${WRKDIR}/bootstrap/${JAVA_NAME}/lib/server/*.so; do \
-		/shared/tmp/elfedit -e 'dyn:runpath $$ORIGIN/../pkgsrc' $$f; \
+		${ELFEDIT} -e 'dyn:runpath $$ORIGIN/../pkgsrc' $$f; \
 	done
-.endif
+	(cd ${WRKDIR}/bootstrap; \
+	  ${TAR} -zcf ${DISTNAME}-x86_64-sun-solaris.tar.gz ${JAVA_NAME})
 
-do-install:
-	${INSTALL_DATA_DIR} ${DESTDIR}${JAVA_HOME}
-	cd ${IMAGEJDKDIR} && ${PAX} -rwpp . ${DESTDIR}${JAVA_HOME}/.
+.endif
 
 .include "options.mk"
 
