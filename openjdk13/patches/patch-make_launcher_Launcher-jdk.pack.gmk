@@ -1,0 +1,25 @@
+$NetBSD$
+
+Support for SunOS/gcc.
+
+--- make/launcher/Launcher-jdk.pack.gmk.orig	2020-02-20 22:05:38.000000000 +0000
++++ make/launcher/Launcher-jdk.pack.gmk
+@@ -43,7 +43,9 @@ $(eval $(call SetupBuildLauncher, pack20
+ # Also provide an override for non-conformant libraries.
+ ifeq ($(TOOLCHAIN_TYPE), gcc)
+   CXXFLAGS_JDKEXE += -fvisibility=hidden
++ ifneq ($(OPENJDK_TARGET_OS), solaris)
+   LDFLAGS_JDKEXE += -Wl,--exclude-libs,ALL
++ endif
+ else ifeq ($(TOOLCHAIN_TYPE), clang)
+   ifeq ($(call isTargetOs, macosx), false)
+     CXXFLAGS_JDKEXE += -fvisibility=hidden
+@@ -60,7 +62,7 @@ UNPACKEXE_CFLAGS := -I$(TOPDIR)/src/jdk.
+ 
+ ifeq ($(USE_EXTERNAL_LIBZ), true)
+   UNPACKEXE_CFLAGS += -DSYSTEM_ZLIB
+-  UNPACKEXE_LIBS := -lz
++  UNPACKEXE_LIBS := -Wl,-R/opt/local/lib -L/opt/local/lib -lz
+ else
+   UNPACKEXE_CFLAGS += -I$(TOPDIR)/src/java.base/share/native/libzip/zlib
+   UNPACKEXE_ZIPOBJS := $(SUPPORT_OUTPUTDIR)/native/java.base/libzip/zcrc32$(OBJ_SUFFIX) \

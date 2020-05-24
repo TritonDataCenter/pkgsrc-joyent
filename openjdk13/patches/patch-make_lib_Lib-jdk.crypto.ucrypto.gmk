@@ -1,0 +1,22 @@
+$NetBSD$
+
+Support SunOS/gcc.
+
+--- make/lib/Lib-jdk.crypto.ucrypto.gmk.orig	2020-02-20 22:05:38.000000000 +0000
++++ make/lib/Lib-jdk.crypto.ucrypto.gmk
+@@ -28,6 +28,7 @@ include LibCommon.gmk
+ ################################################################################
+ 
+ ifeq ($(call isTargetOs, solaris), true)
++ ifeq ($(TOOLCHAIN_TYPE), solstudio)
+ 
+   $(eval $(call SetupJdkLibrary, BUILD_LIBJ2UCRYPTO, \
+       NAME := j2ucrypto, \
+@@ -41,6 +42,7 @@ ifeq ($(call isTargetOs, solaris), true)
+ 
+   TARGETS += $(BUILD_LIBJ2UCRYPTO)
+ 
++ endif
+ endif
+ 
+ ################################################################################

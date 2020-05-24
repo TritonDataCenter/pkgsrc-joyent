@@ -1,0 +1,22 @@
+$NetBSD$
+
+Support SunOS/gcc.
+
+--- make/hotspot/lib/CompileJvm.gmk.orig	2020-02-20 22:05:38.000000000 +0000
++++ make/hotspot/lib/CompileJvm.gmk
+@@ -131,6 +131,7 @@ endif
+ 
+ # Inline assembly for solaris
+ ifeq ($(call isTargetOs, solaris), true)
++ ifeq ($(TOOLCHAIN_TYPE), solstudio)
+   ifeq ($(call isTargetCpu, x86_64), true)
+     JVM_CFLAGS += $(TOPDIR)/src/hotspot/os_cpu/solaris_x86/solaris_x86_64.il
+   else ifeq ($(call isTargetCpu, sparcv9), true)
+@@ -141,6 +142,7 @@ ifeq ($(call isTargetOs, solaris), true)
+     DISABLED_WARNINGS_solstudio += SEC_ARR_OUTSIDE_BOUND_READ \
+       SEC_ARR_OUTSIDE_BOUND_WRITE
+   endif
++ endif
+ endif
+ 
+ ifeq ($(call And, $(call isTargetOs, solaris) $(call isTargetCpu, sparcv9)), true)

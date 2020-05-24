@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- make/Images.gmk.orig	2020-02-20 22:05:38.000000000 +0000
++++ make/Images.gmk
+@@ -123,7 +123,7 @@ ifeq ($(BUILD_CDS_ARCHIVE), true)
+       DEPS := $(jlink_jdk), \
+       OUTPUT_FILE := $(JDK_IMAGE_DIR)/$(CDS_ARCHIVE), \
+       SUPPORT_DIR := $(SUPPORT_OUTPUTDIR)/images/jdk, \
+-      COMMAND := $(FIXPATH) $(JDK_IMAGE_DIR)/bin/java -Xshare:dump \
++      COMMAND := LD_LIBRARY_PATH=$(BUILD_JDK)/lib:$(BUILD_JDK)/lib/server $(FIXPATH) $(JDK_IMAGE_DIR)/bin/java -Xshare:dump \
+           -Xmx128M -Xms128M $(LOG_INFO), \
+   ))
+ 
