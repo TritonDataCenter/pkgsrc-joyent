@@ -1,0 +1,42 @@
+$NetBSD$
+
+Ensure support libraries can be found during build.
+
+--- make/autoconf/spec.gmk.in.orig	2020-05-20 18:29:11.000000000 +0000
++++ make/autoconf/spec.gmk.in
+@@ -522,12 +522,12 @@ LD_JAOTC:=@LD_JAOTC@
+ SDKROOT:=@SDKROOT@
+ 
+ # LDFLAGS used to link the jdk native libraries (C-code)
+-LDFLAGS_JDKLIB:=@LDFLAGS_JDKLIB@
++LDFLAGS_JDKLIB:=-Xlinker -R@prefix@/java/openjdk15/lib -Xlinker -R@prefix@/java/openjdk15/lib/server @LDFLAGS_JDKLIB@
+ JDKLIB_LIBS:=@JDKLIB_LIBS@
+ GLOBAL_LIBS:=@GLOBAL_LIBS@
+ 
+ # LDFLAGS used to link the jdk native launchers (C-code)
+-LDFLAGS_JDKEXE:=@LDFLAGS_JDKEXE@
++LDFLAGS_JDKEXE:=-Xlinker -R@prefix@/java/openjdk15/lib @LDFLAGS_JDKEXE@
+ JDKEXE_LIBS:=@JDKEXE_LIBS@
+ 
+ # LDFLAGS specific to C++ linking.
+@@ -641,15 +641,15 @@ JAVA_SMALL=@FIXPATH@ $(JAVA_CMD) $(JAVA_
+ JAVA_DETACH =@FIXPATH@ @FIXPATH_DETACH_FLAG@ $(JAVA_CMD) $(JAVA_FLAGS_BIG) $(JAVA_FLAGS)
+ JAVAC=@FIXPATH@ $(JAVAC_CMD)
+ JAVADOC=@FIXPATH@ $(JAVADOC_CMD)
+-JAR=@FIXPATH@ $(JAR_CMD)
+-JLINK = @FIXPATH@ $(JLINK_CMD)
+-JMOD = @FIXPATH@ $(JMOD_CMD) $(JAVA_TOOL_FLAGS_SMALL)
++JAR=LD_LIBRARY_PATH=$(BUILD_JDK)/lib:$(BUILD_JDK)/lib:$(BUILD_JDK)/lib/server @FIXPATH@ $(JAR_CMD)
++JLINK = LD_LIBRARY_PATH=$(BUILD_JDK)/lib:$(BUILD_JDK)/lib:$(BUILD_JDK)/lib/server @FIXPATH@ $(JLINK_CMD)
++JMOD = LD_LIBRARY_PATH=$(BUILD_JDK)/lib:$(BUILD_JDK)/lib:$(BUILD_JDK)/lib/server @FIXPATH@ $(JMOD_CMD) $(JAVA_TOOL_FLAGS_SMALL)
+ JARSIGNER=@FIXPATH@ $(JARSIGNER_CMD)
+ JJS=@FIXPATH@ $(JJS_CMD) $(JAVA_TOOL_FLAGS_SMALL)
+ 
+ BUILD_JAVA_FLAGS := @BOOTCYCLE_JVM_ARGS_BIG@
+-BUILD_JAVA=@FIXPATH@ $(BUILD_JDK)/bin/java $(BUILD_JAVA_FLAGS)
+-BUILD_JAR=@FIXPATH@ $(BUILD_JDK)/bin/jar
++BUILD_JAVA=LD_LIBRARY_PATH=$(BUILD_JDK)/lib:$(BUILD_JDK)/lib:$(BUILD_JDK)/lib/server @FIXPATH@ $(BUILD_JDK)/bin/java $(BUILD_JAVA_FLAGS)
++BUILD_JAR=LD_LIBRARY_PATH=$(BUILD_JDK)/lib:$(BUILD_JDK)/lib:$(BUILD_JDK)/lib/server @FIXPATH@ $(BUILD_JDK)/bin/jar
+ 
+ # Interim langtools modules and arguments
+ INTERIM_LANGTOOLS_BASE_MODULES := java.compiler jdk.compiler jdk.javadoc

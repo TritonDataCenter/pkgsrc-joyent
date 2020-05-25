@@ -1,0 +1,40 @@
+$NetBSD$
+
+--- make/Images.gmk.orig	2020-05-20 18:29:11.000000000 +0000
++++ make/Images.gmk
+@@ -128,7 +128,7 @@ ifeq ($(BUILD_CDS_ARCHIVE), true)
+       DEPS := $(jlink_jdk), \
+       OUTPUT_FILE := $(JDK_IMAGE_DIR)/$(CDS_ARCHIVE), \
+       SUPPORT_DIR := $(SUPPORT_OUTPUTDIR)/images/jdk, \
+-      COMMAND := $(FIXPATH) $(JDK_IMAGE_DIR)/bin/java -Xshare:dump \
++      COMMAND := $(FIXPATH) LD_LIBRARY_PATH=$(BUILD_JDK)/lib:$(BUILD_JDK)/lib/server $(JDK_IMAGE_DIR)/bin/java -Xshare:dump \
+           -XX:SharedArchiveFile=$(JDK_IMAGE_DIR)/$(CDS_ARCHIVE) \
+           -Xmx128M -Xms128M $(LOG_INFO), \
+   ))
+@@ -140,7 +140,7 @@ ifeq ($(BUILD_CDS_ARCHIVE), true)
+       DEPS := $(jlink_jre), \
+       OUTPUT_FILE := $(JRE_IMAGE_DIR)/$(CDS_ARCHIVE), \
+       SUPPORT_DIR := $(SUPPORT_OUTPUTDIR)/images/jre, \
+-      COMMAND := $(FIXPATH) $(JRE_IMAGE_DIR)/bin/java -Xshare:dump \
++      COMMAND := $(FIXPATH) LD_LIBRARY_PATH=$(BUILD_JDK)/lib:$(BUILD_JDK)/lib/server $(JRE_IMAGE_DIR)/bin/java -Xshare:dump \
+           -XX:SharedArchiveFile=$(JRE_IMAGE_DIR)/$(CDS_ARCHIVE) \
+           -Xmx128M -Xms128M $(LOG_INFO), \
+   ))
+@@ -153,7 +153,7 @@ ifeq ($(BUILD_CDS_ARCHIVE), true)
+         DEPS := $(jlink_jdk), \
+         OUTPUT_FILE := $(JDK_IMAGE_DIR)/$(CDS_NOCOOPS_ARCHIVE), \
+         SUPPORT_DIR := $(SUPPORT_OUTPUTDIR)/images/jdk, \
+-        COMMAND := $(FIXPATH) $(JDK_IMAGE_DIR)/bin/java -Xshare:dump \
++        COMMAND := $(FIXPATH) LD_LIBRARY_PATH=$(BUILD_JDK)/lib:$(BUILD_JDK)/lib/server $(JDK_IMAGE_DIR)/bin/java -Xshare:dump \
+             -XX:SharedArchiveFile=$(JDK_IMAGE_DIR)/$(CDS_NOCOOPS_ARCHIVE) \
+             -XX:-UseCompressedOops \
+             -Xmx128M -Xms128M $(LOG_INFO), \
+@@ -166,7 +166,7 @@ ifeq ($(BUILD_CDS_ARCHIVE), true)
+         DEPS := $(jlink_jre), \
+         OUTPUT_FILE := $(JRE_IMAGE_DIR)/$(CDS_NOCOOPS_ARCHIVE), \
+         SUPPORT_DIR := $(SUPPORT_OUTPUTDIR)/images/jre, \
+-        COMMAND := $(FIXPATH) $(JRE_IMAGE_DIR)/bin/java -Xshare:dump \
++        COMMAND := $(FIXPATH) LD_LIBRARY_PATH=$(BUILD_JDK)/lib:$(BUILD_JDK)/lib/server $(JRE_IMAGE_DIR)/bin/java -Xshare:dump \
+             -XX:SharedArchiveFile=$(JRE_IMAGE_DIR)/$(CDS_NOCOOPS_ARCHIVE) \
+             -XX:-UseCompressedOops \
+             -Xmx128M -Xms128M $(LOG_INFO), \
