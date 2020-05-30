@@ -2,12 +2,11 @@
 #
 # To update:
 #
-#   $ gpg --keyserver hkp://pgp.mit.edu/ --search-keys pkgsrc-security@NetBSD.org
-#   $ gpg --keyserver hkp://pgp.mit.edu/ --recv-keys <newkeyid>
-#   $ gpg --export pkgsrc-security@NetBSD.org >files/pkgsrc-security.gpg
+#   $ curl https://pkgsrc.org/pkgsrc-security_pgp_key.asc | gpg2 --import
+#   $ gpg2 --export pkgsrc-security@NetBSD.org >files/pkgsrc-security.gpg
 #
 
-DISTNAME=	pkgsrc-gnupg-keys-20190423
+DISTNAME=	pkgsrc-gnupg-keys-20200530
 CATEGORIES=	security
 MASTER_SITES=	#empty
 DISTFILES=	#empty
