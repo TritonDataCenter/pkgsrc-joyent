@@ -20,7 +20,7 @@ COMMENT=	The GNU Compiler Collection (GCC) - 9.x Release Series
 LICENSE=	gnu-gpl-v2 AND gnu-gpl-v3 AND gnu-lgpl-v2 AND gnu-lgpl-v3
 
 USE_LANGUAGES=	c99 c++
-USE_TOOLS+=	flex gmake makeinfo perl sed:run tar:build
+USE_TOOLS+=	flex gmake m4 makeinfo perl sed:run tar:build
 
 GNU_CONFIGURE=		yes
 GNU_CONFIGURE_STRICT=	no
