@@ -1,10 +1,9 @@
 # $NetBSD$
 
-PKGNAME=	smtools-20200715
-DISTNAME=	${PKGVERSION_NOREV}
+DISTNAME=	20200715
+PKGNAME=	smtools-${DISTNAME}
 CATEGORIES=	sysutils
-MASTER_SITES=	${MASTER_SITE_GITHUB:=joyent/}
-GITHUB_TYPE=	release
+MASTER_SITES=	${MASTER_SITE_GITHUB:=joyent/smtools/archive/}
 
 MAINTAINER=	jperkin@joyent.com
 HOMEPAGE=	https://github.com/joyent/smtools/
