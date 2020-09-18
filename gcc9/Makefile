@@ -55,6 +55,8 @@ SUBST_STAGE.libpath=	pre-configure
 SUBST_FILES.libpath=	gcc/config/sol2.h
 SUBST_SED.libpath=
 
+.include "../../mk/bsd.prefs.mk"
+
 .if ${USE_GCC_LOCALBASE_PREFIX:Uno:tl} == "yes"
 CONFIGURE_ARGS+=	--with-local-prefix=${PREFIX:Q}
 .else
