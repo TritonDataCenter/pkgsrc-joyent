@@ -41,6 +41,8 @@ SUBST_STAGE.vars=	pre-configure
 SUBST_FILES.vars=	gcc/Makefile.in
 SUBST_VARS.vars=	MACHINE_GNU_PLATFORM
 
+.include "../../mk/bsd.prefs.mk"
+
 #
 # Usually we want GCC to default to searching PREFIX for headers/libraries
 # but sometimes, specifically in the tools build, we can't do that as then libs
@@ -53,9 +55,8 @@ SUBST_VARS.vars=	MACHINE_GNU_PLATFORM
 SUBST_CLASSES+=		libpath
 SUBST_STAGE.libpath=	pre-configure
 SUBST_FILES.libpath=	gcc/config/sol2.h
+SUBST_NOOP_OK.libpath=	yes
 SUBST_SED.libpath=
-
-.include "../../mk/bsd.prefs.mk"
 
 .if ${USE_GCC_LOCALBASE_PREFIX:Uno:tl} == "yes"
 CONFIGURE_ARGS+=	--with-local-prefix=${PREFIX:Q}
