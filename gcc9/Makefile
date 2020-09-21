@@ -56,9 +56,9 @@ SUBST_CLASSES+=		libpath
 SUBST_STAGE.libpath=	pre-configure
 SUBST_FILES.libpath=	gcc/config/sol2.h
 SUBST_NOOP_OK.libpath=	yes
-SUBST_SED.libpath=
 
 .if ${USE_GCC_LOCALBASE_PREFIX:Uno:tl} == "yes"
+SUBST_VARS.libpath=	PREFIX
 CONFIGURE_ARGS+=	--with-local-prefix=${PREFIX:Q}
 .else
 CONFIGURE_ARGS+=	--with-local-prefix=${GCC_PREFIX:Q}

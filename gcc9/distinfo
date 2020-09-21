@@ -5,4 +5,4 @@ RMD160 (gcc9-9.3.0-038ec0d78529e36af568643e799bb1c01e9f1ad0.tar.gz) = 47a3933c11
 SHA512 (gcc9-9.3.0-038ec0d78529e36af568643e799bb1c01e9f1ad0.tar.gz) = fe34d6f47f2efb82a4fab035ef6484c71b180204a35355818bd6b931dd460153ed1fa771124a7c81e60ffe17e09c2e88fbb8684df981e77aa28c7181846a4bb3
 Size (gcc9-9.3.0-038ec0d78529e36af568643e799bb1c01e9f1ad0.tar.gz) = 112386771 bytes
 SHA1 (patch-gcc_Makefile.in) = dab28f021892b93c7c68515c2bbab7f6def57fa2
-SHA1 (patch-gcc_config_sol2.h) = aecd134dc33f32df12f20ff909ce4bb3ac1f3c60
+SHA1 (patch-gcc_config_sol2.h) = b37b069e8a7a07e60f0b002748f0d401e3047f9f
