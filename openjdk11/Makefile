@@ -119,10 +119,11 @@ ${CACERTS_STORE}:
 	done
 	${MV} ${.TARGET}.tmp ${.TARGET}
 
-ELFEDIT=/usr/bin/elfedit
+ELFEDIT?=	/usr/bin/elfedit
 
 .PHONY: bootstrap
 bootstrap: install
+	${RM} -rf ${WRKDIR}/bootstrap/${JAVA_NAME}
 	${MKDIR} ${WRKDIR}/bootstrap/${JAVA_NAME}
 	cd ${DESTDIR}${JAVA_HOME} && ${PAX} -rwpp . ${WRKDIR}/bootstrap/${JAVA_NAME}/
 .if ${OPSYS} == "SunOS"
@@ -152,6 +153,8 @@ bootstrap: install
 	for f in ${WRKDIR}/bootstrap/${JAVA_NAME}/lib/server/*.so; do \
 	        ${ELFEDIT} -e 'dyn:runpath $$ORIGIN/../pkgsrc' $$f; \
 	done
+	(cd ${WRKDIR}/bootstrap; \
+	  ${TAR} -zcf ${DISTNAME}-x86_64-sun-solaris.tar.gz ${JAVA_NAME})
 .endif
 
 do-configure:
@@ -160,44 +163,6 @@ do-configure:
 do-install:
 	${INSTALL_DATA_DIR} ${DESTDIR}${JAVA_HOME}
 	cd ${IMAGEJDKDIR} && ${PAX} -rwpp . ${DESTDIR}${JAVA_HOME}/.
-
-ELFEDIT?=	/usr/bin/elfedit
-
-.PHONY: bootstrap
-bootstrap: install
-	${RM} -rf ${WRKDIR}/bootstrap/${JAVA_NAME}
-	${MKDIR} ${WRKDIR}/bootstrap/${JAVA_NAME}
-	cd ${DESTDIR}${JAVA_HOME} && ${PAX} -rwpp . ${WRKDIR}/bootstrap/${JAVA_NAME}/
-.if ${OPSYS} == "SunOS"
-	${MKDIR} ${WRKDIR}/bootstrap/${JAVA_NAME}/lib/pkgsrc
-	for lib in libgcc_s.so.1 libssp.so.0 libstdc++.so.6; do \
-		${CP} `${PKG_CC} -print-file-name=$${lib}` \
-		    ${WRKDIR}/bootstrap/${JAVA_NAME}/lib/pkgsrc/; \
-	done
-	for lib in libX11.so.6 libXau.so.6 libXdmcp.so.6 libXext.so.0 \
-		   libXi.so.6 libXrender.so.1 libXtst.so.6 libbz2.so.0 \
-		   libfreetype.so.6 libpng16.so.16 libxcb.so.1 libz.so.1; do \
-		${CP} ${PREFIX}/lib/$${lib} \
-		    ${WRKDIR}/bootstrap/${JAVA_NAME}/lib/pkgsrc/; \
-	done
-	for f in ${WRKDIR}/bootstrap/${JAVA_NAME}/bin/*; do \
-		${ELFEDIT} -e 'dyn:runpath $$ORIGIN/../lib/jli:$$ORIGIN/../lib/pkgsrc' $$f; \
-	done
-	for f in ${WRKDIR}/bootstrap/${JAVA_NAME}/lib/{jspawnhelper,*.so}; do \
-		${ELFEDIT} -e 'dyn:runpath $$ORIGIN:$$ORIGIN/jli:$$ORIGIN/server:$$ORIGIN/pkgsrc' $$f; \
-	done
-	for f in ${WRKDIR}/bootstrap/${JAVA_NAME}/lib/jli/*.so; do \
-		${ELFEDIT} -e 'dyn:runpath $$ORIGIN/../pkgsrc' $$f; \
-	done
-	for f in ${WRKDIR}/bootstrap/${JAVA_NAME}/lib/pkgsrc/*.so*; do \
-		${ELFEDIT} -e 'dyn:runpath $$ORIGIN' $$f; \
-	done
-	for f in ${WRKDIR}/bootstrap/${JAVA_NAME}/lib/server/*.so; do \
-		${ELFEDIT} -e 'dyn:runpath $$ORIGIN/../pkgsrc' $$f; \
-	done
-	(cd ${WRKDIR}/bootstrap; \
-	  ${TAR} -zcf ${DISTNAME}-x86_64-sun-solaris.tar.gz ${JAVA_NAME})
-.endif
 
 .include "options.mk"
 
