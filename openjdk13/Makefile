@@ -1,6 +1,6 @@
 # $NetBSD$
 
-DISTNAME=	openjdk13-13.0.3
+DISTNAME=	openjdk13-13.0.4
 PKGREVISION=	0
 CATEGORIES=	lang
 MASTER_SITES=	https://us-east.manta.joyent.com/pkgsrc/public/pkg-distfiles/
