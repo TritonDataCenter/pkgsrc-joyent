@@ -28,6 +28,7 @@ java/${JAVA_NAME}/bin/jconsole
 java/${JAVA_NAME}/bin/jdb
 java/${JAVA_NAME}/bin/jdeprscan
 java/${JAVA_NAME}/bin/jdeps
+java/${JAVA_NAME}/bin/jfr
 java/${JAVA_NAME}/bin/jhsdb
 java/${JAVA_NAME}/bin/jimage
 java/${JAVA_NAME}/bin/jinfo
@@ -249,6 +250,7 @@ java/${JAVA_NAME}/jmods/jdk.management.agent.jmod
 java/${JAVA_NAME}/jmods/jdk.management.jfr.jmod
 java/${JAVA_NAME}/jmods/jdk.management.jmod
 java/${JAVA_NAME}/jmods/jdk.naming.dns.jmod
+java/${JAVA_NAME}/jmods/jdk.naming.ldap.jmod
 java/${JAVA_NAME}/jmods/jdk.naming.rmi.jmod
 java/${JAVA_NAME}/jmods/jdk.net.jmod
 java/${JAVA_NAME}/jmods/jdk.pack.jmod
@@ -287,8 +289,7 @@ java/${JAVA_NAME}/legal/java.desktop/harfbuzz.md
 java/${JAVA_NAME}/legal/java.desktop/lcms.md
 java/${JAVA_NAME}/legal/java.desktop/libpng.md
 java/${JAVA_NAME}/legal/java.desktop/mesa3d.md
-java/${JAVA_NAME}/legal/java.desktop/opengl.md
-java/${JAVA_NAME}/legal/java.desktop/xwindows.md
+java/${JAVA_NAME}/legal/java.desktop/xwd.md
 java/${JAVA_NAME}/legal/java.instrument/ADDITIONAL_LICENSE_INFO
 java/${JAVA_NAME}/legal/java.instrument/ASSEMBLY_EXCEPTION
 java/${JAVA_NAME}/legal/java.instrument/LICENSE
@@ -419,7 +420,6 @@ java/${JAVA_NAME}/legal/jdk.jartool/LICENSE
 java/${JAVA_NAME}/legal/jdk.javadoc/ADDITIONAL_LICENSE_INFO
 java/${JAVA_NAME}/legal/jdk.javadoc/ASSEMBLY_EXCEPTION
 java/${JAVA_NAME}/legal/jdk.javadoc/LICENSE
-java/${JAVA_NAME}/legal/jdk.javadoc/jquery-migrate.md
 java/${JAVA_NAME}/legal/jdk.javadoc/jquery.md
 java/${JAVA_NAME}/legal/jdk.javadoc/jqueryUI.md
 java/${JAVA_NAME}/legal/jdk.javadoc/jszip.md
@@ -471,6 +471,9 @@ java/${JAVA_NAME}/legal/jdk.management/LICENSE
 java/${JAVA_NAME}/legal/jdk.naming.dns/ADDITIONAL_LICENSE_INFO
 java/${JAVA_NAME}/legal/jdk.naming.dns/ASSEMBLY_EXCEPTION
 java/${JAVA_NAME}/legal/jdk.naming.dns/LICENSE
+java/${JAVA_NAME}/legal/jdk.naming.ldap/ADDITIONAL_LICENSE_INFO
+java/${JAVA_NAME}/legal/jdk.naming.ldap/ASSEMBLY_EXCEPTION
+java/${JAVA_NAME}/legal/jdk.naming.ldap/LICENSE
 java/${JAVA_NAME}/legal/jdk.naming.rmi/ADDITIONAL_LICENSE_INFO
 java/${JAVA_NAME}/legal/jdk.naming.rmi/ASSEMBLY_EXCEPTION
 java/${JAVA_NAME}/legal/jdk.naming.rmi/LICENSE

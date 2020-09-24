@@ -2,7 +2,7 @@ $NetBSD$
 
 Support for SunOS/gcc.
 
---- make/launcher/Launcher-jdk.pack.gmk.orig	2019-01-08 09:40:27.000000000 +0000
+--- make/launcher/Launcher-jdk.pack.gmk.orig	2020-09-22 15:30:20.000000000 +0000
 +++ make/launcher/Launcher-jdk.pack.gmk
 @@ -43,7 +43,9 @@ $(eval $(call SetupBuildLauncher, pack20
  # Also provide an override for non-conformant libraries.
@@ -14,7 +14,7 @@ Support for SunOS/gcc.
  else ifeq ($(TOOLCHAIN_TYPE), clang)
    ifneq ($(OPENJDK_TARGET_OS), macosx)
      CXXFLAGS_JDKEXE += -fvisibility=hidden
-@@ -64,7 +66,7 @@ UNPACKEXE_CFLAGS := -I$(TOPDIR)/src/jdk.
+@@ -60,7 +62,7 @@ UNPACKEXE_CFLAGS := -I$(TOPDIR)/src/jdk.
  
  ifeq ($(USE_EXTERNAL_LIBZ), true)
    UNPACKEXE_CFLAGS += -DSYSTEM_ZLIB

@@ -1,0 +1,34 @@
+$NetBSD$
+
+Support SunOS/gcc.  XXX: retain solstudio support.
+
+--- make/lib/Awt2dLibraries.gmk.orig	2019-07-16 16:38:28.000000000 +0000
++++ make/lib/Awt2dLibraries.gmk
+@@ -378,7 +378,6 @@ $(eval $(call SetupJdkLibrary, BUILD_LIB
+     OPTIMIZATION := HIGHEST, \
+     CFLAGS := $(CFLAGS_JDKLIB) \
+         $(LCMS_CFLAGS), \
+-    CFLAGS_solaris := -xc99=no_lib, \
+     CFLAGS_windows := -DCMS_IS_WINDOWS_, \
+     EXTRA_HEADER_DIRS := \
+         common/awt/debug \
+@@ -543,7 +542,11 @@ ifneq (, $(findstring $(OPENJDK_TARGET_O
+   HARFBUZZ_CFLAGS += -DHAVE_INTEL_ATOMIC_PRIMITIVES
+ endif
+ ifeq ($(OPENJDK_TARGET_OS), solaris)
++ ifeq ($(TOOLCHAIN_TYPE), gcc)
++  HARFBUZZ_CFLAGS += -DHAVE_INTEL_ATOMIC_PRIMITIVES
++ else
+   HARFBUZZ_CFLAGS += -DHAVE_SOLARIS_ATOMIC_OPS
++ endif
+ endif
+ ifeq ($(OPENJDK_TARGET_OS), macosx)
+   HARFBUZZ_CFLAGS += -DHAVE_CORETEXT
+@@ -860,6 +863,7 @@ ifeq ($(ENABLE_HEADLESS_ONLY), false)
+       LIBS := $(JDKLIB_LIBS) $(LIBSPLASHSCREEN_LIBS) $(LIBZ_LIBS) \
+           $(GIFLIB_LIBS) $(LIBJPEG_LIBS) $(PNG_LIBS), \
+       LIBS_aix := -liconv, \
++      LIBS_solaris := -liconv, \
+   ))
+ 
+   TARGETS += $(BUILD_LIBSPLASHSCREEN)

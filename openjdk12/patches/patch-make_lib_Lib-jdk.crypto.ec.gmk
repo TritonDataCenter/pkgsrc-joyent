@@ -1,0 +1,19 @@
+$NetBSD$
+
+Support SunOS/gcc.
+
+--- make/lib/Lib-jdk.crypto.ec.gmk.orig	2019-07-16 16:38:28.000000000 +0000
++++ make/lib/Lib-jdk.crypto.ec.gmk
+@@ -28,6 +28,12 @@ include LibCommon.gmk
+ ################################################################################
+ 
+ ifeq ($(ENABLE_INTREE_EC), true)
++  ifeq ($(OPENJDK_TARGET_OS), solaris)
++    ifeq ($(TOOLCHAIN_TYPE), gcc)
++      BUILD_LIBSUNEC_FLAGS += -D__EXTENSIONS__
++    endif
++  endif
++
+   $(eval $(call SetupJdkLibrary, BUILD_LIBSUNEC, \
+       NAME := sunec, \
+       TOOLCHAIN := TOOLCHAIN_LINK_CXX, \

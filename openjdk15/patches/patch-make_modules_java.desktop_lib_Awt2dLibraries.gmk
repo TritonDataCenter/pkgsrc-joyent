@@ -1,0 +1,26 @@
+$NetBSD$
+
+Support SunOS/gcc.
+
+--- make/modules/java.desktop/lib/Awt2dLibraries.gmk.orig	2020-05-13 14:18:16.000000000 +0000
++++ make/modules/java.desktop/lib/Awt2dLibraries.gmk
+@@ -465,7 +465,11 @@ ifeq ($(call isTargetOs, linux macosx),
+   HARFBUZZ_CFLAGS += -DHAVE_INTEL_ATOMIC_PRIMITIVES
+ endif
+ ifeq ($(call isTargetOs, solaris), true)
++ ifeq ($(TOOLCHAIN_TYPE), gcc)
++  HARFBUZZ_CFLAGS += -DHAVE_INTEL_ATOMIC_PRIMITIVES
++ else
+   HARFBUZZ_CFLAGS += -DHAVE_SOLARIS_ATOMIC_OPS
++ endif
+ endif
+ ifeq ($(call isTargetOs, macosx), true)
+   HARFBUZZ_CFLAGS += -DHAVE_CORETEXT
+@@ -784,6 +788,7 @@ ifeq ($(ENABLE_HEADLESS_ONLY), false)
+       LIBS := $(JDKLIB_LIBS) $(LIBSPLASHSCREEN_LIBS) $(LIBZ_LIBS) \
+           $(GIFLIB_LIBS) $(LIBJPEG_LIBS) $(PNG_LIBS), \
+       LIBS_aix := -liconv, \
++      LIBS_solaris := -liconv, \
+   ))
+ 
+   TARGETS += $(BUILD_LIBSPLASHSCREEN)

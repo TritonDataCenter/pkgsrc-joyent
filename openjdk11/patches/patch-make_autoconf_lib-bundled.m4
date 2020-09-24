@@ -2,7 +2,7 @@ $NetBSD$
 
 Ensure the correct zlib can be found.
 
---- make/autoconf/lib-bundled.m4.orig	2019-01-08 09:40:28.000000000 +0000
+--- make/autoconf/lib-bundled.m4.orig	2020-09-22 15:30:20.000000000 +0000
 +++ make/autoconf/lib-bundled.m4
 @@ -214,7 +214,7 @@ AC_DEFUN_ONCE([LIB_SETUP_ZLIB],
    if test "x$USE_EXTERNAL_LIBZ" = "xfalse"; then

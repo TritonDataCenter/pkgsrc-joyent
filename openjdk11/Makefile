@@ -1,14 +1,18 @@
 # $NetBSD$
 
-DISTNAME=	openjdk11-11.0.2
-PKGREVISION=	1
+PKGNAME=	openjdk11-11.0.9rc9
+DISTNAME=	e872676174c7
 CATEGORIES=	lang
-MASTER_SITES=	https://us-east.manta.joyent.com/pkgsrc/public/pkg-distfiles/
+MASTER_SITES=	https://hg.openjdk.java.net/jdk-updates/jdk11u/archive/
+EXTRACT_SUFX=	.tar.bz2
 
 MAINTAINER=	pkgsrc-users@NetBSD.org
 HOMEPAGE=	http://openjdk.java.net/
 COMMENT=	Open-source implementation of the Java Platform, Standard Edition
 LICENSE=	gnu-gpl-v2
+
+DIST_SUBDIR=	openjdk11
+WRKSRC=		${WRKDIR}/jdk11u-${DISTNAME}
 
 JAVA_NAME=	openjdk11
 JAVA_HOME=	${PREFIX}/java/${JAVA_NAME}
@@ -112,7 +116,7 @@ ${CACERTS_STORE}:
 			-noprompt					\
 			-importcert					\
 			-keystore ${.TARGET}.tmp			\
-			-alias `${ECHO} $$cert | sed 's,.*/\\([^/]*\\)\\.pem,\\1,'` \
+			-alias `basename "$$cert" .pem`			\
 			-file $${cert}					\
 			-storetype jks					\
 			-storepass changeit;				\
@@ -161,7 +165,7 @@ bootstrap: install
 		${ELFEDIT} -e 'dyn:runpath $$ORIGIN/../pkgsrc' $$f; \
 	done
 	(cd ${WRKDIR}/bootstrap; \
-	  ${TAR} -zcf ${DISTNAME}-x86_64-sun-solaris.tar.gz ${JAVA_NAME})
+	    ${TAR} -zcf ${PKGNAME}-x86_64-sun-solaris.tar.gz ${JAVA_NAME})
 .endif
 
 .include "options.mk"
