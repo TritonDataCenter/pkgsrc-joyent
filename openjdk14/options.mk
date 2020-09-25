@@ -40,7 +40,7 @@ BUILDLINK_DEPMETHOD.libXt?=	build
 .include "../../x11/libXt/buildlink3.mk"
 BUILDLINK_DEPMETHOD.libXrender?=build
 .include "../../x11/libXrender/buildlink3.mk"
-BUILDLINK_DEPMETHOD.libXrandr?= build
+BUILDLINK_DEPMETHOD.libXrandr?=	build
 .include "../../x11/libXrandr/buildlink3.mk"
 post-configure: remove-x11-classes
 remove-x11-classes:
