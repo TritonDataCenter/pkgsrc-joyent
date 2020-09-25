@@ -27,6 +27,8 @@ BUILDLINK_DEPMETHOD.libXt?=	build
 .include "../../x11/libXt/buildlink3.mk"
 .include "../../x11/libXtst/buildlink3.mk"
 .include "../../x11/libXrender/buildlink3.mk"
+BUILDLINK_DEPMETHOD.libXrandr?=	build
+.include "../../x11/libXrandr/buildlink3.mk"
 .else
 MAKE_ENV+=		BUILD_HEADLESS_ONLY=true
 CONFIGURE_ARGS+=	--without-x
@@ -38,6 +40,8 @@ BUILDLINK_DEPMETHOD.libXt?=	build
 .include "../../x11/libXt/buildlink3.mk"
 BUILDLINK_DEPMETHOD.libXrender?=build
 .include "../../x11/libXrender/buildlink3.mk"
+BUILDLINK_DEPMETHOD.libXrandr?=	build
+.include "../../x11/libXrandr/buildlink3.mk"
 post-configure: remove-x11-classes
 remove-x11-classes:
 	rm ${WRKSRC}/jdk/src/solaris/classes/sun/awt/X11/*.java
