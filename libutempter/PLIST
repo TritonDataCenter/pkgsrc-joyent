@@ -1,0 +1,4 @@
+@comment $NetBSD$
+include/utempter.h
+lib/libutempter.so
+lib/libutempter.so.1

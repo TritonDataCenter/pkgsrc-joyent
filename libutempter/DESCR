@@ -1,0 +1,5 @@
+A local copy of illumos libutempter.
+
+This is supplied for older systems that do not have libutempter in the
+platform.  Once we're confident that everyone is running bits from at least
+May 2020 then we can remove this and the various changes to packages.
