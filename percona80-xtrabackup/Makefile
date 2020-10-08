@@ -1,8 +1,8 @@
 # $NetBSD$
 
-DISTNAME=	percona-xtrabackup-8.0.11
+DISTNAME=	percona-xtrabackup-8.0.14
 CATEGORIES=	databases
-MASTER_SITES=	https://www.percona.com/downloads/Percona-XtraBackup-LATEST/Percona-XtraBackup-${PKGVERSION_NOREV}/source/tarball/
+MASTER_SITES=	https://www.percona.com/downloads/Percona-XtraBackup-8.0/Percona-XtraBackup-${PKGVERSION_NOREV}/source/tarball/
 
 MAINTAINER=	pkgsrc-users@NetBSD.org
 HOMEPAGE=	https://www.percona.com/software/percona-xtrabackup
@@ -12,7 +12,7 @@ LICENSE=	gnu-gpl-v2 AND modified-bsd
 DEPENDS+=	qpress-[0-9]*:../../joyent/qpress
 
 # Requires a specific version of boost, so we use our own copy here
-BOOST=			boost_1_70_0
+BOOST=			boost_1_72_0
 DISTFILES=		${DISTNAME}${EXTRACT_SUFX} ${BOOST}.tar.bz2
 SITES.${BOOST}.tar.bz2=	${MASTER_SITE_SOURCEFORGE:=boost/}
 

@@ -2,18 +2,9 @@ $NetBSD$
 
 Don't install MySQL manual pages or INFO_SRC.
 
---- CMakeLists.txt.orig	2019-12-14 16:07:34.000000000 +0000
+--- CMakeLists.txt.orig	2020-08-28 21:02:32.000000000 +0000
 +++ CMakeLists.txt
-@@ -1350,7 +1350,7 @@ ENDIF()
- # It is referenced by some of the directories below, so we insert it here.
- ADD_SUBDIRECTORY(scripts)
- 
--IF(NOT WITHOUT_SERVER)
-+IF(0)
-   ADD_SUBDIRECTORY(mysql-test)
-   IF(EXISTS ${CMAKE_SOURCE_DIR}/internal/CMakeLists.txt)
-     ADD_SUBDIRECTORY(internal)
-@@ -1378,7 +1378,7 @@ IF(ENABLE_GCOV)
+@@ -1575,7 +1575,7 @@ IF(ENABLE_GCOV)
    INCLUDE(fastcov)
  ENDIF()
  
