@@ -9,13 +9,13 @@ Fix paths and port to SunOS.
  # default XB path (for 8.0+)  (relative to script location)
  # Use this path for 8.0+
 -XTRABACKUP_80_PATH="$(dirname $0)/pxc_extra/pxb-8.0"
-+XTRABACKUP_80_PATH="@LOCALBASE@"
++XTRABACKUP_80_PATH="/opt/local"
  
  # XB path for previous major/minor versison (5.7)  (relative to script location)
  # Use this for previous versions (5.7)
  # Upgrading from anything less than 5.7 is not supported
 -XTRABACKUP_24_PATH="$(dirname $0)/pxc_extra/pxb-2.4"
-+XTRABACKUP_24_PATH="@LOCALBASE@"
++XTRABACKUP_24_PATH="/opt/local"
  
  # These files carry some important information in form of GTID of the data
  # that is being backed up.
@@ -24,7 +24,7 @@ Fix paths and port to SunOS.
  # Setting the path for ss and ip
  # ss: is utility to investigate socket, ip for network routes.
 -export PATH="/usr/sbin:/sbin:$PATH"
-+export PATH="@LOCALBASE@/sbin:@LOCALBASE@/bin:/usr/sbin:/usr/bin:/sbin"
++export PATH="/opt/local/sbin:/opt/local/bin:/usr/sbin:/usr/bin:/sbin"
  
  #-------------------------------------------------------------------------------
  #

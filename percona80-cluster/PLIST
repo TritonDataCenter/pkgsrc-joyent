@@ -1,5 +1,6 @@
 @comment $NetBSD$
 bin/clustercheck
+bin/comp_err
 bin/garbd
 bin/ibd2sdi
 bin/innochecksum
@@ -56,23 +57,22 @@ include/mysql/mysqld_error.h
 include/mysql/mysqlx_ername.h
 include/mysql/mysqlx_error.h
 include/mysql/mysqlx_version.h
-lib/libmysqlharness.a
-lib/libmysqlharness.so
 lib/libmysqlharness.so.1
-lib/libmysqlrouter.so
 lib/libmysqlrouter.so.1
-lib/libmysqlrouter_http.so
 lib/libmysqlrouter_http.so.1
+lib/libmysqlrouter_http_auth_backend.so.1
+lib/libmysqlrouter_http_auth_realm.so.1
 lib/libmysqlservices.a
 lib/libperconaserverclient.a
 lib/libperconaserverclient.so
 lib/libperconaserverclient.so.21
-lib/libperconaserverclient.so.21.1.18
+lib/libperconaserverclient.so.21.1.20
 lib/mysql/plugin/adt_null.so
 lib/mysql/plugin/audit_log.so
 lib/mysql/plugin/auth.so
 lib/mysql/plugin/auth_test_plugin.so
 lib/mysql/plugin/authentication_ldap_sasl_client.so
+lib/mysql/plugin/authentication_ldap_simple.so
 lib/mysql/plugin/component_audit_api_message_emit.so
 lib/mysql/plugin/component_example_component1.so
 lib/mysql/plugin/component_example_component2.so
@@ -106,6 +106,7 @@ lib/mysql/plugin/component_test_sys_var_service_same.so
 lib/mysql/plugin/component_test_sys_var_service_str.so
 lib/mysql/plugin/component_test_system_variable_source.so
 lib/mysql/plugin/component_test_udf_registration.so
+lib/mysql/plugin/component_test_udf_services.so
 lib/mysql/plugin/component_udf_reg_3_func.so
 lib/mysql/plugin/component_udf_reg_avg_func.so
 lib/mysql/plugin/component_udf_reg_int_func.so
@@ -267,7 +268,6 @@ share/mysql/danish/errmsg.sys
 share/mysql/dictionary.txt
 share/mysql/dutch/errmsg.sys
 share/mysql/english/errmsg.sys
-share/mysql/errmsg-utf8.txt
 share/mysql/estonian/errmsg.sys
 share/mysql/french/errmsg.sys
 share/mysql/german/errmsg.sys
@@ -278,6 +278,8 @@ share/mysql/install_rewriter.sql
 share/mysql/italian/errmsg.sys
 share/mysql/japanese/errmsg.sys
 share/mysql/korean/errmsg.sys
+share/mysql/messages_to_clients.txt
+share/mysql/messages_to_error_log.txt
 share/mysql/mysql-log-rotate
 share/mysql/mysql.server
 share/mysql/mysqld_multi.server

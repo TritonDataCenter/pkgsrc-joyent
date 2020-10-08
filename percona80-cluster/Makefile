@@ -1,13 +1,12 @@
 # $NetBSD$
 
-MYSQL_VER=	8.0.18
-WSREP_MAJOR=	9
-WSREP_MINOR=	3
+MYSQL_VER=	8.0.20
+WSREP_MAJOR=	11
 
 DISTNAME=	Percona-XtraDB-Cluster-${MYSQL_VER}-${WSREP_MAJOR}
 PKGNAME=	percona-cluster-${MYSQL_VER}
 CATEGORIES=	databases
-MASTER_SITES=	https://www.percona.com/downloads/Percona-XtraDB-Cluster-LATEST/${DISTNAME}.${WSREP_MINOR}/source/tarball/
+MASTER_SITES=	https://www.percona.com/downloads/Percona-XtraDB-Cluster-80/${DISTNAME:S/-${WSREP_MAJOR}//}/source/tarball/
 
 COMMENT=	Percona XTraDB Cluster
 MAINTAINER=	jperkin@joyent.com
