@@ -1,7 +1,7 @@
 # $NetBSD$
 
-PKGNAME=	openjdk11-11.0.9rc9
-DISTNAME=	e872676174c7
+PKGNAME=	openjdk11-11.0.9
+DISTNAME=	4397fa4529b2
 CATEGORIES=	lang
 MASTER_SITES=	https://hg.openjdk.java.net/jdk-updates/jdk11u/archive/
 EXTRACT_SUFX=	.tar.bz2
