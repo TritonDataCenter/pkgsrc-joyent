@@ -1,0 +1,18 @@
+===========================================================================
+$NetBSD$
+
+This is a special build of OpenSSH 7.5 created solely to support legacy SSH
+protocol 1 servers, for those who are unable to upgrade to protocol 2 and
+have been left behind by upstream.
+
+All of the commands have a "1" suffix, i.e. "ssh1".  The configuration file
+is stored under:
+
+	${PKG_SYSCONFDIR}
+
+with the usual "ssh_config" name, though its manual page is "ssh_config1.5" to
+avoid conflicts with the regular openssh package.
+
+The sshd server and other server-related files are not included.
+
+===========================================================================

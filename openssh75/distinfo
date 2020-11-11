@@ -1,0 +1,37 @@
+$NetBSD: distinfo,v 1.104 2017/05/31 09:30:21 jperkin Exp $
+
+SHA1 (openssh-7.5p1.tar.gz) = 5e8f185d00afb4f4f89801e9b0f8b9cee9d87ebd
+RMD160 (openssh-7.5p1.tar.gz) = c1b176a1fe92495d056edda0c5db54efcfb8764a
+SHA512 (openssh-7.5p1.tar.gz) = 58c542e8a110fb4316a68db94abb663fa1c810becd0638d45281df8aeca62c1f705090437a80e788e6c29121769b72a505feced537d3118c933fde01b5285c81
+Size (openssh-7.5p1.tar.gz) = 1510857 bytes
+SHA1 (patch-auth-pam.c) = c966ec09b31098a84099af2a68cf029afa7958db
+SHA1 (patch-authfd.c) = 41b0b40cd43bb3a81109b82370ed095852625356
+SHA1 (patch-cipher-3des1.c) = b1b5c21944c4bfeaf2334d3c23aeca6c31573125
+SHA1 (patch-cipher-bf1.c) = 17aa8877f28d0173d7607665e5d300874e1ab77e
+SHA1 (patch-cipher.c) = 634a38eec38c9df8060593e9ec5384fdeff82bc9
+SHA1 (patch-dh.c) = 2d08e508d1714f1dfc1ad84a72bac2a678fb8cc1
+SHA1 (patch-dh.h) = 11102db4a9f6dd308682d2f8e15807d2ec66aca7
+SHA1 (patch-digest-openssl.c) = ee3bad82f241fcbca4cd37bba96f17319843c26d
+SHA1 (patch-kexdhc.c) = 8ba8af8e16f842be6cc8a6a6361cd490c32c629f
+SHA1 (patch-kexdhs.c) = 1a0aa0b891ffc5af48f09fae3151a189833820a0
+SHA1 (patch-kexgexc.c) = 85bbb05d604aaf3834b3b1e95ed057ede5efea14
+SHA1 (patch-kexgexs.c) = eaf5371e630551a625ca460193c70d3f0d669e84
+SHA1 (patch-monitor.c) = 330c0c824c4e311f652ab5d775448f32d19aa9dc
+SHA1 (patch-openbsd-compat_openssl-compat.c) = d620dd9c36c99aa0ee406ba38b4685041bdc367b
+SHA1 (patch-regress_unittests_sshkey_test__file.c) = 122fa65cac820ba988bbf75e90f9d2bb69f347fa
+SHA1 (patch-regress_unittests_sshkey_test__sshkey.c) = c297a4a7a6c875f036eb1015291ceb4d485c0736
+SHA1 (patch-rsa.c) = 1ee478f33f32d55394da52c15e3b51509b8f7c2d
+SHA1 (patch-rsa.h) = 07c369664b534b652722e1e0b5dce2e509882554
+SHA1 (patch-ssh-agent.c) = c8abc05a01e146167366a524c156ae970c5ec4e8
+SHA1 (patch-ssh-dss.c) = 2ceec193b46c1ebd9d4f7a69e43947d1e7d97aad
+SHA1 (patch-ssh-ecdsa.c) = 1c3b067ac73ac56efa95d9fcb01059f55b122cd1
+SHA1 (patch-ssh-keygen.c) = caed99f52a1ec402426e0ad201702b2a2dbc4f24
+SHA1 (patch-ssh-keyscan.c) = ff081dafeba227bfaf51543f7be250b1f97ae923
+SHA1 (patch-ssh-pkcs11-client.c) = b0f2005fae85a7742a295d4cb7c57b91e05a655e
+SHA1 (patch-ssh-pkcs11.c) = 3ec46bc31317f68e85042f3b1b043039917298d7
+SHA1 (patch-ssh-rsa.c) = e594b6a852237de4dffdd245733a5db8f6dec964
+SHA1 (patch-ssh.c) = caf6ec0ecca43cdd1fc691621c7592fc3c3f5f40
+SHA1 (patch-sshconnect.c) = 47d88befef427291f98e31d586c0595bbdd1c164
+SHA1 (patch-sshconnect1.c) = cdc090796acb585a5bbcd64e4f612f17292c76e0
+SHA1 (patch-sshconnect2.c) = f53c7ca812286e884380f6d9a86c40a728524bcd
+SHA1 (patch-sshkey.c) = 01445ed4eb493a7a8f2083d40c6d3c1fbe95f6d2

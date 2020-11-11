@@ -1,0 +1,13 @@
+@comment $NetBSD$
+bin/scp1
+bin/sftp1
+bin/ssh-add1
+bin/ssh-agent1
+bin/ssh1
+man/man1/scp1.1
+man/man1/sftp1.1
+man/man1/ssh-add1.1
+man/man1/ssh-agent1.1
+man/man1/ssh1.1
+man/man5/ssh_config1.5
+share/examples/openssh1/ssh_config
