@@ -1,6 +1,6 @@
 $NetBSD$
 
-SHA1 (neo4j-community-2.2.2-unix.tar.gz) = b5b12d7815ffa7d232c29d0021b5d8629c243073
-RMD160 (neo4j-community-2.2.2-unix.tar.gz) = ef3afb16b5ed0fe5db7546fe1659efa7b203f3ee
-Size (neo4j-community-2.2.2-unix.tar.gz) = 55130146 bytes
-SHA1 (patch-bin_neo4j) = cadcd45fb47866ba22d09b1f8c3435f6704aeace
+SHA1 (neo4j-community-4.2.0-unix.tar.gz) = d7c357de3639a1f22c229c7ec45270ebff8500d7
+RMD160 (neo4j-community-4.2.0-unix.tar.gz) = 91bed38d8587da1f431088cac074252f136f068c
+SHA512 (neo4j-community-4.2.0-unix.tar.gz) = f3f6e62c3cbe10287b544cf147c23612a25c74bf5472a99ae5dd4d924bd0c146c483b863a648cc9d8f1b610f6ac876c8b9341079b6ad893391b28d009ad554a2
+Size (neo4j-community-4.2.0-unix.tar.gz) = 124029724 bytes
