@@ -1,0 +1,13 @@
+This package contains libraries from the 32-bit version of net/samba4,
+allowing NSS and PAM (via winbind) to authenticate to Active Directory.
+
+Currently the illumos NSS and PAM libraries require 32-bit libraries, so
+this package is necessary when using a 64-bit package set.
+
+The two libraries of interest are:
+
+  * lib/i386/nss_winbind.so.1 (NSS)
+  * lib/samba/security/i386/pam_winbind.so (PAM)
+
+The remaining libraries bundled in the package are dependencies of these
+two libraries.

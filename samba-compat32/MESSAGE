@@ -1,0 +1,15 @@
+===========================================================================
+$NetBSD$
+
+To enable NSS to find nss_winbind, run the following command:
+
+	crle -c /var/ld/ld.config -l /lib:/usr/lib:${PREFIX}/lib/i386
+
+To enable PAM authentication via pam_winbind, configure /etc/pam.conf
+to use ${PREFIX}/lib/samba/security/i386/pam_winbind.so
+
+After making changes you may need to restart nscd using:
+
+	svcadm restart name-service-cache
+
+===========================================================================
