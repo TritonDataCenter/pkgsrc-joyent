@@ -1,0 +1,6 @@
+@comment $NetBSD$
+lib/security/i386/libcrypto.so.1.1
+lib/security/i386/libgcc_s.so.1
+lib/security/i386/libssl.so.1.1
+lib/security/i386/libssp.so.0
+lib/security/i386/pam_duo.so
