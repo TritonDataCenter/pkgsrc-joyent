@@ -69,7 +69,7 @@ SUBST_CLASSES+=		dir
 SUBST_STAGE.dir=	pre-configure
 SUBST_MESSAGE.dir=	Fixing default paths
 SUBST_FILES.dir=	active-response/host-deny.sh active-response/ossec-tweeter.sh
-SUBST_FILES.dir+=	contrib/util.sh etc/ossec*.conf etc/rules/ossec_rules.xml
+SUBST_FILES.dir+=	etc/ossec*.conf etc/rules/ossec_rules.xml
 SUBST_FILES.dir+=	src/agentlessd/scripts/ssh_asa-fwsmconfig_diff src/headers/defs.h
 SUBST_SED.dir=		-e 's,/var/ossec,${OSSEC_DIR},g'
 
