@@ -1,7 +1,7 @@
 # $NetBSD$
 
-MYSQL_VER=	8.0.20
-WSREP_MAJOR=	11
+MYSQL_VER=	8.0.21
+WSREP_MAJOR=	12
 
 DISTNAME=	Percona-XtraDB-Cluster-${MYSQL_VER}-${WSREP_MAJOR}
 PKGNAME=	percona-cluster-${MYSQL_VER}
@@ -21,13 +21,17 @@ DEPENDS+=	grep>=0:../../textproc/grep		# grep -o
 DEPENDS+=	socat>=0:../../net/socat
 DEPENDS+=	percona-xtrabackup>=0:../../joyent/percona-xtrabackup
 
+# nbpatch fails
+BUILD_DEPENDS+=	patch-[0-9]*:../../devel/patch
+PATCH=		${LOCALBASE}/bin/gpatch
+
 #
 # Has specific boost version requirements so use bundled that we fetch
 # ourselves.  Keep the version synced from cmake/boost.cmake.  Note that
 # later on we have to pull in boost-libs as a manual DEPENDS as the galera
 # plugin requires libboost_program_options.a
 #
-BOOST=			boost_1_70_0
+BOOST=			boost_1_72_0
 DISTFILES=		${DISTNAME}${EXTRACT_SUFX} ${BOOST}.tar.bz2
 SITES.${BOOST}.tar.bz2=	${MASTER_SITE_SOURCEFORGE:=boost/}
 
