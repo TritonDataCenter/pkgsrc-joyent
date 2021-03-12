@@ -2,7 +2,7 @@ $NetBSD$
 
 Support SunOS/gcc.
 
---- make/autoconf/flags-ldflags.m4.orig	2020-07-07 16:55:29.000000000 +0000
+--- make/autoconf/flags-ldflags.m4.orig	2020-07-29 16:52:13.000000000 +0000
 +++ make/autoconf/flags-ldflags.m4
 @@ -72,9 +72,13 @@ AC_DEFUN([FLAGS_SETUP_LDFLAGS_HELPER],
      fi
@@ -17,7 +17,7 @@ Support SunOS/gcc.
 +    fi
      # s390x : remove unused code+data in link step
      if test "x$OPENJDK_TARGET_CPU" = xs390x; then
-       BASIC_LDFLAGS="$BASIC_LDFLAGS -Wl,--gc-sections -Wl,--print-gc-sections"
+       BASIC_LDFLAGS="$BASIC_LDFLAGS -Wl,--gc-sections"
 @@ -141,12 +145,14 @@ AC_DEFUN([FLAGS_SETUP_LDFLAGS_HELPER],
  
    # Setup LDFLAGS for linking executables

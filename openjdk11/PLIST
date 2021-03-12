@@ -284,10 +284,6 @@ java/${JAVA_NAME}/legal/java.desktop/ADDITIONAL_LICENSE_INFO
 java/${JAVA_NAME}/legal/java.desktop/ASSEMBLY_EXCEPTION
 java/${JAVA_NAME}/legal/java.desktop/LICENSE
 java/${JAVA_NAME}/legal/java.desktop/colorimaging.md
-java/${JAVA_NAME}/legal/java.desktop/giflib.md
-java/${JAVA_NAME}/legal/java.desktop/harfbuzz.md
-java/${JAVA_NAME}/legal/java.desktop/lcms.md
-java/${JAVA_NAME}/legal/java.desktop/libpng.md
 java/${JAVA_NAME}/legal/java.desktop/mesa3d.md
 java/${JAVA_NAME}/legal/java.desktop/xwd.md
 java/${JAVA_NAME}/legal/java.instrument/ADDITIONAL_LICENSE_INFO

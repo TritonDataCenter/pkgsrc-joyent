@@ -2,9 +2,9 @@ $NetBSD$
 
 Support SunOS/gcc.  XXX: retain solstudio support.
 
---- make/lib/Awt2dLibraries.gmk.orig	2019-01-08 09:40:28.000000000 +0000
+--- make/lib/Awt2dLibraries.gmk.orig	2020-07-29 16:52:13.000000000 +0000
 +++ make/lib/Awt2dLibraries.gmk
-@@ -377,7 +377,6 @@ $(eval $(call SetupJdkLibrary, BUILD_LIB
+@@ -384,7 +384,6 @@ $(eval $(call SetupJdkLibrary, BUILD_LIB
      OPTIMIZATION := HIGHEST, \
      CFLAGS := $(LCMS_CFLAGS_JDKLIB) \
          $(LCMS_CFLAGS), \
@@ -12,19 +12,19 @@ Support SunOS/gcc.  XXX: retain solstudio support.
      CFLAGS_windows := -DCMS_IS_WINDOWS_, \
      EXTRA_HEADER_DIRS := \
          common/awt/debug \
-@@ -539,7 +538,11 @@ ifneq (, $(findstring $(OPENJDK_TARGET_O
-   HARFBUZZ_CFLAGS += -DHAVE_INTEL_ATOMIC_PRIMITIVES
- endif
- ifeq ($(OPENJDK_TARGET_OS), solaris)
-+ ifeq ($(TOOLCHAIN_TYPE), gcc)
-+  HARFBUZZ_CFLAGS += -DHAVE_INTEL_ATOMIC_PRIMITIVES
-+ else
-   HARFBUZZ_CFLAGS += -DHAVE_SOLARIS_ATOMIC_OPS
-+ endif
- endif
- ifeq ($(OPENJDK_TARGET_OS), macosx)
-   HARFBUZZ_CFLAGS += -DHAVE_CORETEXT
-@@ -857,6 +860,7 @@ ifeq ($(ENABLE_HEADLESS_ONLY), false)
+@@ -566,7 +565,11 @@ else
+     HARFBUZZ_CFLAGS += -DHAVE_INTEL_ATOMIC_PRIMITIVES
+   endif
+   ifeq ($(OPENJDK_TARGET_OS), solaris)
++   ifeq ($(TOOLCHAIN_TYPE), gcc)
++    HARFBUZZ_CFLAGS += -DHAVE_INTEL_ATOMIC_PRIMITIVES
++   else
+     HARFBUZZ_CFLAGS += -DHAVE_SOLARIS_ATOMIC_OPS
++   endif
+   endif
+   ifeq ($(OPENJDK_TARGET_OS), macosx)
+     HARFBUZZ_CFLAGS += -DHAVE_CORETEXT
+@@ -939,6 +942,7 @@ ifeq ($(ENABLE_HEADLESS_ONLY), false)
        LIBS := $(JDKLIB_LIBS) $(LIBSPLASHSCREEN_LIBS) $(LIBZ_LIBS) \
            $(GIFLIB_LIBS) $(LIBJPEG_LIBS) $(PNG_LIBS), \
        LIBS_aix := -liconv, \

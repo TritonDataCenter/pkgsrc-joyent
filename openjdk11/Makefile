@@ -1,7 +1,7 @@
 # $NetBSD$
 
-PKGNAME=	openjdk11-11.0.9
-DISTNAME=	4397fa4529b2
+PKGNAME=	openjdk11-11.0.10
+DISTNAME=	8b3498547395
 CATEGORIES=	lang
 MASTER_SITES=	https://hg.openjdk.java.net/jdk-updates/jdk11u/archive/
 EXTRACT_SUFX=	.tar.bz2
@@ -21,12 +21,14 @@ JAVA_WRAPPERS=	jar java javac javadoc javah javap jcmd jhat jps jstack \
 
 BUILD_DEPENDS+=	mozilla-rootcerts-[0-9]*:../../security/mozilla-rootcerts
 
+DEPENDS+=	dejavu-ttf-[0-9]*:../../fonts/dejavu-ttf
+
 BUILD_TARGET=	images
 
 GNU_CONFIGURE=	yes
 CONFIG_SHELL=	bash
 USE_LANGUAGES=	c c++
-USE_TOOLS+=	autoconf bash gmake pax unzip:run zip:run
+USE_TOOLS+=	autoconf bash gmake pax pkg-config unzip:run zip:run
 
 UNLIMIT_RESOURCES=	datasize stacksize
 
@@ -37,17 +39,23 @@ CONFIGURE_ARGS+=	--prefix=${PREFIX:Q}
 CONFIGURE_ARGS+=	--build=${MACHINE_GNU_PLATFORM:Q}
 CONFIGURE_ARGS+=	--host=${MACHINE_GNU_PLATFORM:Q}
 CONFIGURE_ARGS+=	--target=${MACHINE_GNU_PLATFORM:Q}
+CONFIGURE_ARGS+=	--with-freetype=system
+CONFIGURE_ARGS+=	--with-giflib=system
+CONFIGURE_ARGS+=	--with-harfbuzz=system
+CONFIGURE_ARGS+=	--with-lcms=system
 CONFIGURE_ARGS+=	--with-libjpeg=system
+CONFIGURE_ARGS+=	--with-libpng=system
 CONFIGURE_ARGS+=	--with-zlib=system
-CONFIGURE_ARGS+=	--with-giflib=bundled
+CONFIGURE_ARGS+=	--with-x=yes
 CONFIGURE_ARGS+=	--with-cups-include=${BUILDLINK_PREFIX.cups-base}/include
 CONFIGURE_ARGS+=	--with-fontconfig=${BUILDLINK_PREFIX.fontconfig}
-CONFIGURE_ARGS+=	--with-freetype=system
-CONFIGURE_ARGS+=	--with-freetype-lib=${BUILDLINK_PREFIX.freetype2}/lib
 CONFIGURE_ARGS+=	--with-freetype-include=${BUILDLINK_PREFIX.freetype2}/include
-CONFIGURE_ARGS+=	--with-jobs=${MAKE_JOBS:U1}
+CONFIGURE_ARGS+=	--with-freetype-lib=${BUILDLINK_PREFIX.freetype2}/lib
+CONFIGURE_ARGS+=	--x-includes=${X11BASE}/include
+CONFIGURE_ARGS+=	--x-libraries=${X11BASE}/lib
 CONFIGURE_ARGS+=	--with-num-cores=${MAKE_JOBS:U1}
 CONFIGURE_ARGS+=	--with-cacerts-file=${CACERTS_STORE}
+CONFIGURE_ARGS+=	--enable-unlimited-crypto
 CONFIGURE_ARGS+=	--disable-precompiled-headers
 CONFIGURE_ARGS+=	--disable-ccache
 CONFIGURE_ARGS+=	--with-extra-cflags=${CFLAGS:Q}
@@ -59,18 +67,14 @@ CONFIGURE_ARGS+=	--with-debug-level=release
 CONFIGURE_ARGS+=	--disable-warnings-as-errors
 
 CONFIGURE_ARGS+=	--with-toolchain-type=gcc
-CONFIGURE_ARGS+=	--disable-gtest
 CONFIGURE_ARGS+=	--disable-hotspot-gtest
 
 # Causes unresolved symbols (GCId::print_prefix, LogTagSet::LogTagSet) that are
 # proving difficult to track down.
 CONFIGURE_ARGS.SunOS+=	--disable-dtrace
 
-MAKE_JOBS_SAFE=		no # Set manually
-
-# Avoid build errors when JAVA_HOME and CLASSPATH are defined by user.
-MAKE_ENV+=	JAVA_HOME=
-#MAKE_ENV+=	CLASSPATH=
+# The build process rejects make -j, we pass --with-num-cores above instead.
+MAKE_JOBS_SAFE=		no
 
 BUILDLINK_PASSTHRU_RPATHDIRS+=	${JAVA_HOME}/lib
 
@@ -105,6 +109,7 @@ IMAGEJDKDIR=	${WRKSRC}/build/${SERVER_DIR}/images/jdk
 
 PLIST_SUBST+=		JAVA_NAME=${JAVA_NAME}
 PRINT_PLIST_AWK+=	{ gsub(/${JAVA_NAME}/, "$${JAVA_NAME}") }
+PRINT_PLIST_AWK+=	/man\/.*gz/ { gsub(/\.gz$$/, "") }
 
 pre-configure: ${CACERTS_STORE}
 ${CACERTS_STORE}:
@@ -145,7 +150,10 @@ bootstrap: install
 	done
 	for lib in libX11.so.6 libXau.so.6 libXdmcp.so.6 libXext.so.0 \
 		   libXi.so.6 libXrender.so.1 libXtst.so.6 libbz2.so.0 \
-		   libfreetype.so.6 libpng16.so.16 libxcb.so.1 libz.so.1; do \
+		   libfreetype.so.6 libgif.so.7 libglib-2.0.so.0 \
+		   libgraphite2.so.3 libharfbuzz.so.0 libiconv.so.2 \
+		   libintl.so.8 libjpeg.so.8 liblcms2.so.2 libpcre.so.1 \
+		   libpng16.so.16 libxcb.so.1 libz.so.1; do \
 		${CP} ${PREFIX}/lib/$${lib} \
 		    ${WRKDIR}/bootstrap/${JAVA_NAME}/lib/pkgsrc/; \
 	done
@@ -168,15 +176,24 @@ bootstrap: install
 	    ${TAR} -zcf ${PKGNAME}-x86_64-sun-solaris.tar.gz ${JAVA_NAME})
 .endif
 
-.include "options.mk"
-
 .include "../../converters/libiconv/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../fonts/fontconfig/buildlink3.mk"
+.include "../../fonts/harfbuzz/buildlink3.mk"
 .include "../../graphics/freetype2/buildlink3.mk"
+.include "../../graphics/giflib/buildlink3.mk"
+.include "../../graphics/lcms2/buildlink3.mk"
 # Headers from CUPS are required to build the native implementation of
 # sun.print.* which is used by java.awt.print.
 BUILDLINK_DEPMETHOD.cups-base?=	build
 .include "../../print/cups-base/buildlink3.mk"
+.include "../../x11/libXext/buildlink3.mk"
+.include "../../x11/libXi/buildlink3.mk"
+.include "../../x11/libXrender/buildlink3.mk"
+BUILDLINK_DEPMETHOD.libXt?=     build
+.include "../../x11/libXt/buildlink3.mk"
+.include "../../x11/libXtst/buildlink3.mk"
+BUILDLINK_DEPMETHOD.libXrandr?= build
+.include "../../x11/libXrandr/buildlink3.mk"
 .include "../../mk/java-env.mk"
 .include "../../mk/bsd.pkg.mk"
