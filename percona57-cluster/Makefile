@@ -1,9 +1,8 @@
 # $NetBSD$
 
 MYSQL_VER=	5.7.26
-WSREP_API_VER=  31
-GALERA_MAJOR=   3
-GALERA_MINOR=   37
+WSREP_API_VER=	31
+GALERA_MINOR=	37
 
 DISTNAME=	Percona-XtraDB-Cluster-${MYSQL_VER}-${WSREP_API_VER}.${GALERA_MINOR}
 PKGNAME=	percona-cluster-${MYSQL_VER}
@@ -22,6 +21,10 @@ LICENSE=	gnu-gpl-v2 AND gnu-gpl-v3
 BUILD_DEPENDS+=         scons-[0-9]*:../../devel/scons
 .endif
 CONFLICTS=		{mysql,percona}*-{client,server}-[0-9]*
+
+BOOST=			boost_1_59_0
+DISTFILES=		${DISTNAME}${EXTRACT_SUFX} ${BOOST}.tar.bz2
+SITES.${BOOST}.tar.bz2=	${MASTER_SITE_SOURCEFORGE:=boost/}
 
 DEPENDS+=		coreutils>=0:../../sysutils/coreutils	# GNU mktemp
 DEPENDS+=		findutils>=0:../../sysutils/findutils	# find -regex
@@ -88,7 +91,7 @@ CMAKE_ARGS+=		-DMYSQL_DATADIR=${MYSQL_DATADIR}
 
 CMAKE_ARGS+=		-DCMAKE_BUILD_TYPE=Release
 CMAKE_ARGS+=		-DLIBEVENT_LIBRARY=event
-CMAKE_ARGS+=		-DWITH_BOOST=system
+CMAKE_ARGS+=		-DWITH_BOOST="${WRKDIR}/${BOOST}"
 CMAKE_ARGS+=		-DWITH_LIBEVENT=system
 CMAKE_ARGS+=		-DWITH_LZ4=system
 CMAKE_ARGS+=		-DWITH_READLINE=system
@@ -122,20 +125,10 @@ CMAKE_ARGS+=		-DWITH_PARTITION_STORAGE_ENGINE=ON
 CMAKE_ARGS+=		-DWITH_PERFSCHEMA_STORAGE_ENGINE=ON
 
 # Ensure dtrace builds the correct ABI
-.if !empty(ABI:M32)
+.if ${ABI:U} == "32"
 CMAKE_ARGS+=		-DDTRACE_FLAGS="-32"
-.elif !empty(ABI:M64)
+.elif ${ABI:U} == "64"
 CMAKE_ARGS+=		-DDTRACE_FLAGS="-64"
-.endif
-
-.if ${OPSYS} == "IRIX"
-CFLAGS+=		-DIRIX5 -DNEEDS_BSTRING_H
-.endif
-
-# MySQL 5 depends on builtin functions enabled with i486 and later with GCC.
-.if ${OPSYS} == "NetBSD" && !empty(MACHINE_ARCH:Mi386)
-GNU_ARCH.i386=		i486
-CFLAGS+=		-march=i486
 .endif
 
 CPPFLAGS+=		-Dunix
@@ -225,24 +218,38 @@ SUBST_SED.fixpaths+=	-e "s,${WRAPPER_BINDIR}/g++,${CXXPATH},g"
 MAKE_ENV+=		LIBPATH=${BUILDLINK_PREFIX.openssl}/lib
 MAKE_ENV+=		RPATH=${BUILDLINK_PREFIX.openssl}/lib
 
+#
+# Hacks to get galera to use libboost_program_options.a while avoiding buildlink
+# which would cause conflicts between bundled and pkgsrc boost.
+#
+BUILD_DEPENDS+=		boost-libs>0:../../devel/boost-libs
+GALERA_SCONS_ARGS+=	bpostatic=${WRKDIR}/libboost_program_options.a
+GALERA_SCONS_ARGS+=	${_MAKE_JOBS}
+GALERA_SCONS_ENV+=	${MAKE_ENV}
+GALERA_SCONS_ENV+=	CPPFLAGS=-I${WRKDIR}/${BOOST}
+GALERA_SCONS_ENV+=	LIBPATH=${BUILDLINK_PREFIX.openssl}/lib
+GALERA_SCONS_ENV+=	RPATH=${BUILDLINK_PREFIX.openssl}/lib
+
 post-build:
-	cd ${WRKSRC}/percona-xtradb-cluster-galera && \
-	    ${SETENV} ${MAKE_ENV} scons psi=1 libgalera_smm.so && \
-	    ${SETENV} ${MAKE_ENV} scons garb/garbd
+	${CP} ${LOCALBASE}/lib/libboost_program_options.a ${WRKDIR}
+	${RUN} cd ${WRKSRC}/percona-xtradb-cluster-galera && \
+		revno=`cat GALERA-REVISION` && \
+		${SETENV} ${GALERA_SCONS_ENV} revno=$$revno ${SCONSBIN} \
+		    ${GALERA_SCONS_ARGS} psi=1 libgalera_smm.so && \
+		${SETENV} ${GALERA_SCONS_ENV} revno=$$revno ${SCONSBIN} \
+		    ${GALERA_SCONS_ARGS} garb/garbd
+	${SED} ${CNFSUBST} < ${FILESDIR}/my-joyent.cnf.sh \
+		> ${DESTDIR}${PREFIX}/share/mysql/my-joyent.cnf
 
 # Replace manual pages which only include other ones with a symbolic link
 # if manual compression is activated. The manual pages won't work otherwise.
 post-install:
-	${SED} ${CNFSUBST} < ${FILESDIR}/my-joyent.cnf.sh \
-		> ${DESTDIR}${PREFIX}/share/mysql/my-joyent.cnf
 	${RM} -rf ${DESTDIR}${PREFIX}/xinetd.d
 	${INSTALL_LIB} ${WRKSRC}/percona-xtradb-cluster-galera/libgalera_smm.so ${DESTDIR}${PREFIX}/lib/mysql/plugin/
 	${INSTALL_PROGRAM} ${WRKSRC}/percona-xtradb-cluster-galera/garb/garbd ${DESTDIR}${PREFIX}/bin/
 	${INSTALL_MAN} ${WRKSRC}/percona-xtradb-cluster-galera/man/garbd.8 ${DESTDIR}${PREFIX}/${PKGMANDIR}/man8/
 
 .include "../../archivers/lz4/buildlink3.mk"
-.include "../../devel/boost-headers/buildlink3.mk"
-.include "../../devel/boost-libs/buildlink3.mk"
 .include "../../devel/check/buildlink3.mk"
 .include "../../devel/libevent/buildlink3.mk"
 .include "../../devel/readline/buildlink3.mk"
