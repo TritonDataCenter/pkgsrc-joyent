@@ -182,10 +182,6 @@ MESSAGE_SUBST+=		MYSQL_DATADIR=${MYSQL_DATADIR}
 MESSAGE_SUBST+=		MYSQL_USER=${MYSQL_USER} MYSQL_GROUP=${MYSQL_GROUP}
 BUILD_DEFS+=		MYSQL_DATADIR
 
-CNFSUBST=		-e 's,@MYSQL_DATADIR@,${MYSQL_DATADIR},g'
-CNFSUBST+=		-e 's,@PREFIX@,${PREFIX},g'
-CNFSUBST+=		-e 's,@VARBASE@,${VARBASE},g'
-
 CONF_FILES=		${PREFIX}/share/mysql/my-joyent.cnf \
 			${PKG_SYSCONFDIR}/my.cnf
 
@@ -238,8 +234,8 @@ post-build:
 		    ${GALERA_SCONS_ARGS} psi=1 libgalera_smm.so && \
 		${SETENV} ${GALERA_SCONS_ENV} revno=$$revno ${SCONSBIN} \
 		    ${GALERA_SCONS_ARGS} garb/garbd
-	${SED} ${CNFSUBST} < ${FILESDIR}/my-joyent.cnf.sh \
-		> ${DESTDIR}${PREFIX}/share/mysql/my-joyent.cnf
+	${SED} ${FILES_SUBST_SED} ${FILESDIR}/my-joyent.cnf.sh \
+	    > ${WRKSRC}/my-joyent.cnf
 
 # Replace manual pages which only include other ones with a symbolic link
 # if manual compression is activated. The manual pages won't work otherwise.
@@ -248,6 +244,7 @@ post-install:
 	${INSTALL_LIB} ${WRKSRC}/percona-xtradb-cluster-galera/libgalera_smm.so ${DESTDIR}${PREFIX}/lib/mysql/plugin/
 	${INSTALL_PROGRAM} ${WRKSRC}/percona-xtradb-cluster-galera/garb/garbd ${DESTDIR}${PREFIX}/bin/
 	${INSTALL_MAN} ${WRKSRC}/percona-xtradb-cluster-galera/man/garbd.8 ${DESTDIR}${PREFIX}/${PKGMANDIR}/man8/
+	${INSTALL_DATA} ${WRKSRC}/my-joyent.cnf ${DESTDIR}${PREFIX}/share/mysql/my-joyent.cnf
 
 .include "../../archivers/lz4/buildlink3.mk"
 .include "../../devel/check/buildlink3.mk"
