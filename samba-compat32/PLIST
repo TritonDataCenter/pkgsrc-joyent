@@ -3,6 +3,7 @@ lib/i386/libnss_winbind.so
 lib/i386/nss_winbind.so.1
 lib/samba/security/i386/libgcc_s.so.1
 lib/samba/security/i386/libgenrand-samba4.so
+lib/samba/security/i386/libgnutls.so.30
 lib/samba/security/i386/libiconv.so.2
 lib/samba/security/i386/libintl.so.8
 lib/samba/security/i386/libiov-buf-samba4.so

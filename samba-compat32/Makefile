@@ -1,6 +1,6 @@
 # $NetBSD$
 
-DISTNAME=	samba-compat32-1.0
+DISTNAME=	samba-compat32-1.1
 CATEGORIES=	net
 MASTER_SITES=	# empty
 DISTFILES=	# empty
@@ -74,6 +74,7 @@ SAMBA_LIBS+=	lib/samba/private/${privlib} lib/samba/security/i386
 .endfor
 
 .for pkglib in \
+	libgnutls.so.30 \
 	libiconv.so.2 \
 	libintl.so.8 \
 	libsamba-util.so.0 \
