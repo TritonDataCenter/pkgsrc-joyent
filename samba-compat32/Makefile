@@ -95,15 +95,13 @@ SAMBA_LIBS+=	lib/${pkglib} lib/samba/security/i386
 SAMBA_LIBS+=	gcc*/i486-sun-solaris2.11/lib/${gcclib} lib/samba/security/i386
 .endfor
 
-# XXX: Platform elfedit segfaults
-ELFEDIT?=	/shared/bin/elfedit
 ELFEDIT_ARGS=	-e 'dyn:runpath ${PREFIX}/lib/samba/security/i386'
 
 do-build:
 	${PKGSRC_SETENV} PKG_PATH=${PACKAGES:S/x86_64/i386/}/All \
 		${PKG_ADD_CMD} -P ${PKG_CHROOT} -I -m i386 'samba>4'
 .for lib dest in ${SAMBA_LIBS}
-	${ELFEDIT} ${ELFEDIT_ARGS} ${PKG_CHROOT}/${PREFIX}/${lib}
+	${TOOLS_PATH.elfedit} ${ELFEDIT_ARGS} ${PKG_CHROOT}/${PREFIX}/${lib}
 .endfor
 
 do-install:

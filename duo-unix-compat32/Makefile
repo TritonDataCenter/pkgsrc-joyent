@@ -47,15 +47,13 @@ DUO_LIBS+=	lib/libssl.so.1.1
 DUO_LIBS+=	gcc*/i486-sun-solaris2.11/lib/libgcc_s.so.1
 DUO_LIBS+=	gcc*/i486-sun-solaris2.11/lib/libssp.so.0
 
-# XXX: Platform elfedit segfaults
-ELFEDIT?=	/shared/bin/elfedit
 ELFEDIT_ARGS=	-e 'dyn:runpath ${PREFIX}/${DUO_LIB_DIR}'
 
 do-build:
 	${PKGSRC_SETENV} PKG_PATH=${PACKAGES:S/x86_64/i386/}/All \
 		${PKG_ADD_CMD} -P ${PKG_CHROOT} -I -m i386 'duo-unix'
 .for lib in ${DUO_LIBS}
-	${ELFEDIT} ${ELFEDIT_ARGS} ${PKG_CHROOT}/${PREFIX}/${lib}
+	${TOOLS_PATH.elfedit} ${ELFEDIT_ARGS} ${PKG_CHROOT}/${PREFIX}/${lib}
 .endfor
 
 do-install:
