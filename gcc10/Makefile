@@ -78,10 +78,11 @@ CONFIGURE_ENV+=		LDFLAGS_FOR_TARGET=
 
 CONFIGURE_ARGS+=	--enable-languages="c,c++,fortran,go,objc,lto"
 CONFIGURE_ARGS+=	--enable-libssp
-CONFIGURE_ARGS+=	--with-gnu-as --with-as=${PREFIX}/bin/gas
-CONFIGURE_ARGS+=	--without-gnu-ld --with-ld=/bin/ld
 CONFIGURE_ARGS+=	--disable-nls
 CONFIGURE_ARGS+=	--disable-libitm
+CONFIGURE_ARGS+=	--with-gnu-as --with-as=${PREFIX}/bin/gas
+CONFIGURE_ARGS+=	--without-gnu-ld --with-ld=/bin/ld
+CONFIGURE_ARGS+=	--with-zstd=no
 
 #
 # Things to possibly enable in the future.
