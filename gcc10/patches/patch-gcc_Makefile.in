@@ -1,0 +1,28 @@
+$NetBSD$
+
+Ensure libgcc from this GCC is found before others.  Note that there must
+not be a whitespace between $(LINKER_RPATH_FLAG) and the path.  Otherwise
+the flag may be misinterpreted by the linker (e.g. Apple ld).
+
+Disable fixincludes, which does nothing but break everything, and always
+has.  See joyent/pkgsrc-legacy#270 and others.
+
+--- gcc/Makefile.in.orig	2021-09-01 10:28:37.000000000 +0000
++++ gcc/Makefile.in
+@@ -2213,6 +2213,7 @@ default-d.o: config/default-d.c
+ # Language-independent files.
+ 
+ DRIVER_DEFINES = \
++  -DLINK_LIBGCC_SPEC="\"%D $(LINKER_RPATH_FLAG)$(prefix)/@MACHINE_GNU_PLATFORM@/lib/%M $(LINKER_RPATH_FLAG)$(libdir)/%M \"" \
+   -DSTANDARD_STARTFILE_PREFIX=\"$(unlibsubdir)/\" \
+   -DSTANDARD_EXEC_PREFIX=\"$(libdir)/gcc/\" \
+   -DSTANDARD_LIBEXEC_PREFIX=\"$(libexecdir)/gcc/\" \
+@@ -3170,7 +3171,7 @@ stmp-fixinc: gsyslimits.h macro_list fix
+ 	      gcc_dir=`${PWD_COMMAND}` ; \
+ 	      export TARGET_MACHINE srcdir SHELL MACRO_LIST && \
+ 	      cd $(build_objdir)/fixincludes && \
+-	      $(SHELL) ./fixinc.sh "$${gcc_dir}/$${fix_dir}" \
++	      $(SHELL) -c true "$${gcc_dir}/$${fix_dir}" \
+ 	        $(BUILD_SYSTEM_HEADER_DIR) $(OTHER_FIXINCLUDES_DIRS) ); \
+ 	    rm -f $${fix_dir}/syslimits.h; \
+ 	    if [ -f $${fix_dir}/limits.h ]; then \

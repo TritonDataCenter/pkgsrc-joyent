@@ -1,0 +1,9 @@
+$NetBSD$
+
+SHA1 (gcc10-10.3.0-85e56ed630134eb0082e7f905d9c54fdb28865ec.tar.gz) = b6e6d1bdb741223557c852940593c6ce726ff2ec
+RMD160 (gcc10-10.3.0-85e56ed630134eb0082e7f905d9c54fdb28865ec.tar.gz) = e32387ded34a93e65b9cb3526b0aa281705da6c1
+SHA512 (gcc10-10.3.0-85e56ed630134eb0082e7f905d9c54fdb28865ec.tar.gz) = 5d00a018c59283fb99099bf3ba996e9931c4c33faf250809163465d99ceeff4291597518103e04313f6f016900debba5d8e86d39b56bf8d885b86eadd74c4621
+Size (gcc10-10.3.0-85e56ed630134eb0082e7f905d9c54fdb28865ec.tar.gz) = 118969120 bytes
+SHA1 (patch-gcc_Makefile.in) = 83301ce44d92858d135bf7ad9bb667ec06050b1f
+SHA1 (patch-gcc_config_sol2.h) = 8d583cbb2e53e89f53d41d702b8f7e39bda81f3b
+SHA1 (patch-libsanitizer_sanitizer__common_sanitizer__linux.cpp) = 8bcbe390e743080cfe45eeea4dd61e27caf86a8e
