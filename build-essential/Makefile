@@ -20,7 +20,9 @@ DEPENDS+=	automake-[0-9]*:../../devel/automake
 DEPENDS+=	binutils-[0-9]*:../../devel/binutils
 DEPENDS+=	bison-[0-9]*:../../devel/bison
 .if ${PKGSRC_COMPILER} == "gcc"
-.  if !empty(_GCC_DEPENDS:Mgcc9*)
+.  if !empty(_GCC_DEPENDS:Mgcc10*)
+DEPENDS+=	${_GCC_DEPENDS}:../../joyent/gcc10
+.  elif !empty(_GCC_DEPENDS:Mgcc9*)
 DEPENDS+=	${_GCC_DEPENDS}:../../joyent/gcc9
 .  elif !empty(_GCC_DEPENDS:Mgcc7*)
 DEPENDS+=	${_GCC_DEPENDS}:../../lang/gcc7
