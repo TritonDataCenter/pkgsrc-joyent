@@ -1,7 +1,7 @@
 # $NetBSD$
 
 DISTNAME=	influxdb-2.1.1
-PKGNAME=	${DISTNAME:S/influxdb/influxdb2/}
+PKGNAME=	${DISTNAME}
 MASTER_SITES=	${MASTER_SITE_GITHUB:=influxdata/}
 CATEGORIES=	databases
 GITHUB_PROJECT=	influxdb
@@ -13,6 +13,7 @@ COMMENT=	Scalable datastore for metrics, events, and real-time analytics
 LICENSE=	mit
 
 # Per-version subdir due to non-versioned build.tar.gz below.
+# 2.1.1 did not require a "v" adjoining the PKGERSION_NOREV variable
 DIST_SUBDIR=	${PKGNAME_NOREV}
 
 UI_DATA=		build.tar.gz
@@ -23,7 +24,7 @@ DISTFILES=	${DEFAULT_DISTFILES} ${UI_DATA}
 
 USE_TOOLS+=	pkg-config
 
-DATADIR=	${VARBASE}/lib/influxdbv2
+DATADIR=	${VARBASE}/lib/influxdb
 LOGDIR=		${VARBASE}/log/influxdb
 
 BUILD_DEFS+=		INFLUXDB_USER INFLUXDB_GROUP VARBASE
@@ -52,7 +53,15 @@ INSTALLATION_DIRS+=	bin share/doc/influxdb
 GO_PKG_CONFIG_DIR=	${WRKDIR}/github.com/influxdata/pkg-config@v0.2.9-0.20210928145121-f721f9766b86
 
 GO_EXTRA_MOD_DIRS=	${GO_PKG_CONFIG_DIR}
-PKGSRC_MAKE_ENV+=	CARGO_HTTP_CAINFO=/etc/ssl/certs/ca-certificates.crt
+
+# Uncomment this if you need to download an updated index. (Hack for cargo)
+#PKGSRC_MAKE_ENV+=	CARGO_HTTP_CAINFO=/etc/ssl/certs/ca-certificates.crt
+
+# This only works if you're running on netbsd_trunk since October 2020. 
+# Perkin submitted the support for CARGO_WRKSRC at that time. Failure to 
+# use ../../lang/rust from netbsd/pkgsrc@trunk will result in numerous rust
+# errors 
+
 CARGO_WRKSRC=		${WRKDIR}/github.com/influxdata/flux@v0.139.0/libflux
 
 .include "cargo-depends.mk"
@@ -65,6 +74,7 @@ SUBST_CLASSES+=		paths
 SUBST_STAGE.paths=	pre-configure
 SUBST_FILES.paths=	internal/fs/influx_dir.go
 SUBST_VARS.paths=	DATADIR
+
 
 SUBST_CLASSES.SunOS+=	statfs
 SUBST_STAGE.statfs=	pre-configure
