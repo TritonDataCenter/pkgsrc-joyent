@@ -77,17 +77,13 @@ CONFIGURE_ENV+=		CFLAGS_FOR_TARGET=${CLEAN_GCC_CFLAGS:Q}
 CONFIGURE_ENV+=		LDFLAGS_FOR_TARGET=
 
 CONFIGURE_ARGS+=	--enable-languages="c,c++,fortran,go,objc,lto"
-CONFIGURE_ARGS+=	--enable-libssp
+CONFIGURE_ARGS+=	--enable-__cxa_atexit
+CONFIGURE_ARGS+=	--enable-initfini-array
 CONFIGURE_ARGS+=	--disable-nls
 CONFIGURE_ARGS+=	--disable-libitm
 CONFIGURE_ARGS+=	--with-gnu-as --with-as=${PREFIX}/bin/gas
 CONFIGURE_ARGS+=	--without-gnu-ld --with-ld=/bin/ld
 CONFIGURE_ARGS+=	--with-zstd=no
-
-#
-# Things to possibly enable in the future.
-#
-#CONFIGURE_ARGS+=	--enable-initfini-array		# Needs newer platform
 
 #
 # Disable --as-needed as it pulls in libgcc_s as a dependency into libstdc++

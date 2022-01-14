@@ -5,5 +5,5 @@ RMD160 (gcc10-10.3.0-85e56ed630134eb0082e7f905d9c54fdb28865ec.tar.gz) = e32387de
 SHA512 (gcc10-10.3.0-85e56ed630134eb0082e7f905d9c54fdb28865ec.tar.gz) = 5d00a018c59283fb99099bf3ba996e9931c4c33faf250809163465d99ceeff4291597518103e04313f6f016900debba5d8e86d39b56bf8d885b86eadd74c4621
 Size (gcc10-10.3.0-85e56ed630134eb0082e7f905d9c54fdb28865ec.tar.gz) = 118969120 bytes
 SHA1 (patch-gcc_Makefile.in) = 83301ce44d92858d135bf7ad9bb667ec06050b1f
-SHA1 (patch-gcc_config_sol2.h) = 6ac654335a0aad9e80560fc6cce40511459686cb
+SHA1 (patch-gcc_config_sol2.h) = e21be5f33fb02264eb5e42222fe30f08bdd0c2ff
 SHA1 (patch-libsanitizer_sanitizer__common_sanitizer__linux.cpp) = 8bcbe390e743080cfe45eeea4dd61e27caf86a8e
