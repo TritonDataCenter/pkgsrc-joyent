@@ -4,5 +4,6 @@ bin/xbcloud_osenv
 bin/xbcrypt
 bin/xbstream
 bin/xtrabackup
+lib/plugin/component_keyring_file.so
 lib/plugin/keyring_file.so
 lib/plugin/keyring_vault.so
