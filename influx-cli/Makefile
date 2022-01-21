@@ -20,7 +20,7 @@ USE_TOOLS+=	gmake
 BIN_FILES=	influx
 DOC_FILES=	CHANGELOG.md LICENSE README.md
 
-INSTALLATION_DIRS+=	bin share/doc/influxdb
+INSTALLATION_DIRS+=	bin share/doc/influx-cli
 
 INFLUX_GO_FLAGS=	-s
 INFLUX_GO_FLAGS+=	-X main.version=${PKGVERSION_NOREV}
@@ -37,7 +37,7 @@ do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/${f} ${DESTDIR}${PREFIX}/bin
 .endfor
 .for f in ${DOC_FILES}
-	${INSTALL_DATA} ${WRKSRC}/${f} ${DESTDIR}${PREFIX}/share/doc/influxdb
+	${INSTALL_DATA} ${WRKSRC}/${f} ${DESTDIR}${PREFIX}/share/doc/influx-cli
 .endfor
 
 .include "../../lang/go/go-module.mk"

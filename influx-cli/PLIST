@@ -1,5 +1,5 @@
 @comment $NetBSD$
 bin/influx
-share/doc/influxdb/CHANGELOG.md
-share/doc/influxdb/LICENSE
-share/doc/influxdb/README.md
+share/doc/influx-cli/CHANGELOG.md
+share/doc/influx-cli/LICENSE
+share/doc/influx-cli/README.md
