@@ -1,0 +1,6 @@
+@comment $NetBSD$
+bin/telegraf
+share/doc/telegraf/CHANGELOG.md
+share/doc/telegraf/LICENSE
+share/doc/telegraf/README.md
+share/examples/telegraf/telegraf.conf
