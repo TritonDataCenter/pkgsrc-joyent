@@ -2,9 +2,9 @@ $NetBSD$
 
 Support SunOS/gcc.  XXX: retain solstudio support.
 
---- make/lib/Awt2dLibraries.gmk.orig	2020-07-29 16:52:13.000000000 +0000
+--- make/lib/Awt2dLibraries.gmk.orig	2022-02-07 16:26:34.000000000 +0000
 +++ make/lib/Awt2dLibraries.gmk
-@@ -384,7 +384,6 @@ $(eval $(call SetupJdkLibrary, BUILD_LIB
+@@ -383,7 +383,6 @@ $(eval $(call SetupJdkLibrary, BUILD_LIB
      OPTIMIZATION := HIGHEST, \
      CFLAGS := $(LCMS_CFLAGS_JDKLIB) \
          $(LCMS_CFLAGS), \
@@ -12,7 +12,7 @@ Support SunOS/gcc.  XXX: retain solstudio support.
      CFLAGS_windows := -DCMS_IS_WINDOWS_, \
      EXTRA_HEADER_DIRS := \
          common/awt/debug \
-@@ -566,7 +565,11 @@ else
+@@ -552,7 +551,11 @@ else
      HARFBUZZ_CFLAGS += -DHAVE_INTEL_ATOMIC_PRIMITIVES
    endif
    ifeq ($(OPENJDK_TARGET_OS), solaris)
@@ -22,9 +22,9 @@ Support SunOS/gcc.  XXX: retain solstudio support.
      HARFBUZZ_CFLAGS += -DHAVE_SOLARIS_ATOMIC_OPS
 +   endif
    endif
-   ifeq ($(OPENJDK_TARGET_OS), macosx)
-     HARFBUZZ_CFLAGS += -DHAVE_CORETEXT
-@@ -939,6 +942,7 @@ ifeq ($(ENABLE_HEADLESS_ONLY), false)
+   # hb-ft.cc is not presently needed, and requires freetype 2.4.2 or later.
+   LIBFONTMANAGER_EXCLUDE_FILES += libharfbuzz/hb-ft.cc
+@@ -872,6 +875,7 @@ ifeq ($(ENABLE_HEADLESS_ONLY), false)
        LIBS := $(JDKLIB_LIBS) $(LIBSPLASHSCREEN_LIBS) $(LIBZ_LIBS) \
            $(GIFLIB_LIBS) $(LIBJPEG_LIBS) $(PNG_LIBS), \
        LIBS_aix := -liconv, \

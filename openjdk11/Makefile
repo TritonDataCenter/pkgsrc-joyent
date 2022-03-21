@@ -1,10 +1,11 @@
 # $NetBSD$
 
-PKGNAME=	openjdk11-11.0.10
-DISTNAME=	8b3498547395
+DISTNAME=	jdk-11.0.14.1-ga
+PKGNAME=	${DISTNAME:C/jdk/openjdk11/:C/-ga//}
 CATEGORIES=	lang
-MASTER_SITES=	https://hg.openjdk.java.net/jdk-updates/jdk11u/archive/
-EXTRACT_SUFX=	.tar.bz2
+MASTER_SITES=	${MASTER_SITE_GITHUB:=openjdk/}
+GITHUB_PROJECT=	jdk11u
+GITHUB_TAG=	${DISTNAME}
 
 MAINTAINER=	pkgsrc-users@NetBSD.org
 HOMEPAGE=	http://openjdk.java.net/

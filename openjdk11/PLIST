@@ -559,7 +559,7 @@ java/${JAVA_NAME}/lib/libzip.so
 java/${JAVA_NAME}/lib/modules
 java/${JAVA_NAME}/lib/psfont.properties.ja
 java/${JAVA_NAME}/lib/psfontj2d.properties
-java/${JAVA_NAME}/lib/security/blacklisted.certs
+java/${JAVA_NAME}/lib/security/blocked.certs
 java/${JAVA_NAME}/lib/security/cacerts
 java/${JAVA_NAME}/lib/security/default.policy
 java/${JAVA_NAME}/lib/security/public_suffix_list.dat

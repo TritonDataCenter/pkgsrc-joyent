@@ -1,9 +1,9 @@
 $NetBSD: distinfo,v 1.65 2018/12/15 20:27:45 jperkin Exp $
 
-SHA1 (openjdk11/8b3498547395.tar.bz2) = 559ea3b4e97944d07b51a3cb89de7f216267778c
-RMD160 (openjdk11/8b3498547395.tar.bz2) = cc2e0d939909529e1f8df0247314b7bee7caa900
-SHA512 (openjdk11/8b3498547395.tar.bz2) = 32e6d8f356224ad9f9221d8f0deb19468b03e8ca0f03cbf951b7f26e09c9c8d0fb2ba2c81c2bcc5564facd3a89bb93b1972426fc5c11e880ae9728680d295853
-Size (openjdk11/8b3498547395.tar.bz2) = 95156715 bytes
+SHA1 (openjdk11/jdk-11.0.14.1-ga.tar.gz) = 91bf02e7013ec4d2d633afbc3939cd9fa1b1ee1f
+RMD160 (openjdk11/jdk-11.0.14.1-ga.tar.gz) = 37f491047d07eaf8c5f1a2972ce6f26b3115a53a
+SHA512 (openjdk11/jdk-11.0.14.1-ga.tar.gz) = 0ee3fb2c2451c42616139693493048c98e6c2a36758374fa64b9f09d14f35b69ca89e7d32debbb2d7c7e85cb5fb24f0b3275ce1eb5126c7b58b1b7e5ac808824
+Size (openjdk11/jdk-11.0.14.1-ga.tar.gz) = 122806790 bytes
 SHA1 (openjdk11/openjdk10-10.0.46-x86_64-sun-solaris.tar.gz) = f0f2d95bd7ced602d58fb2d9bbaf9d925c9d5b16
 RMD160 (openjdk11/openjdk10-10.0.46-x86_64-sun-solaris.tar.gz) = d1287f91f402e02792e7b4721c16c08a5ca58865
 SHA512 (openjdk11/openjdk10-10.0.46-x86_64-sun-solaris.tar.gz) = 51bce5bd1a1af95efe995dfb22cca748c37e63d9a556cb2b21089c1a36b26d79159921eefcb9124c2276c19661f8aa4ad8736bb3a730c006d3cd0da34b67f73e
@@ -13,7 +13,7 @@ SHA1 (patch-make_autoconf_basics.m4) = ee458e62ee70e8143631320a8080e279430ae9cb
 SHA1 (patch-make_autoconf_flags-cflags.m4) = d6499ab75284e5554f02f9217c9bb159b905f8dd
 SHA1 (patch-make_autoconf_flags-ldflags.m4) = 65db7454a5bb0eb028495208c51b200df8a68f09
 SHA1 (patch-make_autoconf_flags-other.m4) = 12f0447d871d97f49110b7d19bd792799d20919d
-SHA1 (patch-make_autoconf_hotspot.m4) = 64e54066c50a9b422a67a6c8f3e095aa5db36157
+SHA1 (patch-make_autoconf_hotspot.m4) = 3b88011f328a777d75d4f45eaef7a6853227c722
 SHA1 (patch-make_autoconf_jdk-options.m4) = 16e9d2091235239285e45d9b207306114e286d0a
 SHA1 (patch-make_autoconf_lib-bundled.m4) = 30b2fd080b7b7f31c84276fb3e321bb1ae1bcbcd
 SHA1 (patch-make_autoconf_lib-x11.m4) = a0794b6a87668557f2f813d67355fdaf04a54b22
@@ -26,11 +26,11 @@ SHA1 (patch-make_hotspot_lib_CompileJvm.gmk) = 11ab1dbe88bf9da4c0bad8d72166c682f
 SHA1 (patch-make_hotspot_lib_JvmOverrideFiles.gmk) = b3e05df4ea4a2055afdcf5f79e29ba79d08f8af6
 SHA1 (patch-make_launcher_Launcher-jdk.pack.gmk) = acdd6002a2249c4ae95eef1c656b5ebce2cbcf4d
 SHA1 (patch-make_launcher_LauncherCommon.gmk) = 268aa85b24b4fdec713d7c75ce5e1fad86f96d64
-SHA1 (patch-make_lib_Awt2dLibraries.gmk) = b1ba76da864227a8fc88b0384b4e30a36f824ea7
+SHA1 (patch-make_lib_Awt2dLibraries.gmk) = 2a00ecf7cf3e9b36f81481ddfce21ee49fb0cf90
 SHA1 (patch-make_lib_Lib-java.instrument.gmk) = 8fbd2bf575c85c28d2afcb553ea007b8870b65d9
 SHA1 (patch-make_lib_Lib-jdk.crypto.ec.gmk) = eabdb39d13bbb2eeafa8bc4adf31fad11f4e311a
 SHA1 (patch-make_lib_Lib-jdk.crypto.ucrypto.gmk) = dbdfa5b56b22ea13b3bf26e479ac3bfd9fdc2fec
-SHA1 (patch-make_lib_Lib-jdk.hotspot.agent.gmk) = 6786109eec08cf91114cfa3b4644fcbc80ee6c51
+SHA1 (patch-make_lib_Lib-jdk.hotspot.agent.gmk) = f92fa05fb047376aced544c952aab863e2887f34
 SHA1 (patch-make_lib_Lib-jdk.jdwp.agent.gmk) = 9bf477a8ebaec0ef82abc46f0b109eda3e0d2c8d
 SHA1 (patch-make_lib_LibCommon.gmk) = 91c48cae5cff3d6e09ace5edf792a25161d827d0
 SHA1 (patch-src_hotspot_cpu_x86_vm__version__x86.cpp) = cf534429b056254174f61c87dd406f83f24c6834
