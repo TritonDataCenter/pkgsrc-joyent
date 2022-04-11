@@ -1,6 +1,6 @@
 # $NetBSD$
 
-DISTNAME=	influx-cli-2.1.1
+DISTNAME=	influx-cli-2.3.0
 MASTER_SITES=	${MASTER_SITE_GITHUB:=influxdata/}
 CATEGORIES=	databases
 GITHUB_PROJECT=	influx-cli
@@ -24,9 +24,6 @@ INFLUX_GO_FLAGS=	-s
 INFLUX_GO_FLAGS+=	-X main.version=${PKGVERSION_NOREV}
 
 .include "go-modules.mk"
-
-pre-build:
-	${CP} -f ${FILESDIR}/go.* ${WRKSRC}
 
 do-build:
 	${RUN} cd ${WRKSRC} && \
