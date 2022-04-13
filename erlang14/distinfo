@@ -1,0 +1,10 @@
+$NetBSD: distinfo,v 1.26 2012/01/19 10:17:56 fhajny Exp $
+
+BLAKE2s (erlang/otp_src_R14B04.tar.gz) = 1f7db092d3b590c2a295ddea2a7e56adc45530b3a6f348099b27aad5868e58a3
+SHA512 (erlang/otp_src_R14B04.tar.gz) = e6049e6954f88149a9313dd1100c5d4bbec07bbfc6b88a2d684b7580052e70c4c030247f4ddafa43d68fb3fd213c91cf906a8ac3d0ee76d8cdff8cb530c44f76
+Size (erlang/otp_src_R14B04.tar.gz) = 70773703 bytes
+SHA1 (patch-Makefile.in) = 7f57b182ee4d94fbadaf732eec3df181d0dd7178
+SHA1 (patch-erts_emulator_beam_beam__bp.c) = efc4ac6c2884f095685d3395fbc1451df9107ba9
+SHA1 (patch-erts_emulator_beam_beam__bp.h) = 404e045100d90867a0b77cc170581124cb544e6a
+SHA1 (patch-erts_emulator_drivers_common_inet_drv.c) = 57cd06da314895166f331a9aecc2fac02715d3e5
+SHA1 (patch-erts_emulator_utils_beam__makeops) = 1d3252a977b9baa337edf794dcb83af6f94f9c24

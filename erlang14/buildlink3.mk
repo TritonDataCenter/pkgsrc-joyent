@@ -1,0 +1,14 @@
+# $NetBSD: buildlink3.mk,v 1.10 2009/12/16 09:29:06 wiz Exp $
+
+BUILDLINK_TREE+=	erlang14
+
+.if !defined(ERLANG14_BUILDLINK3_MK)
+ERLANG14_BUILDLINK3_MK:=
+
+BUILDLINK_API_DEPENDS.erlang14+=	erlang14>=10.1
+BUILDLINK_ABI_DEPENDS.erlang14?=	erlang14>=10.1.9nb1
+BUILDLINK_PKGSRCDIR.erlang14?=		../../joyent/erlang14
+
+.endif # ERLANG14_BUILDLINK3_MK
+
+BUILDLINK_TREE+=	-erlang14

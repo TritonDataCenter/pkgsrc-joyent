@@ -1,0 +1,15 @@
+$NetBSD$
+
+Fix perl syntax.
+
+--- erts/emulator/utils/beam_makeops.orig	2011-10-03 18:12:07.000000000 +0000
++++ erts/emulator/utils/beam_makeops
+@@ -1576,7 +1576,7 @@ sub tr_gen_to {
+ 	if $min_window{$key} > $min_window;
+ 
+     pop(@{$gen_transform{$key}})
+-	if defined @{$gen_transform{$key}}; # Fail
++	if defined $gen_transform{$key}; # Fail
+     my(@prefix) = (&make_op($comment), &make_op('', 'try_me_else', &tr_code_len(@code)));
+     unshift(@code, @prefix);
+     push(@{$gen_transform{$key}}, @code, &make_op('', 'fail'));
