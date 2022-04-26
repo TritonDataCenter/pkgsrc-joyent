@@ -1,9 +1,9 @@
 # $NetBSD$
 
-DISTNAME=	percona-xtrabackup-8.0.26-18
-PKGNAME=	percona-xtrabackup-8.0.26
+DISTNAME=	percona-xtrabackup-8.0.28-20
+PKGNAME=	percona-xtrabackup-8.0.28
 CATEGORIES=	databases
-MASTER_SITES=	https://downloads.percona.com/downloads/Percona-XtraBackup-LATEST/Percona-XtraBackup-8.0.26-18/source/tarball/
+MASTER_SITES=	https://downloads.percona.com/downloads/Percona-XtraBackup-LATEST/Percona-XtraBackup-8.0.28-20/source/tarball/
 
 MAINTAINER=	pkgsrc-users@NetBSD.org
 HOMEPAGE=	https://www.percona.com/software/percona-xtrabackup
@@ -25,11 +25,8 @@ USE_TOOLS+=		bison cmake gmake patch perl
 CONFIGURE_DIRS=		${WRKDIR}/build
 CMAKE_ARG_PATH=		${WRKSRC}
 
-CMAKE_ARGS+=		-DENABLE_DTRACE=ON
-CMAKE_ARGS+=		-DENABLE_OPENSSL=ON
-
 CMAKE_ARGS+=		-DWITH_BOOST=${WRKDIR}/${BOOST}
-CMAKE_ARGS+=		-DWITH_LIBEV=system
+CMAKE_ARGS+=		-DWITH_PROTOBUF=system
 CMAKE_ARGS+=		-DWITH_SSL=system
 CMAKE_ARGS+=		-DWITH_ZLIB=system
 CMAKE_ARGS+=		-DLIBEV_INCLUDE_PATHS=${BUILDLINK_PREFIX.libev}/include/ev
@@ -44,6 +41,8 @@ CMAKE_ARGS+=		-DINSTALL_MYSQLTESTDIR=percona-xtrabackup-test
 CFLAGS+=		-D_POSIX_PTHREAD_SEMANTICS
 LDFLAGS.SunOS+=		-lsocket -lnsl
 
+BUILDLINK_TRANSFORM+=	rm:-Wmissing-include-dirs
+
 CHECK_INTERPRETER_SKIP+=	percona-xtrabackup-test/*
 CHECK_PORTABILITY_SKIP+=	packaging/deb-in/*
 CHECK_PORTABILITY_SKIP+=	storage/ndb/mcc/frontend/dojo/dojox/mobile/build/build.sh
@@ -57,6 +56,7 @@ post-install:
 
 .include "../../archivers/xz/buildlink3.mk"
 .include "../../devel/libev/buildlink3.mk"
+.include "../../devel/protobuf/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../security/libgcrypt/buildlink3.mk"
 .include "../../security/openssl/buildlink3.mk"

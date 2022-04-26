@@ -2,13 +2,14 @@ $NetBSD$
 
 Exclude more bloated tests.
 
---- plugin/keyring_vault/CMakeLists.txt.orig	2019-12-14 16:07:34.000000000 +0000
+--- plugin/keyring_vault/CMakeLists.txt.orig	2022-04-19 18:34:03.000000000 +0000
 +++ plugin/keyring_vault/CMakeLists.txt
-@@ -59,6 +59,6 @@ IF(WITH_KEYRING_VAULT_TEST)
-   ADD_SUBDIRECTORY(keyring_vault-test)
- ENDIF()
+@@ -57,7 +57,7 @@ ENDIF()
  
--IF(INSTALL_MYSQLTESTDIR)
-+IF(0)
-   INSTALL(DIRECTORY tests/mtr/ DESTINATION ${INSTALL_MYSQLTESTDIR}/suite/keyring_vault COMPONENT Test)
+ #Disable MTR for PXB
+ IF(NOT WITH_XTRABACKUP)
+-  IF(INSTALL_MYSQLTESTDIR)
++  IF(0)
+     INSTALL(DIRECTORY tests/mtr/ DESTINATION ${INSTALL_MYSQLTESTDIR}/suite/keyring_vault COMPONENT Test)
+   ENDIF()
  ENDIF()
