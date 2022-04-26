@@ -1,6 +1,6 @@
 # $NetBSD$
 
-DISTNAME=	percona-xtrabackup-2.4.18
+DISTNAME=	percona-xtrabackup-2.4.25
 CATEGORIES=	databases
 MASTER_SITES=	https://www.percona.com/downloads/Percona-XtraBackup-2.4/Percona-XtraBackup-${PKGVERSION_NOREV}/source/tarball/
 
@@ -37,7 +37,8 @@ CMAKE_ARGS+=		-DINSTALL_MYSQLTESTDIR=""
 
 CMAKE_ARGS+=		-DEVENT__HAVE_EPOLL=NO
 
-CFLAGS+=		-D_POSIX_PTHREAD_SEMANTICS
+CFLAGS.SunOS+=		-D_POSIX_PTHREAD_SEMANTICS
+CXXFLAGS.SunOS+=	-D__STDC_WANT_LIB_EXT1__
 LDFLAGS.SunOS+=		-lsocket -lnsl
 
 CHECK_PORTABILITY_SKIP+=	packaging/deb-in/mysql-packagesource-server.config.in
