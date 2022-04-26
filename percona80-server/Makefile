@@ -7,10 +7,6 @@ CONFLICTS=	mysql-server-[0-9]*
 
 .include "../../joyent/percona80-client/Makefile.common"
 
-CMAKE_ARGS+=		-DINSTALL_INFODIR=${PKGINFODIR}
-CMAKE_ARGS+=		-DINSTALL_MYSQLTESTDIR=""
-CMAKE_ARGS+=		-DWITH_EMBEDDED_SERVER=ON
-
 PKG_GROUPS=		${MYSQL_GROUP}
 PKG_USERS=		${MYSQL_USER}:${MYSQL_GROUP}
 
@@ -29,18 +25,12 @@ MESSAGE_SUBST+=		MYSQL_DATADIR=${MYSQL_DATADIR}
 MESSAGE_SUBST+=		MYSQL_USER=${MYSQL_USER} MYSQL_GROUP=${MYSQL_GROUP}
 BUILD_DEFS+=		MYSQL_DATADIR
 
-SUBST_CLASSES+=		perlpath
-SUBST_STAGE.perlpath=	pre-configure
-SUBST_MESSAGE.perlpath=	Fixing Perl paths.
-SUBST_FILES.perlpath=	scripts/mysql_config.pl.in
-SUBST_FILES.perlpath+=	scripts/mysqld_multi.sh
-SUBST_FILES.perlpath+=	scripts/mysqldumpslow.sh
-SUBST_SED.perlpath=	-e 's,@PERL_PATH@,${PERL5},g'
-
 INFO_FILES=		yes
 
 CONF_FILES=		${PREFIX}/share/mysql/my-joyent.cnf \
 			${PKG_SYSCONFDIR}/my.cnf
+CONF_FILES+=		${PREFIX}/share/mysql/mysqlrouter-log-rotate \
+			${PKG_SYSCONFDIR}/logrotate.d/mysqlrouter
 
 TEST_TARGET=		test
 
@@ -54,8 +44,7 @@ post-install:
 	${INSTALL_DATA} ${WRKSRC}/my-joyent.cnf \
 	    ${DESTDIR}${PREFIX}/share/mysql/my-joyent.cnf
 
-.include "../../archivers/lz4/buildlink3.mk"
-BUILDLINK_AUTO_DIRS.percona-client=	no
+#BUILDLINK_AUTO_DIRS.percona-client=	no
 .include "../../joyent/percona80-client/buildlink3.mk"
 .include "../../security/tcp_wrappers/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"

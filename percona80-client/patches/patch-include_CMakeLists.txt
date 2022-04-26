@@ -2,18 +2,18 @@ $NetBSD$
 
 Split configuration between -client and -server.
 
---- include/CMakeLists.txt.orig	2019-12-05 20:21:35.000000000 +0000
+--- include/CMakeLists.txt.orig	2022-02-28 19:55:41.000000000 +0000
 +++ include/CMakeLists.txt
-@@ -44,6 +44,7 @@ SET(HEADERS_MYSQL_DIR
-   mysql/udf_registration_types.h
+@@ -57,6 +57,7 @@ SET(HEADERS_EXT_DIR
+   ext/string_view.hpp
  )
  
 +IF(WITHOUT_SERVER)
  INSTALL(FILES ${HEADERS}
    DESTINATION ${INSTALL_INCLUDEDIR}
    COMPONENT Development
-@@ -53,6 +54,7 @@ INSTALL(FILES ${HEADERS_MYSQL_DIR}
-   DESTINATION ${INSTALL_INCLUDEDIR}/mysql
+@@ -76,6 +77,7 @@ INSTALL(FILES ${HEADERS_EXT_DIR}
+   DESTINATION ${INSTALL_INCLUDEDIR}/ext
    COMPONENT Development
    )
 +ENDIF()

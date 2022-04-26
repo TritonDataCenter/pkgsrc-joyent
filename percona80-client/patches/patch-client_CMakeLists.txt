@@ -2,25 +2,25 @@ $NetBSD$
 
 Split configuration between -client and -server.
 
---- client/CMakeLists.txt.orig	2019-12-05 20:21:35.000000000 +0000
+--- client/CMakeLists.txt.orig	2022-02-28 19:55:41.000000000 +0000
 +++ client/CMakeLists.txt
-@@ -26,6 +26,7 @@ INCLUDE_DIRECTORIES(SYSTEM ${READLINE_IN
+@@ -31,6 +31,7 @@ INCLUDE_DIRECTORIES(SYSTEM ${READLINE_IN
  
  ADD_SUBDIRECTORY(base)
  ## Subdirectory for mysqlpump code.
 +IF(WITHOUT_SERVER)
  ADD_SUBDIRECTORY(dump)
- 
- MYSQL_ADD_EXECUTABLE(mysql
-@@ -36,6 +37,7 @@ MYSQL_ADD_EXECUTABLE(mysql
-   readline.cc
+ ## Subdirectory for mysql_migrate_keyring code.
+ ADD_SUBDIRECTORY(migrate_keyring)
+@@ -50,6 +51,7 @@ MYSQL_ADD_EXECUTABLE(mysql
+   ${CMAKE_CURRENT_SOURCE_DIR}/common/user_registration.cc
    LINK_LIBRARIES perconaserverclient client_base ${MY_READLINE_LIBRARY}
    )
 +ENDIF()
  
  IF(NOT WITHOUT_SERVER)
    MYSQL_ADD_EXECUTABLE(mysql_upgrade
-@@ -51,6 +53,7 @@ IF(SOLARIS_SPARC AND CMAKE_BUILD_TYPE_UP
+@@ -58,6 +60,7 @@ IF(NOT WITHOUT_SERVER)
      )
  ENDIF()
  
@@ -28,7 +28,7 @@ Split configuration between -client and -server.
  MYSQL_ADD_EXECUTABLE(mysqltest
    mysqltest.cc
    mysqltest/error_names.cc
-@@ -121,16 +124,21 @@ MYSQL_ADD_EXECUTABLE(mysql_config_editor
+@@ -274,16 +277,21 @@ MYSQL_ADD_EXECUTABLE(mysql_config_editor
    mysql_config_editor.cc
    LINK_LIBRARIES perconaserverclient
    )
