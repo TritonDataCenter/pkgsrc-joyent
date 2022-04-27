@@ -29,7 +29,7 @@ PLIST_VARS+=		memcached
 .if !empty(PKG_OPTIONS:Mmemcached)
 PLIST.memcached=	yes
 CMAKE_ARGS+=		-DWITH_INNODB_MEMCACHED=ON
-CMAKE_ARGS+=		-DWITH_BUNDLED_MEMCACHED=ON
+#CMAKE_ARGS+=		-DWITH_BUNDLED_MEMCACHED=ON
 CMAKE_ARGS+=		-DWITH_LIBEVENT=system
 .include "../../devel/libevent/buildlink3.mk"
 .else

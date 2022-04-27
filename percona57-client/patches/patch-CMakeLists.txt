@@ -2,9 +2,9 @@ $NetBSD$
 
 Split configuration between mysql-client and mysql-server.
 
---- CMakeLists.txt.orig	2018-12-18 15:24:44.000000000 +0000
+--- CMakeLists.txt.orig	2022-03-28 10:58:37.000000000 +0000
 +++ CMakeLists.txt
-@@ -640,7 +640,6 @@ ADD_SUBDIRECTORY(vio)
+@@ -706,7 +706,6 @@ ADD_SUBDIRECTORY(vio)
  ADD_SUBDIRECTORY(regex)
  ADD_SUBDIRECTORY(mysys)
  ADD_SUBDIRECTORY(mysys_ssl)
@@ -12,7 +12,7 @@ Split configuration between mysql-client and mysql-server.
  ADD_SUBDIRECTORY(libbinlogevents)
  ADD_SUBDIRECTORY(libbinlogstandalone)
  
-@@ -678,12 +677,12 @@ ADD_SUBDIRECTORY(client)
+@@ -749,12 +748,12 @@ ADD_SUBDIRECTORY(client)
  ADD_SUBDIRECTORY(sql/share)
  ADD_SUBDIRECTORY(libservices)
  

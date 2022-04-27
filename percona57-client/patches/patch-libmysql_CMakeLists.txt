@@ -3,56 +3,49 @@ $NetBSD$
 Do not install libperconaserverclient with the server.
 Generate versioned lib symlinks on FreeBSD to supress PLIST divergence.
 
---- libmysql/CMakeLists.txt.orig	2018-05-29 21:11:24.000000000 +0000
+--- libmysql/CMakeLists.txt.orig	2022-03-28 10:58:37.000000000 +0000
 +++ libmysql/CMakeLists.txt
-@@ -230,12 +230,18 @@ IF(WIN32)
-   LIST(APPEND LIBS auth_win_client)
+@@ -262,11 +262,17 @@ IF(WIN32)
  ENDIF()
  
-+IF(NOT WITHOUT_SERVER)
  # LDAP authentication SASL client plugin
++IF(NOT WITHOUT_SERVER)
  MESSAGE(STATUS "Creating LDAP authentication SASL client library.")
  ADD_SUBDIRECTORY(authentication_ldap)
 +ENDIF()
    
  # Merge several convenience libraries into one big perconaserverclient
 +IF(WITHOUT_SERVER)
- MERGE_CONVENIENCE_LIBRARIES(perconaserverclient ${LIBS} COMPONENT Development)
+ MERGE_CONVENIENCE_LIBRARIES(perconaserverclient ${LIBS_TO_MERGE} COMPONENT Development)
 +ELSE()
-+MERGE_CONVENIENCE_LIBRARIES(perconaserverclient SKIP_INSTALL ${LIBS} COMPONENT Development)
++MERGE_CONVENIENCE_LIBRARIES(perconaserverclient SKIP_INSTALL ${LIBS_TO_MERGE} COMPONENT Development)
 +ENDIF()
+ TARGET_LINK_LIBRARIES(perconaserverclient ${LIBS_TO_LINK})
  
  # Visual Studio users need debug  static library for debug projects
- IF(MSVC)
-@@ -282,12 +288,18 @@ ENDIF()
+@@ -310,9 +316,15 @@ ENDIF()
  IF(NOT DISABLE_SHARED)
    # Merge several convenience libraries into one big perconaserverclient
    # and link them together into shared library.
 +  IF(WITHOUT_SERVER)
-   MERGE_LIBRARIES_SHARED(libmysql ${LIBS}
+   MERGE_LIBRARIES_SHARED(libmysql ${LIBS_TO_MERGE}
      EXPORTS ${CLIENT_API_FUNCTIONS} ${CLIENT_API_FUNCTIONS_UNDOCUMENTED}
      COMPONENT SharedLibraries)
 +  ELSE()
-+  MERGE_LIBRARIES_SHARED(libmysql SKIP_INSTALL ${LIBS}
++  MERGE_LIBRARIES_SHARED(libmysql SKIP_INSTALL ${LIBS_TO_MERGE}
 +    EXPORTS ${CLIENT_API_FUNCTIONS} ${CLIENT_API_FUNCTIONS_UNDOCUMENTED}
 +    COMPONENT SharedLibraries)
 +  ENDIF()
+   TARGET_LINK_LIBRARIES(libmysql ${LIBS_TO_LINK})
    IF(UNIX)
      # libtool compatability
--    IF(CMAKE_SYSTEM_NAME MATCHES "FreeBSD" OR APPLE)
-+    IF(CMAKE_SYSTEM_NAME MATCHES APPLE)
-       SET(OS_SHARED_LIB_VERSION "${SHARED_LIB_MAJOR_VERSION}")
-     ELSE()
-       SET(OS_SHARED_LIB_VERSION
-@@ -361,11 +373,7 @@ IF(LIBRT)
-   TARGET_LINK_LIBRARIES(libmysql_api_test ${LIBRT})
+@@ -397,7 +409,9 @@ ELSE()
  ENDIF()
  
--IF(DISABLE_SHARED)
-   TARGET_LINK_LIBRARIES(libmysql_api_test ${LIBS})
--ELSE()
--  TARGET_LINK_LIBRARIES(libmysql_api_test libmysql)
--ENDIF()
- 
  # Verify that libmysql_api_test runs OK
++IF(0)
  ADD_CUSTOM_COMMAND(TARGET libmysql_api_test POST_BUILD
+   COMMAND $<TARGET_FILE:libmysql_api_test>
+   > ${CMAKE_CURRENT_BINARY_DIR}/libmysql_api_test.out
+   )
++ENDIF()

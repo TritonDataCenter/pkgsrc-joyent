@@ -27,11 +27,7 @@ BUILDLINK_DEPMETHOD.editline=	build
 BUILDLINK_DEPMETHOD.readline=	build
 .endif
 
-PLIST_VARS+=		embedded ndb auth_socket
-
-.if ${OPSYS} == "Linux"
-PLIST.auth_socket=	yes
-.endif
+PLIST_VARS+=		embedded
 
 PTHREAD_OPTS+=		require
 

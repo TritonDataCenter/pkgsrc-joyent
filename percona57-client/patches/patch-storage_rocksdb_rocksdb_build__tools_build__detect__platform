@@ -2,14 +2,35 @@ $NetBSD$
 
 Fix shell portability.
 
---- storage/rocksdb/rocksdb/build_tools/build_detect_platform.orig	2018-12-18 16:45:32.000000000 +0000
+--- storage/rocksdb/rocksdb/build_tools/build_detect_platform.orig	2022-03-28 11:11:53.000000000 +0000
 +++ storage/rocksdb/rocksdb/build_tools/build_detect_platform
-@@ -498,7 +498,7 @@ if test -z "$PORTABLE"; then
-   elif test -n "`echo $TARGET_ARCHITECTURE | grep ^arm`"; then
-     # TODO: Handle this with approprite options.
+@@ -441,7 +441,7 @@ EOF
+             # providing direct link to the jemalloc library
+             WITH_JEMALLOC_FLAG=1
+             # check for JEMALLOC installed with HomeBrew
+-            if [ "$PLATFORM" == "OS_MACOSX" ]; then
++            if [ "$PLATFORM" = "OS_MACOSX" ]; then
+                 if hash brew 2>/dev/null && brew ls --versions jemalloc > /dev/null; then
+                     JEMALLOC_VER=$(brew ls --versions jemalloc | tail -n 1 | cut -f 2 -d ' ')
+                     JEMALLOC_INCLUDE="-I/usr/local/Cellar/jemalloc/${JEMALLOC_VER}/include"
+@@ -642,9 +642,9 @@ if test "0$PORTABLE" -eq 0; then
      COMMON_FLAGS="$COMMON_FLAGS"
--  elif [ "$TARGET_OS" == IOS ]; then
-+  elif [ "$TARGET_OS" = IOS ]; then
+   elif test -n "`echo $TARGET_ARCHITECTURE | grep ^aarch64`"; then
      COMMON_FLAGS="$COMMON_FLAGS"
-   elif [ "$TARGET_OS" != AIX ] && [ "$TARGET_OS" != SunOS ]; then
-     COMMON_FLAGS="$COMMON_FLAGS -march=native "
+-  elif [ "$TARGET_OS" == "IOS" ]; then
++  elif [ "$TARGET_OS" = "IOS" ]; then
+     COMMON_FLAGS="$COMMON_FLAGS"
+-  elif [ "$TARGET_OS" == "AIX" ] || [ "$TARGET_OS" == "SunOS" ]; then
++  elif [ "$TARGET_OS" = "AIX" ] || [ "$TARGET_OS" = "SunOS" ]; then
+     # TODO: Not sure why we don't use -march=native on these OSes
+     if test "$USE_SSE"; then
+       TRY_SSE_ETC="1"
+@@ -658,7 +658,7 @@ else
+     TRY_SSE_ETC="1"
+   fi
+ 
+-  if [[ "${PLATFORM}" == "OS_MACOSX" ]]; then
++  if [[ "${PLATFORM}" = "OS_MACOSX" ]]; then
+     # For portability compile for macOS 10.12 (2016) or newer
+     COMMON_FLAGS="$COMMON_FLAGS -mmacosx-version-min=10.12"
+     PLATFORM_LDFLAGS="$PLATFORM_LDFLAGS -mmacosx-version-min=10.12"
