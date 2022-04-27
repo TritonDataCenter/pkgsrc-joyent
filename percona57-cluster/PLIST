@@ -158,7 +158,7 @@ lib/libmysqlservices.a
 lib/libperconaserverclient.a
 lib/libperconaserverclient.so
 lib/libperconaserverclient.so.20
-lib/libperconaserverclient.so.20.3.13
+lib/libperconaserverclient.so.20.3.23
 lib/mysql/plugin/adt_null.so
 lib/mysql/plugin/audit_log.so
 lib/mysql/plugin/auth.so
@@ -166,6 +166,8 @@ lib/mysql/plugin/auth_test_plugin.so
 lib/mysql/plugin/authentication_ldap_sasl_client.so
 lib/mysql/plugin/connection_control.so
 lib/mysql/plugin/daemon_example.ini
+lib/mysql/plugin/data_masking.ini
+lib/mysql/plugin/data_masking.so
 lib/mysql/plugin/group_replication.so
 lib/mysql/plugin/ha_example.so
 lib/mysql/plugin/innodb_engine.so
@@ -257,12 +259,12 @@ man/man8/garbd.8
 man/man8/mysqld.8
 sbin/mysqld
 share/aclocal/mysql.m4
-share/doc/mysql/COPYING
 share/doc/mysql/ChangeLog
 share/doc/mysql/INFO_BIN
 share/doc/mysql/INFO_SRC
+share/doc/mysql/LICENSE
+share/doc/mysql/README
 share/doc/mysql/README-wsrep
-share/doc/mysql/README.MySQL
 share/mysql/bulgarian/errmsg.sys
 share/mysql/charsets/Index.xml
 share/mysql/charsets/README

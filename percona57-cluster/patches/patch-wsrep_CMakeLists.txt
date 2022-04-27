@@ -1,0 +1,15 @@
+$NetBSD$
+
+No DTrace probes in wsrep.
+
+--- wsrep/CMakeLists.txt.orig	2022-02-07 19:57:19.000000000 +0000
++++ wsrep/CMakeLists.txt
+@@ -16,7 +16,7 @@
+ SET(WSREP_SOURCES src/wsrep_gtid.c src/wsrep_uuid.c src/wsrep_loader.c src/wsrep_dummy.c)
+ 
+ ADD_CONVENIENCE_LIBRARY(wsrep ${WSREP_SOURCES})
+-DTRACE_INSTRUMENT(wsrep)
++#DTRACE_INSTRUMENT(wsrep)
+ 
+ #ADD_EXECUTABLE(listener wsrep_listener.c ${WSREP_SOURCES})
+ #TARGET_LINK_LIBRARIES(listener ${LIBDL})

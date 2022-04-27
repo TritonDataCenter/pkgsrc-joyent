@@ -2,9 +2,9 @@ $NetBSD$
 
 Don't install mysql-test, it's huge.
 
---- CMakeLists.txt.orig	2019-02-20 05:46:05.000000000 +0000
+--- CMakeLists.txt.orig	2022-02-07 19:58:20.000000000 +0000
 +++ CMakeLists.txt
-@@ -722,8 +722,8 @@ ENDIF()
+@@ -790,8 +790,8 @@ ENDIF()
  ADD_SUBDIRECTORY(scripts)
  
  IF(NOT WITHOUT_SERVER)

@@ -1,11 +1,14 @@
 $NetBSD$
 
-No dtrace probes in mysys_ssl.
+No DTrace probes in mysys_ssl.
 
---- mysys_ssl/CMakeLists.txt.orig	2018-06-29 03:13:57.000000000 +0000
+--- mysys_ssl/CMakeLists.txt.orig	2022-02-07 19:58:25.000000000 +0000
 +++ mysys_ssl/CMakeLists.txt
-@@ -50,4 +50,3 @@ TARGET_LINK_LIBRARIES(mysys_ssl dbug str
- IF(WIN32 AND NOT WITH_SSL STREQUAL "bundled")
+@@ -55,7 +55,6 @@ TARGET_LINK_LIBRARIES(mysys_ssl ${CMAKE_
+ IF(WIN32)
    TARGET_LINK_LIBRARIES(mysys_ssl crypt32)
  ENDIF()
 -DTRACE_INSTRUMENT(mysys_ssl)
+ 
+ # MD5_Init() MD5_Update() MD5_Final() are all deprecated
+ IF(SOLARIS AND CMAKE_COMPILER_IS_GNUCXX)
