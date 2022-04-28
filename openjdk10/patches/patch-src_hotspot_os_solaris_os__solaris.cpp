@@ -4,15 +4,6 @@ Fix building on SunOS in C99 mode.
 
 --- src/hotspot/os/solaris/os_solaris.cpp.orig	2019-01-08 12:44:54.000000000 +0000
 +++ src/hotspot/os/solaris/os_solaris.cpp
-@@ -168,6 +168,8 @@ extern "C" {
- 
-   static int lwp_cond_init(cond_t *cv, int scope, void *arg){ memset(cv, 0, sizeof(cond_t)); return 0; }
-   static int lwp_cond_destroy(cond_t *cv)                   { return 0; }
-+  static int memcntl(caddr_t, size_t, int, caddr_t, int, int);
-+  static int meminfo(const uint64_t *, int, const uint_t *, int, uint64_t *, uint_t *);
- }
- 
- // "default" initializers for pthread-based synchronization
 @@ -2329,7 +2331,7 @@ void os::pd_commit_memory_or_exit(char*
  
  // Uncommit the pages in a specified region.
