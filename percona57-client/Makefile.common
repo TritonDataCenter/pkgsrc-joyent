@@ -48,10 +48,6 @@ PKG_GROUPS_VARS+=	MYSQL_GROUP
 
 CONFIG_SHELL=		${TOOLS_PATH.bash}
 
-.if ${OPSYS} == "IRIX"
-CFLAGS+=		-DIRIX5 -DNEEDS_BSTRING_H
-.endif
-
 BUILD_DEFS+=		VARBASE
 
 # paths
@@ -91,12 +87,11 @@ CPPFLAGS+=		-Dunix
 CFLAGS+=		-DUSE_OLD_FUNCTIONS # 3.23.x compat
 #CFLAGS+=		-D__STDC_FORMAT_MACROS=1 # always defined too late
 
-.if ${OPSYS} != "Interix"
 CFLAGS+=		-fPIC -DPIC
 CXXFLAGS+=		-fPIC -DPIC
-.endif
 
 CMAKE_ARGS.SunOS+=	-DFORCE_UNSUPPORTED_COMPILER=YES
+CXXFLAGS.SunOS+=	-D__STDC_WANT_LIB_EXT1__=1
 
 # force HAVE_CURSES_H on Solaris since the configure script is broken
 # and does not properly detect this, breaking the build later on.  Also
