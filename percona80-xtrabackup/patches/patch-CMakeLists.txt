@@ -1,7 +1,6 @@
 $NetBSD$
 
 Don't install MySQL manual pages or INFO_SRC.
-Avoid libkmip conflict with percona-server.
 
 --- CMakeLists.txt.orig	2022-04-19 18:34:03.000000000 +0000
 +++ CMakeLists.txt
@@ -14,15 +13,6 @@ Avoid libkmip conflict with percona-server.
    ADD_DEFINITIONS(-D__STDC_WANT_LIB_EXT1__=1) # Get access to memset_s
  ENDIF()
  
-@@ -1877,7 +1877,7 @@ IF(WITH_PROTOBUF STREQUAL "bundled" OR W
-   ENDIF()
- ENDIF()
- 
--ADD_SUBDIRECTORY(extra/libkmip)
-+#ADD_SUBDIRECTORY(extra/libkmip)
- 
- #
- # Setup maintainer mode options by the end. Platform checks are
 @@ -2067,7 +2067,7 @@ IF(ENABLE_GCOV)
    INCLUDE(fastcov)
  ENDIF()

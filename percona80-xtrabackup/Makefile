@@ -53,6 +53,10 @@ post-extract:
 # Ashamed to say I'm having difficulty trying to stop this wart being installed...
 post-install:
 	${RM} -rf ${DESTDIR}${PREFIX}/docs
+	${RM} -f ${DESTDIR}${PREFIX}/include/kmip.h
+	${RM} -f ${DESTDIR}${PREFIX}/include/kmippp.h
+	${RM} -f ${DESTDIR}${PREFIX}/lib/libkmip.a
+	${RM} -f ${DESTDIR}${PREFIX}/lib/libkmippp.a
 
 .include "../../archivers/xz/buildlink3.mk"
 .include "../../devel/libev/buildlink3.mk"
