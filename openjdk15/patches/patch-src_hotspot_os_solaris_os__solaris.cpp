@@ -4,6 +4,15 @@ Fix building on SunOS in C99 mode.
 
 --- src/hotspot/os/solaris/os_solaris.cpp.orig	2020-05-20 18:29:11.000000000 +0000
 +++ src/hotspot/os/solaris/os_solaris.cpp
+@@ -169,6 +169,8 @@ extern "C" {
+ 
+   static int lwp_cond_init(cond_t *cv, int scope, void *arg){ memset(cv, 0, sizeof(cond_t)); return 0; }
+   static int lwp_cond_destroy(cond_t *cv)                   { return 0; }
++  int memcntl(caddr_t, size_t, int, caddr_t, int, int);
++  int meminfo(const uint64_t *, int, const uint_t *, int, uint64_t *, uint_t *);
+ }
+ 
+ // "default" initializers for pthread-based synchronization
 @@ -1430,7 +1432,9 @@ void * os::dll_load(const char *filename
      {EM_ARM,         EM_ARM,     ELFCLASS32, ELFDATA2LSB, (char*)"ARM"},
      // we only support 64 bit z architecture
