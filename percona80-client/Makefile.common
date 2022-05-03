@@ -79,6 +79,7 @@ CMAKE_ARGS.SunOS+=	-DEVENT__HAVE_EPOLL=NO
 
 BUILDLINK_TRANSFORM+=	rm:-Wmissing-include-dirs
 
+CFLAGS.SunOS+=		-fpermissive
 LDFLAGS.SunOS+=		-lsocket
 
 LDFLAGS+=		${COMPILER_RPATH_FLAG}${PREFIX}/lib/mysql
