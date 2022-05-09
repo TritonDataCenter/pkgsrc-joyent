@@ -1,0 +1,16 @@
+$NetBSD$
+
+Limit procfs to Linux.
+
+--- plugin/procfs/CMakeLists.txt.orig	2022-04-07 06:09:45.000000000 +0000
++++ plugin/procfs/CMakeLists.txt
+@@ -1,3 +1,4 @@
++IF(LINUX)
+ MYSQL_ADD_PLUGIN(procfs procfs.cc
+   MODULE_ONLY)
+ 
+@@ -8,3 +9,4 @@ IF(UNIX)
+     INSTALL(DIRECTORY tests/mtr/ DESTINATION ${INSTALL_MYSQLTESTDIR}/suite/procfs COMPONENT Test)
+   ENDIF()
+ ENDIF()
++ENDIF()

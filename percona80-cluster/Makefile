@@ -1,7 +1,7 @@
 # $NetBSD$
 
-MYSQL_VER=	8.0.21
-WSREP_MAJOR=	12
+MYSQL_VER=	8.0.27
+WSREP_MAJOR=	18
 
 DISTNAME=	Percona-XtraDB-Cluster-${MYSQL_VER}-${WSREP_MAJOR}
 PKGNAME=	percona-cluster-${MYSQL_VER}
@@ -23,7 +23,7 @@ DEPENDS+=	percona-xtrabackup>=0:../../joyent/percona-xtrabackup
 
 # nbpatch fails
 BUILD_DEPENDS+=	patch-[0-9]*:../../devel/patch
-PATCH=		${LOCALBASE}/bin/gpatch
+PATCH=		${PREFIX}/bin/gpatch
 
 #
 # Has specific boost version requirements so use bundled that we fetch
@@ -31,7 +31,7 @@ PATCH=		${LOCALBASE}/bin/gpatch
 # later on we have to pull in boost-libs as a manual DEPENDS as the galera
 # plugin requires libboost_program_options.a
 #
-BOOST=			boost_1_72_0
+BOOST=			boost_1_73_0
 DISTFILES=		${DISTNAME}${EXTRACT_SUFX} ${BOOST}.tar.bz2
 SITES.${BOOST}.tar.bz2=	${MASTER_SITE_SOURCEFORGE:=boost/}
 
@@ -60,14 +60,18 @@ CMAKE_ARGS+=		-DCMAKE_BUILD_TYPE=Release
 CMAKE_ARGS+=		-DINSTALL_DOCDIR="share/doc/mysql"
 CMAKE_ARGS+=		-DINSTALL_DOCREADMEDIR="share/doc/mysql"
 CMAKE_ARGS+=		-DINSTALL_INCLUDEDIR="include/mysql"
-CMAKE_ARGS+=		-DINSTALL_INFODIR="info"
+CMAKE_ARGS+=		-DINSTALL_INFODIR="${PKGINFODIR}"
 CMAKE_ARGS+=		-DINSTALL_MANDIR="${PKGMANDIR}"
 CMAKE_ARGS+=		-DINSTALL_MYSQLSHAREDIR="share/mysql"
 CMAKE_ARGS+=		-DINSTALL_MYSQLTESTDIR=""
 CMAKE_ARGS+=		-DINSTALL_PLUGINDIR="lib/mysql/plugin"
 CMAKE_ARGS+=		-DINSTALL_SBINDIR="sbin"
 CMAKE_ARGS+=		-DINSTALL_SUPPORTFILESDIR="share/mysql"
+CMAKE_ARGS+=		-DROUTER_INSTALL_DOCDIR="share/mysql"
+CMAKE_ARGS+=		-DROUTER_INSTALL_LOGROTATEDIR="share/mysql"
+
 CMAKE_ARGS+=		-DMYSQL_DATADIR=${MYSQL_DATADIR}
+
 CMAKE_ARGS+=		-DWITH_BOOST="${WRKDIR}/${BOOST}"
 CMAKE_ARGS+=		-DWITH_LZ4="system"
 CMAKE_ARGS+=		-DWITH_PROTOBUF="system"
@@ -76,6 +80,9 @@ CMAKE_ARGS+=		-DWITH_WSREP=1
 CMAKE_ARGS+=		-DWITH_ZLIB="system"
 
 CMAKE_ARGS.SunOS+=	-DFORCE_UNSUPPORTED_COMPILER=YES
+CXXFLAGS.SunOS+=	-fpermissive
+
+BUILDLINK_TRANSFORM+=	rm:-Wmissing-include-dirs
 
 # Force HAVE_CURSES_H on Solaris since the configure script is broken
 # and does not properly detect this, breaking the build later on.  Also
