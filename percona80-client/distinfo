@@ -16,6 +16,7 @@ SHA1 (patch-plugin_procfs_CMakeLists.txt) = 8461c85f7f87169ff85658a0414a1297feec
 SHA1 (patch-plugin_x_CMakeLists.txt) = 2c02b377e3d8ccb9e2a1b7896f85367eec8f3461
 SHA1 (patch-router_CMakeLists.txt) = bdf69eae93dbc6fd8e32e01688a1a4ad20e10149
 SHA1 (patch-scripts_CMakeLists.txt) = ef340efc87b58224484b3269fcbfb0abb916acd7
+SHA1 (patch-sql_binlog__reader.cc) = 8205808cb06c3dfcf66e17a51eee28fdca2c04d6
 SHA1 (patch-sql_mysqld.cc) = a507dc5506a8dc325b4c8a3addcdee440ff512b7
 SHA1 (patch-sql_resourcegroups_platform_thread__attrs__api__solaris.cc) = 10039638c4fff9347f53466118f94466ebf12e5c
 SHA1 (patch-storage_myisam_mi__dynrec.cc) = 9e0e368f9ced46cb091432fca0c4249313c5b7e8
