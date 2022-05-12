@@ -27,6 +27,7 @@ SHA1 (patch-plugin_x_CMakeLists.txt) = 2c02b377e3d8ccb9e2a1b7896f85367eec8f3461
 SHA1 (patch-router_CMakeLists.txt) = a70145c1125976d9068bf0d21ac8cfd1ef1f3a57
 SHA1 (patch-scripts_wsrep__sst__common.sh) = 92dbfa52a02cbfb61360a882d04930481b521bcf
 SHA1 (patch-scripts_wsrep__sst__xtrabackup-v2.sh) = 252e3c0dff5a65dd8ce8628745f0874ace4acd9e
+SHA1 (patch-sql_binlog__reader.cc) = 5079db7a07137aa3faa08e6ed62aaf0b1749a644
 SHA1 (patch-sql_mysqld.cc) = ae001516d3af0c81755d3fe5441b632bb28c2b71
 SHA1 (patch-sql_resourcegroups_platform_thread__attrs__api__solaris.cc) = 10039638c4fff9347f53466118f94466ebf12e5c
 SHA1 (patch-storage_myisam_mi__dynrec.cc) = 4a9e895bce53d5705b54761ef1195f43e8953927
