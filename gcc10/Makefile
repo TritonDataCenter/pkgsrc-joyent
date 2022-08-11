@@ -22,6 +22,8 @@ LICENSE=	gnu-gpl-v2 AND gnu-gpl-v3 AND gnu-lgpl-v2 AND gnu-lgpl-v3
 USE_LANGUAGES=	c99 c++
 USE_TOOLS+=	flex gmake m4 makeinfo perl sed:run tar:build
 
+DEPENDS+=	binutils-[0-9]*:../../devel/binutils
+
 GNU_CONFIGURE=		yes
 GNU_CONFIGURE_STRICT=	no
 
@@ -119,8 +121,6 @@ post-install:
 	${TEST} -f ${DESTDIR}${GCC_PREFIX}/bin/cc || \
 		( cd ${DESTDIR}${GCC_PREFIX}/bin ; ${LN} -f gcc cc )
 
-BUILDLINK_DEPMETHOD.binutils=	full
-.include "../../devel/binutils/buildlink3.mk"
 .include "../../devel/gmp/inplace.mk"
 .include "../../math/mpcomplex/inplace.mk"
 .include "../../math/mpfr/inplace.mk"
