@@ -1,6 +1,6 @@
 # $NetBSD$
 
-DISTNAME=	jdk-11.0.14.1-ga
+DISTNAME=	jdk-11.0.16.1-ga
 PKGNAME=	${DISTNAME:C/jdk/openjdk11/:C/-ga//}
 CATEGORIES=	lang
 MASTER_SITES=	${MASTER_SITE_GITHUB:=openjdk/}

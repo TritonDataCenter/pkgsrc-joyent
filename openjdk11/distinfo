@@ -1,11 +1,9 @@
 $NetBSD: distinfo,v 1.65 2018/12/15 20:27:45 jperkin Exp $
 
-SHA1 (openjdk11/jdk-11.0.14.1-ga.tar.gz) = 91bf02e7013ec4d2d633afbc3939cd9fa1b1ee1f
-RMD160 (openjdk11/jdk-11.0.14.1-ga.tar.gz) = 37f491047d07eaf8c5f1a2972ce6f26b3115a53a
-SHA512 (openjdk11/jdk-11.0.14.1-ga.tar.gz) = 0ee3fb2c2451c42616139693493048c98e6c2a36758374fa64b9f09d14f35b69ca89e7d32debbb2d7c7e85cb5fb24f0b3275ce1eb5126c7b58b1b7e5ac808824
-Size (openjdk11/jdk-11.0.14.1-ga.tar.gz) = 122806790 bytes
-SHA1 (openjdk11/openjdk10-10.0.46-x86_64-sun-solaris.tar.gz) = f0f2d95bd7ced602d58fb2d9bbaf9d925c9d5b16
-RMD160 (openjdk11/openjdk10-10.0.46-x86_64-sun-solaris.tar.gz) = d1287f91f402e02792e7b4721c16c08a5ca58865
+BLAKE2s (openjdk11/jdk-11.0.16.1-ga.tar.gz) = 6d03f7c68c6151b4e248e6e0d7fe1a181ccd380d523189ec44daf5133503fe9d
+SHA512 (openjdk11/jdk-11.0.16.1-ga.tar.gz) = c694a8e6b0ff664b2c6a43ef3445d98e3b4ddf59c7fe94a21390b2d7756870ea7c7e34cb99d40bd66708ecaee93ffeb4dfc9ab7e2162bd6fc19479f23963560d
+Size (openjdk11/jdk-11.0.16.1-ga.tar.gz) = 123134756 bytes
+BLAKE2s (openjdk11/openjdk10-10.0.46-x86_64-sun-solaris.tar.gz) = 84adb4adfeafea508beeb9c81e3c53f7f5c2b5a9d655b01711562e965a16aed1
 SHA512 (openjdk11/openjdk10-10.0.46-x86_64-sun-solaris.tar.gz) = 51bce5bd1a1af95efe995dfb22cca748c37e63d9a556cb2b21089c1a36b26d79159921eefcb9124c2276c19661f8aa4ad8736bb3a730c006d3cd0da34b67f73e
 Size (openjdk11/openjdk10-10.0.46-x86_64-sun-solaris.tar.gz) = 217572684 bytes
 SHA1 (patch-make_GenerateLinkOptData.gmk) = 1d2bc7f9b4a6c9ba12de18661c7c8025bff14168
