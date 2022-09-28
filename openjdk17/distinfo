@@ -1,0 +1,15 @@
+$NetBSD$
+
+BLAKE2s (il-jdk-17.0.4.1-ga.tar.gz) = 6a798529b5ea69662488fac04f53be1c43bb89e73b8fd96e896a99363a8b9e02
+SHA512 (il-jdk-17.0.4.1-ga.tar.gz) = 8725255a5563d8c603f116aabbe3aff841f409f7a774ee93828de84bc6bf66ed58bcf420d29773b39892ba72db968074d3ad4007a9388f182a84a5a68b2c900d
+Size (il-jdk-17.0.4.1-ga.tar.gz) = 105080998 bytes
+BLAKE2s (openjdk16-16.0.2-x86_64-sun-solaris.tar.gz) = fcfcdc5671d6ee9a4123564951f3b0df99d90ce3d22168395553b384ae1565e1
+SHA512 (openjdk16-16.0.2-x86_64-sun-solaris.tar.gz) = eec8bb9f128fdfca1929d59029246d198d623197bf282c1808a2b723be435f99fdd3b4e54df9181037bf0d04990f85737b35d5e9555fd9b637386ec3e381d874
+Size (openjdk16-16.0.2-x86_64-sun-solaris.tar.gz) = 221647689 bytes
+SHA1 (patch-make_GenerateLinkOptData.gmk) = 9fb9752d704e29d935a2f29c03dd3fbabf9731ab
+SHA1 (patch-make_Images.gmk) = d0edcdb3b36e3a32c2c0945ce222209675b8c7fe
+SHA1 (patch-make_autoconf_lib-bundled.m4) = f6a716a47d2ffcef2cf4f6443c974497030eb4bf
+SHA1 (patch-make_autoconf_spec.gmk.in) = c8587ab05ebf49e152cb5dc58a5cf2f724a3e0e8
+SHA1 (patch-make_common_modules_LauncherCommon.gmk) = 4f127e35797db3839a671f058ff6562283b4b797
+SHA1 (patch-src_hotspot_os_solaris_os__solaris.cpp) = d2b0fb1d9a59d59028d83bef8f4ffeb06e96d602
+SHA1 (patch-test_micro_org_openjdk_bench_java_nio_genBuffers.sh) = 7e5bca0b12a5442c36540460159d5d5f816fa273

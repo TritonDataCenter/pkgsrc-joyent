@@ -1,0 +1,15 @@
+$NetBSD$
+
+Ensure the correct zlib can be found.
+
+--- make/common/modules/LauncherCommon.gmk.orig	2020-05-13 14:18:16.000000000 +0000
++++ make/common/modules/LauncherCommon.gmk
+@@ -128,7 +128,7 @@ define SetupBuildLauncherBody
+   endif
+ 
+   ifeq ($(USE_EXTERNAL_LIBZ), true)
+-    $1_LIBS += -lz
++    $1_LIBS += @COMPILER_RPATH_FLAG@@BUILDLINK_PREFIX.zlib@/lib -L@BUILDLINK_PREFIX.zlib@/lib -lz
+   endif
+ 
+   $1_WINDOWS_JLI_LIB := $(call FindStaticLib, java.base, jli, /libjli)

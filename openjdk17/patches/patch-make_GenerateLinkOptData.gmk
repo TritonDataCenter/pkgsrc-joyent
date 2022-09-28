@@ -1,0 +1,26 @@
+$NetBSD$
+
+Ensure interim libraries can be found.  These patches are only appropriate for
+pkgsrc, other builds aren't as strict about removing $ORIGIN as us.
+
+--- make/GenerateLinkOptData.gmk.orig	2022-09-16 19:23:54.000000000 +0000
++++ make/GenerateLinkOptData.gmk
+@@ -66,15 +66,15 @@ $(CLASSLIST_FILE): $(INTERIM_IMAGE_DIR)/
+ 	$(call LogInfo, Generating $(patsubst $(OUTPUTDIR)/%, %, $@))
+ 	$(call LogInfo, Generating $(patsubst $(OUTPUTDIR)/%, %, $(JLI_TRACE_FILE)))
+ 	LD_LIBRARY_PATH=$(INTERIM_IMAGE_DIR)/lib:$(INTERIM_IMAGE_DIR)/lib/jli \
+-	$(FIXPATH) $(INTERIM_IMAGE_DIR)/bin/java -XX:DumpLoadedClassList=$@.raw \
++	$(FIXPATH) LD_LIBRARY_PATH=$(INTERIM_IMAGE_DIR)/lib $(INTERIM_IMAGE_DIR)/bin/java -XX:DumpLoadedClassList=$@.raw \
+ 	    -Duser.language=en -Duser.country=US \
+ 	    -cp $(SUPPORT_OUTPUTDIR)/classlist.jar \
+ 	    build.tools.classlist.HelloClasslist $(LOG_DEBUG)
+ 	$(GREP) -v HelloClasslist $@.raw > $@.interim
+-	$(FIXPATH) $(INTERIM_IMAGE_DIR)/bin/java -Xshare:dump \
++	$(FIXPATH) LD_LIBRARY_PATH=$(INTERIM_IMAGE_DIR)/lib $(INTERIM_IMAGE_DIR)/bin/java -Xshare:dump \
+ 	    -XX:SharedClassListFile=$@.interim -XX:SharedArchiveFile=$@.jsa \
+ 	    -Xmx128M -Xms128M $(LOG_INFO)
+-	$(FIXPATH) $(INTERIM_IMAGE_DIR)/bin/java -XX:DumpLoadedClassList=$@.raw.2 \
++	$(FIXPATH) LD_LIBRARY_PATH=$(INTERIM_IMAGE_DIR)/lib $(INTERIM_IMAGE_DIR)/bin/java -XX:DumpLoadedClassList=$@.raw.2 \
+ 	    -XX:SharedClassListFile=$@.interim -XX:SharedArchiveFile=$@.jsa \
+ 	    -Djava.lang.invoke.MethodHandle.TRACE_RESOLVE=true \
+ 	    -Duser.language=en -Duser.country=US \
