@@ -1,9 +1,7 @@
 $NetBSD$
 
-BLAKE2s (Percona-XtraDB-Cluster-5.7.36-31.55.tar.gz) = 5152dfab8cf71e8222d86da1a38191e1f4cc6a3c938063a11a565e31618c6ed2
 SHA512 (Percona-XtraDB-Cluster-5.7.36-31.55.tar.gz) = 856c9882eabb96b9bb75c8df4b9a5501c503c0e9f079266108dec7f6ec8731ec1a717f7afcc9072c56877c9e1912b00533fae77ee08f10cae15428b4ed433fb4
 Size (Percona-XtraDB-Cluster-5.7.36-31.55.tar.gz) = 86976230 bytes
-BLAKE2s (boost_1_59_0.tar.bz2) = 8738bf3fbcfd42ce18f2f9e2b9f49f496d3a84c038ace73b02f72889ad7da49b
 SHA512 (boost_1_59_0.tar.bz2) = 8139e1ae997a86974071c5714ad3307e3d8fd15ef702b81a953410dd4d424b932135f53a0ef4891d9b9b747a38e539e66d6a803388fe0cc98e5166be872d682a
 Size (boost_1_59_0.tar.bz2) = 70389425 bytes
 SHA1 (patch-CMakeLists.txt) = bb7f5f31fe85fdacd33c22b7e45203fefba51df9

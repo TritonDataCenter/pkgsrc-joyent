@@ -1,12 +1,9 @@
 $NetBSD$
 
-BLAKE2s (boost_1_59_0.tar.bz2) = 8738bf3fbcfd42ce18f2f9e2b9f49f496d3a84c038ace73b02f72889ad7da49b
 SHA512 (boost_1_59_0.tar.bz2) = 8139e1ae997a86974071c5714ad3307e3d8fd15ef702b81a953410dd4d424b932135f53a0ef4891d9b9b747a38e539e66d6a803388fe0cc98e5166be872d682a
 Size (boost_1_59_0.tar.bz2) = 70389425 bytes
-BLAKE2s (percona-server-5.7.37-40.tar.gz) = d06f504fa47b60b41a1ae30ac399f2ed0abcaa0ca4faeaa449282095bd5e41a8
 SHA512 (percona-server-5.7.37-40.tar.gz) = 0b0d9f3d854e63bcbf9ea49fa58ec229b3f0733b62d042b0b28d757fedfbc30437c25eb55fdb3aa3428efe7ec7689503a10e7802f64cf3d9f01ea80780bec2b7
 Size (percona-server-5.7.37-40.tar.gz) = 91183142 bytes
-BLAKE2s (sphinx-2.2.11-release.tar.gz) = 0399a166db059549b16b9e041182be23e3286fc5cb352b2246e58f7c8788ebd1
 SHA512 (sphinx-2.2.11-release.tar.gz) = cf1a262a5b0fbf0bd2827ec6ec629edeaf709ce855a6e7b509b65342baaeb26c02717ca63f1578d32c83d21e2fd6d1e92dceb34660e6351b93cd96fd4e623689
 Size (sphinx-2.2.11-release.tar.gz) = 3061998 bytes
 SHA1 (patch-CMakeLists.txt) = eea4fb1402939dd745ab7454e5c9e9028081f4f7

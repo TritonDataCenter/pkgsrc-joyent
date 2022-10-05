@@ -1,9 +1,7 @@
 $NetBSD$
 
-BLAKE2s (Percona-XtraDB-Cluster-8.0.27-18.tar.gz) = a502e717440a73757146b93cc9dd1e18fa75025fbed955f91569028c09ff531f
 SHA512 (Percona-XtraDB-Cluster-8.0.27-18.tar.gz) = e98e0a366938f16e043a5c72595c179ab04d8e36a1802f989cf8aba717cdd21f37e4d1aa01aa8faf3f87b43a4f9623e6d3342104d1b113cd890a5cc8c9d96217
 Size (Percona-XtraDB-Cluster-8.0.27-18.tar.gz) = 516429881 bytes
-BLAKE2s (boost_1_73_0.tar.bz2) = dd9df7534fe865bdca27d21f77ca058885d5be8c8cfa539e32d1577625b59782
 SHA512 (boost_1_73_0.tar.bz2) = 86c296511c0766145097625a62bf099c3d155284d250ad6e528e788bc90b2945838498dfe473c6c6c78d1694b6fba8e19f7dee0d064a043841e6231603fff668
 Size (boost_1_73_0.tar.bz2) = 109247910 bytes
 SHA1 (patch-cmake_os_SunOS.cmake) = b91c44b7de88c853a0a02fcb6d302a188bca057d

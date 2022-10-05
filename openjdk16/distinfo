@@ -1,9 +1,7 @@
 $NetBSD$
 
-BLAKE2s (il-jdk-16.0.2-ga.tar.gz) = 85881029cbcde3c150470d44ef16326fc4e1c625da2d3e6f672ce66134ff1940
 SHA512 (il-jdk-16.0.2-ga.tar.gz) = c30a81c964841914e1e80bd58a72a05edbb4843373dc39dfb05f59b5e98b91bf22c5dd0e2506e98992607f0e8ba83fcf2237ec3ff92f58faace88568b9182c88
 Size (il-jdk-16.0.2-ga.tar.gz) = 104652112 bytes
-BLAKE2s (openjdk15-15.0.0rc24-x86_64-sun-solaris.tar.gz) = ac1a7863f3eb83c16d36af30118596ba24b60ec0f08c134691657a0247102efa
 SHA512 (openjdk15-15.0.0rc24-x86_64-sun-solaris.tar.gz) = d2e6c15b307a20e6094b92738b2a3eda24d811d06c55786b83a479bf5caa4004d9cf6ac1218521aee4b596d0ef2e7fe781907e9510e9e4c114bf3d889aee9388
 Size (openjdk15-15.0.0rc24-x86_64-sun-solaris.tar.gz) = 215733122 bytes
 SHA1 (patch-make_GenerateLinkOptData.gmk) = 9fb9752d704e29d935a2f29c03dd3fbabf9731ab
