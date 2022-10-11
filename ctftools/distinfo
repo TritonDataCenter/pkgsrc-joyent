@@ -1,6 +1,5 @@
 $NetBSD$
 
-SHA1 (ctftools-1.0.tar.gz) = 338a3607a8d7719608b3dd91614dbd25c28b7d0c
-RMD160 (ctftools-1.0.tar.gz) = b7de8bd2c67e1042c013a914b98ccf6e2f99e474
-SHA512 (ctftools-1.0.tar.gz) = 6cc16e25748e4fb78128df1c9263c935a84f975fa1d6363e721b6c89f6b252756f7d88efe42b66148bd8db98c1b860e9d46f0cd7915e8f5470a960ff30d5a37f
-Size (ctftools-1.0.tar.gz) = 732043 bytes
+RMD160 (ctftools-20210826/ctftools.tar.gz) = 436fa3dea87e1392a135a3fb23fc046d54ca3401
+SHA512 (ctftools-20210826/ctftools.tar.gz) = c36e80a13128ede61faa42fa9ca024156c2b6a53099f82487b1f49aaa76a0aaec96b48082eb8c458bea2f8ff7123f8d56637173fe94356d260bb61b8b4aefa32
+Size (ctftools-20210826/ctftools.tar.gz) = 525706 bytes
