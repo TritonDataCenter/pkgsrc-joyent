@@ -1,11 +1,11 @@
 # $NetBSD$
 
-PKGNAME=	gcc10-libs-10.3.0
+PKGNAME=	gcc10-libs-10.4.0
 CATEGORIES=	joyent lang
 MASTER_SITES=	# empty
 DISTFILES=	# empty
 
-MAINTAINER=	jperkin@joyent.com
+MAINTAINER=	jperkin@pkgsrc.org
 HOMEPAGE=	https://gcc.gnu.org/
 COMMENT=	The GNU Compiler Collection (GCC) support shared libraries
 LICENSE=	gnu-gpl-v2 AND gnu-gpl-v3 AND gnu-lgpl-v2 AND gnu-lgpl-v3
@@ -44,7 +44,7 @@ do-install: ${LIBRARY_FILES} ${OBJECT_FILES}
 		-rw ${DESTDIR}${PREFIX}/gcc10/${MACHINE_GNU_PLATFORM} \
 		< ${LIBRARY_FILES}
 	cd ${PREFIX}/gcc10 && ${PAX} \
-		-r -s ',gcc/${MACHINE_GNU_PLATFORM}/10.3.0/,,' \
+		-r -s ',gcc/${MACHINE_GNU_PLATFORM}/10.4.0/,,' \
 		-w ${DESTDIR}${PREFIX}/gcc10/${MACHINE_GNU_PLATFORM} \
 		< ${OBJECT_FILES}
 

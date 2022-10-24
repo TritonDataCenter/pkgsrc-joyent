@@ -6,9 +6,9 @@ BUILDLINK_TREE+=	gcc10-libs
 GCC10_LIBS_BUILDLINK3_MK:=
 
 .if !empty(USE_PKGSRC_GCC_RUNTIME:M[Yy][Ee][Ss])
-BUILDLINK_API_DEPENDS.gcc10-libs+=	gcc10-libs>=10.3.0
+BUILDLINK_API_DEPENDS.gcc10-libs+=	gcc10-libs>=10.4.0
 .else
-BUILDLINK_API_DEPENDS.gcc10-libs+=	gcc10>=10.3.0
+BUILDLINK_API_DEPENDS.gcc10-libs+=	gcc10>=10.4.0
 .endif
 BUILDLINK_PKGSRCDIR.gcc10-libs=		../../joyent/gcc10-libs
 BUILDLINK_DEPMETHOD.gcc10-libs?=	full

@@ -2,19 +2,20 @@
 #
 # This is a GCC 10.x package specific to SmartOS:
 #
-#   - The upstream tarball is the combined il-* patchset from OmniOS
+#   - The GITHUB_TAG is the last commit to the ooce-10_4_0 branch prior to the
+#     OmniOS-specific library paths commit (which we do not want).
 #   - Some patches from the joyent "miscfix" branch are integrated.
 #   - Sections for non-SunOS are removed for clarity.
 #   - Every modification from the stock build should be clearly documented.
 #
 
-DISTNAME=	gcc10-10.3.0
+DISTNAME=	gcc10-10.4.0
 CATEGORIES=	joyent lang
 MASTER_SITES=	${MASTER_SITE_GITHUB:=omniosorg/}
 GITHUB_PROJECT=	gcc
-GITHUB_TAG=	85e56ed630134eb0082e7f905d9c54fdb28865ec
+GITHUB_TAG=	1f8c6b1d90dd69d36e9de7c1962b42e349561085
 
-MAINTAINER=	jperkin@joyent.com
+MAINTAINER=	jperkin@pkgsrc.org
 HOMEPAGE=	https://gcc.gnu.org/
 COMMENT=	The GNU Compiler Collection (GCC) - 10.x Release Series
 LICENSE=	gnu-gpl-v2 AND gnu-gpl-v3 AND gnu-lgpl-v2 AND gnu-lgpl-v3
