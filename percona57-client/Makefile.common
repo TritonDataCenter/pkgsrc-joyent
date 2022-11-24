@@ -3,9 +3,9 @@
 # used by joyent/percona57-client/Makefile
 # used by joyent/percona57-server/Makefile
 
-MYSQLEXT_VER=	40
+MYSQLEXT_VER=	42
 
-DISTNAME=	percona-server-5.7.37-${MYSQLEXT_VER}
+DISTNAME=	percona-server-5.7.39-${MYSQLEXT_VER}
 CATEGORIES=	databases
 MASTER_SITES=	http://www.percona.com/downloads/Percona-Server-5.7/Percona-Server-${PKGVERSION_NOREV}-${MYSQLEXT_VER}/source/tarball/
 
@@ -23,8 +23,7 @@ DISTINFO_FILE?=		${.CURDIR}/../../joyent/percona57-client/distinfo
 PATCHDIR?=		${.CURDIR}/../../joyent/percona57-client/patches
 
 USE_CMAKE=		yes
-USE_LANGUAGES=		c c++ c++03
-USE_MULTIARCH=		bin lib
+USE_LANGUAGES=		c c++03
 USE_TOOLS+=		bash bison gmake perl:run
 
 .include "../../mk/bsd.prefs.mk"
@@ -69,8 +68,6 @@ CMAKE_ARGS+=		-DMYSQL_DATADIR=${MYSQL_DATADIR}
 CMAKE_ARGS+=		-DCMAKE_BUILD_TYPE=Release
 
 CMAKE_ARGS+=		-DWITH_BOOST=${WRKDIR}/${BOOST}
-# Temporarily use bundled, until we bring in the xxhash.h include
-#CMAKE_ARGS+=		-DWITH_LZ4="system"
 CMAKE_ARGS+=		-DWITH_SSL="system"
 CMAKE_ARGS+=		-DWITH_ZLIB="system"
 CMAKE_ARGS+=		-DDEFAULT_CHARSET=${MYSQL_CHARSET:Q}
@@ -85,13 +82,11 @@ CFLAGS+=		-march=i486
 
 CPPFLAGS+=		-Dunix
 CFLAGS+=		-DUSE_OLD_FUNCTIONS # 3.23.x compat
-#CFLAGS+=		-D__STDC_FORMAT_MACROS=1 # always defined too late
 
 CFLAGS+=		-fPIC -DPIC
 CXXFLAGS+=		-fPIC -DPIC
 
 CMAKE_ARGS.SunOS+=	-DFORCE_UNSUPPORTED_COMPILER=YES
-CXXFLAGS.SunOS+=	-D__STDC_WANT_LIB_EXT1__=1
 
 # force HAVE_CURSES_H on Solaris since the configure script is broken
 # and does not properly detect this, breaking the build later on.  Also
@@ -124,15 +119,13 @@ USE_BUILTIN.editline=	no
 .endif
 
 .include "../../mk/readline.buildlink3.mk"
-.if ${READLINE_TYPE} == "readline"
-CMAKE_ARGS+=		-DWITH_READLINE="system"
-.else
-CMAKE_ARGS+=		-DWITH_EDITLINE="system"
-.endif
+
+CMAKE_ARGS.readline=	-DWITH_READLINE="system"
+CMAKE_ARGS.editline=	-DWITH_EDITLINE="system"
+CMAKE_ARGS+=		${CMAKE_ARGS.${READLINE_TYPE}}
 
 CHECK_PORTABILITY_SKIP+=	packaging/deb-in/mysql-packagesource-server.config.in
 CHECK_PORTABILITY_SKIP+=	storage/rocksdb/rocksdb/Makefile
 
-#.include "../../archivers/lz4/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../security/openssl/buildlink3.mk"
