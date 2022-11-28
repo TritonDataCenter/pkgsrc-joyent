@@ -29,7 +29,8 @@ USE_TOOLS+=	autoconf bash gmake pax unzip:run zip:run
 
 UNLIMIT_RESOURCES=	datasize stacksize
 
-BUILDLINK_TRANSFORM+=	rm:-Werror
+BUILDLINK_TRANSFORM+=		rm:-Werror
+BUILDLINK_TRANSFORM.SunOS+=	rm:-Wl,-O1
 
 CONFIGURE_ARGS+=	--disable-option-checking # for --with-libiconv-prefix
 CONFIGURE_ARGS+=	--prefix=${PREFIX:Q}
