@@ -1,0 +1,15 @@
+$NetBSD$
+
+Only link libprocps on Linux.
+
+--- storage/innobase/xtrabackup/src/CMakeLists.txt.orig	2022-11-08 10:31:09.000000000 +0000
++++ storage/innobase/xtrabackup/src/CMakeLists.txt
+@@ -131,7 +131,7 @@ TARGET_LINK_LIBRARIES(xtrabackup
+   crc
+   )
+ 
+-IF(NOT APPLE)
++IF(CMAKE_SYSTEM_NAME MATCHES "Linux")
+   TARGET_LINK_LIBRARIES(xtrabackup
+     procps
+     )
