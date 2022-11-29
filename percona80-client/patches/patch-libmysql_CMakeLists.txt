@@ -3,9 +3,9 @@ $NetBSD$
 Split configuration between -client and -server.
 Do not run libmysql_api_test, requires LD_LIBRARY_PATH.
 
---- libmysql/CMakeLists.txt.orig	2022-02-28 19:55:41.000000000 +0000
+--- libmysql/CMakeLists.txt.orig	2022-11-09 15:05:53.000000000 +0000
 +++ libmysql/CMakeLists.txt
-@@ -272,6 +272,7 @@ IF(WIN32)
+@@ -275,6 +275,7 @@ IF(WIN32)
  ENDIF()
  
  # LDAP authentication SASL client plug-in
@@ -13,7 +13,7 @@ Do not run libmysql_api_test, requires LD_LIBRARY_PATH.
  ADD_SUBDIRECTORY(authentication_ldap)
  
  # FIDO authentication client plugin
-@@ -282,13 +283,20 @@ ADD_SUBDIRECTORY(authentication_kerberos
+@@ -285,13 +286,20 @@ ADD_SUBDIRECTORY(authentication_kerberos
  
  # authentication IAM client plug-in
  ADD_SUBDIRECTORY(authentication_oci_client)
@@ -35,7 +35,7 @@ Do not run libmysql_api_test, requires LD_LIBRARY_PATH.
  # Visual Studio users need debug  static library for debug projects
  IF(MSVC)
    INSTALL_DEBUG_TARGET(perconaserverclient DESTINATION ${INSTALL_LIBDIR}/debug)
-@@ -334,6 +342,7 @@ ENDIF()
+@@ -337,6 +345,7 @@ ENDIF()
  
  # Merge several convenience libraries into one big perconaserverclient
  # and link them together into shared library.
@@ -43,7 +43,7 @@ Do not run libmysql_api_test, requires LD_LIBRARY_PATH.
  MERGE_LIBRARIES_SHARED(libmysql ${LIBS_TO_MERGE}
    EXPORTS
    ${CLIENT_API_FUNCTIONS}
-@@ -345,6 +354,19 @@ MERGE_LIBRARIES_SHARED(libmysql ${LIBS_T
+@@ -348,6 +357,19 @@ MERGE_LIBRARIES_SHARED(libmysql ${LIBS_T
    ${UNIX_SOVERSION}
    ${UNIX_VERSION}
    )
@@ -63,7 +63,7 @@ Do not run libmysql_api_test, requires LD_LIBRARY_PATH.
  
  # Downgrade warning for strncat in my_crypt_genhash.
  IF((WITH_LTO OR CMAKE_COMPILER_FLAG_WITH_LTO) AND MY_COMPILER_IS_GNU)
-@@ -400,6 +422,7 @@ CONFIGURE_FILE(api_test.c.in ${CMAKE_CUR
+@@ -403,6 +425,7 @@ CONFIGURE_FILE(api_test.c.in ${CMAKE_CUR
  # from @CLIENT_API_FUNCTIONS@ are declared by <mysql.h>. It will fail
  # to run if not all of these symbols are exported by the library.
  #
@@ -71,15 +71,16 @@ Do not run libmysql_api_test, requires LD_LIBRARY_PATH.
  MYSQL_ADD_EXECUTABLE(libmysql_api_test
    ${CMAKE_CURRENT_BINARY_DIR}/api_test.c
    LINK_LIBRARIES libmysql ${LIBRT}
-@@ -422,9 +445,12 @@ IF(HAS_WARN_FLAG)
+@@ -425,10 +448,13 @@ IF(HAS_WARN_FLAG)
      COMPILE_FLAGS ${HAS_WARN_FLAG}
      )
  ENDIF()
 +ENDIF()
  
- # Verify that libmysql_api_test runs OK
 +IF(0)
- ADD_CUSTOM_COMMAND(TARGET libmysql_api_test POST_BUILD
+ # Verify that libmysql_api_test runs OK
+ MY_ADD_CUSTOM_TARGET(run_libmysql_api_test ALL
+   DEPENDS libmysql_api_test
    COMMAND libmysql_api_test
    > ${CMAKE_CURRENT_BINARY_DIR}/libmysql_api_test.out
    )
