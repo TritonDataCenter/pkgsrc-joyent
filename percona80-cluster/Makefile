@@ -19,7 +19,7 @@ DEPENDS+=	coreutils>=0:../../sysutils/coreutils	# GNU mktemp
 DEPENDS+=	findutils>=0:../../sysutils/findutils	# find -regex
 DEPENDS+=	grep>=0:../../textproc/grep		# grep -o
 DEPENDS+=	socat>=0:../../net/socat
-DEPENDS+=	percona-xtrabackup>=0:../../joyent/percona-xtrabackup
+DEPENDS+=	percona-xtrabackup>=8:../../joyent/percona80-xtrabackup
 
 # nbpatch fails
 BUILD_DEPENDS+=	patch-[0-9]*:../../devel/patch
