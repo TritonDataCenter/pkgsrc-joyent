@@ -1,6 +1,7 @@
 $NetBSD$
 
 Don't install MySQL manual pages or INFO_SRC.
+Avoid icudt conflict with main percona packages.
 
 --- CMakeLists.txt.orig	2022-11-08 10:31:09.000000000 +0000
 +++ CMakeLists.txt
@@ -13,6 +14,15 @@ Don't install MySQL manual pages or INFO_SRC.
    ADD_DEFINITIONS(-D__STDC_WANT_LIB_EXT1__=1) # Get access to memset_s
  ENDIF()
  
+@@ -2113,7 +2113,7 @@ ENDIF()
+ 
+ IF(WITH_ICU STREQUAL "bundled")
+   IF(IS_ABSOLUTE "${INSTALL_PRIV_LIBDIR}")
+-    SET(MYSQL_ICU_DATADIR "${INSTALL_PRIV_LIBDIR}"
++    SET(MYSQL_ICU_DATADIR "${INSTALL_PRIV_LIBDIR}/xtrabackup"
+       CACHE PATH "default MySQL ICU data directory")
+   ELSE()
+     SET(MYSQL_ICU_DATADIR "${DEFAULT_MYSQL_HOME}/${INSTALL_PRIV_LIBDIR}"
 @@ -2294,7 +2294,7 @@ IF(ENABLE_GCOV)
    INCLUDE(fastcov)
  ENDIF()
