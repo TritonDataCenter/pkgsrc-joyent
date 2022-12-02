@@ -1,6 +1,6 @@
 # $NetBSD$
 
-DISTNAME=	build-essential-1.3
+DISTNAME=	build-essential-1.4
 CATEGORIES=	devel meta-pkgs
 MASTER_SITES=	# empty
 
@@ -20,15 +20,17 @@ DEPENDS+=	automake-[0-9]*:../../devel/automake
 DEPENDS+=	binutils-[0-9]*:../../devel/binutils
 DEPENDS+=	bison-[0-9]*:../../devel/bison
 .if ${PKGSRC_COMPILER} == "gcc"
-.  if !empty(_GCC_DEPENDS:Mgcc10*)
+.  if ${_GCC_DEPENDS:Mgcc12*}
+DEPENDS+=	${_GCC_DEPENDS}:../../extra/gcc12
+.  elif ${_GCC_DEPENDS:Mgcc10*}
 DEPENDS+=	${_GCC_DEPENDS}:../../joyent/gcc10
-.  elif !empty(_GCC_DEPENDS:Mgcc9*)
+.  elif ${_GCC_DEPENDS:Mgcc9*}
 DEPENDS+=	${_GCC_DEPENDS}:../../joyent/gcc9
-.  elif !empty(_GCC_DEPENDS:Mgcc7*)
+.  elif ${_GCC_DEPENDS:Mgcc7*}
 DEPENDS+=	${_GCC_DEPENDS}:../../lang/gcc7
-.  elif !empty(_GCC_DEPENDS:Mgcc49*)
+.  elif ${_GCC_DEPENDS:Mgcc49*}
 DEPENDS+=	${_GCC_DEPENDS}:../../lang/gcc49
-.  elif !empty(_GCC_DEPENDS:Mgcc47*)
+.  elif ${_GCC_DEPENDS:Mgcc47*}
 DEPENDS+=	${_GCC_DEPENDS}:../../lang/gcc47
 .  endif
 .endif
