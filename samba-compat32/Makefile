@@ -102,7 +102,7 @@ do-build:
 	${PKGSRC_SETENV} PKG_PATH=${PACKAGES:S/x86_64/i386/}/All \
 		${PKG_ADD_CMD} -P ${PKG_CHROOT} -I -m i386 'samba>4'
 .for lib dest in ${SAMBA_LIBS}
-	${TOOLS_PATH.elfedit} ${ELFEDIT_ARGS} ${PKG_CHROOT}/${PREFIX}/${lib}
+	/usr/bin/elfedit ${ELFEDIT_ARGS} ${PKG_CHROOT}/${PREFIX}/${lib}
 .endfor
 
 do-install:

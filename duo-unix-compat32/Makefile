@@ -53,7 +53,7 @@ do-build:
 	${PKGSRC_SETENV} PKG_PATH=${PACKAGES:S/x86_64/i386/}/All \
 		${PKG_ADD_CMD} -P ${PKG_CHROOT} -I -m i386 'duo-unix'
 .for lib in ${DUO_LIBS}
-	${TOOLS_PATH.elfedit} ${ELFEDIT_ARGS} ${PKG_CHROOT}/${PREFIX}/${lib}
+	/usr/bin/elfedit ${ELFEDIT_ARGS} ${PKG_CHROOT}/${PREFIX}/${lib}
 .endfor
 
 do-install:
