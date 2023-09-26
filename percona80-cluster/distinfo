@@ -1,16 +1,16 @@
 $NetBSD$
 
-RMD160 (Percona-XtraDB-Cluster-8.0.29-21.tar.gz) = e899e45270c674506386808d8537fa0a77669c0b
-SHA512 (Percona-XtraDB-Cluster-8.0.29-21.tar.gz) = e5e0fc8cb11a191f7594194000810c486ae5b5d6416589d144a0b43160dd71618d6fb8041bb9f33af37c485a30cbd5d68c204c5505bac784b862e5b3e093a5cb
-Size (Percona-XtraDB-Cluster-8.0.29-21.tar.gz) = 555763494 bytes
-RMD160 (boost_1_77_0.tar.bz2) = 2f65aacb1d4ec0296dc3cceab761757a2bc55986
-SHA512 (boost_1_77_0.tar.bz2) = 39b45c9b60bc5a2a4c669a4463d1272c1e093376b2fb374d7f20a84ea10a3e23bb04b335a735a83a04575731f874d9bff77e89acd947524b3fbbae1b26ae1f2f
-Size (boost_1_77_0.tar.bz2) = 110361537 bytes
+BLAKE2s (Percona-XtraDB-Cluster-8.0.27-18.tar.gz) = a502e717440a73757146b93cc9dd1e18fa75025fbed955f91569028c09ff531f
+SHA512 (Percona-XtraDB-Cluster-8.0.27-18.tar.gz) = e98e0a366938f16e043a5c72595c179ab04d8e36a1802f989cf8aba717cdd21f37e4d1aa01aa8faf3f87b43a4f9623e6d3342104d1b113cd890a5cc8c9d96217
+Size (Percona-XtraDB-Cluster-8.0.27-18.tar.gz) = 516429881 bytes
+BLAKE2s (boost_1_73_0.tar.bz2) = dd9df7534fe865bdca27d21f77ca058885d5be8c8cfa539e32d1577625b59782
+SHA512 (boost_1_73_0.tar.bz2) = 86c296511c0766145097625a62bf099c3d155284d250ad6e528e788bc90b2945838498dfe473c6c6c78d1694b6fba8e19f7dee0d064a043841e6231603fff668
+Size (boost_1_73_0.tar.bz2) = 109247910 bytes
 SHA1 (patch-cmake_os_SunOS.cmake) = b91c44b7de88c853a0a02fcb6d302a188bca057d
 SHA1 (patch-include_my__compare.h) = 9b4ebb1bc371b92dbdd1f3476ded1edcbb25327a
 SHA1 (patch-include_myisam.h) = 132aac8a30a1918a401ba1b0db788e5186ac9cf4
 SHA1 (patch-include_violite.h) = 0e5b33133969cbeb76e2f44ecc8258b6b4e4ef93
-SHA1 (patch-libmysql_CMakeLists.txt) = 63553d3625567b1ec95af7bb5ae26750d8f2b205
+SHA1 (patch-libmysql_CMakeLists.txt) = d2ea39638f3ee9078b0d9804c96bcd5a771ff0ce
 SHA1 (patch-percona-xtradb-cluster-galera_SConstruct) = f2889f2ba62981e941cba38b15d908f02c12b06c
 SHA1 (patch-percona-xtradb-cluster-galera_galera_src_replicator__str.cpp) = 6a2d989c35b44a550b1229b1226e44f17c340a3c
 SHA1 (patch-percona-xtradb-cluster-galera_galera_src_wsdb.cpp) = 05403339248ec8fe0a80746b41e1065ce6c74228
@@ -18,7 +18,7 @@ SHA1 (patch-percona-xtradb-cluster-galera_galerautils_src_gu__asio.hpp) = 011f04
 SHA1 (patch-percona-xtradb-cluster-galera_galerautils_src_gu__asio__socket__util.hpp) = 5b4f7a27e5b7eb64ff0ed784a6cd0ab6c7fb120a
 SHA1 (patch-percona-xtradb-cluster-galera_galerautils_src_gu__asio__stream__react.cpp) = ece12546a5f6d0604300acbe98ec97554893d4aa
 SHA1 (patch-percona-xtradb-cluster-galera_galerautils_src_gu__asio__stream__react.hpp) = bd7a3be57c4b173dacf1afee0a9240eb6ab76797
-SHA1 (patch-percona-xtradb-cluster-galera_galerautils_src_gu__progress.hpp) = ccd1efaf47b8ee9cbe56ee4fbcf23eeef60a8c6a
+SHA1 (patch-percona-xtradb-cluster-galera_galerautils_src_gu__progress.hpp) = a236946145e5a5478d94941134ceba3e6caebe95
 SHA1 (patch-percona-xtradb-cluster-galera_garb_process.cc) = 754b7de455bbfc43da1bfa8e6b74255246a688bd
 SHA1 (patch-percona-xtradb-cluster-galera_gcomm_src_asio__tcp.cpp) = 81693a118b990d5974f5d9d6ac83bedc9f7933e1
 SHA1 (patch-percona-xtradb-cluster-galera_gcs_src_gcs__gcomm.cpp) = d5be5c95e8e2f8333980b8ce8f74db4cb2ceda62

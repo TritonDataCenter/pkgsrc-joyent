@@ -1,7 +1,7 @@
 # $NetBSD$
 
-MYSQL_VER=	8.0.29
-WSREP_MAJOR=	21
+MYSQL_VER=	8.0.27
+WSREP_MAJOR=	18
 
 DISTNAME=	Percona-XtraDB-Cluster-${MYSQL_VER}-${WSREP_MAJOR}
 PKGNAME=	percona-cluster-${MYSQL_VER}
@@ -19,7 +19,7 @@ DEPENDS+=	coreutils>=0:../../sysutils/coreutils	# GNU mktemp
 DEPENDS+=	findutils>=0:../../sysutils/findutils	# find -regex
 DEPENDS+=	grep>=0:../../textproc/grep		# grep -o
 DEPENDS+=	socat>=0:../../net/socat
-DEPENDS+=	percona-xtrabackup>=8:../../joyent/percona80-xtrabackup
+DEPENDS+=	percona-xtrabackup>=0:../../joyent/percona-xtrabackup
 
 # nbpatch fails
 BUILD_DEPENDS+=	patch-[0-9]*:../../devel/patch
@@ -31,7 +31,7 @@ PATCH=		${PREFIX}/bin/gpatch
 # later on we have to pull in boost-libs as a manual DEPENDS as the galera
 # plugin requires libboost_program_options.a
 #
-BOOST=			boost_1_77_0
+BOOST=			boost_1_73_0
 DISTFILES=		${DISTNAME}${EXTRACT_SUFX} ${BOOST}.tar.bz2
 SITES.${BOOST}.tar.bz2=	${MASTER_SITE_SOURCEFORGE:=boost/}
 
@@ -81,10 +81,8 @@ CMAKE_ARGS+=		-DWITH_ZLIB="system"
 
 CMAKE_ARGS.SunOS+=	-DFORCE_UNSUPPORTED_COMPILER=YES
 CXXFLAGS.SunOS+=	-fpermissive
-LDFLAGS.SunOS+=		-lsocket
 
-BUILDLINK_TRANSFORM+=		rm:-Wmissing-include-dirs
-BUILDLINK_TRANSFORM.SunOS+=	rm:-Wl,--no-as-needed
+BUILDLINK_TRANSFORM+=	rm:-Wmissing-include-dirs
 
 # Force HAVE_CURSES_H on Solaris since the configure script is broken
 # and does not properly detect this, breaking the build later on.  Also
@@ -94,15 +92,15 @@ CMAKE_ARGS.SunOS+=	-DHAVE_EPOLL=NO
 CMAKE_ARGS.SunOS+=	-DEVENT__HAVE_SYS_EPOLL_H=NO
 CMAKE_ARGS.SunOS+=	-DEVENT__HAVE_EPOLL=NO
 
-# Required for lib/mysqlrouter/*.so
-LDFLAGS+=		${COMPILER_RPATH_FLAG}${PREFIX}/lib/mysql
-LDFLAGS+=		${COMPILER_RPATH_FLAG}${PREFIX}/lib/mysqlrouter
+LDFLAGS.SunOS+=		-lsocket
 
 .include "../../mk/readline.buildlink3.mk"
 
-CMAKE_ARGS.editline=	-DWITH_EDITLINE="system"
-CMAKE_ARGS.readline=	-DWITH_READLINE="system"
-CMAKE_ARGS+=		${CMAKE_ARGS.${READLINE_TYPE}}
+.if ${READLINE_TYPE} == "readline"
+CMAKE_ARGS+=		-DWITH_READLINE="system"
+.else
+CMAKE_ARGS+=		-DWITH_EDITLINE="system"
+.endif
 
 BUILD_DEFS+=		VARBASE
 
@@ -116,6 +114,10 @@ CHECK_PORTABILITY_SKIP+=	storage/ndb/mcc/frontend/dojo/dojox/mobile/build/build.
 # failed to set type size for 601 to 0x200: Invalid argument
 CTF_FILES_SKIP+=	${PREFIX}/bin/myisamlog
 CTF_FILES_SKIP+=	${PREFIX}/bin/replace
+
+# Required for lib/mysqlrouter/*.so
+LDFLAGS+=		${COMPILER_RPATH_FLAG}${PREFIX}/lib/mysql
+LDFLAGS+=		${COMPILER_RPATH_FLAG}${PREFIX}/lib/mysqlrouter
 
 PKG_GROUPS=		${MYSQL_GROUP}
 PKG_USERS=		${MYSQL_USER}:${MYSQL_GROUP}

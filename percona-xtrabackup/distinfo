@@ -1,7 +1,9 @@
 $NetBSD$
 
+BLAKE2s (boost_1_59_0.tar.bz2) = 8738bf3fbcfd42ce18f2f9e2b9f49f496d3a84c038ace73b02f72889ad7da49b
 SHA512 (boost_1_59_0.tar.bz2) = 8139e1ae997a86974071c5714ad3307e3d8fd15ef702b81a953410dd4d424b932135f53a0ef4891d9b9b747a38e539e66d6a803388fe0cc98e5166be872d682a
 Size (boost_1_59_0.tar.bz2) = 70389425 bytes
+BLAKE2s (percona-xtrabackup-2.4.25.tar.gz) = c4c115b9bdb201a571aa1010702efc70992b1131301e669b68a0bcec3f0897dd
 SHA512 (percona-xtrabackup-2.4.25.tar.gz) = 9f031acb0aff4aa6beced58129a0ad0037f024c632634b1730a71cfabea33d4a1caf7dfdcb608b57474d11abb9b899a3641f2917c90e6afd3ce786f8ffe4629d
 Size (percona-xtrabackup-2.4.25.tar.gz) = 62014901 bytes
 SHA1 (patch-CMakeLists.txt) = 80721cf5c37fa82355c7b80fe1720fde420fa616

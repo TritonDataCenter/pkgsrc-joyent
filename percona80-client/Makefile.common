@@ -3,8 +3,8 @@
 # used by joyent/percona80-client/Makefile
 # used by joyent/percona80-server/Makefile
 
-MYSQLEXT_VER=	22
-DISTNAME=	percona-server-8.0.30-${MYSQLEXT_VER}
+MYSQLEXT_VER=	18
+DISTNAME=	percona-server-8.0.27-${MYSQLEXT_VER}
 CATEGORIES=	databases
 MASTER_SITES=	https://www.percona.com/downloads/Percona-Server-8.0/Percona-Server-${PKGVERSION_NOREV}-${MYSQLEXT_VER}/source/tarball/
 
@@ -12,7 +12,7 @@ MAINTAINER?=	pkgsrc-users@NetBSD.org
 HOMEPAGE=	https://www.percona.com/
 LICENSE=	gnu-gpl-v2
 
-BOOST=			boost_1_77_0
+BOOST=			boost_1_73_0
 DISTFILES=		${DISTNAME}${EXTRACT_SUFX} ${BOOST}.tar.bz2
 SITES.${BOOST}.tar.bz2=	${MASTER_SITE_SOURCEFORGE:=boost/}
 
@@ -77,8 +77,7 @@ CMAKE_ARGS.SunOS+=	-DHAVE_EPOLL=NO
 CMAKE_ARGS.SunOS+=	-DEVENT__HAVE_SYS_EPOLL_H=NO
 CMAKE_ARGS.SunOS+=	-DEVENT__HAVE_EPOLL=NO
 
-BUILDLINK_TRANSFORM+=		rm:-Wmissing-include-dirs
-BUILDLINK_TRANSFORM.SunOS+=	rm:-Wl,--no-as-needed
+BUILDLINK_TRANSFORM+=	rm:-Wmissing-include-dirs
 
 CFLAGS.SunOS+=		-fpermissive
 LDFLAGS.SunOS+=		-lsocket
