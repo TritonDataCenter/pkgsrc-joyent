@@ -2,17 +2,18 @@ $NetBSD$
 
 Don't run libmysql_api_test, requires LD_LIBRARY_PATH.
 
---- libmysql/CMakeLists.txt.orig	2022-11-08 10:31:09.000000000 +0000
+--- libmysql/CMakeLists.txt.orig	2023-07-13 07:32:22.000000000 +0000
 +++ libmysql/CMakeLists.txt
-@@ -427,9 +427,11 @@ IF(HAS_WARN_FLAG)
-     )
+@@ -431,6 +431,7 @@ IF(HAS_WARN_FLAG)
  ENDIF()
  
-+IF(0)
  # Verify that libmysql_api_test runs OK
- MY_ADD_CUSTOM_TARGET(run_libmysql_api_test ALL
++IF(0)
+ ADD_CUSTOM_COMMAND(
+   OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/libmysql_api_test.out
    DEPENDS libmysql_api_test
-   COMMAND libmysql_api_test
-   > ${CMAKE_CURRENT_BINARY_DIR}/libmysql_api_test.out
+@@ -440,3 +441,4 @@ ADD_CUSTOM_COMMAND(
+ MY_ADD_CUSTOM_TARGET(run_libmysql_api_test ALL
+   DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/libmysql_api_test.out
    )
 +ENDIF()

@@ -1,9 +1,9 @@
 # $NetBSD$
 
-DISTNAME=	percona-xtrabackup-8.0.30-23
-PKGNAME=	percona-xtrabackup-8.0.30
+DISTNAME=	percona-xtrabackup-8.0.33-28
+PKGNAME=	percona-xtrabackup-8.0.33
 CATEGORIES=	databases
-MASTER_SITES=	https://downloads.percona.com/downloads/Percona-XtraBackup-LATEST/Percona-XtraBackup-8.0.30-23/source/tarball/
+MASTER_SITES=	https://downloads.percona.com/downloads/Percona-XtraBackup-LATEST/Percona-XtraBackup-8.0.33-28/source/tarball/
 
 MAINTAINER=	pkgsrc-users@NetBSD.org
 HOMEPAGE=	https://www.percona.com/software/percona-xtrabackup
@@ -28,20 +28,23 @@ CMAKE_ARG_PATH=		${WRKSRC}
 CMAKE_ARGS+=		-DWITH_BOOST=${WRKDIR}/${BOOST}
 CMAKE_ARGS+=		-DWITH_PROTOBUF=system
 CMAKE_ARGS+=		-DWITH_SSL=system
-CMAKE_ARGS+=		-DWITH_ZLIB=system
+CMAKE_ARGS+=		-DWITH_LIBEVENT=system
 CMAKE_ARGS+=		-DLIBEV_INCLUDE_PATHS=${BUILDLINK_PREFIX.libev}/include/ev
 CMAKE_ARGS+=		-DLIBEV_LIB_PATHS=${BUILDLINK_PREFIX.libev}/lib/ev
 
-CMAKE_ARGS+=		-DEVENT__HAVE_EPOLL=NO
+CMAKE_ARGS+=		-DHAVE_EPOLL=NO
 
 CMAKE_ARGS+=		-DBUILD_CONFIG=xtrabackup_release
 CMAKE_ARGS+=		-DFORCE_UNSUPPORTED_COMPILER=ON
 CMAKE_ARGS+=		-DINSTALL_MYSQLTESTDIR=percona-xtrabackup-test
 
-CFLAGS.SunOS+=		-D_POSIX_PTHREAD_SEMANTICS -fpermissive
+CFLAGS.SunOS+=		-D_POSIX_PTHREAD_SEMANTICS
+CXXFLAGS.SunOS+=	-fpermissive
 LDFLAGS.SunOS+=		-lsocket -lnsl
 
 BUILDLINK_TRANSFORM+=	rm:-Wmissing-include-dirs
+# cc1plus: warning: '-Wformat-security' ignored without '-Wformat'
+BUILDLINK_TRANSFORM+=	rm:-Wformat-security
 
 CHECK_INTERPRETER_SKIP+=	percona-xtrabackup-test/*
 CHECK_PORTABILITY_SKIP+=	packaging/deb-in/*
@@ -60,8 +63,8 @@ post-install:
 
 .include "../../archivers/xz/buildlink3.mk"
 .include "../../devel/libev/buildlink3.mk"
+.include "../../devel/libevent/buildlink3.mk"
 .include "../../devel/protobuf/buildlink3.mk"
-.include "../../devel/zlib/buildlink3.mk"
 .include "../../security/libgcrypt/buildlink3.mk"
 .include "../../security/openssl/buildlink3.mk"
 .include "../../www/curl/buildlink3.mk"

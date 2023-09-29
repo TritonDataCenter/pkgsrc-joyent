@@ -3,9 +3,9 @@ $NetBSD$
 Don't install MySQL manual pages or INFO_SRC.
 Avoid icudt conflict with main percona packages.
 
---- CMakeLists.txt.orig	2022-11-08 10:31:09.000000000 +0000
+--- CMakeLists.txt.orig	2023-07-13 07:32:22.000000000 +0000
 +++ CMakeLists.txt
-@@ -1585,7 +1585,7 @@ ADD_DEFINITIONS(-D__STDC_LIMIT_MACROS)
+@@ -1581,7 +1581,7 @@ ADD_DEFINITIONS(-D__STDC_LIMIT_MACROS)
  ADD_DEFINITIONS(-D__STDC_FORMAT_MACROS)    # Enable C99 printf format macros
  ADD_DEFINITIONS(-D_USE_MATH_DEFINES)       # Get access to M_PI, M_E, etc. in math.h
  ADD_DEFINITIONS(-DLZ4_DISABLE_DEPRECATE_WARNINGS) # C++14 deprecation warnings in LZ4.
@@ -14,7 +14,7 @@ Avoid icudt conflict with main percona packages.
    ADD_DEFINITIONS(-D__STDC_WANT_LIB_EXT1__=1) # Get access to memset_s
  ENDIF()
  
-@@ -2113,7 +2113,7 @@ ENDIF()
+@@ -2087,7 +2087,7 @@ ENDIF()
  
  IF(WITH_ICU STREQUAL "bundled")
    IF(IS_ABSOLUTE "${INSTALL_PRIV_LIBDIR}")
@@ -23,7 +23,7 @@ Avoid icudt conflict with main percona packages.
        CACHE PATH "default MySQL ICU data directory")
    ELSE()
      SET(MYSQL_ICU_DATADIR "${DEFAULT_MYSQL_HOME}/${INSTALL_PRIV_LIBDIR}"
-@@ -2294,7 +2294,7 @@ IF(ENABLE_GCOV)
+@@ -2296,7 +2296,7 @@ IF(ENABLE_GCOV)
    INCLUDE(fastcov)
  ENDIF()
  
