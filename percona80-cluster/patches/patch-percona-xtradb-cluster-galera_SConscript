@@ -1,0 +1,37 @@
+$NetBSD$
+
+Disable version-script on SunOS.
+Prune junk files installed into nonsense directories.
+
+--- percona-xtradb-cluster-galera/SConscript.orig	2023-07-27 06:44:53.000000000 +0000
++++ percona-xtradb-cluster-galera/SConscript
+@@ -12,6 +12,9 @@ Import('env', 'sysname', 'has_version_sc
+ # Clone the environment as it will be extended for this specific library
+ env = env.Clone()
+ 
++if sysname == 'sunos':
++    has_version_script = False
++
+ if has_version_script:
+     # Limit symbols visible from Galera DSO.
+     # Doing this allows to:
+@@ -88,19 +91,4 @@ if not have_ssl:
+ if install:
+     env.Install(install + '/lib', '#libgalera_smm.so')
+     env.Install(install + '/bin', '#garb/garbd')
+-    env.Install(install + '/share',
+-                '#garb/files/garb.service')
+-    env.Install(install + '/share',
+-                '#garb/files/garb-systemd')
+-    env.Install(install + '/share',
+-                '#garb/files/garb-systemd')
+-    env.Install(install + '/share',
+-                '#garb/files/garb.cnf')
+-    env.Install(install + '/doc/', '#COPYING')
+-    env.Install(install + '/doc/', '#AUTHORS')
+-    env.InstallAs(install + '/doc/LICENSE.asio',
+-                '#asio/LICENSE_1_0.txt')
+-    env.InstallAs(install + '/doc/README',
+-                '#scripts/packages/README')
+     env.Install(install + '/man/man8', '#man/garbd.8')
+-    env.Install(install + '/man/man8', '#man/garb-systemd.8')

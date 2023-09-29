@@ -68,6 +68,7 @@ include/mysql/mysqlpp/udf_wrappers.hpp
 include/mysql/mysqlx_ername.h
 include/mysql/mysqlx_error.h
 include/mysql/mysqlx_version.h
+lib/libgalera_smm.so
 lib/libkmip.a
 lib/libkmippp.a
 lib/libmysqlharness.so.1
@@ -75,6 +76,7 @@ lib/libmysqlharness_stdx.so.1
 lib/libmysqlharness_tls.so.1
 lib/libmysqlrouter.so.1
 lib/libmysqlrouter_connection_pool.so.1
+lib/libmysqlrouter_destination_status.so.1
 lib/libmysqlrouter_http.so.1
 lib/libmysqlrouter_http_auth_backend.so.1
 lib/libmysqlrouter_http_auth_realm.so.1
@@ -86,11 +88,12 @@ lib/libmysqlservices.a
 lib/libperconaserverclient.a
 lib/libperconaserverclient.so
 lib/libperconaserverclient.so.21
-lib/libperconaserverclient.so.21.2.29
+lib/libperconaserverclient.so.21.2.33
 lib/mysql/plugin/adt_null.so
 lib/mysql/plugin/audit_log.so
 lib/mysql/plugin/auth.so
 lib/mysql/plugin/auth_test_plugin.so
+lib/mysql/plugin/authentication_ldap_sasl.so
 lib/mysql/plugin/authentication_ldap_sasl_client.so
 lib/mysql/plugin/authentication_ldap_simple.so
 lib/mysql/plugin/authentication_oci_client.so
@@ -101,6 +104,7 @@ lib/mysql/plugin/component_example_component1.so
 lib/mysql/plugin/component_example_component2.so
 lib/mysql/plugin/component_example_component3.so
 lib/mysql/plugin/component_keyring_file.so
+lib/mysql/plugin/component_keyring_kmip.so
 lib/mysql/plugin/component_keyring_kms.so
 lib/mysql/plugin/component_log_filter_dragnet.so
 lib/mysql/plugin/component_log_sink_json.so
@@ -115,12 +119,16 @@ lib/mysql/plugin/component_test_audit_api_message.so
 lib/mysql/plugin/component_test_backup_lock_service.so
 lib/mysql/plugin/component_test_component_deinit.so
 lib/mysql/plugin/component_test_host_application_signal.so
+lib/mysql/plugin/component_test_mysql_command_services.so
 lib/mysql/plugin/component_test_mysql_current_thread_reader.so
 lib/mysql/plugin/component_test_mysql_runtime_error.so
 lib/mysql/plugin/component_test_mysql_system_variable_set.so
+lib/mysql/plugin/component_test_mysql_thd_store_service.so
 lib/mysql/plugin/component_test_pfs_notification.so
 lib/mysql/plugin/component_test_pfs_resource_group.so
 lib/mysql/plugin/component_test_sensitive_system_variables.so
+lib/mysql/plugin/component_test_server_telemetry_traces.so
+lib/mysql/plugin/component_test_status_var_reader.so
 lib/mysql/plugin/component_test_status_var_service.so
 lib/mysql/plugin/component_test_status_var_service_int.so
 lib/mysql/plugin/component_test_status_var_service_reg_only.so
@@ -147,6 +155,7 @@ lib/mysql/plugin/component_udf_unreg_3_func.so
 lib/mysql/plugin/component_udf_unreg_int_func.so
 lib/mysql/plugin/component_udf_unreg_real_func.so
 lib/mysql/plugin/component_validate_password.so
+lib/mysql/plugin/conflicting_variables.so
 lib/mysql/plugin/connection_control.so
 lib/mysql/plugin/daemon_example.ini
 lib/mysql/plugin/data_masking.ini
@@ -162,7 +171,6 @@ lib/mysql/plugin/keyring_vault.so
 lib/mysql/plugin/libdaemon_example.so
 lib/mysql/plugin/libfnv1a_udf.so
 lib/mysql/plugin/libfnv_udf.so
-lib/mysql/plugin/libgalera_smm.so
 lib/mysql/plugin/libmemcached.so
 lib/mysql/plugin/libmurmur_udf.so
 lib/mysql/plugin/libtest_framework.so
@@ -206,6 +214,7 @@ lib/mysql/plugin/semisync_replica.so
 lib/mysql/plugin/semisync_slave.so
 lib/mysql/plugin/semisync_source.so
 lib/mysql/plugin/test_security_context.so
+lib/mysql/plugin/test_services_command_services.so
 lib/mysql/plugin/test_services_host_application_signal.so
 lib/mysql/plugin/test_services_plugin_registry.so
 lib/mysql/plugin/test_udf_services.so
@@ -214,6 +223,7 @@ lib/mysql/plugin/udf_example.so
 lib/mysql/plugin/validate_password.so
 lib/mysql/plugin/version_token.so
 lib/mysqlrouter/connection_pool.so
+lib/mysqlrouter/destination_status.so
 lib/mysqlrouter/http_auth_backend.so
 lib/mysqlrouter/http_auth_realm.so
 lib/mysqlrouter/http_server.so

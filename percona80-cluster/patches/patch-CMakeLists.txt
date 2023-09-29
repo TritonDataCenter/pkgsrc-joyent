@@ -1,0 +1,24 @@
+$NetBSD$
+
+Always want memset_s.
+
+--- CMakeLists.txt.orig	2023-07-27 06:00:59.000000000 +0000
++++ CMakeLists.txt
+@@ -114,7 +114,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.5.1)
+ # Will set GIT_EXECUTABLE and GIT_FOUND
+ FIND_PACKAGE(Git)
+ 
+-SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake)
++SET (CMAKE_MODULE_PATH "/home/pbulk/build/joyent/percona80-cluster/work/.buildlink/cmake-Modules" "/home/pbulk/build/joyent/percona80-cluster/work/.buildlink/cmake-Modules" "/home/pbulk/build/joyent/percona80-cluster/work/.buildlink/cmake-Modules" ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake)
+ 
+ # First, decide about build type (debug or release)
+ # If cmake is invoked with -DCMAKE_BUILD_TYPE, 
+@@ -1604,7 +1604,7 @@ ELSE()
+   ENDIF()
+ ENDIF()
+ 
+-IF(APPLE)
++IF(1)
+   # Get access to memset_s
+   ADD_DEFINITIONS(-D__STDC_WANT_LIB_EXT1__=1)
+ ENDIF()

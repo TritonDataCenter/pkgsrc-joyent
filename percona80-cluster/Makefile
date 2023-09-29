@@ -1,7 +1,7 @@
 # $NetBSD$
 
-MYSQL_VER=	8.0.29
-WSREP_MAJOR=	21
+MYSQL_VER=	8.0.33
+WSREP_MAJOR=	25
 
 DISTNAME=	Percona-XtraDB-Cluster-${MYSQL_VER}-${WSREP_MAJOR}
 PKGNAME=	percona-cluster-${MYSQL_VER}
@@ -73,11 +73,11 @@ CMAKE_ARGS+=		-DROUTER_INSTALL_LOGROTATEDIR="share/mysql"
 CMAKE_ARGS+=		-DMYSQL_DATADIR=${MYSQL_DATADIR}
 
 CMAKE_ARGS+=		-DWITH_BOOST="${WRKDIR}/${BOOST}"
+CMAKE_ARGS+=		-DBoost_INCLUDE_DIR="${WRKDIR}/${BOOST}"
 CMAKE_ARGS+=		-DWITH_LZ4="system"
 CMAKE_ARGS+=		-DWITH_PROTOBUF="system"
 CMAKE_ARGS+=		-DWITH_SSL="system"
 CMAKE_ARGS+=		-DWITH_WSREP=1
-CMAKE_ARGS+=		-DWITH_ZLIB="system"
 
 CMAKE_ARGS.SunOS+=	-DFORCE_UNSUPPORTED_COMPILER=YES
 CXXFLAGS.SunOS+=	-fpermissive
@@ -85,6 +85,7 @@ LDFLAGS.SunOS+=		-lsocket
 
 BUILDLINK_TRANSFORM+=		rm:-Wmissing-include-dirs
 BUILDLINK_TRANSFORM.SunOS+=	rm:-Wl,--no-as-needed
+BUILDLINK_TRANSFORM.SunOS+=	rm:-Wl,--version-script=${WRKSRC}/percona-xtradb-cluster-galera/galera/src/galera-sym.map
 
 # Force HAVE_CURSES_H on Solaris since the configure script is broken
 # and does not properly detect this, breaking the build later on.  Also
@@ -93,6 +94,7 @@ CMAKE_ARGS.SunOS+=	-DHAVE_SYS_EPOLL_H=NO
 CMAKE_ARGS.SunOS+=	-DHAVE_EPOLL=NO
 CMAKE_ARGS.SunOS+=	-DEVENT__HAVE_SYS_EPOLL_H=NO
 CMAKE_ARGS.SunOS+=	-DEVENT__HAVE_EPOLL=NO
+CMAKE_ARGS.SunOS+=	-DHAVE_EPOLL_CREATE=NO
 
 # Required for lib/mysqlrouter/*.so
 LDFLAGS+=		${COMPILER_RPATH_FLAG}${PREFIX}/lib/mysql
@@ -144,15 +146,19 @@ SUBST_FILES.paths+=	support-files/mysql.server.sh
 SUBST_SED.paths=	-e "s,chown,${CHOWN},g"
 SUBST_SED.paths+=	-e "s,/bin/sh,${RCD_SCRIPTS_SHELL},g"
 
-SUBST_CLASSES+=		prefix
-SUBST_STAGE.prefix=	pre-configure
-SUBST_FILES.prefix=	scripts/wsrep_sst_xtrabackup-v2.sh
-SUBST_VARS.prefix=	LOCALBASE
+SUBST_CLASSES+=		vars
+SUBST_STAGE.vars=	pre-configure
+SUBST_FILES.vars+=	scripts/wsrep_sst_xtrabackup-v2.sh
+SUBST_FILES.vars+=	percona-xtradb-cluster-galera/garb/CMakeLists.txt
+SUBST_VARS.vars=	LOCALBASE PKGMANDIR
 
 CONF_FILES=		${PREFIX}/share/examples/mysql/my-cluster.cnf \
 			${PKG_SYSCONFDIR}/my.cnf
 
 INSTALLATION_DIRS+=	share/examples/mysql
+
+TEST_TARGET=		test
+TEST_ENV+=		LD_LIBRARY_PATH=${WRKDIR}/build/library_output_directory:${WRKDIR}/build/plugin_output_directory
 
 post-extract:
 	${MKDIR} ${CONFIGURE_DIRS}
@@ -169,33 +175,16 @@ BUILD_DEPENDS+=		boost-libs>0:../../devel/boost-libs
 #
 # The file needs to be copied into the work directory to avoid buildlink.
 #
-GALERA_SCONS_ARGS+=	bpostatic=${WRKDIR}/libboost_program_options.a
+BUILDLINK_TRANSFORM+=	opt:-lboost_program_options:${WRKDIR}/libboost_program_options.a
 
-#
-# Scons deliberately strips environment settings and causes havoc with
-# buildlink, so we need to put some things back manually..
-#
-GALERA_SCONS_ENV=	${MAKE_ENV}
-GALERA_SCONS_ENV+=	CPPFLAGS=-I${WRKDIR}/${BOOST}
-GALERA_SCONS_ENV+=	LIBPATH=${BUILDLINK_PREFIX.openssl}/lib
-GALERA_SCONS_ENV+=	RPATH=${BUILDLINK_PREFIX.openssl}/lib
-GALERA_SCONS_ARGS+=	${_MAKE_JOBS}
+pre-build:
+	${CP} ${LOCALBASE}/lib/libboost_program_options.a ${WRKDIR}
 
 post-build:
-	${CP} ${LOCALBASE}/lib/libboost_program_options.a ${WRKDIR}
-	${RUN} cd ${WRKSRC}/percona-xtradb-cluster-galera && \
-		revno=`cat GALERA-REVISION` && \
-		${SETENV} ${GALERA_SCONS_ENV} revno=$$revno ${SCONSBIN} \
-		    ${GALERA_SCONS_ARGS} psi=1 libgalera_smm.so && \
-		${SETENV} ${GALERA_SCONS_ENV} revno=$$revno ${SCONSBIN} \
-		    ${GALERA_SCONS_ARGS} garb/garbd
 	${SED} ${FILES_SUBST_SED} ${FILESDIR}/my-cluster.cnf.sh \
 	    >${WRKSRC}/my-cluster.cnf
 
 post-install:
-	${INSTALL_LIB} ${WRKSRC}/percona-xtradb-cluster-galera/libgalera_smm.so ${DESTDIR}${PREFIX}/lib/mysql/plugin/
-	${INSTALL_PROGRAM} ${WRKSRC}/percona-xtradb-cluster-galera/garb/garbd ${DESTDIR}${PREFIX}/bin/
-	${INSTALL_MAN} ${WRKSRC}/percona-xtradb-cluster-galera/man/garbd.8 ${DESTDIR}${PREFIX}/${PKGMANDIR}/man8/
 	${INSTALL_DATA} ${WRKSRC}/my-cluster.cnf ${DESTDIR}${PREFIX}/share/examples/mysql/my-cluster.cnf
 	${CHMOD} g-w ${DESTDIR}${PREFIX}
 	${CHMOD} -x ${DESTDIR}${PREFIX}/bin/wsrep_sst_common
@@ -206,7 +195,6 @@ post-install:
 .include "../../devel/libevent/buildlink3.mk"
 .include "../../devel/protobuf/buildlink3.mk"
 .include "../../devel/scons/buildlink3.mk"
-.include "../../devel/zlib/buildlink3.mk"
 .include "../../lang/python/application.mk"
 .include "../../security/openssl/buildlink3.mk"
 .include "../../security/tcp_wrappers/buildlink3.mk"
