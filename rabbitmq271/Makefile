@@ -6,7 +6,7 @@
 PKGNAME=	rabbitmq271-${RMQ_VERSION}
 DISTNAME=	rabbitmq-server-${RMQ_VERSION}
 CATEGORIES=	net
-MASTER_SITES=	http://www.rabbitmq.com/releases/rabbitmq-server/v${RMQ_VERSION}/
+MASTER_SITES=	${MASTER_SITE_GITHUB:=rabbitmq/}rabbitmq-server/releases/download/rabbitmq_v2_7_1/
 
 MAINTAINER=	filip@joyent.com
 HOMEPAGE=	http://www.rabbitmq.com/server.html
