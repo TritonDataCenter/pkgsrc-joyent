@@ -1,17 +1,17 @@
 $NetBSD$
 
-SHA1 (proxysql-1.4.7.tar.gz) = 67f7eb7e231bb9fbee3ff6a6e8548538374ff976
-RMD160 (proxysql-1.4.7.tar.gz) = 3b023bce6c46d80852d92e2c1b19ba8a1bb30885
-SHA512 (proxysql-1.4.7.tar.gz) = 3ea490d2ffbdabce3c2ae7fa37b6880feed1d7f250a506481642e7efe22a54b1b67b4e6b44f876d38fa721aabb1841afee7cc7b6d2a4606be341e43b3cd754ad
-Size (proxysql-1.4.7.tar.gz) = 13013128 bytes
-SHA1 (patch-Makefile) = f52d1e5be05fbf7a657b9f9bc5eaa4aba7e911dd
-SHA1 (patch-deps_Makefile) = cd456f2943d33233f6504b55a98d4cf379ffb926
+SHA1 (proxysql-1.4.12.tar.gz) = 1faeba1535e275c11fb372b6def0b065dd764a1f
+RMD160 (proxysql-1.4.12.tar.gz) = 87222c3f7715fb4ceae27c2eaff4b81a8cf90d17
+SHA512 (proxysql-1.4.12.tar.gz) = 41dfbbdb5e81137145e96b3499e62e55f6dd02270e01486237884ab88478ed32833b3fda907bb5f93185573936908f8ea7e105819d489bedd8106eacdbf22de4
+Size (proxysql-1.4.12.tar.gz) = 13023826 bytes
+SHA1 (patch-Makefile) = 5ffaf641c1e149a9654c4de800a25ac0f660987c
+SHA1 (patch-deps_Makefile) = 2fee0f19c818935b0a4d278f3ecca75c1cce1cee
 SHA1 (patch-deps_mariadb-client-library_mariadb-connector-c-2.3.1_cmake_CheckTypes.cmake) = 9abc7bb9cedccafd95cd7450568f89828a7fb384
 SHA1 (patch-deps_mariadb-client-library_mariadb-connector-c-2.3.1_include_my__pthread.h) = 26b278f7d3ea8e4e5a0fecab60f333573f4ae7ee
 SHA1 (patch-deps_mariadb-client-library_mariadb-connector-c-2.3.1_libmariadb_my__context.c) = 95494ea9a9a86d1ed25590a098d3ce09fcb6ce7b
-SHA1 (patch-etc_proxysql.cnf) = 0f21cf41566ee62fdd765f28807162084f04de19
-SHA1 (patch-include_MySQL__Data__Stream.h) = 27d7cf5e989e4d2c86ce35d015ae4a91f27e69da
-SHA1 (patch-include_proxy__defines.h) = 92869e76dc6219ff0d5161d2e933d6bcf9fa81fd
-SHA1 (patch-include_proxysql.h) = 96f33a5fa02112cae4d0c0626db70529eff66578
-SHA1 (patch-lib_ProxySQL__GloVars.cpp) = e24a79cb0e2f7c00814581b62db643a303a26b0e
-SHA1 (patch-src_Makefile) = c1bc76c608902e9ecf091e6b04e2efb05b057599
+SHA1 (patch-etc_proxysql.cnf) = 7861c4cf01d6947eff890171fa202a8ee6c5a9fe
+SHA1 (patch-include_MySQL__Data__Stream.h) = d02b5168e039219c9f3b54989cdd33fcee52fd6f
+SHA1 (patch-include_proxy__defines.h) = 2298a748de8372d506304ae0415dcc419b9e11b7
+SHA1 (patch-include_proxysql.h) = 00f7646af7cc3fdc400d66435ae0056688ca792a
+SHA1 (patch-lib_ProxySQL__GloVars.cpp) = 2454b57a6557c0784d585dcba463ca5892a04520
+SHA1 (patch-src_Makefile) = ecfdc8e928561eec1489c93856322ff1dc8218be
