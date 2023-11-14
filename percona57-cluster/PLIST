@@ -158,7 +158,7 @@ lib/libmysqlservices.a
 lib/libperconaserverclient.a
 lib/libperconaserverclient.so
 lib/libperconaserverclient.so.20
-lib/libperconaserverclient.so.20.3.23
+lib/libperconaserverclient.so.20.3.30
 lib/mysql/plugin/adt_null.so
 lib/mysql/plugin/audit_log.so
 lib/mysql/plugin/auth.so

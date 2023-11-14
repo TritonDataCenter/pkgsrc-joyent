@@ -1,13 +1,13 @@
 # $NetBSD$
 
-MYSQL_VER=	5.7.36
+MYSQL_VER=	5.7.43
 WSREP_API_VER=	31
-GALERA_MINOR=	55
+GALERA_MINOR=	65
 
 DISTNAME=	Percona-XtraDB-Cluster-${MYSQL_VER}-${WSREP_API_VER}.${GALERA_MINOR}
 PKGNAME=	percona-cluster-${MYSQL_VER}
 CATEGORIES=	databases
-MASTER_SITES=	https://www.percona.com/downloads/Percona-XtraDB-Cluster-57/${DISTNAME}/source/tarball/
+MASTER_SITES=	https://downloads.percona.com/downloads/Percona-XtraDB-Cluster-57/${DISTNAME:S/-${WSREP_API_VER}.${GALERA_MINOR}//}/source/tarball/
 
 COMMENT=	Percona Cluster Server 5.7
 MAINTAINER=	jperkin@joyent.com

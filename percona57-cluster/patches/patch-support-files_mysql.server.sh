@@ -2,7 +2,7 @@ $NetBSD$
 
 Use portable shell syntax.
 
---- support-files/mysql.server.sh.orig	2022-02-07 19:58:30.000000000 +0000
+--- support-files/mysql.server.sh.orig	2023-08-25 15:07:39.000000000 +0000
 +++ support-files/mysql.server.sh
 @@ -394,9 +394,9 @@ case "$mode" in
        # may be overwritten at next upgrade.
