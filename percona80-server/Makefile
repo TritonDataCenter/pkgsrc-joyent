@@ -44,7 +44,6 @@ post-install:
 	${INSTALL_DATA} ${WRKSRC}/my-joyent.cnf \
 	    ${DESTDIR}${PREFIX}/share/mysql/my-joyent.cnf
 
-#BUILDLINK_AUTO_DIRS.percona-client=	no
 .include "../../joyent/percona80-client/buildlink3.mk"
 .include "../../security/tcp_wrappers/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"

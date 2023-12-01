@@ -3,8 +3,8 @@
 # used by joyent/percona80-client/Makefile
 # used by joyent/percona80-server/Makefile
 
-MYSQLEXT_VER=	22
-DISTNAME=	percona-server-8.0.30-${MYSQLEXT_VER}
+MYSQLEXT_VER=	26
+DISTNAME=	percona-server-8.0.34-${MYSQLEXT_VER}
 CATEGORIES=	databases
 MASTER_SITES=	https://www.percona.com/downloads/Percona-Server-8.0/Percona-Server-${PKGVERSION_NOREV}-${MYSQLEXT_VER}/source/tarball/
 
@@ -72,15 +72,16 @@ CMAKE_ARGS.SunOS+=	-DFORCE_UNSUPPORTED_COMPILER=YES
 # Force HAVE_CURSES_H on Solaris since the configure script is broken
 # and does not properly detect this, breaking the build later on.  Also
 # explicitly disable epoll support as it is Linux-specific.
-#CMAKE_ARGS.SunOS+=	-DHAVE_SYS_EPOLL_H=NO
+CMAKE_ARGS.SunOS+=	-DHAVE_SYS_EPOLL_H=NO
 CMAKE_ARGS.SunOS+=	-DHAVE_EPOLL=NO
 CMAKE_ARGS.SunOS+=	-DEVENT__HAVE_SYS_EPOLL_H=NO
 CMAKE_ARGS.SunOS+=	-DEVENT__HAVE_EPOLL=NO
+CMAKE_ARGS.SunOS+=	-DHAVE_EPOLL_CREATE=NO
 
 BUILDLINK_TRANSFORM+=		rm:-Wmissing-include-dirs
 BUILDLINK_TRANSFORM.SunOS+=	rm:-Wl,--no-as-needed
 
-CFLAGS.SunOS+=		-fpermissive
+CXXFLAGS.SunOS+=	-fpermissive
 LDFLAGS.SunOS+=		-lsocket
 
 LDFLAGS+=		${COMPILER_RPATH_FLAG}${PREFIX}/lib/mysql

@@ -2,18 +2,18 @@ $NetBSD$
 
 Split configuration between -client and -server.
 
---- CMakeLists.txt.orig	2022-02-28 19:55:41.000000000 +0000
+--- CMakeLists.txt.orig	2023-09-14 19:45:46.000000000 +0000
 +++ CMakeLists.txt
-@@ -114,7 +114,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.5.1)
- # Will set GIT_EXECUTABLE and GIT_FOUND
- FIND_PACKAGE(Git)
+@@ -1602,7 +1602,7 @@ ELSE()
+   ENDIF()
+ ENDIF()
  
--SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake)
-+SET (CMAKE_MODULE_PATH "/home/pbulk/build/joyent/percona80-server/work/.buildlink/cmake-Modules" "/home/pbulk/build/joyent/percona80-client/work/.buildlink/cmake-Modules" ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake)
- 
- # First, decide about build type (debug or release)
- # If cmake is invoked with -DCMAKE_BUILD_TYPE, 
-@@ -1958,8 +1958,9 @@ ADD_SUBDIRECTORY(utilities)
+-IF(APPLE)
++IF(1)
+   # Get access to memset_s
+   ADD_DEFINITIONS(-D__STDC_WANT_LIB_EXT1__=1)
+ ENDIF()
+@@ -2273,8 +2273,9 @@ ADD_SUBDIRECTORY(utilities)
  ADD_SUBDIRECTORY(share)
  ADD_SUBDIRECTORY(libservices)
  
@@ -24,7 +24,7 @@ Split configuration between -client and -server.
    ADD_SUBDIRECTORY(sql)
  ENDIF()
  
-@@ -2042,7 +2043,7 @@ IF(ENABLE_GCOV)
+@@ -2365,7 +2366,7 @@ IF(ENABLE_GCOV)
    INCLUDE(fastcov)
  ENDIF()
  

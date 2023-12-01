@@ -2,9 +2,9 @@ $NetBSD$
 
 Split configuration between -client and -server.
 
---- client/CMakeLists.txt.orig	2022-02-28 19:55:41.000000000 +0000
+--- client/CMakeLists.txt.orig	2023-09-14 19:45:46.000000000 +0000
 +++ client/CMakeLists.txt
-@@ -31,6 +31,7 @@ INCLUDE_DIRECTORIES(SYSTEM ${READLINE_IN
+@@ -31,6 +31,7 @@ INCLUDE_DIRECTORIES(SYSTEM ${MY_XLINE_IN
  
  ADD_SUBDIRECTORY(base)
  ## Subdirectory for mysqlpump code.
@@ -14,7 +14,7 @@ Split configuration between -client and -server.
  ADD_SUBDIRECTORY(migrate_keyring)
 @@ -50,6 +51,7 @@ MYSQL_ADD_EXECUTABLE(mysql
    ${CMAKE_CURRENT_SOURCE_DIR}/common/user_registration.cc
-   LINK_LIBRARIES perconaserverclient client_base ${MY_READLINE_LIBRARY}
+   LINK_LIBRARIES perconaserverclient client_base ${MY_XLINE_LIBRARY}
    )
 +ENDIF()
  
@@ -28,7 +28,7 @@ Split configuration between -client and -server.
  MYSQL_ADD_EXECUTABLE(mysqltest
    mysqltest.cc
    mysqltest/error_names.cc
-@@ -274,16 +277,21 @@ MYSQL_ADD_EXECUTABLE(mysql_config_editor
+@@ -299,16 +302,21 @@ MYSQL_ADD_EXECUTABLE(mysql_config_editor
    mysql_config_editor.cc
    LINK_LIBRARIES perconaserverclient
    )

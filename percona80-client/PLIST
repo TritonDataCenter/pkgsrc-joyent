@@ -31,7 +31,10 @@ include/mysql/mysql_version.h
 include/mysql/mysqld_error.h
 include/mysql/mysqlpp/common_types.hpp
 include/mysql/mysqlpp/udf_context.hpp
+include/mysql/mysqlpp/udf_context_charset_extension.hpp
+include/mysql/mysqlpp/udf_error_reporter.hpp
 include/mysql/mysqlpp/udf_exception.hpp
+include/mysql/mysqlpp/udf_registration.hpp
 include/mysql/mysqlpp/udf_traits.hpp
 include/mysql/mysqlpp/udf_wrappers.hpp
 lib/libmysqlclient.a
@@ -39,7 +42,7 @@ lib/libmysqlclient.so
 lib/libperconaserverclient.a
 lib/libperconaserverclient.so
 lib/libperconaserverclient.so.21
-lib/libperconaserverclient.so.21.2.30
+lib/libperconaserverclient.so.21.2.34
 lib/pkgconfig/perconaserverclient.pc
 man/man1/comp_err.1
 man/man1/ibd2sdi.1
