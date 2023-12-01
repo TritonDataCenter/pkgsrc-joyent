@@ -4,15 +4,6 @@ Build with newer DTrace.
 
 --- CMakeLists.txt.orig	2022-04-19 08:05:43.000000000 +0000
 +++ CMakeLists.txt
-@@ -67,7 +67,7 @@ MESSAGE(STATUS "Running cmake version ${
- # Will set GIT_EXECUTABLE and GIT_FOUND
- FIND_PACKAGE(Git)
- 
--SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake)
-+SET (CMAKE_MODULE_PATH "/home/pbulk/build/joyent/percona-xtrabackup/work/.buildlink/cmake-Modules" ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake)
- 
- # First, decide about build type (debug or release)
- # If cmake is invoked with -DCMAKE_BUILD_TYPE, 
 @@ -287,6 +287,7 @@ IF(DISABLE_SHARED)
    SET(WITHOUT_DYNAMIC_PLUGINS 1)
  ENDIF()
