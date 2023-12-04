@@ -2,9 +2,9 @@ $NetBSD$
 
 Always want memset_s.
 
---- CMakeLists.txt.orig	2023-07-27 06:00:59.000000000 +0000
+--- CMakeLists.txt.orig	2023-10-19 10:30:04.000000000 +0000
 +++ CMakeLists.txt
-@@ -1604,7 +1604,7 @@ ELSE()
+@@ -1615,7 +1615,7 @@ ELSE()
    ENDIF()
  ENDIF()
  

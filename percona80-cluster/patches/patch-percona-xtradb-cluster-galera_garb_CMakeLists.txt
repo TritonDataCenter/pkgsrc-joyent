@@ -3,7 +3,7 @@ $NetBSD$
 Skip installing unnecessary files into terrible places.
 Use PKGMANDIR.
 
---- percona-xtradb-cluster-galera/garb/CMakeLists.txt.orig	2023-07-27 06:44:53.000000000 +0000
+--- percona-xtradb-cluster-galera/garb/CMakeLists.txt.orig	2023-10-19 10:40:20.000000000 +0000
 +++ percona-xtradb-cluster-galera/garb/CMakeLists.txt
 @@ -36,16 +36,16 @@ set_target_properties( garbd PROPERTIES
    ${CMAKE_CURRENT_BINARY_DIR}/../bin/ )

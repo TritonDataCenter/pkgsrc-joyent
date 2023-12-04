@@ -1,7 +1,7 @@
 # $NetBSD$
 
-MYSQL_VER=	8.0.33
-WSREP_MAJOR=	25
+MYSQL_VER=	8.0.34
+WSREP_MAJOR=	26
 
 DISTNAME=	Percona-XtraDB-Cluster-${MYSQL_VER}-${WSREP_MAJOR}
 PKGNAME=	percona-cluster-${MYSQL_VER}
@@ -82,6 +82,7 @@ CMAKE_ARGS+=		-DWITH_WSREP=1
 CMAKE_ARGS.SunOS+=	-DFORCE_UNSUPPORTED_COMPILER=YES
 CXXFLAGS.SunOS+=	-fpermissive
 LDFLAGS.SunOS+=		-lsocket
+LDFLAGS.SunOS+=		-labsl_spinlock_wait # XXX
 
 BUILDLINK_TRANSFORM+=		rm:-Wmissing-include-dirs
 BUILDLINK_TRANSFORM.SunOS+=	rm:-Wl,--no-as-needed
