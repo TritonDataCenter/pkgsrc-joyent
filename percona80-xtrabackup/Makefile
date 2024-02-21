@@ -28,6 +28,7 @@ CMAKE_ARG_PATH=		${WRKSRC}
 CMAKE_ARGS+=		-DWITH_BOOST=${WRKDIR}/${BOOST}
 CMAKE_ARGS+=		-DWITH_PROTOBUF=system
 CMAKE_ARGS+=		-DWITH_SSL=system
+CMAKE_ARGS+=		-DWITH_ZLIB=system
 CMAKE_ARGS+=		-DWITH_LIBEVENT=system
 CMAKE_ARGS+=		-DLIBEV_INCLUDE_PATHS=${BUILDLINK_PREFIX.libev}/include/ev
 CMAKE_ARGS+=		-DLIBEV_LIB_PATHS=${BUILDLINK_PREFIX.libev}/lib/ev
@@ -65,6 +66,7 @@ post-install:
 .include "../../devel/libev/buildlink3.mk"
 .include "../../devel/libevent/buildlink3.mk"
 .include "../../devel/protobuf/buildlink3.mk"
+.include "../../devel/zlib/buildlink3.mk"
 .include "../../security/libgcrypt/buildlink3.mk"
 .include "../../security/openssl/buildlink3.mk"
 .include "../../www/curl/buildlink3.mk"
