@@ -1,8 +1,8 @@
 $NetBSD$
 
-RMD160 (Percona-XtraDB-Cluster-8.0.34-26.tar.gz) = 67e1ed6003bccc6cfb20043d2178bab750555c86
-SHA512 (Percona-XtraDB-Cluster-8.0.34-26.tar.gz) = cce39767a9254f94188ec252f8a1a6ad2b58680fe2fa626e4f79a628266df2b4a7f8d567a20e4a9d18770a9c54f58c106e44233cc343224bb57ed75378a19154
-Size (Percona-XtraDB-Cluster-8.0.34-26.tar.gz) = 477520512 bytes
+RMD160 (Percona-XtraDB-Cluster-8.0.36-28.tar.gz) = 9524baf77ef895512a9b096aaaa1b00f3f0bda68
+SHA512 (Percona-XtraDB-Cluster-8.0.36-28.tar.gz) = d1353f8bf880227c429903c9980886858ed977fdcf5079e453a006d8c836ad0aef364b413f1a89439997c35b60e5f39136bb6f2a31b578885a7604a3b1f2accc
+Size (Percona-XtraDB-Cluster-8.0.36-28.tar.gz) = 476053281 bytes
 RMD160 (boost_1_77_0.tar.bz2) = 2f65aacb1d4ec0296dc3cceab761757a2bc55986
 SHA512 (boost_1_77_0.tar.bz2) = 39b45c9b60bc5a2a4c669a4463d1272c1e093376b2fb374d7f20a84ea10a3e23bb04b335a735a83a04575731f874d9bff77e89acd947524b3fbbae1b26ae1f2f
 Size (boost_1_77_0.tar.bz2) = 110361537 bytes
@@ -34,6 +34,7 @@ SHA1 (patch-plugin_audit__log__filter_log__writer_file__handle.cc) = 4ac2a1478ab
 SHA1 (patch-plugin_procfs_CMakeLists.txt) = 42dd897872ae65fe334de863298d365dfa545fbb
 SHA1 (patch-plugin_x_CMakeLists.txt) = 2c02b377e3d8ccb9e2a1b7896f85367eec8f3461
 SHA1 (patch-router_CMakeLists.txt) = a70145c1125976d9068bf0d21ac8cfd1ef1f3a57
+SHA1 (patch-router_tests_integration_CMakeLists.txt) = 3e88e36abbfbe4cb253b218e9e0bf245e3919611
 SHA1 (patch-scripts_wsrep__sst__common.sh) = 92dbfa52a02cbfb61360a882d04930481b521bcf
 SHA1 (patch-scripts_wsrep__sst__xtrabackup-v2.sh) = 3b64dab81a7cde16a86274d9af627a9935a6a959
 SHA1 (patch-sql_binlog__reader.cc) = 5079db7a07137aa3faa08e6ed62aaf0b1749a644

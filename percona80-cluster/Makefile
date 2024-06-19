@@ -1,7 +1,7 @@
 # $NetBSD$
 
-MYSQL_VER=	8.0.34
-WSREP_MAJOR=	26
+MYSQL_VER=	8.0.36
+WSREP_MAJOR=	28
 
 DISTNAME=	Percona-XtraDB-Cluster-${MYSQL_VER}-${WSREP_MAJOR}
 PKGNAME=	percona-cluster-${MYSQL_VER}
@@ -35,7 +35,6 @@ BOOST=			boost_1_77_0
 DISTFILES=		${DISTNAME}${EXTRACT_SUFX} ${BOOST}.tar.bz2
 SITES.${BOOST}.tar.bz2=	${MASTER_SITE_SOURCEFORGE:=boost/}
 
-USE_CMAKE=		yes
 USE_LANGUAGES=		c99 c++14
 USE_TOOLS+=		bash bison gmake perl:run
 
@@ -53,34 +52,41 @@ PKG_GROUPS_VARS+=	MYSQL_GROUP
 
 CONFIG_SHELL=		${TOOLS_PATH.bash}
 
-CONFIGURE_DIRS=		${WRKDIR}/build
-CMAKE_ARG_PATH=		${WRKSRC}
+#CONFIGURE_DIRS=		${WRKDIR}/build
+#CMAKE_ARG_PATH=		${WRKSRC}
 
-CMAKE_ARGS+=		-DCMAKE_BUILD_TYPE=Release
-CMAKE_ARGS+=		-DINSTALL_DOCDIR="share/doc/mysql"
-CMAKE_ARGS+=		-DINSTALL_DOCREADMEDIR="share/doc/mysql"
-CMAKE_ARGS+=		-DINSTALL_INCLUDEDIR="include/mysql"
-CMAKE_ARGS+=		-DINSTALL_INFODIR="${PKGINFODIR}"
-CMAKE_ARGS+=		-DINSTALL_MANDIR="${PKGMANDIR}"
-CMAKE_ARGS+=		-DINSTALL_MYSQLSHAREDIR="share/mysql"
-CMAKE_ARGS+=		-DINSTALL_MYSQLTESTDIR=""
-CMAKE_ARGS+=		-DINSTALL_PLUGINDIR="lib/mysql/plugin"
-CMAKE_ARGS+=		-DINSTALL_SBINDIR="sbin"
-CMAKE_ARGS+=		-DINSTALL_SUPPORTFILESDIR="share/mysql"
-CMAKE_ARGS+=		-DROUTER_INSTALL_DOCDIR="share/mysql"
-CMAKE_ARGS+=		-DROUTER_INSTALL_LOGROTATEDIR="share/mysql"
+CMAKE_CONFIGURE_ARGS+=	-DCMAKE_BUILD_TYPE=Release
+CMAKE_CONFIGURE_ARGS+=	-DINSTALL_DOCDIR="share/doc/mysql"
+CMAKE_CONFIGURE_ARGS+=	-DINSTALL_DOCREADMEDIR="share/doc/mysql"
+CMAKE_CONFIGURE_ARGS+=	-DINSTALL_INCLUDEDIR="include/mysql"
+CMAKE_CONFIGURE_ARGS+=	-DINSTALL_INFODIR="${PKGINFODIR}"
+CMAKE_CONFIGURE_ARGS+=	-DINSTALL_MANDIR="${PKGMANDIR}"
+CMAKE_CONFIGURE_ARGS+=	-DINSTALL_MYSQLSHAREDIR="share/mysql"
+CMAKE_CONFIGURE_ARGS+=	-DINSTALL_MYSQLTESTDIR=""
+CMAKE_CONFIGURE_ARGS+=	-DINSTALL_PLUGINDIR="lib/mysql/plugin"
+CMAKE_CONFIGURE_ARGS+=	-DINSTALL_SBINDIR="sbin"
+CMAKE_CONFIGURE_ARGS+=	-DINSTALL_SUPPORTFILESDIR="share/mysql"
+CMAKE_CONFIGURE_ARGS+=	-DROUTER_INSTALL_DOCDIR="share/mysql"
+CMAKE_CONFIGURE_ARGS+=	-DROUTER_INSTALL_LOGROTATEDIR="share/mysql"
 
-CMAKE_ARGS+=		-DMYSQL_DATADIR=${MYSQL_DATADIR}
+CMAKE_CONFIGURE_ARGS+=	-DMYSQL_DATADIR=${MYSQL_DATADIR}
 
-CMAKE_ARGS+=		-DWITH_BOOST="${WRKDIR}/${BOOST}"
-CMAKE_ARGS+=		-DBoost_INCLUDE_DIR="${WRKDIR}/${BOOST}"
-CMAKE_ARGS+=		-DWITH_LZ4="system"
-CMAKE_ARGS+=		-DWITH_PROTOBUF="system"
-CMAKE_ARGS+=		-DWITH_SSL="system"
-CMAKE_ARGS+=		-DWITH_WSREP=1
-CMAKE_ARGS+=		-DWITH_ZLIB="system"
+CMAKE_CONFIGURE_ARGS+=	-DWITH_BOOST="${WRKDIR}/${BOOST}"
+CMAKE_CONFIGURE_ARGS+=	-DBoost_INCLUDE_DIR="${WRKDIR}/${BOOST}"
+CMAKE_CONFIGURE_ARGS+=	-DWITH_LZ4="system"
+CMAKE_CONFIGURE_ARGS+=	-DWITH_LIBEVENT="system"
+CMAKE_CONFIGURE_ARGS+=	-DWITH_PROTOBUF="system"
+CMAKE_CONFIGURE_ARGS+=	-DWITH_SSL="system"
+CMAKE_CONFIGURE_ARGS+=	-DWITH_WSREP=1
+CMAKE_CONFIGURE_ARGS+=	-DWITH_ZLIB="system"
 
-CMAKE_ARGS.SunOS+=	-DFORCE_UNSUPPORTED_COMPILER=YES
+CMAKE_CONFIGURE_ARGS+=	-DZLIB_ROOT="${BUILDLINK_PREFIX.zlib}"
+
+# Not added to pkgsrc until 2024-06-19
+OPSYSVARS+=		CMAKE_CONFIGURE_ARGS
+
+CMAKE_CONFIGURE_ARGS.SunOS+=	-DFORCE_UNSUPPORTED_COMPILER=YES
+
 CXXFLAGS.SunOS+=	-fpermissive
 LDFLAGS.SunOS+=		-lsocket
 LDFLAGS.SunOS+=		-labsl_spinlock_wait # XXX
@@ -89,14 +95,9 @@ BUILDLINK_TRANSFORM+=		rm:-Wmissing-include-dirs
 BUILDLINK_TRANSFORM.SunOS+=	rm:-Wl,--no-as-needed
 BUILDLINK_TRANSFORM.SunOS+=	rm:-Wl,--version-script=${WRKSRC}/percona-xtradb-cluster-galera/galera/src/galera-sym.map
 
-# Force HAVE_CURSES_H on Solaris since the configure script is broken
-# and does not properly detect this, breaking the build later on.  Also
-# explicitly disable epoll support as it is Linux-specific.
-CMAKE_ARGS.SunOS+=	-DHAVE_SYS_EPOLL_H=NO
-CMAKE_ARGS.SunOS+=	-DHAVE_EPOLL=NO
-CMAKE_ARGS.SunOS+=	-DEVENT__HAVE_SYS_EPOLL_H=NO
-CMAKE_ARGS.SunOS+=	-DEVENT__HAVE_EPOLL=NO
-CMAKE_ARGS.SunOS+=	-DHAVE_EPOLL_CREATE=NO
+# Explicitly disable epoll support as it is Linux-specific.
+CMAKE_CONFIGURE_ARGS.SunOS+=	-DHAVE_EPOLL=NO		# router
+CMAKE_CONFIGURE_ARGS.SunOS+=	-DHAVE_EPOLL_CREATE=NO	# storage/ndb
 
 # Required for lib/mysqlrouter/*.so
 LDFLAGS+=		${COMPILER_RPATH_FLAG}${PREFIX}/lib/mysql
@@ -106,7 +107,7 @@ LDFLAGS+=		${COMPILER_RPATH_FLAG}${PREFIX}/lib/mysqlrouter
 
 CMAKE_ARGS.editline=	-DWITH_EDITLINE="system"
 CMAKE_ARGS.readline=	-DWITH_READLINE="system"
-CMAKE_ARGS+=		${CMAKE_ARGS.${READLINE_TYPE}}
+CMAKE_CONFIGURE_ARGS+=	${CMAKE_ARGS.${READLINE_TYPE}}
 
 BUILD_DEFS+=		VARBASE
 
@@ -139,7 +140,7 @@ BUILD_DEFS+=		MYSQL_DATADIR
 REPLACE_PERL+=		support-files/mysqld_multi.server.sh
 REPLACE_PERL+=		scripts/mysqldumpslow.sh
 
-REPLACE_PYTHON+=	scripts/pyclustercheck
+REPLACE_PYTHON+=	scripts/pyclustercheck.py.in
 
 SUBST_CLASSES+=		paths
 SUBST_STAGE.paths=	pre-configure
@@ -194,6 +195,7 @@ post-install:
 
 .include "../../archivers/lz4/buildlink3.mk"
 .include "../../devel/check/buildlink3.mk"
+.include "../../devel/cmake/build.mk"
 .include "../../devel/libevent/buildlink3.mk"
 .include "../../devel/protobuf/buildlink3.mk"
 .include "../../devel/scons/buildlink3.mk"
