@@ -36,6 +36,8 @@ USE_CMAKE=	yes
 USE_LANGUAGES=	c c++11 c99
 USE_TOOLS+=	bash bison gmake perl:run
 
+CMAKE_CONFIGURE_ARGS=	${CMAKE_ARGS}
+
 INFO_FILES=	yes
 UNWRAP_FILES+=	scripts/mysql_config
 

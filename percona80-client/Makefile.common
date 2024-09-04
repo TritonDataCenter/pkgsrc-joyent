@@ -23,6 +23,8 @@ USE_CMAKE=		yes
 USE_LANGUAGES=		c c++14
 USE_TOOLS+=		bash bison gmake perl:run
 
+CMAKE_CONFIGURE_ARGS=	${CMAKE_ARGS}
+
 .include "../../mk/bsd.prefs.mk"
 
 MYSQL_USER?=		mysql

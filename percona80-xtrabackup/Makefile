@@ -22,6 +22,8 @@ USE_GCC_RUNTIME=	yes
 USE_LANGUAGES=		c c++
 USE_TOOLS+=		bison cmake gmake patch perl
 
+CMAKE_CONFIGURE_ARGS=	${CMAKE_ARGS}
+
 CONFIGURE_DIRS=		${WRKDIR}/build
 CMAKE_ARG_PATH=		${WRKSRC}
 
