@@ -5,13 +5,11 @@ COMMENT=	Percona Server, a MySQL server fork (client)
 
 CONFLICTS=	mysql-client-[0-9]*
 
-.include "Makefile.common"
-
-CMAKE_ARGS+=		-DWITHOUT_SERVER=ON
+CMAKE_CONFIGURE_ARGS+=	-DWITHOUT_SERVER=ON
 UNWRAP_FILES+=		scripts/mysql_config
-.for dir in client include libmysql man scripts testclients
-INSTALL_DIRS+=		${WRKDIR}/build/${dir}
-.endfor
+INSTALL_DIRS=		client include libmysql man scripts testclients
+
+.include "Makefile.common"
 
 post-install:
 	cd ${DESTDIR}${PREFIX}/lib; \
