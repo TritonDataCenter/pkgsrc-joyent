@@ -3,7 +3,7 @@ $NetBSD$
 Only build that which comes with local patches.
 Use portable sed calls.
 
---- deps/Makefile.orig	2018-02-01 02:06:06.000000000 +0000
+--- deps/Makefile.orig	2018-09-21 20:55:57.000000000 +0000
 +++ deps/Makefile
 @@ -11,9 +11,9 @@ endif
  
