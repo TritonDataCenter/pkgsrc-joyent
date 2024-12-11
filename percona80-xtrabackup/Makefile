@@ -1,9 +1,9 @@
 # $NetBSD$
 
-DISTNAME=	percona-xtrabackup-8.0.34-29
-PKGNAME=	percona-xtrabackup-8.0.34
+DISTNAME=	percona-xtrabackup-8.0.35-31
+PKGNAME=	percona-xtrabackup-8.0.35
 CATEGORIES=	databases
-MASTER_SITES=	https://downloads.percona.com/downloads/Percona-XtraBackup-LATEST/Percona-XtraBackup-8.0.34-29/source/tarball/
+MASTER_SITES=	https://downloads.percona.com/downloads/Percona-XtraBackup-LATEST/Percona-XtraBackup-8.0.35-31/source/tarball/
 
 MAINTAINER=	pkgsrc-users@NetBSD.org
 HOMEPAGE=	https://www.percona.com/software/percona-xtrabackup
@@ -17,29 +17,20 @@ BOOST=			boost_1_77_0
 DISTFILES=		${DISTNAME}${EXTRACT_SUFX} ${BOOST}.tar.bz2
 SITES.${BOOST}.tar.bz2=	${MASTER_SITE_SOURCEFORGE:=boost/}
 
-USE_CMAKE=		yes
-USE_GCC_RUNTIME=	yes
 USE_LANGUAGES=		c c++
-USE_TOOLS+=		bison cmake gmake patch perl
+USE_TOOLS+=		bison gmake patch perl
 
-CMAKE_CONFIGURE_ARGS=	${CMAKE_ARGS}
-
-CONFIGURE_DIRS=		${WRKDIR}/build
-CMAKE_ARG_PATH=		${WRKSRC}
-
-CMAKE_ARGS+=		-DWITH_BOOST=${WRKDIR}/${BOOST}
-CMAKE_ARGS+=		-DWITH_PROTOBUF=system
-CMAKE_ARGS+=		-DWITH_SSL=system
-CMAKE_ARGS+=		-DWITH_ZLIB=system
-CMAKE_ARGS+=		-DWITH_LIBEVENT=system
-CMAKE_ARGS+=		-DLIBEV_INCLUDE_PATHS=${BUILDLINK_PREFIX.libev}/include/ev
-CMAKE_ARGS+=		-DLIBEV_LIB_PATHS=${BUILDLINK_PREFIX.libev}/lib/ev
-
-CMAKE_ARGS+=		-DHAVE_EPOLL=NO
-
-CMAKE_ARGS+=		-DBUILD_CONFIG=xtrabackup_release
-CMAKE_ARGS+=		-DFORCE_UNSUPPORTED_COMPILER=ON
-CMAKE_ARGS+=		-DINSTALL_MYSQLTESTDIR=percona-xtrabackup-test
+CMAKE_CONFIGURE_ARGS+=	-DBUILD_CONFIG=xtrabackup_release
+CMAKE_CONFIGURE_ARGS+=	-DFORCE_UNSUPPORTED_COMPILER=ON
+CMAKE_CONFIGURE_ARGS+=	-DHAVE_EPOLL=NO
+CMAKE_CONFIGURE_ARGS+=	-DINSTALL_MYSQLTESTDIR=percona-xtrabackup-test
+CMAKE_CONFIGURE_ARGS+=	-DLIBEV_INCLUDE_PATHS=${BUILDLINK_PREFIX.libev}/include/ev
+CMAKE_CONFIGURE_ARGS+=	-DLIBEV_LIB_PATHS=${BUILDLINK_PREFIX.libev}/lib/ev
+CMAKE_CONFIGURE_ARGS+=	-DWITH_BOOST=${WRKDIR}/${BOOST}
+CMAKE_CONFIGURE_ARGS+=	-DWITH_LIBEVENT=system
+CMAKE_CONFIGURE_ARGS+=	-DWITH_PROTOBUF=system
+CMAKE_CONFIGURE_ARGS+=	-DWITH_SSL=system
+CMAKE_CONFIGURE_ARGS+=	-DWITH_ZLIB=system
 
 CFLAGS.SunOS+=		-D_POSIX_PTHREAD_SEMANTICS
 CXXFLAGS.SunOS+=	-fpermissive
@@ -65,6 +56,7 @@ post-install:
 	${RM} -f ${DESTDIR}${PREFIX}/lib/libkmippp.a
 
 .include "../../archivers/xz/buildlink3.mk"
+.include "../../devel/cmake/build.mk"
 .include "../../devel/libev/buildlink3.mk"
 .include "../../devel/libevent/buildlink3.mk"
 .include "../../devel/protobuf/buildlink3.mk"

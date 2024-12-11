@@ -1,15 +1,14 @@
 $NetBSD$
 
-RMD160 (boost_1_77_0.tar.bz2) = 2f65aacb1d4ec0296dc3cceab761757a2bc55986
+BLAKE2s (boost_1_77_0.tar.bz2) = 11f9651d7078e67a69a97f46dce3131af1f1b3ba5976c26435cd17a66161cbf1
 SHA512 (boost_1_77_0.tar.bz2) = 39b45c9b60bc5a2a4c669a4463d1272c1e093376b2fb374d7f20a84ea10a3e23bb04b335a735a83a04575731f874d9bff77e89acd947524b3fbbae1b26ae1f2f
 Size (boost_1_77_0.tar.bz2) = 110361537 bytes
-RMD160 (percona-xtrabackup-8.0.34-29.tar.gz) = 5aab4949af87ca766a9ebfa09526d9de20100302
-SHA512 (percona-xtrabackup-8.0.34-29.tar.gz) = b7801128ec898a1684af28ef9c10ebac6fe224a2f7c03188353dcf30c702df94061af4b7c168242ad37bd86a0e3a58f3e204cf81af7eaded50f69e5817dd2940
-Size (percona-xtrabackup-8.0.34-29.tar.gz) = 449348930 bytes
+BLAKE2s (percona-xtrabackup-8.0.35-31.tar.gz) = c48a379e605ef15a83617a671ce34264ec7e7b72acd53457e9cf2ab641c67ddc
+SHA512 (percona-xtrabackup-8.0.35-31.tar.gz) = d3d750645e14776f516f2663c4b4c9475afd589c76c35d5c915475dd7f140f691baee30a65d861162bbd38b13323165dab9035bbf6c1894ab97997dec3673275
+Size (percona-xtrabackup-8.0.35-31.tar.gz) = 447786172 bytes
 SHA1 (patch-CMakeLists.txt) = b5158066b5c60cbdb05194a756d82cf4c32f466c
 SHA1 (patch-cmake_FindLibEv.cmake) = 8c19bb32b5829bdb0de125a476f123f04cb7f075
 SHA1 (patch-cmake_os_SunOS.cmake) = 521f02ff48fa06783621c0b418f6f57561ffe057
-SHA1 (patch-components_keyrings_common_data_data.h) = 82b8503ffef237b32517924deda457664075c7bb
 SHA1 (patch-extra_icu_CMakeLists.txt) = 691a837d7b0363359455203968a05c52da34d7e6
 SHA1 (patch-libmysql_CMakeLists.txt) = f13bc5364eeba9649c6a73a06abb0088c4ae63b7
 SHA1 (patch-libservices_CMakeLists.txt) = df678a9809efc3a360645768121aea2c6b7193d0
@@ -18,7 +17,7 @@ SHA1 (patch-plugin_keyring__vault_CMakeLists.txt) = 472a44294f969d51ce90e4a24db6
 SHA1 (patch-sql_mysqld.cc) = 34f7cad02344e5a9394cfdd5df4f06765f6e5d77
 SHA1 (patch-sql_resourcegroups_platform_thread__attrs__api__solaris.cc) = e6d26955adad76295cf9e2bf9dda70779ab1363e
 SHA1 (patch-storage_innobase_xtrabackup_CMakeLists.txt) = c6053adaba791003deda056009d98f8c283c931b
-SHA1 (patch-storage_innobase_xtrabackup_src_CMakeLists.txt) = 06cfa8d67e5ed3bd4a4a898feba56638399677d8
+SHA1 (patch-storage_innobase_xtrabackup_src_CMakeLists.txt) = a02c7f0e6f74c7bd8abaed137e42cbcffdcdf64f
 SHA1 (patch-storage_innobase_xtrabackup_src_file__utils.cc) = 902d123653bceb43b0a01a9c2a10721443b0e1e2
 SHA1 (patch-storage_innobase_xtrabackup_src_utils.cc) = fa2428edfd8b5b152013335c3c3244bf91e8c750
 SHA1 (patch-storage_innobase_xtrabackup_src_xbcloud_xbcloud.cc) = d0bef703caf572854eee6898181d6c041c52bc18

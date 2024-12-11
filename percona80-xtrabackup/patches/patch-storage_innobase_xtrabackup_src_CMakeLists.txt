@@ -2,19 +2,18 @@ $NetBSD$
 
 Only link libprocps on Linux.
 
---- storage/innobase/xtrabackup/src/CMakeLists.txt.orig	2023-07-13 07:32:22.000000000 +0000
+--- storage/innobase/xtrabackup/src/CMakeLists.txt.orig	2024-06-12 10:28:50.000000000 +0000
 +++ storage/innobase/xtrabackup/src/CMakeLists.txt
-@@ -21,7 +21,9 @@ OPTION(WITH_VERSION_CHECK "Build with ve
- INCLUDE(${MYSQL_CMAKE_SCRIPT_DIR}/compile_flags.cmake)
+@@ -22,7 +22,7 @@ INCLUDE(${MYSQL_CMAKE_SCRIPT_DIR}/compil
  
  FIND_GCRYPT()
+ 
+-IF(NOT APPLE)
 +IF(CMAKE_SYSTEM_NAME MATCHES "Linux")
- FIND_PROCPS()
-+ENDIF()
+   FIND_PROCPS()
+ ENDIF()
  
- CHECK_TYPE_SIZE("unsigned long" SIZEOF_UNSIGNED_LONG)
- 
-@@ -135,7 +137,7 @@ TARGET_LINK_LIBRARIES(xtrabackup
+@@ -138,7 +138,7 @@ TARGET_LINK_LIBRARIES(xtrabackup
    crc
    )
  
