@@ -1,9 +1,11 @@
 $NetBSD$
 
+BLAKE2s (boost_1_59_0.tar.bz2) = 8738bf3fbcfd42ce18f2f9e2b9f49f496d3a84c038ace73b02f72889ad7da49b
 SHA512 (boost_1_59_0.tar.bz2) = 8139e1ae997a86974071c5714ad3307e3d8fd15ef702b81a953410dd4d424b932135f53a0ef4891d9b9b747a38e539e66d6a803388fe0cc98e5166be872d682a
 Size (boost_1_59_0.tar.bz2) = 70389425 bytes
-SHA512 (percona-xtrabackup-2.4.25.tar.gz) = 9f031acb0aff4aa6beced58129a0ad0037f024c632634b1730a71cfabea33d4a1caf7dfdcb608b57474d11abb9b899a3641f2917c90e6afd3ce786f8ffe4629d
-Size (percona-xtrabackup-2.4.25.tar.gz) = 62014901 bytes
+BLAKE2s (percona-xtrabackup-2.4.29.tar.gz) = fe68494912dc564ade276ed5f6fbae86c4ad8ecb87c136548082199c1a8663fd
+SHA512 (percona-xtrabackup-2.4.29.tar.gz) = 83fdaa8cd5f2d23f907fef2ad03be81c52944f8fbdc698e3ee5818973f3f1c971bbcc8d8a8e1d7fccf552b73e43f14e344d2208a113deb6a543ecac529108f31
+Size (percona-xtrabackup-2.4.29.tar.gz) = 64667518 bytes
 SHA1 (patch-CMakeLists.txt) = 743a304643ecb437b7f2a9abac3ea70d7b43997b
 SHA1 (patch-cmake_FindLibEv.cmake) = a2fab55528b8d8aa67fc618d8db9ce0d11cef512
 SHA1 (patch-cmake_plugin.cmake) = 8f84deab8c496b4841b0c1e58938b88d802b9e63
