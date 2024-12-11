@@ -1,9 +1,9 @@
 $NetBSD$
 
-RMD160 (Percona-XtraDB-Cluster-8.0.36-28.tar.gz) = 9524baf77ef895512a9b096aaaa1b00f3f0bda68
-SHA512 (Percona-XtraDB-Cluster-8.0.36-28.tar.gz) = d1353f8bf880227c429903c9980886858ed977fdcf5079e453a006d8c836ad0aef364b413f1a89439997c35b60e5f39136bb6f2a31b578885a7604a3b1f2accc
-Size (Percona-XtraDB-Cluster-8.0.36-28.tar.gz) = 476053281 bytes
-RMD160 (boost_1_77_0.tar.bz2) = 2f65aacb1d4ec0296dc3cceab761757a2bc55986
+BLAKE2s (Percona-XtraDB-Cluster-8.0.39-30.tar.gz) = 174a848429725a1f53503c9c47e28e825f076023b6c2091cf6924123bbe889b1
+SHA512 (Percona-XtraDB-Cluster-8.0.39-30.tar.gz) = a6eb38cc0cd9976661ff91a3cdd38c2fb1bf6667a073fde571b9c6b26b454c60fcd1410ca26b7cb81c24003eb3b84a678dada0a8d4be069f97a364037b2b4bd2
+Size (Percona-XtraDB-Cluster-8.0.39-30.tar.gz) = 487454334 bytes
+BLAKE2s (boost_1_77_0.tar.bz2) = 11f9651d7078e67a69a97f46dce3131af1f1b3ba5976c26435cd17a66161cbf1
 SHA512 (boost_1_77_0.tar.bz2) = 39b45c9b60bc5a2a4c669a4463d1272c1e093376b2fb374d7f20a84ea10a3e23bb04b335a735a83a04575731f874d9bff77e89acd947524b3fbbae1b26ae1f2f
 Size (boost_1_77_0.tar.bz2) = 110361537 bytes
 SHA1 (patch-CMakeLists.txt) = cead7c68b199bcb6c87a482669d0111bcf0d8de3
@@ -19,8 +19,8 @@ SHA1 (patch-percona-xtradb-cluster-galera_SConstruct) = f2889f2ba62981e941cba38b
 SHA1 (patch-percona-xtradb-cluster-galera_galera_src_replicator__str.cpp) = 6a2d989c35b44a550b1229b1226e44f17c340a3c
 SHA1 (patch-percona-xtradb-cluster-galera_galera_src_wsdb.cpp) = 05403339248ec8fe0a80746b41e1065ce6c74228
 SHA1 (patch-percona-xtradb-cluster-galera_galerautils_src_gu__asio.hpp) = 011f047f3ee85e02c8bc48f157057b163093d7fd
-SHA1 (patch-percona-xtradb-cluster-galera_galerautils_src_gu__asio__socket__util.hpp) = 5b4f7a27e5b7eb64ff0ed784a6cd0ab6c7fb120a
-SHA1 (patch-percona-xtradb-cluster-galera_galerautils_src_gu__asio__stream__react.cpp) = f1d9ee2bc5bd85410bcaf083e28f090a09741755
+SHA1 (patch-percona-xtradb-cluster-galera_galerautils_src_gu__asio__socket__util.hpp) = c35355c2b6562967b7ef155247d0fa384319fed3
+SHA1 (patch-percona-xtradb-cluster-galera_galerautils_src_gu__asio__stream__react.cpp) = 5a8c9288a49ec34d4edd3923355590f4a0731f95
 SHA1 (patch-percona-xtradb-cluster-galera_galerautils_src_gu__asio__stream__react.hpp) = bd7a3be57c4b173dacf1afee0a9240eb6ab76797
 SHA1 (patch-percona-xtradb-cluster-galera_galerautils_src_gu__byteswap.h) = 83b3b19df7b6c6051d1f247dca2a3da7f0e14a49
 SHA1 (patch-percona-xtradb-cluster-galera_galerautils_src_gu__progress.hpp) = ccd1efaf47b8ee9cbe56ee4fbcf23eeef60a8c6a
@@ -28,7 +28,7 @@ SHA1 (patch-percona-xtradb-cluster-galera_galerautils_tests_gu__asio__test.cpp) 
 SHA1 (patch-percona-xtradb-cluster-galera_garb_CMakeLists.txt) = 79464e61d223bde8885ae05f8f41a0224bfc72e7
 SHA1 (patch-percona-xtradb-cluster-galera_garb_process.cc) = 754b7de455bbfc43da1bfa8e6b74255246a688bd
 SHA1 (patch-percona-xtradb-cluster-galera_gcomm_src_asio__tcp.cpp) = 81693a118b990d5974f5d9d6ac83bedc9f7933e1
-SHA1 (patch-percona-xtradb-cluster-galera_gcs_src_gcs__gcomm.cpp) = d5be5c95e8e2f8333980b8ce8f74db4cb2ceda62
+SHA1 (patch-percona-xtradb-cluster-galera_gcs_src_gcs__gcomm.cpp) = 65c3ae2b79e18c28b4807408969aa0f77543a4cf
 SHA1 (patch-plugin_audit__log__filter_audit__keyring.cc) = 3ed7a71877cc3238670614b0cf6898bb366243ff
 SHA1 (patch-plugin_audit__log__filter_log__writer_file__handle.cc) = 4ac2a1478abc44a73ade7729c66e17eb21787d7c
 SHA1 (patch-plugin_procfs_CMakeLists.txt) = 42dd897872ae65fe334de863298d365dfa545fbb
@@ -36,7 +36,7 @@ SHA1 (patch-plugin_x_CMakeLists.txt) = 2c02b377e3d8ccb9e2a1b7896f85367eec8f3461
 SHA1 (patch-router_CMakeLists.txt) = a70145c1125976d9068bf0d21ac8cfd1ef1f3a57
 SHA1 (patch-router_tests_integration_CMakeLists.txt) = 3e88e36abbfbe4cb253b218e9e0bf245e3919611
 SHA1 (patch-scripts_wsrep__sst__common.sh) = 92dbfa52a02cbfb61360a882d04930481b521bcf
-SHA1 (patch-scripts_wsrep__sst__xtrabackup-v2.sh) = 3b64dab81a7cde16a86274d9af627a9935a6a959
+SHA1 (patch-scripts_wsrep__sst__xtrabackup-v2.sh) = 17aedc0786d869c23c851e2a0eb12ee29e25c04e
 SHA1 (patch-sql_binlog__reader.cc) = 5079db7a07137aa3faa08e6ed62aaf0b1749a644
 SHA1 (patch-sql_mysqld.cc) = fd3b32b762b19d878260bdb78ede311df2e6ee0b
 SHA1 (patch-sql_resourcegroups_platform_thread__attrs__api__solaris.cc) = 10039638c4fff9347f53466118f94466ebf12e5c

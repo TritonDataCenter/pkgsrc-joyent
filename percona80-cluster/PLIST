@@ -91,7 +91,7 @@ lib/libmysqlservices.a
 lib/libperconaserverclient.a
 lib/libperconaserverclient.so
 lib/libperconaserverclient.so.21
-lib/libperconaserverclient.so.21.2.36
+lib/libperconaserverclient.so.21.2.39
 lib/mysql/plugin/adt_null.so
 lib/mysql/plugin/audit_log.so
 lib/mysql/plugin/audit_log_filter.so
@@ -159,6 +159,7 @@ lib/mysql/plugin/component_udf_reg_real_func.so
 lib/mysql/plugin/component_udf_unreg_3_func.so
 lib/mysql/plugin/component_udf_unreg_int_func.so
 lib/mysql/plugin/component_udf_unreg_real_func.so
+lib/mysql/plugin/component_uuid_vx_udf.so
 lib/mysql/plugin/component_validate_password.so
 lib/mysql/plugin/conflicting_variables.so
 lib/mysql/plugin/connection_control.so

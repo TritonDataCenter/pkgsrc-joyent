@@ -2,7 +2,7 @@ $NetBSD$
 
 Fix paths and port to SunOS.
 
---- scripts/wsrep_sst_xtrabackup-v2.sh.orig	2023-10-19 10:30:04.000000000 +0000
+--- scripts/wsrep_sst_xtrabackup-v2.sh.orig	2024-11-04 14:08:42.000000000 +0000
 +++ scripts/wsrep_sst_xtrabackup-v2.sh
 @@ -136,12 +136,12 @@ DATA="${WSREP_SST_OPT_DATA}"
  
@@ -28,20 +28,23 @@ Fix paths and port to SunOS.
  
  #-------------------------------------------------------------------------------
  #
-@@ -919,7 +919,11 @@ get_stream()
+@@ -919,7 +919,14 @@ get_stream()
  get_proc()
  {
      set +e
 -    nproc=$(grep -c processor /proc/cpuinfo)
-+    if [[ $(uname -s | grep SunOS) ]]; then
++    if [ $(uname -s) = "SunOS" ]; then
 +        nproc=$(kstat -p caps::cpucaps_zone*:value | awk '{ printf "%d", ($2+100-1)/100 }')
++        if [ -z "$nproc" ]; then
++            nproc=$(psrinfo | wc -l)
++        fi
 +    else
 +        nproc=$(grep -c processor /proc/cpuinfo)
 +    fi
      [[ -z $nproc || $nproc -eq 0 ]] && nproc=1
      set -e
  }
-@@ -964,7 +968,7 @@ cleanup_joiner()
+@@ -964,7 +971,7 @@ cleanup_joiner()
      fi
  
      # Final cleanup
@@ -50,7 +53,7 @@ Fix paths and port to SunOS.
  
      # This means no setsid done in mysqld.
      # We don't want to kill mysqld here otherwise.
-@@ -1003,7 +1007,7 @@ cleanup_donor()
+@@ -1003,7 +1010,7 @@ cleanup_donor()
      fi
  
      # Final cleanup
@@ -59,7 +62,7 @@ Fix paths and port to SunOS.
  
      # This means no setsid done in mysqld.
      # We don't want to kill mysqld here otherwise.
-@@ -1168,7 +1172,7 @@ wait_for_listen()
+@@ -1168,7 +1175,7 @@ wait_for_listen()
          wsrep_log_debug "$LINENO: Using ss for socat/nc discovery"
  
          # Revert to using ss to check if socat/nc is listening
@@ -68,7 +71,7 @@ Fix paths and port to SunOS.
          if [[ $? -ne 0 ]]; then
              wsrep_log_error "******** FATAL ERROR *********************** "
              wsrep_log_error "* Could not find 'ss'.  Check that it is installed and in the path."
-@@ -1178,7 +1182,7 @@ wait_for_listen()
+@@ -1178,7 +1185,7 @@ wait_for_listen()
  
          for i in {1..300}
          do
@@ -77,3 +80,14 @@ Fix paths and port to SunOS.
              sleep 0.2
          done
  
+@@ -1652,7 +1659,9 @@ function initialize_pxb_commands()
+     xb_version=${xb_version# }
+     wsrep_log_debug "pxb-version:$xb_version"
+ 
+-    local decompress_threads=$(grep -c ^processor /proc/cpuinfo)
++    get_proc
++
++    local decompress_threads=${nproc}
+     if [[ $decompress_threads -gt 1 ]]; then
+         decompress_threads=$((decompress_threads/2))
+     fi
