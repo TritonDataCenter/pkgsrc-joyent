@@ -1,11 +1,11 @@
 $NetBSD: distinfo,v 1.28 2019/02/05 20:19:55 adam Exp $
 
-RMD160 (boost_1_77_0.tar.bz2) = 2f65aacb1d4ec0296dc3cceab761757a2bc55986
+BLAKE2s (boost_1_77_0.tar.bz2) = 11f9651d7078e67a69a97f46dce3131af1f1b3ba5976c26435cd17a66161cbf1
 SHA512 (boost_1_77_0.tar.bz2) = 39b45c9b60bc5a2a4c669a4463d1272c1e093376b2fb374d7f20a84ea10a3e23bb04b335a735a83a04575731f874d9bff77e89acd947524b3fbbae1b26ae1f2f
 Size (boost_1_77_0.tar.bz2) = 110361537 bytes
-RMD160 (percona-server-8.0.34-26.tar.gz) = 6577493dc8668f69a5319e5328203af5bcfb6f6a
-SHA512 (percona-server-8.0.34-26.tar.gz) = dc657bc8a2fbdf8652c7c92339c17581515983e5aebe058bc5c1fc6b0735674c49766abaadd59199ba03f453e411c432e687e4349ced5f672970ba29d2d035df
-Size (percona-server-8.0.34-26.tar.gz) = 481132673 bytes
+BLAKE2s (percona-server-8.0.39-30.tar.gz) = 6b847bc05f59b8a2a6be82f06426135a443e47e3bc74505f2b2e0890f9802c46
+SHA512 (percona-server-8.0.39-30.tar.gz) = f1c5d557c4f767b5901d7420c6c3e87431ef06111398d347fb9c3e943c5764693cb3832b5b7b0be65582cf0b963d9ab6ace14453feb71e5b4b0d51fffa509fd1
+Size (percona-server-8.0.39-30.tar.gz) = 491159859 bytes
 SHA1 (patch-CMakeLists.txt) = 39178f9513c7d7c9ffdbfb837ededa5e424ea0ce
 SHA1 (patch-build-ps_build-rpm.sh) = ccd52001939a50d724c5ee514963814a9bd91888
 SHA1 (patch-client_CMakeLists.txt) = 3d0745861812247bec5e9b6734ebccb9faa3ffae

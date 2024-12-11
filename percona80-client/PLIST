@@ -42,7 +42,7 @@ lib/libmysqlclient.so
 lib/libperconaserverclient.a
 lib/libperconaserverclient.so
 lib/libperconaserverclient.so.21
-lib/libperconaserverclient.so.21.2.34
+lib/libperconaserverclient.so.21.2.39
 lib/pkgconfig/perconaserverclient.pc
 man/man1/comp_err.1
 man/man1/ibd2sdi.1
