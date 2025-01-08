@@ -6,8 +6,8 @@ bin/myisam_ftdump
 bin/myisamchk
 bin/myisamlog
 bin/myisampack
-${PLIST.embedded}bin/mysql_client_test_embedded
-${PLIST.embedded}bin/mysql_embedded
+bin/mysql_client_test_embedded
+bin/mysql_embedded
 bin/mysql_install_db
 bin/mysql_plugin
 bin/mysql_secure_installation
@@ -17,7 +17,7 @@ bin/mysqld_multi
 bin/mysqld_safe
 bin/mysqldumpslow
 bin/mysqltest
-${PLIST.embedded}bin/mysqltest_embedded
+bin/mysqltest_embedded
 bin/mysqlxtest
 bin/perror
 bin/ps-admin
@@ -31,7 +31,7 @@ include/mysql/mysqlx_ername.h
 include/mysql/mysqlx_error.h
 include/mysql/mysqlx_version.h
 info/mysql.info
-${PLIST.embedded}lib/libmysqld.a
+lib/libmysqld.a
 lib/libmysqlservices.a
 lib/mysql/plugin/adt_null.so
 lib/mysql/plugin/audit_log.so
@@ -44,14 +44,14 @@ lib/mysql/plugin/data_masking.ini
 lib/mysql/plugin/data_masking.so
 lib/mysql/plugin/group_replication.so
 lib/mysql/plugin/ha_example.so
-${PLIST.memcached}lib/mysql/plugin/innodb_engine.so
+lib/mysql/plugin/innodb_engine.so
 lib/mysql/plugin/keyring_file.so
 lib/mysql/plugin/keyring_udf.so
 lib/mysql/plugin/keyring_vault.so
 lib/mysql/plugin/libdaemon_example.so
 lib/mysql/plugin/libfnv1a_udf.so
 lib/mysql/plugin/libfnv_udf.so
-${PLIST.memcached}lib/mysql/plugin/libmemcached.so
+lib/mysql/plugin/libmemcached.so
 lib/mysql/plugin/libmurmur_udf.so
 lib/mysql/plugin/libtest_framework.so
 lib/mysql/plugin/libtest_services.so
@@ -166,4 +166,3 @@ share/mysql/spanish/errmsg.sys
 share/mysql/swedish/errmsg.sys
 share/mysql/ukrainian/errmsg.sys
 share/mysql/uninstall_rewriter.sql
-@pkgdir lib/mysql/plugin/debug

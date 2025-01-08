@@ -5,18 +5,18 @@ COMMENT=	Percona Server, a MySQL server fork (client)
 
 CONFLICTS=	mysql-client-[0-9]*
 
-.include "Makefile.common"
-
-CMAKE_ARGS+=		-DWITHOUT_SERVER=ON
+CMAKE_CONFIGURE_ARGS+=	-DWITHOUT_SERVER=ON
 UNWRAP_FILES+=		scripts/mysql_config
-INFO_FILES=		yes
-INSTALL_DIRS+=		client include libmysql man scripts
+INSTALL_DIRS=		client include libmysql man scripts
+
+.include "Makefile.common"
 
 REPLACE_PERL+=	scripts/mysqld_multi.sh
 REPLACE_PERL+=	scripts/mysqldumpslow.sh
 
 post-install:
-	cd ${DESTDIR}${PREFIX}/lib${LIBARCHSUFFIX} && ${LN} -sf libperconaserverclient.a libmysqlclient.a
-	cd ${DESTDIR}${PREFIX}/lib${LIBARCHSUFFIX} && ${LN} -sf libperconaserverclient.so libmysqlclient.so
+	cd ${DESTDIR}${PREFIX}/lib; \
+	    ${LN} -sf libperconaserverclient.a libmysqlclient.a; \
+	    ${LN} -sf libperconaserverclient.so libmysqlclient.so
 
 .include "../../mk/bsd.pkg.mk"

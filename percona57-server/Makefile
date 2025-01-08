@@ -8,28 +8,6 @@ CONFLICTS=	mysql-server-[0-9]*
 .include "../../joyent/percona57-client/Makefile.common"
 
 INFO_FILES=		yes
-CMAKE_ARGS+=		-DINSTALL_INFODIR=${PKGINFODIR}
-CMAKE_ARGS+=		-DINSTALL_MYSQLTESTDIR=""
-
-# Regression due to code overhaul in 5.7, new solution needed for:
-# https://bugs.mysql.com/bug.php?id=18246
-#
-# CMAKE_ARGS+=		-DWITH_LIBWRAP=ON
-
-.if !empty(PKG_OPTIONS:Membedded-server)
-CMAKE_ARGS+=			-DWITH_EMBEDDED_SERVER=ON
-PLIST.embedded=			yes
-.else
-CMAKE_ARGS+=			-DWITH_EMBEDDED_SERVER=OFF
-# We only need readline to placate the configure script if we don't build
-# the embedded server as it is the only binary linked against "readline".
-BUILDLINK_DEPMETHOD.editline=	build
-BUILDLINK_DEPMETHOD.readline=	build
-.endif
-
-PLIST_VARS+=		embedded
-
-PTHREAD_OPTS+=		require
 
 PKG_GROUPS=		${MYSQL_GROUP}
 PKG_USERS=		${MYSQL_USER}:${MYSQL_GROUP}
@@ -78,17 +56,9 @@ CHECK_INTERPRETER_SKIP+=	share/mysql/test/suite/tokudb/*
 
 INSTALLATION_DIRS+=	bin
 
-.include "../../mk/compiler.mk"
-
-.if !empty(PKGSRC_COMPILER:Msunpro)
-CFLAGS+=		-D_POSIX_C_SOURCE=199506L -D__EXTENSIONS__
-CXXFLAGS+=		-D_POSIX_C_SOURCE=199506L -D__EXTENSIONS__
-.endif
-
 post-install:
 	${SED} ${CNFSUBST} < ${FILESDIR}/my-joyent.cnf.sh \
 	    > ${DESTDIR}${PREFIX}/share/mysql/my-joyent.cnf
-
 
 BUILDLINK_AUTO_DIRS.percona-client=	no
 .include "../../joyent/percona57-client/buildlink3.mk"
