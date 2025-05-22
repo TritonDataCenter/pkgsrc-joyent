@@ -1,9 +1,9 @@
 # $NetBSD$
 
-DISTNAME=	percona-xtrabackup-8.0.35-31
+DISTNAME=	percona-xtrabackup-8.0.35-33
 PKGNAME=	percona-xtrabackup-8.0.35
 CATEGORIES=	databases
-MASTER_SITES=	https://downloads.percona.com/downloads/Percona-XtraBackup-LATEST/Percona-XtraBackup-8.0.35-31/source/tarball/
+MASTER_SITES=	https://downloads.percona.com/downloads/Percona-XtraBackup-LATEST/Percona-XtraBackup-8.0.35-33/source/tarball/
 
 MAINTAINER=	pkgsrc-users@NetBSD.org
 HOMEPAGE=	https://www.percona.com/software/percona-xtrabackup
