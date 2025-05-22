@@ -1,12 +1,12 @@
 $NetBSD$
 
-* unistd.h required for yield()
+Include unistd.h for yield().
 
---- utilities.cpp.orig	2009-12-29 17:50:38.000000000 +0000
+--- utilities.cpp.orig	2025-05-21 09:27:39.436951308 +0000
 +++ utilities.cpp
-@@ -6,6 +6,7 @@
+@@ -4,6 +4,7 @@
+ #include <string.h>
  #include <stdio.h>
- #include <stdarg.h>
  #include <stdlib.h>
 +#include <unistd.h>
  #include "utilities.hpp"
