@@ -1,7 +1,7 @@
 # $NetBSD$
 
-MYSQL_VER=	8.0.39
-WSREP_MAJOR=	30
+MYSQL_VER=	8.0.41
+WSREP_MAJOR=	32
 
 DISTNAME=	Percona-XtraDB-Cluster-${MYSQL_VER}-${WSREP_MAJOR}
 PKGNAME=	percona-cluster-${MYSQL_VER}
@@ -55,7 +55,6 @@ PKG_GROUPS_VARS+=	MYSQL_GROUP
 CONFIG_SHELL=		${TOOLS_PATH.bash}
 
 CMAKE_CONFIGURE_ARGS+=	-DBoost_INCLUDE_DIR="${WRKDIR}/${BOOST}"
-CMAKE_CONFIGURE_ARGS+=	-DBoost_INCLUDE_DIRS="${WRKDIR}/${BOOST}"
 CMAKE_CONFIGURE_ARGS+=	-DCMAKE_BUILD_TYPE=Release
 CMAKE_CONFIGURE_ARGS+=	-DINSTALL_DOCDIR="share/doc/mysql"
 CMAKE_CONFIGURE_ARGS+=	-DINSTALL_DOCREADMEDIR="share/doc/mysql"
@@ -68,6 +67,7 @@ CMAKE_CONFIGURE_ARGS+=	-DINSTALL_PLUGINDIR="lib/mysql/plugin"
 CMAKE_CONFIGURE_ARGS+=	-DINSTALL_SBINDIR="sbin"
 CMAKE_CONFIGURE_ARGS+=	-DINSTALL_SUPPORTFILESDIR="share/mysql"
 CMAKE_CONFIGURE_ARGS+=	-DMYSQL_DATADIR=${MYSQL_DATADIR}
+CMAKE_CONFIGURE_ARGS+=	-DPERL_EXECUTABLE="${PERL5}"
 CMAKE_CONFIGURE_ARGS+=	-DROUTER_INSTALL_DOCDIR="share/mysql"
 CMAKE_CONFIGURE_ARGS+=	-DROUTER_INSTALL_LOGROTATEDIR="share/mysql"
 CMAKE_CONFIGURE_ARGS+=	-DWITH_BOOST="${WRKDIR}/${BOOST}"
@@ -134,8 +134,7 @@ FILES_SUBST+=		MYSQL_DATADIR=${MYSQL_DATADIR}
 FILES_SUBST+=		MYSQL_USER=${MYSQL_USER} MYSQL_GROUP=${MYSQL_GROUP}
 BUILD_DEFS+=		MYSQL_DATADIR
 
-REPLACE_PERL+=		support-files/mysqld_multi.server.sh
-REPLACE_PERL+=		scripts/mysqldumpslow.sh
+REPLACE_BASH+=		scripts/wsrep_sst_clone.sh
 REPLACE_PYTHON+=	scripts/pyclustercheck.py.in
 
 SUBST_CLASSES+=		paths
@@ -147,9 +146,10 @@ SUBST_SED.paths+=	-e "s,/bin/sh,${RCD_SCRIPTS_SHELL},g"
 
 SUBST_CLASSES+=		vars
 SUBST_STAGE.vars=	pre-configure
+SUBST_FILES.vars+=	scripts/CMakeLists.txt
 SUBST_FILES.vars+=	scripts/wsrep_sst_xtrabackup-v2.sh
 SUBST_FILES.vars+=	percona-xtradb-cluster-galera/garb/CMakeLists.txt
-SUBST_VARS.vars=	LOCALBASE PKGMANDIR
+SUBST_VARS.vars=	LOCALBASE PERL5 PKGMANDIR
 
 CONF_FILES=		${PREFIX}/share/examples/mysql/my-cluster.cnf \
 			${PKG_SYSCONFDIR}/my.cnf
@@ -187,6 +187,7 @@ post-install:
 	${CHMOD} -x ${DESTDIR}${PREFIX}/share/mysql/mysql-log-rotate
 
 .include "../../archivers/lz4/buildlink3.mk"
+.include "../../databases/openldap-client/buildlink3.mk"
 .include "../../devel/check/buildlink3.mk"
 .include "../../devel/cmake/build.mk"
 .include "../../devel/libevent/buildlink3.mk"

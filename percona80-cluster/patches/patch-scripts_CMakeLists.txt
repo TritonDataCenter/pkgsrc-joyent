@@ -1,0 +1,14 @@
+$NetBSD$
+
+Fix path to perl.
+
+--- scripts/CMakeLists.txt.orig	2025-05-21 16:03:26.267408445 +0000
++++ scripts/CMakeLists.txt
+@@ -220,6 +220,7 @@ IF(FREEBSD)
+ ELSE()
+   SET (PERL_PATH "/usr/bin/perl")
+ ENDIF()
++SET (PERL_PATH "@PERL5@")
+ 
+ IF(UNIX)
+   # SHELL_PATH, FIND_PROC, CHECK_PID are used by mysqld_safe

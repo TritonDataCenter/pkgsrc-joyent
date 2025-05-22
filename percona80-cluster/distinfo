@@ -1,8 +1,8 @@
 $NetBSD$
 
-BLAKE2s (Percona-XtraDB-Cluster-8.0.39-30.tar.gz) = 174a848429725a1f53503c9c47e28e825f076023b6c2091cf6924123bbe889b1
-SHA512 (Percona-XtraDB-Cluster-8.0.39-30.tar.gz) = a6eb38cc0cd9976661ff91a3cdd38c2fb1bf6667a073fde571b9c6b26b454c60fcd1410ca26b7cb81c24003eb3b84a678dada0a8d4be069f97a364037b2b4bd2
-Size (Percona-XtraDB-Cluster-8.0.39-30.tar.gz) = 487454334 bytes
+BLAKE2s (Percona-XtraDB-Cluster-8.0.41-32.tar.gz) = 79e14b0d836ff9b7ae1eba1cf8e2859d4d71535a4c39d33c91527e9125c44392
+SHA512 (Percona-XtraDB-Cluster-8.0.41-32.tar.gz) = 1f80cc9413891b223264781ca38aebc4b20ae9abc7c59d12af516b3be76a6ac8e872e9d8ef6be2d89f882350acc4c4450e7fbaad8915baf76f856ea1e7baba0e
+Size (Percona-XtraDB-Cluster-8.0.41-32.tar.gz) = 525841859 bytes
 BLAKE2s (boost_1_77_0.tar.bz2) = 11f9651d7078e67a69a97f46dce3131af1f1b3ba5976c26435cd17a66161cbf1
 SHA512 (boost_1_77_0.tar.bz2) = 39b45c9b60bc5a2a4c669a4463d1272c1e093376b2fb374d7f20a84ea10a3e23bb04b335a735a83a04575731f874d9bff77e89acd947524b3fbbae1b26ae1f2f
 Size (boost_1_77_0.tar.bz2) = 110361537 bytes
@@ -14,8 +14,7 @@ SHA1 (patch-include_violite.h) = 0e5b33133969cbeb76e2f44ecc8258b6b4e4ef93
 SHA1 (patch-libmysql_CMakeLists.txt) = c5efd481d5c3a4426edc8107380f95d70766298a
 SHA1 (patch-libmysql_authentication__oci__client_CMakeLists.txt) = c813171109db88b3a3caaf6e5e06b8589a142721
 SHA1 (patch-percona-xtradb-cluster-galera_CMakeLists.txt) = 5e7921d355a1b4c3085e8d6897867f16568dda35
-SHA1 (patch-percona-xtradb-cluster-galera_SConscript) = ce91c5d99d7c08b2648fc118fe827cd12d04f2e0
-SHA1 (patch-percona-xtradb-cluster-galera_SConstruct) = f2889f2ba62981e941cba38b15d908f02c12b06c
+SHA1 (patch-percona-xtradb-cluster-galera_cmake_boost.cmake) = 899465c7e0e487bc203ac52fdb2e0a79890fd506
 SHA1 (patch-percona-xtradb-cluster-galera_galera_src_replicator__str.cpp) = 6a2d989c35b44a550b1229b1226e44f17c340a3c
 SHA1 (patch-percona-xtradb-cluster-galera_galera_src_wsdb.cpp) = 05403339248ec8fe0a80746b41e1065ce6c74228
 SHA1 (patch-percona-xtradb-cluster-galera_galerautils_src_gu__asio.hpp) = 011f047f3ee85e02c8bc48f157057b163093d7fd
@@ -35,6 +34,7 @@ SHA1 (patch-plugin_procfs_CMakeLists.txt) = 42dd897872ae65fe334de863298d365dfa54
 SHA1 (patch-plugin_x_CMakeLists.txt) = 2c02b377e3d8ccb9e2a1b7896f85367eec8f3461
 SHA1 (patch-router_CMakeLists.txt) = a70145c1125976d9068bf0d21ac8cfd1ef1f3a57
 SHA1 (patch-router_tests_integration_CMakeLists.txt) = 3e88e36abbfbe4cb253b218e9e0bf245e3919611
+SHA1 (patch-scripts_CMakeLists.txt) = 5c681e880f4173ffdd05328ecb3930eeea94b755
 SHA1 (patch-scripts_wsrep__sst__common.sh) = 92dbfa52a02cbfb61360a882d04930481b521bcf
 SHA1 (patch-scripts_wsrep__sst__xtrabackup-v2.sh) = 17aedc0786d869c23c851e2a0eb12ee29e25c04e
 SHA1 (patch-sql_binlog__reader.cc) = 5079db7a07137aa3faa08e6ed62aaf0b1749a644
