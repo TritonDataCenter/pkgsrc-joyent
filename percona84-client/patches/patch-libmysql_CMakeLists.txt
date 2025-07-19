@@ -1,0 +1,88 @@
+$NetBSD$
+
+Split configuration between -client and -server.
+Do not run libmysql_api_test, requires LD_LIBRARY_PATH.
+
+--- libmysql/CMakeLists.txt.orig	2025-05-27 16:31:11.000000000 +0000
++++ libmysql/CMakeLists.txt
+@@ -295,6 +295,7 @@ IF(WIN32)
+   LIST(APPEND LIBS_TO_MERGE auth_win_client)
+ ENDIF()
+ 
++IF(NOT WITHOUT_SERVER)
+ # LDAP authentication SASL client plug-in
+ ADD_SUBDIRECTORY(authentication_ldap)
+ 
+@@ -306,12 +307,20 @@ ADD_SUBDIRECTORY(authentication_oci_clie
+ 
+ # Fido and Webauthn clients
+ ADD_SUBDIRECTORY(fido_client)
++ENDIF()
+ 
+ # Merge several convenience libraries into one big perconaserverclient
++IF(WITHOUT_SERVER)
+ MERGE_CONVENIENCE_LIBRARIES(perconaserverclient ${LIBS_TO_MERGE}
+   COMPONENT Development
+   LINK_LIBRARIES ${LIBS_TO_LINK}
+   )
++ELSE()
++MERGE_CONVENIENCE_LIBRARIES(perconaserverclient SKIP_INSTALL ${LIBS_TO_MERGE}
++  COMPONENT Development
++  LINK_LIBRARIES ${LIBS_TO_LINK}
++  )
++ENDIF()
+ 
+ # Visual Studio users need debug  static library for debug projects
+ IF(MSVC)
+@@ -358,6 +367,7 @@ ENDIF()
+ 
+ # Merge several convenience libraries into one big perconaserverclient
+ # and link them together into shared library.
++IF(WITHOUT_SERVER)
+ MERGE_LIBRARIES_SHARED(libmysql ${LIBS_TO_MERGE}
+   EXPORTS
+   ${CLIENT_API_FUNCTIONS}
+@@ -369,6 +379,19 @@ MERGE_LIBRARIES_SHARED(libmysql ${LIBS_T
+   ${UNIX_SOVERSION}
+   ${UNIX_VERSION}
+   )
++ELSE()
++MERGE_LIBRARIES_SHARED(libmysql SKIP_INSTALL ${LIBS_TO_MERGE}
++  EXPORTS
++  ${CLIENT_API_FUNCTIONS}
++  ${CLIENT_API_FUNCTIONS_UNDOCUMENTED}
++  ${CLIENT_API_NONBLOCKING_FUNCTIONS}
++  COMPONENT SharedLibraries
++  LINK_LIBRARIES ${LIBS_TO_LINK}
++  ${UNIX_OUTPUT_NAME}
++  ${UNIX_SOVERSION}
++  ${UNIX_VERSION}
++  )
++ENDIF()
+ 
+ # Downgrade warning for strncat in my_crypt_genhash.
+ IF((WITH_LTO OR CMAKE_COMPILER_FLAG_WITH_LTO) AND MY_COMPILER_IS_GNU)
+@@ -424,6 +447,7 @@ CONFIGURE_FILE(api_test.c.in ${CMAKE_CUR
+ # from @CLIENT_API_FUNCTIONS@ are declared by <mysql.h>. It will fail
+ # to run if not all of these symbols are exported by the library.
+ #
++IF(NOT WITHOUT_SERVER)
+ MYSQL_ADD_EXECUTABLE(libmysql_api_test
+   ${CMAKE_CURRENT_BINARY_DIR}/api_test.c
+   LINK_LIBRARIES libmysql ${LIBRT}
+@@ -446,8 +470,10 @@ IF(HAS_WARN_FLAG)
+     COMPILE_FLAGS ${HAS_WARN_FLAG}
+     )
+ ENDIF()
++ENDIF()
+ 
+ # Verify that libmysql_api_test runs OK
++IF(0)
+ ADD_CUSTOM_COMMAND(
+   OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/libmysql_api_test.out
+   DEPENDS libmysql_api_test
+@@ -457,3 +483,4 @@ ADD_CUSTOM_COMMAND(
+ MY_ADD_CUSTOM_TARGET(run_libmysql_api_test ALL
+   DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/libmysql_api_test.out
+   )
++ENDIF()

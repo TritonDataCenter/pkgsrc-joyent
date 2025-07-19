@@ -1,0 +1,44 @@
+$NetBSD$
+
+Split configuration between -client and -server.
+
+--- scripts/CMakeLists.txt.orig	2022-02-28 19:55:41.000000000 +0000
++++ scripts/CMakeLists.txt
+@@ -396,7 +396,7 @@ ELSE()
+     ${CMAKE_CURRENT_BINARY_DIR}/${PKGCONFIG_FILE}
+     ESCAPE_QUOTES @ONLY)
+ 
+-  IF(INSTALL_PKGCONFIGDIR)
++  IF(INSTALL_PKGCONFIGDIR AND WITHOUT_SERVER)
+     MESSAGE(STATUS "INSTALL ${PKGCONFIG_FILE} ${INSTALL_PKGCONFIGDIR}")
+     INSTALL(FILES
+       ${CMAKE_CURRENT_BINARY_DIR}/${PKGCONFIG_FILE}
+@@ -407,9 +407,11 @@ ELSE()
+   ENDIF()
+ 
+   # mysqld_safe used in mtr even for systemd platforms
++  IF(WITHOUT_SERVER)
++    SET(BIN_SCRIPTS mysql_config)
++  ELSE()
+   IF(WITH_SYSTEMD)
+     SET(BIN_SCRIPTS
+-      mysql_config
+       mysqldumpslow
+       mysqld_safe
+       ps_mysqld_helper
+@@ -417,7 +419,6 @@ ELSE()
+       )
+   ELSE()
+     SET(BIN_SCRIPTS
+-      mysql_config
+       mysqldumpslow
+       mysqld_multi
+       mysqld_safe
+@@ -425,6 +426,7 @@ ELSE()
+       ps-admin
+       )
+   ENDIF()
++  ENDIF()
+ 
+   FOREACH(file ${BIN_SCRIPTS})
+     IF(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${file}.sh)

@@ -1,0 +1,13 @@
+===========================================================================
+$NetBSD$
+
+Initialisation of a Percona Cluster needs to be performed using a specific
+set of instructions before the cluster is ready for use.
+
+Please see the following documentation on how to bootstrap your cluster:
+
+	https://github.com/joyent/pkgsrc/wiki/use:percona-cluster
+
+You will need to follow any specific instructions for version 8.0 or newer,
+as some configuration variables and files have changed since 5.7.
+===========================================================================

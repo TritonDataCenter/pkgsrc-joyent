@@ -1,0 +1,22 @@
+$NetBSD$
+
+Split configuration between -client and -server.
+
+--- include/CMakeLists.txt.orig	2025-05-27 16:31:11.000000000 +0000
++++ include/CMakeLists.txt
+@@ -58,6 +58,7 @@ SET(HEADERS_MYSQLPP_DIR
+   mysqlpp/udf_wrappers.hpp
+ )
+ 
++IF(WITHOUT_SERVER)
+ INSTALL(FILES ${HEADERS}
+   DESTINATION ${INSTALL_INCLUDEDIR}
+   COMPONENT Development
+@@ -72,6 +73,7 @@ INSTALL(FILES ${HEADERS_MYSQLPP_DIR}
+   DESTINATION ${INSTALL_INCLUDEDIR}/mysqlpp
+   COMPONENT Development
+   )
++ENDIF()
+ 
+ # openssl/applink.c must be built into applications linking with libmysql.dll
+ IF (WIN32 AND OPENSSL_APPLINK_C)

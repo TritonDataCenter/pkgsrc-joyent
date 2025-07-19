@@ -1,0 +1,104 @@
+# $NetBSD$
+#
+# used by joyent/percona84-client/Makefile
+# used by joyent/percona84-server/Makefile
+
+MYSQLEXT_VER=	5
+DISTNAME=	percona-server-8.4.5-${MYSQLEXT_VER}
+CATEGORIES=	databases
+MASTER_SITES=	https://downloads.percona.com/downloads/Percona-Server-8.4/Percona-Server-${PKGVERSION_NOREV}-${MYSQLEXT_VER}/source/tarball/
+
+MAINTAINER?=	pkgsrc-users@NetBSD.org
+HOMEPAGE=	https://docs.percona.com/percona-server/8.0/index.html
+LICENSE=	gnu-gpl-v2
+
+BOOST=			boost_1_84_0
+DISTFILES=		${DISTNAME}${EXTRACT_SUFX} ${BOOST}.tar.bz2
+SITES.${BOOST}.tar.bz2=	${MASTER_SITE_SOURCEFORGE:=boost/}
+
+DISTINFO_FILE?=	${.CURDIR}/../../joyent/percona84-client/distinfo
+PATCHDIR?=	${.CURDIR}/../../joyent/percona84-client/patches
+
+USE_LANGUAGES=		c c++
+USE_CXX_FEATURES=	c++14
+USE_TOOLS+=		bash bison gmake perl:run
+
+.include "../../mk/bsd.prefs.mk"
+
+MYSQL_USER?=		mysql
+MYSQL_GROUP?=		mysql
+MYSQL_DATADIR?=		${VARBASE}/mysql
+
+PKG_USERS_VARS+=	MYSQL_USER
+PKG_GROUPS_VARS+=	MYSQL_GROUP
+
+CONFIG_SHELL=		${TOOLS_PATH.bash}
+
+BUILD_DEFS+=		VARBASE
+
+CMAKE_CONFIGURE_ARGS+=	-DCMAKE_BUILD_TYPE=Release
+CMAKE_CONFIGURE_ARGS+=	-DINSTALL_DOCDIR="share/doc/mysql"
+CMAKE_CONFIGURE_ARGS+=	-DINSTALL_DOCREADMEDIR="share/doc/mysql"
+CMAKE_CONFIGURE_ARGS+=	-DINSTALL_INCLUDEDIR="include/mysql"
+CMAKE_CONFIGURE_ARGS+=	-DINSTALL_INFODIR="${PKGINFODIR}"
+CMAKE_CONFIGURE_ARGS+=	-DINSTALL_MANDIR="${PKGMANDIR}"
+CMAKE_CONFIGURE_ARGS+=	-DINSTALL_MYSQLSHAREDIR="share/mysql"
+CMAKE_CONFIGURE_ARGS+=	-DINSTALL_MYSQLTESTDIR=""
+CMAKE_CONFIGURE_ARGS+=	-DINSTALL_PLUGINDIR="lib/mysql/plugin"
+CMAKE_CONFIGURE_ARGS+=	-DINSTALL_SBINDIR="sbin"
+CMAKE_CONFIGURE_ARGS+=	-DINSTALL_SUPPORTFILESDIR="share/mysql"
+CMAKE_CONFIGURE_ARGS+=	-DMYSQL_DATADIR=${MYSQL_DATADIR}
+CMAKE_CONFIGURE_ARGS+=	-DROUTER_INSTALL_DOCDIR="share/mysql"
+CMAKE_CONFIGURE_ARGS+=	-DROUTER_INSTALL_LOGROTATEDIR="share/mysql"
+CMAKE_CONFIGURE_ARGS+=	-DWITH_BOOST="${WRKDIR}/${BOOST}"
+CMAKE_CONFIGURE_ARGS+=	-DWITH_EMBEDDED_SERVER=ON
+CMAKE_CONFIGURE_ARGS+=	-DWITH_INNODB_MEMCACHED=ON
+CMAKE_CONFIGURE_ARGS+=	-DWITH_LDAP="system"
+CMAKE_CONFIGURE_ARGS+=	-DWITH_LIBEVENT="system"
+CMAKE_CONFIGURE_ARGS+=	-DWITH_LZ4="system"
+CMAKE_CONFIGURE_ARGS+=	-DWITH_SSL="system"
+CMAKE_CONFIGURE_ARGS+=	-DWITH_ZLIB="system"
+
+CMAKE_CONFIGURE_ARGS.SunOS+=	-DFORCE_UNSUPPORTED_COMPILER=YES
+
+# Explicitly disable epoll support as it is Linux-specific.
+CMAKE_CONFIGURE_ARGS.SunOS+=	-DHAVE_EPOLL=NO         # router
+CMAKE_CONFIGURE_ARGS.SunOS+=	-DHAVE_EPOLL_CREATE=NO  # storage/ndb
+
+BUILDLINK_TRANSFORM+=		rm:-Wmissing-include-dirs
+BUILDLINK_TRANSFORM.SunOS+=	rm:-Wl,--no-as-needed
+
+CXXFLAGS.SunOS+=	-fpermissive
+LDFLAGS.SunOS+=		-lsocket
+
+LDFLAGS+=		${COMPILER_RPATH_FLAG}${PREFIX}/lib/mysql
+LDFLAGS+=		${COMPILER_RPATH_FLAG}${PREFIX}/lib/mysqlrouter
+
+SUBST_CLASSES+=		scr
+SUBST_STAGE.scr=	pre-configure
+SUBST_FILES.scr=	scripts/mysqld_safe.sh
+SUBST_FILES.scr+=	support-files/mysql.server.sh
+SUBST_SED.scr=		-e "s,chown,${CHOWN},g"
+SUBST_SED.scr+=		-e "s,/bin/sh,${RCD_SCRIPTS_SHELL},g"
+SUBST_SED.scr+=		-e "s,@SHELL_PATH@,${RCD_SCRIPTS_SHELL},g"
+SUBST_MESSAGE.scr=	Fixing scripts.
+
+.include "../../mk/readline.buildlink3.mk"
+.if ${READLINE_TYPE} == "readline"
+CMAKE_CONFIGURE_ARGS+=		-DWITH_READLINE="system"
+.else
+CMAKE_CONFIGURE_ARGS+=		-DWITH_EDITLINE="system"
+.endif
+
+CHECK_PORTABILITY_SKIP+=	packaging/deb-in/mysql-packagesource-server.config.in
+CHECK_PORTABILITY_SKIP+=	storage/rocksdb/rocksdb/Makefile
+
+.include "../../archivers/lz4/buildlink3.mk"
+.include "../../databases/openldap-client/buildlink3.mk"
+.include "../../devel/cmake/build.mk"
+.include "../../devel/libevent/buildlink3.mk"
+.include "../../devel/zlib/buildlink3.mk"
+.include "../../mk/curses.buildlink3.mk"
+.include "../../security/cyrus-sasl/buildlink3.mk"
+.include "../../security/openssl/buildlink3.mk"
+.include "../../www/curl/buildlink3.mk"

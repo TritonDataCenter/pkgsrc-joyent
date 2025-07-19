@@ -1,0 +1,15 @@
+$NetBSD$
+
+Avoid incompatible ld arguments on SunOS.
+
+--- libmysql/authentication_oci_client/CMakeLists.txt.orig	2023-07-27 06:00:59.000000000 +0000
++++ libmysql/authentication_oci_client/CMakeLists.txt
+@@ -46,7 +46,7 @@ MYSQL_ADD_PLUGIN(
+   MODULE_ONLY MODULE_OUTPUT_NAME "authentication_oci_client"
+ )
+ 
+-IF(LINUX OR SOLARIS)
++IF(LINUX)
+   SET(PLUGIN_VERSION_FILE
+     ${CMAKE_CURRENT_SOURCE_DIR}/authentication_oci_client.ver)
+   IF(SOLARIS)

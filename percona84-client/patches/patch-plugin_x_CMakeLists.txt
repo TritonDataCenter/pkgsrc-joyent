@@ -1,0 +1,15 @@
+$NetBSD$
+
+Don't install mysqlxtest.
+
+--- plugin/x/CMakeLists.txt.orig	2019-12-05 20:21:35.000000000 +0000
++++ plugin/x/CMakeLists.txt
+@@ -49,7 +49,7 @@ ADD_SUBDIRECTORY(protocol)
+ ADD_SUBDIRECTORY(client)
+ 
+ # MYSQL_ADD_PLUGIN may have decided *not* to build mysqlx
+-IF(WITH_MYSQLX)
++IF(0)
+   ADD_SUBDIRECTORY(tests)
+ ENDIF()
+ 

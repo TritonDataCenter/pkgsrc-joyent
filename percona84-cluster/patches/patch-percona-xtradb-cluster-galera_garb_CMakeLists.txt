@@ -1,0 +1,26 @@
+$NetBSD$
+
+Skip installing unnecessary files into terrible places.
+Use PKGMANDIR.
+
+--- percona-xtradb-cluster-galera/garb/CMakeLists.txt.orig	2025-03-31 16:58:33.000000000 +0000
++++ percona-xtradb-cluster-galera/garb/CMakeLists.txt
+@@ -36,16 +36,16 @@ set_target_properties( garbd PROPERTIES
+   ${CMAKE_CURRENT_BINARY_DIR}/../bin/ )
+ 
+ install(TARGETS garbd DESTINATION bin)
+-if (NOT ${CMAKE_SYSTEM_NAME} MATCHES ".*BSD")
++if (0)
+   install(FILES
+     ${CMAKE_CURRENT_SOURCE_DIR}/files/garb.cnf
+     ${CMAKE_CURRENT_SOURCE_DIR}/files/garb.service
+     ${CMAKE_CURRENT_SOURCE_DIR}/files/garb-systemd
+     DESTINATION share)
++endif()
+   install(FILES
+     ${PROJECT_SOURCE_DIR}/man/garbd.8
+     DESTINATION man/man8)
+-endif()
+ 
+ if(WITH_COREDUMPER)
+   target_link_libraries( garbd coredumper )
