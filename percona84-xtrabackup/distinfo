@@ -1,0 +1,24 @@
+$NetBSD$
+
+BLAKE2s (boost_1_84_0.tar.bz2) = 9ecf4601f2cee687d9f1d1e3b6077ddd1ecb2ff44972735ad9d7b163dc9b5db6
+SHA512 (boost_1_84_0.tar.bz2) = 5dfeb35198bb096e46cf9e131ef0334cb95bc0bf09f343f291b860b112598b3c36111bd8c232439c401a2b2fb832fa0c399a8d5b96afc60bd359dff070154497
+Size (boost_1_84_0.tar.bz2) = 123110547 bytes
+BLAKE2s (percona-xtrabackup-8.4.0-3.tar.gz) = 79cc3b538f1bbde090bf9f9a56163b3d6b3148a4b40386b27de07b70d33bc589
+SHA512 (percona-xtrabackup-8.4.0-3.tar.gz) = 91973b9d43ac6a7ef4aa4bf157d020aacf8fbb0394f457bd846c404eb5f382a6f6c82f16682a7a1ef39289ea00bda48c30fc42a1b58d0b03c063c3fe4d02956d
+Size (percona-xtrabackup-8.4.0-3.tar.gz) = 432700178 bytes
+SHA1 (patch-CMakeLists.txt) = b5158066b5c60cbdb05194a756d82cf4c32f466c
+SHA1 (patch-cmake_FindLibEv.cmake) = 8c19bb32b5829bdb0de125a476f123f04cb7f075
+SHA1 (patch-cmake_os_SunOS.cmake) = 521f02ff48fa06783621c0b418f6f57561ffe057
+SHA1 (patch-extra_icu_CMakeLists.txt) = 691a837d7b0363359455203968a05c52da34d7e6
+SHA1 (patch-libmysql_CMakeLists.txt) = f13bc5364eeba9649c6a73a06abb0088c4ae63b7
+SHA1 (patch-libservices_CMakeLists.txt) = df678a9809efc3a360645768121aea2c6b7193d0
+SHA1 (patch-mysql-test_CMakeLists.txt) = 74c1a3709f5f18c231871f9ee5038d3e994520ab
+SHA1 (patch-sql_mysqld.cc) = 34f7cad02344e5a9394cfdd5df4f06765f6e5d77
+SHA1 (patch-sql_resourcegroups_platform_thread__attrs__api__solaris.cc) = e6d26955adad76295cf9e2bf9dda70779ab1363e
+SHA1 (patch-storage_innobase_xtrabackup_CMakeLists.txt) = c6053adaba791003deda056009d98f8c283c931b
+SHA1 (patch-storage_innobase_xtrabackup_src_CMakeLists.txt) = a02c7f0e6f74c7bd8abaed137e42cbcffdcdf64f
+SHA1 (patch-storage_innobase_xtrabackup_src_file__utils.cc) = 902d123653bceb43b0a01a9c2a10721443b0e1e2
+SHA1 (patch-storage_innobase_xtrabackup_src_utils.cc) = fa2428edfd8b5b152013335c3c3244bf91e8c750
+SHA1 (patch-storage_innobase_xtrabackup_src_xbcloud_xbcloud.cc) = d0bef703caf572854eee6898181d6c041c52bc18
+SHA1 (patch-storage_myisam_mi__dynrec.cc) = 8ba0b029b2dc66550b675744b39958d4192f4d06
+SHA1 (patch-storage_myisam_mi__extra.cc) = efe2f9ac4deeadc34b52f6ee798e616dd37ecf7c

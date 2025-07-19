@@ -1,0 +1,15 @@
+$NetBSD$
+
+Don't install the huge test suite.
+
+--- storage/innobase/xtrabackup/CMakeLists.txt.orig	2019-12-14 16:07:34.000000000 +0000
++++ storage/innobase/xtrabackup/CMakeLists.txt
+@@ -26,7 +26,7 @@ INSTALL_SCRIPT(${CMAKE_CURRENT_BINARY_DI
+ ADD_SUBDIRECTORY(src)
+ ADD_SUBDIRECTORY(doc/source)
+ 
+-IF(INSTALL_MYSQLTESTDIR)
++IF(0)
+   INSTALL(
+     DIRECTORY test
+     DESTINATION ${INSTALL_MYSQLTESTDIR}

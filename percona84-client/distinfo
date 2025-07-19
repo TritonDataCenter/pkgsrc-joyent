@@ -1,0 +1,26 @@
+$NetBSD: distinfo,v 1.28 2019/02/05 20:19:55 adam Exp $
+
+BLAKE2s (boost_1_84_0.tar.bz2) = 9ecf4601f2cee687d9f1d1e3b6077ddd1ecb2ff44972735ad9d7b163dc9b5db6
+SHA512 (boost_1_84_0.tar.bz2) = 5dfeb35198bb096e46cf9e131ef0334cb95bc0bf09f343f291b860b112598b3c36111bd8c232439c401a2b2fb832fa0c399a8d5b96afc60bd359dff070154497
+Size (boost_1_84_0.tar.bz2) = 123110547 bytes
+BLAKE2s (percona-server-8.4.5-5.tar.gz) = 872e6add5ea2d95bd1f91a8de2403ae211db2dafdf8ad8e887fb3aee2ae2cc9b
+SHA512 (percona-server-8.4.5-5.tar.gz) = 675012672230941e063b095aa27a453ca9a438a24ab92a3a68394c9a5cd4ac35f836d800f25ed8fe669182892e634bc98f229bbda3bc3a0a3437bcdab1cd35ef
+Size (percona-server-8.4.5-5.tar.gz) = 511472056 bytes
+SHA1 (patch-CMakeLists.txt) = 2db928883ccfa52802776064ce5606e144a3909c
+SHA1 (patch-build-ps_build-rpm.sh) = ccd52001939a50d724c5ee514963814a9bd91888
+SHA1 (patch-client_CMakeLists.txt) = 90f1802c74e9639c05450e6ccaf5751fd310cc38
+SHA1 (patch-cmake_os_SunOS.cmake) = 825d6f56f4c63c6d15d0f852365df3854524ec33
+SHA1 (patch-components_audit__log__filter_audit__keyring.cc) = 41d0b08f2fe484df91ca50a367c3a2ebd3a0ba69
+SHA1 (patch-components_audit__log__filter_log__writer_file__handle.cc) = 2bf51b699f2b0b92edeff374145b9ebbcacccee9
+SHA1 (patch-include_CMakeLists.txt) = 0d99aacba6403ef0a64c945d2894e55dfd4c7d16
+SHA1 (patch-libmysql_CMakeLists.txt) = e2e4a717f085ac52d8f0ecc489ff9cb157ccce48
+SHA1 (patch-libmysql_authentication__oci__client_CMakeLists.txt) = 34c5804e1c9ac8b665b5f1381d333765b5561e37
+SHA1 (patch-plugin_procfs_CMakeLists.txt) = 3c0005bbb2de05e7db3541ff4ba3340f0f74b937
+SHA1 (patch-plugin_x_CMakeLists.txt) = 2c02b377e3d8ccb9e2a1b7896f85367eec8f3461
+SHA1 (patch-router_CMakeLists.txt) = 7144e9324eda62b02d05b3e2e1baac93c079f2e0
+SHA1 (patch-scripts_CMakeLists.txt) = ef340efc87b58224484b3269fcbfb0abb916acd7
+SHA1 (patch-sql_mysqld.cc) = 2af94535238778079fdaa118c431e0759baf701d
+SHA1 (patch-sql_resourcegroups_platform_thread__attrs__api__solaris.cc) = 10039638c4fff9347f53466118f94466ebf12e5c
+SHA1 (patch-storage_myisam_mi__dynrec.cc) = 9e0e368f9ced46cb091432fca0c4249313c5b7e8
+SHA1 (patch-storage_myisam_mi__extra.cc) = 55443b27ded1156a3dd60bb66101ff95833650f2
+SHA1 (patch-vio_viosocket.cc) = 86ebf78a5c33ea6b772ea846c3184883375e9a62

@@ -1,0 +1,13 @@
+Percona XtraBackup is the world's only open-source, free MySQL hot backup
+software that performs non-blocking backups for InnoDB and XtraDB databases.
+With Percona XtraBackup, you can achieve the following benefits:
+
+ - Backups that complete quickly and reliably
+ - Uninterrupted transaction processing during backups
+ - Savings on disk space and network bandwidth
+ - Automatic backup verification
+ - Higher uptime due to faster restore time
+
+XtraBackup makes MySQL hot backups for all versions of Percona Server, MySQL,
+MariaDB, and Drizzle. It performs streaming, compressed, and incremental MySQL
+backups.

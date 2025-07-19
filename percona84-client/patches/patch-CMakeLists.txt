@@ -1,0 +1,36 @@
+$NetBSD$
+
+Split configuration between -client and -server.
+SunOS needs __STDC_WANT_LIB_EXT1__ too.
+
+--- CMakeLists.txt.orig	2023-09-14 19:45:46.000000000 +0000
++++ CMakeLists.txt
+@@ -1602,7 +1602,7 @@ ELSE()
+   ENDIF()
+ ENDIF()
+ 
+-IF(APPLE)
++IF(1)
+   # Get access to memset_s
+   ADD_DEFINITIONS(-D__STDC_WANT_LIB_EXT1__=1)
+ ENDIF()
+@@ -2273,8 +2273,9 @@ ADD_SUBDIRECTORY(utilities)
+ ADD_SUBDIRECTORY(share)
+ ADD_SUBDIRECTORY(libservices)
+ 
+-IF(NOT WITHOUT_SERVER)
++IF(WITHOUT_SERVER)
+   ADD_SUBDIRECTORY(testclients)
++ELSE()
+   ADD_SUBDIRECTORY(sql)
+ ENDIF()
+ 
+@@ -2365,7 +2366,7 @@ IF(ENABLE_GCOV)
+   INCLUDE(fastcov)
+ ENDIF()
+ 
+-IF(UNIX)
++IF(WITHOUT_SERVER)
+   ADD_SUBDIRECTORY(man)
+ ENDIF()
+ 

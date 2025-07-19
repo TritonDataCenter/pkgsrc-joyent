@@ -1,0 +1,15 @@
+$NetBSD$
+
+Don't install libmysqlservices.a
+
+--- libservices/CMakeLists.txt.orig	2019-12-14 16:07:34.000000000 +0000
++++ libservices/CMakeLists.txt
+@@ -45,7 +45,7 @@ SET(MYSQLSERVICES_SOURCES
+   plugin_registry_service.c)
+ 
+ ADD_LIBRARY(mysqlservices STATIC ${MYSQLSERVICES_SOURCES})
+-IF(INSTALL_STATIC_LIBRARIES)
++IF(0)
+   INSTALL(TARGETS mysqlservices
+     DESTINATION ${INSTALL_LIBDIR} COMPONENT Development)
+ ENDIF()

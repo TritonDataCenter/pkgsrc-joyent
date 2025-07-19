@@ -1,0 +1,15 @@
+$NetBSD$
+
+Avoid icudt conflict with main percona packages.
+
+--- extra/icu/CMakeLists.txt.orig	2022-11-08 10:31:09.000000000 +0000
++++ extra/icu/CMakeLists.txt
+@@ -635,7 +635,7 @@ ADD_DEPENDENCIES(icu_all icuuc icui18n i
+ # Copy the tarballs, unpack them, and do 'git add'.
+ 
+ INSTALL(DIRECTORY ${ICUDT_DIR}
+-  DESTINATION "${INSTALL_PRIV_LIBDIR}"
++  DESTINATION "${INSTALL_PRIV_LIBDIR}/xtrabackup"
+   COMPONENT SharedLibraries
+   FILE_PERMISSIONS
+     OWNER_READ

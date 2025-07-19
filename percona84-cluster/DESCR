@@ -1,0 +1,3 @@
+Percona XtraDB Cluster is based on Percona Server and Codership wsrep
+API using galera replication library that provides Multimaster Cluster
+based on synchronous replication.
