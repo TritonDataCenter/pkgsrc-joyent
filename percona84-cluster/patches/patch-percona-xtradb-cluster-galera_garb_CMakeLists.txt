@@ -19,8 +19,9 @@ Use PKGMANDIR.
 +endif()
    install(FILES
      ${PROJECT_SOURCE_DIR}/man/garbd.8
-     DESTINATION man/man8)
+-    DESTINATION man/man8)
 -endif()
++    DESTINATION @PKGMANDIR@/man8)
  
  if(WITH_COREDUMPER)
    target_link_libraries( garbd coredumper )

@@ -9,17 +9,17 @@ Fix paths and port to SunOS.
  
  # XB path compatible with the current version of PXC
 -XTRABACKUP_THIS_VER_PATH="$(dirname $0)/pxc_extra/pxb-8.4"
-+XTRABACKUP_THIS_VER_PATH="/opt/local"
++XTRABACKUP_THIS_VER_PATH="@LOCALBASE@"
  
  # XB path compatible with prev PXC version. It may be prev Innovative release or LTS
  # if current PXC version is 1st Innovative.
  # Note that this can be the same as XTRABACKUP_PREV_LTS_VER_PATH
 -XTRABACKUP_PREV_VER_PATH="$(dirname $0)/pxc_extra/pxb-8.3"
-+XTRABACKUP_PREV_VER_PATH="/opt/local"
++XTRABACKUP_PREV_VER_PATH="@LOCALBASE@"
  
  # XB path compatible previous PXC LTS version
 -XTRABACKUP_PREV_LTS_VER_PATH="$(dirname $0)/pxc_extra/pxb-8.0"
-+XTRABACKUP_PREV_LTS_VER_PATH="/opt/local"
++XTRABACKUP_PREV_LTS_VER_PATH="@LOCALBASE@"
  
  # Minimum PXB required versions for this node to work
  # To be able to service this version
@@ -28,7 +28,7 @@ Fix paths and port to SunOS.
  # Setting the path for ss and ip
  # ss: is utility to investigate socket, ip for network routes.
 -export PATH="/usr/sbin:/sbin:$PATH"
-+export PATH="/opt/local/sbin:/opt/local/bin:/usr/sbin:/usr/bin:/sbin"
++export PATH="@LOCALBASE@/sbin:@LOCALBASE@/bin:/usr/sbin:/usr/bin:/sbin"
  
  #-------------------------------------------------------------------------------
  #

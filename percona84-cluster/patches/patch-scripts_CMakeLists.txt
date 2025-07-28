@@ -8,7 +8,7 @@ Fix path to perl.
  ELSE()
    SET (PERL_PATH "/usr/bin/perl")
  ENDIF()
-+SET (PERL_PATH "/opt/local/bin/perl")
++SET (PERL_PATH "@PERL5@")
  
  IF(UNIX)
    # SHELL_PATH, FIND_PROC, CHECK_PID are used by mysqld_safe

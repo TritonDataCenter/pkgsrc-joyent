@@ -86,7 +86,6 @@ CMAKE_CONFIGURE_ARGS.SunOS+=	-DFORCE_UNSUPPORTED_COMPILER=YES
 
 CXXFLAGS.SunOS+=	-fpermissive
 LDFLAGS.SunOS+=		-lsocket
-#LDFLAGS.SunOS+=		-labsl_spinlock_wait # XXX
 
 BUILDLINK_TRANSFORM+=		rm:-Wmissing-include-dirs
 BUILDLINK_TRANSFORM.SunOS+=	rm:-Wl,--no-as-needed
