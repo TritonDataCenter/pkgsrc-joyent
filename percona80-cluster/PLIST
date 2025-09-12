@@ -92,7 +92,7 @@ lib/libmysqlservices.a
 lib/libperconaserverclient.a
 lib/libperconaserverclient.so
 lib/libperconaserverclient.so.21
-lib/libperconaserverclient.so.21.2.41
+lib/libperconaserverclient.so.21.2.42
 lib/mysql/plugin/adt_null.so
 lib/mysql/plugin/audit_log.so
 lib/mysql/plugin/audit_log_filter.so

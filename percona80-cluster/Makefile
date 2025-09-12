@@ -1,7 +1,7 @@
 # $NetBSD$
 
-MYSQL_VER=	8.0.41
-WSREP_MAJOR=	32
+MYSQL_VER=	8.0.42
+WSREP_MAJOR=	33
 
 DISTNAME=	Percona-XtraDB-Cluster-${MYSQL_VER}-${WSREP_MAJOR}
 PKGNAME=	percona-cluster-${MYSQL_VER}
@@ -37,7 +37,7 @@ SITES.${BOOST}.tar.bz2=	${MASTER_SITE_SOURCEFORGE:=boost/}
 
 USE_LANGUAGES=		c c++
 USE_CC_FEATURES=	c99
-USE_CXX_FEATURES=	c++14
+USE_CXX_FEATURES=	c++17
 USE_TOOLS+=		bash bison gmake perl:run
 
 .include "../../mk/bsd.prefs.mk"
@@ -73,7 +73,7 @@ CMAKE_CONFIGURE_ARGS+=	-DROUTER_INSTALL_LOGROTATEDIR="share/mysql"
 CMAKE_CONFIGURE_ARGS+=	-DWITH_BOOST="${WRKDIR}/${BOOST}"
 CMAKE_CONFIGURE_ARGS+=	-DWITH_LIBEVENT="system"
 CMAKE_CONFIGURE_ARGS+=	-DWITH_LZ4="system"
-CMAKE_CONFIGURE_ARGS+=	-DWITH_PROTOBUF="system"
+CMAKE_CONFIGURE_ARGS+=	-DWITH_PROTOBUF="bundled"
 CMAKE_CONFIGURE_ARGS+=	-DWITH_SSL="system"
 CMAKE_CONFIGURE_ARGS+=	-DWITH_WSREP=1
 CMAKE_CONFIGURE_ARGS+=	-DWITH_ZLIB="system"
@@ -88,7 +88,6 @@ CMAKE_CONFIGURE_ARGS.SunOS+=	-DFORCE_UNSUPPORTED_COMPILER=YES
 
 CXXFLAGS.SunOS+=	-fpermissive
 LDFLAGS.SunOS+=		-lsocket
-LDFLAGS.SunOS+=		-labsl_spinlock_wait # XXX
 
 BUILDLINK_TRANSFORM+=		rm:-Wmissing-include-dirs
 BUILDLINK_TRANSFORM.SunOS+=	rm:-Wl,--no-as-needed
@@ -193,7 +192,6 @@ post-install:
 .include "../../devel/check/buildlink3.mk"
 .include "../../devel/cmake/build.mk"
 .include "../../devel/libevent/buildlink3.mk"
-.include "../../devel/protobuf/buildlink3.mk"
 .include "../../devel/scons/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../lang/python/application.mk"

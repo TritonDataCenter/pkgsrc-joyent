@@ -1,8 +1,8 @@
 $NetBSD$
 
-BLAKE2s (Percona-XtraDB-Cluster-8.0.41-32.tar.gz) = 79e14b0d836ff9b7ae1eba1cf8e2859d4d71535a4c39d33c91527e9125c44392
-SHA512 (Percona-XtraDB-Cluster-8.0.41-32.tar.gz) = 1f80cc9413891b223264781ca38aebc4b20ae9abc7c59d12af516b3be76a6ac8e872e9d8ef6be2d89f882350acc4c4450e7fbaad8915baf76f856ea1e7baba0e
-Size (Percona-XtraDB-Cluster-8.0.41-32.tar.gz) = 525841859 bytes
+BLAKE2s (Percona-XtraDB-Cluster-8.0.42-33.tar.gz) = 3c51406635ad3db9b7257eb86ffb10e9ae9890f61bde6dc371874be310b9f8e4
+SHA512 (Percona-XtraDB-Cluster-8.0.42-33.tar.gz) = bbed42e705d392c39d52a1b1fa3a4e5ca4e8c0bb49fe638bd5b587ebf54c477717ad683ecca30c0707320a02f05cca561eb5964221ce12af55242e9b84a03a26
+Size (Percona-XtraDB-Cluster-8.0.42-33.tar.gz) = 529708540 bytes
 BLAKE2s (boost_1_77_0.tar.bz2) = 11f9651d7078e67a69a97f46dce3131af1f1b3ba5976c26435cd17a66161cbf1
 SHA512 (boost_1_77_0.tar.bz2) = 39b45c9b60bc5a2a4c669a4463d1272c1e093376b2fb374d7f20a84ea10a3e23bb04b335a735a83a04575731f874d9bff77e89acd947524b3fbbae1b26ae1f2f
 Size (boost_1_77_0.tar.bz2) = 110361537 bytes
