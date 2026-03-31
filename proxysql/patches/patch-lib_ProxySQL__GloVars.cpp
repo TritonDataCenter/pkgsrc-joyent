@@ -2,9 +2,9 @@ $NetBSD$
 
 Default paths.
 
---- lib/ProxySQL_GloVars.cpp.orig	2017-03-26 11:18:09.000000000 +0000
+--- lib/ProxySQL_GloVars.cpp.orig	2018-09-21 20:55:57.000000000 +0000
 +++ lib/ProxySQL_GloVars.cpp
-@@ -166,9 +166,9 @@ void ProxySQL_GlobalVariables::process_o
+@@ -200,9 +200,9 @@ void ProxySQL_GlobalVariables::process_o
  		if (Proxy_file_regular(config_file)==false) {
  			config_file=(char *)"proxysql.cfg";
  			if (Proxy_file_regular(config_file)==false) {
