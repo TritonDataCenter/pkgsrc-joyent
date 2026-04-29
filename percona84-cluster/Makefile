@@ -1,12 +1,12 @@
 # $NetBSD$
 
-MYSQL_VER=	8.4.4
-WSREP_MAJOR=	4
+MYSQL_VER=	8.4.8
+WSREP_MAJOR=	8
 
 DISTNAME=	Percona-XtraDB-Cluster-${MYSQL_VER}-${WSREP_MAJOR}
 PKGNAME=	percona-cluster-${MYSQL_VER}
 CATEGORIES=	databases
-MASTER_SITES=	https://www.percona.com/downloads/Percona-XtraDB-Cluster-84/${DISTNAME:S/-${WSREP_MAJOR}//}/source/tarball/
+MASTER_SITES=	https://www.percona.com/downloads/Percona-XtraDB-Cluster-84/${DISTNAME:S/-${WSREP_MAJOR}$//}/source/tarball/
 
 COMMENT=	Percona XTraDB Cluster
 MAINTAINER=	jperkin@joyent.com
@@ -19,26 +19,16 @@ DEPENDS+=	coreutils>=0:../../sysutils/coreutils	# GNU mktemp
 DEPENDS+=	findutils>=0:../../sysutils/findutils	# find -regex
 DEPENDS+=	grep>=0:../../textproc/grep		# grep -o
 DEPENDS+=	socat>=0:../../net/socat
-DEPENDS+=	percona-xtrabackup>=8:../../joyent/percona80-xtrabackup
+DEPENDS+=	percona-xtrabackup>=8.4<8.5:../../joyent/percona84-xtrabackup
 
 # nbpatch fails
 BUILD_DEPENDS+=	patch-[0-9]*:../../devel/patch
 PATCH=		${PREFIX}/bin/gpatch
 
-#
-# Has specific boost version requirements so use bundled that we fetch
-# ourselves.  Keep the version synced from cmake/boost.cmake.  Note that
-# later on we have to pull in boost-libs as a manual DEPENDS as the galera
-# plugin requires libboost_program_options.a
-#
-BOOST=			boost_1_84_0
-DISTFILES=		${DISTNAME}${EXTRACT_SUFX} ${BOOST}.tar.bz2
-SITES.${BOOST}.tar.bz2=	${MASTER_SITE_SOURCEFORGE:=boost/}
-
 USE_LANGUAGES=		c c++
 USE_CC_FEATURES=	c99
 USE_CXX_FEATURES=	c++20
-USE_TOOLS+=		bash bison gmake perl:run
+USE_TOOLS+=		bash bison gmake perl:run pkg-config
 
 .include "../../mk/bsd.prefs.mk"
 
@@ -54,7 +44,6 @@ PKG_GROUPS_VARS+=	MYSQL_GROUP
 
 CONFIG_SHELL=		${TOOLS_PATH.bash}
 
-CMAKE_CONFIGURE_ARGS+=	-DBoost_INCLUDE_DIR="${WRKDIR}/${BOOST}"
 CMAKE_CONFIGURE_ARGS+=	-DCMAKE_BUILD_TYPE=Release
 CMAKE_CONFIGURE_ARGS+=	-DINSTALL_DOCDIR="share/doc/mysql"
 CMAKE_CONFIGURE_ARGS+=	-DINSTALL_DOCREADMEDIR="share/doc/mysql"
@@ -70,7 +59,6 @@ CMAKE_CONFIGURE_ARGS+=	-DMYSQL_DATADIR=${MYSQL_DATADIR}
 CMAKE_CONFIGURE_ARGS+=	-DPERL_EXECUTABLE="${PERL5}"
 CMAKE_CONFIGURE_ARGS+=	-DROUTER_INSTALL_DOCDIR="share/mysql"
 CMAKE_CONFIGURE_ARGS+=	-DROUTER_INSTALL_LOGROTATEDIR="share/mysql"
-CMAKE_CONFIGURE_ARGS+=	-DWITH_BOOST="${WRKDIR}/${BOOST}"
 CMAKE_CONFIGURE_ARGS+=	-DWITH_LIBEVENT="system"
 CMAKE_CONFIGURE_ARGS+=	-DWITH_LZ4="system"
 CMAKE_CONFIGURE_ARGS+=	-DWITH_PROTOBUF="bundled"
@@ -167,11 +155,14 @@ TEST_ENV+=		LD_LIBRARY_PATH=${WRKSRC}/cmake-pkgsrc-build/library_output_director
 # So we're left to handle it with DEPENDS and then munge the files we need
 # manually during the build to work around buildlink.
 #
+BUILD_DEPENDS+=		boost-headers>0:../../devel/boost-headers
 BUILD_DEPENDS+=		boost-libs>0:../../devel/boost-libs
 #
 # The file needs to be copied into the work directory to avoid buildlink.
 #
 BUILDLINK_TRANSFORM+=	opt:-lboost_program_options:${WRKDIR}/libboost_program_options.a
+CMAKE_CONFIGURE_ARGS+=	-DBoost_INCLUDE_DIRS=${LOCALBASE}
+CMAKE_CONFIGURE_ARGS+=	-DBoost_PROGRAM_OPTIONS_LIBRARY=${WRKDIR}/libboost_program_options.a
 
 pre-build:
 	${CP} ${LOCALBASE}/lib/libboost_program_options.a ${WRKDIR}

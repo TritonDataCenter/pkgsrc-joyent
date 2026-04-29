@@ -2,37 +2,37 @@ $NetBSD$
 
 Fix paths and port to SunOS.
 
---- scripts/wsrep_sst_xtrabackup-v2.sh.orig	2025-03-30 10:27:08.000000000 +0000
+--- scripts/wsrep_sst_xtrabackup-v2.sh.orig	2026-04-06 19:46:14.000000000 +0000
 +++ scripts/wsrep_sst_xtrabackup-v2.sh
-@@ -172,15 +172,15 @@ DATA="${WSREP_SST_OPT_DATA}"
+@@ -179,15 +179,15 @@ DATA="${WSREP_SST_OPT_DATA}"
  XTRABACKUP_PATH_PREFIX="$(dirname $0)/pxc_extra/pxb-"
  
  # XB path compatible with the current version of PXC
 -XTRABACKUP_THIS_VER_PATH="$(dirname $0)/pxc_extra/pxb-8.4"
-+XTRABACKUP_THIS_VER_PATH="/opt/local"
++XTRABACKUP_THIS_VER_PATH="@LOCALBASE@"
  
  # XB path compatible with prev PXC version. It may be prev Innovative release or LTS
  # if current PXC version is 1st Innovative.
  # Note that this can be the same as XTRABACKUP_PREV_LTS_VER_PATH
 -XTRABACKUP_PREV_VER_PATH="$(dirname $0)/pxc_extra/pxb-8.3"
-+XTRABACKUP_PREV_VER_PATH="/opt/local"
++XTRABACKUP_PREV_VER_PATH="@LOCALBASE@"
  
  # XB path compatible previous PXC LTS version
 -XTRABACKUP_PREV_LTS_VER_PATH="$(dirname $0)/pxc_extra/pxb-8.0"
-+XTRABACKUP_PREV_LTS_VER_PATH="/opt/local"
++XTRABACKUP_PREV_LTS_VER_PATH="@LOCALBASE@"
  
  # Minimum PXB required versions for this node to work
  # To be able to service this version
-@@ -214,7 +214,7 @@ JOINER_SST_DIR=""
+@@ -221,7 +221,7 @@ JOINER_SST_DIR=""
  
  # Setting the path for ss and ip
  # ss: is utility to investigate socket, ip for network routes.
 -export PATH="/usr/sbin:/sbin:$PATH"
-+export PATH="/opt/local/sbin:/opt/local/bin:/usr/sbin:/usr/bin:/sbin"
++export PATH="@LOCALBASE@/sbin:@LOCALBASE@/bin:/usr/sbin:/usr/bin:/sbin"
  
  #-------------------------------------------------------------------------------
  #
-@@ -938,7 +938,14 @@ get_stream()
+@@ -946,7 +946,14 @@ get_stream()
  get_proc()
  {
      set +e
@@ -48,7 +48,7 @@ Fix paths and port to SunOS.
      [[ -z $nproc || $nproc -eq 0 ]] && nproc=1
      set -e
  }
-@@ -975,7 +982,7 @@ cleanup_joiner()
+@@ -983,7 +990,7 @@ cleanup_joiner()
      fi
  
      # Final cleanup
@@ -57,7 +57,7 @@ Fix paths and port to SunOS.
  
      # This means no setsid done in mysqld.
      # We don't want to kill mysqld here otherwise.
-@@ -1014,7 +1021,7 @@ cleanup_donor()
+@@ -1022,7 +1029,7 @@ cleanup_donor()
      fi
  
      # Final cleanup
@@ -66,7 +66,7 @@ Fix paths and port to SunOS.
  
      # This means no setsid done in mysqld.
      # We don't want to kill mysqld here otherwise.
-@@ -1174,7 +1181,7 @@ wait_for_listen()
+@@ -1182,7 +1189,7 @@ wait_for_listen()
          wsrep_log_debug "$LINENO: Using ss for socat/nc discovery"
  
          # Revert to using ss to check if socat/nc is listening
@@ -75,7 +75,7 @@ Fix paths and port to SunOS.
          if [[ $? -ne 0 ]]; then
              wsrep_log_error "******** FATAL ERROR *********************** "
              wsrep_log_error "* Could not find 'ss'.  Check that it is installed and in the path."
-@@ -1184,7 +1191,7 @@ wait_for_listen()
+@@ -1192,7 +1199,7 @@ wait_for_listen()
  
          for i in {1..300}
          do
@@ -84,7 +84,7 @@ Fix paths and port to SunOS.
              sleep 0.2
          done
  
-@@ -1624,7 +1631,9 @@ function initialize_pxb_commands()
+@@ -1644,7 +1651,9 @@ function initialize_pxb_commands()
      xb_version=${xb_version# }
      wsrep_log_debug "pxb-version:$xb_version"
  
