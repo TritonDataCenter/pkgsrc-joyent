@@ -2,17 +2,18 @@ $NetBSD$
 
 We use some pkgsrc deps.
 
---- src/Makefile.orig	2018-02-01 02:06:06.000000000 +0000
+--- src/Makefile.orig	2018-09-21 20:55:57.000000000 +0000
 +++ src/Makefile
-@@ -43,6 +43,7 @@ MICROHTTPD_LDIR=$(MICROHTTPD_DIR)/microh
- CURL_DIR=$(DEPS_PATH)/curl/curl/
- CURL_IDIR=$(CURL_DIR)/include
- CURL_LDIR=$(CURL_DIR)/lib/.libs
-+CURL_LIBS := $(shell curl-config --libs)
+@@ -56,12 +56,18 @@ endif
  
- IDIR=../include
- LDIR=../lib
-@@ -68,9 +69,9 @@ MYCXXFLAGS=-std=c++11 $(IDIRS) $(OPTZ) $
+ MYCXXFLAGS=-std=c++11 $(IDIRS) $(OPTZ) $(DEBUG) $(PSQLCH)
+ 
++ifeq ($(UNAME_S),SunOS)
++	CURL_LIBS := $(shell curl-config --libs)
++else
++	CURL_LIBS := ""
++endif
++
  LDFLAGS+=
  NOJEMALLOC := $(shell echo $(NOJEMALLOC))
  ifeq ($(NOJEMALLOC),1)

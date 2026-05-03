@@ -2,17 +2,17 @@ $NetBSD$
 
 Sane installation.
 
---- Makefile.orig	2018-02-01 02:06:06.000000000 +0000
+--- Makefile.orig	2018-09-21 20:55:57.000000000 +0000
 +++ Makefile
 @@ -12,7 +12,6 @@ DEBUG=${ALL_DEBUG}
  #export EXTRALINK
- CURVER?=1.4.7
+ CURVER?=1.4.12
  MAKEOPT=-j 4
 -DISTRO := $(shell gawk -F= '/^NAME/{print $$2}' /etc/os-release)
  ifeq ($(wildcard /usr/lib/systemd/system), /usr/lib/systemd/system)
  	SYSTEMD=1
  else
-@@ -654,29 +653,8 @@ cleanall:
+@@ -668,29 +667,8 @@ cleanall:
  	rm binaries/*rpm || true
  
  install: src/proxysql
@@ -44,7 +44,7 @@ Sane installation.
  .PHONY: install
  
  uninstall:
-@@ -705,7 +683,6 @@ ifeq ($(DISTRO),"Debian GNU/Linux")
+@@ -719,7 +697,6 @@ ifeq ($(DISTRO),"Debian GNU/Linux")
  endif
  endif
  endif
