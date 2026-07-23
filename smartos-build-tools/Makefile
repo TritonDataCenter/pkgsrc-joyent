@@ -18,10 +18,10 @@
 
 DISTNAME=	smartos-build-tools-20130927
 CATEGORIES=	sysutils
-MASTER_SITES=	https://us-east.manta.joyent.com/pkgsrc/public/pkg-bootstraps/
+MASTER_SITES=	https://us-central.manta.mnx.io/pkgsrc/public/pkg-bootstraps/
 
-MAINTAINER=	jperkin@joyent.com
-HOMEPAGE=	https://us-east.manta.joyent.com/pkgsrc/public/pkg-bootstraps/
+MAINTAINER=	jperkin@pkgsrc.org
+HOMEPAGE=	https://us-central.manta.mnx.io/pkgsrc/public/pkg-bootstraps/
 COMMENT=	Build tools from SmartOS
 LICENSE=	cddl-1.0
 
