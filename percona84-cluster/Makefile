@@ -182,8 +182,6 @@ post-install:
 .include "../../devel/check/buildlink3.mk"
 .include "../../devel/cmake/build.mk"
 .include "../../devel/libevent/buildlink3.mk"
-#.include "../../devel/protobuf/buildlink3.mk"
-.include "../../devel/scons/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../lang/python/application.mk"
 .include "../../security/openssl/buildlink3.mk"
