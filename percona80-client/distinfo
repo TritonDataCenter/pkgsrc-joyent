@@ -1,11 +1,11 @@
 $NetBSD: distinfo,v 1.28 2019/02/05 20:19:55 adam Exp $
 
+BLAKE2s (Percona-Server-8.0.46-37.tar.gz) = 9bae5b9e6bd42904970703bee29cd6aceb8e4cf623b9cd8a3491e41e201c3558
+SHA512 (Percona-Server-8.0.46-37.tar.gz) = bc947726518b884926d137191ff06442d47763847e0e51d92034cb2cff477e1e8d8673c14b51fc13fee54b089ce4fd970861f5ecc63204097c001f2e7faf849e
+Size (Percona-Server-8.0.46-37.tar.gz) = 531338153 bytes
 BLAKE2s (boost_1_77_0.tar.bz2) = 11f9651d7078e67a69a97f46dce3131af1f1b3ba5976c26435cd17a66161cbf1
 SHA512 (boost_1_77_0.tar.bz2) = 39b45c9b60bc5a2a4c669a4463d1272c1e093376b2fb374d7f20a84ea10a3e23bb04b335a735a83a04575731f874d9bff77e89acd947524b3fbbae1b26ae1f2f
 Size (boost_1_77_0.tar.bz2) = 110361537 bytes
-BLAKE2s (percona-server-8.0.39-30.tar.gz) = 6b847bc05f59b8a2a6be82f06426135a443e47e3bc74505f2b2e0890f9802c46
-SHA512 (percona-server-8.0.39-30.tar.gz) = f1c5d557c4f767b5901d7420c6c3e87431ef06111398d347fb9c3e943c5764693cb3832b5b7b0be65582cf0b963d9ab6ace14453feb71e5b4b0d51fffa509fd1
-Size (percona-server-8.0.39-30.tar.gz) = 491159859 bytes
 SHA1 (patch-CMakeLists.txt) = 39178f9513c7d7c9ffdbfb837ededa5e424ea0ce
 SHA1 (patch-build-ps_build-rpm.sh) = ccd52001939a50d724c5ee514963814a9bd91888
 SHA1 (patch-client_CMakeLists.txt) = 3d0745861812247bec5e9b6734ebccb9faa3ffae
@@ -14,12 +14,10 @@ SHA1 (patch-include_CMakeLists.txt) = 8dcf1c45a16af7f740e077bd2d844e6f014a3f20
 SHA1 (patch-libmysql_CMakeLists.txt) = 152659ee7fff7f79c52dfee8effdf92525386017
 SHA1 (patch-libmysql_authentication__oci__client_CMakeLists.txt) = 34c5804e1c9ac8b665b5f1381d333765b5561e37
 SHA1 (patch-plugin_audit__log__filter_audit__keyring.cc) = 806bd7255420edc9d8ca6791e5d82a3b3d19a0d2
-SHA1 (patch-plugin_audit__log__filter_log__writer_file__handle.cc) = e818cee804192168e17e355424de285080e1a6bb
 SHA1 (patch-plugin_procfs_CMakeLists.txt) = 3c0005bbb2de05e7db3541ff4ba3340f0f74b937
 SHA1 (patch-plugin_x_CMakeLists.txt) = 2c02b377e3d8ccb9e2a1b7896f85367eec8f3461
 SHA1 (patch-router_CMakeLists.txt) = bdf69eae93dbc6fd8e32e01688a1a4ad20e10149
 SHA1 (patch-scripts_CMakeLists.txt) = ef340efc87b58224484b3269fcbfb0abb916acd7
-SHA1 (patch-sql_binlog__reader.cc) = 8205808cb06c3dfcf66e17a51eee28fdca2c04d6
 SHA1 (patch-sql_mysqld.cc) = 44aef72a8d13289aa8a8d161947b2f1c7b60cc49
 SHA1 (patch-sql_resourcegroups_platform_thread__attrs__api__solaris.cc) = 10039638c4fff9347f53466118f94466ebf12e5c
 SHA1 (patch-storage_myisam_mi__dynrec.cc) = 9e0e368f9ced46cb091432fca0c4249313c5b7e8

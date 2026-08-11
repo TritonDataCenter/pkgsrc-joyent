@@ -3,10 +3,12 @@
 # used by joyent/percona80-client/Makefile
 # used by joyent/percona80-server/Makefile
 
-MYSQLEXT_VER=	30
-DISTNAME=	percona-server-8.0.39-${MYSQLEXT_VER}
+MYSQLEXT_VER=	37
+DISTNAME=	Percona-Server-8.0.46-${MYSQLEXT_VER}
 CATEGORIES=	databases
-MASTER_SITES=	https://www.percona.com/downloads/Percona-Server-8.0/Percona-Server-${PKGVERSION_NOREV}-${MYSQLEXT_VER}/source/tarball/
+MASTER_SITES=	${MASTER_SITE_GITHUB:=percona/}
+GITHUB_PROJECT=	percona-server
+GITHUB_TAG=	${DISTNAME}
 
 MAINTAINER?=	pkgsrc-users@NetBSD.org
 HOMEPAGE=	https://docs.percona.com/percona-server/8.0/index.html
@@ -58,6 +60,9 @@ CMAKE_CONFIGURE_ARGS+=	-DWITH_LIBEVENT="system"
 CMAKE_CONFIGURE_ARGS+=	-DWITH_LZ4="system"
 CMAKE_CONFIGURE_ARGS+=	-DWITH_SSL="system"
 CMAKE_CONFIGURE_ARGS+=	-DWITH_ZLIB="system"
+
+# Requires a git submodule
+CMAKE_CONFIGURE_ARGS+=	-DWITHOUT_COMPONENT_KEYRING_KMIP=YES
 
 CMAKE_CONFIGURE_ARGS.SunOS+=	-DFORCE_UNSUPPORTED_COMPILER=YES
 

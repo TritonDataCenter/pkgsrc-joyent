@@ -1,6 +1,6 @@
 # $NetBSD$
 
-PKGNAME=	${DISTNAME:C/-${MYSQLEXT_VER}//:S/server/client/}
+PKGNAME=	${DISTNAME:tl:C/-${MYSQLEXT_VER}//:S/server/client/}
 COMMENT=	Percona Server, a MySQL server fork (client)
 
 CONFLICTS=	mysql-client-[0-9]*
