@@ -2,7 +2,7 @@ $NetBSD$
 
 Fix build on SunOS.
 
---- include/proxysql.h.orig	2017-04-23 05:15:16.000000000 +0000
+--- include/proxysql.h.orig	2018-09-21 20:55:57.000000000 +0000
 +++ include/proxysql.h
 @@ -1,4 +1,5 @@
  #ifdef __cplusplus

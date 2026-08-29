@@ -2,7 +2,7 @@ $NetBSD$
 
 Sane symbol naming.
 
---- include/MySQL_Data_Stream.h.orig	2017-04-23 05:15:16.000000000 +0000
+--- include/MySQL_Data_Stream.h.orig	2018-09-21 20:55:57.000000000 +0000
 +++ include/MySQL_Data_Stream.h
 @@ -15,7 +15,7 @@ typedef struct _queue_t {
  	unsigned int partial;

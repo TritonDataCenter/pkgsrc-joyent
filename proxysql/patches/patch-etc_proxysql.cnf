@@ -2,11 +2,11 @@ $NetBSD$
 
 Proper paths.
 
---- etc/proxysql.cnf.orig	2018-02-01 02:06:06.000000000 +0000
+--- etc/proxysql.cnf.orig	2018-09-21 20:55:57.000000000 +0000
 +++ etc/proxysql.cnf
-@@ -6,7 +6,7 @@
- 
- 
+@@ -31,7 +31,7 @@
+ #
+ ########################################################################################
  
 -datadir="/var/lib/proxysql"
 +datadir="@VARBASE@/lib/proxysql"
